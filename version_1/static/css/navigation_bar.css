@@ -1,0 +1,35 @@
+body{
+    background-color: rgb(237, 241, 241);
+}
+
+.nav-bar-fyke {
+    width: 20%;
+    list-style: none;
+    padding: 10px;
+    display: block;
+    height: 100vh;
+    background-color: white;
+    
+}
+
+
+.btn-active{
+    background-color: #0D6EFD;
+    color: white;
+}
+
+.contents{
+    width: 80%;
+}
+
+@media (max-width: 920px) {
+    .product_id, .product_img {
+        display: none;
+    }
+    .nav-bar-fyke{
+        display: none;
+    }
+    .contents{
+        width: 50%;
+    }    
+}
