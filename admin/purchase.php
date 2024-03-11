@@ -5,6 +5,35 @@
 <body>
 <div style="display: flex; flex-direction: row">
 <?php include 'navigation_bar.php'?>
+<?php include '../config/config.php';
+
+// Assuming your database connection code is already present
+// Fetch category data from the database
+$categoryQuery = "SELECT `id`, `category_name` FROM `category`";
+$categoryResult = $conn->query($categoryQuery);
+
+$brandQuery = "SELECT `id`, `brand_name` FROM `brand`";
+$brandResult = $conn->query($brandQuery);
+
+// Check if the query was successful
+if ($categoryResult) {
+    $categories = $categoryResult->fetch_all(MYSQLI_ASSOC);
+} else {
+    // Handle the error appropriately
+    die("Error fetching categories: " . $conn->error);
+}
+if ($brandResult) {
+    $brands = $brandResult->fetch_all(MYSQLI_ASSOC);
+} else {
+    // Handle the error appropriately
+    die("Error fetching brand: " . $conn->error);
+}
+$brandResult->close();
+$categoryResult->close();
+
+// Close the connection
+$conn->close();
+?>
 
 <!-- start inventory-->
 
@@ -28,14 +57,22 @@
                     </div>
 
                     <div style="display: flex; flex-direction: row">
-                        <select class="form-select form-select-sm me-1" aria-label="Default select example" style="width: 50%">
-                            <option selected>Categories</option>
-                            <option value="1">Fyke Loterena</option>
-                            <option value="2">Alexander Inciong</option>
-                        </select>
-                        <a href="purchase" class="btn border btn-sm me-1 rounded btn-primary">Purchase</a>
-                        <a href="purchase_cart" class="btn border btn-sm rounded ">Cart</a>
+                    <select class="form-select form-select-sm me-1" aria-label="Default select example" style="width: 50%">
+                    <option selected>Select Brand</option>
+                         <?php foreach ($brands as $brand): ?>
+                     <option value="<?php echo $brand['id']; ?>"><?php echo $brand['brand_name']; ?></option>
+                         <?php endforeach; ?>
+                    </select>
+                     <select class="form-select form-select-sm me-1" aria-label="Default select example" style="width: 50%">
+                      <option selected>Select Category</option>
+                         <?php foreach ($categories as $category): ?>
+                      <option value="<?php echo $category['id']; ?>"><?php echo $category['category_name']; ?></option>
+                         <?php endforeach; ?>
+                     </select>
+                    <a href="purchase" class="btn border btn-sm me-1 rounded">Purchase</a>
+                     <a href="purchase_cart" class="btn border btn-sm rounded btn-primary">Cart</a>
                     </div>
+                </div>
                 </div>
                 <div class="p-3">
                     <div class="row">
