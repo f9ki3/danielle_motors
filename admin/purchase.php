@@ -53,22 +53,29 @@ $conn->close();
             <div class="row">
                 <div style="display: flex; justify-content: space-between; align-items: center;"> 
                     <div style="width: 50%">
-                        <input  class="form-control form-control-sm" placeholder="Search">
+                        <input id="searchInput" class="form-control form-control-sm" placeholder="Search" oninput="filterItems()">
                     </div>
 
+                    <!-- <div class="row">
+        <div style="display: flex; justify-content: space-between; align-items: center;"> 
+            <div style="width: 50%">
+                <input id="searchInput" class="form-control form-control-sm" placeholder="Search" oninput="filterItems()">
+            </div> -->
+
+
                     <div style="display: flex; flex-direction: row">
-                    <select class="form-select form-select-sm me-1" aria-label="Default select example" style="width: 50%">
-                    <option selected>Select Brand</option>
-                         <?php foreach ($brands as $brand): ?>
-                     <option value="<?php echo $brand['id']; ?>"><?php echo $brand['brand_name']; ?></option>
-                         <?php endforeach; ?>
-                    </select>
-                     <select class="form-select form-select-sm me-1" aria-label="Default select example" style="width: 50%">
-                      <option selected>Select Category</option>
-                         <?php foreach ($categories as $category): ?>
-                      <option value="<?php echo $category['id']; ?>"><?php echo $category['category_name']; ?></option>
-                         <?php endforeach; ?>
-                     </select>
+                        <select id="brandSelect" class="form-select form-select-sm me-1" aria-label="Default select example" style="width: 50%">
+                            <option selected>Select Brand</option>
+                             <?php foreach ($brands as $brand): ?>
+                            <option value="<?php echo $brand['id']; ?>"><?php echo $brand['brand_name']; ?></option>
+                             <?php endforeach; ?>
+                        </select>
+                        <select id="categorySelect" class="form-select form-select-sm me-1" aria-label="Default select example" style="width: 50%">
+                            <option selected>Select Category</option>
+                             <?php foreach ($categories as $category): ?>
+                            <option value="<?php echo $category['id']; ?>"><?php echo $category['category_name']; ?></option>
+                             <?php endforeach; ?>
+                        </select>
                     <a href="purchase" class="btn border btn-sm me-1 rounded">Purchase</a>
                      <a href="purchase_cart" class="btn border btn-sm rounded btn-primary">Cart</a>
                     </div>
@@ -346,3 +353,32 @@ $conn->close();
 <?php include 'footer.php'?>
 </body>
 </html>
+
+<script>
+function filterItems() {
+    var input, filter, selectBrand, selectCategory, items, option, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    selectBrand = document.getElementById("brandSelect"); // Corrected ID
+    selectCategory = document.getElementById("categorySelect"); // Corrected ID
+    items = [selectBrand, selectCategory];
+
+    for (i = 0; i < items.length; i++) {
+        option = items[i].options; // Use .options to get the options of the <select> element
+        for (var j = 0; j < option.length; j++) {
+            txtValue = option[j].textContent || option[j].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                option[j].style.display = "";
+            } else {
+                option[j].style.display = "none";
+            }
+        }
+    }
+}
+
+// Apply Select2 to the brandSelect dropdown
+$(document).ready(function() {
+    $('#brandSelect').select2();
+    $('#categorySelect').select2();
+});
+</script>
