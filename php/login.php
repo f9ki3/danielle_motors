@@ -6,7 +6,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "danielle_motors";
+$dbname = "dms_db";
 $status = 0;
 
 // Create connection

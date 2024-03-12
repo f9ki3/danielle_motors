@@ -47,11 +47,11 @@ $conn->close();
     <div>
         <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
             <h5 class="fw-bolder">Purchase</h5>
-            <a href="purchase" class="btn btn-sm btn-primary border rounded mb-2">Purchase Walk-in</a>
-            <a href="" class="btn btn-sm border rounded mb-2">Purchase Delivery</a>
-            <a href="" class="btn btn-sm border rounded mb-2">Purchase Online</a>
-            <a href="" class="btn btn-sm border rounded mb-2">Purchase with Terms</a>
-            <a href="store_stocks" class="btn btn-sm border rounded mb-2">Store Stocks</a>
+            <button class="btn btn-sm btn-primary border rounded mb-2">Purchase Walk-in</button>
+            <button class="btn btn-sm border rounded mb-2">Purchase Delivery</button>
+            <button class="btn btn-sm border rounded mb-2">Purchase Online</button>
+            <button class="btn btn-sm border rounded mb-2">Purchase with Terms</button>
+            <button class="btn btn-sm border rounded mb-2">Store Stocks</button>
             
         </div>
 
@@ -84,8 +84,8 @@ $conn->close();
                         </select>
                     </div>
                     <div>
-                    <a href="purchase" class="btn border btn-sm me-1 rounded">Purchase</a>
-                     <a href="purchase_cart" class="btn border btn-sm rounded btn-primary">Cart</a>
+                        <a href="purchase" class="btn border btn-sm me-1 rounded">Purchase</a>
+                        <a href="purchase_cart" class="btn border btn-sm rounded btn-primary">Cart</a>
                     </div>
                 </div>
                 </div>
