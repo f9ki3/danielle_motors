@@ -33,6 +33,12 @@ $categoryResult->close();
 // Close the connection
 $conn->close();
 ?>
+<style>
+    /* Adjust the min-width value according to your preference */
+    .select2-container--default .select2-selection--single {
+        min-width: 150px;
+    }
+</style>
 
 <div style="width: 100%" class="content p-3" >
     <div>
@@ -73,8 +79,10 @@ $conn->close();
                         <option value="<?php echo $category['id']; ?>"><?php echo $category['category_name']; ?></option>
                             <?php endforeach; ?>
                     </select>
-                    <a href="purchase" class="btn border btn-sm me-1 rounded">Purchase</a>
-                     <a href="purchase_cart" class="btn border btn-sm rounded btn-primary">Cart</a>
+                    </div>
+                    <div>
+                        <a href="purchase" class="btn border btn-sm me-1 rounded">Purchase</a>
+                        <a href="purchase_cart" class="btn border btn-sm rounded btn-primary">Cart</a>
                     </div>
                 </div>
                 <div class="mb-4">
@@ -517,5 +525,6 @@ function filterItems() {
 $(document).ready(function() {
     $('#brandSelect').select2();
     $('#categorySelect').select2();
+    
 });
 </script>

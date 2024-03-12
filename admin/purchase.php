@@ -35,6 +35,12 @@ $categoryResult->close();
 $conn->close();
 ?>
 
+<style>
+    /* Adjust the min-width value according to your preference */
+    .select2-container--default .select2-selection--single {
+        min-width: 150px;
+    }
+</style>
 <!-- start inventory-->
 
 <div style="width: 100%" class="content p-3">
@@ -76,6 +82,8 @@ $conn->close();
                             <option value="<?php echo $category['id']; ?>"><?php echo $category['category_name']; ?></option>
                              <?php endforeach; ?>
                         </select>
+                    </div>
+                    <div>
                     <a href="purchase" class="btn border btn-sm me-1 rounded">Purchase</a>
                      <a href="purchase_cart" class="btn border btn-sm rounded btn-primary">Cart</a>
                     </div>
