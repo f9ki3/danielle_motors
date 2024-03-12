@@ -31,7 +31,7 @@
                     <div>
                         <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#add_stocks">+ Material Transfer</button>
                         <a heref="store_stocks" class="btn btn-primary border btn-sm rounded" >Stocks</a>
-                        <a heref="purchase" class="btn border btn-sm rounded" >Product</a>
+                        <a heref="stocks_product" class="btn border btn-sm rounded" >Product</a>
                     </div>
                 </div>
             </div>

@@ -70,20 +70,22 @@ $conn->close();
 
 
                     <div style="display: flex; flex-direction: row">
-                        <select id="brandSelect" class="form-select form-select-sm " aria-label="Default select example" style="width: 50%">
+                        <select id="brandSelect" class="form-select form-select-sm me-1" aria-label="Default select example" style="width: 50%">
                             <option selected>Select Brand</option>
                              <?php foreach ($brands as $brand): ?>
                             <option value="<?php echo $brand['id']; ?>"><?php echo $brand['brand_name']; ?></option>
                              <?php endforeach; ?>
                         </select>
-                        <select id="categorySelect" class="form-select form-select-sm " aria-label="Default select example" style="width: 50%">
+                        <select id="categorySelect" class="form-select form-select-sm me-1" aria-label="Default select example" style="width: 50%">
                             <option selected>Select Category</option>
                              <?php foreach ($categories as $category): ?>
                             <option value="<?php echo $category['id']; ?>"><?php echo $category['category_name']; ?></option>
                              <?php endforeach; ?>
                         </select>
-                
-                       
+                    </div>
+                    <div>
+                        <a href="purchase" class="btn border btn-sm me-1 rounded">Purchase</a>
+                        <a href="purchase_cart" class="btn border btn-sm rounded btn-primary">Cart</a>
                     </div>
                 </div>
                 </div>
