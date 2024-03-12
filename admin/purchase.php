@@ -84,7 +84,10 @@ $conn->close();
                         </select>
                     </div>
                     <div>
-                    <a href="purchase" class="btn border btn-sm me-1 rounded">Purchase</a>
+                    <a href="purchase" class="btn border btn-sm me-1 rounded">
+    <img src="cart.php" alt="Shopping Cart" style="width: 20px; height: 20px; margin-right: 5px;">
+    Purchase
+</a>
                      <a href="purchase_cart" class="btn border btn-sm rounded btn-primary">Cart</a>
                     </div>
                 </div>
