@@ -4,8 +4,12 @@
 <?php include 'header.php'?>
 <body>
 <div style="display: flex; flex-direction: row">
-<?php include 'navigation_bar.php'?>
+<?php
+include 'navigation_bar.php';
+include '../config/config.php';
 
+?>
+<link href="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.css" rel="stylesheet">
 <!-- start inventory-->
 
 <div style="width: 100%" class="content p-3">
@@ -36,10 +40,12 @@
                 </div>
             </div>
 
-            <div>
-            <table class="table mt-3 table-hover">
-                        <thead>
-                            <tr>
+
+            
+<div>
+    <table id="tabledataMaterial" class="table table-bordered">
+        <thead>
+                        <tr>
                             <td scope="col" width="15%">Material Invoice No.</td>
                             <td scope="col" width="15%" >Date</td>
                             <td scope="col" width="15%">Cashier Name</td>
@@ -47,38 +53,13 @@
                             <td scope="col" width="15%">Inspected by</td>
                             <td scope="col" width="15%">Verified by</td>
                             <td class="text-end" scope="col" width="10%">Action</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                                <td scope="row" class="product_id">DMP001</td>
-                                <td class="product_img">03/11/24</td>
-                                <td>Fyke Loterena</td>
-                                <td>Alexander Inciong</td>
-                                <td>Louis Rivera</td>
-                                <td>Joemarie Andrade</td>
-                                <td class="text-end">
-                                    <button class="btn btn-sm border"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-                                    <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
-                                    </svg> </button>
-
-                                    <button class="btn btn-sm border"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
-                                    </svg> </button>
-                                </td>
-                            
                         </tr>
-                            
-                            
-                        </tbody>
-                    </table>
-            </div>
-            
-        </div>
-
-
-
-
+        </thead>
+        <tbody id="MaterialTableBody">
+<!-- dynamic populate -->
+        </tbody>
+    </table>
+</div>
 
 <!-- end purchase-->
 
@@ -91,31 +72,27 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body " style="display: flex; flex-direction: column; align-items: center; justify-content: center">
-        <input type="date" class="form-control mb-2">
-        <input type="text" class="form-control mb-2" placeholder="Material Invoce No.">
-        <input type="text" class="form-control mb-2" placeholder="Cashier Name">
-        <div style=" display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-            <select class="form-select mb-2" aria-label="Default select example" style="width: 33%">
-            <option selected>Recieved By</option>
-            <option value="1">Fyke Loterena</option>
-            <option value="2">Alexander Inciong</option>
-            </select>
-            <select class="form-select mb-2" aria-label="Default select example" style="width: 33%">
-            <option selected>Inspected by </option>
-            <option value="1">Fyke Loterena</option>
-            <option value="2">Alexander Inciong</option>
-            </select>
-            <select class="form-select mb-2" aria-label="Default select example" style="width: 33%">
-            <option selected>Verified by By</option>
-            <option value="1">Fyke Loterena</option>
-            <option value="2">Alexander Inciong</option>
-            </select>
-        </div>
+
+
+<input type="date" class="form-control mb-2" id="materialDate">
+<input type="text" class="form-control mb-2" placeholder="Material Invoice No." id="materialInvoiceNo">
+<input type="text" class="form-control mb-2" placeholder="Cashier Name" id="cashierName" pattern="[A-Za-z ]{1,}" required>
+<div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+    <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="receivedBy">
+   
+    </select>
+    <select class="form-select mb-2" placeholder="Inspected by" aria-label="Default select example" style="width: 33%" id="inspectedBy">
+    
+    </select>
+    <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="verifiedBy">
+      
+    </select>
+</div>
         
       </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-primary" id="saveMaterialTransfer">Save</button>
         </div>
     </div>
   </div>
@@ -127,3 +104,109 @@
 <?php include 'footer.php'?>
 </body>
 </html>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
+
+<script type="text/javascript">
+ $(document).ready(function () {
+    $('#tabledataMaterial').DataTable({
+        "fnCreatedRow": function (nRow, aData, iDataIndex) {
+    $(nRow).attr('id', aData[0]);
+    },
+      'serverSide': 'true',
+      'processing': 'true',
+      'paging': 'true',
+      'order': [],
+      'ajax': {
+        'url': 'store_stocks_fetch.php',
+        'type': 'post',
+      },
+      "aoColumnDefs": [{
+        "bSortable": false,
+        "aTargets": [4]
+      },
+
+      ]
+    });
+  });
+
+  $(document).ready(function () {
+     // ... Your existing DataTable initialization code ...
+
+     // Save Material Transfer
+     $('#saveMaterialTransfer').click(function () {
+         var materialDate = $('#materialDate').val();
+         var materialInvoiceNo = $('#materialInvoiceNo').val();
+         var cashierName = $('#cashierName').val();
+         var receivedBy = $('#receivedBy').val();
+         var inspectedBy = $('#inspectedBy').val();
+         var verifiedBy = $('#verifiedBy').val();
+
+
+         $.ajax({
+             url: 'store_stocks_save.php',
+             method: 'POST',
+             data: {
+                 materialDate: materialDate,
+                 materialInvoiceNo: materialInvoiceNo,
+                 cashierName: cashierName,
+                 receivedBy: receivedBy,
+                 inspectedBy: inspectedBy,
+                 verifiedBy: verifiedBy
+             },
+             success: function (response) {    
+                 console.log(response);
+                 $('#add_stocks').modal('hide');
+             },
+             error: function (xhr, status, error) {
+                 console.error('Error saving data:', error);
+             }
+         });
+     });
+ });
+
+
+ $(document).ready(function () {
+     // ... Your existing DataTable initialization code ...
+
+     // Fetch data for dropdowns
+     function fetchAdminData(selectElementId, role) {
+         $.ajax({
+             url: 'fetch_admin_data.php', // Your server-side script to fetch admin data
+             method: 'GET',
+             data: { role: role }, // Optional: send role if needed
+             dataType: 'json',
+             success: function (data) {
+                 // Populate the dropdown options
+                 var selectElement = $('#' + selectElementId);
+                 selectElement.empty();
+                 selectElement.append('<option selected>Select ' + role + '</option>');
+                 $.each(data, function (index, admin) {
+                     selectElement.append('<option value="' + admin.id + '">' + admin.fname + ' ' + admin.lname + '</option>');
+                 });
+             },
+             error: function (xhr, status, error) {
+                 console.error('Error fetching admin data:', error);
+             }
+         });
+     }
+
+     // Fetch data for receivedBy dropdown
+     
+     fetchAdminData('receivedBy', 'Recieved By');
+     
+     // Fetch data for inspectedBy dropdown
+     fetchAdminData('inspectedBy', 'Inspected by');
+
+     // Fetch data for verifiedBy dropdown
+     fetchAdminData('verifiedBy', 'Verified By');
+
+     // ... Your existing DataTable initialization code ...
+     
+     // Your existing Save Material Transfer click event handler
+     $('#saveMaterialTransfer').click(function () {
+         // ... Existing code ...
+     });
+ });
+</script>
