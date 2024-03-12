@@ -1,0 +1,7 @@
+.product-hover{
+    border: 1px solid gainsboro;
+}
+
+.product-hover:hover{
+    border: 1px solid blue;
+}

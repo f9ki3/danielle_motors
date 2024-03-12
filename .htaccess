@@ -1,3 +1,7 @@
+Options -Indexes
 RewriteEngine On
-RewriteCond %{REQUEST_URI}  !(\.png|\.jpg|\.webp|\.gif|\.jpeg|\.zip|\.css|\.svg|\.js|\.pdf)$
-RewriteRule (.*) routes.php [QSA,L]
+
+# Remove .php extension from URLs
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
