@@ -21,20 +21,25 @@
         </div>
 
         <div style="background-color: white; height: 90vh;" class="rounded border p-3 mb-3 w-100">
-            <div class="row">
-                <h6>Material Transfer</h6>
-                <div style="display: flex; justify-content: space-between; align-items: center;"> 
-                    <div style="width: 50%">
-                        <input  class="form-control form-control-sm" placeholder="Search">
+             <div class="border rounded mt-2 p-3" >
+                    <div style="display: flex; flex-direction: row; justify-content: space-between">
+                        <div>
+                            <h4>Material Invoice: DMP0001</h4>
+                            <h4>Date: 03/11/24</h4>
+                        </div>
+                        <div>
+                            <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#add_stocks">+ Add Stocks</button>
+                        </div>
                     </div>
 
-                    <div>
-                        <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#add_stocks">+ Material Transfer</button>
-                        <a heref="store_stocks" class="btn border btn-sm rounded" >Stocks</a>
-                        <a heref="store_product" class="btn border btn-sm rounded btn-primary" >Product</a>
+                    <div class="m-0" style="display: flex; flex-direction: row; justify-content: space-between">
+                        <p>Cashier: Fyke Loterena</p>
+                        <p>Recieved by: Louis Rivera</p>
+                        <p>Verified by: Alexander Inciong</p>
+                        <p>Inspected by: Andrada</p>
                     </div>
-                </div>
-            </div>
+             </div>
+             
 
             <div>
             <table class="table mt-3 table-hover">
