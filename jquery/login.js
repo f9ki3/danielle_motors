@@ -23,7 +23,7 @@ $(document).ready(function(){
                     $('#loading').show();
                     setTimeout(function() {
                         $('#loading').hide();
-                        window.location.href = '/danielle_motors/admin/dashboard';
+                        window.location.href = '/dannielle_motors/admin/dashboard';
                     }, 3000);
                     
                 }else{
