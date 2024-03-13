@@ -1,10 +1,11 @@
-
+<?php include '../config/config.php'?>
 <?php include 'session.php'?>
 <html lang="en">
 <?php include 'header.php'?>
 <body>
 <div style="display: flex; flex-direction: row">
 <?php include 'navigation_bar.php'?>
+<?PHP Include '../php/product_dropdown.php'?>
 
 <!-- start inventory-->
 
@@ -20,7 +21,7 @@
             
         </div>
 
-        <div style="background-color: white; height: 90vh;" class="rounded border p-3 mb-3 w-100">
+        <div style="background-color: white; height: auto;" class="rounded border p-3 mb-3 w-100">
              <div class="border rounded mt-2 p-3" >
                     <div style="display: flex; flex-direction: row; justify-content: space-between">
                         <div>
@@ -29,6 +30,7 @@
                         </div>
                         <div>
                             <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#add_stocks">+ Add Stocks</button>
+                            <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#print">Print</button>
                         </div>
                     </div>
 
@@ -38,30 +40,35 @@
                         <p>Verified by: Alexander Inciong</p>
                         <p>Inspected by: Andrada</p>
                     </div>
+                    <div>
+                        <input type="text" class="form-control mb-2 form-control-sm w-25" placeholder="Search">
+                    </div>
              </div>
              
 
-            <div>
+            <div style="overflow-y: auto; height: 450px">
             <table class="table mt-3 table-hover">
                         <thead>
                             <tr>
-                            <td scope="col" width="15%">Material Invoice No.</td>
-                            <td scope="col" width="15%" >Date</td>
-                            <td scope="col" width="15%">Cashier Name</td>
-                            <td scope="col" width="15%">Recieved by</td>
-                            <td scope="col" width="15%">Inspected by</td>
-                            <td scope="col" width="15%">Verified by</td>
-                            <td class="text-end" scope="col" width="10%">Action</td>
+                            <td scope="col" width="10%">Product id</td>
+                            <td scope="col" width="10%" >Date</td>
+                            <td scope="col" width="15%">Product Name</td>
+                            <td scope="col" width="15%">Stocks</td>
+                            <td scope="col" width="15%">Current Price</td>
+                            <td scope="col" width="15%">Selling Price</td>
+                            <td scope="col" width="10%">Markup</td>
+                            <td class="text-end" scope="col" width="20%">Action</td>
                             </tr>
                         </thead>
                         <tbody>
                         <tr>
-                                <td scope="row" class="product_id">DMP001</td>
+                                <td scope="row" class="product_id">PROD001</td>
                                 <td class="product_img">03/11/24</td>
                                 <td>Fyke Loterena</td>
-                                <td>Alexander Inciong</td>
-                                <td>Louis Rivera</td>
+                                <td>100pcs</td>
+                                <td>php 100</td>
                                 <td>Joemarie Andrade</td>
+                                <td>php 200</td>
                                 <td class="text-end">
                                     <button class="btn btn-sm border"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
                                     <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
@@ -73,14 +80,31 @@
                                 </td>
                             
                         </tr>
-                            
-                            
+                          
                         </tbody>
+                        <!-- summary of materials -->
+                        
                     </table>
             </div>
+
+            <div class="border rounded mt-2 p-3" >
+                    <div style="display: flex; flex-direction: row; justify-content: space-between">
+                        <div>
+                            <h4>Net : PHP 100.00</h4>
+                            <h4>Gross: PHP 100.00</h4>
+
+                        </div>
+                        <div style="width: 30%">
+                            <button type="button" class="btn w-100 btn-primary mb-2">Save</button>
+                            <button type="button" class="btn w-100 btn-outline-primary mb-2">Cancel</button>
+                        </div>
+                    </div>
+
+                    
+                    
+             </div>
             
         </div>
-
 
 
 
@@ -92,25 +116,34 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Material Transfer</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Stocks</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body " style="display: flex; flex-direction: column; align-items: center; justify-content: center">
-        
-        <select class="form-select mb-2" aria-label="Default select example">
-            <option selected>Select Product</option>
-            <option value="1">Product 1</option>
-            <option value="2">Product 2</option>
-            <option value="3">Product 3</option>
-        </select>
+
+        <datalist id="suggestions">
+            <?php foreach ($products as $product): ?>
+                <option><?php echo $product['id']; echo "-"?><?php echo $product['product_name']; ?><?php echo " - "?><?php echo $product['models']; ?></option>
+            <?php endforeach; ?>
+        </datalist>
 
         <div class="input-group mb-2">
-            <span class="input-group-text w-25" id="basic-addon1">Selling Price </span>
+            <span class="input-group-text w-25" id="basic-addon1">Select Product </span>
+            <input type="text" id="select_product" class="form-control" list="suggestions" placeholder="Search Here">
+        </div>
+
+        <div class="input-group mb-2">
+            <span class="input-group-text w-25" id="basic-addon1">Net Price</span>
+            <input type="text" class="form-control" id="price" value="100">
+        </div>
+
+        <div class="input-group mb-2">
+            <span class="input-group-text w-25" id="basic-addon1">Net Price</span>
             <input type="text" class="form-control" >
         </div>
 
         <div class="input-group mb-2">
-            <span class="input-group-text w-25" id="basic-addon1">Stocks</span>
+            <span class="input-group-text w-25" id="basic-addon1">QTY</span>
             <input type="text" class="form-control" >
         </div>
             
@@ -130,3 +163,4 @@
 <?php include 'footer.php'?>
 </body>
 </html>
+

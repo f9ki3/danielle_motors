@@ -70,7 +70,7 @@ $conn->close();
 
 
                     <div style="display: flex; flex-direction: row">
-                    <select id="brandSelect" class="form-select form-select-sm " aria-label="Default select example" style="width: 50%">
+                        <select id="brandSelect" class="form-select form-select-sm " aria-label="Default select example" style="width: 50%">
                             <option selected>Select Brand</option>
                              <?php foreach ($brands as $brand): ?>
                             <option value="<?php echo $brand['id']; ?>"><?php echo $brand['brand_name']; ?></option>

@@ -3,7 +3,7 @@
         <img style="border-radius: 100%; width: 80px; height: 80px" src="../uploads/<?php echo $profile ;?>" alt="">
         <h5 class="fw-bolder"><?php echo $fname; echo " "; echo $lname?></h5>
     </div> -->
-    <h5 class="fw-bolder ms-2 mt-4">Danielle Motors</h5>
+    <h5 class="fw-bolder ms-2 mt-4"><img src="../static/img/dmp_logo.png" alt=""></h5>
     <hr>
     <div>
         <li><a href="/danielle_motors/admin/dashboard" class=" menu-btn btn w-100 text-start  rounded mb-3"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi me-3 bi-box2-fill" viewBox="0 0 16 16">
@@ -17,9 +17,9 @@
         <path d="M2 12.161V13c0 1.007.875 1.755 1.904 2.223C4.978 15.711 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13v-.839c-.457.432-1.004.751-1.49.972-1.232.56-2.828.867-4.51.867s-3.278-.307-4.51-.867c-.486-.22-1.033-.54-1.49-.972"/>
         </svg> Sales</a></li>
 
-        <li><a href="/danielle_motors/admin/inventory" id="inventory" class="menu-btn btn w-100 text-start rounded mb-3"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi me-3 bi-book-fill" viewBox="0 0 16 16">
+        <!-- <li><a href="/danielle_motors/admin/inventory" id="inventory" class="menu-btn btn w-100 text-start rounded mb-3"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi me-3 bi-book-fill" viewBox="0 0 16 16">
         <path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
-        </svg> Inventory</a></li>
+        </svg> Inventory</a></li> -->
 
         <li><a href="/danielle_motors/admin/purchase" class="menu-btn btn w-100 text-start rounded mb-3"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi me-3 bi-cart-check-fill" viewBox="0 0 16 16">
         <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708"/>
