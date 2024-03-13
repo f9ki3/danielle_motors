@@ -2,3 +2,4 @@
 <script src="../jquery/navigation.js"></script>
 <script src="../jquery/date_time.js"></script>
 <script src="../jquery/add_rack.js"></script>
+<script src="../jquery/select_product_srp.js"></script>
