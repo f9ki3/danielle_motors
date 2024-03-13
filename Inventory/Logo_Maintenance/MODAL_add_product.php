@@ -8,7 +8,7 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-lg-12 mb-2">
-              <input class="form-control" type="file" name="logo" id="logo" accept="image/png" required>
+              <input class="form-control" type="file" name="logo" id="logo_input" accept="image/png" required>
             </div>
             <div class="col-lg-12 d-flex justify-content-center mt-2">
               <div class="form-check">
@@ -27,3 +27,29 @@
   </div>
 </div>
 
+<script>
+    function checkImageSize() {
+        const input = document.getElementById('logoInput');
+        const file = input.files[0];
+        
+        if (file) {
+            const img = new Image();
+            
+            img.onload = function() {
+                if (img.width === img.height) {
+                    alert('Image is a square.');
+                } else {
+                    alert('Please select a square image.');
+                    input.value = ''; // Clear the file input
+                }
+            };
+            
+            img.src = URL.createObjectURL(file);
+        }
+    }
+
+    function submitForm() {
+        // You can add any additional checks here if needed
+        document.getElementById('uploadForm').submit();
+    }
+</script>
