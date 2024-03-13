@@ -2,7 +2,8 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "dms_db";
+$dbname = "dmp";
+// $dbname = "dms_db";
 
 // Create a new MySQLi instance
 $conn = new mysqli($servername, $username, $password, $dbname);
