@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "for_presentation";
+$dbname = "dms_db";
 
 // Create a new MySQLi instance
 $conn = new mysqli($servername, $username, $password, $dbname);
