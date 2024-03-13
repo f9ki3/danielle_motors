@@ -1,4 +1,3 @@
-
 <?php include 'session.php'?>
 <html lang="en">
 <?php include 'header.php'?>
@@ -7,7 +6,6 @@
 <?php
 include 'navigation_bar.php';
 include '../config/config.php';
-
 ?>
 <link href="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.css" rel="stylesheet">
 <!-- start inventory-->
@@ -39,17 +37,18 @@ include '../config/config.php';
                     </div>
                 </div>
                 <div class="p-1" style="overflow: auto; height: 70vh">
-                    <table class="table mt-3">
+                    <table id="ProductdataMaterial" class="table table-bordered">
                         <thead>
                             <tr>
-                                <td scope="col">Product Id</td>
                                 <td scope="col">Image</td>
                                 <td scope="col">Product Name</td>
+                                <td scope="col">Model</td>
                                 <td scope="col">Brand</td>
-                                <td scope="col">Models</td>
-                                <td scope="col">unit</td>
+                                <td scope="col">Supplier Code</td>
+                                <td scope="col">Unit ID</td>
                                 <td scope="col">Stocks</td>
-                                <td scope="col">Selling Price</td>
+                                <td scope="col">SRP</td>
+                                <td scope="col">Availability</td>
                                 <td scope="col">Action</td>
                             </tr>
                         </thead>
@@ -86,17 +85,12 @@ include '../config/config.php';
     </div>
 </div>
 
-
-
-
 <!-- end inventory-->
-
 
 </div>
 <?php include 'footer.php'?>
 </body>
 </html>
-
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
@@ -104,22 +98,29 @@ include '../config/config.php';
 <script type="text/javascript">
 $(document).ready(function () {
     // Initialize DataTable
-    var table = $('#tabledataMaterial').DataTable({
-        "fnCreatedRow": function (nRow, aData, iDataIndex) {
-            $(nRow).attr('id', aData[0]);
-        },
-        'serverSide': 'true',
-        'processing': 'true',
-        'paging': 'true',
+    var table = $('#ProductdataMaterial').DataTable({
+        'serverSide': true,
+        'processing': true,
+        'paging': true,
         'order': [],
         'ajax': {
-            'url': 'store_stocks_fetch.php',
+            'url': 'product_list_fetch.php',
             'type': 'post',
         },
         "aoColumnDefs": [{
             "bSortable": false,
-            "aTargets": [6] // Adjust the index to match the actual number of columns
+            "aTargets": [] // Adjust the index to match the actual number of columns
         }]
     });
+
+    // Define click event handler for view button
+    $('#ProductdataMaterial tbody').on('click', '.view', function () {
+        // Get the data associated with the clicked row
+        var rowData = table.row($(this).closest('tr')).data();
+        // Perform any action you want based on the row data
+        // For example, you can open a modal with the row data for viewing
+        console.log('View button clicked for row:', rowData);
+    });
 });
+
 </script>
