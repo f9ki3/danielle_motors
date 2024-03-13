@@ -142,17 +142,10 @@ $(document).ready(function () {
    // Define click event handler for edit button
    $('#tabledataMaterial tbody').on('click', '.edit', function () {
     // Get the data associated with the clicked row
-    var rowIndex = table.row($(this).closest('tr')).index();
-
-    // Get the current data for the row
-    var rowData = table.row(rowIndex).data();
-
-    // Modify the ID in the data object
-    var newId = 'newId'; // Set the new ID here
-    rowData.id = newId;
-
-    // Update the data for the row
-    table.row(rowIndex).data(rowData).draw();
+    var rowData = table.row($(this).closest('tr')).data();
+        // Perform any action you want based on the row data
+        // For example, you can open a modal with the row data for viewing
+        console.log('View button clicked for row:', rowData);
 
     // Show the "Edit" button and hide the "Save" button
     $('#editMaterialTransfer').show();
@@ -176,10 +169,10 @@ $(document).ready(function () {
 // Handle click event for "Edit" button inside the modal
 $('#editMaterialTransfer').click(function () {
     // Get the row index of the edited row
-    var rowIndex = table.row($(this).closest('tr')).index();
-
-    // Get the newId from the DataTable's data
-    var newId = table.row(rowIndex).data().id;
+    var rowData = table.row($(this).closest('tr')).data();
+        // Perform any action you want based on the row data
+        // For example, you can open a modal with the row data for viewing
+        console.log('View button clicked for row:', rowData);
 
     // Get other updated values from the modal inputs
     var materialDate = $('#materialDate').val();
@@ -204,7 +197,6 @@ $('#editMaterialTransfer').click(function () {
                 url: 'store_stocks_update.php',
                 method: 'POST',
                 data: {
-                    newId: newId, // Include the newId here
                     materialDate: materialDate,
                     materialInvoiceNo: materialInvoiceNo,
                     cashierName: cashierName,
@@ -214,11 +206,6 @@ $('#editMaterialTransfer').click(function () {
                 },
                 success: function (response) {    
                     console.log(response);
-
-                    // Update the ID of the row in the DataTable's underlying data structure
-                    var rowData = table.row(rowIndex).data();
-                    rowData.id = newId;
-                    table.row(rowIndex).data(rowData).draw();
 
                     $('#edit_stocks').modal('hide');
                 },

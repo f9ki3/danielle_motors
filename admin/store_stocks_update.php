@@ -1,39 +1,33 @@
 <?php
 include '../config/config.php';
 
-// Check if 'newId' key is set in the $_POST array
-if(isset($_POST['newId'])) {
-    // Retrieve data from the AJAX request
-    $newId = $_POST['newId'];
-    $materialDate = $_POST['materialDate'];
-    $materialInvoiceNo = $_POST['materialInvoiceNo'];
-    $cashierName = $_POST['cashierName'];
-    $receivedBy = $_POST['receivedBy'];
-    $inspectedBy = $_POST['inspectedBy'];
-    $verifiedBy = $_POST['verifiedBy'];
+// Retrieve data from the AJAX request
+$materialDate = $_POST['materialDate'];
+$materialInvoiceNo = $_POST['materialInvoiceNo'];
+$cashierName = $_POST['cashierName'];
+$receivedBy = $_POST['receivedBy'];
+$inspectedBy = $_POST['inspectedBy'];
+$verifiedBy = $_POST['verifiedBy'];
 
-    // Update data in the database using the new ID
-    $sql = "UPDATE material_transfer 
-            SET material_date = '$materialDate', 
-                material_invoice = '$materialInvoiceNo', 
-                material_cashier = '$cashierName', 
-                material_recieved_by = '$receivedBy', 
-                material_inspected_by = '$inspectedBy', 
-                material_verified_by = '$verifiedBy' 
-            WHERE id = $newId";
+// Prepare and bind the SQL statement
+$sql = "UPDATE material_transfer 
+        SET material_date = ?, 
+            material_invoice = ?, 
+            material_cashier = ?, 
+            material_recieved_by = ?, 
+            material_inspected_by = ?, 
+            material_verified_by = ?";
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "ssssss", $materialDate, $materialInvoiceNo, $cashierName, $receivedBy, $inspectedBy, $verifiedBy);
 
-    echo "SQL Query: " . $sql;
-
-    // Update data in the database
-    if (mysqli_query($conn, $sql)) {
-        echo "Data updated successfully!";
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
+// Execute the statement
+if (mysqli_stmt_execute($stmt)) {
+    echo "Data updated successfully!";
 } else {
-    // Handle the case when 'newId' key is not set
-    echo "Error: 'newId' key is not set in the POST request.";
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
+// Close statement and connection
+mysqli_stmt_close($stmt);
 mysqli_close($conn);
 ?>
