@@ -1,0 +1,173 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Header styles */
+.header {
+    background-color: #2d2d2d;
+    color: #ffffff;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px; /* Adjust height according to your logo */
+}
+
+.navigation ul {
+    list-style-type: none;
+}
+
+.navigation ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.navigation ul li:last-child {
+    margin-right: 0;
+}
+
+.navigation ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navigation ul li a:hover {
+    color: #ff9900;
+}
+/* Banner styles */
+.banner {
+    position: relative;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+  
+        margin-top: 50px; /* Adjust the margin-top as needed */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    
+    
+}
+
+.banner img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.banner .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+}
+/* Product list styles */
+.product-list {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
+    scroll-snap-type: x mandatory; /* Snap to each product item */
+}
+
+.product {
+    flex: 0 0 auto; /* Allow items to shrink or grow, but don't allow them to shrink below their content */
+    margin-right: 20px;
+    scroll-snap-align: start; /* Snap to the start of each product item */
+}
+
+.product img {
+    width: 200px; /* Adjust the width as needed */
+    height: 200px; /* Adjust the height as needed */
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.product h3 {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.product p {
+    margin-top: 5px;
+}
+
+.product span {
+    font-weight: bold;
+}
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #0f0f0f;
+    min-width: 200px;
+    padding: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content .dropdown-item:hover .nested-dropdown {
+    display: block;
+}
+
+.nested-dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.nested-dropdown-item img {
+    width: 50px; /* Adjust image size as needed */
+    margin-left: 10px; /* Adjust spacing between text and image */
+}
+
+/* Hide nested dropdown initially */
+.nested-dropdown {
+    display: none;
+}
+.nested-dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.nested-dropdown-item img {
+    width: 50px; /* Adjust image size as needed */
+    margin-left: 10px; /* Adjust spacing between text and image */
+}
+
+/* Hide nested dropdown initially */
+.nested-dropdown {
+    display: none;
+}

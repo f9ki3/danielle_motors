@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motorcycle Parts Shop</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file for styling -->
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="Motorcycle Parts Shop">
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li class="dropdown" id="helmets-dropdown">
+                        <a href="#products">Products</a>
+                        <div class="dropdown-content" id="products-dropdown">
+                            <a href="#">Helmets</a>
+                            <div class="nested-dropdown" id="helmets-nested-dropdown">
+                                <!-- Content will be added dynamically via JavaScript -->
+                            </div>
+                            <a href="#">Gloves</a>
+                            <a href="#">Spray Paint</a>
+                            <a href="#">Accessories</a>
+                            <a href="#">Parts</a>
+                        </div>
+                    </li>
+                    <li><a href="#about">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#contact">Contact</a>
+                        <div class="dropdown-content">
+                            <p>Phone Number: 123-456-7890</p>
+                            <p>Facebook: <a href="https://www.facebook.com/example">Example Page</a></p>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="banner">
+        <img src="banner-image.jpg" alt="Banner Image">
+        <div class="container">
+            <h2>Get 20% Off All Motorcycle Parts - Limited Time Offer!</h2>
+            <a href="#products" class="btn">Shop Now</a>
+        </div>
+    </div>
+
+    <section id="products" class="products" style="margin-top: 20px;">
+        <div class="container">
+            <div class="product-list">
+                <div class="product">
+                    <img src="product1.jpg" alt="Product 1">
+                    <h3>Product 1</h3>
+                    <p>Description of Product 1</p>
+                    <span>$99.99</span>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="product2.jpg" alt="Product 2">
+                    <h3>Product 2</h3>
+                    <p>Description of Product 2</p>
+                    <span>$129.99</span>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <!-- Add more product items as needed -->
+            </div>
+        </div>
+    </section>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Welcome to Motorcycle Parts Shop</h2>
+            <p>Your ultimate destination for motorcycle parts and accessories</p>
+        </div>
+    </section>
+
+    <!-- Other sections go here -->
+
+    <footer class="footer">
+        <div class="container">
+            <!-- Footer content goes here -->
+        </div>
+    </footer>
+
+    <script>
+    // JavaScript code goes here
+
+    // Function to populate the nested dropdown with helmet types and images
+    function populateHelmetDropdown() {
+        const helmetDropdown = document.getElementById('helmets-nested-dropdown');
+        const helmetTypes = ['Full Face', 'Open Face', 'Modular']; // Sample helmet types
+        const helmetImages = ['full-face-helmet.jpg', 'open-face-helmet.jpg', 'modular-helmet.jpg']; // Sample helmet images
+
+        // Clear any existing content
+        helmetDropdown.innerHTML = '';
+
+        // Populate dropdown with helmet types and images
+        for (let i = 0; i < helmetTypes.length; i++) {
+            const helmetType = helmetTypes[i];
+            const helmetImage = helmetImages[i];
+            const helmetItem = document.createElement('div');
+            helmetItem.classList.add('nested-dropdown-item');
+
+            const helmetLink = document.createElement('a');
+            helmetLink.href = '#';
+            helmetLink.textContent = helmetType;
+
+            const helmetImg = document.createElement('img');
+            helmetImg.src = helmetImage;
+            helmetImg.alt = helmetType;
+
+            helmetItem.appendChild(helmetLink);
+            helmetItem.appendChild(helmetImg);
+            helmetDropdown.appendChild(helmetItem);
+        }
+    }
+
+    // Event listener for when "Helmets" is hovered over
+    document.getElementById('helmets-dropdown').addEventListener('mouseover', populateHelmetDropdown);
+    </script>
+
+</body>
+</html>
