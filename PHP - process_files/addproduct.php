@@ -2,7 +2,7 @@
     require_once '../database/database.php';
 
     $uploadDir = '../uploads/';
-    $uploadFile = $uploadDir . basename($_FILES['image']['name']);
+    $uploadFile = basename($_FILES['image']['name']);
     move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile);
 
     $image = $uploadFile;

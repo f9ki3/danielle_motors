@@ -11,7 +11,7 @@ if($supplier_res -> num_rows > 0){
         echo '
         <tr class="position-static">
             <td class="align-middle">
-            <div class="form-check"><input class="form-check-input" type="checkbox" id="' . $row['id'] . '" /></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="' . $row['id'] . '" /></div>
             </td>
             <td class="align-middle white-space-nowrap py-0"><a class="d-block border rounded-2" href="../../uploads/' . $row['supplier_logo'] . '"><img src="../../uploads/' . $row['supplier_logo'] . '" alt="" width="53" /></a></td>
             <td class="product align-middle ps-4"><a class="fw-semi-bold line-clamp-3 mb-0" href="#">' . $row['supplier_name'] . '</a></td>
