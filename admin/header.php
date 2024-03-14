@@ -15,6 +15,9 @@
 <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <link href="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.css" rel="stylesheet">
 <script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script> -->
+
+<!-- Include sweetalert js -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 

@@ -104,7 +104,7 @@ $(document).ready(function () {
         'paging': true,
         'order': [],
         'ajax': {
-            'url': 'product_list_fetch.php',
+            'url': '../php/product_list_fetch.php',
             'type': 'post',
         },
         "aoColumnDefs": [{

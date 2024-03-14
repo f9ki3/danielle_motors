@@ -187,7 +187,8 @@ $('#editMaterialTransfer').click(function () {
         url: '../php/fetch_admin_data.php', // Your server-side script to fetch admin data
         method: 'GET',
         dataType: 'json',
-        success: function (data) {    
+        success: function (data) {   
+            swal("File Save", "Record has been edited", "success"); 
             var receivedBy = fetchAdminData(receivedById, data);
             var inspectedBy = fetchAdminData(inspectedById, data);
             var verifiedBy = fetchAdminData(verifiedById, data);
@@ -220,6 +221,25 @@ $('#editMaterialTransfer').click(function () {
     });
 });
 
+$('#tabledataMaterial tbody').on('click', '.delete', function () {
+    // Get the data associated with the clicked row
+    var rowData = table.row($(this).closest('tr')).data();
+        // Perform any action you want based on the row data
+        // For example, you can open a modal with the row data for viewing
+        console.log('View button clicked for row:', rowData);
+    
+    // Populate modal with row data
+    // $('#id').val(rowData[0]); // Assuming date is in the firsts column
+    $('#materialInvoiceNo').val(rowData[0]); // Assuming material invoice number is in the second column
+    $('#materialDate').val(rowData[1]); // Assuming date is in the third column
+    $('#cashierName').val(rowData[2]); // Assuming cashier name is in the fourth column
+
+    // Set selected options for dropdowns
+    $('#receivedBy').val(rowData[3]); // Assuming received by is in the fifth column
+    $('#inspectedBy').val(rowData[4]); // Assuming inspected by is in the sixth column
+    $('#verifiedBy').val(rowData[5]); // Assuming verified by is in the seventh column
+
+});
 
 $('#tabledataMaterial tbody').on('click', '.delete', function () {
     var rowData = table.row($(this).closest('tr')).data();
@@ -241,7 +261,16 @@ $('#tabledataMaterial tbody').on('click', '.delete', function () {
         success: function (data) {    
             var receivedBy = fetchAdminData(receivedById, data);
             var inspectedBy = fetchAdminData(inspectedById, data);
-            var verifiedBy = fetchAdminData(verifiedById, data);
+            var verifiedBy = fetchAdminData(verifiedById, data);    
+            swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this imaginary file!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
 
     // Perform AJAX request to update the active column
     $.ajax({
@@ -266,6 +295,13 @@ $('#tabledataMaterial tbody').on('click', '.delete', function () {
             console.error(error);
         }
     });
+    swal("Poof! Your imaginary file has been deleted!", {
+      icon: "success",
+    });
+  } else {
+    swal("Your imaginary file is safe!");
+  }
+});
         },
         error: function (xhr, status, error) {
             console.error('Error fetching admin data:', error);
