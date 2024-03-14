@@ -46,7 +46,6 @@ include '../config/config.php';
     <table id="tabledataMaterial" class="table table-bordered">
         <thead>
                         <tr>
-                            <td scope="col" width="15%">ID</td>
                             <td scope="col" width="15%">Material Invoice No.</td>
                             <td scope="col" width="15%" >Date</td>
                             <td scope="col" width="15%">Cashier Name</td>
@@ -122,7 +121,7 @@ $(document).ready(function () {
         'paging': 'true',
         'order': [],
         'ajax': {
-            'url': 'store_stocks_fetch.php',
+            'url': '../php/store_stocks_fetch.php',
             'type': 'post',
         },
         "aoColumnDefs": [{
@@ -149,18 +148,19 @@ $(document).ready(function () {
 
     // Show the "Edit" button and hide the "Save" button
     $('#editMaterialTransfer').show();
+    $('#materialInvoiceNo').hide();
     $('#saveMaterialTransfer').hide();
     
     // Populate modal with row data
-    $('#id').val(rowData[0]); // Assuming date is in the firsts column
-    $('#materialInvoiceNo').val(rowData[1]); // Assuming material invoice number is in the second column
-    $('#materialDate').val(rowData[2]); // Assuming date is in the third column
-    $('#cashierName').val(rowData[3]); // Assuming cashier name is in the fourth column
+    // $('#id').val(rowData[0]); // Assuming date is in the firsts column
+    $('#materialInvoiceNo').val(rowData[0]); // Assuming material invoice number is in the second column
+    $('#materialDate').val(rowData[1]); // Assuming date is in the third column
+    $('#cashierName').val(rowData[2]); // Assuming cashier name is in the fourth column
 
     // Set selected options for dropdowns
-    $('#receivedBy').val(rowData[4]); // Assuming received by is in the fifth column
-    $('#inspectedBy').val(rowData[5]); // Assuming inspected by is in the sixth column
-    $('#verifiedBy').val(rowData[6]); // Assuming verified by is in the seventh column
+    $('#receivedBy').val(rowData[3]); // Assuming received by is in the fifth column
+    $('#inspectedBy').val(rowData[4]); // Assuming inspected by is in the sixth column
+    $('#verifiedBy').val(rowData[5]); // Assuming verified by is in the seventh column
 
     // Open the modal
     $('#add_stocks').modal('show');
@@ -184,17 +184,18 @@ $('#editMaterialTransfer').click(function () {
 
     // Fetch first name and last name based on the selected IDs
     $.ajax({
-        url: 'fetch_admin_data.php', // Your server-side script to fetch admin data
+        url: '../php/fetch_admin_data.php', // Your server-side script to fetch admin data
         method: 'GET',
         dataType: 'json',
-        success: function (data) {    
+        success: function (data) {   
+            swal("File Save", "Record has been edited", "success"); 
             var receivedBy = fetchAdminData(receivedById, data);
             var inspectedBy = fetchAdminData(inspectedById, data);
             var verifiedBy = fetchAdminData(verifiedById, data);
 
             // After fetching first name and last name, save the Material Transfer
             $.ajax({
-                url: 'store_stocks_update.php',
+                url: '../php/store_stocks_update.php',
                 method: 'POST',
                 data: {
                     materialDate: materialDate,
@@ -220,15 +221,92 @@ $('#editMaterialTransfer').click(function () {
     });
 });
 
-
-
-    // Define click event handler for delete button
-    $('#tabledataMaterial tbody').on('click', '.delete', function () {
-        // Get the data associated with the clicked row
-        var rowData = table.row($(this).closest('tr')).data();
+$('#tabledataMaterial tbody').on('click', '.delete', function () {
+    // Get the data associated with the clicked row
+    var rowData = table.row($(this).closest('tr')).data();
         // Perform any action you want based on the row data
-        // For example, you can prompt the user for confirmation before deleting the row
-        console.log('Delete button clicked for row:', rowData);
+        // For example, you can open a modal with the row data for viewing
+        console.log('View button clicked for row:', rowData);
+    
+    // Populate modal with row data
+    // $('#id').val(rowData[0]); // Assuming date is in the firsts column
+    $('#materialInvoiceNo').val(rowData[0]); // Assuming material invoice number is in the second column
+    $('#materialDate').val(rowData[1]); // Assuming date is in the third column
+    $('#cashierName').val(rowData[2]); // Assuming cashier name is in the fourth column
+
+    // Set selected options for dropdowns
+    $('#receivedBy').val(rowData[3]); // Assuming received by is in the fifth column
+    $('#inspectedBy').val(rowData[4]); // Assuming inspected by is in the sixth column
+    $('#verifiedBy').val(rowData[5]); // Assuming verified by is in the seventh column
+
+});
+
+$('#tabledataMaterial tbody').on('click', '.delete', function () {
+    var rowData = table.row($(this).closest('tr')).data();
+    console.log('Delete button clicked for row:', rowData);
+
+    // Get other updated values from the modal inputs
+    var materialDate = $('#materialDate').val();
+    var materialInvoiceNo = $('#materialInvoiceNo').val();
+    var cashierName = $('#cashierName').val();
+    var receivedById = $('#receivedBy').val();
+    var inspectedById = $('#inspectedBy').val();
+    var verifiedById = $('#verifiedBy').val();
+
+    // Fetch first name and last name based on the selected IDs
+    $.ajax({
+        url: '../php/fetch_admin_data.php', // Your server-side script to fetch admin data
+        method: 'GET',
+        dataType: 'json',
+        success: function (data) {    
+            var receivedBy = fetchAdminData(receivedById, data);
+            var inspectedBy = fetchAdminData(inspectedById, data);
+            var verifiedBy = fetchAdminData(verifiedById, data);    
+            swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this imaginary file!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+
+    // Perform AJAX request to update the active column
+    $.ajax({
+        url: '../php/store_stocks_archive.php', // Change the URL to your PHP script that updates the active column
+        method: 'POST',
+        data: {     materialDate: materialDate,
+                    materialInvoiceNo: materialInvoiceNo,
+                    cashierName: cashierName,
+                    receivedBy: receivedBy,
+                    inspectedBy: inspectedBy,
+                    verifiedBy: verifiedBy
+        
+        },
+        success: function (response) {
+            // Handle the response from the server
+            console.log(response);
+            // Reload or update the DataTable if needed
+            table.ajax.reload();
+        },
+        error: function (xhr, status, error) {
+            // Handle errors
+            console.error(error);
+        }
+    });
+    swal("Poof! Your imaginary file has been deleted!", {
+      icon: "success",
+    });
+  } else {
+    swal("Your imaginary file is safe!");
+  }
+});
+        },
+        error: function (xhr, status, error) {
+            console.error('Error fetching admin data:', error);
+        }
+    });
     });
 });
 
@@ -245,7 +323,7 @@ $('#editMaterialTransfer').click(function () {
 
          // Fetch first name and last name based on the selected IDs
          $.ajax({
-             url: 'fetch_admin_data.php', // Your server-side script to fetch admin data
+             url: '../php/fetch_admin_data.php', // Your server-side script to fetch admin data
              method: 'GET',
              dataType: 'json',
              success: function (data) {    
@@ -255,7 +333,7 @@ $('#editMaterialTransfer').click(function () {
 
                  // After fetching first name and last name, save the Material Transfer
                  $.ajax({
-                     url: 'store_stocks_save.php',
+                     url: '../php/store_stocks_save.php',
                      method: 'POST',
                      data: {
                          materialDate: materialDate,
@@ -295,7 +373,7 @@ function fetchAdminData(adminId, adminData) {
   
      function fetchAdminData(selectElementId, role) {
          $.ajax({
-             url: 'fetch_admin_data.php', // Your server-side script to fetch admin data
+             url: '../php/fetch_admin_data.php', // Your server-side script to fetch admin data
              method: 'GET',
              data: { role: role }, // Optional: send role if needed
              dataType: 'json',
