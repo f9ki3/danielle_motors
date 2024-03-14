@@ -3,14 +3,17 @@
 session_start();
 
 // Establish database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "dms_db";
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "dms_db";
+
+// Online Database Include File
+include_once '../database/database.php';
 $status = 0;
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+// // Create connection
+// $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check if the POST data is set
 if(isset($_POST['uname']) && isset($_POST['pass'])) {

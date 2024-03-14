@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "dmp";
+$servername = "db4free.net";
+$username = "shingie";
+$password = "Respect016!";
+$dbname = "fmware";
 // $dbname = "dms_db";
 
 // Create a new MySQLi instance
