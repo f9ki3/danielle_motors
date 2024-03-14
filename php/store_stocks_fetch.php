@@ -2,7 +2,7 @@
 include '../config/config.php';
 
 $output = array();
-$sql = "SELECT `id`, `material_invoice`, `material_date`, `material_cashier`, `material_recieved_by`, `material_inspected_by`, `material_verified_by` FROM `material_transfer`";
+$sql = "SELECT `id`, `material_invoice`, `material_date`, `material_cashier`, `material_recieved_by`, `material_inspected_by`, `material_verified_by`, `active` FROM `material_transfer` WHERE `active` = 1";
 
 $query = mysqli_query($conn, $sql);
 $total_all_rows = mysqli_num_rows($query);
@@ -21,7 +21,6 @@ $data = array();
 
 while ($row = mysqli_fetch_assoc($query)) {
     $sub_array = array();
-    $sub_array[] = $row['id'];
     $sub_array[] = $row['material_invoice'];
     $sub_array[] = $row['material_date'];
     $sub_array[] = $row['material_cashier'];

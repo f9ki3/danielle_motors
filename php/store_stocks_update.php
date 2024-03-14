@@ -9,16 +9,16 @@ $receivedBy = $_POST['receivedBy'];
 $inspectedBy = $_POST['inspectedBy'];
 $verifiedBy = $_POST['verifiedBy'];
 
-// Prepare and bind the SQL statement
+// Prepare and bind the SQL statement to update based on material invoice number
 $sql = "UPDATE material_transfer 
         SET material_date = ?, 
-            material_invoice = ?, 
             material_cashier = ?, 
             material_recieved_by = ?, 
             material_inspected_by = ?, 
-            material_verified_by = ?";
+            material_verified_by = ?
+        WHERE material_invoice = ?";
 $stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, "ssssss", $materialDate, $materialInvoiceNo, $cashierName, $receivedBy, $inspectedBy, $verifiedBy);
+mysqli_stmt_bind_param($stmt, "ssssss", $materialDate, $cashierName, $receivedBy, $inspectedBy, $verifiedBy, $materialInvoiceNo);
 
 // Execute the statement
 if (mysqli_stmt_execute($stmt)) {
