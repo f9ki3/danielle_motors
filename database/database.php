@@ -2,9 +2,12 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "dmp";
-// $dbname = "dms_db";
-
+// $dbname = "dmp";
+$dbname = "dms_db";
+// $servername = "sql.freedb.tech";
+// $username = "freedb_dmp_master";
+// $password = "8@YASU8ypbA2uA%";
+// $dbname = "freedb_dmp_db";
 // Create a new MySQLi instance
 $conn = new mysqli($servername, $username, $password, $dbname);
 
