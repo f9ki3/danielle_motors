@@ -1,7 +1,7 @@
 <?php
     require_once '../database/database.php';
 
-    //azul ni remove ko lng un back slash para pumasok sa uploads directory"/"
+    //azul ni remove ko lng un back slash para pumasok sa uploads directory "/" -fyke
     $uploadDir = '../uploads';
     $uploadFile = basename($_FILES['image']['name']);
     move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile);
