@@ -33,7 +33,12 @@ $categoryResult->close();
 // Close the connection
 $conn->close();
 ?>
-
+<style>
+    /* Adjust the min-width value according to your preference */
+    .select2-container--default .select2-selection--single {
+        min-width: 150px;
+    }
+</style>
 
 <div style="width: 100%" class="content p-3" >
     <div>
