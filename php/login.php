@@ -8,8 +8,8 @@ session_start();
 // $password = "";
 // $dbname = "dms_db";
 
-// Online Database Include File
-include_once '../database/database.php';
+// // Online Database Include File
+include_once '../config/config.php';
 $status = 0;
 
 // // Create connection

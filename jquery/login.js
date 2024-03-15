@@ -13,7 +13,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: "POST",
-            url: "php/login.php",
+            url: "../php/login.php",
             data: {
                 uname: $username,
                 pass: $password
