@@ -3,7 +3,7 @@
     <form id="add_price_list_form" action="addPrice.php" method="POST">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">ENTER NEW BRAND</h5>
+                <h5 class="modal-title" id="exampleModalLabel">ENTER PRICE FOR A PRODUCT</h5>
                 <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close">
                     <span class="fas fa-times fs--1"></span>
                 </button>
@@ -15,7 +15,11 @@
                         <select class="form-select mb-2" name="product_id" id="products" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
                             <option value="">Select product</option>
                             <?php
-                                $query = 'SELECT id, name, models, active FROM product';
+                                $query = 'SELECT product.id, product.name, product.models, product.active FROM product
+                                            WHERE active = 1
+                                            AND NOT EXISTS (
+                                                SELECT 1 FROM price_list WHERE product.id = price_list.product_id
+                                            )';
                                 $stmt = $conn->prepare($query);
                                 $stmt->execute();
                                 $stmt->bind_result($id, $name, $models, $active);
@@ -23,7 +27,6 @@
                                     if ($active == 0) {
                                         continue;
                                     }
-
                                     echo '<option value="'.$id.'">'.$name.' ('.$models.')</option>';
                                 }
                                 $stmt->close();

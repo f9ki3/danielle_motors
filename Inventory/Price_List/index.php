@@ -110,6 +110,28 @@ date_default_timezone_set('Asia/Manila');
                 })
             });
 
+            $(document).on('click', '.apply-discount', function(){
+                var row = $(this).closest('td');
+                var discount = row.find('.discount');
+                var value = discount.val();
+                var id = $(this).data('product-id');
+
+
+                $.ajax({
+                    url: 'cart-discount.php',
+                    method: 'POST',
+                    data: {
+                        id: id,
+                        discount: value
+                    },
+                    dataType: 'json',
+                    success: function(response){
+                        $('#cart-body').html(response.tbody);
+                        $('#cart-total').text('Total: ₱' + response.cart_total);
+                    }
+                })
+            });
+
             $('.cart-button').on('click', function(){
                 var id = $(this).data('product-id');
                 var srp = $(this).data('product-srp');

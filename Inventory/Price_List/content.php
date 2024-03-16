@@ -15,7 +15,7 @@
                 
                 <div class="ms-xxl-auto">
                     <button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button>
-                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_pricelist"></span>Add product</button>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_pricelist"></span>Add New Price</button>
                 </div>
             </div>
         </div>
@@ -25,14 +25,14 @@
                     <table class="table mb-0">
                         <thead>
                             <tr class="bg-dark text-white">
-                                <th class="sort white-space-nowrap align-middle" scope="col"></th>
+                                <th class="sort white-space-nowrap align-middle" scope="col">IMAGE</th>
                                 <th class="sort white-space-nowrap align-middle " scope="col" data-sort="product">PRODUCT NAME</th>
-                                <th class="sort align-middle text-end " scope="col" data-sort="price">SUPPLIER CODE</th>
+                                <th class="sort align-middle " scope="col" data-sort="price">SUPPLIER CODE</th>
                                 <th class="sort align-middle " scope="col" data-sort="category">MODEL/s</th>
-                                <th class="sort align-middle ps-3" scope="col" data-sort="tags">DEALER</th>
+                                <th class="sort align-middle" scope="col" data-sort="tags">DEALER</th>
                                 <th class="sort align-middle " scope="col" data-sort="vendor">WHOLESALE</th>
                                 <th class="sort align-middle " scope="col" data-sort="time">SRP</th>
-                                <th class="sort text-end align-middle pe-0 " scope="col"></th>
+                                <th class="sort align-middle " scope="col"></th>
                             </tr>
                         </thead>
                         <tbody class="list" id="products-table-body">
@@ -47,15 +47,16 @@
                         <h2 class="card-title">Cart</h2>
                         <hr class="mt-3 mb-3">
                         <table id="rightTable" class="table fs--1">
-                            <thead>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Supplier Code</th>
-                                    <th>Models</th>
-                                    <th>SRP</th>
-                                    <th>QTY</th>
-                                    <th>Action</th>
-                            </thead>
+                        <thead>
+                            <th>Name</th>
+                            <th>Models</th>
+                            <th>Stocks</th>
+                            <th>Unit Price</th>
+                            <th>Subtotal</th>
+                            <th>QTY</th>
+                            <th>Discount(%)</th>
+                            <th>Action</th>
+                    </thead>
                             <tbody id="cart-body">
 
                             </tbody>
