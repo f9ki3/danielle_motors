@@ -30,7 +30,7 @@
                         <input class="form-check-input" type="checkbox"/>
                     </div>
                 </td>
-                <td class="align-middle white-space-nowrap py-0"><img src="../../uploads/'.$product_image.'" alt="" width="53" ></td>
+                <td class="align-middle white-space-nowrap py-0"><img src="../../uploads/'.basename($product_image).'" alt="" width="53" ></td>
                 <td class="product align-middle ps-4">'.$product_name.'</td>
                 <td class="price align-middle white-space-nowrap text-start ps-4"><span class="badge badge-phoenix badge-phoenix-primary">'.$product_sku.'</span></td>
                 <td class="category align-middle white-space-nowrap ps-4 text-start"><span class="badge badge-phoenix badge-phoenix-secondary">'.$product_upc.'</span></td>

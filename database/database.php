@@ -6,6 +6,7 @@ $password = "8@YASU8ypbA2uA%";
 $dbname = "freedb_dmp_db";
 
 // local
+
 // $servername = "localhost";
 // $username = "root";
 // $password = "";
