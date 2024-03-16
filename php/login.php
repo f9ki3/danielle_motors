@@ -2,19 +2,7 @@
 // Start a session
 session_start();
 
-// Database connection parameters
-$servername = "sql.freedb.tech";
-$username = "freedb_dmp_master";
-$password = "8@YASU8ypbA2uA%";
-$database = "freedb_dmp_db";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Check the connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include ("../config/config.php");
 
 // Check if the POST data is set
 if(isset($_POST['uname'], $_POST['pass'])) {
