@@ -54,5 +54,15 @@
         userLinkRTL.setAttribute('disabled', true);
       }
     </script>
+    <style>
+      html {
+      transform: scale(0.75);
+        transform-origin: top left;
+      }
+      body {
+        width: 133.33%; /* Compensate for the scale to maintain the original width */
+        height: 133.33%; /* Compensate for the scale to maintain the original height */
+      }
+    </style>
   </head>
 
