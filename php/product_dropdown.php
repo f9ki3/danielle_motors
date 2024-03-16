@@ -1,7 +1,7 @@
 <?php 
 // Assuming your database connection code is already present
 // Fetch category data from the database
-$products = "SELECT `id`, `name`, `models`  FROM `product`";
+$products = "SELECT `id`, `product_name`, `models`  FROM `product`";
 $productResult = $conn->query($products);
 
 

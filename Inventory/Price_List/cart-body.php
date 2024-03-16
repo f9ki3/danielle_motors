@@ -24,16 +24,16 @@
                     <td>'.$models.'</td>
                     <td>₱'.$total_srp.'</td>
                     <td>
-                        <div class="input-group fs--1">
-                            <span class="p-2 btn btn-outline-secondary minus-qty" type="button"
+                        <div class="input-group">
+                            <button class="btn btn-sm btn-outline-secondary minus-qty" type="button"
                                 data-product-id="'.$id.'"
                                 data-product-qty="'.$qty.'"
-                            >-</span>
-                            <input type="text" class="form-control qty-input fs--1" value="'.$qty.'" readonly>
-                            <span class="p-2 btn btn-outline-secondary add-qty fs--1" type="button"
+                            >-</button>
+                            <input type="text" class="form-control qty-input" value="'.$qty.'" readonly>
+                            <button class="btn btn-sm btn-outline-secondary add-qty" type="button"
                                 data-product-id="'.$id.'"
                                 data-product-qty="'.$qty.'"
-                            >+</span>
+                            >+</button>
                         </div>
                     </td>
                     <td>

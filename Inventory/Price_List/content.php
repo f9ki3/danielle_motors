@@ -1,87 +1,107 @@
-<div class="mb-9">
-    <div class="row g-3 mb-4">
-        <div class="col-auto">
-            <h2 class="mb-0">PRODUCT PRICELIST</h2>
-        </div>
+<div class="container">
+<h1>Product Price List</h1>
+<form action="../../PHP - process_files/addPrice.php" method="POST">
+<label for="">Product</label>
+<select name="product_id" id="products">
+    <option value="" select-disabled>Select a product</option>
+    <?php
+        $query = 'SELECT id, name, models, active FROM product';
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $stmt->bind_result($id, $name, $models, $active);
+        while ($stmt->fetch()) {
+            if ($active == 0) {
+                continue;
+            }
+
+            echo '<option value="'.$id.'">'.$name.' ('.$models.')</option>';
+        }
+        $stmt->close();
+    ?>
+</select>
+
+<label for="dealer">Dealer Price</label>
+<input type="number" name="dealer" id="dealer" min="0" step="any">
+
+<label for="wholesale">Wholesale Price</label>
+<input type="number" name="wholesale" id="wholesale" min="0" step="any">
+
+<label for="srp">SRP</label>
+<input type="number" name="srp" id="srp" min="0" step="any">
+
+<button type="submit">Add to Price List</button>
+</form>
+<div class="row mt-4">
+    <div class="col-md-6">
+    <h2>Price List</h2>
+    <table class="table">
+        <thead>
+            <th>Image</th>
+            <th>Product Name</th>
+            <th>Supplier Code</th>
+            <th>Model/s</th>
+            <th>Dealer</th>
+            <th>Wholesale</th>
+            <th>SRP</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <?php
+                $query = 'SELECT price_list.dealer,
+                                price_list.wholesale,
+                                price_list.srp,
+                                product.image,
+                                product.name,
+                                product.supplier_code,
+                                product.models,
+                                product.id
+                        FROM price_list
+                        INNER JOIN product ON price_list.product_id = product.id';
+                $stmt = $conn->prepare($query);
+                $stmt->execute();
+                $stmt->bind_result($dealer, $wholesale, $srp, $image, $name, $supplier_code, $models, $id);
+                while ($stmt->fetch()) {
+                    echo '<tr>
+                            <td><img src="'.$image.'" alt="" srcset="" style="width: 90px;"></td>
+                            <td>'.$name.'</td>
+                            <td>'.$supplier_code.'</td>
+                            <td>'.$models.'</td>
+                            <td>₱'.number_format($dealer).'</td>
+                            <td>₱'.number_format($wholesale).'</td>
+                            <td>₱'.number_format($srp).'</td>
+                            <td>
+                                <button class="btn btn-primary cart-button" 
+                                    data-product-id="'.$id.'"
+                                    data-product-srp="'.$srp.'"
+                                >
+                                <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </td>
+                        </tr>';
+                }
+            ?>
+        </tbody>
+    </table>
     </div>
-    <div id="products" data-list='{"valueNames":["product","price","category","tags","vendor","time"],"page":10,"pagination":false}'>
-        <div class="mb-4">
-            <div class="d-flex flex-wrap gap-3">
-                <div class="search-box">
-                    <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input search" type="search" placeholder="Search products" aria-label="Search" />
-                    <span class="fas fa-search search-box-icon"></span>
-                    </form>
-                </div>
-                
-                <div class="ms-xxl-auto">
-                    <button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button>
-                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_pricelist"></span>Add product</button>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-8 col-md-4">
-                <div class="table-responsive scrollbar mx-n1 px-1">
-                    <table class="table mb-0">
-                        <thead>
-                            <tr class="bg-dark text-white">
-                                <th class="sort white-space-nowrap align-middle" scope="col"></th>
-                                <th class="sort white-space-nowrap align-middle " scope="col" data-sort="product">PRODUCT NAME</th>
-                                <th class="sort align-middle text-end " scope="col" data-sort="price">SUPPLIER CODE</th>
-                                <th class="sort align-middle " scope="col" data-sort="category">MODEL/s</th>
-                                <th class="sort align-middle ps-3" scope="col" data-sort="tags">DEALER</th>
-                                <th class="sort align-middle " scope="col" data-sort="vendor">WHOLESALE</th>
-                                <th class="sort align-middle " scope="col" data-sort="time">SRP</th>
-                                <th class="sort text-end align-middle pe-0 " scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody class="list" id="products-table-body">
-                            <?php include "price_list_tr.php"; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Cart</h2>
-                        <hr class="mt-3 mb-3">
-                        <table id="rightTable" class="table fs--1">
-                            <thead>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Supplier Code</th>
-                                    <th>Models</th>
-                                    <th>SRP</th>
-                                    <th>QTY</th>
-                                    <th>Action</th>
-                            </thead>
-                            <tbody id="cart-body">
+    <div class="col-md-6">
+    <h2>Cart</h2>
+    <table id="rightTable" class="table">
+        <thead>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Supplier Code</th>
+                <th>Models</th>
+                <th>SRP</th>
+                <th>QTY</th>
+                <th>Action</th>
+        </thead>
+        <tbody id="cart-body">
 
-                            </tbody>
-                        </table>
-
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <h2 class="text-start"><button class="btn btn-danger reset-cart">RESET</button></h2>
-                            </div>
-                            <div class="col-lg-6">
-                                <h2 class="text-end" id="cart-total">Total: ₱0</h2>
-                            </div>
-                        </div>
-                        
-                        
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
+        </tbody>
+    </table>
+    
+    <h2 class="text-end"><button class="btn btn-danger reset-cart">RESET</button></h2>
+    <h2 class="text-end" id="cart-total">Total: ₱0</h2>
     </div>
 </div>
-
-
-
-<?php include "modal.php"; ?>
-
-
+</div>

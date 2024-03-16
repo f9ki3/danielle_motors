@@ -1,3 +1,4 @@
+
 <?php
 // online
 $servername = "sql.freedb.tech";
@@ -11,6 +12,7 @@ $dbname = "freedb_dmp_db";
 // $password = "";
 // // $dbname = "dms_db";
 // $dbname = "dmp";
+
 
 
 // Create a new MySQLi instance

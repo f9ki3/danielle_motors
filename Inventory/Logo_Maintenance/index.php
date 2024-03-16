@@ -1,5 +1,4 @@
 <?php
-session_start();
 include "../../database/database.php";
 date_default_timezone_set('Asia/Manila');
 ?>
@@ -41,33 +40,6 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
-    <script>
-        function checkImageSize() {
-            const input = document.getElementById('logoInput');
-            const file = input.files[0];
-            
-            if (file) {
-                const img = new Image();
-                
-                img.onload = function() {
-                    if (img.width === img.height) {
-                        alert('Image is a square.');
-                    } else {
-                        alert('Please select a square image.');
-                        input.value = ''; // Clear the file input
-                    }
-                };
-                
-                img.src = URL.createObjectURL(file);
-            }
-        }
-
-        function submitForm() {
-            // You can add any additional checks here if needed
-            document.getElementById('uploadForm').submit();
-        }
-    </script>
-
   </body>
 
 

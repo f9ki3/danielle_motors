@@ -1,5 +1,4 @@
 <?php
-session_start();
 include "../../database/database.php";
 date_default_timezone_set('Asia/Manila');
 ?>
@@ -41,7 +40,7 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
-    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
     <script>
         // Initialize Select2 for the searchable dropdown
@@ -51,7 +50,7 @@ date_default_timezone_set('Asia/Manila');
             $('#unit').select2();
             $('#model').select2();
         });
-    </script> -->
+    </script>
   </body>
 
 

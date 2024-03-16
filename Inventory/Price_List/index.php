@@ -1,12 +1,13 @@
 <?php
-session_start();
 include "../../database/database.php";
 date_default_timezone_set('Asia/Manila');
 ?>
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 
-    <?php include "../../page_properties/header.php" ?>
+ <?php include "../../page_properties/header.php" ?>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
 
@@ -22,11 +23,9 @@ date_default_timezone_set('Asia/Manila');
         <?php 
         include "content.php";
         ?>
-
-
         <!-- <div class="d-flex flex-center content-min-h">
           <div class="text-center py-9"><img class="img-fluid mb-7 d-dark-none" src="../../assets/img/spot-illustrations/2.png" width="470" alt="" /><img class="img-fluid mb-7 d-light-none" src="../../assets/img/spot-illustrations/dark_2.png" width="470" alt="" />
-            <h1 class="text-800 fw-normal mb-5"></h1><a class="btn btn-lg btn-primary" href="../../documentation/getting-started.html">Getting Started</a>
+            <h1 class="text-800 fw-normal mb-5"><?php echo $current_folder;?></h1><a class="btn btn-lg btn-primary" href="../../documentation/getting-started.html">Getting Started</a>
           </div>
         </div> -->
         <!-- footer -->
@@ -46,10 +45,12 @@ date_default_timezone_set('Asia/Manila');
 
     <?php include "../../page_properties/footer_main.php"; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- Bootstrap Bundle with Popper -->
-    <!-- Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-    <script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Font Awesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+  <script>
         // Initialize Select2 for the searchable dropdown
         $(document).ready(function() {
             $(document).on('click', '.cart-delete', function(){
