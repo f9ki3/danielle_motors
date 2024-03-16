@@ -47,16 +47,16 @@
                         <h2 class="card-title">Cart</h2>
                         <hr class="mt-3 mb-3">
                         <table id="rightTable" class="table fs--1">
-                        <thead>
-                            <th>Name</th>
-                            <th>Models</th>
-                            <th>Stocks</th>
-                            <th>Unit Price</th>
-                            <th>Subtotal</th>
-                            <th>QTY</th>
-                            <th>Discount(%)</th>
-                            <th>Action</th>
-                    </thead>
+                            <thead>
+                                <th>Name</th>
+                                <th>Models</th>
+                                <th>Stocks</th>
+                                <th>Unit Price</th>
+                                <th>Subtotal</th>
+                                <th>QTY</th>
+                                <th>Discount(%)</th>
+                                <th>Action</th>
+                            </thead>
                             <tbody id="cart-body">
 
                             </tbody>
@@ -66,6 +66,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <h2 class="text-start"><button class="btn btn-danger reset-cart">RESET</button></h2>
+                                <h2 class="text-start"><button class="btn btn-primary print">PRINT</button></h2>
                             </div>
                             <div class="col-lg-6">
                                 <h2 class="text-end" id="cart-total">Total: ₱0</h2>
