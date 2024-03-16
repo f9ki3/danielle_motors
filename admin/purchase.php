@@ -8,12 +8,14 @@
 <?php include '../config/config.php';
 
 // Assuming your database connection code is already present
-// Fetch category data from the database
-$categoryQuery = "SELECT `id`, `category_name` FROM `category`";
+// Fetch category data from the database where status = 1
+$categoryQuery = "SELECT `id`, `category_name` FROM `category` WHERE `status` = 1";
 $categoryResult = $conn->query($categoryQuery);
 
-$brandQuery = "SELECT `id`, `brand_name` FROM `brand`";
+// Fetch brand data from the database where status = 1
+$brandQuery = "SELECT `id`, `brand_name` FROM `brand` WHERE `status` = 1";
 $brandResult = $conn->query($brandQuery);
+
 
 // Check if the query was successful
 if ($categoryResult) {
@@ -32,7 +34,7 @@ $brandResult->close();
 $categoryResult->close();
 
 // Close the connection
-$conn->close();
+$conn->close();  // Move this line to the end of your script
 ?>
 
 <style>
