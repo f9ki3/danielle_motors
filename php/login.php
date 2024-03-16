@@ -2,15 +2,14 @@
 // Start a session
 session_start();
 
-// Establish database connection
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "dms_db";
+// online
+$servername = "sql.freedb.tech";
+$username = "freedb_dmp_master";
+$password = "8@YASU8ypbA2uA%";
+$dbname = "freedb_dmp_db";
 
-// // Online Database Include File
-include_once '../config/config.php';
-$status = 0;
+// Create a new MySQLi instance
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // // Create connection
 // $conn = new mysqli($servername, $username, $password, $dbname);

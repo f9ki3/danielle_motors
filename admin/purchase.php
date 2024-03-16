@@ -81,20 +81,20 @@
                     </div>
                 </div>
                 </div>
-                <table id="productTable">
+                <table class="mt-2 table" id="productTable">
                     <thead>
                         <tr>
-                        <th scope="col" width="2%">PRODID.</th>
-                        <th scope="col" width="5%">Img</th>
+                        <th scope="col" width="5%">CODE.</th>
                         <th scope="col" width="15%">Product Name</th>
+                        <th scope="col" width="5%">IMG</th>
                         <th scope="col" width="10%"> Model</th>
                         <th scope="col" width="10%">Brand</th>
-                        <th scope="col" width="10%">SRP</th>
+                        <th scope="col" width="5%">SRP</th>
                         <th scope="col" width="5%">Unit</th>
                         <th scope="col" width="5%">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                     <?php include '../php/purchase_list.php'?>
                     
                     </tbody>
