@@ -10,7 +10,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 // $dbname = "dms_db";
-$dbname = "dmp";
+$dbname = "dms_4";
 
 
 // Create a new MySQLi instance
