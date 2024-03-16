@@ -1,16 +1,18 @@
-<!-- <?php
+
+<?php
 // online
-// $servername = "sql.freedb.tech";
-// $username = "freedb_dmp_master";
-// $password = "8@YASU8ypbA2uA%";
-// $dbname = "freedb_dmp_db";
+$servername = "sql.freedb.tech";
+$username = "freedb_dmp_master";
+$password = "8@YASU8ypbA2uA%";
+$dbname = "freedb_dmp_db";
 
 // local
-$servername = "localhost";
-$username = "root";
-$password = "";
-// $dbname = "dms_db";
-$dbname = "dmp";
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// // $dbname = "dms_db";
+// $dbname = "dmp";
+
 
 
 // Create a new MySQLi instance

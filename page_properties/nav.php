@@ -107,7 +107,7 @@ if($logoText_result -> num_rows > 0){
             <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
             <a class="navbar-brand me-1 me-sm-3" href="../../index.html">
               <div class="d-flex align-items-center">
-                <div class="d-flex align-items-center"><img src="../../uploads/<?php echo $logo;?>" alt="phoenix" height="57" />
+                <div class="d-flex align-items-center"><img src="../../assets/img/icons/<?php echo $logo;?>" alt="phoenix" width="27" />
                   <p class="logo-text ms-2 d-none d-sm-block"><?php echo $logo_text;?></p>
                 </div>
               </div>
