@@ -3,3 +3,4 @@
 <script src="../jquery/date_time.js"></script>
 <script src="../jquery/add_rack.js"></script>
 <script src="../jquery/select_product_srp.js"></script>
+<script src="../jquery/category_brand.js"></script>
