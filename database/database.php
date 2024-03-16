@@ -1,4 +1,5 @@
 <?php
+
 //online
  $servername = "sql.freedb.tech";
 $username = "freedb_dmp_master";
@@ -10,6 +11,7 @@ $username = "freedb_dmp_master";
 // $username = "root";
 // $password = "";
 // $dbname = "dms_db";
+
 // $dbname = "dmp";
 
 

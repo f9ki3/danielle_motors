@@ -6,7 +6,36 @@ date_default_timezone_set('Asia/Manila');
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 
- <?php include "../../page_properties/header.php" ?>
+<?php include "../../page_properties/header.php" ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#submitForm').click(function(e){
+                e.preventDefault(); // Prevent form submission and page reload
+
+                // Collect form data
+                var formData = $('#products_infos').serialize();
+
+                // Send AJAX request
+                $.ajax({
+                    type: 'POST',
+                    url: '../../PHP - process_files/add_dr_info.php?id=<?php echo $_SESSION['dr_id']; ?>',
+                    data: formData,
+                    dataType: 'json', // Expect JSON response from server
+                    success: function(response){
+                        if (response.success) {
+                            // Show success alert message
+                            alert(response.message);
+                        } else {
+                            // Show validation errors
+                            var errorMessages = response.errors.join("\n");
+                            alert(errorMessages);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 
   <body>
     <!-- ===============================================-->
@@ -41,6 +70,30 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
+
+
+    <script>
+        $(document).ready(function(){
+            // Function to fetch PHP-generated content
+            function fetchTableContent() {
+                $.ajax({
+                    url: 'tbody.php',
+                    success: function(response) {
+                        $('#live_product_data').html(response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+
+            // Call the function initially
+            fetchTableContent();
+
+            // Call the function every 5 seconds (adjust the interval as needed)
+            setInterval(fetchTableContent, 5000); // 5000 milliseconds = 5 seconds
+        });
+    </script>
   </body>
 
 
