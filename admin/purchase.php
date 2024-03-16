@@ -112,35 +112,6 @@
 
 <!-- end purchase-->
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Add to Cart</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" style="display: flex; flex-direction: column; align-items: center; justify-content: center">
-        <img class="border mb-2" src="../uploads/suzuki_trottle_cable.jpeg" alt="">
-        <input class="form-control mb-2" disabled type="text" value="Product Code: PROD1034">
-        <input class="form-control mb-2" disabled type="text" value="Product Name: Trottle Cable">
-        <textarea name="" class="form-control form-control-sm mb-2 py-3" style="text-align: justify" placeholder="The throttle cable is a vital component in a vehicle's engine system, responsible for regulating the flow of air and fuel to the engine. It connects the accelerator pedal to the throttle body, allowing the driver to control engine speed. Proper maintenance and adjustment of the throttle cable are crucial for smooth and efficient engine performance." id="" cols="30" rows="5" disabled></textarea>
-        <input class="form-control mb-2" disabled type="text" value="Price: 150.00">
-        <input class="form-control mb-2" disabled type="text" value="Stocks: 100pcs">
-        
-        
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Add</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- End Modal -->
-
-
 </div>
 <?php include 'footer.php'?>
 </body>

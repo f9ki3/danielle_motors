@@ -76,8 +76,8 @@
                         </select>
                     </div> -->
                     <div>
-                        <a href="purchase" class="btn border btn-primary btn-sm me-1 rounded ">Purchase</a>
-                        <a href="purchase_cart" class="btn border btn-sm rounded">Cart</a>
+                        <a href="purchase" class="btn border btn-sm me-1 rounded ">Purchase</a>
+                        <a href="purchase_cart" class="btn border btn-primary btn-sm rounded">Cart</a>
                     </div>
                 </div>
                 </div>
