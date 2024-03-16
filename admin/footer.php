@@ -4,3 +4,4 @@
 <script src="../jquery/add_rack.js"></script>
 <script src="../jquery/select_product_srp.js"></script>
 <script src="../jquery/category_brand.js"></script>
+<script src="../jquery/purchase_list_search.js"></script>

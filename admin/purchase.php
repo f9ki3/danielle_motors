@@ -7,33 +7,33 @@
 <?php include 'navigation_bar.php'?>
 <?php include '../config/config.php';
 
-// Assuming your database connection code is already present
-// Fetch category data from the database
-$categoryQuery = "SELECT `id`, `category_name` FROM `category`";
-$categoryResult = $conn->query($categoryQuery);
+// // Assuming your database connection code is already present
+// // Fetch category data from the database
+// $categoryQuery = "SELECT `id`, `category_name` FROM `category`";
+// $categoryResult = $conn->query($categoryQuery);
 
-$brandQuery = "SELECT `id`, `brand_name` FROM `brand`";
-$brandResult = $conn->query($brandQuery);
+// $brandQuery = "SELECT `id`, `brand_name` FROM `brand`";
+// $brandResult = $conn->query($brandQuery);
 
-// Check if the query was successful
-if ($categoryResult) {
-    $categories = $categoryResult->fetch_all(MYSQLI_ASSOC);
-} else {
-    // Handle the error appropriately
-    die("Error fetching categories: " . $conn->error);
-}
-if ($brandResult) {
-    $brands = $brandResult->fetch_all(MYSQLI_ASSOC);
-} else {
-    // Handle the error appropriately
-    die("Error fetching brand: " . $conn->error);
-}
-$brandResult->close();
-$categoryResult->close();
+// // Check if the query was successful
+// if ($categoryResult) {
+//     $categories = $categoryResult->fetch_all(MYSQLI_ASSOC);
+// } else {
+//     // Handle the error appropriately
+//     die("Error fetching categories: " . $conn->error);
+// }
+// if ($brandResult) {
+//     $brands = $brandResult->fetch_all(MYSQLI_ASSOC);
+// } else {
+//     // Handle the error appropriately
+//     die("Error fetching brand: " . $conn->error);
+// }
+// $brandResult->close();
+// $categoryResult->close();
 
-// Close the connection
-$conn->close();
-?>
+// // Close the connection
+// $conn->close();
+// ?>
 
 <style>
     /* Adjust the min-width value according to your preference */
@@ -59,9 +59,9 @@ $conn->close();
             <div class="row">
                 <div style="display: flex; justify-content: space-between; align-items: center;"> 
                     <div style="width: 50%">
-                        <input id="searchInput" class="form-control form-control-sm" placeholder="Search" oninput="filterItems()">
+                        <input class="form-control form-control-sm" id="searchInput" placeholder="Search by Product Name">
                     </div>
-                    <div style="display: flex; flex-direction: row">
+                    <!-- <div style="display: flex; flex-direction: row">
                         <select id="brandSelect"  class="form-select form-select-sm " aria-label="Default select example" style="width:100%">
                             <option selected>Select Brand</option>
                              <?php foreach ($brands as $brand): ?>
@@ -74,14 +74,14 @@ $conn->close();
                             <option value="<?php echo $category['id']; ?>"><?php echo $category['category_name']; ?></option>
                              <?php endforeach; ?>
                         </select>
-                    </div>
+                    </div> -->
                     <div>
-                        <a href="purchase" class="btn border btn-sm me-1 rounded ">Purchase</a>
-                        <a href="purchase_cart" class="btn border btn-sm rounded btn-primary">Cart</a>
+                        <a href="purchase" class="btn border btn-primary btn-sm me-1 rounded ">Purchase</a>
+                        <a href="purchase_cart" class="btn border btn-sm rounded">Cart</a>
                     </div>
                 </div>
                 </div>
-                <table class="table">
+                <table id="productTable">
                     <thead>
                         <tr>
                         <th scope="col" width="2%">PRODID.</th>
