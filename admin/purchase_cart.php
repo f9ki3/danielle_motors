@@ -25,14 +25,14 @@
             <a href="purchase_online" class="btn btn-sm border rounded mb-2">Purchase Online</a>
             <a href="purchase_terms" class="btn btn-sm border rounded mb-2">Purchase with Terms</a>
             <a href="store_stocks" class="btn btn-sm border  rounded mb-2">Store Stocks</a>
-            
         </div>
 
-        <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
+        <div style="background-color: white;" class="rounded border p-3 w-100">
             <div class="row">
                 <div style="display: flex; justify-content: space-between; align-items: center;"> 
                     <div style="width: 50%">
-                        <input class="form-control form-control-sm" id="searchInput" placeholder="Search by Product Name">
+                        <h5 class="fw-bolder ">Cart List</h5>
+                        <!-- <input class="form-control form-control-sm" id="searchInput" placeholder="Search by Product Name"> -->
                     </div>
                     <!-- <div style="display: flex; flex-direction: row">
                         <select id="brandSelect"  class="form-select form-select-sm " aria-label="Default select example" style="width:100%">
@@ -54,34 +54,66 @@
                     </div>
                 </div>
                 </div>
-                <div style="height: 75vh; overflow: auto;">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                            <th scope="col" width="15%">Product Name</th>
-                            <th scope="col" width="10%">Model</th>
-                            <th scope="col" width="10%">Brand</th>
-                            <th scope="col" width="10%"> Price</th>
-                            <th scope="col" width="5%"> Unit</th>
-                            <th scope="col" width="5%">QTY</th>
-                            <th scope="col" width="10%">Discount</th>
-                            <th scope="col" width="10%">Amount</th>
-                            <th scope="col" width="5%">Action</th>
-                            </tr>
-                        </thead>
-                            <tbody id="cartItemsList">
+                <div style="height: 73vh;">
+                    <hr>
+                    <div style="height: 45vh; overflow: auto">
+                        <table class="table">
+                            <thead class="sticky-top">
+                                <tr>
+                                <th scope="col" width="15%">Product Name</th>
+                                <th scope="col" width="10%">Model</th>
+                                <th scope="col" width="10%">Brand</th>
+                                <th scope="col" width="10%"> Price</th>
+                                <th scope="col" width="5%"> Unit</th>
+                                <th scope="col" width="5%">QTY</th>
+                                <th scope="col" width="10%">Discount</th>
+                                <th scope="col" width="10%">Amount</th>
+                                <th scope="col" width="5%">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cartItemsList" >
                                 <!-- Cart items will be populated here -->
                             </tbody>
-                        
-                        <tbody>
-                    </div>
-
-                        
-                        </tbody>
                         </table>
+                        
+                    </div>
+                    <div style="display: flex; flex-direction: row; width: 100%">
+                        <div style="width: 50%" class="py-2">
+                            <div class="border rounded p-4">
+                                <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-2">
+                                    <input type="text" class="form-control" placeholder="Customer Name" style="width: 49%">
+                                    <input type="date" class="form-control" placeholder="Date" readonly style="width: 49%">
+                                </div>
+                                <input type="text" class="form-control" placeholder="Address">
+                                
+                            </div>
 
-
-                
+                        </div>
+                        <div style="width: 50%" class="p-2">
+                            <div class="border rounded p-4">
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <h5 class="fw-bolder">Subtotal</h5>
+                                    <h5 class="fw-bolder">PHP 100.00</h5>
+                                </div>
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <h5 class="fw-bolder">Discount</h5>
+                                    <h5 class="fw-bolder">PHP 100.00</h5>
+                                </div>
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <h5 class="fw-bolder">Total</h5>
+                                    <h5 class="fw-bolder">PHP 100.00</h5>
+                                </div>
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <h5 class="fw-bolder">Change</h5>
+                                    <h5 class="fw-bolder">PHP 100.00</h5>
+                                </div>
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <button style="width: 49%" class="btn border-primary text-primary">Reset</button>
+                                    <button style="width: 49%" class="btn btn-primary">Purchase</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
             
         </div>
@@ -111,6 +143,20 @@
         updateCounter(cartItems.length); // Update the counter
     }
 
+    // Function to handle quantity change
+    function updateQuantity(index, increment) {
+        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+        if (increment) {
+            cartItems[index].qty++; // Increment quantity
+        } else {
+            if (cartItems[index].qty > 1) {
+                cartItems[index].qty--; // Decrement quantity, minimum is 1
+            }
+        }
+        sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
+        renderCartItems(); // Re-render the cart items
+    }
+
     // Function to render cart items in the table
     function renderCartItems() {
         var cartItemsList = document.getElementById('cartItemsList');
@@ -129,9 +175,9 @@
                 <td>${item.unit}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-light">-</button>
-                        <input type="text" class="form-control w-50 text-center" value="${item.qty}" readonly>
-                        <button type="button" class="btn btn-light">+</button>
+                        <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, false)">-</button>
+                        <input type="text" class="form-control w-50 text-center" value="${item.qty}" >
+                        <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, true)">+</button>
                     </div>
                 </td>
                 <td>
