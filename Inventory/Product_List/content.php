@@ -1,153 +1,65 @@
-<h1>PRODUCTS</h1>
-        <form action="../../PHP - process_files/addProduct.php" method="POST" enctype="multipart/form-data">
-            <label for="product_name">Image</label>
-            <input type="file" id="image" name="image" accept="image/*">
-
-            <label for="product_name">Product Name</label>
-            <input type="text" id="product_name" name="product_name">
+<div class="mb-9">
+    <div class="row g-3 mb-4">
+        <div class="col-auto">
+            <h2 class="mb-0">PRODUCTS</h2>
+        </div>
+    </div>
+    <ul class="nav nav-links mb-3 mb-lg-2 mx-n3">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"><span>All </span><span class="text-700 fw-semi-bold">(68817)</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><span>Archived </span><span class="text-700 fw-semi-bold">(70348)</span></a></li>
+    </ul>
+    <div id="products" data-list='{"valueNames":["product","price","category","tags","vendor","time"],"page":10,"pagination":true}'>
+        <div class="mb-4">
+            <div class="d-flex flex-wrap gap-3">
+            <div class="search-box">
+                <form class="position-relative" data-bs-toggle="search" data-bs-display="static">
+                    <input class="form-control search-input search" type="search" placeholder="Search" aria-label="Search" />
+                <span class="fas fa-search search-box-icon"></span>
+                </form>
+            </div>
             
-            <label for="product_name">Category</label>
-            <select id="category" name="category">
-                <option select-disabled>Select a category</option>
-                <?php
-                    $query = 'SELECT id, category_name, status FROM category';
-                    $stmt = $conn->prepare($query);
-                    $stmt->execute();
-                    $stmt->bind_result($id, $category_name, $status);
-                    while ($stmt->fetch()) {
-                        if ($status == 0) {
-                            continue;
-                        }
-
-                        echo '<option value="'.$id.'">'.$category_name.'</option>';
-                    }
-
-                    $stmt->close();
-                ?>
-            </select>
-
-            <label for="product_name">Brand</label>
-            <select id="brand" name="brand">
-                <option select-disabled>Select a brand</option>
-                <?php
-                    $query = 'SELECT id, brand_name, status FROM brand';
-                    $stmt = $conn->prepare($query);
-                    $stmt->execute();
-                    $stmt->bind_result($id, $brand_name, $status);
-                    while ($stmt->fetch()) {
-                        if ($status == 0) {
-                            continue;
-                        }
-
-                        echo '<option value="'.$id.'">'.$brand_name.'</option>';
-                    }
-
-                    $stmt->close();
-                ?>
-            </select>
-
-            <label for="product_name">Unit</label>
-            <select id="unit" name="unit">
-                <option select-disabled>Select unit of measurement</option>
-                <?php
-                    $query = 'SELECT id, name, active FROM unit';
-                    $stmt = $conn->prepare($query);
-                    $stmt->execute();
-                    $stmt->bind_result($id, $unit_name, $status);
-                    while ($stmt->fetch()) {
-                        if ($status == 0) {
-                            continue;
-                        }
-
-                        echo '<option value="'.$id.'">'.$unit_name.'</option>';
-                    }
-
-                    $stmt->close();
-                ?>
-            </select>
-
-            <label for="product_name">Model/s</label>
-            <select id="model" name="models[]" multiple>
-                <option select-disabled>Select model/s</option>
-                <?php
-                    $query = 'SELECT id, model_name, status FROM model';
-                    $stmt = $conn->prepare($query);
-                    $stmt->execute();
-                    $stmt->bind_result($id, $model_name, $status);
-                    while ($stmt->fetch()) {
-                        if ($status == 0) {
-                            continue;
-                        }
-
-                        echo '<option value="'.$model_name.'">'.$model_name.'</option>';
-                    }
-
-                    $stmt->close();
-                ?>
-            </select>
-
-            <label for="product_name">Item Code</label>
-            <input type="text" id="product_name" name="code">
-
-            <label for="product_name">Supplier Code</label>
-            <input type="text" id="product_name" name="supplier_code">
-
-            <button type="submit">Submit</button>
-        </form>
-
-    <table class="table">
-        <thead>
-            <th>Product Image</th>
-            <th>Product Name</th>
-            <th>Item Code</th>
-            <th>Supplier Code</th>
-            <th>Category</th>
-            <th>Brand</th>
-            <th>Unit</th>
-            <th>Model/s</th>
-            <th>Status</th>
-        </thead>
-        <tbody>
-            <?php
-                $query = 'SELECT 
-                                product.id, 
-                                product.name, 
-                                product.code,
-                                product.supplier_code,
-                                product.image,
-                                product.models,
-                                category.category_name,
-                                brand.brand_name,
-                                unit.name,
-                                product.active
-                            FROM product
-                            INNER JOIN category ON category.id = product.category_id
-                            INNER JOIN brand ON brand.id = product.brand_id
-                            INNER JOIN unit ON unit.id = product.unit_id';
-                $stmt = $conn->prepare($query);
-                $stmt->execute();
-                $stmt->bind_result($product_id, $product_name, $product_sku, $product_upc, $product_image, $models, $category, $brand, $unit, $active);
-                while ($stmt->fetch()) {
-                    if ($active == 1) {
-                        $status = 'active';
-                    } else {
-                        $status = 'inactive';
-                    }
-
-                    echo '<tr>
-                            <td><img src="../'.$product_image.'" class="img-fluid" alt="" srcset=""></td>
-                            <td>'.$product_name.'</td>
-                            <td>'.$product_sku.'</td>
-                            <td>'.$product_upc.'</td>
-                            <td>'.$category.'</td>
-                            <td>'.$brand.'</td>
-                            <td>'.$unit.'</td>
-                            <td>'.$models.'</td>
-                            <td>'.$status.'</td>
-                        </tr>';
-                }
-
-                $stmt->close();
-            ?>
-        </tbody>
-    </table>
+            <div class="ms-xxl-auto">
+                <button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_product"><span class="fas fa-plus me-2"></span>Add to pricelist</button>
+            </div>
+            </div>
+        </div>
+        <div class="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-white border-top border-bottom border-200 position-relative top-1">
+            <div class="table-responsive scrollbar mx-n1 px-1">
+            <table class="table mb-0">
+                <thead>
+                <tr>
+                    <th class="white-space-nowrap align-middle ps-0" style="max-width:20px; width:18px;">
+                    <div class="form-check mb-0 fs-0">
+                        <input class="form-check-input" id="checkbox-bulk-products-select" type="checkbox"/>
+                    </div>
+                    </th>
+                    <th class="sort white-space-nowrap align-middle" scope="col"></th>
+                    <th class="sort white-space-nowrap align-middle ps-4" scope="col" data-sort="product">PRODUCT NAME</th>
+                    <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">ITEM CODE</th>
+                    <th class="sort align-middle text-start ps-4" scope="col" data-sort="category">SUPPLIER CODE</th>
+                    <th class="sort align-middle text-start ps-3" scope="col" data-sort="tags">CATEGORY</th>
+                    <th class="sort align-middle text-start ps-4" scope="col" data-sort="vendor">BRAND</th>
+                    <th class="sort align-middle text-start ps-4" scope="col" data-sort="time">UNIT</th>
+                    <th class="sort align-middle text-start ps-4" scope="col" data-sort="time">MODEL</th>
+                    <th class="sort align-middle text-start ps-4" scope="col" data-sort="time">STATUS</th>
+                    <th class="sort text-end align-middle pe-0 ps-4" scope="col"></th>
+                </tr>
+                </thead>
+                <tbody class="list" id="products-table-body">
+                <?php include "product_list_tr.php"; ?>
+                </tbody>
+            </table>
+            </div>
+            <div class="row align-items-center justify-content-between py-2 pe-0 fs--1">
+            <div class="col-auto d-flex">
+                <p class="mb-0 d-none d-sm-block me-3 fw-semi-bold text-900" data-list-info="data-list-info"></p><a class="fw-semi-bold" href="#!" data-list-view="*">View all<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semi-bold d-none" href="#!" data-list-view="less">View Less<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
+            </div>
+            <div class="col-auto d-flex"><button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
+                <ul class="mb-0 pagination"></ul><button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include "product_list_modal.php"; ?>
