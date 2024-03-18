@@ -18,13 +18,6 @@
 
 <!-- Include sweetalert js -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <!-- Include jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-<!-- Include Select2 CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
-
-<!-- Include Select2 JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     
 </head>

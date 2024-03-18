@@ -13,3 +13,4 @@
 <script src="../../vendors/dayjs/dayjs.min.js"></script>
 <script src="../../assets/js/phoenix.js"></script>
 <script src="../../assets/js/flatpickr.js"></script>
+<script src="../../vendors/choices/choices.min.js"></script>

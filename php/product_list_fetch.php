@@ -2,14 +2,14 @@
 include '../config/config.php';
 
 $output = array();
-$sql = "SELECT `id`, `product_name`, `code`, `supplier_code`, `image`, `models`, `stocks`, `srp`, `unit_id`, `brand_id`, `category_id`, `active` FROM `product`";
+$sql = "SELECT `id`, `name`, `code`, `supplier_code`, `image`, `models`, `stocks`, `srp`, `unit_id`, `brand_id`, `category_id`, `active` FROM `product`";
 
 $query = mysqli_query($conn, $sql);
 $total_all_rows = mysqli_num_rows($query);
 
 $columns = array(
 	0 => 'image',
-	1 => 'product_name',
+	1 => 'name',
 	2 => 'models',
 	3 => 'brand_id',
 	4 => 'supplier_code',
@@ -23,7 +23,7 @@ $data = array();
 while ($row = mysqli_fetch_assoc($query)) {
     $sub_array = array();
     $sub_array[] = '<img src="' . $row['image'] . '" alt="Product Image" style="max-width: 50px; max-height: 50px;">';
-    $sub_array[] = $row['product_name'];
+    $sub_array[] = $row['name'];
     $sub_array[] = $row['models'];
     $sub_array[] = $row['brand_id']; // Assuming this column holds brand names
     $sub_array[] = $row['supplier_code'];
