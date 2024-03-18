@@ -56,7 +56,7 @@
                 </div>
                 <div style="height: 75vh;">
                     <hr>
-                    <div style="height: 40vh; overflow: auto">
+                    <div style="height: 38vh; overflow: auto">
                         <table class="table">
                             <thead class="sticky-top">
                                 <tr>
@@ -77,8 +77,8 @@
                         </table>
                         
                     </div>
-                    <div style="display: flex; flex-direction: row; width: 100%">
-                        <div style="width: 50%" class="py-2 mb-2">
+                    <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                        <div style="width: 49%" class="py-2 mb-2">
                             <div class="border rounded p-4">
                                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
                                     <input type="text" class="form-control" placeholder="Customer Name" style="width: 49%">
@@ -123,7 +123,7 @@
                                 </div>
 
                                 <div style="display: flex; flex-direction: row; justify-content: space-between"  class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Enter Discount" style="width: 49%">
+                                    <input type="text" class="form-control" placeholder="Enter Subtotal Discount" style="width: 49%">
                                     <input type="text" class="form-control" placeholder="Enter Payment" style="width: 49%">
                                 </div>
                                 
