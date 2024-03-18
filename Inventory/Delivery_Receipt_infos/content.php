@@ -95,6 +95,13 @@
             </div>
             <!-- ------------ -->
             <div class="col-lg-8 bg-white">
+                <div class="row mt-5 mb-5">
+                    <div class="col-auto">
+                        <button class="btn btn-secondary">Print</button>
+                        
+                    </div>
+                </div>
+                <hr class="mb-5">
                 <?php include "delivery_receipt_preview.php"; ?>
             </div>
         </div>

@@ -40,14 +40,17 @@ if($dr_content_res->num_rows > 0){
             echo '<tr>
                 <td>' . $qty . '</td>
                 <td>' . $product_name . ' ' . $product_model . ' ' . $brand_id . ' ' . $category_id . ' ' . $unit_id . '</td>
-                <td>' . $orig_price . '</td>
-                <td>' . $price . '</td>
-                <td>' . $discount . '</td>
-                <td>' . $total . '</td>
+                <td class="text-end">' . number_format((float)$orig_price, 2) . '</td>
+                <td class="text-end">' . number_format((float)$price, 2) . '</td>
+                <td> % ' . $discount . '</td>
+                <td class="text-end">' . number_format((float)$total, 2) . '</td>
             </tr>';
         } 
 
     }
+
+    $conn->close();
+    exit();
 } else {
     echo '<tr><td colspan="7" class="text-center"><b>No data</b></td></tr>';
 }

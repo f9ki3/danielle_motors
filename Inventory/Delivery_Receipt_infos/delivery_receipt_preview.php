@@ -58,6 +58,10 @@
             </tbody>
         </table>
     </div>
+    <hr class="mt-5 mb-5">
+    <div class="col-lg-12">
+        <div id="dr_footer"></div>
+    </div>
     
 
  </div>
