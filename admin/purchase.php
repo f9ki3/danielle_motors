@@ -5,35 +5,7 @@
 <body>
 <div style="display: flex; flex-direction: row">
 <?php include 'navigation_bar.php'?>
-<?php include '../config/config.php';
-
-// // Assuming your database connection code is already present
-// // Fetch category data from the database
-// $categoryQuery = "SELECT `id`, `category_name` FROM `category`";
-// $categoryResult = $conn->query($categoryQuery);
-
-// $brandQuery = "SELECT `id`, `brand_name` FROM `brand`";
-// $brandResult = $conn->query($brandQuery);
-
-// // Check if the query was successful
-// if ($categoryResult) {
-//     $categories = $categoryResult->fetch_all(MYSQLI_ASSOC);
-// } else {
-//     // Handle the error appropriately
-//     die("Error fetching categories: " . $conn->error);
-// }
-// if ($brandResult) {
-//     $brands = $brandResult->fetch_all(MYSQLI_ASSOC);
-// } else {
-//     // Handle the error appropriately
-//     die("Error fetching brand: " . $conn->error);
-// }
-// $brandResult->close();
-// $categoryResult->close();
-
-// // Close the connection
-// $conn->close();
-// ?>
+<?php include '../config/config.php'; ?>
 
 <style>
     /* Adjust the min-width value according to your preference */
@@ -77,7 +49,7 @@
                     </div> -->
                     <div>
                         <a href="purchase" class="btn border btn-primary btn-sm me-1 rounded ">Purchase</a>
-                        <a href="purchase_cart" class="btn border btn-sm rounded">Cart</a>
+                        <a href="purchase_cart" class="btn border btn-sm rounded">Cart <span class="badge text-bg-danger" id="counter"></span></a>
                     </div>
                 </div>
                 </div>
