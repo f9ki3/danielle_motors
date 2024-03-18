@@ -196,14 +196,36 @@
         renderCartItems(); // Re-render the cart items
     }
 
+    // Function to handle discount change
+    function updateDiscountType(index, value) {
+        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+        cartItems[index].discountType = value; // Update discount type
+        sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
+        renderCartItems(); // Re-render the cart items
+    }
+
+    // Function to handle discount change
+    function updateDiscount(index, value) {
+        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+        cartItems[index].discount = value; // Update discount value
+        sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
+        renderCartItems(); // Re-render the cart items
+    }
+
     // Function to render cart items in the table
     function renderCartItems() {
         var cartItemsList = document.getElementById('cartItemsList');
         cartItemsList.innerHTML = ''; // Clear existing content
         var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
         cartItems.forEach(function(item, index) {
-            // Calculate the total amount
-            var totalAmount = item.srp * item.qty;
+            // Calculate the discounted amount
+            var discountedPrice;
+            if (item.discountType === "%") {
+                discountedPrice = item.srp - (item.srp * item.discount / 100);
+            } else if (item.discountType === ".") {
+                discountedPrice = item.srp - item.discount;
+            }
+            var totalAmount = discountedPrice * item.qty;
 
             var row = document.createElement('tr');
             row.innerHTML = `
@@ -221,11 +243,12 @@
                 </td>
                 <td>
                     <div class="input-group">
-                        <input type="text" class="form-control text-center w-25" value="${item.discount}">
-                        <select class="form-select" style="width: auto;" aria-label="Default select example">
-                            <option selected>%</option>
-                            <option value="1">.</option>
+                        <input type="text" class="form-control text-center w-25" value="${item.discount}" onchange="updateDiscount(${index}, this.value)">
+                        <select class="form-select" style="width: auto;" aria-label="Default select example" onchange="updateDiscountType(${index}, this.value)">
+                            <option ${item.discountType === "%" ? "selected" : ""}>%</option>
+                            <option ${item.discountType === "." ? "selected" : ""}>.</option>
                         </select>
+
                     </div>
                 </td>
                 <td>PHP ${totalAmount.toFixed(2)}</td> <!-- Display the amount -->
@@ -270,7 +293,8 @@
                 unit: product.unit_name,
                 srp: product.srp,
                 qty: 1, // Default quantity
-                discount: 0 // Default discount
+                discountType: "%", // Default discount type
+                discount: 0 // Default discount set to 0
             };
 
             // Check if the product already exists in the cart
@@ -298,7 +322,7 @@
                 updateCounter(cartItems.length);
             }
         }
-    });
+    }); 
 
     // Render initial cart items
     renderCartItems();
