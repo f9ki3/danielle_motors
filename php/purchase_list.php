@@ -99,16 +99,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (existingItem) {
             // If the product already exists, display an alert and do not add it again
-            alert('Product already exists in the cart!');
+            alertify.error('Already Added');
         } else {
             // Add new item to cart
             cartItems.push(cartItem);
 
             // Store updated cart items in session storage
             sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
-
+            
+            alertify.set('notifier', 'position', 'bottom-left');
             // Display a confirmation message
-            alert('Product added to cart!');
+            alertify.success('Added Success');
 
             // Update the counter
             updateCounter(cartItems.length);

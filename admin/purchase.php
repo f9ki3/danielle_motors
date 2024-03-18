@@ -60,7 +60,7 @@
                             <th scope="col" width="5%">CODE.</th>
                             <th scope="col" width="15%">Product Name</th>
                             <th scope="col" width="5%">IMG</th>
-                            <th scope="col" width="10%"> Model</th>
+                            <th scope="col" width="10%"> Model</th> 
                             <th scope="col" width="10%">Brand</th>
                             <th scope="col" width="5%">SRP</th>
                             <th scope="col" width="5%">Unit</th>

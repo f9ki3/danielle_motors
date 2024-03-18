@@ -56,7 +56,7 @@
                 </div>
                 <div style="height: 73vh;">
                     <hr>
-                    <div style="height: 45vh; overflow: auto">
+                    <div style="height: 40vh; overflow: auto">
                         <table class="table">
                             <thead class="sticky-top">
                                 <tr>
@@ -80,17 +80,54 @@
                     <div style="display: flex; flex-direction: row; width: 100%">
                         <div style="width: 50%" class="py-2">
                             <div class="border rounded p-4">
-                                <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-2">
+                                <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
                                     <input type="text" class="form-control" placeholder="Customer Name" style="width: 49%">
                                     <input type="date" class="form-control" placeholder="Date" readonly style="width: 49%">
                                 </div>
-                                <input type="text" class="form-control" placeholder="Address">
+                                <input type="text" class="form-control mb-2" placeholder="Address">
+
+                                <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
+                                    <select class="form-select" style="width: 32%" aria-label="Default select example">
+                                        <option selected>Verified by</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                    <select class="form-select" style="width: 32%" aria-label="Default select example">
+                                        <option selected>Inspected by</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                    <select class="form-select" style="width: 32%" aria-label="Default select example">
+                                        <option selected>Recieved by</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+
+                                <div style="display: flex; flex-direction: row; justify-content: space-between"  class="mb-3">
+                                    <select class="form-select" aria-label="Default select example" style="width: 49%">
+                                        <option selected>Payment Method</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                    <select class="form-select"  style="width: 49%" aria-label="Default select example">
+                                        <option selected>Transaction Type</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
                                 
                             </div>
 
                         </div>
                         <div style="width: 50%" class="p-2">
                             <div class="border rounded p-4">
+                                <input type="text" class="form-control mb-2" placeholder="Enter payment amount">
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Subtotal</h5>
                                     <h5 class="fw-bolder">PHP 100.00</h5>
@@ -141,6 +178,8 @@
         sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
         renderCartItems(); // Re-render the cart items
         updateCounter(cartItems.length); // Update the counter
+        alertify.set('notifier', 'position', 'bottom-left');
+        alertify.error('Remove Item');
     }
 
     // Function to handle quantity change
@@ -171,7 +210,7 @@
                 <td scope="row">${item.product_name}</td>
                 <td scope="row">${item.model}</td>
                 <td>${item.brand}</td>
-                <td>PHP ${item.srp}</td>
+                <td> ₱ ${item.srp}</td>
                 <td>${item.unit}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
