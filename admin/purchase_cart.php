@@ -54,6 +54,7 @@
                     </div>
                 </div>
                 </div>
+                <div style="height: 75vh; overflow: auto;">
                     <table class="table">
                         <thead>
                             <tr>
@@ -68,14 +69,12 @@
                             <th scope="col" width="5%">Action</th>
                             </tr>
                         </thead>
-                        <tbody id="cartItemsList">
-                            <!-- Cart items will be populated here -->
-                        </tbody>
+                            <tbody id="cartItemsList">
+                                <!-- Cart items will be populated here -->
+                            </tbody>
+                        
                         <tbody>
-                        <tr>
-                            
-
-                        </tr>
+                    </div>
 
                         
                         </tbody>
@@ -97,6 +96,11 @@
 
 </div>
 <?php include 'footer.php'?>
+
+
+
+</body>
+</html>
 <script>
     // Function to update session storage and remove item from the cart
     function removeFromCart(index) {
@@ -113,6 +117,9 @@
         cartItemsList.innerHTML = ''; // Clear existing content
         var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
         cartItems.forEach(function(item, index) {
+            // Calculate the total amount
+            var totalAmount = item.srp * item.qty;
+
             var row = document.createElement('tr');
             row.innerHTML = `
                 <td scope="row">${item.product_name}</td>
@@ -123,22 +130,20 @@
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-light">-</button>
-                        <input type="text" class="form-control w-50 text-center" placeholder="1">
+                        <input type="text" class="form-control w-50 text-center" value="${item.qty}" readonly>
                         <button type="button" class="btn btn-light">+</button>
                     </div>
                 </td>
                 <td>
                     <div class="input-group">
-                        <input type="text" class="form-control text-center w-25" placeholder="0%">
+                        <input type="text" class="form-control text-center w-25" value="${item.discount}">
                         <select class="form-select" style="width: auto;" aria-label="Default select example">
                             <option selected>%</option>
                             <option value="1">.</option>
                         </select>
                     </div>
                 </td>
-                <td>
-                    PHP 100.00
-                </td>
+                <td>PHP ${totalAmount.toFixed(2)}</td> <!-- Display the amount -->
                 <td>
                     <button class="btn btn-light rounded rounded-5 p-2" onclick="removeFromCart(${index})">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
@@ -178,7 +183,9 @@
                 model: product.models,
                 brand: product.brand_name,
                 unit: product.unit_name,
-                srp: product.srp
+                srp: product.srp,
+                qty: 1, // Default quantity
+                discount: 0 // Default discount
             };
 
             // Check if the product already exists in the cart
@@ -215,7 +222,3 @@
     var initialCartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
     updateCounter(initialCartItems.length);
 </script>
-
-
-</body>
-</html>

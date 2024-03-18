@@ -27,7 +27,7 @@
             
         </div>
 
-        <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
+        <div style="background-color: white;" class="rounded border p-3 mb-3 w-100" >
             <div class="row">
                 <div style="display: flex; justify-content: space-between; align-items: center;"> 
                     <div style="width: 50%">
@@ -53,27 +53,26 @@
                     </div>
                 </div>
                 </div>
-                <table class="mt-2 table" id="productTable">
-                    <thead>
-                        <tr>
-                        <th scope="col" width="5%">CODE.</th>
-                        <th scope="col" width="15%">Product Name</th>
-                        <th scope="col" width="5%">IMG</th>
-                        <th scope="col" width="10%"> Model</th>
-                        <th scope="col" width="10%">Brand</th>
-                        <th scope="col" width="5%">SRP</th>
-                        <th scope="col" width="5%">Unit</th>
-                        <th scope="col" width="5%">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody >
-                    <?php include '../php/purchase_list.php'?>
-                    
-                    </tbody>
+                <div style="height: 75vh; overflow: auto;">
+                    <table class="mt-2 table" id="productTable">
+                        <thead class="sticky-top">
+                            <tr>
+                            <th scope="col" width="5%">CODE.</th>
+                            <th scope="col" width="15%">Product Name</th>
+                            <th scope="col" width="5%">IMG</th>
+                            <th scope="col" width="10%"> Model</th>
+                            <th scope="col" width="10%">Brand</th>
+                            <th scope="col" width="5%">SRP</th>
+                            <th scope="col" width="5%">Unit</th>
+                            <th scope="col" width="5%" class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                        <?php include '../php/purchase_list.php'?>
+                        
+                        </tbody>
                     </table>
-
-
-                
+                </div>
             </div>
             
         </div>
