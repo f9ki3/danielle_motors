@@ -207,7 +207,6 @@ $('#editMaterialTransfer').click(function () {
                 },
                 success: function (response) {    
                     console.log(response);
-
                     $('#edit_stocks').modal('hide');
                 },
                 error: function (xhr, status, error) {
@@ -326,7 +325,8 @@ $('#tabledataMaterial tbody').on('click', '.delete', function () {
              url: '../php/fetch_admin_data.php', // Your server-side script to fetch admin data
              method: 'GET',
              dataType: 'json',
-             success: function (data) {    
+             success: function (data) {  
+                swal("File Save", "Record has been saved", "success");   
                  var receivedBy = fetchAdminData(receivedById, data);
                  var inspectedBy = fetchAdminData(inspectedById, data);
                  var verifiedBy = fetchAdminData(verifiedById, data);

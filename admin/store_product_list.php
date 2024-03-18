@@ -102,25 +102,63 @@ $(document).ready(function () {
         'serverSide': true,
         'processing': true,
         'paging': true,
-        'order': [],
+        'order': [], // Empty array indicates initial order
         'ajax': {
             'url': '../php/product_list_fetch.php',
             'type': 'post',
         },
         "aoColumnDefs": [{
             "bSortable": false,
-            "aTargets": [] // Adjust the index to match the actual number of columns
+            "aTargets": [9] // Assuming there are 10 columns, and the last one is for actions
         }]
     });
 
     // Define click event handler for view button
     $('#ProductdataMaterial tbody').on('click', '.view', function () {
-        // Get the data associated with the clicked row
         var rowData = table.row($(this).closest('tr')).data();
-        // Perform any action you want based on the row data
-        // For example, you can open a modal with the row data for viewing
         console.log('View button clicked for row:', rowData);
+        // You can add code here to handle view action
     });
-});
 
+    // Define click event handler for delete button
+    $('#ProductdataMaterial tbody').on('click', '.delete', function () {
+        var rowData = table.row($(this).closest('tr')).data();
+        console.log('Delete button clicked for row:', rowData);
+
+        // Perform delete operation here
+        var productId = rowData[0]; // Assuming the first column holds product ID
+        deleteProduct(productId);
+    });
+
+    // Function to delete product
+    function deleteProduct(productId) {
+        // Perform AJAX request to delete the product
+        $.ajax({
+            url: '../php/archive_product.php', // URL for the server-side script to delete the product
+            method: 'POST',
+            data: { productId: productId },
+            success: function (response) {
+                swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this imaginary file!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        console.log('Product deleted successfully:', response);
+                        // Reload or update the DataTable if needed
+                        table.ajax.reload();
+                    } else {
+                        swal("Your imaginary file is safe!");
+                    }
+                });
+            },
+            error: function (xhr, status, error) {
+                console.error('Error deleting product:', error);
+            }
+        });
+    }
+});
 </script>
+

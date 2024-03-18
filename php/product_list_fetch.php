@@ -18,6 +18,32 @@ $columns = array(
     7 => 'active',
 );
 
+if (isset($_POST['search']['value'])) {
+    $search_value = $_POST['search']['value'];
+    $sql .= " WHERE (name LIKE '%" . $search_value . "%'";
+    $sql .= " OR models LIKE '%" . $search_value . "%'";
+    $sql .= " OR supplier_code LIKE '%" . $search_value . "%'";
+    $sql .= " OR stocks LIKE '%" . $search_value . "%'";
+    $sql .= " OR srp LIKE '%" . $search_value . "%')";
+}
+
+if (isset($_POST['order'])) {
+    $column_index = $_POST['order'][0]['column'];
+    $column_name = $columns[$column_index];
+    $order = $_POST['order'][0]['dir'];
+    $sql .= " ORDER BY " . $column_name . " " . $order;
+} else {
+    $sql .= " ORDER BY name ASC"; // Default sorting if no specific order is requested
+}
+
+if ($_POST['length'] != -1) {
+    $start = $_POST['start'];
+    $length = $_POST['length'];
+    $sql .= " LIMIT " . $start . ", " . $length;
+}
+
+$query = mysqli_query($conn, $sql);
+$count_rows = mysqli_num_rows($query);
 $data = array();
 
 while ($row = mysqli_fetch_assoc($query)) {
