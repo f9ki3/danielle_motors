@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         if (existingItem) {
+            alertify.set('notifier', 'position', 'bottom-left');
             // If the product already exists, display an alert and do not add it again
             alertify.error('Already Added');
         } else {

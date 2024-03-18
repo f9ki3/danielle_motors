@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 </div>
-                <div style="height: 73vh;">
+                <div style="height: 75vh;">
                     <hr>
                     <div style="height: 40vh; overflow: auto">
                         <table class="table">
@@ -78,11 +78,11 @@
                         
                     </div>
                     <div style="display: flex; flex-direction: row; width: 100%">
-                        <div style="width: 50%" class="py-2">
+                        <div style="width: 50%" class="py-2 mb-2">
                             <div class="border rounded p-4">
                                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
                                     <input type="text" class="form-control" placeholder="Customer Name" style="width: 49%">
-                                    <input type="date" class="form-control" placeholder="Date" readonly style="width: 49%">
+                                    <input type="date" class="form-control" placeholder="Date" readonly style="width: 49%" id="dateInput">
                                 </div>
                                 <input type="text" class="form-control mb-2" placeholder="Address">
 
@@ -121,15 +121,23 @@
                                         <option value="3">Three</option>
                                     </select>
                                 </div>
+
+                                <div style="display: flex; flex-direction: row; justify-content: space-between"  class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Enter Discount" style="width: 49%">
+                                    <input type="text" class="form-control" placeholder="Enter Payment" style="width: 49%">
+                                </div>
                                 
                             </div>
 
                         </div>
                         <div style="width: 50%" class="p-2">
                             <div class="border rounded p-4">
-                                <input type="text" class="form-control mb-2" placeholder="Enter payment amount">
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Subtotal</h5>
+                                    <h5 class="fw-bolder">PHP 100.00</h5>
+                                </div>
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <h5 class="fw-bolder">Tax</h5>
                                     <h5 class="fw-bolder">PHP 100.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
@@ -138,6 +146,12 @@
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Total</h5>
+                                    <h5 class="fw-bolder">PHP 100.00</h5>
+                                </div>
+                                
+                                <hr>
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <h5 class="fw-bolder">Payment</h5>
                                     <h5 class="fw-bolder">PHP 100.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
@@ -171,6 +185,12 @@
 </body>
 </html>
 <script>
+    // Get the current date in the format "YYYY-MM-DD"
+    var today = new Date().toISOString().split('T')[0];
+
+    // Set the default value of the input field to today's date
+    document.getElementById('dateInput').value = today;
+
     // Function to update session storage and remove item from the cart
     function removeFromCart(index) {
         var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
@@ -213,56 +233,61 @@
     }
 
     // Function to render cart items in the table
-    function renderCartItems() {
-        var cartItemsList = document.getElementById('cartItemsList');
-        cartItemsList.innerHTML = ''; // Clear existing content
-        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-        cartItems.forEach(function(item, index) {
-            // Calculate the discounted amount
-            var discountedPrice;
-            if (item.discountType === "%") {
-                discountedPrice = item.srp - (item.srp * item.discount / 100);
-            } else if (item.discountType === ".") {
-                discountedPrice = item.srp - item.discount;
-            }
-            var totalAmount = discountedPrice * item.qty;
+function renderCartItems() {
+    var cartItemsList = document.getElementById('cartItemsList');
+    cartItemsList.innerHTML = ''; // Clear existing content
+    var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+    cartItems.forEach(function(item, index) {
+        // Calculate the discounted amount
+        var discountedPrice;
+        if (item.discountType === "%") {
+            discountedPrice = item.srp - (item.srp * item.discount / 100);
+        } else if (item.discountType === ".") {
+            discountedPrice = item.srp - item.discount;
+        }
+        // Handle the case when the discount is 0
+        if (item.discount === 0) {
+            discountedPrice = item.srp; // Set discounted price to default SRP
+        }
+        var totalAmount = discountedPrice * item.qty;
 
-            var row = document.createElement('tr');
-            row.innerHTML = `
-                <td scope="row">${item.product_name}</td>
-                <td scope="row">${item.model}</td>
-                <td>${item.brand}</td>
-                <td> ₱ ${item.srp}</td>
-                <td>${item.unit}</td>
-                <td>
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, false)">-</button>
-                        <input type="text" class="form-control w-50 text-center" value="${item.qty}" >
-                        <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, true)">+</button>
-                    </div>
-                </td>
-                <td>
-                    <div class="input-group">
-                        <input type="text" class="form-control text-center w-25" value="${item.discount}" onchange="updateDiscount(${index}, this.value)">
-                        <select class="form-select" style="width: auto;" aria-label="Default select example" onchange="updateDiscountType(${index}, this.value)">
-                            <option ${item.discountType === "%" ? "selected" : ""}>%</option>
-                            <option ${item.discountType === "." ? "selected" : ""}>.</option>
-                        </select>
+        var row = document.createElement('tr');
+        row.innerHTML = `
+            <td scope="row">${item.product_name}</td>
+            <td scope="row">${item.model}</td>
+            <td>${item.brand}</td>
+            <td> ₱ ${item.srp}</td>
+            <td>${item.unit}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, false)">-</button>
+                    <input type="text" class="form-control w-50 text-center" value="${item.qty}" >
+                    <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, true)">+</button>
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <input type="text" class="form-control text-center w-25" value="${item.discount}" placeholder="${item.discount}" onchange="updateDiscount(${index}, this.value)">
+                    <select class="form-select" style="width: auto;" aria-label="Default select example" onchange="updateDiscountType(${index}, this.value)">
+                        <option ${item.discountType === "%" ? "selected" : ""}>%</option>
+                        <option ${item.discountType === "." ? "selected" : ""}>.</option>
+                    </select>
 
-                    </div>
-                </td>
-                <td>PHP ${totalAmount.toFixed(2)}</td> <!-- Display the amount -->
-                <td>
-                    <button class="btn btn-light rounded rounded-5 p-2" onclick="removeFromCart(${index})">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
-                        </svg>
-                    </button>
-                </td>
-            `;
-            cartItemsList.appendChild(row);
-        });
-    }
+                </div>
+            </td>
+            <td>PHP ${totalAmount.toFixed(2)}</td> <!-- Display the amount -->
+            <td>
+                <button class="btn btn-light rounded rounded-5 p-2" onclick="removeFromCart(${index})">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+                    </svg>
+                </button>
+            </td>
+        `;
+        cartItemsList.appendChild(row);
+    });
+}
+
 
     // Function to update the counter
     function updateCounter(count) {
