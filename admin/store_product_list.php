@@ -47,7 +47,6 @@ include '../config/config.php';
                                 <td scope="col">Supplier Code</td>
                                 <td scope="col">Unit ID</td>
                                 <td scope="col">Stocks</td>
-                                <td scope="col">SRP</td>
                                 <td scope="col">Availability</td>
                                 <td scope="col">Action</td>
                             </tr>
@@ -109,7 +108,7 @@ $(document).ready(function () {
         },
         "aoColumnDefs": [{
             "bSortable": false,
-            "aTargets": [] // Adjust the index to match the actual number of columns
+            "aTargets": [8] // Adjust the index to match the actual number of columns
         }]
     });
 
@@ -121,6 +120,46 @@ $(document).ready(function () {
         // For example, you can open a modal with the row data for viewing
         console.log('View button clicked for row:', rowData);
     });
+
+      // Define click event handler for delete button
+      $('#ProductdataMaterial tbody').on('click', '.delete', function () {
+        var rowData = table.row($(this).closest('tr')).data();
+        console.log('Delete button clicked for row:', rowData);
+
+        // Perform delete operation here
+        var productId = rowData[0]; // Assuming the first column holds product ID
+        deleteProduct(productId);
+    });
+
+    // Function to delete product
+    function deleteProduct(productId) {
+        // Perform AJAX request to delete the product
+        $.ajax({
+            url: '../php/archive_product.php', // URL for the server-side script to delete the product
+            method: 'POST',
+            data: { productId: productId },
+            success: function (response) {
+                swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this imaginary file!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        console.log('Product deleted successfully:', response);
+                        // Reload or update the DataTable if needed
+                        table.ajax.reload();
+                    } else {
+                        swal("Your imaginary file is safe!");
+                    }
+                });
+            },
+            error: function (xhr, status, error) {
+                console.error('Error deleting product:', error);
+            }
+        });
+    }
 });
 
 </script>
