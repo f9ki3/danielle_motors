@@ -25,14 +25,14 @@
             <a href="purchase_online" class="btn btn-sm border rounded mb-2">Purchase Online</a>
             <a href="purchase_terms" class="btn btn-sm border rounded mb-2">Purchase with Terms</a>
             <a href="store_stocks" class="btn btn-sm border  rounded mb-2">Store Stocks</a>
-            
         </div>
 
-        <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
+        <div style="background-color: white;" class="rounded border p-3 w-100">
             <div class="row">
                 <div style="display: flex; justify-content: space-between; align-items: center;"> 
                     <div style="width: 50%">
-                        <input class="form-control form-control-sm" id="searchInput" placeholder="Search by Product Name">
+                        <h5 class="fw-bolder ">Cart List</h5>
+                        <!-- <input class="form-control form-control-sm" id="searchInput" placeholder="Search by Product Name"> -->
                     </div>
                     <!-- <div style="display: flex; flex-direction: row">
                         <select id="brandSelect"  class="form-select form-select-sm " aria-label="Default select example" style="width:100%">
@@ -54,34 +54,117 @@
                     </div>
                 </div>
                 </div>
-                <div style="height: 75vh; overflow: auto;">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                            <th scope="col" width="15%">Product Name</th>
-                            <th scope="col" width="10%">Model</th>
-                            <th scope="col" width="10%">Brand</th>
-                            <th scope="col" width="10%"> Price</th>
-                            <th scope="col" width="5%"> Unit</th>
-                            <th scope="col" width="5%">QTY</th>
-                            <th scope="col" width="10%">Discount</th>
-                            <th scope="col" width="10%">Amount</th>
-                            <th scope="col" width="5%">Action</th>
-                            </tr>
-                        </thead>
-                            <tbody id="cartItemsList">
+                <div style="height: 75vh;">
+                    <hr>
+                    <div style="height: 38vh; overflow: auto">
+                        <table class="table">
+                            <thead class="sticky-top">
+                                <tr>
+                                <th scope="col" width="15%">Product Name</th>
+                                <th scope="col" width="10%">Model</th>
+                                <th scope="col" width="10%">Brand</th>
+                                <th scope="col" width="10%"> Price</th>
+                                <th scope="col" width="5%"> Unit</th>
+                                <th scope="col" width="5%">QTY</th>
+                                <th scope="col" width="10%">Discount</th>
+                                <th scope="col" width="10%">Amount</th>
+                                <th scope="col" width="5%">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cartItemsList" >
                                 <!-- Cart items will be populated here -->
                             </tbody>
-                        
-                        <tbody>
-                    </div>
-
-                        
-                        </tbody>
                         </table>
+                        
+                    </div>
+                    <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                        <div style="width: 49%" class="py-2 mb-2">
+                            <div class="border rounded p-4">
+                                <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Customer Name" style="width: 49%">
+                                    <input type="date" class="form-control" placeholder="Date" readonly style="width: 49%" id="dateInput">
+                                </div>
+                                <input type="text" class="form-control mb-2" placeholder="Address">
 
+                                <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
+                                    <select class="form-select" style="width: 32%" aria-label="Default select example">
+                                        <option selected>Verified by</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                    <select class="form-select" style="width: 32%" aria-label="Default select example">
+                                        <option selected>Inspected by</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                    <select class="form-select" style="width: 32%" aria-label="Default select example">
+                                        <option selected>Recieved by</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
 
-                
+                                <div style="display: flex; flex-direction: row; justify-content: space-between"  class="mb-3">
+                                    <select class="form-select" aria-label="Default select example" style="width: 49%">
+                                        <option selected>Payment Method</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                    <select class="form-select"  style="width: 49%" aria-label="Default select example">
+                                        <option selected>Transaction Type</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+
+                                <div style="display: flex; flex-direction: row; justify-content: space-between"  class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Enter Subtotal Discount" style="width: 49%">
+                                    <input type="text" class="form-control" placeholder="Enter Payment" style="width: 49%">
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                        <div style="width: 50%" class="p-2">
+                            <div class="border rounded p-4">
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <h5 class="fw-bolder">Subtotal</h5>
+                                    <h5 class="fw-bolder">PHP 100.00</h5>
+                                </div>
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <h5 class="fw-bolder">Tax</h5>
+                                    <h5 class="fw-bolder">PHP 100.00</h5>
+                                </div>
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <h5 class="fw-bolder">Discount</h5>
+                                    <h5 class="fw-bolder">PHP 100.00</h5>
+                                </div>
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <h5 class="fw-bolder">Total</h5>
+                                    <h5 class="fw-bolder">PHP 100.00</h5>
+                                </div>
+                                
+                                <hr>
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <h5 class="fw-bolder">Payment</h5>
+                                    <h5 class="fw-bolder">PHP 100.00</h5>
+                                </div>
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <h5 class="fw-bolder">Change</h5>
+                                    <h5 class="fw-bolder">PHP 100.00</h5>
+                                </div>
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <button style="width: 49%" class="btn border-primary text-primary">Reset</button>
+                                    <button style="width: 49%" class="btn btn-primary">Purchase</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
             
         </div>
@@ -102,6 +185,12 @@
 </body>
 </html>
 <script>
+    // Get the current date in the format "YYYY-MM-DD"
+    var today = new Date().toISOString().split('T')[0];
+
+    // Set the default value of the input field to today's date
+    document.getElementById('dateInput').value = today;
+
     // Function to update session storage and remove item from the cart
     function removeFromCart(index) {
         var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
@@ -109,6 +198,51 @@
         sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
         renderCartItems(); // Re-render the cart items
         updateCounter(cartItems.length); // Update the counter
+        alertify.set('notifier', 'position', 'bottom-left');
+        alertify.error('Remove Item');
+    }
+
+    // Function to handle quantity change
+    function updateQuantity(index, increment) {
+        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+        if (increment) {
+            cartItems[index].qty++; // Increment quantity
+        } else {
+            if (cartItems[index].qty > 1) {
+                cartItems[index].qty--; // Decrement quantity, minimum is 1
+            }
+        }
+        sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
+        renderCartItems(); // Re-render the cart items
+    }
+
+    // Function to handle discount type change
+    function updateDiscountType(index, value) {
+        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+        var currentItem = cartItems[index];
+        // Only update the discount type if it's different from the current type
+        if (currentItem.discountType !== value) {
+            currentItem.discountType = value; // Update discount type
+            // If switching to percentage, keep the same discount value as a whole number
+            if (value === "%") {
+                currentItem.discount = Math.round(currentItem.discount);
+            }
+            sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
+            renderCartItems(); // Re-render the cart items
+        }
+    }
+
+
+    // Function to handle discount change
+    function updateDiscount(index, value) {
+        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+        if (!isNaN(value)) { // Check if input is a valid number
+            cartItems[index].discount = parseFloat(value); // Update discount value
+        } else {
+            cartItems[index].discount = 0; // Set discount to 0 if input is not a valid number
+        }
+        sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
+        renderCartItems(); // Re-render the cart items
     }
 
     // Function to render cart items in the table
@@ -117,33 +251,47 @@
         cartItemsList.innerHTML = ''; // Clear existing content
         var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
         cartItems.forEach(function(item, index) {
-            // Calculate the total amount
-            var totalAmount = item.srp * item.qty;
+            // Calculate the discounted amount
+            var discountedPrice;
+            if (item.discountType === "%") {
+                discountedPrice = item.srp - (item.srp * item.discount / 100);
+            } else {
+                discountedPrice = item.srp - item.discount;
+            }
+            // Handle the case when the discount is 0
+            if (item.discount === 0) {
+                discountedPrice = item.srp; // Set discounted price to default SRP
+            }
+            var totalAmount = discountedPrice * item.qty;
+
+            // Set default values to 0 if null or undefined
+            var qtyValue = item.qty != null ? item.qty : 0;
+            var discountValue = item.discount != null ? item.discount : 0;
 
             var row = document.createElement('tr');
             row.innerHTML = `
                 <td scope="row">${item.product_name}</td>
                 <td scope="row">${item.model}</td>
                 <td>${item.brand}</td>
-                <td>PHP ${item.srp}</td>
+                <td> ₱ ${item.srp}</td>
                 <td>${item.unit}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-light">-</button>
-                        <input type="text" class="form-control w-50 text-center" value="${item.qty}" readonly>
-                        <button type="button" class="btn btn-light">+</button>
+                        <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, false)">-</button>
+                        <input type="text" class="form-control w-50 text-center" value="${qtyValue}" >
+                        <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, true)">+</button>
                     </div>
                 </td>
                 <td>
                     <div class="input-group">
-                        <input type="text" class="form-control text-center w-25" value="${item.discount}">
-                        <select class="form-select" style="width: auto;" aria-label="Default select example">
-                            <option selected>%</option>
-                            <option value="1">.</option>
+                        <input type="text" class="form-control text-center w-25" value="${discountValue}" placeholder="" onchange="updateDiscount(${index}, this.value)">
+                        <select class="form-select" style="width: auto;" aria-label="Default select example" onchange="updateDiscountType(${index}, this.value)">
+                            <option ${item.discountType === "." ? "selected" : ""}>₱</option>
+                            <option ${item.discountType === "%" ? "selected" : ""}>%</option>
                         </select>
                     </div>
                 </td>
-                <td>PHP ${totalAmount.toFixed(2)}</td> <!-- Display the amount -->
+                <td style="color: ${totalAmount <= 0 ? 'red' : 'inherit'};">PHP ${totalAmount.toFixed(2)}</td> <!-- Display the amount -->
                 <td>
                     <button class="btn btn-light rounded rounded-5 p-2" onclick="removeFromCart(${index})">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
@@ -155,6 +303,9 @@
             cartItemsList.appendChild(row);
         });
     }
+
+
+
 
     // Function to update the counter
     function updateCounter(count) {
@@ -185,7 +336,8 @@
                 unit: product.unit_name,
                 srp: product.srp,
                 qty: 1, // Default quantity
-                discount: 0 // Default discount
+                discountType: "%", // Default discount type
+                discount: 0 // Default discount set to 0
             };
 
             // Check if the product already exists in the cart
@@ -213,7 +365,7 @@
                 updateCounter(cartItems.length);
             }
         }
-    });
+    }); 
 
     // Render initial cart items
     renderCartItems();
