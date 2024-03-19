@@ -1,6 +1,9 @@
 <?php include 'session.php'?>
 <html lang="en">
-<?php include 'header.php'?>
+<head>
+    <link rel="stylesheet" type="text/css" href="datatable.css">
+    <?php include 'header.php'?>
+    </head>
 <body>
 <div style="display: flex; flex-direction: row">
 <?php
@@ -37,7 +40,7 @@ include '../config/config.php';
                     </div>
                 </div>
                 <div class="p-1" style="overflow: auto; height: 70vh">
-                    <table id="ProductdataMaterial" class="table table-bordered">
+                    <table id="ProductdataMaterial" class="table table-bordered stripe hover order-column compact row-border ">
                         <thead>
                             <tr>
                                 <td scope="col">Image</td>

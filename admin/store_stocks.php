@@ -1,7 +1,10 @@
 
 <?php include 'session.php'?>
 <html lang="en">
-<?php include 'header.php'?>
+    <head>
+    <link rel="stylesheet" type="text/css" href="datatable.css">
+    <?php include 'header.php'?>
+    </head>
 <body>
 <div style="display: flex; flex-direction: row">
 <?php
@@ -9,7 +12,6 @@ include 'navigation_bar.php';
 include '../config/config.php';
 
 ?>
-<link href="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.css" rel="stylesheet">
 <!-- start inventory-->
 
 <div style="width: 100%" class="content p-3">
@@ -43,7 +45,7 @@ include '../config/config.php';
 
             
 <div>
-    <table id="tabledataMaterial" class="table table-bordered">
+    <table id="tabledataMaterial" class="table table-bordered stripe hover order-column row-border ">
         <thead>
                         <tr>
                             <td scope="col" width="15%">Material Invoice No.</td>
@@ -108,6 +110,7 @@ include '../config/config.php';
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
+
 
 <script type="text/javascript">
 $(document).ready(function () {
