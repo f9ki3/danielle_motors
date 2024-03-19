@@ -216,77 +216,95 @@
         renderCartItems(); // Re-render the cart items
     }
 
-    // Function to handle discount change
+    // Function to handle discount type change
     function updateDiscountType(index, value) {
         var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-        cartItems[index].discountType = value; // Update discount type
-        sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
-        renderCartItems(); // Re-render the cart items
+        var currentItem = cartItems[index];
+        // Only update the discount type if it's different from the current type
+        if (currentItem.discountType !== value) {
+            currentItem.discountType = value; // Update discount type
+            // If switching to percentage, keep the same discount value as a whole number
+            if (value === "%") {
+                currentItem.discount = Math.round(currentItem.discount);
+            }
+            sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
+            renderCartItems(); // Re-render the cart items
+        }
     }
+
 
     // Function to handle discount change
     function updateDiscount(index, value) {
         var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-        cartItems[index].discount = value; // Update discount value
+        if (!isNaN(value)) { // Check if input is a valid number
+            cartItems[index].discount = parseFloat(value); // Update discount value
+        } else {
+            cartItems[index].discount = 0; // Set discount to 0 if input is not a valid number
+        }
         sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
         renderCartItems(); // Re-render the cart items
     }
 
     // Function to render cart items in the table
-function renderCartItems() {
-    var cartItemsList = document.getElementById('cartItemsList');
-    cartItemsList.innerHTML = ''; // Clear existing content
-    var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-    cartItems.forEach(function(item, index) {
-        // Calculate the discounted amount
-        var discountedPrice;
-        if (item.discountType === "%") {
-            discountedPrice = item.srp - (item.srp * item.discount / 100);
-        } else if (item.discountType === ".") {
-            discountedPrice = item.srp - item.discount;
-        }
-        // Handle the case when the discount is 0
-        if (item.discount === 0) {
-            discountedPrice = item.srp; // Set discounted price to default SRP
-        }
-        var totalAmount = discountedPrice * item.qty;
+    function renderCartItems() {
+        var cartItemsList = document.getElementById('cartItemsList');
+        cartItemsList.innerHTML = ''; // Clear existing content
+        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+        cartItems.forEach(function(item, index) {
+            // Calculate the discounted amount
+            var discountedPrice;
+            if (item.discountType === "%") {
+                discountedPrice = item.srp - (item.srp * item.discount / 100);
+            } else {
+                discountedPrice = item.srp - item.discount;
+            }
+            // Handle the case when the discount is 0
+            if (item.discount === 0) {
+                discountedPrice = item.srp; // Set discounted price to default SRP
+            }
+            var totalAmount = discountedPrice * item.qty;
 
-        var row = document.createElement('tr');
-        row.innerHTML = `
-            <td scope="row">${item.product_name}</td>
-            <td scope="row">${item.model}</td>
-            <td>${item.brand}</td>
-            <td> ₱ ${item.srp}</td>
-            <td>${item.unit}</td>
-            <td>
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, false)">-</button>
-                    <input type="text" class="form-control w-50 text-center" value="${item.qty}" >
-                    <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, true)">+</button>
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <input type="text" class="form-control text-center w-25" value="${item.discount}" placeholder="${item.discount}" onchange="updateDiscount(${index}, this.value)">
-                    <select class="form-select" style="width: auto;" aria-label="Default select example" onchange="updateDiscountType(${index}, this.value)">
-                        <option ${item.discountType === "%" ? "selected" : ""}>%</option>
-                        <option ${item.discountType === "." ? "selected" : ""}>.</option>
-                    </select>
+            // Set default values to 0 if null or undefined
+            var qtyValue = item.qty != null ? item.qty : 0;
+            var discountValue = item.discount != null ? item.discount : 0;
 
-                </div>
-            </td>
-            <td>PHP ${totalAmount.toFixed(2)}</td> <!-- Display the amount -->
-            <td>
-                <button class="btn btn-light rounded rounded-5 p-2" onclick="removeFromCart(${index})">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
-                    </svg>
-                </button>
-            </td>
-        `;
-        cartItemsList.appendChild(row);
-    });
-}
+            var row = document.createElement('tr');
+            row.innerHTML = `
+                <td scope="row">${item.product_name}</td>
+                <td scope="row">${item.model}</td>
+                <td>${item.brand}</td>
+                <td> ₱ ${item.srp}</td>
+                <td>${item.unit}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, false)">-</button>
+                        <input type="text" class="form-control w-50 text-center" value="${qtyValue}" >
+                        <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, true)">+</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="input-group">
+                        <input type="text" class="form-control text-center w-25" value="${discountValue}" placeholder="" onchange="updateDiscount(${index}, this.value)">
+                        <select class="form-select" style="width: auto;" aria-label="Default select example" onchange="updateDiscountType(${index}, this.value)">
+                            <option ${item.discountType === "." ? "selected" : ""}>₱</option>
+                            <option ${item.discountType === "%" ? "selected" : ""}>%</option>
+                        </select>
+                    </div>
+                </td>
+                <td style="color: ${totalAmount <= 0 ? 'red' : 'inherit'};">PHP ${totalAmount.toFixed(2)}</td> <!-- Display the amount -->
+                <td>
+                    <button class="btn btn-light rounded rounded-5 p-2" onclick="removeFromCart(${index})">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+                        </svg>
+                    </button>
+                </td>
+            `;
+            cartItemsList.appendChild(row);
+        });
+    }
+
+
 
 
     // Function to update the counter
