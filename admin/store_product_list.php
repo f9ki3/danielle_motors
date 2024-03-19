@@ -47,7 +47,6 @@ include '../config/config.php';
                                 <td scope="col">Supplier Code</td>
                                 <td scope="col">Unit ID</td>
                                 <td scope="col">Stocks</td>
-                                <td scope="col">SRP</td>
                                 <td scope="col">Availability</td>
                                 <td scope="col">Action</td>
                             </tr>
@@ -102,26 +101,28 @@ $(document).ready(function () {
         'serverSide': true,
         'processing': true,
         'paging': true,
-        'order': [], // Empty array indicates initial order
+        'order': [],
         'ajax': {
             'url': '../php/product_list_fetch.php',
             'type': 'post',
         },
         "aoColumnDefs": [{
             "bSortable": false,
-            "aTargets": [9] // Assuming there are 10 columns, and the last one is for actions
+            "aTargets": [8] // Adjust the index to match the actual number of columns
         }]
     });
 
     // Define click event handler for view button
     $('#ProductdataMaterial tbody').on('click', '.view', function () {
+        // Get the data associated with the clicked row
         var rowData = table.row($(this).closest('tr')).data();
+        // Perform any action you want based on the row data
+        // For example, you can open a modal with the row data for viewing
         console.log('View button clicked for row:', rowData);
-        // You can add code here to handle view action
     });
 
-    // Define click event handler for delete button
-    $('#ProductdataMaterial tbody').on('click', '.delete', function () {
+      // Define click event handler for delete button
+      $('#ProductdataMaterial tbody').on('click', '.delete', function () {
         var rowData = table.row($(this).closest('tr')).data();
         console.log('Delete button clicked for row:', rowData);
 
@@ -160,5 +161,5 @@ $(document).ready(function () {
         });
     }
 });
-</script>
 
+</script>
