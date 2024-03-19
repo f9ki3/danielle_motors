@@ -65,7 +65,7 @@
                                 <th scope="col" width="10%">Brand</th>
                                 <th scope="col" width="10%"> Price</th>
                                 <th scope="col" width="5%"> Unit</th>
-                                <th scope="col" width="5%">QTY</th>
+                                <th scope="col" width="10%">QTY</th>
                                 <th scope="col" width="10%">Discount</th>
                                 <th scope="col" width="10%">Amount</th>
                                 <th scope="col" width="5%">Action</th>
@@ -123,8 +123,8 @@
                                 </div>
 
                                 <div style="display: flex; flex-direction: row; justify-content: space-between"  class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Enter Subtotal Discount" style="width: 49%">
-                                    <input type="text" class="form-control" placeholder="Enter Payment" style="width: 49%">
+                                    <input type="text" id="subtotal_discount_percentage" class="form-control" placeholder="Enter Subtotal Discount in percentage %" style="width: 49%">
+                                    <input type="text" id="amount_payment" class="form-control" placeholder="Enter Payment" style="width: 49%">
                                 </div>
                                 
                             </div>
@@ -134,29 +134,29 @@
                             <div class="border rounded p-4">
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Subtotal</h5>
-                                    <h5 class="fw-bolder">PHP 100.00</h5>
+                                    <h5 class="fw-bolder" id="subtotal">PHP 100.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-                                    <h5 class="fw-bolder">Tax</h5>
-                                    <h5 class="fw-bolder">PHP 100.00</h5>
+                                    <h5 class="fw-bolder">Tax (12%)</h5>
+                                    <h5 class="fw-bolder" id="tax">PHP 100.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Discount</h5>
-                                    <h5 class="fw-bolder">PHP 100.00</h5>
+                                    <h5 class="fw-bolder" id="subtotal_discount">PHP 100.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Total</h5>
-                                    <h5 class="fw-bolder">PHP 100.00</h5>
+                                    <h5 class="fw-bolder" id="total">PHP 100.00</h5>
                                 </div>
                                 
                                 <hr>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Payment</h5>
-                                    <h5 class="fw-bolder">PHP 100.00</h5>
+                                    <h5 class="fw-bolder" id="payment">PHP 100.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Change</h5>
-                                    <h5 class="fw-bolder">PHP 100.00</h5>
+                                    <h5 class="fw-bolder" id="change">PHP 100.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <button style="width: 49%" class="btn border-primary text-primary">Reset</button>
@@ -202,19 +202,24 @@
         alertify.error('Remove Item');
     }
 
-    // Function to handle quantity change
-    function updateQuantity(index, increment) {
+    function updateQuantity(index, newQuantity) {
         var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-        if (increment) {
-            cartItems[index].qty++; // Increment quantity
+        if (!isNaN(newQuantity) && newQuantity !== "") {
+            // Convert newQuantity to a positive integer
+            newQuantity = Math.max(1, Math.abs(parseInt(newQuantity)));
+            cartItems[index].qty = newQuantity; // Update quantity
+            sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
+            renderCartItems(); // Re-render the cart items
         } else {
-            if (cartItems[index].qty > 1) {
-                cartItems[index].qty--; // Decrement quantity, minimum is 1
-            }
+            // If newQuantity is empty, set it to 1
+            newQuantity = 1;
+            cartItems[index].qty = newQuantity;
+            sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
+            renderCartItems(); // Re-render the cart items
         }
-        sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
-        renderCartItems(); // Re-render the cart items
     }
+
+
 
     // Function to handle discount type change
     function updateDiscountType(index, value) {
@@ -277,9 +282,9 @@
                 <td>${item.unit}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, false)">-</button>
-                        <input type="text" class="form-control w-50 text-center" value="${qtyValue}" >
-                        <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, true)">+</button>
+                        <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty - 1})">-</button>
+                        <input type="number" class="form-control w-50 text-center" value="${qtyValue}" onchange="updateQuantity(${index}, this.value)">
+                        <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty + 1})">+</button>
                     </div>
                 </td>
                 <td>
@@ -303,9 +308,6 @@
             cartItemsList.appendChild(row);
         });
     }
-
-
-
 
     // Function to update the counter
     function updateCounter(count) {
