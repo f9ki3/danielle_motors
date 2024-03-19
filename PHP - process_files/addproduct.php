@@ -28,7 +28,7 @@
     if ($stmt) {
         if ($stmt->execute()) {
             $stmt->close();
-            header('Location: ../Inventory/Product_List/');
+            header('Location: ../Inventory/Product_List/?successful=true');
         } else {
             die("Error in executing statement: " . $stmt->error);
             $stmt->close();

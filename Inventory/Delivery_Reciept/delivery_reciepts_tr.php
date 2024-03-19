@@ -51,7 +51,7 @@ if($delivery_reciept_res -> num_rows > 0){
         </td>
         <td class="align-middle white-space-nowrap py-0 text-success">#<?php echo $dr_id; ?></td>
         <td class="tags align-middle text-center review pb-2 ps-3"><?php echo $status;?></td>
-        <td class="product align-middle ps-4"><a class="fw-semi-bold line-clamp-3 mb-0" href="#"><?php echo $supplier_name; ?></a></td>
+        <td class="product align-middle ps-4"><a class="fw-semi-bold line-clamp-3 mb-0" href="redirect.php?id=<?php echo $dr_id; ?>"><?php echo $supplier_name; ?></a></td>
         <td class="price white-space-nowrap text-start fw-bold text-700 ps-4"><?php echo $checked_by; ?></td>
         <td class="category align-middle white-space-nowrap text-600 ps-4 fw-semi-bold"><?php echo $approved_by; ?></td>
         <td class="tags align-middle text-center review pb-2 ps-3"><?php echo $delivered_by; ?></td>

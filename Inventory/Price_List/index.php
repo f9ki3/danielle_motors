@@ -52,6 +52,36 @@ date_default_timezone_set('Asia/Manila');
     <script>
         // Initialize Select2 for the searchable dropdown
         $(document).ready(function() {
+            $(".print").on('click', function() {
+                var content = '';
+
+                // Iterate over each row in the cart-body
+                $("#cart-body tr").each(function() {
+                    // Select only the columns you want to include
+                    var name = $(this).find("td:eq(0)").html();
+                    var models = $(this).find("td:eq(1)").html();
+                    var qty = $(this).find(".qty-input").val();;
+                    var unit = $(this).find("td:eq(3)").html();
+                    var subtotal = $(this).find("td:eq(4)").html();
+                    var discount = $(this).find(".discount").val();
+
+                    // Create a new row with selected columns
+                    content += '<tr><td class="fs-3">' + name + '</td><td class="ps-3"></td><td class="fs-3">' + models + '</td><td class="ps-3"></td><td class="fs-3">' + qty + '</td><td class="ps-3"></td><td class="fs-3">' + unit + '</td><td class="ps-3"></td><td class="fs-3">' + subtotal + '</td><td class="ps-3"></td><td class="fs-3">' + discount + '%</td></tr>';
+                });
+
+                // Get the total amount
+                var total = $("#cart-total").text();
+
+                // Create a new table with selected columns and total
+                var printableContent = '<table>' + content + '</table>' +
+                                    '<div class="col-lg-6"><h2 class="text-end" id="cart-total">' + total + '</h2></div>';
+
+                // Print the selected columns
+                var originalContent = $("body").html();
+                $("body").html(printableContent);
+                window.print(); // This triggers the browser's print dialog
+                $("body").html(originalContent); // Restore original content
+            });
             $(document).on('click', '.cart-delete', function(){
                 var id = $(this).data('product-id');
                 var row = $(this).closest('tr');
@@ -110,6 +140,28 @@ date_default_timezone_set('Asia/Manila');
                 })
             });
 
+            $(document).on('click', '.apply-discount', function(){
+                var row = $(this).closest('td');
+                var discount = row.find('.discount');
+                var value = discount.val();
+                var id = $(this).data('product-id');
+
+
+                $.ajax({
+                    url: 'cart-discount.php',
+                    method: 'POST',
+                    data: {
+                        id: id,
+                        discount: value
+                    },
+                    dataType: 'json',
+                    success: function(response){
+                        $('#cart-body').html(response.tbody);
+                        $('#cart-total').text('Total: ₱' + response.cart_total);
+                    }
+                })
+            });
+
             $('.cart-button').on('click', function(){
                 var id = $(this).data('product-id');
                 var srp = $(this).data('product-srp');
@@ -140,6 +192,7 @@ date_default_timezone_set('Asia/Manila');
                 })
             })
            
+            
             $('#products').select2();
         });
     </script>

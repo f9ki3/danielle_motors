@@ -7,6 +7,7 @@
     <hr class="mb-5">
     <div class="mb-5">
         <div class="row">
+            <!-- ajax submit -->
             <div class="col-lg-4">
                 <div class="card">
                     <div class="card-body">
@@ -17,10 +18,39 @@
                                 <div class="col-lg-12 mb-2">
                                     <select class="form-select" id="product_id" name="product_id" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
                                         <option value="">Select product</option>
-                                        <option>Massachusetts Institute of Technology</option>
-                                        <option>University of Chicago</option>
-                                        <option>GSAS Open Labs At Harvard</option>
-                                        <option>California Institute of Technology</option>
+                                        <?php
+                                        $product_option_sql = "SELECT * FROM product";
+                                        $product_option_res = $conn->query($product_option_sql);
+                                        if($product_option_res->num_rows>0){
+                                            while($row=$product_option_res->fetch_assoc()){
+                                                $product_id = $row['id'];
+                                                $product_name = $row['name'];
+                                                $unit_id = $row['unit_id'];
+                                                $brand_id = $row['brand_id'];
+                                                $model = $row['models'];
+                                                $category_id = $row['category_id'];
+                                                $unit_sql = "SELECT name FROM unit WHERE id = '$unit_id'";
+                                                $unit_res = $conn->query($unit_sql);
+                                                if($unit_res->num_rows>0){
+                                                    $row=$unit_res->fetch_assoc();
+                                                    $unit = $row['name'];
+                                                }
+                                                $brand_sql = "SELECT brand_name FROM brand WHERE id='$brand_id'";
+                                                $brand_res = $conn->query($brand_sql);
+                                                if($brand_res->num_rows>0){
+                                                    $row=$brand_res->fetch_assoc();
+                                                    $brand=$row['brand_name'];
+                                                }
+                                                $category_sql = "SELECT category_name FROM category WHERE id = '$category_id'";
+                                                $category_res = $conn->query($category_sql);
+                                                if($category_res->num_rows>0){
+                                                    $row=$category_res->fetch_assoc();
+                                                    $category = $row['category_name'];
+                                                }
+                                                echo '<option value="' . $product_id . '">' . $category . ' ' . $brand . ' ' . $product_name . ' ' . $unit . ' ' . $model .  '</option>';
+                                            }
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-lg-12 mb-2">
@@ -54,18 +84,29 @@
                 </div>
 
                             </div>
-                        </form>
+                        
                     </div>
                     <div class="card-footer">
-                        <button id="new_location" class="btn btn-primary"><span class="fas fa-plus"></span> location</button>
+                        <button type="button" id="new_location" class="btn btn-primary"><span class="fas fa-plus"></span> location</button>
+                        <button type="button" id="submitForm" class="btn btn-success">Submit</button>
+                        </form>
                     </div>
                 </div>
+            </div>
+            <!-- ------------ -->
+            <div class="col-lg-8 bg-white">
+                <div class="row mt-5 mb-5">
+                    <div class="col-auto">
+                        <button class="btn btn-secondary">Print</button>
+                        
+                    </div>
+                </div>
+                <hr class="mb-5">
+                <?php include "delivery_receipt_preview.php"; ?>
             </div>
         </div>
     </div>
 </div>
-
-
 
 
 
@@ -131,3 +172,4 @@
         dynamicLocations.appendChild(quantityDiv);
     });
 </script>
+

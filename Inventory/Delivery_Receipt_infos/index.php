@@ -6,7 +6,68 @@ date_default_timezone_set('Asia/Manila');
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 
- <?php include "../../page_properties/header.php" ?>
+<?php include "../../page_properties/header.php" ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script>
+        $(document).ready(function(){
+            $('#submitForm').click(function(e){
+                e.preventDefault(); // Prevent form submission and page reload
+
+                // Collect form data
+                var formData = $('#products_infos').serialize();
+
+                // Send AJAX request
+                $.ajax({
+                    type: 'POST',
+                    url: '../../PHP - process_files/add_dr_info.php?id=<?php echo $_SESSION['dr_id']; ?>',
+                    data: formData,
+                    dataType: 'json', // Expect JSON response from server
+                    success: function(response){
+                        if (response.success) {
+                            // Show success alert message
+                            alert(response.message);
+                        } else {
+                            // Show validation errors
+                            var errorMessages = response.errors.join("\n");
+                            alert(errorMessages);
+                        }
+                    }
+                });
+            });
+        });
+    </script> -->
+    <script>
+    $(document).ready(function(){
+        $('#submitForm').click(function(e){
+            e.preventDefault(); // Prevent form submission and page reload
+
+            // Collect form data
+            var formData = $('#products_infos').serialize();
+
+            // Send AJAX request
+            $.ajax({
+                type: 'POST',
+                url: '../../PHP - process_files/add_dr_info.php?id=<?php echo $_SESSION['dr_id']; ?>',
+                data: formData,
+                dataType: 'json', // Expect JSON response from server
+                success: function(response){
+                    if (response.success) {
+                        // Show success alert message
+                        alert(response.message);
+                        // Reset form fields
+                        $('#products_infos :input').val('');
+                    } else {
+                        // Show validation errors
+                        var errorMessages = response.errors.join("\n");
+                        alert(errorMessages);
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+
 
   <body>
     <!-- ===============================================-->
@@ -41,6 +102,81 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
+
+
+    <script>
+        $(document).ready(function(){
+            // Function to fetch PHP-generated content
+            function fetchTableContent() {
+                $.ajax({
+                    url: 'tbody.php',
+                    success: function(response) {
+                        $('#live_product_data').html(response);
+                        // After successfully updating content, initiate the next long poll
+                        fetchTableContent();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        // In case of error, retry the long poll after some time
+                        setTimeout(fetchTableContent, 5000); // Retry after 5 seconds
+                    }
+                });
+            }
+
+            // Call the function initially
+            fetchTableContent();
+
+
+
+            // ------total
+            // Function to fetch PHP-generated content
+            function fetchTotalContent() {
+                $.ajax({
+                    url: 'dr_footer.php',
+                    success: function(response) {
+                        $('#dr_footer').html(response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+
+            // Call the function initially
+            fetchTotalContent();
+
+            // Call the function every 5 seconds (adjust the interval as needed)
+            setInterval(fetchTotalContent, 5000); // 5000 milliseconds = 5 seconds
+        });
+
+    </script>
+    <!-- <script>
+    $(document).ready(function(){
+        // Function to fetch PHP-generated content
+        function fetchContent(url, targetElement) {
+            $.ajax({
+                url: url,
+                success: function(response) {
+                    $(targetElement).html(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
+        // Call the functions initially
+        fetchContent('tbody.php', '#live_product_data');
+        fetchContent('dr_footer.php', '#dr_footer');
+
+        // Call the functions every 5 seconds (adjust the interval as needed)
+        setInterval(function() {
+            fetchContent('tbody.php', '#live_product_data');
+            fetchContent('dr_footer.php', '#dr_footer');
+        }, 5000); // 5000 milliseconds = 5 seconds
+    });
+    </script> -->
+
   </body>
 
 

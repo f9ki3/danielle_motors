@@ -42,13 +42,38 @@ if($logoText_result -> num_rows > 0){
                   <div class="parent-wrapper label-1">
                     <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-home">
                       <li class="collapsed-nav-item-title d-none">Inventory</li>
-                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier"){ echo "active"; }?>" href="../Purchased-Order-Supplier/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Create PO-Supplier</span></div>
+                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Category_Maintenance"){ echo "active"; }?>" href="../Category_Maintenance/" data-bs-toggle="" aria-expanded="false">
+                          <div class="d-flex align-items-center"><span class="nav-link-text">Maintenance Category</span></div>
                         </a><!-- more inner pages-->
                       </li>
               
-                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Manage-Inventory"){ echo "active"; } else { echo "";}?>" href="../Manage-Inventory/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Manage Inventory</span></div>
+                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Brand_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Brand_Maintenance/" data-bs-toggle="" aria-expanded="false">
+                          <div class="d-flex align-items-center"><span class="nav-link-text">Maintenance Brand</span></div>
+                        </a><!-- more inner pages-->
+                      </li>
+
+                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Model_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Model_Maintenance/" data-bs-toggle="" aria-expanded="false">
+                          <div class="d-flex align-items-center"><span class="nav-link-text">Maintenance Model</span></div>
+                        </a><!-- more inner pages-->
+                      </li>
+
+                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Unit_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Unit_Maintenance/" data-bs-toggle="" aria-expanded="false">
+                          <div class="d-flex align-items-center"><span class="nav-link-text">Maintenance Unit</span></div>
+                        </a><!-- more inner pages-->
+                      </li>
+
+                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Product_List"){ echo "active"; } else { echo "";}?>" href="../Product_List/" data-bs-toggle="" aria-expanded="false">
+                          <div class="d-flex align-items-center"><span class="nav-link-text">Product List</span></div>
+                        </a><!-- more inner pages-->
+                      </li>
+
+                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Price_List"){ echo "active"; } else { echo "";}?>" href="../Price_List/" data-bs-toggle="" aria-expanded="false">
+                          <div class="d-flex align-items-center"><span class="nav-link-text">Price List</span></div>
+                        </a><!-- more inner pages-->
+                      </li>
+
+                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Delivery_Reciept"){ echo "active"; } else { echo "";}?>" href="../Delivery_Reciept/" data-bs-toggle="" aria-expanded="false">
+                          <div class="d-flex align-items-center"><span class="nav-link-text">Delivery Receipt List</span></div>
                         </a><!-- more inner pages-->
                       </li>
                     </ul>
@@ -69,24 +94,13 @@ if($logoText_result -> num_rows > 0){
                   <div class="parent-wrapper label-1">
                     <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-CRM">
                       <li class="collapsed-nav-item-title d-none">Maintenance</li>
-                      <li class="nav-item"><a class="nav-link" href="../../apps/crm/analytics.html" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Manage Users Group</span></div>
+                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Logo_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Logo_Maintenance/" data-bs-toggle="" aria-expanded="false">
+                          <div class="d-flex align-items-center"><span class="nav-link-text">Logo </span></div>
                         </a><!-- more inner pages-->
                       </li>
-                      <li class="nav-item"><a class="nav-link" href="../../apps/crm/deals.html" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Manage Users</span></div>
-                        </a><!-- more inner pages-->
-                      </li>
-                      <li class="nav-item"><a class="nav-link" href="../../apps/crm/deal-details.html" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Manage Category</span></div>
-                        </a><!-- more inner pages-->
-                      </li>
-                      <li class="nav-item"><a class="nav-link" href="../../apps/crm/leads.html" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Manage Brands</span></div>
-                        </a><!-- more inner pages-->
-                      </li>
-                      <li class="nav-item"><a class="nav-link" href="../../apps/crm/lead-details.html" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Manage Model</span></div>
+
+                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Supplier_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Supplier_Maintenance/" data-bs-toggle="" aria-expanded="false">
+                          <div class="d-flex align-items-center"><span class="nav-link-text">Suppliers Maintenance </span></div>
                         </a><!-- more inner pages-->
                       </li>
                       
@@ -99,7 +113,7 @@ if($logoText_result -> num_rows > 0){
             </ul>
           </div>
         </div>
-        <div class="navbar-vertical-footer"><button class="btn navbar-vertical-toggle border-0 fw-semi-bold w-100 white-space-nowrap d-flex align-items-center"><span class="uil uil-left-arrow-to-left fs-0"></span><span class="uil uil-arrow-from-right fs-0"></span><span class="navbar-vertical-footer-text ms-2">Collapsed View</span></button></div>
+        <div class="navbar-vertical-footer"><button class="btn navbar-vertical-toggle border-0 fw-semi-bold w-100 white-space-nowrap d-flex align-items-center"><span class="uil uil-left-arrow-to-left"></span><span class="uil uil-arrow-from-right"></span><span class="navbar-vertical-footer-text ms-2">Collapsed View</span></button></div>
       </nav>
       <nav class="navbar navbar-top fixed-top navbar-expand" id="navbarDefault" style="display:none;">
         <div class="collapse navbar-collapse justify-content-between">

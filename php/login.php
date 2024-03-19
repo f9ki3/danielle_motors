@@ -2,21 +2,7 @@
 // Start a session
 session_start();
 
-// Database connection parameters
-$servername = "sql.freedb.tech";
-$username = "freedb_dmp_master";
-$password = "8@YASU8ypbA2uA%";
-$dbname = "freedb_dmp_db";
-
-// Create a new MySQLi instance
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check the connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} else {
-   
-}
+include ("../config/config.php");
 
 // Check if the POST data is set
 if(isset($_POST['uname'], $_POST['pass'])) {
@@ -27,6 +13,11 @@ if(isset($_POST['uname'], $_POST['pass'])) {
     // Prepare a SQL statement to check if the username and password exist
     $sql = "SELECT * FROM admin WHERE username = ? AND password = ? AND status = ?";
     $stmt = $conn->prepare($sql);
+
+    if ($stmt === false) {
+        // Handle error, perhaps by logging it or showing a message to the user
+        die('Error: ' . htmlspecialchars($conn->error));
+    }
 
     // Bind parameters
     $status = 0; // Assuming status is an integer
@@ -63,4 +54,7 @@ if(isset($_POST['uname'], $_POST['pass'])) {
     // Respond with '0' to indicate failed login
     echo '0';
 }
+
+// Close the connection
+$conn->close();
 ?>

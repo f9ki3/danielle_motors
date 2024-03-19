@@ -5,37 +5,7 @@
 <body>
 <div style="display: flex; flex-direction: row">
 <?php include 'navigation_bar.php'?>
-<?php include '../config/config.php';
-
-// Assuming your database connection code is already present
-// Fetch category data from the database where status = 1
-$categoryQuery = "SELECT `id`, `category_name` FROM `category` WHERE `status` = 1";
-$categoryResult = $conn->query($categoryQuery);
-
-// Fetch brand data from the database where status = 1
-$brandQuery = "SELECT `id`, `brand_name` FROM `brand` WHERE `status` = 1";
-$brandResult = $conn->query($brandQuery);
-
-
-// Check if the query was successful
-if ($categoryResult) {
-    $categories = $categoryResult->fetch_all(MYSQLI_ASSOC);
-} else {
-    // Handle the error appropriately
-    die("Error fetching categories: " . $conn->error);
-}
-if ($brandResult) {
-    $brands = $brandResult->fetch_all(MYSQLI_ASSOC);
-} else {
-    // Handle the error appropriately
-    die("Error fetching brand: " . $conn->error);
-}
-$brandResult->close();
-$categoryResult->close();
-
-// Close the connection
-$conn->close();  // Move this line to the end of your script
-?>
+<?php include '../config/config.php'; ?>
 
 <style>
     /* Adjust the min-width value according to your preference */
@@ -57,13 +27,13 @@ $conn->close();  // Move this line to the end of your script
             
         </div>
 
-        <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
+        <div style="background-color: white;" class="rounded border p-3 mb-3 w-100" >
             <div class="row">
                 <div style="display: flex; justify-content: space-between; align-items: center;"> 
                     <div style="width: 50%">
-                        <input id="searchInput" class="form-control form-control-sm" placeholder="Search" oninput="filterItems()">
+                        <input class="form-control form-control-sm" id="searchInput" placeholder="Search by Product Name">
                     </div>
-                    <div style="display: flex; flex-direction: row">
+                    <!-- <div style="display: flex; flex-direction: row">
                         <select id="brandSelect"  class="form-select form-select-sm " aria-label="Default select example" style="width:100%">
                             <option selected>Select Brand</option>
                              <?php foreach ($brands as $brand): ?>
@@ -76,34 +46,33 @@ $conn->close();  // Move this line to the end of your script
                             <option value="<?php echo $category['id']; ?>"><?php echo $category['category_name']; ?></option>
                              <?php endforeach; ?>
                         </select>
-                    </div>
+                    </div> -->
                     <div>
-                        <a href="purchase" class="btn border btn-sm me-1 rounded ">Purchase</a>
-                        <a href="purchase_cart" class="btn border btn-sm rounded btn-primary">Cart</a>
+                        <a href="purchase" class="btn border btn-primary btn-sm me-1 rounded ">Purchase</a>
+                        <a href="purchase_cart" class="btn border btn-sm rounded">Cart <span class="badge text-bg-danger" id="counter"></span></a>
                     </div>
                 </div>
                 </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                        <th scope="col" width="2%">PRODID.</th>
-                        <th scope="col" width="5%">Img</th>
-                        <th scope="col" width="15%">Product Name</th>
-                        <th scope="col" width="10%"> Model</th>
-                        <th scope="col" width="10%">Brand</th>
-                        <th scope="col" width="10%">SRP</th>
-                        <th scope="col" width="5%">Unit</th>
-                        <th scope="col" width="5%">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php include '../php/purchase_list.php'?>
-                    
-                    </tbody>
+                <div style="height: 75vh; overflow: auto;">
+                    <table class="mt-2 table" id="productTable">
+                        <thead class="sticky-top">
+                            <tr>
+                            <th scope="col" width="5%">CODE.</th>
+                            <th scope="col" width="15%">Product Name</th>
+                            <th scope="col" width="5%">IMG</th>
+                            <th scope="col" width="10%"> Model</th> 
+                            <th scope="col" width="10%">Brand</th>
+                            <th scope="col" width="5%">SRP</th>
+                            <th scope="col" width="5%">Unit</th>
+                            <th scope="col" width="5%" class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                        <?php include '../php/purchase_list.php'?>
+                        
+                        </tbody>
                     </table>
-
-
-                
+                </div>
             </div>
             
         </div>
@@ -113,35 +82,6 @@ $conn->close();  // Move this line to the end of your script
 
 
 <!-- end purchase-->
-
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Add to Cart</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" style="display: flex; flex-direction: column; align-items: center; justify-content: center">
-        <img class="border mb-2" src="../uploads/suzuki_trottle_cable.jpeg" alt="">
-        <input class="form-control mb-2" disabled type="text" value="Product Code: PROD1034">
-        <input class="form-control mb-2" disabled type="text" value="Product Name: Trottle Cable">
-        <textarea name="" class="form-control form-control-sm mb-2 py-3" style="text-align: justify" placeholder="The throttle cable is a vital component in a vehicle's engine system, responsible for regulating the flow of air and fuel to the engine. It connects the accelerator pedal to the throttle body, allowing the driver to control engine speed. Proper maintenance and adjustment of the throttle cable are crucial for smooth and efficient engine performance." id="" cols="30" rows="5" disabled></textarea>
-        <input class="form-control mb-2" disabled type="text" value="Price: 150.00">
-        <input class="form-control mb-2" disabled type="text" value="Stocks: 100pcs">
-        
-        
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Add</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- End Modal -->
-
 
 </div>
 <?php include 'footer.php'?>

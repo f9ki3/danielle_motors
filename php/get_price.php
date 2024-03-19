@@ -8,7 +8,7 @@ if(isset($_POST['product_id'])) {
     $product_id = $_POST['product_id'];
     
     // Prepare SQL statement to fetch price based on product ID
-    $stmt = $conn->prepare("SELECT srp FROM price_list WHERE product_id = ?");
+    $stmt = $conn->prepare("SELECT srp FROM product WHERE id = ?");
     $stmt->bind_param("i", $product_id); // Bind product_id parameter
     
     // Execute the prepared statement
@@ -31,6 +31,6 @@ if(isset($_POST['product_id'])) {
     $conn->close();
 } else {
     // If product_id is not provided, return an error message
-    // echo "Error: Product ID not provided.";
+    echo "Error: Product ID not provided.";
 }
 ?>
