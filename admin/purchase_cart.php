@@ -296,7 +296,7 @@
                         </select>
                     </div>
                 </td>
-                <td style="color: ${totalAmount <= 0 ? 'red' : 'inherit'};">PHP ${totalAmount.toFixed(2)}</td> <!-- Display the amount -->
+                <td style="color: ${totalAmount <= 0 ? 'red' : 'inherit'};">${new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(totalAmount)}</td>
                 <td>
                     <button class="btn btn-light rounded rounded-5 p-2" onclick="removeFromCart(${index})">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
