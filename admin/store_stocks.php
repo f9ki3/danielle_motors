@@ -74,8 +74,6 @@ include '../config/config.php';
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body " style="display: flex; flex-direction: column; align-items: center; justify-content: center">
-
-
 <input type="date" class="form-control mb-2" id="materialDate">
 <input type="text" class="form-control mb-2" placeholder="Material Invoice No." id="materialInvoiceNo">
 <input type="text" class="form-control mb-2" placeholder="Cashier Name" id="cashierName" pattern="[A-Za-z ]{1,}" required>
@@ -349,6 +347,7 @@ $('#tabledataMaterial tbody').on('click', '.delete', function () {
                      success: function (response) {    
                          console.log(response);
                          $('#add_stocks').modal('hide');
+                         window.location.href = "add_stocks.php";
                      },
                      error: function (xhr, status, error) {
                          console.error('Error saving data:', error);

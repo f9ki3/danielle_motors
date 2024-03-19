@@ -2,20 +2,39 @@
 include '../config/config.php';
 
 $output = array();
+$columns = array(
+    0 => 'id',
+    1 => 'material_invoice',
+    2 => 'material_date',
+    3 => 'material_cashier',
+    4 => 'material_recieved_by',
+    5 => 'material_inspected_by',
+    6 => 'material_verified_by'
+);
+
 $sql = "SELECT `id`, `material_invoice`, `material_date`, `material_cashier`, `material_recieved_by`, `material_inspected_by`, `material_verified_by`, `active` FROM `material_transfer` WHERE `active` = 1";
+
+// Filter by search value
+if (isset($_POST['search']['value'])) {
+    $search_value = $_POST['search']['value'];
+    $sql .= " AND (";
+    foreach ($columns as $index => $column) {
+        $sql .= "`$column` LIKE '%$search_value%' OR ";
+    }
+    $sql = rtrim($sql, "OR "); // Remove the last 'OR'
+    $sql .= ")";
+}
+
+// Order by specific column
+if (isset($_POST['order'])) {
+    $column_index = $_POST['order'][0]['column'];
+    $column_name = $columns[$column_index];
+    $order = $_POST['order'][0]['dir'];
+    $sql .= " ORDER BY `$column_name` $order";
+}
 
 $query = mysqli_query($conn, $sql);
 $total_all_rows = mysqli_num_rows($query);
-
-$columns = array(
-	0 => 'id',
-	1 => 'material_invoice',
-	2 => 'material_date',
-	3 => 'material_cashier',
-	4 => 'material_recieved_by',
-	5 => 'material_inspected_by',
-	6 => 'material_verified_by',
-);
 
 $data = array();
 
