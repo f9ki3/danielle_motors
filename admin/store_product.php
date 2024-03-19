@@ -123,7 +123,7 @@
 
         <datalist id="suggestions">
             <?php foreach ($products as $product): ?>
-                <option><?php echo $product['id']; echo "-"?><?php echo $product['product_name']; ?><?php echo " - "?><?php echo $product['models']; ?></option>
+                <option><?php echo $product['id']; echo "-"?><?php echo $product['name']; ?><?php echo " - "?><?php echo $product['models']; ?></option>
             <?php endforeach; ?>
         </datalist>
 
