@@ -7,14 +7,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $product_id = $_POST["product_id"];
     $original_price = $_POST["original_price"];
     $price = $_POST["price"];
-    $discount = "%" . $_POST["discount"];
+    $discount = $_POST["discount"];
     $total_qty = $_POST["total_qty"];
     $total = $price * $total_qty;
 
     // Validate and sanitize input (e.g., $dr_id)
     $dr_id = isset($_GET['id']) ? intval($_GET['id']) : null; // Ensure it's an integer
-
-    if ($dr_id === null) {
+    
+    $check_product_duplicate_sql = "SELECT product_id FROM delivery_receipt_content WHERE product_id = '$product_id'";
+    $check_product_duplicate_res = $conn->query($check_product_duplicate_sql);
+    if($check_product_duplicate_res->num_rows>0){
+        $response = array("error" => "Duplicate Entry");
+    } elseif ($dr_id === null) {
         // If $dr_id is not valid, return an error response
         $response = array("error" => "Invalid or missing delivery receipt ID");
     } else {

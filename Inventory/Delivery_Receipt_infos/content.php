@@ -7,81 +7,125 @@
     <hr class="mb-5">
     <div class="mb-5">
         <div class="row">
+            <div class="col-lg-12 mb-3 text-end">
+                <div class="dropdown font-sans-serif d-inline-block">
+                    <button class="btn btn-phoenix-secondary dropdown-toggle" id="dropdownMenuButton" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Print</button><span class="caret"> </span>
+                    <div class="dropdown-menu dropdown-menu-end py-0" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Print Delivery Receipt</a>
+                        <a class="dropdown-item" href="#">Print Barcodes</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                </div>
+            </div>
+  
+  
             <!-- ajax submit -->
-            <div class="col-lg-4">
+            <div class="col-lg-4 tab-content mt-5">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" id="product_select">
                         <h3 class="card-title">Enter Product Details</h3>
                         <hr>
                         <form id="products_infos">
                             <div class="row">
                                 <div class="col-lg-12 mb-2">
-                                    <select class="form-select" id="product_id" name="product_id" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
+                                    <select class="form-select" id="product_id" name="product_id" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}' required>
                                         <option value="">Select product</option>
                                         <?php
-                                        $product_option_sql = "SELECT * FROM product";
-                                        $product_option_res = $conn->query($product_option_sql);
-                                        if($product_option_res->num_rows>0){
-                                            while($row=$product_option_res->fetch_assoc()){
-                                                $product_id = $row['id'];
-                                                $product_name = $row['name'];
-                                                $unit_id = $row['unit_id'];
-                                                $brand_id = $row['brand_id'];
-                                                $model = $row['models'];
-                                                $category_id = $row['category_id'];
-                                                $unit_sql = "SELECT name FROM unit WHERE id = '$unit_id'";
-                                                $unit_res = $conn->query($unit_sql);
-                                                if($unit_res->num_rows>0){
-                                                    $row=$unit_res->fetch_assoc();
-                                                    $unit = $row['name'];
-                                                }
-                                                $brand_sql = "SELECT brand_name FROM brand WHERE id='$brand_id'";
-                                                $brand_res = $conn->query($brand_sql);
-                                                if($brand_res->num_rows>0){
-                                                    $row=$brand_res->fetch_assoc();
-                                                    $brand=$row['brand_name'];
-                                                }
-                                                $category_sql = "SELECT category_name FROM category WHERE id = '$category_id'";
-                                                $category_res = $conn->query($category_sql);
-                                                if($category_res->num_rows>0){
-                                                    $row=$category_res->fetch_assoc();
-                                                    $category = $row['category_name'];
-                                                }
-                                                echo '<option value="' . $product_id . '">' . $category . ' ' . $brand . ' ' . $product_name . ' ' . $unit . ' ' . $model .  '</option>';
+                                        $product_option_sql = "SELECT 
+                                        p.id AS product_id, 
+                                        p.name AS product_name, 
+                                        u.name AS unit_name, 
+                                        b.brand_name AS brand_name, 
+                                        p.models AS model, 
+                                        c.category_name AS category_name
+                                    FROM product p
+                                    JOIN unit u ON p.unit_id = u.id
+                                    JOIN brand b ON p.brand_id = b.id
+                                    JOIN category c ON p.category_id = c.id";
+                                    
+                                    $product_option_res = $conn->query($product_option_sql);
+                                    
+                                    if($product_option_res->num_rows > 0){
+                                        while($row = $product_option_res->fetch_assoc()){
+                                            $product_id = $row['product_id'];
+                                            $product_name = $row['product_name'];
+                                            $unit_name = $row['unit_name'];
+                                            $brand_name = $row['brand_name'];
+                                            $model = $row['model'];
+                                            $category_name = $row['category_name'];
+
+                                            $check_product_id = "SELECT product_id FROM delivery_receipt_content WHERE product_id = '$product_id'";
+                                            $check_product_id_res = $conn->query($check_product_id);
+                                            if($check_product_id_res -> num_rows > 0){
+
+                                            } else {
+                                                echo '<option value="' . $product_id . '">' . $category_name . ' ' . $brand_name . ' ' . $product_name . ' ' . $unit_name . ' ' . $model .  '</option>';
                                             }
+                                    
+                                            
                                         }
+                                    }
+                                    
                                         ?>
                                     </select>
                                 </div>
                                 <div class="col-lg-12 mb-2">
                                     <div class="form-floating">
-                                        <input class="form-control" id="original_price" name="original_price" type="text" placeholder="" />
+                                        <input class="form-control" id="original_price" name="original_price" type="text" placeholder="" required/>
                                         <label for="floatingInput">Original Price</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-2">
                                     <div class="form-floating">
-                                        <input class="form-control" id="price" name="price" type="text" placeholder="" />
+                                        <input class="form-control" id="price" name="price" type="text" placeholder="" required/>
                                         <label for="floatingInput">Price</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-2">
                                     <div class="form-floating">
-                                        <input class="form-control" id="discount" name="discount" type="number" min="1" max="100" placeholder="" />
+                                        <input class="form-control" id="discount" name="discount" type="number" min="1" max="100" placeholder="" required/>
                                         <label for="floatingInput">Discount ( % )</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-2">
                                     <div class="form-floating">
-                                        <input class="form-control" id="total_qty" name="total_qty" type="number" min="1" placeholder="" />
+                                        <input class="form-control" id="total_qty" name="total_qty" type="number" min="1" placeholder="" required/>
                                         <label for="floatingInput">Total qty</label>
                                     </div>
                                 </div>
                                 <hr class="mb-2">
                                 <h5 class="mb-3 card-title">Where to store</h5>
-                            <div id="dynamicLocations" class="row">
-                    <!-- Dynamic locations will be added here -->
-                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 mb-2 form-floating">
+                                        <select name="rack[]"  id="rack[]" class="form-select mb-2" required>
+                                            <option value=""></option>
+                                            <?php 
+                                            $defwareloc_sql = "SELECT id, location_name FROM ware_location WHERE status = '1'";
+                                            $defwareloc_res = $conn->query($defwareloc_sql);
+                                            if($defwareloc_res->num_rows>0){
+                                                while($row=$defwareloc_res->fetch_assoc()){
+                                                    $defwr_id = $row['id'];
+                                                    $defloc_name = $row['location_name'];
+                                            ?>
+                                            <option value="<?php echo $defwr_id?>"><?php echo $defloc_name; ?></option>
+                                            <?php 
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                        <label for="rack[]">Location</label>
+                                    </div>
+                                    <div class="col-lg-6 mb-2 form-floating">
+                                        <input type="number" class="form-control" name="qty[]" id="qty[]" min="1">
+                                        <label for="">Quantity</label>
+                                    </div>
+                                </div>
+                                <div id="dynamicLocations" class="row">
+                                
+                                <!-- Dynamic locations will be added here -->
+                                </div>
 
                             </div>
                         
@@ -94,14 +138,7 @@
                 </div>
             </div>
             <!-- ------------ -->
-            <div class="col-lg-8 bg-white">
-                <div class="row mt-5 mb-5">
-                    <div class="col-auto">
-                        <button class="btn btn-secondary">Print</button>
-                        
-                    </div>
-                </div>
-                <hr class="mb-5">
+            <div class="col-lg-8 bg-white  mt-5 fs--1">
                 <?php include "delivery_receipt_preview.php"; ?>
             </div>
         </div>
@@ -110,9 +147,37 @@
 
 
 
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="successToast" class="toast hide bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-success text-white">
+            <strong class="me-auto">Success</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body text-white">
+            Submission successful!
+        </div>
+    </div>
 
+    <div id="errorToast" class="toast hide bg-danger text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-danger text-white">
+            <strong class="me-auto">Success</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body bg-danger text-white">
+            Kindly fill up missing fields
+        </div>
+    </div>
 
-
+    <div id="errorToast2" class="toast hide bg-danger text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-danger text-white">
+            <strong class="me-auto">Success</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body bg-danger text-white">
+            Kindly fill up missing fields
+        </div>
+    </div>
+</div>
 
 <script>
     document.getElementById('new_location').addEventListener('click', function() {
@@ -132,22 +197,22 @@
         optionDefault.value = '';
         optionDefault.textContent = 'Select location';
         selectLocation.appendChild(optionDefault);
-
-        var option1 = document.createElement('option');
-        option1.textContent = 'Rack A-1-1';
-        selectLocation.appendChild(option1);
-
-        var option2 = document.createElement('option');
-        option2.textContent = 'Rack A-1-2';
-        selectLocation.appendChild(option2);
-
-        var option3 = document.createElement('option');
-        option3.textContent = 'Rack A-1-3';
-        selectLocation.appendChild(option3);
-
-        var option4 = document.createElement('option');
-        option4.textContent = 'Rack A-1-4';
-        selectLocation.appendChild(option4);
+        <?php 
+        $wareloc_sql = "SELECT id, location_name FROM ware_location WHERE status = '1'";
+        $wareloc_res = $conn->query($wareloc_sql);
+        if($wareloc_res->num_rows>0){
+            while($row=$wareloc_res->fetch_assoc()){
+                $wr_id = $row['id'];
+                $loc_name = $row['location_name'];
+        ?>
+        var option<?php echo $wr_id; ?> = document.createElement('option');
+        option<?php echo $wr_id; ?>.value = '<?php echo $wr_id; ?>';
+        option<?php echo $wr_id; ?>.textContent = '<?php echo $loc_name; ?>';
+        selectLocation.appendChild(option<?php echo $wr_id; ?>);
+        <?php 
+            }
+        }
+        ?>
 
         locationDiv.appendChild(selectLocation);
 

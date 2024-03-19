@@ -2,10 +2,15 @@
 session_start();
 $dr_id = $_SESSION['dr_id'];
 
-$servername = "156.67.222.117";
-$username = "u450836125_dmp_intern"; 
-$password = "DMPInterns123!"; 
-$dbname = "u450836125_dmp_office";
+$servername = "localhost";
+$username = "root"; 
+$password = ""; 
+$dbname = "updatd";
+
+// $servername = "156.67.222.117";
+// $username = "u450836125_dmp_intern"; 
+// $password = "DMPInterns123!"; 
+// $dbname = "u450836125_dmp_office";
 
 
 

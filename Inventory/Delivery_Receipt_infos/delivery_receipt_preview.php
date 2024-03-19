@@ -44,8 +44,8 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-12">
-        <table class="table">
+    <div class="col-lg-12 table-responsive">
+        <table class="table table-sm">
             <thead>
                 <th>QTY</th>
                 <th>PRODUCT NAME</th>
