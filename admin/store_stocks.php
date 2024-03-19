@@ -347,7 +347,7 @@ $('#tabledataMaterial tbody').on('click', '.delete', function () {
                      success: function (response) {    
                          console.log(response);
                          $('#add_stocks').modal('hide');
-                         window.location.href = "add_stocks.php";
+                         window.location.href = "store_stocks_add.php";
                      },
                      error: function (xhr, status, error) {
                          console.error('Error saving data:', error);
