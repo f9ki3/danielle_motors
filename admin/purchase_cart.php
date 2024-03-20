@@ -81,42 +81,42 @@
                         <div style="width: 49%" class="py-2 mb-2">
                             <div class="border rounded p-4">
                                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Customer Name" style="width: 49%">
-                                    <input type="date" class="form-control" placeholder="Date" readonly style="width: 49%" id="dateInput">
+                                    <input type="text" id="transaction_customer_name" class="form-control" placeholder="Customer Name" style="width: 49%">
+                                    <input type="date" id="transaction_date" class="form-control" placeholder="Date" readonly style="width: 49%">
                                 </div>
-                                <input type="text" class="form-control mb-2" placeholder="Address">
+                                <input type="text" id="transaction_address" class="form-control mb-2" placeholder="Address">
 
                                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
-                                    <select class="form-select" style="width: 32%" aria-label="Default select example">
+                                    <select id="transaction_verified" class="form-select" style="width: 32%" aria-label="Default select example">
                                         <option selected>Verified by</option>
-                                        <option value="1">Fyke Lleva</option>
-                                        <option value="2">Alexander Inciong</option>
-                                        <option value="3">Lois Rivera</option>
+                                        <option value="Fyke Lleva">Fyke Lleva</option>
+                                        <option value="Alexander Inciong">Alexander Inciong</option>
+                                        <option value="Lois Rivera">Lois Rivera</option>
                                     </select>
-                                    <select class="form-select" style="width: 32%" aria-label="Default select example">
-                                        <option selected>Verified by</option>
-                                        <option value="1">Fyke Lleva</option>
-                                        <option value="2">Alexander Inciong</option>
-                                        <option value="3">Lois Rivera</option>
+                                    <select id="transaction_inspected" class="form-select" style="width: 32%" aria-label="Default select example">
+                                        <option selected>Inspected by</option>
+                                        <option value="Fyke Lleva">Fyke Lleva</option>
+                                        <option value="Alexander Inciong">Alexander Inciong</option>
+                                        <option value="Lois Rivera">Lois Rivera</option>
                                     </select>
-                                    <select class="form-select" style="width: 32%" aria-label="Default select example">
-                                        <option selected>Verified by</option>
-                                        <option value="1">Fyke Lleva</option>
-                                        <option value="2">Alexander Inciong</option>
-                                        <option value="3">Lois Rivera</option>
+                                    <select id="transaction_received" class="form-select" style="width: 32%" aria-label="Default select example">
+                                        <option selected>Received by</option>
+                                        <option value="Fyke Lleva">Fyke Lleva</option>
+                                        <option value="Alexander Inciong">Alexander Inciong</option>
+                                        <option value="Lois Rivera">Lois Rivera</option>
                                     </select>
                                 </div>
 
                                 <div style="display: flex; flex-direction: row; justify-content: space-between"  class="mb-3">
-                                    <select class="form-select" aria-label="Default select example" style="width: 49%">
+                                    <select id="transaction_payment" class="form-select" aria-label="Default select example" style="width: 49%">
                                         <option selected>Payment Method</option>
-                                        <option value="1">Cash</option>
-                                        <option value="2">G-Cash</option>
+                                        <option value="Cash">Cash</option>
+                                        <option value="G-Cash">G-Cash</option>
                                     </select>
-                                    <select class="form-select"  style="width: 49%" aria-label="Default select example">
+                                    <select id="transaction_type" class="form-select"  style="width: 49%" aria-label="Default select example">
                                         <option selected>Transaction Type</option>
-                                        <option value="1">Walk-in</option>
-                                        <option value="2">Delivery</option>
+                                        <option value="Walk-in">Walk-in</option>
+                                        <option value="Delivery">Delivery</option>
                                     </select>
                                 </div>
 
@@ -183,33 +183,51 @@
 </body>
 </html>
 <script>
-    // Function to handle purchase action
     function purchase() {
-        // Collect necessary data
-        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-        var subtotal = calculateSubtotal();
-        var tax = calculateTax(subtotal);
-        var discountPercentage = parseFloat(document.getElementById('subtotal_discount_percentage').value) || 0;
-        var discount = calculateDiscount(subtotal, discountPercentage);
-        var total = calculateTotal(subtotal, tax, discount);
-        var amountPayment = parseFloat(document.getElementById('amount_payment').value) || 0;
-        var change = Math.max(amountPayment - total, 0);
+    // Collect necessary data
+    var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+    var subtotal = calculateSubtotal();
+    var tax = calculateTax(subtotal);
+    var discountPercentage = parseFloat(document.getElementById('subtotal_discount_percentage').value) || 0;
+    var discount = calculateDiscount(subtotal, discountPercentage);
+    var total = calculateTotal(subtotal, tax, discount);
+    var amountPayment = parseFloat(document.getElementById('amount_payment').value) || 0;
+    var change = Math.max(amountPayment - total, 0);
 
-        // Log cart items and financial details
-        console.log("Cart Items:", cartItems);
-        console.log("Subtotal:", subtotal);
-        console.log("Tax:", tax);
-        console.log("Discount:", discount);
-        console.log("Total:", total);
-        console.log("Payment:", amountPayment);
-        console.log("Change:", change);
+    // Collect transaction details
+    var transaction_customer_name = document.getElementById('transaction_customer_name').value || '';
+    var transaction_date = new Date().toISOString(); // Assuming transaction date is current date
+    var transaction_address = document.getElementById('transaction_address').value || '';
+    var transaction_verified = document.getElementById('transaction_verified').value || '';
+    var transaction_inspected = document.getElementById('transaction_inspected').value || '';
+    var transaction_received = document.getElementById('transaction_received').value || '';
+    var transaction_payment = document.getElementById('transaction_payment').value || '';
+    var transaction_type = document.getElementById('transaction_type').value || '';
 
-        // Update UI
-        updateUI();
+    // Log transaction details and financial details
+    console.log("Cart Items:", cartItems);
+    console.log("Transaction Customer Name:", transaction_customer_name);
+    console.log("Transaction Date:", transaction_date);
+    console.log("Transaction Address:", transaction_address);
+    console.log("Transaction Verified:", transaction_verified);
+    console.log("Transaction Inspected:", transaction_inspected);
+    console.log("Transaction Received:", transaction_received);
+    console.log("Transaction Payment:", transaction_payment);
+    console.log("Transaction Type:", transaction_type);
+    console.log("Subtotal:", subtotal);
+    console.log("Tax:", tax);
+    console.log("Discount:", discount);
+    console.log("Total:", total);
+    console.log("Payment:", amountPayment);
+    console.log("Change:", change);
 
-        // Optionally, you can reset the cart after purchase
-        // resetCart();
-    }
+    // Update UI
+    updateUI();
+
+    // Optionally, you can reset the cart after purchase
+    // resetCart();
+}
+
 
     // Function to reset the cart and clear session storage
     function resetCart() {
@@ -288,7 +306,7 @@
     var today = new Date().toISOString().split('T')[0];
 
     // Set the default value of the input field to today's date
-    document.getElementById('dateInput').value = today;
+    document.getElementById('transaction_date').value = today;
 
     // Function to update session storage and remove item from the cart
     function removeFromCart(index) {
