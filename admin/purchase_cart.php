@@ -157,8 +157,8 @@
                                     <h5 class="fw-bolder" id="change">PHP 100.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-                                    <button style="width: 49%" class="btn border-primary text-primary">Reset</button>
-                                    <button style="width: 49%" class="btn btn-primary">Purchase</button>
+                                    <button style="width: 49%" class="btn border-primary text-primary" onclick="resetCart()">Reset</button>
+                                    <button style="width: 49%" class="btn btn-primary" onclick="purchase()">Purchase</button>
                                 </div>
                             </div>
                         </div>
@@ -183,6 +183,44 @@
 </body>
 </html>
 <script>
+    // Function to handle purchase action
+    function purchase() {
+        // Collect necessary data
+        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+        var subtotal = calculateSubtotal();
+        var tax = calculateTax(subtotal);
+        var discountPercentage = parseFloat(document.getElementById('subtotal_discount_percentage').value) || 0;
+        var discount = calculateDiscount(subtotal, discountPercentage);
+        var total = calculateTotal(subtotal, tax, discount);
+        var amountPayment = parseFloat(document.getElementById('amount_payment').value) || 0;
+        var change = Math.max(amountPayment - total, 0);
+
+        // Log cart items and financial details
+        console.log("Cart Items:", cartItems);
+        console.log("Subtotal:", subtotal);
+        console.log("Tax:", tax);
+        console.log("Discount:", discount);
+        console.log("Total:", total);
+        console.log("Payment:", amountPayment);
+        console.log("Change:", change);
+
+        // Update UI
+        updateUI();
+
+        // Optionally, you can reset the cart after purchase
+        // resetCart();
+    }
+
+    // Function to reset the cart and clear session storage
+    function resetCart() {
+        sessionStorage.removeItem('cartItems'); // Remove cart items from session storage
+        renderCartItems(); // Re-render the cart items (to clear the display)
+        updateCounter(0); // Update the counter to 0
+        updateUI(); // Update the UI to reset all values
+        alertify.set('notifier', 'position', 'bottom-left');
+        alertify.error('Remove All');
+    }
+
      // Function to calculate subtotal based on local storage including discounted prices
     function calculateSubtotal() {
         var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
@@ -315,64 +353,113 @@
         updateUI();
     }
 
-    // Function to render cart items in the table
     function renderCartItems() {
-        var cartItemsList = document.getElementById('cartItemsList');
-        cartItemsList.innerHTML = ''; // Clear existing content
-        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-        cartItems.forEach(function(item, index) {
-            // Calculate the discounted amount
-            var discountedPrice;
-            if (item.discountType === "%") {
-                discountedPrice = item.srp - (item.srp * item.discount / 100);
-            } else {
-                discountedPrice = item.srp - item.discount;
-            }
-            // Handle the case when the discount is 0
-            if (item.discount === 0) {
-                discountedPrice = item.srp; // Set discounted price to default SRP
-            }
-            var totalAmount = discountedPrice * item.qty;
+    var cartItemsList = document.getElementById('cartItemsList');
+    cartItemsList.innerHTML = ''; // Clear existing content
+    var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+    var totalCartAmount = 0; // Initialize totalCartAmount
+    cartItems.forEach(function(item, index) {
+        // Calculate the discounted amount
+        var discountedPrice;
+        if (item.discountType === "%") {
+            discountedPrice = item.srp - (item.srp * item.discount / 100);
+        } else {
+            discountedPrice = item.srp - item.discount;
+        }
+        // Handle the case when the discount is 0
+        if (item.discount === 0) {
+            discountedPrice = item.srp; // Set discounted price to default SRP
+        }
+        var totalAmount = discountedPrice * item.qty;
+        totalCartAmount += totalAmount; // Add to totalCartAmount
 
-            // Set default values to 0 if null or undefined
-            var qtyValue = item.qty != null ? item.qty : 0;
-            var discountValue = item.discount != null ? item.discount : 0;
+        // Set default values to 0 if null or undefined
+        var qtyValue = item.qty != null ? item.qty : 0;
+        var discountValue = item.discount != null ? item.discount : 0;
 
-            var row = document.createElement('tr');
-            row.innerHTML = `
-                <td scope="row">${item.product_name}</td>
-                <td scope="row">${item.model}</td>
-                <td>${item.brand}</td>
-                <td> ₱ ${item.srp}</td>
-                <td>${item.unit}</td>
-                <td>
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty - 1})">-</button>
-                        <input type="number" class="form-control w-50 text-center" value="${qtyValue}" onchange="updateQuantity(${index}, this.value)">
-                        <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty + 1})">+</button>
-                    </div>
-                </td>
-                <td>
-                    <div class="input-group">
-                        <input type="text" class="form-control text-center w-25" value="${discountValue}" placeholder="" onchange="updateDiscount(${index}, this.value)">
-                        <select class="form-select" style="width: auto;" aria-label="Default select example" onchange="updateDiscountType(${index}, this.value)">
-                            <option ${item.discountType === "." ? "selected" : ""}>₱</option>
-                            <option ${item.discountType === "%" ? "selected" : ""}>%</option>
-                        </select>
-                    </div>
-                </td>
-                <td style="color: ${totalAmount <= 0 ? 'red' : 'inherit'};">${new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(totalAmount)}</td>
-                <td>
-                    <button class="btn btn-light rounded rounded-5 p-2" onclick="removeFromCart(${index})">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
-                        </svg>
-                    </button>
-                </td>
-            `;
-            cartItemsList.appendChild(row);
-        });
-    }
+        // Store totalAmount and discountType in localStorage
+        localStorage.setItem(`totalAmount_${index}`, totalAmount);
+        localStorage.setItem(`discountType_${index}`, item.discountType);
+
+        var row = document.createElement('tr');
+        row.innerHTML = `
+            
+        `;
+        cartItemsList.appendChild(row);
+    });
+
+    // Store totalCartAmount in localStorage
+    localStorage.setItem('totalCartAmount', totalCartAmount);
+}
+
+function renderCartItems() {
+    var cartItemsList = document.getElementById('cartItemsList');
+    cartItemsList.innerHTML = ''; // Clear existing content
+    var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+    var totalCartAmount = 0; // Initialize totalCartAmount
+    cartItems.forEach(function(item, index) {
+        // Calculate the discounted amount
+        var discountedPrice;
+        if (item.discountType === "%") {
+            discountedPrice = item.srp - (item.srp * item.discount / 100);
+        } else {
+            discountedPrice = item.srp - item.discount;
+        }
+        // Handle the case when the discount is 0
+        if (item.discount === 0) {
+            discountedPrice = item.srp; // Set discounted price to default SRP
+        }
+        var totalAmount = discountedPrice * item.qty;
+        totalCartAmount += totalAmount; // Add to totalCartAmount
+
+        // Set default values to 0 if null or undefined
+        var qtyValue = item.qty != null ? item.qty : 0;
+        var discountValue = item.discount != null ? item.discount : 0;
+
+        // Store totalAmount and discountType in localStorage
+        localStorage.setItem(`totalAmount_${index}`, totalAmount);
+        localStorage.setItem(`discountType_${index}`, item.discountType);
+
+        var row = document.createElement('tr');
+        row.innerHTML = `
+            <td scope="row">${item.product_name}</td>
+            <td scope="row">${item.model}</td>
+            <td>${item.brand}</td>
+            <td> ₱ ${item.srp}</td>
+            <td>${item.unit}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty - 1})">-</button>
+                    <input type="number" class="form-control w-50 text-center" value="${qtyValue}" onchange="updateQuantity(${index}, this.value)">
+                    <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty + 1})">+</button>
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <input type="text" class="form-control text-center w-25" value="${discountValue}" placeholder="" onchange="updateDiscount(${index}, this.value)">
+                    <select class="form-select" style="width: auto;" aria-label="Default select example" onchange="updateDiscountType(${index}, this.value)">
+                        <option ${item.discountType === "." ? "selected" : ""}>₱</option>
+                        <option ${item.discountType === "%" ? "selected" : ""}>%</option>
+                    </select>
+                </div>
+            </td>
+            <td style="color: ${totalAmount <= 0 ? 'red' : 'inherit'};">${new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(totalAmount)}</td>
+            <td>
+                <button class="btn btn-light rounded rounded-5 p-2" onclick="removeFromCart(${index})">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+                    </svg>
+                </button>
+            </td>
+        `;
+        cartItemsList.appendChild(row);
+    });
+
+    // Store totalCartAmount in localStorage
+    localStorage.setItem('totalCartAmount', totalCartAmount);
+}
+
+
 
     // Function to update the counter
     function updateCounter(count) {
@@ -440,4 +527,6 @@
     // Initialize the counter with the number of items in the cart
     var initialCartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
     updateCounter(initialCartItems.length);
+    
+   
 </script>
