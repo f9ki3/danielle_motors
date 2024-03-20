@@ -2,10 +2,10 @@
 session_start();
 $dr_id = $_SESSION['dr_id'];
 
-$servername = "156.67.222.117";
-$username = "u450836125_dmp_intern"; 
-$password = "DMPInterns123!"; 
-$dbname = "u450836125_dmp_office";
+$servername = "localhost";
+$username = "root"; 
+$password = ""; 
+$dbname = "updatd";
 
 
 // Create a new MySQLi instance
@@ -38,6 +38,7 @@ if($dr_content_res->num_rows > 0){
             $brand_id = $row['brand_id'];
             $category_id = $row['category_id'];
             echo '<tr>
+                <td><a class="me-1 mb-1" href="instagram.com"><span class="text-danger fas fa-trash-alt"></span></a></td>
                 <td>' . $qty . '</td>
                 <td>' . $product_name . ' ' . $product_model . ' ' . $brand_id . ' ' . $category_id . ' ' . $unit_id . '</td>
                 <td class="text-end">' . number_format((float)$orig_price, 2) . '</td>

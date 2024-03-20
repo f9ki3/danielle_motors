@@ -24,6 +24,7 @@
     $supplier_email = $row['supplier_email'];
     $supplier_address = $row['supplier_address'];
     $supplier_phone = $row['phone'];
+    $prepared_by = $row['prepared_by'];
  }
  ?>
  <div class="row ">
@@ -44,9 +45,10 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-12 table-responsive">
+    <div class="col-lg-12 table-responsive" style="min-height: 500px;">
         <table class="table table-sm">
             <thead>
+                <th></th>
                 <th>QTY</th>
                 <th>PRODUCT NAME</th>
                 <th>ORIG PRICE</th>
@@ -59,9 +61,33 @@
         </table>
     </div>
     <hr class="mt-5 mb-5">
-    <div class="col-lg-12">
+    <div class="col-lg-12 mb-5">
         <div id="dr_footer"></div>
     </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4 mt-9 text-center fs--1">
+        <p class="mb-0 mt-0"><u>John Cena</u></p>
+        <p class="mb-0 mt-0">Prepared by</p>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4 mt-9 text-center fs--1">
+        <p class="mb-0 mt-0"><u>John Cena</u></p>
+        <p class="mb-0 mt-0">Checked by</p>
+    </div>
     
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4 mt-9 text-center fs--1">
+        <p class="mb-0 mt-0"><u>John Cena</u></p>
+        <p class="mb-0 mt-0">Approved by</p>
+    </div>
+
+    <div class="col-lg-6 mt-9 col-md-6 col-sm-6 col-xs-6 col-xxs-6 mb-5 text-center fs--1">
+        <p class="mb-0 mt-0"><u>John Cena</u></p>
+        <p class="mb-0 mt-0">Delivered by</p>
+    </div>
+
+    <div class="col-lg-6 mt-9 col-md-6 col-sm-6 col-xs-6 col-xxs-6 mb-5 text-center fs--1">
+        <p class="mb-0 mt-0"><u>John Cena</u></p>
+        <p class="mb-0 mt-0">Received by</p>
+    </div>
 
  </div>

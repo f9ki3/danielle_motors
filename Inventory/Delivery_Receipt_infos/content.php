@@ -7,15 +7,20 @@
     <hr class="mb-5">
     <div class="mb-5">
         <div class="row">
-            <div class="col-lg-12 mb-3 text-end">
-                <div class="dropdown font-sans-serif d-inline-block">
-                    <button class="btn btn-phoenix-secondary dropdown-toggle" id="dropdownMenuButton" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Print</button><span class="caret"> </span>
+            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-6 col-xxs-6 mb-3">
+                <div class="btn-group dropend mt-2 text-start"><button class="btn btn-primary" type="button">Mode</button>
+                    <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
+                    <div class="dropdown-menu" role="tablist">
+                        <a class="dropdown-item active" id="home-tab" data-bs-toggle="tab" href="#tab-home" role="tab" aria-controls="tab-home" aria-selected="true">Enter Product</a>
+                        <a class="dropdown-item" id="profile-tab" data-bs-toggle="tab" href="#tab-profile" role="tab" aria-controls="tab-profile" aria-selected="false">Enter New Product</a>
+                    </div>
+                </div>
+
+                <div class="dropdown font-sans-serif d-inline-block  text-end">
+                    <button class="btn btn-phoenix-secondary dropdown-toggle mt-2" id="dropdownMenuButton" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Print</button><span class="caret"> </span>
                     <div class="dropdown-menu dropdown-menu-end py-0" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">Print Delivery Receipt</a>
                         <a class="dropdown-item" href="#">Print Barcodes</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
                     </div>
                 </div>
             </div>
@@ -23,7 +28,7 @@
   
             <!-- ajax submit -->
             <div class="col-lg-4 tab-content mt-5">
-                <div class="card">
+                <div class="card tab-pane fade show active" id="tab-home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="card-body" id="product_select">
                         <h3 class="card-title">Enter Product Details</h3>
                         <hr>
@@ -94,6 +99,176 @@
                                         <input class="form-control" id="total_qty" name="total_qty" type="number" min="1" placeholder="" required/>
                                         <label for="floatingInput">Total qty</label>
                                     </div>
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                    <input class="form-control datetimepicker" id="expiration_date" name="expiration_date" type="text" placeholder="Expiration date(if applicable)" data-options='{"disableMobile":true,"dateFormat":"d/m/Y"}' />
+                                </div>
+                                <hr class="mb-2">
+                                <h5 class="mb-3 card-title">Where to store</h5>
+                                <div class="row">
+                                    <div class="col-lg-6 mb-2">
+                                        <div class="form-floating">
+                                            <select name="rack[]"  id="rack[]" class="form-select mb-2" required>
+                                                <option value=""></option>
+                                                <?php 
+                                                $defwareloc_sql = "SELECT id, location_name FROM ware_location WHERE status = '1'";
+                                                $defwareloc_res = $conn->query($defwareloc_sql);
+                                                if($defwareloc_res->num_rows>0){
+                                                    while($row=$defwareloc_res->fetch_assoc()){
+                                                        $defwr_id = $row['id'];
+                                                        $defloc_name = $row['location_name'];
+                                                ?>
+                                                <option value="<?php echo $defwr_id?>"><?php echo $defloc_name; ?></option>
+                                                <?php 
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
+                                            <label for="rack[]">Location</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb-2">
+                                        <div class="form-floating">
+                                            <input type="number" class="form-control" name="qty[]" id="qty[]" min="1">
+                                            <label for="">Quantity</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="dynamicLocations" class="row">
+                                
+                                <!-- Dynamic locations will be added here -->
+                                </div>
+
+                            </div>
+                        
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" id="new_location" class="btn btn-primary"><span class="fas fa-plus"></span> location</button>
+                        <button type="button" id="submitForm" class="btn btn-success">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- --second tab -->
+                <div class="card tab-pane fade" id="tab-profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="card-body" id="product_select">
+                        <h3 class="card-title">Enter New Product Details</h3>
+                        <hr>
+                        <form id="products_infos">
+                            <div class="row">
+                                <div class="col-lg-12 mb-2">
+                                        <label for="">Upload Product Image</label>
+                                        <input type="file" name="" id="" class="form-control">
+                                        
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text">
+                                        <label for="">Product Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text">
+                                        <label for="">Product Code</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text">
+                                        <label for="">Supplier Code</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text">
+                                        <label for="">Barcode</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-12 mb-2">
+                                        <select class="form-select" id="organizerSingle" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
+                                            <option value="">Select category</option>
+                                            <?php
+                                            $category_sql = "SELECT id, category_name FROM category WHERE status = '1'";
+                                            $category_res = $conn->query($category_sql);
+                                            if($category_res->num_rows>0){
+                                                while($row=$category_res->fetch_assoc()){
+                                                    echo '<option value="' . $row['id'] . '">' . $row['category_name'] . '</option>';
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                        <select class="form-select" id="organizerSingle" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
+                                            <option value="">Select brand</option>
+                                            <?php
+                                            $brand_sql = "SELECT id, brand_name FROM brand WHERE status='1'";
+                                            $brand_res = $conn->query($brand_sql);
+                                            if($brand_res->num_rows>0){
+                                                while($row=$brand_res->fetch_assoc()){
+                                                    echo '<option value="' . $row['id'] . '">' . $row['brand_name'] . '</option>';
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                        <select class="form-select" id="organizerSingle" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
+                                            <option value="">Select Unit</option>
+                                            <?php
+                                            $units_sql = "SELECT id, name FROM unit WHERE active='1'";
+                                            $units_res = $conn->query($units_sql);
+                                            if($units_res->num_rows>0){
+                                                while($row=$units_res->fetch_assoc()){
+                                                    echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                    <select class="form-select" id="organizerMultiple" data-choices="data-choices" multiple="multiple" data-options='{"removeItemButton":true,"placeholder":true}'>
+                                        <option value="">Select Models</option>
+                                        <?php
+                                            $models_sql = "SELECT id, model_name FROM model WHERE status='1'";
+                                            $models_res = $conn->query($models_sql);
+                                            if($models_res->num_rows>0){
+                                                while($row=$models_res->fetch_assoc()){
+                                                    echo '<option value="' . $row['id'] . '">' . $row['model_name'] . '</option>';
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-floating">
+                                        <input class="form-control" id="original_price" name="original_price" type="text" placeholder="" required/>
+                                        <label for="floatingInput">Original Price</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-floating">
+                                        <input class="form-control" id="price" name="price" type="text" placeholder="" required/>
+                                        <label for="floatingInput">Price</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-floating">
+                                        <input class="form-control" id="discount" name="discount" type="number" min="1" max="100" placeholder="" required/>
+                                        <label for="floatingInput">Discount ( % )</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-floating">
+                                        <input class="form-control" id="total_qty" name="total_qty" type="number" min="1" placeholder="" required/>
+                                        <label for="floatingInput">Total qty</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                    <input class="form-control datetimepicker" id="expiration_date" name="expiration_date" type="text" placeholder="Expiration date(if applicable)" data-options='{"disableMobile":true,"dateFormat":"d/m/Y"}' />
                                 </div>
                                 <hr class="mb-2">
                                 <h5 class="mb-3 card-title">Where to store</h5>

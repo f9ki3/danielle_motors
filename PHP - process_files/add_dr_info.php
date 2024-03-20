@@ -10,6 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $discount = $_POST["discount"];
     $total_qty = $_POST["total_qty"];
     $total = $price * $total_qty;
+    if(isset($_POST['expiration_date'])){
+        $expiration_date = $_POST['expiration_date'];
+    }
 
     // Validate and sanitize input (e.g., $dr_id)
     $dr_id = isset($_GET['id']) ? intval($_GET['id']) : null; // Ensure it's an integer
@@ -41,4 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Send JSON response
 header('Content-Type: application/json');
 echo json_encode($response);
+$conn->close();
+exit();
 ?>
