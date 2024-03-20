@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 </div>
-                <div style="height: 75vh;">
+                <div style="height: auto;">
                     <hr>
                     <div style="height: 38vh; overflow: auto">
                         <table class="table">
@@ -89,36 +89,34 @@
                                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
                                     <select class="form-select" style="width: 32%" aria-label="Default select example">
                                         <option selected>Verified by</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option value="1">Fyke Lleva</option>
+                                        <option value="2">Alexander Inciong</option>
+                                        <option value="3">Lois Rivera</option>
                                     </select>
                                     <select class="form-select" style="width: 32%" aria-label="Default select example">
-                                        <option selected>Inspected by</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option selected>Verified by</option>
+                                        <option value="1">Fyke Lleva</option>
+                                        <option value="2">Alexander Inciong</option>
+                                        <option value="3">Lois Rivera</option>
                                     </select>
                                     <select class="form-select" style="width: 32%" aria-label="Default select example">
-                                        <option selected>Recieved by</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option selected>Verified by</option>
+                                        <option value="1">Fyke Lleva</option>
+                                        <option value="2">Alexander Inciong</option>
+                                        <option value="3">Lois Rivera</option>
                                     </select>
                                 </div>
 
                                 <div style="display: flex; flex-direction: row; justify-content: space-between"  class="mb-3">
                                     <select class="form-select" aria-label="Default select example" style="width: 49%">
                                         <option selected>Payment Method</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option value="1">Cash</option>
+                                        <option value="2">G-Cash</option>
                                     </select>
                                     <select class="form-select"  style="width: 49%" aria-label="Default select example">
                                         <option selected>Transaction Type</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option value="1">Walk-in</option>
+                                        <option value="2">Delivery</option>
                                     </select>
                                 </div>
 
@@ -185,6 +183,69 @@
 </body>
 </html>
 <script>
+     // Function to calculate subtotal based on local storage including discounted prices
+    function calculateSubtotal() {
+        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+        var subtotal = 0;
+        cartItems.forEach(function(item) {
+            // Calculate the discounted price
+            var discountedPrice;
+            if (item.discountType === "%") {
+                discountedPrice = item.srp - (item.srp * item.discount / 100);
+            } else {
+                discountedPrice = item.srp - item.discount;
+            }
+            // Handle the case when the discount is 0
+            if (item.discount === 0) {
+                discountedPrice = item.srp; // Set discounted price to default SRP
+            }
+            // Add discounted price multiplied by quantity to subtotal
+            subtotal += discountedPrice * item.qty;
+        });
+        return subtotal;
+    }
+
+
+    // Function to calculate tax
+    function calculateTax(subtotal) {
+        return Math.max(0.12 * subtotal, 0);
+    }
+
+    // Function to calculate discount
+    function calculateDiscount(subtotal, discountPercentage) {
+        return Math.max(subtotal * (discountPercentage / 100), 0);
+    }
+
+    // Function to calculate total
+    function calculateTotal(subtotal, tax, discount) {
+        return subtotal - discount;
+    }
+
+    // Function to update UI
+    function updateUI() {
+        var subtotal = calculateSubtotal();
+        var tax = calculateTax(subtotal);
+        var discountPercentage = parseFloat(document.getElementById('subtotal_discount_percentage').value) || 0;
+        var discount = calculateDiscount(subtotal, discountPercentage);
+        var total = calculateTotal(subtotal, tax, discount);
+        var amountPayment = parseFloat(document.getElementById('amount_payment').value) || 0;
+        var change = Math.max(amountPayment - total, 0);
+
+        document.getElementById('subtotal').textContent = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(subtotal);
+        document.getElementById('tax').textContent = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(tax);
+        document.getElementById('subtotal_discount').textContent = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(discount);
+        document.getElementById('total').textContent = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(total);
+        document.getElementById('payment').textContent = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(amountPayment);
+        document.getElementById('change').textContent = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(change);
+    }
+
+    // Add event listeners to input fields
+    document.getElementById('subtotal_discount_percentage').addEventListener('input', updateUI);
+    document.getElementById('amount_payment').addEventListener('input', updateUI);
+
+    // Initialize UI
+    updateUI();
+    
     // Get the current date in the format "YYYY-MM-DD"
     var today = new Date().toISOString().split('T')[0];
 
@@ -198,6 +259,7 @@
         sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
         renderCartItems(); // Re-render the cart items
         updateCounter(cartItems.length); // Update the counter
+        updateUI();
         alertify.set('notifier', 'position', 'bottom-left');
         alertify.error('Remove Item');
     }
@@ -210,12 +272,14 @@
             cartItems[index].qty = newQuantity; // Update quantity
             sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
             renderCartItems(); // Re-render the cart items
+            updateUI();
         } else {
             // If newQuantity is empty, set it to 1
             newQuantity = 1;
             cartItems[index].qty = newQuantity;
             sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
             renderCartItems(); // Re-render the cart items
+            updateUI();
         }
     }
 
@@ -248,6 +312,7 @@
         }
         sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
         renderCartItems(); // Re-render the cart items
+        updateUI();
     }
 
     // Function to render cart items in the table
