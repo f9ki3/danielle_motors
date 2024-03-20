@@ -150,7 +150,7 @@
                                 <hr>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Payment</h5>
-                                    <h5 class="fw-bolder" id="payment">PHP 100.00</h5>
+                                    <h5 class="fw-bolder" id="payment"></h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Change</h5>
@@ -158,7 +158,7 @@
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <button style="width: 49%" class="btn border-primary text-primary" onclick="resetCart()">Reset</button>
-                                    <button style="width: 49%" class="btn btn-primary" onclick="purchase()">Purchase</button>
+                                    <button style="width: 49%" id="purchase_btn" class="btn btn-primary" disabled onclick="purchase()">Purchase</button>
                                 </div>
                             </div>
                         </div>
@@ -183,6 +183,62 @@
 </body>
 </html>
 <script>
+    const purchaseBtn = document.getElementById('purchase_btn');
+    const inputs = document.querySelectorAll('input[type="text"], select');
+
+    function checkInputs() {
+        let allFilled = true;
+        inputs.forEach(input => {
+            if (!input.value || input.value === 'Select') {
+                allFilled = false;
+            }
+        });
+
+        if (allFilled) {
+            purchaseBtn.disabled = false;
+        } else {
+            purchaseBtn.disabled = true;
+        }
+    }
+
+    inputs.forEach(input => {
+        input.addEventListener('change', checkInputs);
+    });
+
+    // Add event listener for real-time validation of subtotal_discount_percentage
+    document.getElementById('subtotal_discount_percentage').addEventListener('input', function() {
+        let value = this.value;
+        if (!/^\d{0,3}$/.test(value) || isNaN(parseInt(value)) || parseInt(value) < 0 || parseInt(value) > 100) {
+            this.style.border = '1px solid red';
+            if (parseInt(value) < 0 || parseInt(value) > 100 || isNaN(parseInt(value))) {
+                this.value = ''; // Set value as empty
+            }
+        } else {
+            this.style.border = ''; // Reset color
+        }
+    });
+
+    document.getElementById('amount_payment').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        const value = parseFloat(this.value);
+        var tsubtotal = calculateSubtotal();
+        var ttax = calculateTax(tsubtotal);
+        var tdiscountPercentage = parseFloat(document.getElementById('subtotal_discount_percentage').value) || 0;
+        var tdiscount = calculateDiscount(tsubtotal, tdiscountPercentage);
+        let totalValue = calculateTotal(tsubtotal, ttax, tdiscount);
+        console.log(totalValue);
+
+        // Additional condition added to check if the entered value is greater than or equal to the total value
+        if (isNaN(value) || value < 1 || value > 100000000 || value < totalValue) {
+            this.style.border = '1px solid red';
+            this.value = ''; // Empty the field
+        } else {
+            this.style.border = ''; // Reset color
+        }
+    }
+});
+
+
     function purchase() {
     // Collect necessary data
     var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
@@ -203,7 +259,7 @@
     var transaction_received = document.getElementById('transaction_received').value || '';
     var transaction_payment = document.getElementById('transaction_payment').value || '';
     var transaction_type = document.getElementById('transaction_type').value || '';
-
+    
     // Log transaction details and financial details
     console.log("Cart Items:", cartItems);
     console.log("Transaction Customer Name:", transaction_customer_name);
