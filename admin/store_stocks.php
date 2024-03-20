@@ -1,7 +1,10 @@
 
 <?php include 'session.php'?>
 <html lang="en">
-<?php include 'header.php'?>
+    <head>
+    <link rel="stylesheet" type="text/css" href="datatable.css">
+    <?php include 'header.php'?>
+    </head>
 <body>
 <div style="display: flex; flex-direction: row">
 <?php
@@ -9,7 +12,6 @@ include 'navigation_bar.php';
 include '../config/config.php';
 
 ?>
-<link href="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.css" rel="stylesheet">
 <!-- start inventory-->
 
 <div style="width: 100%" class="content p-3">
@@ -43,7 +45,7 @@ include '../config/config.php';
 
             
 <div>
-    <table id="tabledataMaterial" class="table table-bordered">
+    <table id="tabledataMaterial" class="table table-bordered stripe hover order-column row-border ">
         <thead>
                         <tr>
                             <td scope="col" width="15%">Material Invoice No.</td>
@@ -72,8 +74,6 @@ include '../config/config.php';
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body " style="display: flex; flex-direction: column; align-items: center; justify-content: center">
-
-
 <input type="date" class="form-control mb-2" id="materialDate">
 <input type="text" class="form-control mb-2" placeholder="Material Invoice No." id="materialInvoiceNo">
 <input type="text" class="form-control mb-2" placeholder="Cashier Name" id="cashierName" pattern="[A-Za-z ]{1,}" required>
@@ -108,6 +108,7 @@ include '../config/config.php';
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
+
 
 <script type="text/javascript">
 $(document).ready(function () {
@@ -207,7 +208,6 @@ $('#editMaterialTransfer').click(function () {
                 },
                 success: function (response) {    
                     console.log(response);
-
                     $('#edit_stocks').modal('hide');
                 },
                 error: function (xhr, status, error) {
@@ -326,7 +326,8 @@ $('#tabledataMaterial tbody').on('click', '.delete', function () {
              url: '../php/fetch_admin_data.php', // Your server-side script to fetch admin data
              method: 'GET',
              dataType: 'json',
-             success: function (data) {    
+             success: function (data) {  
+                swal("File Save", "Record has been saved", "success");   
                  var receivedBy = fetchAdminData(receivedById, data);
                  var inspectedBy = fetchAdminData(inspectedById, data);
                  var verifiedBy = fetchAdminData(verifiedById, data);
@@ -346,6 +347,7 @@ $('#tabledataMaterial tbody').on('click', '.delete', function () {
                      success: function (response) {    
                          console.log(response);
                          $('#add_stocks').modal('hide');
+                         window.location.href = "store_stocks_add.php";
                      },
                      error: function (xhr, status, error) {
                          console.error('Error saving data:', error);
