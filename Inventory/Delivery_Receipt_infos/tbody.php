@@ -1,15 +1,15 @@
 <?php
 session_start();
 $dr_id = $_SESSION['dr_id'];
-
-$servername = "localhost";
-$username = "root"; 
-$password = ""; 
-$dbname = "updatd";
+include_once "../../database/database.php";
+// $servername = "localhost";
+// $username = "root"; 
+// $password = ""; 
+// $dbname = "hostinger";
 
 
 // Create a new MySQLi instance
-$conn = new mysqli($servername, $username, $password, $dbname);
+// $conn = new mysqli($servername, $username, $password, $dbname);
 
 
 $dr_content_sql = "SELECT * FROM delivery_receipt_content WHERE delivery_receipt_id ='$dr_id'";
@@ -38,12 +38,12 @@ if($dr_content_res->num_rows > 0){
             $brand_id = $row['brand_id'];
             $category_id = $row['category_id'];
             echo '<tr>
-                <td><a class="me-1 mb-1" href="instagram.com"><span class="text-danger fas fa-trash-alt"></span></a></td>
+                <td class="ps-3"><a class="me-1 mb-1" href="instagram.com"><span class="text-danger fas fa-trash-alt"></span></a></td>
                 <td>' . $qty . '</td>
                 <td>' . $product_name . ' ' . $product_model . ' ' . $brand_id . ' ' . $category_id . ' ' . $unit_id . '</td>
                 <td class="text-end">' . number_format((float)$orig_price, 2) . '</td>
                 <td class="text-end">' . number_format((float)$price, 2) . '</td>
-                <td> % ' . $discount . '</td>
+                <td class="text-end"> % ' . $discount . '</td>
                 <td class="text-end">' . number_format((float)$total, 2) . '</td>
             </tr>';
         } 

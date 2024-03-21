@@ -95,9 +95,70 @@ date_default_timezone_set('Asia/Manila');
                     }
                 });
             });
+            $('#submitForm_2').click(function(f){
+                f.preventDefault(); // Prevent form submission and page reload
+                            
+                // Check if any required field is empty
+                var requiredFields_2 = $('#products_infos_2').find(':input[required]');
+                var emptyFields_2 = requiredFields_2.filter(function() {
+                    return !$(this).val();
+                });
+
+                // If there are empty required fields, show toast and stop form submission
+                if (emptyFields_2.length > 0) {
+                    var errorToast_2 = $('#errorToast').clone();
+                    $('.toast-container').append(errorToast_2);
+                    var bsToast_2 = new bootstrap.Toast(errorToast_2[0]);
+                    bsToast_2.show();
+                    return;
+                }
+                            
+                // Create FormData object
+                var formData_2 = new FormData($('#products_infos_2')[0]);
+
+                // Send AJAX request
+                $.ajax({
+                    type: 'POST',
+                    url: '../../PHP - process_files/add_dr_info.php?id=<?php echo $_SESSION['dr_id']; ?>',
+                    data: formData_2,
+                    dataType: 'json', // Expect JSON response from server
+                    processData: false, // Prevent jQuery from processing the data
+                    contentType: false, // Prevent jQuery from setting contentType
+                    success: function(response_2){
+                        if (response_2.success) {
+                            // Show success toast
+                            var successToast_2 = $('#successToast').clone();
+                            successToast_2.find('.toast-body').text("Data successfully added!");
+                            $('.toast-container').append(successToast_2);
+                            var bsToast_2 = new bootstrap.Toast(successToast_2[0]);
+                            bsToast_2.show();
+
+                            // Reset form fields
+                            $('#products_infos_2 :input').val('');
+                        } else if (response_2.error) {
+                            // Show error toast
+                            var errorToast_2 = $('#errorToast2').clone();
+                            errorToast_2.find('.toast-body').text(response_2.error);
+                            $('.toast-container').append(errorToast_2);
+                            var bsToast_2 = new bootstrap.Toast(errorToast_2[0]);
+                            bsToast_2.show();
+                        } else {
+                            // Handle unexpected response
+                            alert("Unexpected response from server");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle AJAX errors
+                        console.error(xhr.responseText);
+                        alert("An error occurred while processing the request.");
+                    }
+                });
+            });
+
         });
 
     </script>
+    
 
 
 
