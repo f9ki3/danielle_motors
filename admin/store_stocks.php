@@ -35,7 +35,7 @@ include '../config/config.php';
                     </div>
 
                     <div>
-                        <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#add_stocks">+ Material Transfer</button>
+                    <button id="addStocksBtn" class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#add_stocks">+ Add Stocks</button>
                         <a href="store_stocks" class="btn btn-primary border btn-sm rounded" >Stocks</a>
                         <a href="store_product_list" class="btn border btn-sm rounded" >Product</a>
                     </div>
@@ -404,6 +404,10 @@ function fetchAdminData(adminId, adminData) {
      // Fetch data for verifiedBy dropdown
      fetchAdminData('verifiedBy', 'Verified By');
  });
+
+document.getElementById('addStocksBtn').addEventListener('click', function() {
+    window.location.href = 'store_stocks_add.php';
+});
 
  $('.border.btn-sm.rounded').click(function() {
     $('#saveMaterialTransfer').show();
