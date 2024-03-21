@@ -10,6 +10,8 @@ $(document).ready(function(){
         var $password = $("#password").val();
 
         $('.error').hide();
+        $('#login_btn').hide();
+        $('#loading').show(); 
 
         $.ajax({
             type: "POST",
@@ -31,6 +33,7 @@ $(document).ready(function(){
                     setTimeout(function() {
                         $('#loading').hide();
                         $('.error').show();
+                        $('#login_btn').show();
                     }, 3000); // Show loading for 3 seconds before hiding
                 }
 
