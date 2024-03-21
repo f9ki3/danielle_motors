@@ -80,13 +80,13 @@
                                 <div style="display: flex; flex-direction: row; justify-content: space-between" >
                                 <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="receivedBy">
    
-                                </select>
+                                    </select>
                                 <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="inspectedBy">
    
-                                </select>
+                                    </select>
                                 <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="verifiedBy">
      
-                                </select>
+                                    </select>
                                 </div>
 
                                 
@@ -136,7 +136,7 @@
 </html>
 
 <script type="text/javascript">
-     $(document).ready(function () {
+$(document).ready(function () {
   
   function fetchAdminData(selectElementId, role) {
       $.ajax({
