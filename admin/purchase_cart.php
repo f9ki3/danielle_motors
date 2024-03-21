@@ -87,23 +87,14 @@
                                 <input type="text" id="transaction_address" class="form-control mb-2" placeholder="Address">
 
                                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
-                                    <select id="transaction_verified" class="form-select" style="width: 32%" aria-label="Default select example">
-                                        <option selected>Verified by</option>
-                                        <option value="Fyke Lleva">Fyke Lleva</option>
-                                        <option value="Alexander Inciong">Alexander Inciong</option>
-                                        <option value="Lois Rivera">Lois Rivera</option>
+                                <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="receivedBy">
+   
                                     </select>
-                                    <select id="transaction_inspected" class="form-select" style="width: 32%" aria-label="Default select example">
-                                        <option selected>Inspected by</option>
-                                        <option value="Fyke Lleva">Fyke Lleva</option>
-                                        <option value="Alexander Inciong">Alexander Inciong</option>
-                                        <option value="Lois Rivera">Lois Rivera</option>
+                                <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="inspectedBy">
+
                                     </select>
-                                    <select id="transaction_received" class="form-select" style="width: 32%" aria-label="Default select example">
-                                        <option selected>Received by</option>
-                                        <option value="Fyke Lleva">Fyke Lleva</option>
-                                        <option value="Alexander Inciong">Alexander Inciong</option>
-                                        <option value="Lois Rivera">Lois Rivera</option>
+                                <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="verifiedBy">
+
                                     </select>
                                 </div>
 
@@ -601,6 +592,40 @@ function renderCartItems() {
     // Initialize the counter with the number of items in the cart
     var initialCartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
     updateCounter(initialCartItems.length);
-    
-   
+
+//alex
+$(document).ready(function () {
+  
+  function fetchAdminData(selectElementId, role) {
+      $.ajax({
+          url: '../php/fetch_admin_data.php', // Your server-side script to fetch admin data
+          method: 'GET',
+          data: { role: role }, // Optional: send role if needed
+          dataType: 'json',
+          success: function (data) {
+              // Populate the dropdown options
+              var selectElement = $('#' + selectElementId);
+              selectElement.empty();
+              selectElement.append('<option selected>Select ' + role + '</option>');
+              $.each(data, function (index, admin) {
+                  selectElement.append('<option value="' + admin.id + '">' + admin.fname + ' ' + admin.lname + '</option>');
+              });
+          },
+          error: function (xhr, status, error) {
+              console.error('Error fetching admin data:', error);
+          }
+      });
+  }
+
+  // Fetch data for receivedBy dropdown
+  
+  fetchAdminData('receivedBy', 'Recieved By');
+  
+  // Fetch data for inspectedBy dropdown
+  fetchAdminData('inspectedBy', 'Inspected by');
+
+  // Fetch data for verifiedBy dropdown
+  fetchAdminData('verifiedBy', 'Verified By');
+});
+
 </script>

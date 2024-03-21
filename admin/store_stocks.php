@@ -164,7 +164,7 @@ $(document).ready(function () {
     $('#verifiedBy').val(rowData[5]); // Assuming verified by is in the seventh column
 
     // Open the modal
-    $('#add_stocks').modal('show');
+    // $('#add_stocks').modal('show');
 });
 
 // Handle click event for "Edit" button inside the modal
