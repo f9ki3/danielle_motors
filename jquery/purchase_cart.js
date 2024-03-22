@@ -1,5 +1,6 @@
 function purchase() {
-    document.getElementById("purchase_btn").setAttribute("disabled", "disabled");
+    document.getElementById("purchase_btn").style.display = "none";
+    document.getElementById("loading").style.display = "block";
     // Collect necessary data
     var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
     var subtotal = calculateSubtotal();

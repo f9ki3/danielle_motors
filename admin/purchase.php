@@ -53,25 +53,28 @@
                     </div>
                 </div>
                 </div>
-                <div style="height: 75vh; overflow: auto;">
-                    <table class="mt-2 table" id="productTable">
-                        <thead class="sticky-top">
-                            <tr>
-                            <th scope="col" width="5%">CODE.</th>
-                            <th scope="col" width="15%">Product Name</th>
-                            <th scope="col" width="5%">IMG</th>
-                            <th scope="col" width="10%"> Model</th> 
-                            <th scope="col" width="10%">Brand</th>
-                            <th scope="col" width="5%">SRP</th>
-                            <th scope="col" width="5%">Unit</th>
-                            <th scope="col" width="5%" class="text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody >
-                        <?php include '../php/purchase_list.php'?>
-                        
-                        </tbody>
-                    </table>
+                <div style="height: 75vh;">
+                    <div style="overflow: auto; height: 710px;">
+                        <table class="mt-2 table" id="productTable">
+                            <thead class="sticky-top">
+                                <tr>
+                                <th scope="col" width="5%">CODE.</th>
+                                <th scope="col" width="15%">Product Name</th>
+                                <th scope="col" width="5%">IMG</th>
+                                <th scope="col" width="10%"> Model</th> 
+                                <th scope="col" width="10%">Brand</th>
+                                <th scope="col" width="5%">SRP</th>
+                                <th scope="col" width="5%">Unit</th>
+                                <th scope="col" width="5%" class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php include '../php/purchase_list.php'?>
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                    
                 </div>
             </div>
             

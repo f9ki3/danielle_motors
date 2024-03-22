@@ -58,15 +58,8 @@ if ($conn->query($sql) === TRUE) {
         $sql_cart = "INSERT INTO purchase_cart (ProductID, TransactionID, ProductName, Brand, Model, Quantity, Unit, SRP, Discount, DiscountType, TotalAmount) 
                      VALUES ('$product_id', '$transaction_id', '$product_name', '$brand', '$model', '$quantity', '$unit', '$srp', '$discount', '$discount_type', '$total_amount')";
         $conn->query($sql_cart);
-
-        // Insert data into purchase_pos table
-        $sql_pos = "INSERT INTO purchase_pos (TransactionID, ProductID) 
-                    VALUES ('$transaction_id', '$product_id')";
-        $conn->query($sql_pos);
     }
-    // echo "Transaction recorded successfully!";
-    echo ($transaction_id);
-    
+    echo $transaction_id; // Echoing the transaction ID as response
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
