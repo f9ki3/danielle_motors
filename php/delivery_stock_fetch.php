@@ -25,7 +25,7 @@ while ($row = mysqli_fetch_assoc($query)) {
     $sub_array[] = $row['markup'];
 
     // Action buttons
-    $sub_array[] = '<button class="btn btn-sm border view" id="' . $row['product_id'] . '">View</button>
+    $sub_array[] = '<button class="btn btn-sm border view" id="' . $row['id'] . '"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/></svg></button>
                     <button class="btn btn-sm border delete" data-id="' . $row['product_id'] . '">Delete</button>';
 
     $data[] = $sub_array;
