@@ -1,117 +1,100 @@
-const purchaseBtn = document.getElementById('purchase_btn');
-const inputs = document.querySelectorAll('input[type="text"], select');
+function purchase() {
+    document.getElementById("purchase_btn").setAttribute("disabled", "disabled");
+    // Collect necessary data
+    var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+    var subtotal = calculateSubtotal();
+    var tax = calculateTax(subtotal);
+    var discountPercentage = parseFloat(document.getElementById('subtotal_discount_percentage').value) || 0;
+    var discount = calculateDiscount(subtotal, discountPercentage);
+    var total = calculateTotal(subtotal, tax, discount);
+    var amountPayment = parseFloat(document.getElementById('amount_payment').value) || 0;
+    var change = Math.max(amountPayment - total, 0);
 
-function checkInputs() {
-    let allFilled = true;
-    inputs.forEach(input => {
-        if (!input.value || input.value === 'Select') {
-            allFilled = false;
+    // Add totalAmount, quantity, discountType to each cartItem
+    cartItems.forEach(function(item, index) {
+        var discountedPrice;
+        if (item.discountType === "%") {
+            discountedPrice = item.srp - (item.srp * item.discount / 100);
+        } else if (item.discountType === "₱") { // Handle fixed discount amount
+            discountedPrice = item.srp - item.discount;
+        } else {
+            discountedPrice = item.srp; // Default to full price if discount type is unknown
+        }
+        item.totalAmount = discountedPrice * item.qty;
+        item.quantity = item.qty; // Add quantity
+        item.discountType = item.discountType; // Add discountType
+        item.totalAmount = item.totalAmount; // Add totalAmount
+    });
+
+    // Collect transaction details
+    var transaction_customer_name = document.getElementById('transaction_customer_name').value || '';
+    var transaction_date = new Date().toISOString(); // Assuming transaction date is current date
+    var transaction_address = document.getElementById('transaction_address').value || '';
+    var transaction_verified = document.getElementById('transaction_verified').value || '';
+    var transaction_inspected = document.getElementById('transaction_inspected').value || '';
+    var transaction_received = document.getElementById('transaction_received').value || '';
+    var transaction_payment = document.getElementById('transaction_payment').value || '';
+    var transaction_type = document.getElementById('transaction_type').value || '';
+
+    // Prepare data for AJAX request
+    var data = {
+        cartItems: cartItems,
+        transaction_customer_name: transaction_customer_name,
+        transaction_date: transaction_date,
+        transaction_address: transaction_address,
+        transaction_verified: transaction_verified,
+        transaction_inspected: transaction_inspected,
+        transaction_received: transaction_received,
+        transaction_payment: transaction_payment,
+        transaction_type: transaction_type,
+        subtotal: subtotal,
+        tax: tax,
+        discount: discount,
+        total: total,
+        amountPayment: amountPayment,
+        change: change
+    };
+
+    // Log cartItems and data
+    console.log("Cart Items:", cartItems);
+    console.log("Data to be sent:", data);
+
+    // Send data to PHP script using AJAX
+    $.ajax({
+        type: "POST",
+        url: "../php/purchase_transaction.php",
+        data: data,
+        success: function(transaction_code) {
+            console.log(transaction_code);
+            // Determine the URL to redirect based on transaction type
+            var redirectURL;
+            if (transaction_type.toLowerCase() === 'walk-in') {
+                redirectURL = 'purchase_receipt';
+            } else if (transaction_type.toLowerCase() === 'delivery') {
+                redirectURL = 'purchase_delivery_receipt';
+            } else {
+                // Default to purchase_receipt.php if transaction type is unknown
+                redirectURL = 'purchase_receipt.php';
+            }
+
+            // Append transaction code as a query parameter to the redirect URL
+            redirectURL += '?transaction_code=' + encodeURIComponent(transaction_code);
+
+            // Redirect the user after a delay of 2 seconds
+            setTimeout(function() {
+                window.location.href = redirectURL;
+            }, 2000); // 2000 milliseconds = 2 seconds
+        },
+        error: function(xhr, status, error) {
+            console.error("Error:", error);
+            // Handle error gracefully
         }
     });
 
-    if (allFilled) {
-        purchaseBtn.disabled = false;
-    } else {
-        purchaseBtn.disabled = true;
-    }
-}
-
-inputs.forEach(input => {
-    input.addEventListener('change', checkInputs);
-});
-
-// Add event listener for real-time validation of subtotal_discount_percentage
-document.getElementById('subtotal_discount_percentage').addEventListener('input', function() {
-    let value = this.value;
-    if (!value || !/^\d{0,3}$/.test(value) || isNaN(parseInt(value)) || parseInt(value) < 0 || parseInt(value) > 100) {
-        this.style.border = '1px solid red';
-        if (!value || parseInt(value) < 0 || parseInt(value) > 100 || isNaN(parseInt(value))) {
-            this.value = ''; // Set value as empty
-        }
-    } else {
-        this.style.border = ''; // Reset color
-    }
-});
-
-
-document.getElementById('amount_payment').addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        calculateTotalValue();
-    }
-});
-
-// Adding event listener to detect click outside the input field
-document.addEventListener('click', function(event) {
-    var paymentInput = document.getElementById('amount_payment');
-    var discountInput = document.getElementById('subtotal_discount_percentage');
-    if (event.target !== paymentInput && event.target !== discountInput) {
-        calculateTotalValue();
-    }
-});
-
-function calculateTotalValue() {
-    const value = parseFloat(document.getElementById('amount_payment').value);
-    var tsubtotal = calculateSubtotal();
-    var ttax = calculateTax(tsubtotal);
-    var tdiscountPercentage = parseFloat(document.getElementById('subtotal_discount_percentage').value) || 0;
-    var tdiscount = calculateDiscount(tsubtotal, tdiscountPercentage);
-    let totalValue = calculateTotal(tsubtotal, ttax, tdiscount);
-    console.log(totalValue);
-
-    // Additional condition added to check if the entered value is greater than or equal to the total value
-    if (isNaN(value) || value < 1 || value > 100000000 || value < totalValue) {
-        document.getElementById('amount_payment').style.border = '1px solid red';
-        document.getElementById('amount_payment').value = ''; // Empty the field
-    } else {
-        document.getElementById('amount_payment').style.border = ''; // Reset color
-    }
-}
-
-
-
-function purchase() {
-// Collect necessary data
-var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-var subtotal = calculateSubtotal();
-var tax = calculateTax(subtotal);
-var discountPercentage = parseFloat(document.getElementById('subtotal_discount_percentage').value) || 0;
-var discount = calculateDiscount(subtotal, discountPercentage);
-var total = calculateTotal(subtotal, tax, discount);
-var amountPayment = parseFloat(document.getElementById('amount_payment').value) || 0;
-var change = Math.max(amountPayment - total, 0);
-
-// Collect transaction details
-var transaction_customer_name = document.getElementById('transaction_customer_name').value || '';
-var transaction_date = new Date().toISOString(); // Assuming transaction date is current date
-var transaction_address = document.getElementById('transaction_address').value || '';
-var transaction_verified = document.getElementById('transaction_verified').value || '';
-var transaction_inspected = document.getElementById('transaction_inspected').value || '';
-var transaction_received = document.getElementById('transaction_received').value || '';
-var transaction_payment = document.getElementById('transaction_payment').value || '';
-var transaction_type = document.getElementById('transaction_type').value || '';
-
-// Log transaction details and financial details
-console.log("Cart Items:", cartItems);
-console.log("Transaction Customer Name:", transaction_customer_name);
-console.log("Transaction Date:", transaction_date);
-console.log("Transaction Address:", transaction_address);
-console.log("Transaction Verified:", transaction_verified);
-console.log("Transaction Inspected:", transaction_inspected);
-console.log("Transaction Received:", transaction_received);
-console.log("Transaction Payment:", transaction_payment);
-console.log("Transaction Type:", transaction_type);
-console.log("Subtotal:", subtotal);
-console.log("Tax:", tax);
-console.log("Discount:", discount);
-console.log("Total:", total);
-console.log("Payment:", amountPayment);
-console.log("Change:", change);
-
-// Update UI
-updateUI();
-
-// Optionally, you can reset the cart after purchase
-// resetCart();
+    // Optionally, update UI
+    updateUI();
+    // Optionally, reset the cart after purchase
+    resetCart();
 }
 
 
@@ -132,7 +115,7 @@ function resetCart() {
      document.getElementById('change').innerHTML = '₱0.00';
     
     alertify.set('notifier', 'position', 'bottom-left');
-    alertify.error('Remove All');
+    alertify.success('Success');
     document.getElementById("resetButton").disabled = true;
 }
 
@@ -175,6 +158,7 @@ function calculateTotal(subtotal, tax, discount) {
     return subtotal - discount;
 }
 
+
 // Function to update UI
 function updateUI() {
     var subtotal = calculateSubtotal();
@@ -191,6 +175,29 @@ function updateUI() {
     document.getElementById('total').textContent = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(total);
     document.getElementById('payment').textContent = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(amountPayment);
     document.getElementById('change').textContent = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(change);
+
+    // start of validation
+    // Function to check if all required fields have values
+    function checkFields() {
+        var customerName = document.getElementById("transaction_customer_name").value;
+        var address = document.getElementById("transaction_address").value;
+        var discountPercentage = document.getElementById("subtotal_discount_percentage").value;
+        var paymentAmount = document.getElementById("amount_payment").value;
+
+        // Check if all fields have values
+        if (customerName && address && discountPercentage && paymentAmount) {
+            document.getElementById("purchase_btn").removeAttribute("disabled");
+        } else {
+            document.getElementById("purchase_btn").setAttribute("disabled", "disabled");
+        }
+    }
+
+    // Call checkFields function when input values change
+    document.getElementById("transaction_customer_name").addEventListener("input", checkFields);
+    document.getElementById("transaction_address").addEventListener("input", checkFields);
+    document.getElementById("subtotal_discount_percentage").addEventListener("input", checkFields);
+    document.getElementById("amount_payment").addEventListener("input", checkFields);
+    // end of validation
 }
 
 // Add event listeners to input fields
@@ -271,43 +278,48 @@ function updateDiscount(index, value) {
 }
 
 function renderCartItems() {
-var cartItemsList = document.getElementById('cartItemsList');
-cartItemsList.innerHTML = ''; // Clear existing content
-var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-var totalCartAmount = 0; // Initialize totalCartAmount
-cartItems.forEach(function(item, index) {
-    // Calculate the discounted amount
-    var discountedPrice;
-    if (item.discountType === "%") {
-        discountedPrice = item.srp - (item.srp * item.discount / 100);
-    } else {
-        discountedPrice = item.srp - item.discount;
-    }
-    // Handle the case when the discount is 0
-    if (item.discount === 0) {
-        discountedPrice = item.srp; // Set discounted price to default SRP
-    }
-    var totalAmount = discountedPrice * item.qty;
-    totalCartAmount += totalAmount; // Add to totalCartAmount
+    var cartItemsList = document.getElementById('cartItemsList');
+    cartItemsList.innerHTML = ''; // Clear existing content
+    var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+    var totalCartAmount = 0; // Initialize totalCartAmount
+    cartItems.forEach(function(item, index) {
+        // Calculate the discounted amount
+        var discountedPrice;
+        if (item.discountType === "%") {
+            discountedPrice = item.srp - (item.srp * item.discount / 100);
+        } else {
+            discountedPrice = item.srp - item.discount;
+        }
+        // Handle the case when the discount is 0
+        if (item.discount === 0) {
+            discountedPrice = item.srp; // Set discounted price to default SRP
+        }
+        var totalAmount = discountedPrice * item.qty;
+        totalCartAmount += totalAmount; // Add to totalCartAmount
 
-    // Set default values to 0 if null or undefined
-    var qtyValue = item.qty != null ? item.qty : 0;
-    var discountValue = item.discount != null ? item.discount : 0;
+        // Set default values to 0 if null or undefined
+        var qtyValue = item.qty != null ? item.qty : 0;
+        var discountValue = item.discount != null ? item.discount : 0;
 
-    // Store totalAmount and discountType in localStorage
-    localStorage.setItem(`totalAmount_${index}`, totalAmount);
-    localStorage.setItem(`discountType_${index}`, item.discountType);
+        // Store totalAmount, discountType, and totalCartAmount in localStorage
+        localStorage.setItem(`totalAmount_${index}`, totalAmount);
+        localStorage.setItem(`discountType_${index}`, item.discountType);
+        localStorage.setItem('totalCartAmount', totalCartAmount);
 
-    var row = document.createElement('tr');
-    row.innerHTML = `
-        
-    `;
-    cartItemsList.appendChild(row);
-});
+        // Update cartItem object with totalAmount
+        item.totalAmount = totalAmount;
 
-// Store totalCartAmount in localStorage
-localStorage.setItem('totalCartAmount', totalCartAmount);
+        var row = document.createElement('tr');
+        row.innerHTML = `
+            <!-- your HTML for displaying cart item details -->
+        `;
+        cartItemsList.appendChild(row);
+    });
+
+    // Update cartItems in sessionStorage with totalAmount included
+    sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
 }
+
 
 function renderCartItems() {
     var cartItemsList = document.getElementById('cartItemsList');
@@ -321,7 +333,7 @@ function renderCartItems() {
         <tr>
             <td colspan="9">
                 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 100%;" >
-                    <p style="margin-top: 80px; color: ">Your cart is empty</p>
+                    <p style="margin-top: 80px; color: ">Cart is empty</p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" style="margin-bottom: 70px;" fill="gainsboro" class="bi bi-cart-fill" viewBox="0 0 16 16">
                         <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
                     </svg>
@@ -423,7 +435,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Function to add product to cart
     function addToCart(product) {
         var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
         var cartItem = {
@@ -437,32 +448,32 @@ document.addEventListener("DOMContentLoaded", function() {
             discountType: "%", // Default discount type
             discount: 0 // Default discount set to 0
         };
-
+    
         // Check if the product already exists in the cart
         var existingItem = cartItems.find(function(item) {
             return item.product_id === cartItem.product_id;
         });
-
+    
         if (existingItem) {
             // If the product already exists, display an alert and do not add it again
             alert('Product already exists in the cart!');
         } else {
             // Add new item to cart
             cartItems.push(cartItem);
-
+    
             // Store updated cart items in session storage
             sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
-
+    
             // Display a confirmation message
             alert('Product added to cart!');
-
+    
             // Render updated cart items
             renderCartItems();
-
+    
             // Update the counter
             updateCounter(cartItems.length);
         }
-    }
+    }    
 }); 
 
 // Render initial cart items

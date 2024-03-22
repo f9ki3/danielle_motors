@@ -142,7 +142,7 @@
 
                                 <div style="display: flex; flex-direction: row; justify-content: space-between" >
                                     <div class="form-floating" style="width: 49%;">
-                                        <input type="text" id="subtotal_discount_percentage" class="form-control" placeholder="">
+                                        <input type="text" id="subtotal_discount_percentage" class="form-control" placeholder="" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); if(parseFloat(this.value) < 0) this.value = 0;" maxlength="3">
                                         <label for="subtotal_discount_percentage">Subtotal Discount (%)</label>
                                     </div>
                                     <div class="form-floating" style="width: 49%;">
@@ -183,7 +183,7 @@
                                     <h5 class="fw-bolder">Change</h5>
                                     <h5 class="fw-bolder" id="change">PHP 100.00</h5>
                                 </div>
-                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between" class="mb-3">
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between" class="mb-2 mt-2">
                                     <button style="width: 49%" id="resetButton" class="btn border-primary text-primary" onclick="resetCart()" disabled>Reset</button>
                                     <button style="width: 49%" id="purchase_btn" class="btn btn-primary" disabled onclick="purchase()">Purchase</button>
                                 </div>
