@@ -27,16 +27,16 @@
 <div class="border rounded p-3"  id="add_stocks" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <h5 class="fw-bolder">Add Stocks</h5>
     <div style="display: flex; flex-direction: row;">
-        <datalist id="suggestions">
-            <?php foreach ($products as $product): ?>
-                <option value="<?php echo $product['id'] . ' - ' . $product['name'] . ' - ' . $product['models']; ?>"></option>
-            <?php endforeach; ?>
-        </datalist>
+    <datalist id="suggestions">
+        <?php foreach ($products as $product): ?>
+            <option value="<?php echo $product['id'] . ' - ' . $product['name'] . ' - ' . $product['models'] . ' - ' . $product['brand_id']; ?>"></option>
+        <?php endforeach; ?>
+    </datalist>
         
- 
+        
         <input type="text" class="form-control me-2" style="width: 20%" id="select_product" list="suggestions" placeholder="Search Item to Add">
-        <input type="text" class="form-control me-2" style="width: 20%" id="based_price" placeholder="Based Price">
-        <input type="text" class="form-control me-2" style="width: 20%" id="suggested_retail_price" placeholder="Suggested Retail Price">
+        <input type="text" class="form-control me-2" style="width: 20%" id="based_price" placeholder="Based Price" <?php echo isset($delivery_receipt_content['price']) ? 'value="' . $delivery_receipt_content['price'] . '"' : ''; ?>>
+        <input type="text" class="form-control me-2" style="width: 20%" id="suggested_retail_price" placeholder="Suggested Retail Price" <?php echo isset($delivery_receipt_content['orig_price']) ? 'value="' . $delivery_receipt_content['orig_price'] . '"' : ''; ?>>
         <input type="text" class="form-control me-2" style="width: 20%" id="quantity" placeholder="Qty">
         <button class="btn btn-primary" onclick="addItem()">Submit</button>
     </div>
@@ -59,11 +59,11 @@
                             <th scope="col" width="10%">Brand</th>
                             <th scope="col" width="10%">Based Price</th>
                             <th scope="col" width="10%">SRP</th>
-                            <th scope="col" width="10%">Stocks</th>
+                            <th scope="col" width="10%">Quantity</th>
                             <th scope="col" width="10%" >Markup
                                 <select id="markup">
-                                    <option value="perC">(%)</option>
-                                    <option value="inT">(₱)</option>
+                                    <option value="perC">%</option>
+                                    <option value="inT">₱</option>
                                 </select>
                             </th>
                             <!-- <th scope="col" width="10%" >total
@@ -72,7 +72,12 @@
                                     <option value="SellingPrice">(SellingPrice)</option>
                                 </select>
                             </th> -->
-                            <th scope="col" width="10%">Amount</th>
+                            <th scope="col" width="10%" >Total
+                                <select id="totalType">
+                                    <option value="BasePrice">CostPrice</option>
+                                    <option value="SellingPrice">SellingPrice</option>
+                                </select>
+                            </th>
                             <th scope="col" width="5%">Action</th>
                         </tr>
                     </thead>
@@ -87,10 +92,10 @@
                             <div class="border rounded p-4 pb-5">
                             <h3 class="fw-bolder">Material Transfer</h3>
                                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Material Invoice" style="width: 49%">
-                                    <input type="date" class="form-control" placeholder="Date" style="width: 49%" id="dateInput">
+                                    <input type="text" class="form-control" placeholder="Material Invoice" style="width: 49%" id="materialInvoiceNo">
+                                    <input type="date" class="form-control" placeholder="Date" style="width: 49%" id="materialDate">
                                 </div>
-                                <input type="text" class="form-control mb-2" placeholder="Cashier Name">
+                                <input type="text" class="form-control mb-2" placeholder="Cashier Name" id="cashierName" pattern="[A-Za-z ]{1,}" required>
 
                                 <div style="display: flex; flex-direction: row; justify-content: space-between" >
                                 <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="receivedBy">
@@ -113,19 +118,19 @@
                                 <h3 class="fw-bolder">Summary</h3><hr>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="">Total Selling Price</h5>
-                                    <h5 class="" id="subtotal">PHP 100.00</h5>
+                                    <h5 class="" id="SellingPrice">₱0.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="">Total Cost Price</h5>
-                                    <h5 class="" id="tax">PHP 100.00</h5>
+                                    <h5 class="" id="BasePrice">₱0.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="">Total Gross Profit</h5>
-                                    <h5 class="" id="subtotal_discount">PHP 100.00</h5>
+                                    <h5 class="" id="GrossProfit">₱0.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="mt-2">
-                                    <button class="btn text-primary border-primary " style="width: 49%">Cancel</button>
-                                    <button class="btn btn-primary " style="width: 49%">Save</button>
+                                <button id="cancelButton" class="btn text-primary border-primary" style="width: 49%">Cancel</button>
+                                <button type="button" class="btn btn-primary" style="width: 49%" id="saveMaterialTransfer">Save</button>
                                 </div>
                             </div>
                         </div>
@@ -206,6 +211,8 @@ function addItem() {
         retailPriceInput.value = '';
         basedPriceInput.value = '';
         quantityInput.value = '';
+
+        updateSummary();
     }
 
 $(document).ready(function () {
@@ -242,59 +249,173 @@ $(document).ready(function () {
   fetchAdminData('verifiedBy', 'Verified By');
 });
 
+function fetchAdminData(adminId, adminData) {
+    var admin = adminData.find(function (admin) {
+        return admin.id == adminId;
+    });
+    return admin ? admin.fname + ' ' + admin.lname : '';
+}
+
 function removeItem(button) {
         // Remove the parent row of the clicked button
         button.closest("tr").remove();
     }
 
+    document.getElementById("cancelButton").addEventListener("click", function() {
+    // Remove all rows from the table
+    var tableBody = document.getElementById("cartList");
+    while (tableBody.firstChild) {
+        tableBody.removeChild(tableBody.firstChild);
+    }
+    updateSummary();
+});
+
 document.getElementById("markup").addEventListener("change", function() {
-        // Get the selected value from the dropdown
-        var markup = this.value;
+    // Get the selected value from the dropdown
+    var markup = this.value;
 
-        // Get all table rows containing markup values
-        var markupRows = document.querySelectorAll("#cartList tr td:nth-child(7)"); // Change child index to 7 and 6
+    // Get all table rows containing markup values
+    var markupRows = document.querySelectorAll("#cartList tr td:nth-child(7)"); // Change child index to 7
 
-        // Loop through each markup row and update the markup value based on the selected type
-        markupRows.forEach(function(markupRow) {
-            var markupValue = parseFloat(markupRow.textContent); // Get the current markup value
+    // Loop through each markup row and update the markup value based on the selected type
+    markupRows.forEach(function(markupRow) {
+        var markupValue = parseFloat(markupRow.textContent); // Get the current markup value
 
-            // Check the selected markup type and update the markup value accordingly
-            if (markup === "perC") {
-                // Display markup as percentage
-                markupRow.textContent = markupValue + "%";
-            } else if (markup === "inT") {
-                // Calculate markup as based price minus SRP and display it as a real integer
-                var basedPrice = parseFloat(markupRow.previousElementSibling.textContent);
-                var srp = parseFloat(markupRow.previousElementSibling.previousElementSibling.textContent);
-                var realMarkup = basedPrice - srp;
-                markupRow.textContent = realMarkup.toFixed(2); // Display markup as a real integer
-            }
-        });
+        // Check the selected markup type and update the markup value accordingly
+        if (markup === "perC") {
+            // Calculate markup as based price minus SRP and display it as a real integer
+            var basedPrice = parseFloat(markupRow.previousElementSibling.previousElementSibling.previousElementSibling.textContent);
+            var srp = parseFloat(markupRow.previousElementSibling.previousElementSibling.textContent);
+            var markupPercent = ((srp - basedPrice) / basedPrice) * 100;
+            markupRow.textContent = markupPercent.toFixed(2) + "%"; // Display markup as percentage
+        } else if (markup === "inT") {
+            // Calculate markup as based price minus SRP and display it as a real integer
+            var basedPrice = parseFloat(markupRow.previousElementSibling.previousElementSibling.textContent);
+            var srp = parseFloat(markupRow.previousElementSibling.previousElementSibling.previousElementSibling.textContent);
+            var realMarkup = basedPrice - srp;
+            markupRow.textContent = "₱"+ realMarkup.toFixed(2); // Display markup as a real integer
+        }
+    });
+});
+
+
+document.getElementById("totalType").addEventListener("change", function() {
+    // Get the selected value from the dropdown
+    var totalType = this.value;
+
+    // Get all table rows containing total values
+    var totalRows = document.querySelectorAll("#cartList tr");
+
+    // Loop through each total row and update the total value based on the selected type
+    totalRows.forEach(function(totalRow) {
+        var basedPrice = parseFloat(totalRow.cells[3].textContent); // Based Price
+        var retailPrice = parseFloat(totalRow.cells[4].textContent); // SRP
+        var quantity = parseInt(totalRow.cells[5].textContent); // Quantity
+        var markup = parseFloat(totalRow.cells[6].textContent); // Markup
+        var amount = 0;
+
+        // Calculate the total based on the selected type
+        if (totalType === "BasePrice") {
+            // Calculate total based on Based Price
+            amount = basedPrice * quantity;
+        } else if (totalType === "SellingPrice") {
+            // Calculate total based on Selling Price (SRP)
+            amount = retailPrice * quantity;
+        }
+
+        // Update the total value in the last column
+        totalRow.cells[7].textContent = amount.toFixed(2);
+    });
+});
+
+
+function updateSummary() {
+    // Initialize variables for total selling price, total cost price, and total gross profit
+    var totalSellingPrice = 0;
+    var totalCostPrice = 0;
+    var totalGrossProfit = 0;
+
+    // Iterate through each row in the table
+    document.querySelectorAll("#cartList tr").forEach(function(row) {
+        // Extract the relevant values from the row
+        var basedPrice = parseFloat(row.cells[3].textContent); // Based Price
+        var retailPrice = parseFloat(row.cells[4].textContent); // SRP
+        var quantity = parseInt(row.cells[5].textContent); // Quantity
+
+        // Calculate the total cost price and total selling price for this row
+        var amount = basedPrice * quantity;
+        var markupPercent = ((retailPrice - basedPrice) / basedPrice) * 100;
+        var totalMarkup = markupPercent * quantity;
+        var sellingPrice = retailPrice * quantity;
+
+        // Add the row's values to the running totals
+        totalSellingPrice += sellingPrice;
+        totalCostPrice += amount;
     });
 
-//     document.getElementById("totalType").addEventListener("change", function() {
-//     // Get the selected value from the dropdown
-//     var totalType = this.value;
-    
-//     // Get all table rows containing total values
-//     var totalRows = document.querySelectorAll("#cartItemsList tr td:nth-child(8)"); // Change child index to 8
-    
-//     // Loop through each total row and update the total value based on the selected type
-//     totalRows.forEach(function(totalRow) {
-//         var totalValue = parseFloat(totalRow.textContent); // Get the current total value
-        
-//         // Check the selected total type and update the total value accordingly
-//         if (totalType === "BasePrice") {
-//             // Display total as BasePrice
-//             totalRow.textContent = totalValue.toFixed(2) + " (BasePrice)";
-//         } else if (totalType === "SellingPrice") {
-//             // Display total as SellingPrice
-//             var markupPercent = parseFloat(totalRow.previousElementSibling.textContent);
-//             var basedPrice = parseFloat(totalRow.previousElementSibling.previousElementSibling.textContent);
-//             var retailPrice = (basedPrice * (1 + (markupPercent / 100))).toFixed(2);
-//             totalRow.textContent = retailPrice + " (SellingPrice)";
-//         }
-//     });
-// });
+    // Calculate the total gross profit
+    totalGrossProfit = totalSellingPrice - totalCostPrice;
+
+    // Update the corresponding elements in the Summary div
+    document.getElementById("SellingPrice").textContent = "₱"+ totalSellingPrice.toFixed(2);
+    document.getElementById("BasePrice").textContent = "₱"+totalCostPrice.toFixed(2);
+    document.getElementById("GrossProfit").textContent = "₱"+ totalGrossProfit.toFixed(2);
+}
+
+// Call the updateSummary function whenever there is a change in the table values
+document.getElementById("markup").addEventListener("change", updateSummary);
+// Add any other event listeners here if needed
+
+
+$(document).ready(function () {
+     // ... Your existing DataTable initialization code ...
+     // Save Material Transfer
+     $('#saveMaterialTransfer').click(function () {
+         var materialDate = $('#materialDate').val();
+         var materialInvoiceNo = $('#materialInvoiceNo').val();
+         var cashierName = $('#cashierName').val();
+         var receivedById = $('#receivedBy').val();
+         var inspectedById = $('#inspectedBy').val();
+         var verifiedById = $('#verifiedBy').val();
+
+         // Fetch first name and last name based on the selected IDs
+         $.ajax({
+             url: '../php/fetch_admin_data.php', // Your server-side script to fetch admin data
+             method: 'GET',
+             dataType: 'json',
+             success: function (data) {  
+                swal("File Save", "Record has been saved", "success");   
+                 var receivedBy = fetchAdminData(receivedById, data);
+                 var inspectedBy = fetchAdminData(inspectedById, data);
+                 var verifiedBy = fetchAdminData(verifiedById, data);
+
+                 // After fetching first name and last name, save the Material Transfer
+                 $.ajax({
+                     url: '../php/store_stocks_save.php',
+                     method: 'POST',
+                     data: {
+                         materialDate: materialDate,
+                         materialInvoiceNo: materialInvoiceNo,
+                         cashierName: cashierName,
+                         receivedBy: receivedBy,
+                         inspectedBy: inspectedBy,
+                         verifiedBy: verifiedBy
+                     },
+                     success: function (response) {    
+                         console.log(response);
+                     },
+                     error: function (xhr, status, error) {
+                         console.error('Error saving data:', error);
+                     }
+                 });
+             },
+             error: function (xhr, status, error) {
+                 console.error('Error fetching admin data:', error);
+             }
+       
+       
+            });
+     });
+    });
 
 </script>

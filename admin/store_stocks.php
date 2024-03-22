@@ -92,7 +92,7 @@ include '../config/config.php';
       </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="saveMaterialTransfer">Save</button>
+            <!-- <button type="button" class="btn btn-primary" id="saveMaterialTransfer">Save</button> -->
             <button type="button" class="btn btn-primary" id="editMaterialTransfer" style="display: none;">Edit</button>
         </div>
     </div>
@@ -309,59 +309,6 @@ $('#tabledataMaterial tbody').on('click', '.delete', function () {
     });
     });
 });
-
-  $(document).ready(function () {
-     // ... Your existing DataTable initialization code ...
-     // Save Material Transfer
-     $('#saveMaterialTransfer').click(function () {
-         var materialDate = $('#materialDate').val();
-         var materialInvoiceNo = $('#materialInvoiceNo').val();
-         var cashierName = $('#cashierName').val();
-         var receivedById = $('#receivedBy').val();
-         var inspectedById = $('#inspectedBy').val();
-         var verifiedById = $('#verifiedBy').val();
-
-         // Fetch first name and last name based on the selected IDs
-         $.ajax({
-             url: '../php/fetch_admin_data.php', // Your server-side script to fetch admin data
-             method: 'GET',
-             dataType: 'json',
-             success: function (data) {  
-                swal("File Save", "Record has been saved", "success");   
-                 var receivedBy = fetchAdminData(receivedById, data);
-                 var inspectedBy = fetchAdminData(inspectedById, data);
-                 var verifiedBy = fetchAdminData(verifiedById, data);
-
-                 // After fetching first name and last name, save the Material Transfer
-                 $.ajax({
-                     url: '../php/store_stocks_save.php',
-                     method: 'POST',
-                     data: {
-                         materialDate: materialDate,
-                         materialInvoiceNo: materialInvoiceNo,
-                         cashierName: cashierName,
-                         receivedBy: receivedBy,
-                         inspectedBy: inspectedBy,
-                         verifiedBy: verifiedBy
-                     },
-                     success: function (response) {    
-                         console.log(response);
-                         $('#add_stocks').modal('hide');
-                         window.location.href = "store_stocks_add.php";
-                     },
-                     error: function (xhr, status, error) {
-                         console.error('Error saving data:', error);
-                     }
-                 });
-             },
-             error: function (xhr, status, error) {
-                 console.error('Error fetching admin data:', error);
-             }
-       
-       
-            });
-     });
-    });
 
 function fetchAdminData(adminId, adminData) {
     var admin = adminData.find(function (admin) {
