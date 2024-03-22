@@ -45,16 +45,16 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-12 table-responsive" style="min-height: 500px;">
+    <div class="col-lg-12 table-responsive" style="min-height: 300px;">
         <table class="table table-sm">
             <thead>
                 <th></th>
                 <th>QTY</th>
                 <th>PRODUCT NAME</th>
-                <th>ORIG PRICE</th>
-                <th>PRICE</th>
-                <th>DISCOUNT</th>
-                <th>AMOUNT</th>
+                <th class="text-end">ORIG PRICE</th>
+                <th class="text-end">PRICE</th>
+                <th class="text-end">DISCOUNT</th>
+                <th class="text-end">AMOUNT</th>
             </thead>
             <tbody id="live_product_data">
             </tbody>
