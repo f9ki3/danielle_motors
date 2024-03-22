@@ -99,7 +99,7 @@ if($logoText_result -> num_rows > 0){
                         </a><!-- more inner pages-->
                       </li>
 
-                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Supplier_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Supplier_Maintenance/" data-bs-toggle="" aria-expanded="false">
+                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Suppliers"){ echo "active"; } else { echo "";}?>" href="../Suppliers/" data-bs-toggle="" aria-expanded="false">
                           <div class="d-flex align-items-center"><span class="nav-link-text">Suppliers Maintenance </span></div>
                         </a><!-- more inner pages-->
                       </li>

@@ -37,35 +37,129 @@ date_default_timezone_set('Asia/Manila');
         });
     </script> -->
     <script>
-    $(document).ready(function(){
-        $('#submitForm').click(function(e){
-            e.preventDefault(); // Prevent form submission and page reload
+        $(document).ready(function(){
+            $('#submitForm').click(function(e){
+                e.preventDefault(); // Prevent form submission and page reload
+                
+                // Check if any required field is empty
+                var requiredFields = $('#products_infos').find(':input[required]');
+                var emptyFields = requiredFields.filter(function() {
+                    return !$(this).val();
+                });
 
-            // Collect form data
-            var formData = $('#products_infos').serialize();
-
-            // Send AJAX request
-            $.ajax({
-                type: 'POST',
-                url: '../../PHP - process_files/add_dr_info.php?id=<?php echo $_SESSION['dr_id']; ?>',
-                data: formData,
-                dataType: 'json', // Expect JSON response from server
-                success: function(response){
-                    if (response.success) {
-                        // Show success alert message
-                        alert(response.message);
-                        // Reset form fields
-                        $('#products_infos :input').val('');
-                    } else {
-                        // Show validation errors
-                        var errorMessages = response.errors.join("\n");
-                        alert(errorMessages);
-                    }
+                // If there are empty required fields, show toast and stop form submission
+                if (emptyFields.length > 0) {
+                    var errorToast = $('#errorToast').clone();
+                    $('.toast-container').append(errorToast);
+                    var bsToast = new bootstrap.Toast(errorToast[0]);
+                    bsToast.show();
+                    return;
                 }
+                
+                // Collect form data
+                var formData = $('#products_infos').serialize();
+
+                // Send AJAX request
+                $.ajax({
+                    type: 'POST',
+                    url: '../../PHP - process_files/add_dr_info.php?id=<?php echo $_SESSION['dr_id']; ?>',
+                    data: formData,
+                    dataType: 'json', // Expect JSON response from server
+                    success: function(response){
+                        if (response.success) {
+                            // Show success toast
+                            var successToast = $('#successToast').clone();
+                            successToast.find('.toast-body').text("Data successfully added!");
+                            $('.toast-container').append(successToast);
+                            var bsToast = new bootstrap.Toast(successToast[0]);
+                            bsToast.show();
+
+                            // Reset form fields
+                            $('#products_infos :input').val('');
+                        } else if (response.error) {
+                            // Show error toast
+                            var errorToast = $('#errorToast2').clone();
+                            errorToast.find('.toast-body').text(response.error);
+                            $('.toast-container').append(errorToast);
+                            var bsToast = new bootstrap.Toast(errorToast[0]);
+                            bsToast.show();
+                        } else {
+                            // Handle unexpected response
+                            alert("Unexpected response from server");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle AJAX errors
+                        console.error(xhr.responseText);
+                        alert("An error occurred while processing the request.");
+                    }
+                });
             });
+            $('#submitForm_2').click(function(f){
+                f.preventDefault(); // Prevent form submission and page reload
+                            
+                // Check if any required field is empty
+                var requiredFields_2 = $('#products_infos_2').find(':input[required]');
+                var emptyFields_2 = requiredFields_2.filter(function() {
+                    return !$(this).val();
+                });
+
+                // If there are empty required fields, show toast and stop form submission
+                if (emptyFields_2.length > 0) {
+                    var errorToast_2 = $('#errorToast').clone();
+                    $('.toast-container').append(errorToast_2);
+                    var bsToast_2 = new bootstrap.Toast(errorToast_2[0]);
+                    bsToast_2.show();
+                    return;
+                }
+                            
+                // Create FormData object
+                var formData_2 = new FormData($('#products_infos_2')[0]);
+
+                // Send AJAX request
+                $.ajax({
+                    type: 'POST',
+                    url: '../../PHP - process_files/add_dr_info.php?id=<?php echo $_SESSION['dr_id']; ?>',
+                    data: formData_2,
+                    dataType: 'json', // Expect JSON response from server
+                    processData: false, // Prevent jQuery from processing the data
+                    contentType: false, // Prevent jQuery from setting contentType
+                    success: function(response_2){
+                        if (response_2.success) {
+                            // Show success toast
+                            var successToast_2 = $('#successToast').clone();
+                            successToast_2.find('.toast-body').text("Data successfully added!");
+                            $('.toast-container').append(successToast_2);
+                            var bsToast_2 = new bootstrap.Toast(successToast_2[0]);
+                            bsToast_2.show();
+
+                            // Reset form fields
+                            $('#products_infos_2 :input').val('');
+                        } else if (response_2.error) {
+                            // Show error toast
+                            var errorToast_2 = $('#errorToast2').clone();
+                            errorToast_2.find('.toast-body').text(response_2.error);
+                            $('.toast-container').append(errorToast_2);
+                            var bsToast_2 = new bootstrap.Toast(errorToast_2[0]);
+                            bsToast_2.show();
+                        } else {
+                            // Handle unexpected response
+                            alert("Unexpected response from server");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle AJAX errors
+                        console.error(xhr.responseText);
+                        alert("An error occurred while processing the request.");
+                    }
+                });
+            });
+
         });
-    });
-</script>
+
+    </script>
+    
+
 
 
 

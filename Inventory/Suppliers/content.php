@@ -16,8 +16,15 @@
                     <button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button>
                     <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_supplier"><span class="fas fa-plus me-2"></span>Add supplier</button>
                 </div>
+                
+            </div>
+            <div class="row mb-4">
+                <div class="text-end">
+                    <a class="btn btn-warning"href="../Supplier_Products/">View All Supplier Products</a>
+                </div>
             </div>
         </div>
+
         <div class="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-white border-top border-bottom border-200 position-relative top-1">
             <div class="table-responsive scrollbar mx-n1 px-1">
             <table class="table mb-0">
@@ -55,3 +62,4 @@
 </div>
 
 <?php include "add_supplier.php"; ?>
+<?php include "opening_modal.php"; ?>

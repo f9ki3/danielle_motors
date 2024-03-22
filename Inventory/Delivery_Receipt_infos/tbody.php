@@ -1,16 +1,15 @@
 <?php
 session_start();
+include_once "../../database/database.php";
 $dr_id = $_SESSION['dr_id'];
-
-$servername = "156.67.222.117";
-$username = "u450836125_dmp_intern"; 
-$password = "DMPInterns123!"; 
-$dbname = "u450836125_dmp_office";
+// $servername = "localhost";
+// $username = "root"; 
+// $password = ""; 
+// $dbname = "updatd";
 
 
 // Create a new MySQLi instance
-$conn = new mysqli($servername, $username, $password, $dbname);
-
+// $conn = new mysqli($servername, $username, $password, $dbname);
 
 $dr_content_sql = "SELECT * FROM delivery_receipt_content WHERE delivery_receipt_id ='$dr_id'";
 $dr_content_res = $conn->query($dr_content_sql);
@@ -31,21 +30,24 @@ if($dr_content_res->num_rows > 0){
         $product_sql = "SELECT * FROM product WHERE id = '$product_id'";
         $product_res = $conn->query($product_sql);
         if($product_res->num_rows>0){
-            $row=$product_res->fetch_assoc();
-            $product_name = $row['name'];
-            $product_model = $row['models'];
-            $unit_id = $row['unit_id'];
-            $brand_id = $row['brand_id'];
-            $category_id = $row['category_id'];
+            $row_product=$product_res->fetch_assoc();
+            $product_name = $row_product['name'];
+            $product_model = $row_product['models'];
+            $unit_id = $row_product['unit_id'];
+            $brand_id = $row_product['brand_id'];
+            $category_id = $row_product['category_id'];
             echo '<tr>
+                <td class="ps-3"><a class="me-1 mb-1" href="instagram.com"><span class="text-danger fas fa-trash-alt"></span></a></td>
                 <td>' . $qty . '</td>
                 <td>' . $product_name . ' ' . $product_model . ' ' . $brand_id . ' ' . $category_id . ' ' . $unit_id . '</td>
                 <td class="text-end">' . number_format((float)$orig_price, 2) . '</td>
                 <td class="text-end">' . number_format((float)$price, 2) . '</td>
-                <td> % ' . $discount . '</td>
+                <td class="text-end"> % ' . $discount . '</td>
                 <td class="text-end">' . number_format((float)$total, 2) . '</td>
             </tr>';
-        } 
+        } else {
+            
+        }
 
     }
 
