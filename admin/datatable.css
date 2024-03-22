@@ -1,0 +1,29 @@
+/* Custom DataTable styles */
+.dataTables_wrapper {
+    margin-top: 20px;
+}
+
+.dataTables.no-border th,
+.dataTables.no-border td {
+    border: none; /* Remove border for table headers and table data cells */
+}
+
+.dataTables.no-border th {
+    background-color: #f2f2f2;
+}
+
+.dataTables.no-border tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.dataTables.no-border tbody tr:hover {
+    background-color: #ddd;
+}
+
+.dataTables_paginate {
+    margin-top: 10px;
+}
+
+.dataTables_info {
+    margin-top: 10px;
+}
