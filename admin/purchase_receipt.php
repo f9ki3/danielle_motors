@@ -56,14 +56,16 @@ if ($result->num_rows > 0) {
                                 <div style="display: flex; flex-direction: row; justify-content: space-between">
                                     <h6 class="fw-bolder">Receipt No: <?php echo $transactionID?></h6>
                                     <div>
-                                    <button class="btn btn-light border border-primary text-primary btn-sm">view</button>
-                                    <button class="btn btn-primary btn-sm">print</button>
+                                    <button class="btn btn-light border border-primary text-primary btn-sm">Print</button>
+                                    <a href="purchase" class="btn btn-primary btn-sm">Back</a>
                                     </div>
                                 </div>
                                 <p>Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
                             </div>
                         </div>
                         <div style="display: flex; justify-content: space-between;" class="border-top pt-2">
+                            <div style="width: 35%">Payment Type: <?php echo $transactionDetails["TransactionPaymentMethod"]; ?></div>
+                            <div style="width: 35%">Transaction Type: <?php echo $transactionDetails["TransactionType"]; ?></div>
                             <div style="width: 35%">Recieved by: <?php echo $transactionDetails["TransactionReceivedBy"]; ?></div>
                             <div style="width: 35%">Inspected by: <?php echo $transactionDetails["TransactionInspectedBy"]; ?></div>
                             <div style="width: 35%">Verified by: <?php echo $transactionDetails["TransactionVerifiedBy"]; ?></div>
@@ -73,11 +75,10 @@ if ($result->num_rows > 0) {
                         <div>
                             <table class="table table-striped">
                                 <tr>
-                                    <th width="5%">Productid</th>
-                                    <th width="5%">Product name</th>
+                                    <th width="10%">Product name</th>
                                     <th width="5%">Brand</th>
-                                    <th width="5%">Model</th>
-                                    <th width="5%">Quantity</th>
+                                    <th width="10%">Model</th>
+                                    <th width="5%">Qty</th>
                                     <th width="5%">Unit</th>
                                     <th width="5%">SRP</th>
                                     <th width="5%">Discount Type</th>
@@ -97,7 +98,6 @@ if ($result->num_rows > 0) {
                                     // Output data of each row
                                     while($row = $result->fetch_assoc()) {
                                         echo "<tr>";
-                                        echo "<td>" . $row["ProductID"] . "</td>";
                                         echo "<td>" . $row["ProductName"] . "</td>";
                                         echo "<td>" . $row["Brand"] . "</td>";
                                         echo "<td>" . $row["Model"] . "</td>";

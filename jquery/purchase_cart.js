@@ -81,9 +81,8 @@ function purchase() {
             redirectURL += '?transaction_code=' + encodeURIComponent(transaction_code);
 
             // Redirect the user after a delay of 2 seconds
-            setTimeout(function() {
-                window.location.href = redirectURL;
-            }, 2000); // 2000 milliseconds = 2 seconds
+            window.location.href = redirectURL;
+            
         },
         error: function(xhr, status, error) {
             console.error("Error:", error);
