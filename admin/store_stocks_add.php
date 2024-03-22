@@ -35,8 +35,8 @@
         
  
         <input type="text" class="form-control me-2" style="width: 20%" id="select_product" list="suggestions" placeholder="Search Item to Add">
-        <input type="text" class="form-control me-2" style="width: 20%" id="suggested_retail_price" placeholder="Suggested Retail Price">
         <input type="text" class="form-control me-2" style="width: 20%" id="based_price" placeholder="Based Price">
+        <input type="text" class="form-control me-2" style="width: 20%" id="suggested_retail_price" placeholder="Suggested Retail Price">
         <input type="text" class="form-control me-2" style="width: 20%" id="quantity" placeholder="Qty">
         <button class="btn btn-primary" onclick="addItem()">Submit</button>
     </div>
@@ -52,20 +52,31 @@
                     <hr>
                     <div style="height: 50vh; overflow: auto">
                     <table class="table">
-                        <thead class="sticky-top">
-                            <tr>
-                                <th scope="col" width="15%">Product Name</th>
-                                <th scope="col" width="10%">Model</th>
-                                <th scope="col" width="10%">Brand</th>
-                                <th scope="col" width="10%">Based Price</th>
-                                <th scope="col" width="10%">SRP</th>
-                                <th scope="col" width="10%">Markup</th>
-                                <th scope="col" width="10%">Stocks</th>
-                                <th scope="col" width="10%">Amount</th>
-                                <th scope="col" width="5%">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="cartItemsList">
+                    <thead class="sticky-top">
+                        <tr>
+                            <th scope="col" width="15%">Product Name</th>
+                            <th scope="col" width="10%">Model</th>
+                            <th scope="col" width="10%">Brand</th>
+                            <th scope="col" width="10%">Based Price</th>
+                            <th scope="col" width="10%">SRP</th>
+                            <th scope="col" width="10%">Stocks</th>
+                            <th scope="col" width="10%" >Markup
+                                <select id="markup">
+                                    <option value="perC">(%)</option>
+                                    <option value="inT">(₱)</option>
+                                </select>
+                            </th>
+                            <!-- <th scope="col" width="10%" >total
+                                <select id="totalType">
+                                    <option value="BasePrice">(BasePrice)</option>
+                                    <option value="SellingPrice">(SellingPrice)</option>
+                                </select>
+                            </th> -->
+                            <th scope="col" width="10%">Amount</th>
+                            <th scope="col" width="5%">Action</th>
+                        </tr>
+                    </thead>
+                        <tbody id="cartList">
                         <!-- Cart items will be populated here -->
                     </tbody>
                     </table>
@@ -147,32 +158,48 @@ function addItem() {
         var basedPriceInput = document.getElementById("based_price");
         var quantityInput = document.getElementById("quantity");
 
+        // Get the selected product value from the input field
+        var selectedProduct = productInput.value.trim();
+
+        // Split the selected product value to extract id, name, models, and brand_id
+        var [productId, productName, models, brand_id] = selectedProduct.split(' - ');
+
         // Get the values from input fields
-        var product = productInput.value.trim();
-        var retailPrice = retailPriceInput.value.trim();
-        var basedPrice = basedPriceInput.value.trim();
-        var quantity = quantityInput.value.trim();
+        var retailPrice = parseFloat(retailPriceInput.value.trim()); // Parse as float
+        var basedPrice = parseFloat(basedPriceInput.value.trim()); // Parse as float
+        var quantity = parseInt(quantityInput.value.trim()); // Parse as integer
 
         // Check if any input field is empty
-        if (product === '' || retailPrice === '' || basedPrice === '' || quantity === '') {
-            alert("Please fill out all fields");
+        if (productName === '' || isNaN(retailPrice) || isNaN(basedPrice) || isNaN(quantity)) {
+            alert("Please fill out all fields with valid numbers");
             return;
         }
+
+        // Calculate markup as percentage
+        var markupPercent = ((retailPrice - basedPrice) / basedPrice) * 100;
+        var markupInteger = Math.round(markupPercent); // Convert to real integer
+
+        // Calculate amount
+        var amount = quantity * basedPrice;
 
         // Create a new table row to display the submitted item
         var newRow = document.createElement("tr");
         newRow.innerHTML = `
-            <td>${product}</td>
-            <td>${retailPrice}</td>
+            <td>${productName}</td>
+            <td>${models}</td>
+            <td>${brand_id}</td>
             <td>${basedPrice}</td>
+            <td>${retailPrice}</td>
             <td>${quantity}</td>
+            <td>${markupInteger}%</td>
+            <td>${amount}</td>
             <td>
                 <button class="btn btn-danger btn-sm" onclick="removeItem(this)">Remove</button>
             </td>
         `;
 
         // Append the new table row to the table body
-        document.getElementById("cartItemsList").appendChild(newRow);
+        document.getElementById("cartList").appendChild(newRow);
 
         // Clear input fields after submission
         productInput.value = '';
@@ -180,12 +207,6 @@ function addItem() {
         basedPriceInput.value = '';
         quantityInput.value = '';
     }
-
-    function removeItem(button) {
-        // Remove the parent row of the clicked button
-        button.closest("tr").remove();
-    }
-
 
 $(document).ready(function () {
   
@@ -220,4 +241,60 @@ $(document).ready(function () {
   // Fetch data for verifiedBy dropdown
   fetchAdminData('verifiedBy', 'Verified By');
 });
+
+function removeItem(button) {
+        // Remove the parent row of the clicked button
+        button.closest("tr").remove();
+    }
+
+document.getElementById("markup").addEventListener("change", function() {
+        // Get the selected value from the dropdown
+        var markup = this.value;
+
+        // Get all table rows containing markup values
+        var markupRows = document.querySelectorAll("#cartList tr td:nth-child(7)"); // Change child index to 7 and 6
+
+        // Loop through each markup row and update the markup value based on the selected type
+        markupRows.forEach(function(markupRow) {
+            var markupValue = parseFloat(markupRow.textContent); // Get the current markup value
+
+            // Check the selected markup type and update the markup value accordingly
+            if (markup === "perC") {
+                // Display markup as percentage
+                markupRow.textContent = markupValue + "%";
+            } else if (markup === "inT") {
+                // Calculate markup as based price minus SRP and display it as a real integer
+                var basedPrice = parseFloat(markupRow.previousElementSibling.textContent);
+                var srp = parseFloat(markupRow.previousElementSibling.previousElementSibling.textContent);
+                var realMarkup = basedPrice - srp;
+                markupRow.textContent = realMarkup.toFixed(2); // Display markup as a real integer
+            }
+        });
+    });
+
+//     document.getElementById("totalType").addEventListener("change", function() {
+//     // Get the selected value from the dropdown
+//     var totalType = this.value;
+    
+//     // Get all table rows containing total values
+//     var totalRows = document.querySelectorAll("#cartItemsList tr td:nth-child(8)"); // Change child index to 8
+    
+//     // Loop through each total row and update the total value based on the selected type
+//     totalRows.forEach(function(totalRow) {
+//         var totalValue = parseFloat(totalRow.textContent); // Get the current total value
+        
+//         // Check the selected total type and update the total value accordingly
+//         if (totalType === "BasePrice") {
+//             // Display total as BasePrice
+//             totalRow.textContent = totalValue.toFixed(2) + " (BasePrice)";
+//         } else if (totalType === "SellingPrice") {
+//             // Display total as SellingPrice
+//             var markupPercent = parseFloat(totalRow.previousElementSibling.textContent);
+//             var basedPrice = parseFloat(totalRow.previousElementSibling.previousElementSibling.textContent);
+//             var retailPrice = (basedPrice * (1 + (markupPercent / 100))).toFixed(2);
+//             totalRow.textContent = retailPrice + " (SellingPrice)";
+//         }
+//     });
+// });
+
 </script>
