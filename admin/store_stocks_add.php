@@ -29,7 +29,7 @@
     <div style="display: flex; flex-direction: row;">
     <datalist id="suggestions">
         <?php foreach ($products as $product): ?>
-            <option value="<?php echo $product['id'] . ' - ' . $product['name'] . ' - ' . $product['models'] . ' - ' . $product['brand_id']; ?>"></option>
+            <option value="<?php echo $product['id'] . ' - ' . $product['name'] . ' - ' . $product['models'] . ' - ' . $product['brand_name']; ?>"></option>
         <?php endforeach; ?>
     </datalist>
         
@@ -157,63 +157,70 @@
 
 <script type="text/javascript">
 
+var savedProductId; // Variable to store the productId
+var savedQuantity; // Variable to store the quantity
+
 function addItem() {
-        var productInput = document.getElementById("select_product");
-        var retailPriceInput = document.getElementById("suggested_retail_price");
-        var basedPriceInput = document.getElementById("based_price");
-        var quantityInput = document.getElementById("quantity");
+    var productInput = document.getElementById("select_product");
+    var retailPriceInput = document.getElementById("suggested_retail_price");
+    var basedPriceInput = document.getElementById("based_price");
+    var quantityInput = document.getElementById("quantity");
 
-        // Get the selected product value from the input field
-        var selectedProduct = productInput.value.trim();
+    // Get the selected product value from the input field
+    var selectedProduct = productInput.value.trim();
 
-        // Split the selected product value to extract id, name, models, and brand_id
-        var [productId, productName, models, brand_id] = selectedProduct.split(' - ');
+    // Split the selected product value to extract id, name, models, and brand_id
+    var [productId, productName, models, brand_name] = selectedProduct.split(' - ');
 
-        // Get the values from input fields
-        var retailPrice = parseFloat(retailPriceInput.value.trim()); // Parse as float
-        var basedPrice = parseFloat(basedPriceInput.value.trim()); // Parse as float
-        var quantity = parseInt(quantityInput.value.trim()); // Parse as integer
+    // Get the values from input fields
+    var retailPrice = parseFloat(retailPriceInput.value.trim()); // Parse as float
+    var basedPrice = parseFloat(basedPriceInput.value.trim()); // Parse as float
+    var quantity = parseInt(quantityInput.value.trim()); // Parse as integer
 
-        // Check if any input field is empty
-        if (productName === '' || isNaN(retailPrice) || isNaN(basedPrice) || isNaN(quantity)) {
-            alert("Please fill out all fields with valid numbers");
-            return;
-        }
-
-        // Calculate markup as percentage
-        var markupPercent = ((retailPrice - basedPrice) / basedPrice) * 100;
-        var markupInteger = Math.round(markupPercent); // Convert to real integer
-
-        // Calculate amount
-        var amount = quantity * basedPrice;
-
-        // Create a new table row to display the submitted item
-        var newRow = document.createElement("tr");
-        newRow.innerHTML = `
-            <td>${productName}</td>
-            <td>${models}</td>
-            <td>${brand_id}</td>
-            <td>${basedPrice}</td>
-            <td>${retailPrice}</td>
-            <td>${quantity}</td>
-            <td>${markupInteger}%</td>
-            <td>${amount}</td>
-            <td>
-                <button class="btn btn-danger btn-sm" onclick="removeItem(this)">Remove</button>
-            </td>
-        `;
-
-        // Append the new table row to the table body
-        document.getElementById("cartList").appendChild(newRow);
-
-        // Clear input fields after submission
-        productInput.value = '';
-        retailPriceInput.value = '';
-        basedPriceInput.value = '';
-        quantityInput.value = '';
-
-        updateSummary();
+    // Check if any input field is empty
+    if (productName === '' || isNaN(retailPrice) || isNaN(basedPrice) || isNaN(quantity)) {
+        alert("Please fill out all fields with valid numbers");
+        return;
     }
+
+    // Store productId and quantity
+    savedProductId = productId;
+    savedQuantity = quantity;
+
+    // Calculate markup as percentage
+    var markupPercent = ((retailPrice - basedPrice) / basedPrice) * 100;
+    var markupInteger = Math.round(markupPercent); // Convert to real integer
+
+    // Calculate amount
+    var amount = quantity * basedPrice;
+
+    // Create a new table row to display the submitted item
+    var newRow = document.createElement("tr");
+    newRow.innerHTML = `
+        <td>${productName}</td>
+        <td>${models}</td>
+        <td>${brand_name}</td>
+        <td>${basedPrice}</td>
+        <td>${retailPrice}</td>
+        <td>${quantity}</td>
+        <td>${markupInteger}%</td>
+        <td>${amount}</td>
+        <td>
+            <button class="btn btn-danger btn-sm" onclick="removeItem(this)">Remove</button>
+        </td>
+    `;
+
+    // Append the new table row to the table body
+    document.getElementById("cartList").appendChild(newRow);
+
+    // Clear input fields after submission
+    productInput.value = '';
+    retailPriceInput.value = '';
+    basedPriceInput.value = '';
+    quantityInput.value = '';
+
+    updateSummary();
+}
 
 $(document).ready(function () {
   
@@ -368,54 +375,97 @@ document.getElementById("markup").addEventListener("change", updateSummary);
 
 
 $(document).ready(function () {
-     // ... Your existing DataTable initialization code ...
-     // Save Material Transfer
-     $('#saveMaterialTransfer').click(function () {
-         var materialDate = $('#materialDate').val();
-         var materialInvoiceNo = $('#materialInvoiceNo').val();
-         var cashierName = $('#cashierName').val();
-         var receivedById = $('#receivedBy').val();
-         var inspectedById = $('#inspectedBy').val();
-         var verifiedById = $('#verifiedBy').val();
+    // ... Your existing DataTable initialization code ...
 
-         // Fetch first name and last name based on the selected IDs
-         $.ajax({
-             url: '../php/fetch_admin_data.php', // Your server-side script to fetch admin data
-             method: 'GET',
-             dataType: 'json',
-             success: function (data) {  
-                swal("File Save", "Record has been saved", "success");   
-                 var receivedBy = fetchAdminData(receivedById, data);
-                 var inspectedBy = fetchAdminData(inspectedById, data);
-                 var verifiedBy = fetchAdminData(verifiedById, data);
+    // Save Material Transfer
+    $('#saveMaterialTransfer').click(function () {
 
-                 // After fetching first name and last name, save the Material Transfer
-                 $.ajax({
-                     url: '../php/store_stocks_save.php',
-                     method: 'POST',
-                     data: {
-                         materialDate: materialDate,
-                         materialInvoiceNo: materialInvoiceNo,
-                         cashierName: cashierName,
-                         receivedBy: receivedBy,
-                         inspectedBy: inspectedBy,
-                         verifiedBy: verifiedBy
-                     },
-                     success: function (response) {    
-                         console.log(response);
-                     },
-                     error: function (xhr, status, error) {
-                         console.error('Error saving data:', error);
-                     }
-                 });
-             },
-             error: function (xhr, status, error) {
-                 console.error('Error fetching admin data:', error);
-             }
-       
-       
-            });
-     });
+        $.ajax({
+        url: '../php/add_product_stocks.php',
+        method: 'POST',
+        data: {
+            productId: savedProductId,
+            stocksToAdd: savedQuantity
+        },
+        success: function (response) {
+            swal("Material Requested", "Product has been requested", "success");
+            console.log('Stocks added to product successfully:', response);
+            // Add any additional actions here after successful addition of stocks
+        },
+        error: function (xhr, status, error) {
+            console.error('Error adding stocks to product:', error);
+        }
     });
+
+
+        var materialDate = $('#materialDate').val();
+        var materialInvoiceNo = $('#materialInvoiceNo').val();
+        var cashierName = $('#cashierName').val();
+        var receivedById = $('#receivedBy').val();
+        var inspectedById = $('#inspectedBy').val();
+        var verifiedById = $('#verifiedBy').val();
+
+        // Calculate total selling price, total cost price, and total gross profit
+        var totalSellingPrice = 0;
+        var totalCostPrice = 0;
+        var totalGrossProfit = 0;
+
+        // Iterate through each row in the table
+        $('#cartList tr').each(function () {
+            var basedPrice = parseFloat($(this).find('td:eq(3)').text());
+            var retailPrice = parseFloat($(this).find('td:eq(4)').text());
+            var quantity = parseInt($(this).find('td:eq(5)').text());
+
+            var amount = basedPrice * quantity;
+            var markupPercent = ((retailPrice - basedPrice) / basedPrice) * 100;
+            var sellingPrice = retailPrice * quantity;
+
+            totalSellingPrice += sellingPrice;
+            totalCostPrice += amount;
+        });
+
+        totalGrossProfit = totalSellingPrice - totalCostPrice;
+
+        // Fetch first name and last name based on the selected IDs
+        $.ajax({
+            url: '../php/fetch_admin_data.php',
+            method: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var receivedBy = fetchAdminData(receivedById, data);
+                var inspectedBy = fetchAdminData(inspectedById, data);
+                var verifiedBy = fetchAdminData(verifiedById, data);
+
+                // Save Material Transfer with total values
+                $.ajax({
+                    url: '../php/store_stocks_save.php', // Your server-side script to save material transfer
+                    method: 'POST',
+                    data: {
+                        materialDate: materialDate,
+                        materialInvoiceNo: materialInvoiceNo,
+                        cashierName: cashierName,
+                        receivedBy: receivedBy,
+                        inspectedBy: inspectedBy,
+                        verifiedBy: verifiedBy,
+                        totalSellingPrice: totalSellingPrice,
+                        totalCostPrice: totalCostPrice,
+                        totalGrossProfit: totalGrossProfit
+                    },
+                    success: function (response) {
+                        console.log(response);
+                        // window.location.href = "store_stocks_add.php";
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error saving data:', error);
+                    }
+                });
+            },
+            error: function (xhr, status, error) {
+                console.error('Error fetching admin data:', error);
+            }
+        });
+    });
+});
+
 
 </script>
