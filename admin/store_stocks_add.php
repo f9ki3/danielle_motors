@@ -42,10 +42,10 @@
     </div>
     <!-- List to display submitted items -->
  
-</div>
-</div>
+                                </div>
+                            </div>
                     
-                    </div>
+                        </div>
                 </div>
                 </div>
                 <div style="height: 80vh;">
@@ -58,7 +58,7 @@
                             <th scope="col" width="10%">Model</th>
                             <th scope="col" width="10%">Brand</th>
                             <th scope="col" width="10%">SRP</th>
-                            <th scope="col" width="10%">SellingPrice</th>
+                            <th scope="col" width="10%">Selling Price</th>
                             <th scope="col" width="10%">Quantity</th>
                             <th scope="col" width="10%" >Markup
                                 <select id="markup">
@@ -75,7 +75,7 @@
                             <th scope="col" width="10%" >Total
                                 <select id="totalType">
                                     <option value="BasePrice">CostPrice</option>
-                                    <option value="Selling Price">SellingPrice</option>
+                                    <option value="SellingPrice">SellingPrice</option>
                                 </select>
                             </th>
                             <th scope="col" width="5%">Action</th>
@@ -392,25 +392,41 @@ document.getElementById("markup").addEventListener("change", updateSummary);
 $(document).ready(function () {
     // Save Material Transfer
     $('#saveMaterialTransfer').click(function () {
-        // Calculate total selling price, total cost price, and total gross profit
-        var totalSellingPrice = 0;
-        var totalCostPrice = 0;
-        var totalGrossProfit = 0;
 
-        // Iterate through each row in the table
+// Iterate through each row in the table
         $('#cartList tr').each(function () {
-            var productId = $(this).find('td:eq(0)').text(); // Assuming the product ID is in the first column
+            // Get the product ID from the data-product-id attribute
+            var productId = $(this).attr('data-product-id');
+    
+            // Get the quantity from the table cell
             var quantity = parseInt($(this).find('td:eq(5)').text()); // Assuming the quantity is in the sixth column
-
-            // Make AJAX call to update product stocks
+    
+            var retailPrice = parseFloat($(this).find('td:eq(4)').text()); // Assuming SRP is in the fifth column
+         // Make AJAX call to update product stocks
             $.ajax({
                 url: '../php/add_product_stocks.php',
                 method: 'POST',
                 data: {
                     productId: productId,
-                    stocksToAdd: quantity
+                    stocksToAdd: quantity,
+                    srp: retailPrice
                 },
                 success: function (response) {
+                    swal({
+                        title: "Material Requested",
+                        text: "Product has been requested",
+                        icon: "success",
+                        button: {
+                            text: "OK",
+                            closeModal: false, // Prevents closing the modal automatically after the button is clicked
+                        },
+                    }).then((value) => {
+                        // Check if the button is clicked
+                        if (value) {
+                            // Redirect to the desired window location
+                            window.location.href = "store_stocks_add.php";
+                        }
+                    });
                     console.log('Product stocks updated successfully for product ID ' + productId);
                     // Add any additional actions here after successful update of product stocks
                 },
@@ -418,14 +434,30 @@ $(document).ready(function () {
                     console.error('Error updating product stocks for product ID ' + productId + ':', error);
                 }
             });
+        });
 
-            // Calculate total selling price, total cost price, and total gross profit for each row
+
+        var materialDate = $('#materialDate').val();
+        var materialInvoiceNo = $('#materialInvoiceNo').val();
+        var cashierName = $('#cashierName').val();
+        var receivedById = $('#receivedBy').val();
+        var inspectedById = $('#inspectedBy').val();
+        var verifiedById = $('#verifiedBy').val();
+
+        // Calculate total selling price, total cost price, and total gross profit
+        var totalSellingPrice = 0;
+        var totalCostPrice = 0;
+        var totalGrossProfit = 0;
+
+        // Iterate through each row in the table
+        $('#cartList tr').each(function () {
             var basedPrice = parseFloat($(this).find('td:eq(3)').text());
             var retailPrice = parseFloat($(this).find('td:eq(4)').text());
-            var quantityValue = parseInt($(this).find('td:eq(5)').text());
+            var quantity = parseInt($(this).find('td:eq(5)').text());
 
-            var amount = basedPrice * quantityValue;
-            var sellingPrice = retailPrice * quantityValue;
+            var amount = basedPrice * quantity;
+            var markupPercent = ((retailPrice - basedPrice) / basedPrice) * 100;
+            var sellingPrice = retailPrice * quantity;
 
             totalSellingPrice += sellingPrice;
             totalCostPrice += amount;
@@ -433,14 +465,40 @@ $(document).ready(function () {
 
         totalGrossProfit = totalSellingPrice - totalCostPrice;
 
+
         // Fetch first name and last name based on the selected IDs
         $.ajax({
             url: '../php/fetch_admin_data.php',
             method: 'GET',
             dataType: 'json',
             success: function (data) {
-                // Fetch admin data and save Material Transfer with total values
-                // Add your code here
+                var receivedBy = fetchAdminData(receivedById, data);
+                var inspectedBy = fetchAdminData(inspectedById, data);
+                var verifiedBy = fetchAdminData(verifiedById, data);
+
+                                // Save Material Transfer with total values
+                                $.ajax({
+                    url: '../php/store_stocks_save.php', // Your server-side script to save material transfer
+                    method: 'POST',
+                    data: {
+                        materialDate: materialDate,
+                        materialInvoiceNo: materialInvoiceNo,
+                        cashierName: cashierName,
+                        receivedBy: receivedBy,
+                        inspectedBy: inspectedBy,
+                        verifiedBy: verifiedBy,
+                        totalSellingPrice: totalSellingPrice,
+                        totalCostPrice: totalCostPrice,
+                        totalGrossProfit: totalGrossProfit
+                    },
+                    success: function (response) {
+                        console.log(response);
+                        // window.location.href = "store_stocks_add.php";
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error saving data:', error);
+                    }
+                });
             },
             error: function (xhr, status, error) {
                 console.error('Error fetching admin data:', error);
@@ -448,6 +506,5 @@ $(document).ready(function () {
         });
     });
 });
-
 
 </script>

@@ -1,23 +1,46 @@
-<?php include 'session.php'?>
+<?php include 'session.php'; ?>
 <html lang="en">
-<?php include 'header.php'?>
+<?php include 'header.php'; ?>
 <body>
-<div style="display: flex; flex-direction: row">
-<?php include 'navigation_bar.php'?>
-<?php include '../config/config.php'?>
-<?PHP Include '../php/product_dropdown.php'?>
+    <div style="display: flex; flex-direction: row">
+        <?php include 'navigation_bar.php'; ?>
+        <?php include '../config/config.php'; ?>
+        <?php include '../php/product_dropdown.php'; ?>
+    <?php
+include '../config/config.php';
 
-<?php
-// Retrieve the material_id from the URL
+// Check if the material_id is provided in the URL
 if (isset($_GET['material_id'])) {
-    $materialId = $_GET['material_id'];
-    // Now you can use $materialId to fetch the corresponding data from the database
-    // Fetch data based on $materialId...
+    // Sanitize the material_id to prevent SQL injection
+    $materialId = intval($_GET['material_id']);
+
+    // Prepare and execute the SQL query to fetch the data based on the material_id
+    $sql = "SELECT * FROM material_transfer WHERE id = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $materialId);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    // Check if any rows are returned
+    if ($row = mysqli_fetch_assoc($result)) {
+        // Display the data from the row
+
+        // Close the statement and database connection
+        mysqli_stmt_close($stmt);
+        mysqli_close($conn);
+
+        // Output JavaScript code with materialId value
+        echo "<script>var materialId = $materialId;</script>";
+    } else {
+        // Handle case where no rows are returned for the provided material_id
+        echo "No data found for the provided Material ID.";
+    }
 } else {
     // Handle case where material_id is not provided
     echo "Material ID not provided!";
 }
 ?>
+
 
 
 <!-- start inventory-->
@@ -35,13 +58,16 @@ if (isset($_GET['material_id'])) {
         </div>
 
         <div style="background-color: white; height: auto;" class="rounded border p-3 mb-3 w-100">
-             <div class="border rounded mt-2 p-3" >
+                <div class="border rounded mt-2 p-3">
                     <div style="display: flex; flex-direction: row; justify-content: space-between">
                         <div>
-                            <h4 id="materialInvoice">Material Invoice:</h4>
-                            <h4 id="materialDate">Date:</h4>
+                            <?php
+                            // Output the Material Invoice, Date, and Cashier using PHP
+                            echo "<h4>Material Invoice: " . $row['material_invoice'] . "</h4>";
+                            echo "<h4>Date: " . $row['material_date'] . "</h4>";
+                            ?>
                         </div>
-                        <div>
+                     <div>
                             <!-- <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#add_stocks">+ Add Stocks</button> -->
                             <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#print">Print</button>
                         </div>
@@ -49,22 +75,34 @@ if (isset($_GET['material_id'])) {
 
                     <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
                         <div class="form-floating" style="width: 32%;">
-                            <select id="cashierName" class="form-select" aria-label="Default select example"></select>
+                            <select id="cashierName" class="form-select" aria-label="Default select example" disabled>
+                                <option value="<?php echo $row['material_cashier']; ?>" selected><?php echo $row['material_cashier']; ?></option>
+                            </select>
                             <label for="Cashier">Cashier By</label>
                         </div>
                         <div class="form-floating" style="width: 32%;">
-                            <select id="receivedBy" class="form-select" aria-label="Default select example"></select>
-                            <label for="transaction_received">Received by</label>
+                            <select id="Receiver" class="form-select" aria-label="Default select example" disabled>
+                                <option value="<?php echo $row['material_recieved_by']; ?>"><?php echo $row['material_recieved_by']; ?></option>
+                                <!-- Add more options if needed -->
+                            </select>
+                            <label for="Receiver">Received by</label>
                         </div>
                         <div class="form-floating" style="width: 32%;">
-                            <select id="inspectedBy" class="form-select" aria-label="Default select example"></select>
-                            <label for="transaction_inspected">Inspected by</label>
+                            <select id="Inspector" class="form-select" aria-label="Default select example" disabled>
+                                <option value="<?php echo $row['material_inspected_by']; ?>"><?php echo $row['material_inspected_by']; ?></option>
+                                <!-- Add more options if needed -->
+                            </select>
+                            <label for="Inspector">Inspected by</label>
                         </div>
                         <div class="form-floating" style="width: 32%;">
-                            <select id="verifiedBy" class="form-select" aria-label="Default select example"></select>
-                            <label for="transaction_verified">Verified by</label>
+                            <select id="Verifier" class="form-select" aria-label="Default select example" disabled>
+                                <option value="<?php echo $row['material_verified_by']; ?>"><?php echo $row['material_verified_by']; ?></option>
+                                <!-- Add more options if needed -->
+                            </select>
+                            <label for="Verifier">Verified by</label>
                         </div>
                     </div>
+
                     <div>
                         <!-- <input type="text" class="form-control mb-2 form-control-sm w-25" placeholder="Search"> -->
                     </div>
@@ -73,23 +111,26 @@ if (isset($_GET['material_id'])) {
     </div>
              
 
-             <div style="overflow-y: auto; height: 450px">
-        <table id="deliverydataMaterial" class="table mt-1 stripe hover order-column row-border">
-            <thead>
-                <tr>
-                    <th scope="col" width="10%">Product id</th>
-                    <th scope="col" width="10%">Date</th>
-                    <th scope="col" width="15%">Product Name</th>
-                    <th scope="col" width="15%">Stocks</th>
-                    <th scope="col" width="15%">Current Price</th>
-                    <th scope="col" width="15%">Selling Price</th>
-                    <th scope="col" width="10%">Markup</th>
-                    <th class="text-end" scope="col" width="20%">Action</th>
-                </tr>
-            </thead>
-           <tbody id="MaterialTableBody"class="table table-bordered stripe hover order-column row-border" >
-            </tbody>
-        </table>
+             <div style="height: 50vh; overflow: auto">
+                    <table class="table">
+                    <thead class="sticky-top">
+                        <tr>
+                            <th scope="col" width="10%">Product id</th>
+                            <th scope="col" width="15%">Product Name</th>
+                            <th scope="col" width="10%">Model</th>
+                            <th scope="col" width="10%">Brand</th>
+                            <th scope="col" width="5%">Stocks</th>
+                            <th scope="col" width="10%">Date</th>
+                            <th scope="col" width="10%">SRP</th>
+                            <th scope="col" width="10%">Selling Price</th>
+                            <th scope="col" width="10%">Markup</th>
+                            <th class="text-end" scope="col" width="20%">Action</th>
+                        </tr>
+                    </thead>
+                        <tbody id="MaterialList">
+                        <!-- Cart items will be populated here -->
+                    </tbody>
+                    </table>
     </div>
             <div class="border rounded mt-2 p-3" >
                     <div style="display: flex; flex-direction: row; justify-content: space-between">
@@ -206,23 +247,51 @@ if (isset($_GET['material_id'])) {
 });
 
 $(document).ready(function() {
-    // Initialize DataTable
-    var table = $('#deliverydataMaterial').DataTable({
-        "fnCreatedRow": function (nRow, aData, iDataIndex) {
-            $(nRow).attr('id', aData[0]);
-        },
-        'serverSide': 'true',
-        'processing': 'true',
-        'paging': 'true',
-        'order': [],
-        'ajax': {
-            'url': '../php/delivery_stock_fetch.php',
-            'type': 'post',
-        },
-        "aoColumnDefs": [{
-            "bSortable": false,
-            "aTargets": [] // Adjust the index to match the actual number of columns
-        }]
+    // Function to fetch table data
+    function fetchTableData() {
+        $.ajax({
+            url: '../php/fetch_delivery_stock.php', // URL to your server-side script
+            method: 'GET',
+            dataType: 'json',
+            success: function(data) {
+    console.log(data); // Log the data received from the server
+
+    // Clear existing table rows
+    $('#MaterialList').empty();
+
+    // Iterate through the fetched data and populate the table
+    $.each(data, function(index, item) {
+        // Create a new table row
+        var newRow = $('<tr>');
+
+        // Append table data to the row
+        newRow.append($('<td>').text(item.id));
+        newRow.append($('<td>').text(item.name));
+        newRow.append($('<td>').text(item.code));
+        newRow.append($('<td>').text(item.supplier_code));
+        newRow.append($('<td>').text(item.image));
+        newRow.append($('<td>').text(item.models));
+        newRow.append($('<td>').text(item.stocks));
+        newRow.append($('<td>').text(item.srp));
+        newRow.append($('<td>').text(item.unit_id));
+        newRow.append($('<td>').text(item.brand_id));
+        newRow.append($('<td>').text(item.category_id));
+        newRow.append($('<td>').text(item.brand_name));
+
+        // Append the new row to the table body
+        $('#MaterialList').append(newRow);
     });
+
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching table data:', error);
+            }
+        });
+    }
+
+    // Call the fetchTableData function when the document is ready
+    fetchTableData();
 });
+
+
 </script>
