@@ -1,11 +1,24 @@
-<?php include '../config/config.php'?>
 <?php include 'session.php'?>
 <html lang="en">
 <?php include 'header.php'?>
 <body>
 <div style="display: flex; flex-direction: row">
 <?php include 'navigation_bar.php'?>
+<?php include '../config/config.php'?>
 <?PHP Include '../php/product_dropdown.php'?>
+
+<?php
+// Retrieve the material_id from the URL
+if (isset($_GET['material_id'])) {
+    $materialId = $_GET['material_id'];
+    // Now you can use $materialId to fetch the corresponding data from the database
+    // Fetch data based on $materialId...
+} else {
+    // Handle case where material_id is not provided
+    echo "Material ID not provided!";
+}
+?>
+
 
 <!-- start inventory-->
 
@@ -25,8 +38,8 @@
              <div class="border rounded mt-2 p-3" >
                     <div style="display: flex; flex-direction: row; justify-content: space-between">
                         <div>
-                            <h4>Material Invoice: DMP0001</h4>
-                            <h4>Date: 03/11/24</h4>
+                            <h4 id="materialInvoice">Material Invoice:</h4>
+                            <h4 id="materialDate">Date:</h4>
                         </div>
                         <div>
                             <!-- <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#add_stocks">+ Add Stocks</button> -->
@@ -34,16 +47,30 @@
                         </div>
                     </div>
 
-                    <div class="m-0" style="display: flex; flex-direction: row; justify-content: space-between">
-                        <p>Cashier: Fyke Loterena</p>
-                        <p>Recieved by: Louis Rivera</p>
-                        <p>Verified by: Alexander Inciong</p>
-                        <p>Inspected by: Andrada</p>
+                    <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
+                        <div class="form-floating" style="width: 32%;">
+                            <select id="cashierName" class="form-select" aria-label="Default select example"></select>
+                            <label for="Cashier">Cashier By</label>
+                        </div>
+                        <div class="form-floating" style="width: 32%;">
+                            <select id="receivedBy" class="form-select" aria-label="Default select example"></select>
+                            <label for="transaction_received">Received by</label>
+                        </div>
+                        <div class="form-floating" style="width: 32%;">
+                            <select id="inspectedBy" class="form-select" aria-label="Default select example"></select>
+                            <label for="transaction_inspected">Inspected by</label>
+                        </div>
+                        <div class="form-floating" style="width: 32%;">
+                            <select id="verifiedBy" class="form-select" aria-label="Default select example"></select>
+                            <label for="transaction_verified">Verified by</label>
+                        </div>
                     </div>
                     <div>
-                        <input type="text" class="form-control mb-2 form-control-sm w-25" placeholder="Search">
+                        <!-- <input type="text" class="form-control mb-2 form-control-sm w-25" placeholder="Search"> -->
                     </div>
              </div>
+        </div>
+    </div>
              
 
              <div style="overflow-y: auto; height: 450px">
@@ -143,7 +170,41 @@
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
-<script>
+<script type="text/javascript">
+    $(document).ready(function () {
+  
+  function fetchAdminData(selectElementId, role) {
+      $.ajax({
+          url: '../php/fetch_admin_data.php', // Your server-side script to fetch admin data
+          method: 'GET',
+          data: { role: role }, // Optional: send role if needed
+          dataType: 'json',
+          success: function (data) {
+              // Populate the dropdown options
+              var selectElement = $('#' + selectElementId);
+              selectElement.empty();
+              selectElement.append('<option selected>Select ' + role + '</option>');
+              $.each(data, function (index, admin) {
+                  selectElement.append('<option value="' + admin.id + '">' + admin.fname + ' ' + admin.lname + '</option>');
+              });
+          },
+          error: function (xhr, status, error) {
+              console.error('Error fetching admin data:', error);
+          }
+      });
+  }
+
+  // Fetch data for receivedBy dropdown
+  
+  fetchAdminData('receivedBy', 'Recieved By');
+  
+  // Fetch data for inspectedBy dropdown
+  fetchAdminData('inspectedBy', 'Inspected by');
+
+  // Fetch data for verifiedBy dropdown
+  fetchAdminData('verifiedBy', 'Verified By');
+});
+
 $(document).ready(function() {
     // Initialize DataTable
     var table = $('#deliverydataMaterial').DataTable({

@@ -130,14 +130,14 @@ $(document).ready(function () {
         }]
     });
 
-    // Define click event handler for view button
     $('#tabledataMaterial tbody').on('click', '.view', function () {
-        // Handle button click event here
+        // Get the data associated with the clicked row
         var rowData = table.row($(this).closest('tr')).data();
-        window.location.href = "store_product";
-        console.log('View button clicked for row:', rowData);
+        var materialId = rowData[0]; // Assuming material_id is in the first column
+        // Redirect to store_product.php page with material_id as a query parameter
+        window.location.href = "store_product.php?material_id=" + materialId;
     });
-
+    
    // Define click event handler for edit button
    $('#tabledataMaterial tbody').on('click', '.edit', function () {
     // Get the data associated with the clicked row
