@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-lg-8 col-md-4">
                 <div class="table-responsive scrollbar mx-n1 px-1">
-                    <table class="table mb-0">
+                    <table class="table table-sm mb-0">
                         <thead>
                             <tr class="bg-dark text-white">
                                 <th class="sort white-space-nowrap align-middle" scope="col">IMAGE</th>
@@ -43,10 +43,10 @@
             </div>
             <div class="col-lg-4">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
                         <h2 class="card-title">Cart</h2>
                         <hr class="mt-3 mb-3">
-                        <table id="rightTable" class="table fs--1">
+                        <table id="rightTable" class="table table-sm fs--1">
                             <thead>
                                 <th>Name</th>
                                 <th>Models</th>
