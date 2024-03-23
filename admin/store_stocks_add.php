@@ -195,7 +195,9 @@ function addItem() {
     var amount = quantity * basedPrice;
 
     // Create a new table row to display the submitted item
+    
     var newRow = document.createElement("tr");
+    newRow.setAttribute("data-product-id", productId); // Add data-product-id attribute to store the product ID
     newRow.innerHTML = `
         <td>${productName}</td>
         <td>${models}</td>
@@ -264,9 +266,22 @@ function fetchAdminData(adminId, adminData) {
 }
 
 function removeItem(button) {
-        // Remove the parent row of the clicked button
-        button.closest("tr").remove();
-    }
+    // Get the parent row of the button clicked
+    var row = button.parentNode.parentNode;
+    
+    // Get the product ID from the data-product-id attribute
+    var productId = row.getAttribute("data-product-id");
+    
+    // Use the product ID as needed
+    console.log("Product ID:", productId);
+    
+    // Remove the row from the table
+    row.parentNode.removeChild(row);
+    
+    // Update the summary
+    updateSummary();
+}
+
 
     document.getElementById("cancelButton").addEventListener("click", function() {
     // Remove all rows from the table
