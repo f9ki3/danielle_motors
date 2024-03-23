@@ -1,11 +1,11 @@
 <?php
 session_start();
 $dr_id = $_SESSION['dr_id'];
-// include_once "../../database/database.php";
-$servername = "localhost";
-$username = "root"; 
-$password = ""; 
-$dbname = "hostinger";
+include_once "../../database/database.php";
+// $servername = "localhost";
+// $username = "root"; 
+// $password = ""; 
+// $dbname = "hostinger";
 
 // $servername = "156.67.222.117";
 // $username = "u450836125_dmp_intern"; 

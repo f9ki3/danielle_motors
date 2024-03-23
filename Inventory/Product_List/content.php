@@ -20,7 +20,7 @@
             
             <div class="ms-xxl-auto">
                 <button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button>
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_product"><span class="fas fa-plus me-2"></span>Add to pricelist</button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_product"><span class="fas fa-plus me-2"></span>Add product</button>
             </div>
             </div>
         </div>
