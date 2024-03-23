@@ -1,18 +1,33 @@
 <?php
 include '../config/config.php';
 
-// Retrieve data from the AJAX request
-$productId = $_POST['productId'];
-$quantity = $_POST['stocksToAdd']; // Update to match the key sent in the AJAX request
+// Check if the necessary POST data is set
+if(isset($_POST['productId'], $_POST['stocksToAdd'])) {
+    // Retrieve data from the AJAX request
+    $productId = $_POST['productId'];
+    $quantity = $_POST['stocksToAdd'];
 
-// Update product stocks
-$sql = "UPDATE product SET stocks = stocks + $quantity WHERE id = $productId";
+    // Prepare the SQL statement
+    $sql = "UPDATE product SET stocks = stocks + ? WHERE id = ?";
 
-if (mysqli_query($conn, $sql)) {
-    echo "Product stocks updated successfully!";
+    // Prepare and bind parameters to the statement
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "ii", $quantity, $productId);
+
+    // Execute the statement
+    if(mysqli_stmt_execute($stmt)) {
+        echo "Product stocks updated successfully!";
+    } else {
+        echo "Error updating product stocks: " . mysqli_error($conn);
+    }
+
+    // Close the statement
+    mysqli_stmt_close($stmt);
 } else {
-    echo "Error updating product stocks: " . mysqli_error($conn);
+    // Handle case where required POST data is not set
+    echo "Error: Required data not provided";
 }
 
+// Close the database connection
 mysqli_close($conn);
 ?>

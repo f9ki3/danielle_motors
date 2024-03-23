@@ -35,8 +35,8 @@
         
         
         <input type="text" class="form-control me-2" style="width: 20%" id="select_product" list="suggestions" placeholder="Search Item to Add">
-        <input type="text" class="form-control me-2" style="width: 20%" id="based_price" placeholder="Based Price" <?php echo isset($delivery_receipt_content['price']) ? 'value="' . $delivery_receipt_content['price'] . '"' : ''; ?>>
-        <input type="text" class="form-control me-2" style="width: 20%" id="suggested_retail_price" placeholder="Suggested Retail Price" <?php echo isset($delivery_receipt_content['orig_price']) ? 'value="' . $delivery_receipt_content['orig_price'] . '"' : ''; ?>>
+        <input type="text" class="form-control me-2" style="width: 20%" id="based_price" placeholder="SRP" <?php echo isset($delivery_receipt_content['price']) ? 'value="' . $delivery_receipt_content['price'] . '"' : ''; ?>>
+        <input type="text" class="form-control me-2" style="width: 20%" id="suggested_retail_price" placeholder="Selling Price" <?php echo isset($delivery_receipt_content['orig_price']) ? 'value="' . $delivery_receipt_content['orig_price'] . '"' : ''; ?>>
         <input type="text" class="form-control me-2" style="width: 20%" id="quantity" placeholder="Qty">
         <button class="btn btn-primary" onclick="addItem()">Submit</button>
     </div>
@@ -57,8 +57,8 @@
                             <th scope="col" width="15%">Product Name</th>
                             <th scope="col" width="10%">Model</th>
                             <th scope="col" width="10%">Brand</th>
-                            <th scope="col" width="10%">Based Price</th>
                             <th scope="col" width="10%">SRP</th>
+                            <th scope="col" width="10%">SellingPrice</th>
                             <th scope="col" width="10%">Quantity</th>
                             <th scope="col" width="10%" >Markup
                                 <select id="markup">
@@ -75,7 +75,7 @@
                             <th scope="col" width="10%" >Total
                                 <select id="totalType">
                                     <option value="BasePrice">CostPrice</option>
-                                    <option value="SellingPrice">SellingPrice</option>
+                                    <option value="Selling Price">SellingPrice</option>
                                 </select>
                             </th>
                             <th scope="col" width="5%">Action</th>
@@ -375,36 +375,8 @@ document.getElementById("markup").addEventListener("change", updateSummary);
 
 
 $(document).ready(function () {
-    // ... Your existing DataTable initialization code ...
-
     // Save Material Transfer
     $('#saveMaterialTransfer').click(function () {
-
-        $.ajax({
-        url: '../php/add_product_stocks.php',
-        method: 'POST',
-        data: {
-            productId: savedProductId,
-            stocksToAdd: savedQuantity
-        },
-        success: function (response) {
-            swal("Material Requested", "Product has been requested", "success");
-            console.log('Stocks added to product successfully:', response);
-            // Add any additional actions here after successful addition of stocks
-        },
-        error: function (xhr, status, error) {
-            console.error('Error adding stocks to product:', error);
-        }
-    });
-
-
-        var materialDate = $('#materialDate').val();
-        var materialInvoiceNo = $('#materialInvoiceNo').val();
-        var cashierName = $('#cashierName').val();
-        var receivedById = $('#receivedBy').val();
-        var inspectedById = $('#inspectedBy').val();
-        var verifiedById = $('#verifiedBy').val();
-
         // Calculate total selling price, total cost price, and total gross profit
         var totalSellingPrice = 0;
         var totalCostPrice = 0;
@@ -412,13 +384,33 @@ $(document).ready(function () {
 
         // Iterate through each row in the table
         $('#cartList tr').each(function () {
+            var productId = $(this).find('td:eq(0)').text(); // Assuming the product ID is in the first column
+            var quantity = parseInt($(this).find('td:eq(5)').text()); // Assuming the quantity is in the sixth column
+
+            // Make AJAX call to update product stocks
+            $.ajax({
+                url: '../php/add_product_stocks.php',
+                method: 'POST',
+                data: {
+                    productId: productId,
+                    stocksToAdd: quantity
+                },
+                success: function (response) {
+                    console.log('Product stocks updated successfully for product ID ' + productId);
+                    // Add any additional actions here after successful update of product stocks
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error updating product stocks for product ID ' + productId + ':', error);
+                }
+            });
+
+            // Calculate total selling price, total cost price, and total gross profit for each row
             var basedPrice = parseFloat($(this).find('td:eq(3)').text());
             var retailPrice = parseFloat($(this).find('td:eq(4)').text());
-            var quantity = parseInt($(this).find('td:eq(5)').text());
+            var quantityValue = parseInt($(this).find('td:eq(5)').text());
 
-            var amount = basedPrice * quantity;
-            var markupPercent = ((retailPrice - basedPrice) / basedPrice) * 100;
-            var sellingPrice = retailPrice * quantity;
+            var amount = basedPrice * quantityValue;
+            var sellingPrice = retailPrice * quantityValue;
 
             totalSellingPrice += sellingPrice;
             totalCostPrice += amount;
@@ -432,33 +424,8 @@ $(document).ready(function () {
             method: 'GET',
             dataType: 'json',
             success: function (data) {
-                var receivedBy = fetchAdminData(receivedById, data);
-                var inspectedBy = fetchAdminData(inspectedById, data);
-                var verifiedBy = fetchAdminData(verifiedById, data);
-
-                // Save Material Transfer with total values
-                $.ajax({
-                    url: '../php/store_stocks_save.php', // Your server-side script to save material transfer
-                    method: 'POST',
-                    data: {
-                        materialDate: materialDate,
-                        materialInvoiceNo: materialInvoiceNo,
-                        cashierName: cashierName,
-                        receivedBy: receivedBy,
-                        inspectedBy: inspectedBy,
-                        verifiedBy: verifiedBy,
-                        totalSellingPrice: totalSellingPrice,
-                        totalCostPrice: totalCostPrice,
-                        totalGrossProfit: totalGrossProfit
-                    },
-                    success: function (response) {
-                        console.log(response);
-                        // window.location.href = "store_stocks_add.php";
-                    },
-                    error: function (xhr, status, error) {
-                        console.error('Error saving data:', error);
-                    }
-                });
+                // Fetch admin data and save Material Transfer with total values
+                // Add your code here
             },
             error: function (xhr, status, error) {
                 console.error('Error fetching admin data:', error);
