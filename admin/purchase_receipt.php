@@ -33,7 +33,7 @@ if ($result->num_rows > 0) {
 
 <div style="width: 100%" class="content p-3" >
     <div>
-        <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
+        <div style="background-color: white;" class="rounded border p-3 mb-3 w-100 purchase_header">
             <h5 class="fw-bolder">Purchase</h5>
             <button class="btn btn-sm border btn-primary rounded mb-2">Purchase Walk-in</button>
             <button class="btn btn-sm border rounded mb-2">Purchase Delivery</button>
@@ -42,7 +42,7 @@ if ($result->num_rows > 0) {
             <button class="btn btn-sm border rounded mb-2">Store Stocks</button>
         </div>
 
-        <div style="background-color: white; height: 82vh" class="rounded border p-3 mb-3 w-100">
+        <div style="background-color: white; height: 82vh" class="rounded border p-3 mb-3 w-100 transact">
             <h5 class="fw-bolder">Purchase Receipt</h5>
             <div class="row">
                 <div>
@@ -56,8 +56,8 @@ if ($result->num_rows > 0) {
                                 <div style="display: flex; flex-direction: row; justify-content: space-between">
                                     <h6 class="fw-bolder">Receipt No: <?php echo $transactionID?></h6>
                                     <div>
-                                    <button class="btn btn-light border border-primary text-primary btn-sm">Print</button>
-                                    <a href="purchase" class="btn btn-primary btn-sm">Back</a>
+                                    <button id="originalBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="printDocument()">Print</button>
+                                    <a href="purchase" class="btn btn-primary btn-sm back">Back</a>
                                     </div>
                                 </div>
                                 <p>Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
@@ -71,8 +71,8 @@ if ($result->num_rows > 0) {
                             <div style="width: 35%">Verified by: <?php echo $transactionDetails["TransactionVerifiedBy"]; ?></div>
                         </div>
                 </div>
-                <div class="w-100 border rounded p-3 mb-3" style="overflow: auto; height: 300px">
-                        <div>
+                <div class="w-100 border rounded p-3 mb-3 cart" style="overflow: auto; height: 300px">
+                        
                             <table class="table table-striped">
                                 <tr>
                                     <th width="10%">Product name</th>
@@ -115,7 +115,7 @@ if ($result->num_rows > 0) {
                                 ?>
                                 <!-- end loop -->
                             </table>
-                        </div>
+                        
                     </div>
 
                     
@@ -150,9 +150,16 @@ if ($result->num_rows > 0) {
             </div>
 
         </div>
-
+        </div>                           
 
 </div>
 <?php include 'footer.php'?>
+<script>
+    function printDocument() {
+    window.print();
+}
+
+</script>
+
 </body>
 </html>
