@@ -66,12 +66,6 @@
                                     <option value="inT">₱</option>
                                 </select>
                             </th>
-                            <!-- <th scope="col" width="10%" >total
-                                <select id="totalType">
-                                    <option value="BasePrice">(BasePrice)</option>
-                                    <option value="SellingPrice">(SellingPrice)</option>
-                                </select>
-                            </th> -->
                             <th scope="col" width="10%" >Total
                                 <select id="totalType">
                                     <option value="BasePrice">CostPrice</option>
@@ -392,16 +386,22 @@ document.getElementById("markup").addEventListener("change", updateSummary);
 $(document).ready(function () {
     // Save Material Transfer
     $('#saveMaterialTransfer').click(function () {
-
+        
 // Iterate through each row in the table
         $('#cartList tr').each(function () {
             // Get the product ID from the data-product-id attribute
             var productId = $(this).attr('data-product-id');
+            var materialInvoiceNo = $('#materialInvoiceNo').val();
     
             // Get the quantity from the table cell
-            var quantity = parseInt($(this).find('td:eq(5)').text()); // Assuming the quantity is in the sixth column
-    
+            var inputSrp = parseFloat($(this).find('td:eq(3)').text()); // Assuming input SRP is in the fourth column
             var retailPrice = parseFloat($(this).find('td:eq(4)').text()); // Assuming SRP is in the fifth column
+            var quantity = parseInt($(this).find('td:eq(5)').text()); // Assuming the quantity is in the sixth column
+
+            
+            // var markupPercent = parseFloat($('#markupPercent').val()); // Assuming you have an input field for markup amount
+            var markupPeso = parseFloat($('#markupInteger').val()); // Assuming you have an input field for markup amount
+            var SellingPrice = parseFloat($('#SellingPrice').val()); // Assuming you have an input field for markup amount
          // Make AJAX call to update product stocks
             $.ajax({
                 url: '../php/add_product_stocks.php',
@@ -412,6 +412,25 @@ $(document).ready(function () {
                     srp: retailPrice
                 },
                 success: function (response) {
+                            // Here you can add another AJAX call to save the transaction details
+                        $.ajax({
+                            url: '../php/material_transaction.php',
+                            method: 'POST',
+                            data: {
+                                productId: productId,
+                                material_invoice_id: materialInvoiceNo, 
+                                input_srp: inputSrp,
+                                input_selling_price: retailPrice,
+                                qty_added: quantity,
+                                selling_price: SellingPrice,
+                            },
+                            success: function (response) {
+                                console.log('Material transaction saved successfully');
+                            },
+                            error: function (xhr, status, error) {
+                                console.error('Error saving material transaction:', error);
+                            }
+                        });
                     swal({
                         title: "Material Requested",
                         text: "Product has been requested",

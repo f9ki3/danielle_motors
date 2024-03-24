@@ -110,34 +110,36 @@ if (isset($_GET['material_id'])) {
         </div>
     </div>
              
-
-             <div style="height: 50vh; overflow: auto">
-                    <table class="table">
-                    <thead class="sticky-top">
-                        <tr>
-                            <th scope="col" width="10%">Product id</th>
-                            <th scope="col" width="15%">Product Name</th>
-                            <th scope="col" width="10%">Model</th>
-                            <th scope="col" width="10%">Brand</th>
-                            <th scope="col" width="5%">Stocks</th>
-                            <th scope="col" width="10%">Date</th>
-                            <th scope="col" width="10%">SRP</th>
-                            <th scope="col" width="10%">Selling Price</th>
-                            <th scope="col" width="10%">Markup</th>
-                            <th class="text-end" scope="col" width="20%">Action</th>
-                        </tr>
-                    </thead>
-                        <tbody id="MaterialList">
-                        <!-- Cart items will be populated here -->
-                    </tbody>
-                    </table>
-    </div>
+<div style="height: 50vh; overflow: auto">
+    <table class="table stripe hover order-column row-border" id="productTable">
+        <thead class="sticky-top">
+            <tr>
+                <th scope="col" width="15%">Image</th>
+                <th scope="col" width="15%">Product Name</th>
+                <th scope="col" width="10%">Model</th>
+                <th scope="col" width="10%">Brand</th>
+                <th scope="col" width="5%">Qty Added</th>
+                <th scope="col" width="10%">Date</th>
+                <th scope="col" width="10%">SRP</th>
+                <th scope="col" width="10%">Selling Price</th>
+                <th scope="col" width="10%">Markup</th>
+                <!-- <th class="text-end" scope="col" width="20%">Action</th> -->
+            </tr>
+        </thead>
+        <tbody id="MaterialList">
+            <!-- Cart items will be populated here -->
+        </tbody>
+    </table>
+</div>
             <div class="border rounded mt-2 p-3" >
                     <div style="display: flex; flex-direction: row; justify-content: space-between">
                         <div>
-                            <h4>Net : PHP 100.00</h4>
-                            <h4>Gross: PHP 100.00</h4>
-
+                        <?php
+                            // Output the Material Invoice, Date, and Cashier using PHP
+                            echo "<h3>Total Selling Price: " . $row['totalSellingPrice'] . "</h3>";
+                            echo "<h3>Total Cost Price: " . $row['totalCostPrice'] . "</h3>";
+                            echo "<h3>Total Gross Profit: " . $row['totalGrossProfit'] . "</h3>";
+                            ?>
                         </div>
                         <div style="width: 30%">
                             <button type="button" class="btn w-100 btn-primary mb-2">Save</button>
@@ -211,6 +213,7 @@ if (isset($_GET['material_id'])) {
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 <script type="text/javascript">
     $(document).ready(function () {
   
@@ -246,51 +249,28 @@ if (isset($_GET['material_id'])) {
   fetchAdminData('verifiedBy', 'Verified By');
 });
 
-$(document).ready(function() {
-    // Function to fetch table data
-    function fetchTableData() {
-        $.ajax({
-            url: '../php/fetch_delivery_stock.php', // URL to your server-side script
-            method: 'GET',
-            dataType: 'json',
-            success: function(data) {
-    console.log(data); // Log the data received from the server
 
-    // Clear existing table rows
-    $('#MaterialList').empty();
-
-    // Iterate through the fetched data and populate the table
-    $.each(data, function(index, item) {
-        // Create a new table row
-        var newRow = $('<tr>');
-
-        // Append table data to the row
-        newRow.append($('<td>').text(item.id));
-        newRow.append($('<td>').text(item.name));
-        newRow.append($('<td>').text(item.code));
-        newRow.append($('<td>').text(item.supplier_code));
-        newRow.append($('<td>').text(item.image));
-        newRow.append($('<td>').text(item.models));
-        newRow.append($('<td>').text(item.stocks));
-        newRow.append($('<td>').text(item.srp));
-        newRow.append($('<td>').text(item.unit_id));
-        newRow.append($('<td>').text(item.brand_id));
-        newRow.append($('<td>').text(item.category_id));
-        newRow.append($('<td>').text(item.brand_name));
-
-        // Append the new row to the table body
-        $('#MaterialList').append(newRow);
+$(document).ready(function () {
+    // Initialize DataTable
+    var table = $('#productTable').DataTable({
+        "fnCreatedRow": function (nRow, aData, iDataIndex) {
+            // Set the material_id attribute to the value of the last column (material_id)
+            $(nRow).attr('material_id', aData[10]);
+        },
+        'serverSide': true,
+        'processing': true,
+        'paging': true,
+        'order': [],
+        'ajax': {
+            'url': '../php/fetch_delivery_stock.php',
+            'type': 'post',
+        },
+        'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        "aoColumnDefs": [{
+            "bSortable": false,
+            "aTargets": [8] // Adjust the index to match the actual number of columns
+        }]
     });
-
-            },
-            error: function(xhr, status, error) {
-                console.error('Error fetching table data:', error);
-            }
-        });
-    }
-
-    // Call the fetchTableData function when the document is ready
-    fetchTableData();
 });
 
 

@@ -44,7 +44,7 @@ include '../config/config.php';
 
             
 <div>
-    <table id="tabledataMaterial" class="table table-bordered stripe hover order-column row-border ">
+    <table id="tabledataMaterial" class="table stripe hover order-column row-border ">
         <thead>
                         <tr>
                             <td scope="col" width="15%">Material Invoice No.</td>
@@ -116,6 +116,7 @@ include '../config/config.php';
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
 
 <script type="text/javascript">
