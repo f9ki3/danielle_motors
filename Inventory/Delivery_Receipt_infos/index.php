@@ -203,7 +203,7 @@ date_default_timezone_set('Asia/Manila');
             // Function to fetch PHP-generated content
             function fetchTableContent() {
                 $.ajax({
-                    url: 'tbody.php',
+                    url: 'tbody.php?id=<?php echo $_SESSION['dr_id']; ?>',
                     success: function(response) {
                         $('#live_product_data').html(response);
                         // After successfully updating content, initiate the next long poll
@@ -226,7 +226,7 @@ date_default_timezone_set('Asia/Manila');
             // Function to fetch PHP-generated content
             function fetchTotalContent() {
                 $.ajax({
-                    url: 'dr_footer.php',
+                    url: 'dr_footer.php?id=<?php echo $_SESSION['dr_id']; ?>',
                     success: function(response) {
                         $('#dr_footer').html(response);
                     },
