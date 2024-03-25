@@ -147,7 +147,7 @@ $(document).ready(function () {
         var rowData = table.row($(this).closest('tr')).data();
         var materialId = rowData[0]; // Assuming material_id is in the first column
         // Redirect to store_product.php page with material_id as a query parameter
-        window.location.href = "store_product.php?material_id=" + materialId;
+        window.location.href = "store_product.php?material_transaction=" + material_invoice_id;
     });
     
    // Define click event handler for edit button

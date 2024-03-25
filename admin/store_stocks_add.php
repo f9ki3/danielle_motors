@@ -371,7 +371,6 @@ function updateSummary() {
 
     // Calculate the total gross profit
     totalGrossProfit = totalSellingPrice - totalCostPrice;
-
     // Update the corresponding elements in the Summary div
     document.getElementById("SellingPrice").textContent = "₱"+ totalSellingPrice.toFixed(2);
     document.getElementById("BasePrice").textContent = "₱"+totalCostPrice.toFixed(2);
@@ -418,7 +417,7 @@ $(document).ready(function () {
                             method: 'POST',
                             data: {
                                 productId: productId,
-                                material_invoice_id: materialInvoiceNo, 
+                                materialInvoiceNo: materialInvoiceNo,
                                 input_srp: inputSrp,
                                 input_selling_price: retailPrice,
                                 qty_added: quantity,
@@ -509,6 +508,7 @@ $(document).ready(function () {
                         totalSellingPrice: totalSellingPrice,
                         totalCostPrice: totalCostPrice,
                         totalGrossProfit: totalGrossProfit
+
                     },
                     success: function (response) {
                         console.log(response);
