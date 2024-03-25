@@ -35,17 +35,17 @@
         
         
         <input type="text" class="form-control me-2" style="width: 20%" id="select_product" list="suggestions" placeholder="Search Item to Add">
-        <input type="text" class="form-control me-2" style="width: 20%" id="based_price" placeholder="Based Price" <?php echo isset($delivery_receipt_content['price']) ? 'value="' . $delivery_receipt_content['price'] . '"' : ''; ?>>
-        <input type="text" class="form-control me-2" style="width: 20%" id="suggested_retail_price" placeholder="Suggested Retail Price" <?php echo isset($delivery_receipt_content['orig_price']) ? 'value="' . $delivery_receipt_content['orig_price'] . '"' : ''; ?>>
+        <input type="text" class="form-control me-2" style="width: 20%" id="based_price" placeholder="SRP" <?php echo isset($delivery_receipt_content['price']) ? 'value="' . $delivery_receipt_content['price'] . '"' : ''; ?>>
+        <input type="text" class="form-control me-2" style="width: 20%" id="suggested_retail_price" placeholder="Selling Price" <?php echo isset($delivery_receipt_content['orig_price']) ? 'value="' . $delivery_receipt_content['orig_price'] . '"' : ''; ?>>
         <input type="text" class="form-control me-2" style="width: 20%" id="quantity" placeholder="Qty">
         <button class="btn btn-primary" onclick="addItem()">Submit</button>
     </div>
     <!-- List to display submitted items -->
  
-</div>
-</div>
+                                </div>
+                            </div>
                     
-                    </div>
+                        </div>
                 </div>
                 </div>
                 <div style="height: 80vh;">
@@ -57,8 +57,8 @@
                             <th scope="col" width="15%">Product Name</th>
                             <th scope="col" width="10%">Model</th>
                             <th scope="col" width="10%">Brand</th>
-                            <th scope="col" width="10%">Based Price</th>
                             <th scope="col" width="10%">SRP</th>
+                            <th scope="col" width="10%">Selling Price</th>
                             <th scope="col" width="10%">Quantity</th>
                             <th scope="col" width="10%" >Markup
                                 <select id="markup">
@@ -66,12 +66,6 @@
                                     <option value="inT">₱</option>
                                 </select>
                             </th>
-                            <!-- <th scope="col" width="10%" >total
-                                <select id="totalType">
-                                    <option value="BasePrice">(BasePrice)</option>
-                                    <option value="SellingPrice">(SellingPrice)</option>
-                                </select>
-                            </th> -->
                             <th scope="col" width="10%" >Total
                                 <select id="totalType">
                                     <option value="BasePrice">CostPrice</option>
@@ -195,7 +189,9 @@ function addItem() {
     var amount = quantity * basedPrice;
 
     // Create a new table row to display the submitted item
+    
     var newRow = document.createElement("tr");
+    newRow.setAttribute("data-product-id", productId); // Add data-product-id attribute to store the product ID
     newRow.innerHTML = `
         <td>${productName}</td>
         <td>${models}</td>
@@ -264,9 +260,22 @@ function fetchAdminData(adminId, adminData) {
 }
 
 function removeItem(button) {
-        // Remove the parent row of the clicked button
-        button.closest("tr").remove();
-    }
+    // Get the parent row of the button clicked
+    var row = button.parentNode.parentNode;
+    
+    // Get the product ID from the data-product-id attribute
+    var productId = row.getAttribute("data-product-id");
+    
+    // Use the product ID as needed
+    console.log("Product ID:", productId);
+    
+    // Remove the row from the table
+    row.parentNode.removeChild(row);
+    
+    // Update the summary
+    updateSummary();
+}
+
 
     document.getElementById("cancelButton").addEventListener("click", function() {
     // Remove all rows from the table
@@ -375,27 +384,76 @@ document.getElementById("markup").addEventListener("change", updateSummary);
 
 
 $(document).ready(function () {
-    // ... Your existing DataTable initialization code ...
-
     // Save Material Transfer
     $('#saveMaterialTransfer').click(function () {
+        
+// Iterate through each row in the table
+        $('#cartList tr').each(function () {
+            // Get the product ID from the data-product-id attribute
+            var productId = $(this).attr('data-product-id');
+            var materialInvoiceNo = $('#materialInvoiceNo').val();
+    
+            // Get the quantity from the table cell
+            var inputSrp = parseFloat($(this).find('td:eq(3)').text()); // Assuming input SRP is in the fourth column
+            var retailPrice = parseFloat($(this).find('td:eq(4)').text()); // Assuming SRP is in the fifth column
+            var quantity = parseInt($(this).find('td:eq(5)').text()); // Assuming the quantity is in the sixth column
 
-        $.ajax({
-        url: '../php/add_product_stocks.php',
-        method: 'POST',
-        data: {
-            productId: savedProductId,
-            stocksToAdd: savedQuantity
-        },
-        success: function (response) {
-            swal("Material Requested", "Product has been requested", "success");
-            console.log('Stocks added to product successfully:', response);
-            // Add any additional actions here after successful addition of stocks
-        },
-        error: function (xhr, status, error) {
-            console.error('Error adding stocks to product:', error);
-        }
-    });
+            
+            // var markupPercent = parseFloat($('#markupPercent').val()); // Assuming you have an input field for markup amount
+            var markupPeso = parseFloat($('#markupInteger').val()); // Assuming you have an input field for markup amount
+            var SellingPrice = parseFloat($('#SellingPrice').val()); // Assuming you have an input field for markup amount
+         // Make AJAX call to update product stocks
+            $.ajax({
+                url: '../php/add_product_stocks.php',
+                method: 'POST',
+                data: {
+                    productId: productId,
+                    stocksToAdd: quantity,
+                    srp: retailPrice
+                },
+                success: function (response) {
+                            // Here you can add another AJAX call to save the transaction details
+                        $.ajax({
+                            url: '../php/material_transaction.php',
+                            method: 'POST',
+                            data: {
+                                productId: productId,
+                                material_invoice_id: materialInvoiceNo, 
+                                input_srp: inputSrp,
+                                input_selling_price: retailPrice,
+                                qty_added: quantity,
+                                selling_price: SellingPrice,
+                            },
+                            success: function (response) {
+                                console.log('Material transaction saved successfully');
+                            },
+                            error: function (xhr, status, error) {
+                                console.error('Error saving material transaction:', error);
+                            }
+                        });
+                    swal({
+                        title: "Material Requested",
+                        text: "Product has been requested",
+                        icon: "success",
+                        button: {
+                            text: "OK",
+                            closeModal: false, // Prevents closing the modal automatically after the button is clicked
+                        },
+                    }).then((value) => {
+                        // Check if the button is clicked
+                        if (value) {
+                            // Redirect to the desired window location
+                            window.location.href = "store_stocks_add.php";
+                        }
+                    });
+                    console.log('Product stocks updated successfully for product ID ' + productId);
+                    // Add any additional actions here after successful update of product stocks
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error updating product stocks for product ID ' + productId + ':', error);
+                }
+            });
+        });
 
 
         var materialDate = $('#materialDate').val();
@@ -426,6 +484,7 @@ $(document).ready(function () {
 
         totalGrossProfit = totalSellingPrice - totalCostPrice;
 
+
         // Fetch first name and last name based on the selected IDs
         $.ajax({
             url: '../php/fetch_admin_data.php',
@@ -436,8 +495,8 @@ $(document).ready(function () {
                 var inspectedBy = fetchAdminData(inspectedById, data);
                 var verifiedBy = fetchAdminData(verifiedById, data);
 
-                // Save Material Transfer with total values
-                $.ajax({
+                                // Save Material Transfer with total values
+                                $.ajax({
                     url: '../php/store_stocks_save.php', // Your server-side script to save material transfer
                     method: 'POST',
                     data: {
@@ -466,6 +525,5 @@ $(document).ready(function () {
         });
     });
 });
-
 
 </script>

@@ -39,7 +39,7 @@ include '../config/config.php';
                     </div>
                 </div>
                 <div class="p-1" style="overflow: auto; height: 70vh">
-                    <table id="ProductdataMaterial" class="table table-bordered stripe hover order-column compact row-border ">
+                    <table id="ProductdataMaterial" class="table stripe hover order-column row-border ">
                         <thead>
                             <tr>
                                 <td scope="col">Image</td>

@@ -44,7 +44,7 @@ include '../config/config.php';
 
             
 <div>
-    <table id="tabledataMaterial" class="table table-bordered stripe hover order-column row-border ">
+    <table id="tabledataMaterial" class="table stripe hover order-column row-border ">
         <thead>
                         <tr>
                             <td scope="col" width="15%">Material Invoice No.</td>
@@ -56,7 +56,7 @@ include '../config/config.php';
                             <td class="text-end" scope="col" width="10%">Action</td>
                         </tr>
         </thead>
-        <tbody id="MaterialTableBody">
+        <tbody id="tabledataMaterial">
 <!-- dynamic populate -->
         </tbody>
     </table>
@@ -77,15 +77,24 @@ include '../config/config.php';
 <input type="text" class="form-control mb-2" placeholder="Material Invoice No." id="materialInvoiceNo">
 <input type="text" class="form-control mb-2" placeholder="Cashier Name" id="cashierName" pattern="[A-Za-z ]{1,}" required>
 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-    <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="receivedBy">
-   
-    </select>
-    <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="inspectedBy">
-    
-    </select>
-    <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="verifiedBy">
-      
-    </select>
+<div class="form-floating" style="width: 32%;">
+                                        <select id="receivedBy" class="form-select" aria-label="Default select example">
+
+                                        </select>
+                                        <label for="transaction_received">Recieved by</label>
+                                    </div>
+                                    <div class="form-floating" style="width: 32%;">
+                                        <select id="inspectedBy" class="form-select" aria-label="Default select example">
+
+                                        </select>
+                                        <label for="transaction_inspected">Inspected by</label>
+                                    </div>
+                                    <div class="form-floating" style="width: 32%;">
+                                        <select id="verifiedBy" class="form-select" aria-label="Default select example">
+
+                                        </select>
+                                        <label for="transaction_verified">Verified by</label>
+                                    </div>
 </div>
         
       </div>
@@ -107,6 +116,7 @@ include '../config/config.php';
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
 
 <script type="text/javascript">
@@ -116,28 +126,30 @@ $(document).ready(function () {
         "fnCreatedRow": function (nRow, aData, iDataIndex) {
             $(nRow).attr('id', aData[0]);
         },
-        'serverSide': 'true',
-        'processing': 'true',
-        'paging': 'true',
+        'serverSide': true,
+        'processing': true,
+        'paging': true,
         'order': [],
         'ajax': {
             'url': '../php/store_stocks_fetch.php',
             'type': 'post',
         },
+        'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, "All"]],
         "aoColumnDefs": [{
             "bSortable": false,
             "aTargets": [6] // Adjust the index to match the actual number of columns
         }]
+        
     });
 
-    // Define click event handler for view button
     $('#tabledataMaterial tbody').on('click', '.view', function () {
-        // Handle button click event here
+        // Get the data associated with the clicked row
         var rowData = table.row($(this).closest('tr')).data();
-        window.location.href = "store_product";
-        console.log('View button clicked for row:', rowData);
+        var materialId = rowData[0]; // Assuming material_id is in the first column
+        // Redirect to store_product.php page with material_id as a query parameter
+        window.location.href = "store_product.php?material_id=" + materialId;
     });
-
+    
    // Define click event handler for edit button
    $('#tabledataMaterial tbody').on('click', '.edit', function () {
     // Get the data associated with the clicked row
@@ -263,7 +275,7 @@ $('#tabledataMaterial tbody').on('click', '.delete', function () {
             var verifiedBy = fetchAdminData(verifiedById, data);    
             swal({
   title: "Are you sure?",
-  text: "Once deleted, you will not be able to recover this imaginary file!",
+  text: "Once deleted, you will not be able to see the record",
   icon: "warning",
   buttons: true,
   dangerMode: true,
@@ -294,11 +306,11 @@ $('#tabledataMaterial tbody').on('click', '.delete', function () {
             console.error(error);
         }
     });
-    swal("Poof! Your imaginary file has been deleted!", {
+    swal("Record has been deleted!", {
       icon: "success",
     });
   } else {
-    swal("Your imaginary file is safe!");
+    swal("Your Record file is safe!");
   }
 });
         },
