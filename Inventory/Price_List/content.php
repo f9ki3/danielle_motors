@@ -4,7 +4,7 @@
             <h2 class="mb-0">PRODUCT PRICELIST</h2>
         </div>
     </div>
-    <div id="products" data-list='{"valueNames":["product","price","category","tags","vendor","time"],"page":10,"pagination":false}'>
+    <div id="products" data-list='{"valueNames":["product","price","category","tags","vendor","time"],"page":10,"pagination":true}'>
         <div class="mb-4">
             <div class="d-flex flex-wrap gap-3">
                 <div class="search-box">

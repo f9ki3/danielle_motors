@@ -8,11 +8,6 @@ date_default_timezone_set('Asia/Manila');
 
     <?php include "../../page_properties/header.php" ?>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <style>
-        html {
-            zoom: 0.675
-        }
-    </style>
   <body>
     <!-- ===============================================-->
     <!--    Main Content-->
