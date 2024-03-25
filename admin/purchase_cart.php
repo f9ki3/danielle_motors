@@ -9,9 +9,20 @@
 ?>
 
 <style>
-    /* Adjust the min-width value according to your preference */
-    .select2-container--default .select2-selection--single {
-        min-width: 150px;
+    .button-container {
+    position: relative;
+    }
+
+    .badge-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .badge {
+        position: absolute;
+        top: -10px;
+        right: -10px;
     }
 </style>
 <!-- start inventory-->
@@ -47,9 +58,12 @@
                              <?php endforeach; ?>
                         </select>
                     </div> -->
-                    <div>
-                        <a href="purchase" class="btn border btn-sm me-1 rounded ">Purchase</a>
-                        <a href="purchase_cart" class="btn border btn-primary btn-sm rounded">Cart <span class="badge text-bg-danger" id="counter"></span></a>
+                    <div class="button-container">
+                        <a href="purchase" class="btn border  btn-sm me-5 rounded">Purchase</a>
+                        <div class="badge-container">
+                            <a href="purchase_cart" class="btn btn-primary border btn-sm rounded">Cart</a>
+                            <span class="badge text-bg-danger" id="counter"></span>
+                        </div>
                     </div>
                 </div>
                 </div>
