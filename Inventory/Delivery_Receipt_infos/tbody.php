@@ -1,15 +1,25 @@
 <?php
-session_start();
-include_once "../../database/database.php";
-$dr_id = $_SESSION['dr_id'];
+// session_start();
+// include_once "../../database/database.php";
+// $dr_id = $_SESSION['dr_id'];
+$dr_id = $_GET['id'];
+$servername = "sql.freedb.tech";
+$username = "freedb_dmp_master";
+ $password = "8@YASU8ypbA2uA%";
+  $dbname = "freedb_dmp_db";
+
+// $servername = "156.67.222.117";
+// $username = "u450836125_dmp_intern"; 
+// $password = "DMPInterns123!"; 
+// $dbname = "u450836125_dmp_office";
+// =======
 // $servername = "localhost";
 // $username = "root"; 
 // $password = ""; 
 // $dbname = "updatd";
 
-
 // Create a new MySQLi instance
-// $conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 $dr_content_sql = "SELECT * FROM delivery_receipt_content WHERE delivery_receipt_id ='$dr_id'";
 $dr_content_res = $conn->query($dr_content_sql);
