@@ -67,6 +67,9 @@ if (isset($_GET['material_id'])) {
                             echo "<h4>Date: " . $row['material_date'] . "</h4>";
                             ?>
                         </div>
+                        <div style="display: flex; flex-direction: row">
+                            <h6>Status : <b class="text-success">Default</b></h6>
+                        </div>
                      <div>
                             <!-- <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#add_stocks">+ Add Stocks</button> -->
                             <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#print">Print</button>
@@ -74,33 +77,23 @@ if (isset($_GET['material_id'])) {
                     </div>
 
                     <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
-                        <div class="form-floating" style="width: 32%;">
-                            <select id="cashierName" class="form-select" aria-label="Default select example" disabled>
-                                <option value="<?php echo $row['material_cashier']; ?>" selected><?php echo $row['material_cashier']; ?></option>
-                            </select>
-                            <label for="Cashier">Cashier By</label>
+                        <div class="form-floating" style="width: 32%; margin: 0px 5px 0px 5px">
+                            <input class="form-control" id="name" type="text" value="<?php echo $row['material_cashier']; ?>" readonly>
+                            <label for="name">Cashier Name</label>
                         </div>
-                        <div class="form-floating" style="width: 32%;">
-                            <select id="Receiver" class="form-select" aria-label="Default select example" disabled>
-                                <option value="<?php echo $row['material_recieved_by']; ?>"><?php echo $row['material_recieved_by']; ?></option>
-                                <!-- Add more options if needed -->
-                            </select>
-                            <label for="Receiver">Received by</label>
+                        <div class="form-floating" style="width: 32%; margin: 0px 5px 0px 5px">
+                            <input class="form-control" id="name" type="text" value="<?php echo $row['material_inspected_by']; ?>" readonly>
+                            <label for="name">Inspected By:</label>
                         </div>
-                        <div class="form-floating" style="width: 32%;">
-                            <select id="Inspector" class="form-select" aria-label="Default select example" disabled>
-                                <option value="<?php echo $row['material_inspected_by']; ?>"><?php echo $row['material_inspected_by']; ?></option>
-                                <!-- Add more options if needed -->
-                            </select>
-                            <label for="Inspector">Inspected by</label>
+                        <div class="form-floating" style="width: 32%; margin: 0px 5px 0px 5px">
+                            <input class="form-control" id="name" type="text" value="<?php echo $row['material_verified_by']; ?>" readonly>
+                            <label for="name">Verified By:</label>
                         </div>
-                        <div class="form-floating" style="width: 32%;">
-                            <select id="Verifier" class="form-select" aria-label="Default select example" disabled>
-                                <option value="<?php echo $row['material_verified_by']; ?>"><?php echo $row['material_verified_by']; ?></option>
-                                <!-- Add more options if needed -->
-                            </select>
-                            <label for="Verifier">Verified by</label>
+                        <div class="form-floating" style="width: 32%; margin: 0px 5px 0px 5px">
+                            <input class="form-control" id="name" type="text" value="<?php echo $row['material_recieved_by']; ?>" readonly>
+                            <label for="name">Recieved by:</label>
                         </div>
+                        
                     </div>
 
                     <div>
@@ -110,9 +103,9 @@ if (isset($_GET['material_id'])) {
         </div>
     </div>
              
-<div style="height: 50vh; overflow: auto">
-    <table class="table stripe hover order-column row-border" id="productTable">
-        <thead class="sticky-top">
+<div style="height: 40vh; overflow: auto; background-color: white" class="rounded p-3">
+    <table class="table stripe hover order-column row-border rounded" id="productTable">
+        <thead>
             <tr>
                 <th scope="col" width="15%">Image</th>
                 <th scope="col" width="15%">Product Name</th>
@@ -130,15 +123,15 @@ if (isset($_GET['material_id'])) {
             <!-- Cart items will be populated here -->
         </tbody>
     </table>
-</div>
-            <div class="border rounded mt-2 p-3" >
+        </div>
+            <div class="border rounded mt-3 p-3 bg-light" >
                     <div style="display: flex; flex-direction: row; justify-content: space-between">
                         <div>
                         <?php
                             // Output the Material Invoice, Date, and Cashier using PHP
-                            echo "<h3>Total Selling Price: " . $row['totalSellingPrice'] . "</h3>";
-                            echo "<h3>Total Cost Price: " . $row['totalCostPrice'] . "</h3>";
-                            echo "<h3>Total Gross Profit: " . $row['totalGrossProfit'] . "</h3>";
+                            echo "<h5 class='fw-bolder'>Total Selling Price: " . $row['totalSellingPrice'] . "</h5>";
+                            echo "<h5 class='fw-bolder'>Total Cost Price: " . $row['totalCostPrice'] . "</h5>";
+                            echo "<h5 class='fw-bolder'>Total Gross Profit: " . $row['totalGrossProfit'] . "</h5>";
                             ?>
                         </div>
                         <div style="width: 30%">
