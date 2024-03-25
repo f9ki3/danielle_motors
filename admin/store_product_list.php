@@ -1,6 +1,9 @@
 <?php include 'session.php'?>
 <html lang="en">
-<?php include 'header.php'?>
+<head>
+    <link rel="stylesheet" type="text/css" href="datatable.css">
+    <?php include 'header.php'?>
+    </head>
 <body>
 <div style="display: flex; flex-direction: row">
 <?php
@@ -15,7 +18,6 @@ include '../config/config.php';
         <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
             <h5 class="fw-bolder">Purchase</h5>
             <a href="purchase" class="btn btn-sm  border rounded mb-2">Purchase Walk-in</a>
-            <a href="purchase_delivery" class="btn btn-sm border rounded mb-2">Purchase Delivery</a>
             <a href="purchase_online" class="btn btn-sm border rounded mb-2">Purchase Online</a>
             <a href="purchase_terms" class="btn btn-sm border rounded mb-2">Purchase with Terms</a>
             <a href="store_stocks" class="btn btn-sm border btn-primary rounded mb-2">Store Stocks</a>
@@ -31,13 +33,13 @@ include '../config/config.php';
                     </div>
 
                     <div>
-                        <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#add_stocks">+ Material Transfer</button>
+                        <!-- <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#add_stocks">+ Material Transfer</button> -->
                         <a href="store_stocks" class="btn border btn-sm rounded" >Stocks</a>
                         <a href="store_product_list" class="btn border btn-primary btn-sm rounded" >Product</a>
                     </div>
                 </div>
                 <div class="p-1" style="overflow: auto; height: 70vh">
-                    <table id="ProductdataMaterial" class="table table-bordered">
+                    <table id="ProductdataMaterial" class="table stripe hover order-column row-border ">
                         <thead>
                             <tr>
                                 <td scope="col">Image</td>
@@ -47,7 +49,7 @@ include '../config/config.php';
                                 <td scope="col">Supplier Code</td>
                                 <td scope="col">Unit ID</td>
                                 <td scope="col">Stocks</td>
-                                <td scope="col">SRP</td>
+                                <td scope="col">Barcode</td>
                                 <td scope="col">Availability</td>
                                 <td scope="col">Action</td>
                             </tr>
@@ -99,9 +101,12 @@ include '../config/config.php';
 $(document).ready(function () {
     // Initialize DataTable
     var table = $('#ProductdataMaterial').DataTable({
-        'serverSide': true,
-        'processing': true,
-        'paging': true,
+        "fnCreatedRow": function (nRow, aData, iDataIndex) {
+            $(nRow).attr('id', aData[0]);
+        },
+        'serverSide': 'true',
+        'processing': 'true',
+        'paging': 'true',
         'order': [],
         'ajax': {
             'url': '../php/product_list_fetch.php',
@@ -109,7 +114,7 @@ $(document).ready(function () {
         },
         "aoColumnDefs": [{
             "bSortable": false,
-            "aTargets": [] // Adjust the index to match the actual number of columns
+            "aTargets": [8] // Adjust the index to match the actual number of columns
         }]
     });
 
@@ -117,10 +122,57 @@ $(document).ready(function () {
     $('#ProductdataMaterial tbody').on('click', '.view', function () {
         // Get the data associated with the clicked row
         var rowData = table.row($(this).closest('tr')).data();
+        window.location.href = "store_product_list";
         // Perform any action you want based on the row data
         // For example, you can open a modal with the row data for viewing
         console.log('View button clicked for row:', rowData);
     });
+
+// Define click event handler for delete button
+$('#ProductdataMaterial tbody').on('click', '.delete', function () {
+    var rowData = table.row($(this).closest('tr')).data();
+    console.log('Delete button clicked for row:', rowData);
+
+    // Extract relevant data from the row
+    var code = rowData[7];
+
+    // Confirm deletion with a warning message
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this imaginary file!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    }).then((willDelete) => {
+        if (willDelete) {
+            // Perform AJAX request to update the active column
+            $.ajax({
+                url: '../php/archive_product.php', // Change the URL to your PHP script that updates the active column
+                method: 'POST',
+                data: {     
+               
+                    code: code
+                },
+                success: function (response) {
+                    // Handle the response from the server
+                    console.log(response);
+                    // Reload or update the DataTable if needed
+                    table.ajax.reload();
+                    swal("Poof! Your imaginary file has been deleted!", {
+                        icon: "success",
+                    });
+                },
+                error: function (xhr, status, error) {
+                    // Handle errors
+                    console.error(error);
+                }
+            });
+        } else {
+            swal("Your imaginary file is safe!");
+        }
+    });
+});
+
 });
 
 </script>

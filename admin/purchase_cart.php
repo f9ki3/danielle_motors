@@ -21,18 +21,17 @@
         <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
             <h5 class="fw-bolder">Purchase</h5>
             <a href="purchase" class="btn btn-primary btn-sm  border rounded mb-2">Purchase Walk-in</a>
-            <a href="purchase_delivery" class="btn btn-sm border rounded mb-2">Purchase Delivery</a>
             <a href="purchase_online" class="btn btn-sm border rounded mb-2">Purchase Online</a>
             <a href="purchase_terms" class="btn btn-sm border rounded mb-2">Purchase with Terms</a>
             <a href="store_stocks" class="btn btn-sm border  rounded mb-2">Store Stocks</a>
-            
         </div>
 
-        <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
+        <div style="background-color: white;" class="rounded border p-3 w-100">
             <div class="row">
                 <div style="display: flex; justify-content: space-between; align-items: center;"> 
                     <div style="width: 50%">
-                        <input class="form-control form-control-sm" id="searchInput" placeholder="Search by Product Name">
+                        <h5 class="fw-bolder ">Cart List</h5>
+                        <!-- <input class="form-control form-control-sm" id="searchInput" placeholder="Search by Product Name"> -->
                     </div>
                     <!-- <div style="display: flex; flex-direction: row">
                         <select id="brandSelect"  class="form-select form-select-sm " aria-label="Default select example" style="width:100%">
@@ -54,34 +53,147 @@
                     </div>
                 </div>
                 </div>
-                <div style="height: 75vh; overflow: auto;">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                            <th scope="col" width="15%">Product Name</th>
-                            <th scope="col" width="10%">Model</th>
-                            <th scope="col" width="10%">Brand</th>
-                            <th scope="col" width="10%"> Price</th>
-                            <th scope="col" width="5%"> Unit</th>
-                            <th scope="col" width="5%">QTY</th>
-                            <th scope="col" width="10%">Discount</th>
-                            <th scope="col" width="10%">Amount</th>
-                            <th scope="col" width="5%">Action</th>
-                            </tr>
-                        </thead>
-                            <tbody id="cartItemsList">
+                <div style="height: auto;">
+                    <hr>
+                    <div style="height: 38vh; overflow: auto">
+                        <table class="table">
+                            <thead class="sticky-top">
+                                <tr>
+                                <th scope="col" width="15%">Product Name</th>
+                                <th scope="col" width="10%">Model</th>
+                                <th scope="col" width="10%">Brand</th>
+                                <th scope="col" width="10%"> Price</th>
+                                <th scope="col" width="5%"> Unit</th>
+                                <th scope="col" width="10%">QTY</th>
+                                <th scope="col" width="10%">Discount</th>
+                                <th scope="col" width="10%">Amount</th>
+                                <th scope="col" width="5%">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cartItemsList" >
                                 <!-- Cart items will be populated here -->
                             </tbody>
-                        
-                        <tbody>
-                    </div>
-
-                        
-                        </tbody>
                         </table>
+                        
+                    </div>
+                    <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                        <div style="width: 49%" class="py-2">
+                            <div class="border rounded p-4">
+                                <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-2" >
+                                    <div class="form-floating" style="width: 32%;">
+                                        <input type="text" id="transaction_customer_name" class="form-control" placeholder="">
+                                        <label for="transaction_customer_name">Customer Name</label>
+                                    </div>
+                                    <div class="form-floating" style="width: 32%;">
+                                        <input type="text" id="transaction_address" class="form-control mb-2" placeholder="Address">
+                                        <label for="transaction_address">Address</label>
+                                    </div>
+                                    <div class="form-floating" style="width: 32%;">
+                                        <input type="date" id="transaction_date" class="form-control" placeholder="Date" readonly >
+                                        <label for="transaction_date">Date</label>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
+                                    <div class="form-floating" style="width: 32%;">
+                                        <select id="transaction_verified" class="form-select" aria-label="Default select example">
+                                            <option selected value="Fyke Lleva">Fyke Lleva</option>
+                                            <option value="Alexander Inciong">Alexander Inciong</option>
+                                            <option value="Lois Rivera">Lois Rivera</option>
+                                        </select>
+                                        <label for="transaction_verified">Verified by</label>
+                                    </div>
+                                    <div class="form-floating" style="width: 32%;">
+                                        <select id="transaction_inspected" class="form-select" aria-label="Default select example">
+                                            <option selected value="Fyke Lleva">Fyke Lleva</option>
+                                            <option value="Alexander Inciong">Alexander Inciong</option>
+                                            <option value="Lois Rivera">Lois Rivera</option>
+                                        </select>
+                                        <label for="transaction_inspected">Inspected by</label>
+                                    </div>
+                                    <div class="form-floating" style="width: 32%;">
+                                        <select id="transaction_received" class="form-select" aria-label="Default select example">
+                                            <option selected value="Fyke Lleva">Fyke Lleva</option>
+                                            <option value="Alexander Inciong">Alexander Inciong</option>
+                                            <option value="Lois Rivera">Lois Rivera</option>
+                                        </select>
+                                        <label for="transaction_received">Recieved by</label>
+                                    </div>
+                                </div>
 
+                                <div style="display: flex; flex-direction: row; justify-content: space-between"  class="mb-3">
+                                    <div class="form-floating" style="width: 49%">
+                                        <select id="transaction_payment" class="form-select" aria-label="Default select example" >
+                                            <option selected value="Cash">Cash</option>
+                                            <option value="G-Cash">G-Cash</option>
+                                        </select>
+                                        <label for="transaction_payment">Payment Type</label>
+                                    </div>
+                                    <div class="form-floating" style="width: 49%">
+                                        <select id="transaction_type" class="form-select" aria-label="Default select example">
+                                            <option selected value="Walk-in">Walk-in</option>
+                                            <option value="Delivery">Delivery</option>
+                                        </select>
+                                        <label for="transaction_type">Transaction Type</label>
+                                    </div>
+                                </div>
 
-                
+                                <div style="display: flex; flex-direction: row; justify-content: space-between" >
+                                    <div class="form-floating" style="width: 49%;">
+                                        <input type="text" id="subtotal_discount_percentage" class="form-control" placeholder="" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); if(parseFloat(this.value) < 0) this.value = 0;" maxlength="3">
+                                        <label for="subtotal_discount_percentage">Subtotal Discount (%)</label>
+                                    </div>
+                                    <div class="form-floating" style="width: 49%;">
+                                        <input type="text" id="amount_payment" class="form-control" placeholder="Enter Payment"  oninput="this.value = this.value.replace(/[^0-9.]/g, ''); if(parseFloat(this.value) < 0) this.value = 0;" maxlength="7">
+                                        <label for="amount_payment">Payment</label>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                        <div style="width: 50%" class="p-2">
+                            <div class="border rounded p-4">
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <h5 class="fw-bolder">Subtotal</h5>
+                                    <h5 class="fw-bolder" id="subtotal">PHP 100.00</h5>
+                                </div>
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <h5 class="fw-bolder">Tax (12%)</h5>
+                                    <h5 class="fw-bolder" id="tax">PHP 100.00</h5>
+                                </div>
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <h5 class="fw-bolder">Discount</h5>
+                                    <h5 class="fw-bolder" id="subtotal_discount">PHP 100.00</h5>
+                                </div>
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <h5 class="fw-bolder">Total</h5>
+                                    <h5 class="fw-bolder" id="total">PHP 100.00</h5>
+                                </div>
+                                
+                                <hr>
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <h5 class="fw-bolder">Payment</h5>
+                                    <h5 class="fw-bolder" id="payment"></h5>
+                                </div>
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                    <h5 class="fw-bolder">Change</h5>
+                                    <h5 class="fw-bolder" id="change">PHP 100.00</h5>
+                                </div>
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between" class="mb-2 mt-2">
+                                    <button style="width: 49%" id="resetButton" class="btn border-primary text-primary" onclick="resetCart()" disabled>Reset</button>
+                                    <button style="width: 49%;" id="purchase_btn" class="btn btn-primary" disabled onclick="purchase()">Purchase</button>
+                                    <button style="width: 49%; display: none" disabled id="loading" class="btn btn-primary" ">
+                                        <div class="spinner-grow spinner-grow-sm m-1" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
             
         </div>
@@ -96,129 +208,5 @@
 
 </div>
 <?php include 'footer.php'?>
-
-
-
 </body>
 </html>
-<script>
-    // Function to update session storage and remove item from the cart
-    function removeFromCart(index) {
-        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-        cartItems.splice(index, 1); // Remove item from cart array
-        sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
-        renderCartItems(); // Re-render the cart items
-        updateCounter(cartItems.length); // Update the counter
-    }
-
-    // Function to render cart items in the table
-    function renderCartItems() {
-        var cartItemsList = document.getElementById('cartItemsList');
-        cartItemsList.innerHTML = ''; // Clear existing content
-        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-        cartItems.forEach(function(item, index) {
-            // Calculate the total amount
-            var totalAmount = item.srp * item.qty;
-
-            var row = document.createElement('tr');
-            row.innerHTML = `
-                <td scope="row">${item.product_name}</td>
-                <td scope="row">${item.model}</td>
-                <td>${item.brand}</td>
-                <td>PHP ${item.srp}</td>
-                <td>${item.unit}</td>
-                <td>
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-light">-</button>
-                        <input type="text" class="form-control w-50 text-center" value="${item.qty}" readonly>
-                        <button type="button" class="btn btn-light">+</button>
-                    </div>
-                </td>
-                <td>
-                    <div class="input-group">
-                        <input type="text" class="form-control text-center w-25" value="${item.discount}">
-                        <select class="form-select" style="width: auto;" aria-label="Default select example">
-                            <option selected>%</option>
-                            <option value="1">.</option>
-                        </select>
-                    </div>
-                </td>
-                <td>PHP ${totalAmount.toFixed(2)}</td> <!-- Display the amount -->
-                <td>
-                    <button class="btn btn-light rounded rounded-5 p-2" onclick="removeFromCart(${index})">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
-                        </svg>
-                    </button>
-                </td>
-            `;
-            cartItemsList.appendChild(row);
-        });
-    }
-
-    // Function to update the counter
-    function updateCounter(count) {
-        var counterElement = document.getElementById('counter');
-        if (counterElement) {
-            counterElement.textContent = count;
-        }
-    }
-
-    // Add event listener to all "Add to Cart" buttons
-    document.addEventListener("DOMContentLoaded", function() {
-        var addToCartBtns = document.querySelectorAll('.addToCartBtn');
-        addToCartBtns.forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                var productData = JSON.parse(this.getAttribute('data-product'));
-                addToCart(productData);
-            });
-        });
-
-        // Function to add product to cart
-        function addToCart(product) {
-            var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-            var cartItem = {
-                product_id: product.product_id,
-                product_name: product.product_name,
-                model: product.models,
-                brand: product.brand_name,
-                unit: product.unit_name,
-                srp: product.srp,
-                qty: 1, // Default quantity
-                discount: 0 // Default discount
-            };
-
-            // Check if the product already exists in the cart
-            var existingItem = cartItems.find(function(item) {
-                return item.product_id === cartItem.product_id;
-            });
-
-            if (existingItem) {
-                // If the product already exists, display an alert and do not add it again
-                alert('Product already exists in the cart!');
-            } else {
-                // Add new item to cart
-                cartItems.push(cartItem);
-
-                // Store updated cart items in session storage
-                sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
-
-                // Display a confirmation message
-                alert('Product added to cart!');
-
-                // Render updated cart items
-                renderCartItems();
-
-                // Update the counter
-                updateCounter(cartItems.length);
-            }
-        }
-    });
-
-    // Render initial cart items
-    renderCartItems();
-
-    // Initialize the counter with the number of items in the cart
-    var initialCartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-    updateCounter(initialCartItems.length);
-</script>

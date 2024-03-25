@@ -25,19 +25,18 @@
                             <input type="password" class="form-control" id="password">
                         </div>
                         <div style="height: 50px;">
-                        <button type="submit" class="btn w-100 btn-primary btn " id="login_btn">Login</button>
+                            <button type="submit" class="btn w-100 btn-primary btn" id="login_btn">Login</button>
+                            <button type="submit" id="loading" class="btn btn-primary w-100 disabled" style="display: none">
+                                <div class="spinner-grow spinner-grow-sm m-1" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </button>
                         </div>
                         <div class="alert alert-danger text-center error" role="alert" style="display: none">
                         Please check your login Credentials
                         </div>
-                        <div class="alert alert-success text-center success" role="alert" style="display: none">
-                        Login Success
-                        </div>
-
                         <div class="alert p-2 alert-secondary text-center success" id="loading" role="alert" style="display: none">
-                        <div class="spinner-border" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
+                        
                         </div>
 
 

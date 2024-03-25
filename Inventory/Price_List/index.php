@@ -8,8 +8,6 @@ date_default_timezone_set('Asia/Manila');
 
     <?php include "../../page_properties/header.php" ?>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
-
   <body>
     <!-- ===============================================-->
     <!--    Main Content-->
@@ -52,36 +50,66 @@ date_default_timezone_set('Asia/Manila');
     <script>
         // Initialize Select2 for the searchable dropdown
         $(document).ready(function() {
+            var logo = new Image();
+            logo.src = '../../uploads/dmp_logo.png';
+
             $(".print").on('click', function() {
                 var content = '';
+                var total = $('#cart-total').text();
 
                 // Iterate over each row in the cart-body
                 $("#cart-body tr").each(function() {
                     // Select only the columns you want to include
-                    var name = $(this).find("td:eq(0)").html();
-                    var models = $(this).find("td:eq(1)").html();
-                    var qty = $(this).find(".qty-input").val();;
-                    var unit = $(this).find("td:eq(3)").html();
-                    var subtotal = $(this).find("td:eq(4)").html();
+                    var name = $(this).find("td:eq(0)").text();
+                    var models = $(this).find("td:eq(1)").text();
+                    var qty = $(this).find(".qty-input").val();
+                    var unit = $(this).find("td:eq(3)").text();
                     var discount = $(this).find(".discount").val();
+                    var subtotal = $(this).find("td:eq(4)").text();
 
                     // Create a new row with selected columns
-                    content += '<tr><td class="fs-3">' + name + '</td><td class="ps-3"></td><td class="fs-3">' + models + '</td><td class="ps-3"></td><td class="fs-3">' + qty + '</td><td class="ps-3"></td><td class="fs-3">' + unit + '</td><td class="ps-3"></td><td class="fs-3">' + subtotal + '</td><td class="ps-3"></td><td class="fs-3">' + discount + '%</td></tr>';
+                    content += '<tr><td class="center">' + name + '</td><td class="center">' + models + '</td><td class="center">' + qty + '</td><td class="center">' + unit + '</td><td class="center">' + discount + '%</td><td class="center">' + subtotal + '</td></tr>';
                 });
 
-                // Get the total amount
-                var total = $("#cart-total").text();
+                // Create a new table with selected columns
+                var printableContent = '<style>' +
+                                        'table { width: 100%; border-collapse: collapse; }' +
+                                        'th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }' +
+                                        'th { background-color: #f2f2f2; }' +
+                                        '.receipt { margin: 20px auto; max-width: 400px; }' +
+                                        '.total { font-weight: bold; text-align: right; margin-top: 10px; }' +
+                                        '.header { text-align: center; margin-bottom: 20px; }' +
+                                        '.logo { width: 100px; height: 100px; margin-bottom: 10px; }' +
+                                        '.center { text-align: center; }' +
+                                        '</style>' +
+                                        '<div class="receipt">' +
+                                        '<div class="header">' +
+                                        '<img src="' + logo.src + '" alt="Company Logo" class="logo">' +
+                                        '<h1>Danielle Motor Parts</h1>' +
+                                        '<p>M. Villarica Rd. Prenza I, Marilao, Bulacan</p>' +
+                                        '</div>' +
+                                        '<h2>Receipt</h2>' +
+                                        '<table>' +
+                                        '<thead><tr><th>Item</th><th>Model</th><th>Quantity</th><th>Unit Price</th><th>Discount</th><th>Subtotal</th></tr></thead>' +
+                                        '<tbody>' + content + '</tbody>' +
+                                        '</table>' +
+                                        '<div class="total">' + total + '</span></div>' +
+                                        '</div>';
 
-                // Create a new table with selected columns and total
-                var printableContent = '<table>' + content + '</table>' +
-                                    '<div class="col-lg-6"><h2 class="text-end" id="cart-total">' + total + '</h2></div>';
+                // Open a new window with the receipt content and print it
+                var printWindow = window.open('', '_blank');
+                printWindow.document.write('<html><head><title>Receipt</title></head><body>' + printableContent + '</body></html>');
+                printWindow.document.close();
 
-                // Print the selected columns
-                var originalContent = $("body").html();
-                $("body").html(printableContent);
-                window.print(); // This triggers the browser's print dialog
-                $("body").html(originalContent); // Restore original content
+                // Print the receipt
+                printWindow.print();
+
+                window.onafterprint = function() {
+                    printWindow.close();
+                };
             });
+
+
             $(document).on('click', '.cart-delete', function(){
                 var id = $(this).data('product-id');
                 var row = $(this).closest('tr');

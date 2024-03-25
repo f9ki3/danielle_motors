@@ -1,11 +1,47 @@
-<?php include '../config/config.php'?>
-<?php include 'session.php'?>
+<?php include 'session.php'; ?>
 <html lang="en">
-<?php include 'header.php'?>
+<?php include 'header.php'; ?>
 <body>
-<div style="display: flex; flex-direction: row">
-<?php include 'navigation_bar.php'?>
-<?PHP Include '../php/product_dropdown.php'?>
+    <div style="display: flex; flex-direction: row">
+        <?php include 'navigation_bar.php'; ?>
+        <?php include '../config/config.php'; ?>
+        <?php include '../php/product_dropdown.php'; ?>
+    <?php
+include '../config/config.php';
+
+// Check if the material_id is provided in the URL
+if (isset($_GET['material_id'])) {
+    // Sanitize the material_id to prevent SQL injection
+    $materialId = intval($_GET['material_id']);
+
+    // Prepare and execute the SQL query to fetch the data based on the material_id
+    $sql = "SELECT * FROM material_transfer WHERE id = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $materialId);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    // Check if any rows are returned
+    if ($row = mysqli_fetch_assoc($result)) {
+        // Display the data from the row
+
+        // Close the statement and database connection
+        mysqli_stmt_close($stmt);
+        mysqli_close($conn);
+
+        // Output JavaScript code with materialId value
+        echo "<script>var materialId = $materialId;</script>";
+    } else {
+        // Handle case where no rows are returned for the provided material_id
+        echo "No data found for the provided Material ID.";
+    }
+} else {
+    // Handle case where material_id is not provided
+    echo "Material ID not provided!";
+}
+?>
+
+
 
 <!-- start inventory-->
 
@@ -22,77 +58,88 @@
         </div>
 
         <div style="background-color: white; height: auto;" class="rounded border p-3 mb-3 w-100">
-             <div class="border rounded mt-2 p-3" >
+                <div class="border rounded mt-2 p-3">
                     <div style="display: flex; flex-direction: row; justify-content: space-between">
                         <div>
-                            <h4>Material Invoice: DMP0001</h4>
-                            <h4>Date: 03/11/24</h4>
+                            <?php
+                            // Output the Material Invoice, Date, and Cashier using PHP
+                            echo "<h4>Material Invoice: " . $row['material_invoice'] . "</h4>";
+                            echo "<h4>Date: " . $row['material_date'] . "</h4>";
+                            ?>
                         </div>
-                        <div>
-                            <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#add_stocks">+ Add Stocks</button>
+                     <div>
+                            <!-- <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#add_stocks">+ Add Stocks</button> -->
                             <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#print">Print</button>
                         </div>
                     </div>
 
-                    <div class="m-0" style="display: flex; flex-direction: row; justify-content: space-between">
-                        <p>Cashier: Fyke Loterena</p>
-                        <p>Recieved by: Louis Rivera</p>
-                        <p>Verified by: Alexander Inciong</p>
-                        <p>Inspected by: Andrada</p>
+                    <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
+                        <div class="form-floating" style="width: 32%;">
+                            <select id="cashierName" class="form-select" aria-label="Default select example" disabled>
+                                <option value="<?php echo $row['material_cashier']; ?>" selected><?php echo $row['material_cashier']; ?></option>
+                            </select>
+                            <label for="Cashier">Cashier By</label>
+                        </div>
+                        <div class="form-floating" style="width: 32%;">
+                            <select id="Receiver" class="form-select" aria-label="Default select example" disabled>
+                                <option value="<?php echo $row['material_recieved_by']; ?>"><?php echo $row['material_recieved_by']; ?></option>
+                                <!-- Add more options if needed -->
+                            </select>
+                            <label for="Receiver">Received by</label>
+                        </div>
+                        <div class="form-floating" style="width: 32%;">
+                            <select id="Inspector" class="form-select" aria-label="Default select example" disabled>
+                                <option value="<?php echo $row['material_inspected_by']; ?>"><?php echo $row['material_inspected_by']; ?></option>
+                                <!-- Add more options if needed -->
+                            </select>
+                            <label for="Inspector">Inspected by</label>
+                        </div>
+                        <div class="form-floating" style="width: 32%;">
+                            <select id="Verifier" class="form-select" aria-label="Default select example" disabled>
+                                <option value="<?php echo $row['material_verified_by']; ?>"><?php echo $row['material_verified_by']; ?></option>
+                                <!-- Add more options if needed -->
+                            </select>
+                            <label for="Verifier">Verified by</label>
+                        </div>
                     </div>
+
                     <div>
-                        <input type="text" class="form-control mb-2 form-control-sm w-25" placeholder="Search">
+                        <!-- <input type="text" class="form-control mb-2 form-control-sm w-25" placeholder="Search"> -->
                     </div>
              </div>
+        </div>
+    </div>
              
-
-            <div style="overflow-y: auto; height: 450px">
-            <table class="table mt-3 table-hover">
-                        <thead>
-                            <tr>
-                            <td scope="col" width="10%">Product id</td>
-                            <td scope="col" width="10%" >Date</td>
-                            <td scope="col" width="15%">Product Name</td>
-                            <td scope="col" width="15%">Stocks</td>
-                            <td scope="col" width="15%">Current Price</td>
-                            <td scope="col" width="15%">Selling Price</td>
-                            <td scope="col" width="10%">Markup</td>
-                            <td class="text-end" scope="col" width="20%">Action</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                                <td scope="row" class="product_id">PROD001</td>
-                                <td class="product_img">03/11/24</td>
-                                <td>Fyke Loterena</td>
-                                <td>100pcs</td>
-                                <td>php 100</td>
-                                <td>Joemarie Andrade</td>
-                                <td>php 200</td>
-                                <td class="text-end">
-                                    <button class="btn btn-sm border"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-                                    <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
-                                    </svg> </button>
-
-                                    <button class="btn btn-sm border"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
-                                    </svg> </button>
-                                </td>
-                            
-                        </tr>
-                          
-                        </tbody>
-                        <!-- summary of materials -->
-                        
-                    </table>
-            </div>
-
+<div style="height: 50vh; overflow: auto">
+    <table class="table stripe hover order-column row-border" id="productTable">
+        <thead class="sticky-top">
+            <tr>
+                <th scope="col" width="15%">Image</th>
+                <th scope="col" width="15%">Product Name</th>
+                <th scope="col" width="10%">Model</th>
+                <th scope="col" width="10%">Brand</th>
+                <th scope="col" width="5%">Qty Added</th>
+                <th scope="col" width="10%">Date</th>
+                <th scope="col" width="10%">SRP</th>
+                <th scope="col" width="10%">Selling Price</th>
+                <th scope="col" width="10%">Markup</th>
+                <!-- <th class="text-end" scope="col" width="20%">Action</th> -->
+            </tr>
+        </thead>
+        <tbody id="MaterialList">
+            <!-- Cart items will be populated here -->
+        </tbody>
+    </table>
+</div>
             <div class="border rounded mt-2 p-3" >
                     <div style="display: flex; flex-direction: row; justify-content: space-between">
                         <div>
-                            <h4>Net : PHP 100.00</h4>
-                            <h4>Gross: PHP 100.00</h4>
-
+                        <?php
+                            // Output the Material Invoice, Date, and Cashier using PHP
+                            echo "<h3>Total Selling Price: " . $row['totalSellingPrice'] . "</h3>";
+                            echo "<h3>Total Cost Price: " . $row['totalCostPrice'] . "</h3>";
+                            echo "<h3>Total Gross Profit: " . $row['totalGrossProfit'] . "</h3>";
+                            ?>
                         </div>
                         <div style="width: 30%">
                             <button type="button" class="btn w-100 btn-primary mb-2">Save</button>
@@ -123,7 +170,7 @@
 
         <datalist id="suggestions">
             <?php foreach ($products as $product): ?>
-                <option><?php echo $product['id']; echo "-"?><?php echo $product['product_name']; ?><?php echo " - "?><?php echo $product['models']; ?></option>
+                <option><?php echo $product['id']; echo "-"?><?php echo $product['name']; ?><?php echo " - "?><?php echo $product['models']; ?></option>
             <?php endforeach; ?>
         </datalist>
 
@@ -164,3 +211,67 @@
 </body>
 </html>
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+<script type="text/javascript">
+    $(document).ready(function () {
+  
+  function fetchAdminData(selectElementId, role) {
+      $.ajax({
+          url: '../php/fetch_admin_data.php', // Your server-side script to fetch admin data
+          method: 'GET',
+          data: { role: role }, // Optional: send role if needed
+          dataType: 'json',
+          success: function (data) {
+              // Populate the dropdown options
+              var selectElement = $('#' + selectElementId);
+              selectElement.empty();
+              selectElement.append('<option selected>Select ' + role + '</option>');
+              $.each(data, function (index, admin) {
+                  selectElement.append('<option value="' + admin.id + '">' + admin.fname + ' ' + admin.lname + '</option>');
+              });
+          },
+          error: function (xhr, status, error) {
+              console.error('Error fetching admin data:', error);
+          }
+      });
+  }
+
+  // Fetch data for receivedBy dropdown
+  
+  fetchAdminData('receivedBy', 'Recieved By');
+  
+  // Fetch data for inspectedBy dropdown
+  fetchAdminData('inspectedBy', 'Inspected by');
+
+  // Fetch data for verifiedBy dropdown
+  fetchAdminData('verifiedBy', 'Verified By');
+});
+
+
+$(document).ready(function () {
+    // Initialize DataTable
+    var table = $('#productTable').DataTable({
+        "fnCreatedRow": function (nRow, aData, iDataIndex) {
+            // Set the material_id attribute to the value of the last column (material_id)
+            $(nRow).attr('material_id', aData[10]);
+        },
+        'serverSide': true,
+        'processing': true,
+        'paging': true,
+        'order': [],
+        'ajax': {
+            'url': '../php/fetch_delivery_stock.php',
+            'type': 'post',
+        },
+        'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        "aoColumnDefs": [{
+            "bSortable": false,
+            "aTargets": [8] // Adjust the index to match the actual number of columns
+        }]
+    });
+});
+
+
+</script>

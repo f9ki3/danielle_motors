@@ -5,7 +5,7 @@
         </div>
     </div>
     <ul class="nav nav-links mb-3 mb-lg-2 mx-n3">
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"><span>All </span><span class="text-700 fw-semi-bold">(68817)</span></a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"><span>All </span><span class="text-700 fw-semi-bold" id="total_product">(68817)</span></a></li>
         <li class="nav-item"><a class="nav-link" href="#"><span>Archived </span><span class="text-700 fw-semi-bold">(70348)</span></a></li>
     </ul>
     <div id="products" data-list='{"valueNames":["product","price","category","tags","vendor","time"],"page":10,"pagination":true}'>
@@ -20,7 +20,7 @@
             
             <div class="ms-xxl-auto">
                 <button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button>
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_product"><span class="fas fa-plus me-2"></span>Add to pricelist</button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_product"><span class="fas fa-plus me-2"></span>Add product</button>
             </div>
             </div>
         </div>

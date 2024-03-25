@@ -41,17 +41,78 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
-    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-        // Initialize Select2 for the searchable dropdown
-        $(document).ready(function() {
-            $('#category').select2();
-            $('#brand').select2();
-            $('#unit').select2();
-            $('#model').select2();
-        });
-    </script> -->
+    $(document).ready(function(){
+        // Variable to store the last known hash
+        var lastHash = '';
+
+        // Function to fetch PHP-generated content
+        function fetchTableContent() {
+            $.ajax({
+                url: 'total_products.php',
+                success: function(response) {
+                    // Calculate hash of the response
+                    var currentHash = hash(response);
+                    
+                    // If hash has changed, update content
+                    if (currentHash !== lastHash) {
+                        // Update lastHash
+                        lastHash = currentHash;
+
+                        // Extract the number from the response
+                        var match = response.match(/\((\d+)\)/);
+                        if (match) {
+                            var newNumber = parseInt(match[1]);
+                            
+                            // Get the current number inside the span
+                            var currentNumber = parseInt($('#total_product').text());
+                            
+                            // Animate the change
+                            $('#total_product').prop('Counter', currentNumber).animate({
+                                Counter: newNumber
+                            }, {
+                                duration: 1000, // Animation duration in milliseconds
+                                step: function (now) {
+                                    // Update the displayed number with the animation
+                                    $(this).text('(' + Math.ceil(now) + ')');
+                                }
+                            });
+                        } else {
+                            console.error("Number not found in response:", response);
+                        }
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
+        // Function to calculate hash
+        function hash(str) {
+            var hash = 0, i, chr;
+            if (str.length === 0) return hash;
+            for (i = 0; i < str.length; i++) {
+                chr = str.charCodeAt(i);
+                hash = ((hash << 5) - hash) + chr;
+                hash |= 0; // Convert to 32bit integer
+            }
+            return hash;
+        }
+
+        // Call the function initially
+        fetchTableContent();
+
+        // Call the function every 5 seconds (adjust the interval as needed)
+        setInterval(fetchTableContent, 5000); // 5000 milliseconds = 5 seconds
+    });
+    </script>
+
+
+    </script>
+
+
   </body>
 
 

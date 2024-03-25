@@ -74,7 +74,7 @@
                         <!-- start of dummy data -->
                         <?php 
                         include "../../database/database.php";
-                        $sql = "SELECT * FROM products";
+                        $sql = "SELECT * FROM product";
                         $res = $conn->query($sql);
                         if($res -> num_rows > 0 ){
                             while($row = $res -> fetch_assoc()){
@@ -88,40 +88,40 @@
                             </td>
                             <td class="align-middle white-space-nowrap py-0">
                                 <a class="d-block border rounded-2" href="../landing/product-details.html">
-                                    <img src="../../assets/img/products/1.png" alt="" width="53" />
+                                    <img src="../../uploads/<?php echo basename($row['image']);?>" alt="" width="53" />
                                 </a>
                             </td>
                             <!-- pili ka lang sa naka comment sa baba pre -->
                             <td class="product align-middle ps-4 fw-semi-bold line-clamp-3 mb-0">
-                                <?php echo $row['product_name'];?>
+                                <?php echo $row['name'];?>
                             </td>
                             <!-- eto pre kung gusto mo naoopen yung product parang sa ecommerce uncomment mo na lang if mas trip mo 
                             <td class="product align-middle ps-4">
                                 <a class="fw-semi-bold line-clamp-3 mb-0" href="../landing/product-details.html">Fitbit Sense Advanced Smartwatch with Tools for Heart Health, Stress Management &amp; Skin Temperature Trends, Carbon/Graphite, One Size (S &amp; ...</a>
                             </td> -->
 
-                            <td class="product align-middle ps-4"><?php echo $row['product_code'];?></td>
-                            <td class="price align-middle white-space-nowrap text-end fw-bold text-700 ps-4">Php <?php echo $row['unit_price'];?></td>
-                            <td class="product align-middle ps-4 line-clamp-3 d-none"><?php echo $row['product_description'];?></td>
-                            <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold"><?php echo $row['product_category'];?></td>
-                            <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold"><?php echo $row['product_brand'];?></td>
-                            <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold"><?php echo $row['product_model'];?></td>
+                            <td class="product align-middle ps-4"><?php echo $row['code'];?></td>
+                            <td class="price align-middle white-space-nowrap text-end fw-bold text-700 ps-4">Php </td>
+                            <td class="product align-middle ps-4 line-clamp-3 d-none"></td>
+                            <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold"></td>
+                            <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold"></td>
+                            <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold"></td>
                             <!-- <td class="vendor align-middle text-start fw-semi-bold ps-4"><a href="#!">Blue Olive Plant sellers. Inc</a></td> -->
-                            <td class="time align-middle white-space-nowrap text-600 ps-4"><?php echo $row['published_on'];?></td>
+                            <td class="time align-middle white-space-nowrap text-600 ps-4"></td>
                             <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
                                 <div class="font-sans-serif btn-reveal-trigger position-static">
                                     <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent">
                                         <span class="fas fa-ellipsis-h fs--2"></span>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end py-2">
-                                        <a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#barcode_<?php echo $row['product_code'];?>">View barcode</a>
+                                        <a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#barcode_<?php echo $row['code'];?>">View barcode</a>
                                         <a class="dropdown-item text-danger" href="#!">Delete</a>
                                     </div>
                                 </div>
                             </td>
                         </tr>
                         <!-- modal for barcode -->
-                        <div class="modal fade" id="barcode_<?php echo $row['product_code'];?>" tabindex="-1" aria-hidden="true" style="display: none;">
+                        <div class="modal fade" id="barcode_<?php echo $row['code'];?>" tabindex="-1" aria-hidden="true" style="display: none;">
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">

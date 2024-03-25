@@ -1,7 +1,10 @@
 
 <?php include 'session.php'?>
 <html lang="en">
-<?php include 'header.php'?>
+    <head>
+    <link rel="stylesheet" type="text/css" href="datatable.css">
+    <?php include 'header.php'?>
+    </head>
 <body>
 <div style="display: flex; flex-direction: row">
 <?php
@@ -9,7 +12,6 @@ include 'navigation_bar.php';
 include '../config/config.php';
 
 ?>
-<link href="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.css" rel="stylesheet">
 <!-- start inventory-->
 
 <div style="width: 100%" class="content p-3">
@@ -17,7 +19,6 @@ include '../config/config.php';
         <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
             <h5 class="fw-bolder">Purchase</h5>
             <a href="purchase" class="btn btn-sm  border rounded mb-2">Purchase Walk-in</a>
-            <a href="purchase_delivery" class="btn btn-sm border rounded mb-2">Purchase Delivery</a>
             <a href="purchase_online" class="btn btn-sm border rounded mb-2">Purchase Online</a>
             <a href="purchase_terms" class="btn btn-sm border rounded mb-2">Purchase with Terms</a>
             <a href="store_stocks" class="btn btn-sm border btn-primary rounded mb-2">Store Stocks</a>
@@ -33,7 +34,7 @@ include '../config/config.php';
                     </div>
 
                     <div>
-                        <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#add_stocks">+ Material Transfer</button>
+                    <button id="addStocksBtn" class="btn border btn-sm rounded" data-bs-target="#add_stocks">+ Add Stocks</button>
                         <a href="store_stocks" class="btn btn-primary border btn-sm rounded" >Stocks</a>
                         <a href="store_product_list" class="btn border btn-sm rounded" >Product</a>
                     </div>
@@ -43,7 +44,7 @@ include '../config/config.php';
 
             
 <div>
-    <table id="tabledataMaterial" class="table table-bordered">
+    <table id="tabledataMaterial" class="table stripe hover order-column row-border ">
         <thead>
                         <tr>
                             <td scope="col" width="15%">Material Invoice No.</td>
@@ -55,7 +56,7 @@ include '../config/config.php';
                             <td class="text-end" scope="col" width="10%">Action</td>
                         </tr>
         </thead>
-        <tbody id="MaterialTableBody">
+        <tbody id="tabledataMaterial">
 <!-- dynamic populate -->
         </tbody>
     </table>
@@ -72,21 +73,28 @@ include '../config/config.php';
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body " style="display: flex; flex-direction: column; align-items: center; justify-content: center">
-
-
 <input type="date" class="form-control mb-2" id="materialDate">
 <input type="text" class="form-control mb-2" placeholder="Material Invoice No." id="materialInvoiceNo">
 <input type="text" class="form-control mb-2" placeholder="Cashier Name" id="cashierName" pattern="[A-Za-z ]{1,}" required>
 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-    <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="receivedBy">
-   
-    </select>
-    <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="inspectedBy">
-    
-    </select>
-    <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="verifiedBy">
-      
-    </select>
+<div class="form-floating" style="width: 32%;">
+                                        <select id="receivedBy" class="form-select" aria-label="Default select example">
+
+                                        </select>
+                                        <label for="transaction_received">Recieved by</label>
+                                    </div>
+                                    <div class="form-floating" style="width: 32%;">
+                                        <select id="inspectedBy" class="form-select" aria-label="Default select example">
+
+                                        </select>
+                                        <label for="transaction_inspected">Inspected by</label>
+                                    </div>
+                                    <div class="form-floating" style="width: 32%;">
+                                        <select id="verifiedBy" class="form-select" aria-label="Default select example">
+
+                                        </select>
+                                        <label for="transaction_verified">Verified by</label>
+                                    </div>
 </div>
         
       </div>
@@ -108,6 +116,8 @@ include '../config/config.php';
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
 
 <script type="text/javascript">
 $(document).ready(function () {
@@ -116,28 +126,30 @@ $(document).ready(function () {
         "fnCreatedRow": function (nRow, aData, iDataIndex) {
             $(nRow).attr('id', aData[0]);
         },
-        'serverSide': 'true',
-        'processing': 'true',
-        'paging': 'true',
+        'serverSide': true,
+        'processing': true,
+        'paging': true,
         'order': [],
         'ajax': {
             'url': '../php/store_stocks_fetch.php',
             'type': 'post',
         },
+        'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, "All"]],
         "aoColumnDefs": [{
             "bSortable": false,
             "aTargets": [6] // Adjust the index to match the actual number of columns
         }]
+        
     });
 
-    // Define click event handler for view button
     $('#tabledataMaterial tbody').on('click', '.view', function () {
-        // Handle button click event here
+        // Get the data associated with the clicked row
         var rowData = table.row($(this).closest('tr')).data();
-        window.location.href = "store_product";
-        console.log('View button clicked for row:', rowData);
+        var materialId = rowData[0]; // Assuming material_id is in the first column
+        // Redirect to store_product.php page with material_id as a query parameter
+        window.location.href = "store_product.php?material_id=" + materialId;
     });
-
+    
    // Define click event handler for edit button
    $('#tabledataMaterial tbody').on('click', '.edit', function () {
     // Get the data associated with the clicked row
@@ -207,7 +219,6 @@ $('#editMaterialTransfer').click(function () {
                 },
                 success: function (response) {    
                     console.log(response);
-
                     $('#edit_stocks').modal('hide');
                 },
                 error: function (xhr, status, error) {
@@ -264,7 +275,7 @@ $('#tabledataMaterial tbody').on('click', '.delete', function () {
             var verifiedBy = fetchAdminData(verifiedById, data);    
             swal({
   title: "Are you sure?",
-  text: "Once deleted, you will not be able to recover this imaginary file!",
+  text: "Once deleted, you will not be able to see the record",
   icon: "warning",
   buttons: true,
   dangerMode: true,
@@ -295,11 +306,11 @@ $('#tabledataMaterial tbody').on('click', '.delete', function () {
             console.error(error);
         }
     });
-    swal("Poof! Your imaginary file has been deleted!", {
+    swal("Record has been deleted!", {
       icon: "success",
     });
   } else {
-    swal("Your imaginary file is safe!");
+    swal("Your Record file is safe!");
   }
 });
         },
@@ -310,56 +321,58 @@ $('#tabledataMaterial tbody').on('click', '.delete', function () {
     });
 });
 
-  $(document).ready(function () {
-     // ... Your existing DataTable initialization code ...
-     // Save Material Transfer
-     $('#saveMaterialTransfer').click(function () {
-         var materialDate = $('#materialDate').val();
-         var materialInvoiceNo = $('#materialInvoiceNo').val();
-         var cashierName = $('#cashierName').val();
-         var receivedById = $('#receivedBy').val();
-         var inspectedById = $('#inspectedBy').val();
-         var verifiedById = $('#verifiedBy').val();
+//   $(document).ready(function () {
+//      // ... Your existing DataTable initialization code ...
+//      // Save Material Transfer
+//      $('#saveMaterialTransfer').click(function () {
+//          var materialDate = $('#materialDate').val();
+//          var materialInvoiceNo = $('#materialInvoiceNo').val();
+//          var cashierName = $('#cashierName').val();
+//          var receivedById = $('#receivedBy').val();
+//          var inspectedById = $('#inspectedBy').val();
+//          var verifiedById = $('#verifiedBy').val();
 
-         // Fetch first name and last name based on the selected IDs
-         $.ajax({
-             url: '../php/fetch_admin_data.php', // Your server-side script to fetch admin data
-             method: 'GET',
-             dataType: 'json',
-             success: function (data) {    
-                 var receivedBy = fetchAdminData(receivedById, data);
-                 var inspectedBy = fetchAdminData(inspectedById, data);
-                 var verifiedBy = fetchAdminData(verifiedById, data);
+//          // Fetch first name and last name based on the selected IDs
+//          $.ajax({
+//              url: '../php/fetch_admin_data.php', // Your server-side script to fetch admin data
+//              method: 'GET',
+//              dataType: 'json',
+//              success: function (data) {  
+//                 swal("File Save", "Record has been saved", "success");   
+//                  var receivedBy = fetchAdminData(receivedById, data);
+//                  var inspectedBy = fetchAdminData(inspectedById, data);
+//                  var verifiedBy = fetchAdminData(verifiedById, data);
 
-                 // After fetching first name and last name, save the Material Transfer
-                 $.ajax({
-                     url: '../php/store_stocks_save.php',
-                     method: 'POST',
-                     data: {
-                         materialDate: materialDate,
-                         materialInvoiceNo: materialInvoiceNo,
-                         cashierName: cashierName,
-                         receivedBy: receivedBy,
-                         inspectedBy: inspectedBy,
-                         verifiedBy: verifiedBy
-                     },
-                     success: function (response) {    
-                         console.log(response);
-                         $('#add_stocks').modal('hide');
-                     },
-                     error: function (xhr, status, error) {
-                         console.error('Error saving data:', error);
-                     }
-                 });
-             },
-             error: function (xhr, status, error) {
-                 console.error('Error fetching admin data:', error);
-             }
+//                  // After fetching first name and last name, save the Material Transfer
+//                  $.ajax({
+//                      url: '../php/store_stocks_save.php',
+//                      method: 'POST',
+//                      data: {
+//                          materialDate: materialDate,
+//                          materialInvoiceNo: materialInvoiceNo,
+//                          cashierName: cashierName,
+//                          receivedBy: receivedBy,
+//                          inspectedBy: inspectedBy,
+//                          verifiedBy: verifiedBy
+//                      },
+//                      success: function (response) {    
+//                          console.log(response);
+//                          $('#add_stocks').modal('hide');
+//                          window.location.href = "store_stocks_add.php";
+//                      },
+//                      error: function (xhr, status, error) {
+//                          console.error('Error saving data:', error);
+//                      }
+//                  });
+//              },
+//              error: function (xhr, status, error) {
+//                  console.error('Error fetching admin data:', error);
+//              }
        
        
-            });
-     });
-    });
+//             });
+//      });
+//     });
 
 function fetchAdminData(adminId, adminData) {
     var admin = adminData.find(function (admin) {
@@ -403,9 +416,13 @@ function fetchAdminData(adminId, adminData) {
      fetchAdminData('verifiedBy', 'Verified By');
  });
 
- $('.border.btn-sm.rounded').click(function() {
-    $('#saveMaterialTransfer').show();
-    $('#editMaterialTransfer').hide();
+document.getElementById('addStocksBtn').addEventListener('click', function() {
+    window.location.href = 'store_stocks_add.php';
 });
+
+//  $('.border.btn-sm.rounded').click(function() {
+//     $('#saveMaterialTransfer').show();
+//     $('#editMaterialTransfer').hide();
+// });
 
 </script>

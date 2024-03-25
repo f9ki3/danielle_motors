@@ -25,8 +25,8 @@
                     <td>'.$name.'</td>
                     <td>'.$models.'</td>
                     <td>999</td>
-                    <td>₱'.$srp.'</td>
-                    <td>₱'.$total_srp.'</td>
+                    <td>₱'.number_format($srp).'</td>
+                    <td>₱'.number_format($total_srp).'</td>
                     <td>
                         <div class="input-group">
                             <input type="text" class="form-control text-center qty-input" value="'.$qty.'" readonly>
@@ -64,6 +64,6 @@
 
     $json = array();
     $json['tbody'] = $tbody;
-    $json['cart_total'] = array_sum($cart_total);
+    $json['cart_total'] = number_format(array_sum($cart_total));
     echo json_encode($json);
 ?>
