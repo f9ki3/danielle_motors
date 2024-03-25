@@ -99,6 +99,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                             </select>
                             <label for="Receiver">Received by</label>
                         </div>
+<<<<<<< Updated upstream
                         <div class="form-floating" style="width: 32%;">
                             <select id="Inspector" class="form-select" aria-label="Default select example" disabled>
                                 <option value="<?php echo $row['material_inspected_by']; ?>"><?php echo $row['material_inspected_by']; ?></option>
@@ -112,6 +113,15 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                                 <!-- Add more options if needed -->
                             </select>
                             <label for="Verifier">Verified by</label>
+=======
+                        <div class="form-floating" style="width: 32%; margin: 0px 5px 0px 5px" >
+                            <input type="text" id="transaction_customer_name" value="<?php echo !empty($row['material_inspected_by']) ? $row['material_inspected_by'] : 'Pending'; ?>" class="form-control" placeholder="" readonly>
+                            <label for="transaction_customer_name">Inspected by:</label>
+                        </div>
+                        <div class="form-floating" style="width: 32%; margin: 0px 5px 0px 5px" >
+                            <input type="text" id="transaction_customer_name" value="<?php echo !empty($row['material_verified_by']) ? $row['material_verified_by'] : 'Pending'; ?>" class="form-control" placeholder="" readonly>
+                            <label for="transaction_customer_name">Verified by:</label>
+>>>>>>> Stashed changes
                         </div>
                     </div>
 
@@ -142,6 +152,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
         <?php 
             $material_invoice_id = $material_transaction; // replace with your material_invoice_id
 
+<<<<<<< Updated upstream
             $sql = "SELECT mt.product_id, mt.input_srp, mt.input_selling_price, mt.qty_added, mt.qty_sent, mt.markup_peso, mt.created_at, mt.status, p.name, p.models, p.code, p.image
                         FROM material_transaction mt
                         JOIN product p ON mt.product_id = p.id
@@ -167,6 +178,58 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                     echo "<td>{$row['status']}</td>";
                     echo "<td>{$row['models']}</td>";
                     echo "</tr>";
+=======
+                $sql = "SELECT mt.product_id, mt.input_srp, mt.input_selling_price, mt.qty_added, mt.qty_sent, mt.markup_peso, mt.created_at, mt.status, p.name, p.models, p.code, p.image
+                            FROM material_transaction mt
+                            JOIN product p ON mt.product_id = p.id
+                            WHERE material_invoice_id = ?";
+                
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("s", $material_invoice_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                
+                if ($result->num_rows > 0) {
+                    // output data of each row
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td><img src='{$row['image']}' alt='Product Image' style='max-width: 50px; height: 50px'></td>";
+                        echo "<td>{$row['name']}</td>";
+                        echo "<td>{$row['models']}</td>";
+                        echo "<td>{$row['code']}</td>";
+                        echo "<td>{$row['input_srp']}</td>";
+                        echo "<td>{$row['input_selling_price']}</td>";
+                        echo "<td>{$row['qty_added']}</td>";
+                        echo "<td>{$row['qty_sent']}</td>";
+                        echo "<td>{$row['markup_peso']}</td>";
+                        // echo "<td>{$row['status']}</td>";
+                        $status_text = '';
+                        switch ($row['status']) {
+                            case 1:
+                                $status_text = 'Pending';
+                                break;
+                            case 2:
+                                $status_text = 'Reviewed';
+                                break;
+                            case 3:
+                                $status_text = 'Approved';
+                                break;
+                            case 4:
+                                $status_text = 'Received';
+                                break;
+                            case 5:
+                                $status_text = 'Declined';
+                                break;
+                            default:
+                                $status_text = 'Unknown';
+                                break;
+                        }
+                        echo "<td>{$status_text}</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "0 results";
+>>>>>>> Stashed changes
                 }
             } else {
                 echo "0 results";
