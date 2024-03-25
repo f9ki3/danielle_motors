@@ -86,27 +86,22 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                     </div>
 
                     <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
-                        <div class="form-floating" style="width: 32%;">
-                            <select id="cashierName" class="form-select" aria-label="Default select example" disabled>
-                                <option value="" selected><?php echo $row['material_cashier']; ?></option>
-                            </select>
-                            <label for="Cashier">Cashier By</label>
-                        </div>
-                        <div class="form-floating" style="width: 32%;">
-                            <select id="Receiver" class="form-select" aria-label="Default select example" disabled>
-                                <option value="<?php echo $row['material_recieved_by']; ?>"><?php echo $row['material_recieved_by']; ?></option>
-                                <!-- Add more options if needed -->
-                            </select>
-                            <label for="Receiver">Received by</label>
+                        <div class="form-floating" style="width: 32%; margin: 0px 5px 0px 5px" >
+                            <input type="text" id="transaction_customer_name" value="<?php echo $row['material_cashier']; ?>" class="form-control" placeholder="" readonly>
+                            <label for="transaction_customer_name">Cashier Name</label>
                         </div>
                         <div class="form-floating" style="width: 32%; margin: 0px 5px 0px 5px" >
-                            <input type="text" id="transaction_customer_name" value="<?php echo !empty($row['material_inspected_by']) ? $row['material_inspected_by'] : 'Pending'; ?>" class="form-control" placeholder="" readonly>
-                            <label for="transaction_customer_name">Inspected by:</label>
+                            <input type="text" id="transaction_customer_name" value="<?php echo $row['material_recieved_by']; ?>" class="form-control" placeholder="" readonly>
+                            <label for="transaction_customer_name">Received by:</label>
                         </div>
                         <div class="form-floating" style="width: 32%; margin: 0px 5px 0px 5px" >
-                            <input type="text" id="transaction_customer_name" value="<?php echo !empty($row['material_verified_by']) ? $row['material_verified_by'] : 'Pending'; ?>" class="form-control" placeholder="" readonly>
-                            <label for="transaction_customer_name">Verified by:</label>
-                        </div>
+                        <input type="text" id="transaction_customer_name" value="<?php echo !empty($row['material_inspected_by']) ? $row['material_inspected_by'] : 'Pending'; ?>" class="form-control" placeholder="" readonly>
+                        <label for="transaction_customer_name">Inspected by:</label>
+                    </div>
+                    <div class="form-floating" style="width: 32%; margin: 0px 5px 0px 5px" >
+                        <input type="text" id="transaction_customer_name" value="<?php echo !empty($row['material_verified_by']) ? $row['material_verified_by'] : 'Pending'; ?>" class="form-control" placeholder="" readonly>
+                        <label for="transaction_customer_name">Verified by:</label>
+                    </div>
                     </div>
 
                     <div>
@@ -116,25 +111,26 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
         </div>
     </div>
              
-<div style="height: 50vh; overflow: auto">
-    <table class="table">
-        <thead>
-        <tr> 
-            <th>Image</th>
-            <th>Name</th>
-            <th>Models</th>
-            <th>Code</th>
-            <th>Based Price</th>
-            <th>Selling Price</th>
-            <th>Quantity Request</th>
-            <th>Quantity Received</th>
-            <th>Markup</th>
-            <th>Status</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php 
-            $material_invoice_id = $material_transaction; // replace with your material_invoice_id
+<div style=" background-color: white;" class="p-3 rounded">
+    <div style="height: 40vh; overflow: auto">
+        <table class="table">
+            <thead>
+            <tr> 
+                <th>Image</th>
+                <th>Name</th>
+                <th>Models</th>
+                <th>Code</th>
+                <th>Based Price</th>
+                <th>Selling Price</th>
+                <th>Quantity Request</th>
+                <th>Quantity Received</th>
+                <th>Markup</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php 
+                $material_invoice_id = $material_transaction; // replace with your material_invoice_id
 
                 $sql = "SELECT mt.product_id, mt.input_srp, mt.input_selling_price, mt.qty_added, mt.qty_sent, mt.markup_peso, mt.created_at, mt.status, p.name, p.models, p.code, p.image
                             FROM material_transaction mt
@@ -187,33 +183,30 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                 } else {
                     echo "0 results";
                 }
-            } else {
-                echo "0 results";
-            }
-            ?>
-        </tbody>
-    </table>
-</div>
-            <div class="border rounded mt-2 p-3 bg-light">
-                    <div style="display: flex; flex-direction: row; justify-content: space-between">
-                        <div>
-                        <?php
-                            // Output the Material Invoice, Date, and Cashier using PHP
-                            echo "<h5 class='fw-bolder'>Total Selling Price: ₱" . number_format($totalSellingPrice, 2) . "</h5>";
-                            echo "<h5 class='fw-bolder'>Total Cost Price: ₱" . number_format($totalCostPrice, 2) . "</h5>";
-                            echo "<h5 class='fw-bolder'>Total Gross Profit: ₱" . number_format($totalGrossProfit, 2) . "</h5>";
+                ?>
+            </tbody>
+        </table>
+    </div>
 
-                            ?>
-                        </div>
-                        <div style="width: 30%">
-                            <button type="button" class="btn w-100 btn-primary mb-2">Save</button>
-                            <button type="button" class="btn w-100 btn-outline-primary mb-2">Cancel</button>
-                        </div>
-                    </div> 
-             </div>
+        <div>
+                <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-3 mb-4">
+                    <div>
+                    <?php
+                        // Output the Material Invoice, Date, and Cashier using PHP
+                        echo "<h5 class='fw-bolder'>Total Selling Price: ₱" . number_format($totalSellingPrice, 2) . "</h5>";
+                        echo "<h5 class='fw-bolder'>Total Cost Price: ₱" . number_format($totalCostPrice, 2) . "</h5>";
+                        echo "<h5 class='fw-bolder'>Total Gross Profit: ₱" . number_format($totalGrossProfit, 2) . "</h5>";
+
+                        ?>
+                    </div>
+                    <div style="width: 30%">
+                        <button type="button" class="btn w-100 btn-primary mb-2">Save</button>
+                        <button type="button" class="btn w-100 btn-outline-primary mb-2">Cancel</button>
+                    </div>
+                </div> 
+            </div>
         </div>
-<!-- end purchase-->
-
+</div>
 
 </div>
 <?php include 'footer.php'?>
