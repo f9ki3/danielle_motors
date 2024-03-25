@@ -10,7 +10,7 @@ $username = "freedb_dmp_master";
 // $username = "u450836125_dmp_intern"; 
 // $password = "DMPInterns123!"; 
 // $dbname = "u450836125_dmp_office";
-=======
+// =======
 // $servername = "localhost";
 // $username = "root"; 
 // $password = ""; 
