@@ -48,6 +48,8 @@
 <!-- Datatables css -->
 <link rel="stylesheet" href="//cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css"/>
 
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
 <link rel="stylesheet" href="../static/css/print.css">
 </head>
 
