@@ -44,30 +44,33 @@ if ($material_transfer_res->num_rows > 0) {
                 }
             }
         }
+        if($badge_status === "dikoalam"){
 
+        } else {
         $final_status = $badge_status ; 
-        echo '
-            <tr class="position-static">
-                <td class="align-middle">
-                    <div class="form-check"><input class="form-check-input" type="checkbox" /></div>
-                </td>
-                <td class="align-middle white-space-nowrap py-0"></td>
-                <td class="invoice text-start"><a class="fw-semi-bold line-clamp-3 mb-0" href="../Material_transaction/?transaction=' . $mt_invoice . '">' . $mt_invoice . '</a></td>
-                <td class="status text-start">' . $final_status . '</td>
-                <td class="date text-start">' . $mt_date . '</td>
-                <td class="publishby review text-start">' . $publish_by . '</td>
-                <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
-                <div class="font-sans-serif btn-reveal-trigger position-static">
-                    <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs--2"></span></button>
-                    <div class="dropdown-menu dropdown-menu-end py-2">
-                        <a class="dropdown-item" href="#!">View</a>
-                        <a class="dropdown-item" href="#!">Export</a>
-                    <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger" href="#!">Remove</a>
+            echo '
+                <tr class="position-static">
+                    <td class="align-middle">
+                        <div class="form-check"><input class="form-check-input" type="checkbox" /></div>
+                    </td>
+                    <td class="align-middle white-space-nowrap py-0"></td>
+                    <td class="invoice text-start"><a class="fw-semi-bold line-clamp-3 mb-0" href="../Material_transaction/?transaction=' . $mt_invoice . '">' . $mt_invoice . '</a></td>
+                    <td class="status text-start">' . $final_status . '</td>
+                    <td class="date text-start">' . $mt_date . '</td>
+                    <td class="publishby review text-start">' . $publish_by . '</td>
+                    <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
+                    <div class="font-sans-serif btn-reveal-trigger position-static">
+                        <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs--2"></span></button>
+                        <div class="dropdown-menu dropdown-menu-end py-2">
+                            <a class="dropdown-item" href="#!">View</a>
+                            <a class="dropdown-item" href="#!">Export</a>
+                        <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-danger" href="#!">Remove</a>
+                        </div>
                     </div>
-                </div>
-                </td>
-            </tr>';
+                    </td>
+                </tr>';
+        }
     }
 }
 
