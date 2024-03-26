@@ -15,19 +15,21 @@
                         <select class="form-select mb-2" name="product_id" id="products" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
                             <option value="">Select product</option>
                             <?php
-                                $query = 'SELECT product.id, product.name, product.models, product.active FROM product
-                                            WHERE active = 1
+                                $query = 'SELECT product.id, product.name, product.models, product.active, unit.name 
+                                            FROM product
+                                            INNER JOIN unit ON unit.id = product.unit_id
+                                            WHERE product.active = 1
                                             AND NOT EXISTS (
                                                 SELECT 1 FROM price_list WHERE product.id = price_list.product_id
                                             )';
                                 $stmt = $conn->prepare($query);
                                 $stmt->execute();
-                                $stmt->bind_result($id, $name, $models, $active);
+                                $stmt->bind_result($id, $name, $models, $active, $unit);
                                 while ($stmt->fetch()) {
                                     if ($active == 0) {
                                         continue;
                                     }
-                                    echo '<option value="'.$id.'">'.$name.' ('.$models.')</option>';
+                                    echo '<option value="'.$id.'">'.$name.' ('.$models.') ('.$unit.')</option>';
                                 }
                                 $stmt->close();
                             ?>
