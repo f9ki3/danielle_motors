@@ -5,8 +5,8 @@ include '../config/config.php';
 if(isset($_POST['productId'], $_POST['stocksToAdd'], $_POST['srp'])) {
     // Sanitize and validate input data
     $productId = intval($_POST['productId']); // Convert to integer
-    $quantity = intval($_POST['stocksToAdd']); // Convert to integer
-    $srp = floatval($_POST['srp']); // Convert to float
+    $quantity = intval($_POST['qty_sent']); // Convert to integer
+    $srp = floatval($_POST['input_selling_price']); // Convert to float
 
     if($productId <= 0 || $quantity <= 0 || $srp <= 0) {
         echo "Error: Invalid product ID, quantity, or SRP";
