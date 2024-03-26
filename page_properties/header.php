@@ -23,6 +23,7 @@
     <script src="../../vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="../../vendors/simplebar/simplebar.min.js"></script>
     <script src="../../assets/js/config.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- ===============================================-->
     <!--    Stylesheets-->
