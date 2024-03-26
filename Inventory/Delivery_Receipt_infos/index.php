@@ -7,7 +7,7 @@ date_default_timezone_set('Asia/Manila');
 <html lang="en-US" dir="ltr">
 
 <?php include "../../page_properties/header.php" ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <!-- <script>
         $(document).ready(function(){
             $('#submitForm').click(function(e){
