@@ -148,13 +148,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                     if ($result->num_rows > 0) {
                         // output data of each row
                         while ($row = $result->fetch_assoc()) {
-                            // Skip rows with status 5 or "Declined"
-                            if ($row['status'] == 5) {
-                                continue; // Skip this iteration of the loop
-                            }
-                            
                             echo "<tr>";
-                            echo "<tr data-product-id='{$row['product_id']}'>"; // Set data-product-id attribute
                             echo "<td><img src='{$row['image']}' alt='Product Image' style='max-width: 50px; height: 50px'></td>";
                             echo "<td>{$row['name']}</td>";
                             echo "<td>{$row['models']}</td>";
@@ -164,11 +158,6 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                             echo "<td>{$row['qty_added']}</td>";
                             echo "<td>{$row['qty_sent']}</td>";
                             echo "<td>{$row['markup_peso']}</td>";
-                            
-                            // Calculate totalSellingPrice and totalCostPrice
-                            $totalSellingPrice += $row['input_selling_price'] * $row['qty_added'];
-                            $totalCostPrice += $row['input_srp'] * $row['qty_added'];
-
                             $status_text = '';
                             switch ($row['status']) {
                                 case 1:
@@ -192,6 +181,13 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                             }
                             echo "<td>{$status_text}</td>";
                             echo "</tr>";
+                    
+                            // Only include rows with status other than 5 in the calculation
+                            if ($row['status'] != 5) {
+                                // Calculate totalSellingPrice and totalCostPrice
+                                $totalSellingPrice += $row['input_selling_price'] * $row['qty_added'];
+                                $totalCostPrice += $row['input_srp'] * $row['qty_added'];
+                            }
                         }
                     } else {
                         echo "0 results";
