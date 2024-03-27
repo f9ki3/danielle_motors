@@ -264,6 +264,7 @@ $(document).ready(function () {
                     url: '../php/store_stocks_recompute.php',
                     method: 'POST',
                     data: {
+                        materialInvoiceID: materialInvoiceNo,
                         totalSellingPrice: totalSellingPrice,
                         totalCostPrice: totalCostPrice,
                         totalGrossProfit: totalGrossProfit
@@ -283,24 +284,30 @@ $(document).ready(function () {
                             success: function (response) {
                                 console.log('Notification sent successfully');
                                 // Make AJAX call to update product stocks
-                                $.each(data, function(index, row) {
-                                    $.ajax({
-                                        url: '../php/add_product_stocks.php',
-                                        method: 'POST',
-                                        data: {
-                                            productId: row.product_id,
-                                            qty_sent: row.qty_sent,
-                                            srp: row.input_selling_price
-                                        },
-                                        success: function (response) {
-                                            console.log('Product stocks updated successfully for product ID ' + row.product_id);
-                                            swal("File Save", "Record has been saved", "success");
-                                        },
-                                        error: function (xhr, status, error) {
-                                            console.error('Error updating product stocks for product ID ' + row.product_id + ':', error);
-                                        }
-                                    });
-                                });
+                                $('input[name="product_id[]"]').each(function() {
+                                    var productId = $(this).val();
+                                    var sellingPrice = $(this).closest('tr').find('td:eq(5)').text(); // Assuming input selling price is in the 7th column
+                                    var qtySent = $(this).closest('tr').find('td:eq(7)').text(); // Assuming qty sent is in the 8th column
+                                    var status = $(this).closest('tr').find('td:eq(9)').text(); // Assuming qty sent is in the 8th column
+                                    if (status != 'Declined') {
+                                        $.ajax({
+                                            url: '../php/add_product_stocks.php',
+                                            method: 'POST',
+                                            data: {
+                                                productId: productId,
+                                                qty_sent: qtySent,
+                                                srp: sellingPrice,
+                                                status: status // Pass the status to the PHP script
+                                            },
+                                            success: function (response) {
+                                                console.log('Product stocks updated successfully for product ID ' + productId);
+                                            },
+                                            error: function (xhr, status, error) {
+                                                console.error('Error updating product stocks for product ID ' + productId + ':', error);
+                                            }
+                                        });
+                                    }
+});
                                 swal("Material Added", "Product has been added", "success");
                             },
                             error: function (xhr, status, error) {
