@@ -19,10 +19,10 @@ $result = $conn->query($sql);
     <div>
         <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
             <h5 class="fw-bolder">Sales</h5>
-            <button class="btn btn-sm border rounded mb-2 btn-primary">Walk-in Sales</button>
-            <button class="btn btn-sm border rounded mb-2">Delivery Sales</button>
+            <button class="btn btn-sm border rounded mb-2 btn-primary">Warehouse Sales</button>
+            <button class="btn btn-sm border rounded mb-2">Purchase Terms Sales</button>
+            <button class="btn btn-sm border rounded mb-2 ">Store Sales</button>
             <button class="btn btn-sm border rounded mb-2">Online Sales</button>
-            <button class="btn btn-sm border rounded mb-2">Balance Account</button>
             
         </div>
 

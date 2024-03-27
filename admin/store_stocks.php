@@ -18,14 +18,15 @@ include '../config/config.php';
     <div>
         <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
             <h5 class="fw-bolder">Purchase</h5>
-            <a href="purchase" class="btn btn-sm  border rounded mb-2">Purchase Walk-in</a>
+            <a href="purchase" class="btn btn-sm  border rounded mb-2">Purchase Warehouse</a>
+            <a href="purchase" class="btn  btn-sm  border rounded mb-2">Purchase Store</a>
             <a href="purchase_terms" class="btn btn-sm border rounded mb-2">Purchase with Terms</a>
             <a href="purchase_online" class="btn btn-sm border rounded mb-2">Purchase Online</a>
             <a href="store_stocks" class="btn btn-sm border btn-primary rounded mb-2">Store Stocks</a>
             
         </div>
 
-        <div style="background-color: white; height: 90vh;" class="rounded border p-3 mb-3 w-100">
+        <div style="background-color: white; height: 83vh;" class="rounded border p-3 mb-3 w-100">
             <div class="row">
                 <h6>Store Stocks</h6>
                 <div style="display: flex; justify-content: space-between; align-items: center;"> 
@@ -43,7 +44,7 @@ include '../config/config.php';
 
 
             
-<div>
+<div style="height: 65vh; overflow: auto">
     <table id="tabledataMaterial" class="table stripe hover order-column row-border ">
         <thead>
                         <tr>
@@ -57,56 +58,11 @@ include '../config/config.php';
                         </tr>
         </thead>
         <tbody id="tabledataMaterial">
-<!-- dynamic populate -->
+        <!-- dynamic populate -->
         </tbody>
     </table>
 </div>
 
-<!-- end purchase-->
-
-<!-- Modal -->
-<div class="modal fade" id="add_stocks" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Material Transfer</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body " style="display: flex; flex-direction: column; align-items: center; justify-content: center">
-<input type="date" class="form-control mb-2" id="materialDate">
-<input type="text" class="form-control mb-2" placeholder="Material Invoice No." id="materialInvoiceNo">
-<input type="text" class="form-control mb-2" placeholder="Cashier Name" id="cashierName" pattern="[A-Za-z ]{1,}" required>
-<div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-<div class="form-floating" style="width: 32%;">
-                                        <select id="receivedBy" class="form-select" aria-label="Default select example">
-
-                                        </select>
-                                        <label for="transaction_received">Recieved by</label>
-                                    </div>
-                                    <div class="form-floating" style="width: 32%;">
-                                        <select id="inspectedBy" class="form-select" aria-label="Default select example">
-
-                                        </select>
-                                        <label for="transaction_inspected">Inspected by</label>
-                                    </div>
-                                    <div class="form-floating" style="width: 32%;">
-                                        <select id="verifiedBy" class="form-select" aria-label="Default select example">
-
-                                        </select>
-                                        <label for="transaction_verified">Verified by</label>
-                                    </div>
-</div>
-        
-      </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="saveMaterialTransfer">Save</button>
-            <button type="button" class="btn btn-primary" id="editMaterialTransfer" style="display: none;">Edit</button>
-        </div>
-    </div>
-  </div>
-</div>
-<!-- End Modal -->
 
 
 </div>

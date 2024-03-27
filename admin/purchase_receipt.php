@@ -31,11 +31,12 @@ if ($result->num_rows > 0) {
 ?>
 
 
-<div style="width: 100%" class="content p-3" >
+<div style="width: 100%; display: none" class="content print_hide p-3" >
     <div>
         <div style="background-color: white;" class="rounded border p-3 mb-3 w-100 purchase_header">
             <h5 class="fw-bolder">Purchase</h5>
-            <button class="btn btn-sm border btn-primary rounded mb-2">Purchase Walk-in</button>
+            <a href="purchase" class="btn btn-primary btn-sm  border rounded mb-2">Purchase Warehouse</a>
+            <a href="purchase" class="btn btn-sm  border rounded mb-2">Purchase Store</a>
             <button class="btn btn-sm border rounded mb-2">Purchase Delivery</button>
             <button class="btn btn-sm border rounded mb-2">Purchase Online</button>
             <button class="btn btn-sm border rounded mb-2">Purchase with Terms</button>
@@ -153,6 +154,99 @@ if ($result->num_rows > 0) {
         </div>                           
 
 </div>
+<div style="background-white" class=" p-3 w-100">
+    <div class="d-flex flex-row justify-content-between">
+        <div>
+            <h4 class='m-0 fw-bolder '>Danielle Motors Parts</h4>
+            <p class='m-0 ' >Prenza 2, 3019 Marilao, Bulacan, Philippines</p>
+            <p class='m-0 ' >dmp@gmail.com | 09120987768</p>
+        </div>
+        <img src="../static/img/dmp_logo.png" alt="">
+    </div>
+    <div>
+        <div class="border rounded p-3 mt-3">
+            <div class="">
+                <h4 class="fw-bolder">Purchase Receipt</h4>
+            </div>
+            <div class="d-flex flex-row justify-content-between">
+                <div style="width: 70%">
+                    <p class="m-0">Customer: <?php echo $transactionDetails["CustomerName"]; ?></p>
+                </div>
+                <div style="width: 30%">
+                    <p class="m-0">Invoice No: <?php echo $transactionID?></p>
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-between">
+                <div style="width: 70%">
+                    <p class="m-0">Address: <?php echo $transactionDetails["TransactionAddress"]; ?></p>
+                </div>
+                <div style="width: 30%">
+                    <p class="m-0">Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-between">
+                <div style="width: 70%">
+                    <p class="m-0">Payment Type: <?php echo $transactionDetails["TransactionPaymentMethod"]; ?></p>
+                </div>
+                <div style="width: 30%">
+                    <p class="m-0">Transaction Type: <?php echo $transactionDetails["TransactionType"]; ?></p>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="w-100 border rounded p-3 mb-3 cart mt-3">
+                        
+            <table class="table table-striped">
+                <tr>
+                    <th width="10%" style="font">Product name</th>
+                    <th width="5%" style="font">Brand</th>
+                    <th width="10%" style="font">Model</th>
+                    <th width="5%" style="font">Qty</th>
+                    <th width="5%" style="font">Unit</th>
+                    <th width="5%" style="font">SRP</th>
+                    <th width="5%" style="font">Discount Type</th>
+                    <th width="5%" style="font">Discount</th>
+                    <th width="5%" style="font">Total Amount</th>
+                </tr>
+                <!-- make a loop data here from data set -->
+                
+                <?php 
+                // SQL query to retrieve cart items for the given transaction ID
+                $sql = "SELECT * FROM purchase_cart WHERE TransactionID = '$transactionID'";
+                $result = $conn->query($sql);
+
+                // Check if any rows were returned
+                if ($result->num_rows > 0) {
+
+                    // Output data of each row
+                    while($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $row["ProductName"] . "</td>";
+                        echo "<td>" . $row["Brand"] . "</td>";
+                        echo "<td>" . $row["Model"] . "</td>";
+                        echo "<td>" . $row["Quantity"] . "</td>";
+                        echo "<td>" . $row["Unit"] . "</td>";
+                        echo "<td>" . $row["SRP"] . "</td>";
+                        echo "<td>" . $row["DiscountType"] . "</td>";
+                        echo "<td>" . $row["Discount"] . "</td>";
+                        echo "<td>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "0 results";
+                }
+                ?>
+                <!-- end loop -->
+            </table>
+                        
+        </div>
+    </div>
+    
+</div>
+
+
+
 <?php include 'footer.php'?>
 <script>
     function printDocument() {
