@@ -79,6 +79,8 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                             echo "<h4>Date: ".$row['material_date']."</h4>";
                             ?>
                         </div>
+                        <input type="hidden" id="sessionID" value="<?php echo $user_id; ?>">
+                        <input type="hidden" id="material_invoice" value="<?php echo $material_invoice; ?>">
                      <div>
                             <!-- <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#add_stocks">+ Add Stocks</button> -->
                             <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#print">Print</button>
@@ -87,20 +89,20 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
 
                     <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
                         <div class="form-floating" style="width: 32%; margin: 0px 5px 0px 5px" >
-                            <input type="text" id="transaction_customer_name" value="<?php echo $row['material_cashier']; ?>" class="form-control" placeholder="" readonly>
-                            <label for="transaction_customer_name">Cashier Name</label>
+                            <input type="text" id="cashierName" value="<?php echo $row['material_cashier']; ?>" class="form-control" placeholder="" readonly>
+                            <label for="cashierName">Cashier Name</label>
                         </div>
                         <div class="form-floating" style="width: 32%; margin: 0px 5px 0px 5px" >
-                            <input type="text" id="transaction_customer_name" value="<?php echo $row['material_recieved_by']; ?>" class="form-control" placeholder="" readonly>
-                            <label for="transaction_customer_name">Received by:</label>
+                            <input type="text" id="receivedBy" value="<?php echo $row['material_recieved_by']; ?>" class="form-control" placeholder="" readonly>
+                            <label for="receivedBy">Received by:</label>
                         </div>
                         <div class="form-floating" style="width: 32%; margin: 0px 5px 0px 5px" >
-                        <input type="text" id="transaction_customer_name" value="<?php echo !empty($row['material_inspected_by']) ? $row['material_inspected_by'] : 'Pending'; ?>" class="form-control" placeholder="" readonly>
-                        <label for="transaction_customer_name">Inspected by:</label>
+                        <input type="text" id="InspectedBy" value="<?php echo !empty($row['material_inspected_by']) ? $row['material_inspected_by'] : 'Pending'; ?>" class="form-control" placeholder="" readonly>
+                        <label for="InspectedBy">Inspected by:</label>
                     </div>
                     <div class="form-floating" style="width: 32%; margin: 0px 5px 0px 5px" >
-                        <input type="text" id="transaction_customer_name" value="<?php echo !empty($row['material_verified_by']) ? $row['material_verified_by'] : 'Pending'; ?>" class="form-control" placeholder="" readonly>
-                        <label for="transaction_customer_name">Verified by:</label>
+                        <input type="text" id="VerifiedBy" value="<?php echo !empty($row['material_verified_by']) ? $row['material_verified_by'] : 'Pending'; ?>" class="form-control" placeholder="" readonly>
+                        <label for="VerifiedBy">Verified by:</label>
                     </div>
                     </div>
 
@@ -149,7 +151,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                         // output data of each row
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
-                            echo "<input type='hidden' value='{$row['product_id']}'> </input>";
+                            echo "<input type='hidden' name='product_id[]' value='{$row['product_id']}'>";
                             echo "<td><img src='{$row['image']}' alt='Product Image' style='max-width: 50px; height: 50px'></td>";
                             echo "<td>{$row['name']}</td>";
                             echo "<td>{$row['models']}</td>";
@@ -188,6 +190,8 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                                 // Calculate totalSellingPrice and totalCostPrice
                                 $totalSellingPrice += $row['input_selling_price'] * $row['qty_added'];
                                 $totalCostPrice += $row['input_srp'] * $row['qty_added'];
+                                $qty_receive = $row['qty_sent'];
+                                $input_selling_price = $row['input_selling_price'];
                             }
                         }
                     } else {
@@ -235,96 +239,74 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
 <script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 <script>
-    $(document).ready(function () {
-        // Accept Material Transfer
-        $('#acceptMaterialTransfer').click(function () {
-            console.log('Button clicked'); // Add this line to check if the click event is being triggered
-            // Your existing JavaScript code for accepting the transfer goes here
- 
+$(document).ready(function () {
+    // Accept Material Transfer
+    $('#acceptMaterialTransfer').click(function () {
+        var materialInvoiceNo = $('#material_invoice').val();
+        var sessionID = $('#sessionID').val();
+        var cashierName = $('#cashierName').val();
+        // Define total values (replace with actual values)
+        var totalSellingPrice = '<?php echo $totalSellingPrice; ?>';
+        var totalCostPrice = '<?php echo $totalCostPrice; ?>';
+        var totalGrossProfit = '<?php echo $totalGrossProfit; ?>';
 
-            $('#cartList tr').each(function () {
-                var basedPrice = parseFloat($(this).find('td:eq(3)').text());
-                var retailPrice = parseFloat($(this).find('td:eq(4)').text());
-                var quantity = parseInt($(this).find('td:eq(5)').text());
-
-                var amount = basedPrice * quantity;
-                var markupPercent = ((retailPrice - basedPrice) / basedPrice) * 100;
-                var sellingPrice = retailPrice * quantity;
-
-                totalSellingPrice += sellingPrice;
-                totalCostPrice += amount;
-            });
-
-            totalGrossProfit = totalSellingPrice - totalCostPrice;
-
-            $.ajax({
+        var quantity = '<?php echo $qty_receive; ?>';
+        var input_selling_price = '<?php echo $input_selling_price; ?>';
+        
+        // Your existing JavaScript code for accepting the transfer goes here
+        $.ajax({
             url: '../php/fetch_admin_data.php',
             method: 'GET',
             dataType: 'json',
             success: function (data) {
-                var receivedBy = fetchAdminData(receivedById, data);
-                var inspectedBy = fetchAdminData(inspectedById, data);
-                var verifiedBy = fetchAdminData(verifiedById, data);
-
-                                // Save Material Transfer with total values
-                                $.ajax({
-                    url: '../php/store_stocks_recompute.php', // Your server-side script to save material transfer
+                // Save Material Transfer with total values
+                $.ajax({
+                    url: '../php/store_stocks_recompute.php',
                     method: 'POST',
                     data: {
-                        receivedBy: receivedBy,
-                        inspectedBy: inspectedBy,
-                        verifiedBy: verifiedBy,
                         totalSellingPrice: totalSellingPrice,
                         totalCostPrice: totalCostPrice,
                         totalGrossProfit: totalGrossProfit
-
                     },
                     success: function (response) {
                         console.log(response);
-                                $.ajax({
-                                    url: '../php/update_notification.php', // Your server-side script to update the notification table
-                                    method: 'POST',
-                                    data: {
-                                        sessionID : sessionID,
-                                        type_id: materialInvoiceNo, // Adjust according to your notification type ID
-                                        type: 'Material Transaction', // Notification type
-                                        sender: cashierName, // Adjust with the recipient user ID
-                                        message: 'The Store accept the Material Transfer' // Message content
-                                    },
-                                    success: function (response) {
-                                        console.log('Notification sent successfully');
-                                        $('#cartList tr').each(function () {
-                                            // Get the product ID from the data-product-id attribute
-                                            var productId = parseInt($(this).find('td:eq(0)').text()); 
-                                            
-                                            // Get the quantity from the table cell
-                                            var input_selling_price = parseFloat($(this).find('td:eq(5)').text()); 
-                                            var qty_sent = parseInt($(this).find('td:eq(7)').text()); 
-
-                                            // Make AJAX call to update product stocks
-                                            $.ajax({
-                                                url: '../php/add_product_stocks.php',
-                                                method: 'POST',
-                                                data: {
-                                                    productId: productId,
-                                                    stocksToAdd: qty_sent,
-                                                    srp: input_selling_price
-                                                },
-                                                success: function (response) {
-                                                    console.log('Product stocks updated successfully for product ID ' + productId);
-                                                    swal("File Save", "Record has been saved", "success");
-                                                },
-                                                error: function (xhr, status, error) {
-                                                    console.error('Error updating product stocks for product ID ' + productId + ':', error);
-                                                }
-                                            });
-                                        });
-
-                                    },
-                                    error: function (xhr, status, error) {
-                                        console.error('Error sending notification:', error);
-                                    }
+                        $.ajax({
+                            url: '../php/update_notification.php',
+                            method: 'POST',
+                            data: {
+                                sessionID : sessionID,
+                                type_id: materialInvoiceNo,
+                                type: 'Material Transaction',
+                                sender: cashierName,
+                                message: 'The Store accept the Material Transfer'
+                            },
+                            success: function (response) {
+                                console.log('Notification sent successfully');
+                                // Make AJAX call to update product stocks
+                                $.each(data, function(index, row) {
+                                    $.ajax({
+                                        url: '../php/add_product_stocks.php',
+                                        method: 'POST',
+                                        data: {
+                                            productId: row.product_id,
+                                            qty_sent: row.qty_sent,
+                                            srp: row.input_selling_price
+                                        },
+                                        success: function (response) {
+                                            console.log('Product stocks updated successfully for product ID ' + row.product_id);
+                                            swal("File Save", "Record has been saved", "success");
+                                        },
+                                        error: function (xhr, status, error) {
+                                            console.error('Error updating product stocks for product ID ' + row.product_id + ':', error);
+                                        }
+                                    });
                                 });
+                                swal("Material Added", "Product has been added", "success");
+                            },
+                            error: function (xhr, status, error) {
+                                console.error('Error sending notification:', error);
+                            }
+                        });
                     },
                     error: function (xhr, status, error) {
                         console.error('Error saving data:', error);
@@ -333,10 +315,9 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
             },
             error: function (xhr, status, error) {
                 console.error('Error fetching admin data:', error);
-                 }
-            });
+            }
         });
     });
-
+});
 
 </script>
