@@ -130,59 +130,73 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
             </thead>
             <tbody>
             <?php 
-                $material_invoice_id = $material_transaction; // replace with your material_invoice_id
+                    $material_invoice_id = $material_transaction; // replace with your material_invoice_id
 
-                $sql = "SELECT mt.product_id, mt.input_srp, mt.input_selling_price, mt.qty_added, mt.qty_sent, mt.markup_peso, mt.created_at, mt.status, p.name, p.models, p.code, p.image
-                            FROM material_transaction mt
-                            JOIN product p ON mt.product_id = p.id
-                            WHERE material_invoice_id = ?";
-                
-                $stmt = $conn->prepare($sql);
-                $stmt->bind_param("s", $material_invoice_id);
-                $stmt->execute();
-                $result = $stmt->get_result();
-                
-                if ($result->num_rows > 0) {
-                    // output data of each row
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td><img src='{$row['image']}' alt='Product Image' style='max-width: 50px; height: 50px'></td>";
-                        echo "<td>{$row['name']}</td>";
-                        echo "<td>{$row['models']}</td>";
-                        echo "<td>{$row['code']}</td>";
-                        echo "<td>{$row['input_srp']}</td>";
-                        echo "<td>{$row['input_selling_price']}</td>";
-                        echo "<td>{$row['qty_added']}</td>";
-                        echo "<td>{$row['qty_sent']}</td>";
-                        echo "<td>{$row['markup_peso']}</td>";
-                        // echo "<td>{$row['status']}</td>";
-                        $status_text = '';
-                        switch ($row['status']) {
-                            case 1:
-                                $status_text = 'Pending';
-                                break;
-                            case 2:
-                                $status_text = 'Reviewed';
-                                break;
-                            case 3:
-                                $status_text = 'Approved';
-                                break;
-                            case 4:
-                                $status_text = 'Received';
-                                break;
-                            case 5:
-                                $status_text = 'Declined';
-                                break;
-                            default:
-                                $status_text = 'Unknown';
-                                break;
+                    $sql = "SELECT mt.product_id, mt.input_srp, mt.input_selling_price, mt.qty_added, mt.qty_sent, mt.markup_peso, mt.created_at, mt.status, p.name, p.models, p.code, p.image
+                                FROM material_transaction mt
+                                JOIN product p ON mt.product_id = p.id
+                                WHERE material_invoice_id = ?";
+                                
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("s", $material_invoice_id);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
+                    $totalSellingPrice = 0;
+                    $totalCostPrice = 0;
+                    
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<input type='hidden' value='{$row['product_id']}'> </input>";
+                            echo "<td><img src='{$row['image']}' alt='Product Image' style='max-width: 50px; height: 50px'></td>";
+                            echo "<td>{$row['name']}</td>";
+                            echo "<td>{$row['models']}</td>";
+                            echo "<td>{$row['code']}</td>";
+                            echo "<td>{$row['input_srp']}</td>";
+                            echo "<td>{$row['input_selling_price']}</td>";
+                            echo "<td>{$row['qty_added']}</td>";
+                            echo "<td>{$row['qty_sent']}</td>";
+                            echo "<td>{$row['markup_peso']}</td>";
+                            $status_text = '';
+                            switch ($row['status']) {
+                                case 1:
+                                    $status_text = 'Pending';
+                                    break;
+                                case 2:
+                                    $status_text = 'Reviewed';
+                                    break;
+                                case 3:
+                                    $status_text = 'Approved';
+                                    break;
+                                case 4:
+                                    $status_text = 'Received';
+                                    break;
+                                case 5:
+                                    $status_text = 'Declined';
+                                    break;
+                                default:
+                                    $status_text = 'Unknown';
+                                    break;
+                            }
+                            echo "<td>{$status_text}</td>";
+                            echo "</tr>";
+                    
+                            // Only include rows with status other than 5 in the calculation
+                            if ($row['status'] != 5) {
+                                // Calculate totalSellingPrice and totalCostPrice
+                                $totalSellingPrice += $row['input_selling_price'] * $row['qty_added'];
+                                $totalCostPrice += $row['input_srp'] * $row['qty_added'];
+                            }
                         }
-                        echo "<td>{$status_text}</td>";
-                        echo "</tr>";
+                    } else {
+                        echo "0 results";
                     }
-                } else {
-                    echo "0 results";
-                }
+
+
+                // Calculate total gross profit
+                $totalGrossProfit = $totalSellingPrice - $totalCostPrice;
                 ?>
             </tbody>
         </table>
@@ -191,17 +205,21 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
         <div>
                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-3 mb-4">
                     <div>
-                    <?php
-                        // Output the Material Invoice, Date, and Cashier using PHP
-                        echo "<h5 class='fw-bolder'>Total Selling Price: ₱" . number_format($totalSellingPrice, 2) . "</h5>";
-                        echo "<h5 class='fw-bolder'>Total Cost Price: ₱" . number_format($totalCostPrice, 2) . "</h5>";
-                        echo "<h5 class='fw-bolder'>Total Gross Profit: ₱" . number_format($totalGrossProfit, 2) . "</h5>";
-
-                        ?>
+                        <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                            <h4 class="">Total Cost Price ₱<?php echo number_format($totalCostPrice, 2); ?></h4>
+                        </div>
+                        
+                        <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                            <h4 class="">Total Selling Price ₱<?php echo number_format($totalSellingPrice, 2); ?></h4>
+                        </div>
+                        
+                        <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                            <h4 class="">Total Gross Profit ₱<?php echo number_format($totalGrossProfit, 2); ?></h4>
+                        </div>
                     </div>
                     <div style="width: 30%">
-                        <button type="button" class="btn w-100 btn-primary mb-2">Save</button>
-                        <button type="button" class="btn w-100 btn-outline-primary mb-2">Cancel</button>
+                        <button type="button" id="acceptMaterialTransfer" class="btn w-100 btn-primary mb-2">Accept</button>
+                        <button type="button" class="btn w-100 btn-outline-primary mb-2">Decline</button>
                     </div>
                 </div> 
             </div>
@@ -216,3 +234,109 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+<script>
+    $(document).ready(function () {
+        // Accept Material Transfer
+        $('#acceptMaterialTransfer').click(function () {
+            console.log('Button clicked'); // Add this line to check if the click event is being triggered
+            // Your existing JavaScript code for accepting the transfer goes here
+ 
+
+            $('#cartList tr').each(function () {
+                var basedPrice = parseFloat($(this).find('td:eq(3)').text());
+                var retailPrice = parseFloat($(this).find('td:eq(4)').text());
+                var quantity = parseInt($(this).find('td:eq(5)').text());
+
+                var amount = basedPrice * quantity;
+                var markupPercent = ((retailPrice - basedPrice) / basedPrice) * 100;
+                var sellingPrice = retailPrice * quantity;
+
+                totalSellingPrice += sellingPrice;
+                totalCostPrice += amount;
+            });
+
+            totalGrossProfit = totalSellingPrice - totalCostPrice;
+
+            $.ajax({
+            url: '../php/fetch_admin_data.php',
+            method: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var receivedBy = fetchAdminData(receivedById, data);
+                var inspectedBy = fetchAdminData(inspectedById, data);
+                var verifiedBy = fetchAdminData(verifiedById, data);
+
+                                // Save Material Transfer with total values
+                                $.ajax({
+                    url: '../php/store_stocks_recompute.php', // Your server-side script to save material transfer
+                    method: 'POST',
+                    data: {
+                        receivedBy: receivedBy,
+                        inspectedBy: inspectedBy,
+                        verifiedBy: verifiedBy,
+                        totalSellingPrice: totalSellingPrice,
+                        totalCostPrice: totalCostPrice,
+                        totalGrossProfit: totalGrossProfit
+
+                    },
+                    success: function (response) {
+                        console.log(response);
+                                $.ajax({
+                                    url: '../php/update_notification.php', // Your server-side script to update the notification table
+                                    method: 'POST',
+                                    data: {
+                                        sessionID : sessionID,
+                                        type_id: materialInvoiceNo, // Adjust according to your notification type ID
+                                        type: 'Material Transaction', // Notification type
+                                        sender: cashierName, // Adjust with the recipient user ID
+                                        message: 'The Store accept the Material Transfer' // Message content
+                                    },
+                                    success: function (response) {
+                                        console.log('Notification sent successfully');
+                                        $('#cartList tr').each(function () {
+                                            // Get the product ID from the data-product-id attribute
+                                            var productId = parseInt($(this).find('td:eq(0)').text()); 
+                                            
+                                            // Get the quantity from the table cell
+                                            var input_selling_price = parseFloat($(this).find('td:eq(5)').text()); 
+                                            var qty_sent = parseInt($(this).find('td:eq(7)').text()); 
+
+                                            // Make AJAX call to update product stocks
+                                            $.ajax({
+                                                url: '../php/add_product_stocks.php',
+                                                method: 'POST',
+                                                data: {
+                                                    productId: productId,
+                                                    stocksToAdd: qty_sent,
+                                                    srp: input_selling_price
+                                                },
+                                                success: function (response) {
+                                                    console.log('Product stocks updated successfully for product ID ' + productId);
+                                                    swal("File Save", "Record has been saved", "success");
+                                                },
+                                                error: function (xhr, status, error) {
+                                                    console.error('Error updating product stocks for product ID ' + productId + ':', error);
+                                                }
+                                            });
+                                        });
+
+                                    },
+                                    error: function (xhr, status, error) {
+                                        console.error('Error sending notification:', error);
+                                    }
+                                });
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error saving data:', error);
+                    }
+                });
+            },
+            error: function (xhr, status, error) {
+                console.error('Error fetching admin data:', error);
+                 }
+            });
+        });
+    });
+
+
+</script>
