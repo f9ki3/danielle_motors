@@ -1,26 +1,9 @@
 @media print {
-    .purchase_header{
-        display: none;
+    .printable{
+        display: block;
     }
-
-    .print, .back{
-        display: none;
-    }
-
-    body{
-        background-color: white;
-    }
-
-    .cart{
-        overflow: hidden;
-    }
-
     .print_hide{
         display: none;
-    }
-
-    .printable{
-        display: flex;
     }
     
 }
