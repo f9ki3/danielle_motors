@@ -170,44 +170,40 @@ if ($result->num_rows > 0) {
             </div>
             <div class="d-flex flex-row justify-content-between">
                 <div style="width: 70%">
-                    <p class="m-0">Customer: <?php echo $transactionDetails["CustomerName"]; ?></p>
+                    <p class="m-0" style="font-size: 12px">Customer: <?php echo $transactionDetails["CustomerName"]; ?></p>
                 </div>
                 <div style="width: 30%">
-                    <p class="m-0">Invoice No: <?php echo $transactionID?></p>
+                    <p class="m-0" style="font-size: 12px">Invoice No: <?php echo $transactionID?></p>
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-between">
                 <div style="width: 70%">
-                    <p class="m-0">Address: <?php echo $transactionDetails["TransactionAddress"]; ?></p>
+                    <p class="m-0" style="font-size: 12px">Address: <?php echo $transactionDetails["TransactionAddress"]; ?></p>
                 </div>
                 <div style="width: 30%">
-                    <p class="m-0">Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
+                    <p class="m-0" style="font-size: 12px">Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-between">
                 <div style="width: 70%">
-                    <p class="m-0">Payment Type: <?php echo $transactionDetails["TransactionPaymentMethod"]; ?></p>
+                    <p class="m-0" style="font-size: 12px">Payment Type: <?php echo $transactionDetails["TransactionPaymentMethod"]; ?></p>
                 </div>
                 <div style="width: 30%">
-                    <p class="m-0">Transaction Type: <?php echo $transactionDetails["TransactionType"]; ?></p>
+                    <p class="m-0" style="font-size: 12px">Transaction Type: <?php echo $transactionDetails["TransactionType"]; ?></p>
                 </div>
             </div>
             
         </div>
         
-        <div class="w-100 border rounded p-3 mb-3 cart mt-3">
+        <div class="w-100 p-2 mb-3 cart">
                         
-            <table class="table table-striped">
+            <table class="table">
                 <tr>
-                    <th width="10%" style="font">Product name</th>
-                    <th width="5%" style="font">Brand</th>
-                    <th width="10%" style="font">Model</th>
-                    <th width="5%" style="font">Qty</th>
-                    <th width="5%" style="font">Unit</th>
-                    <th width="5%" style="font">SRP</th>
-                    <th width="5%" style="font">Discount Type</th>
-                    <th width="5%" style="font">Discount</th>
-                    <th width="5%" style="font">Total Amount</th>
+                    <th width=35%" style="font-size: 12px">Product name</th>
+                    <th width="5%" style="font-size: 12px">Qty</th>
+                    <th width="5%" style="font-size: 12px">SRP</th>
+                    <th width="5%" style="font-size: 12px">Discount</th>
+                    <th width="10%" style="font-size: 12px">Amount</th>
                 </tr>
                 <!-- make a loop data here from data set -->
                 
@@ -222,15 +218,11 @@ if ($result->num_rows > 0) {
                     // Output data of each row
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td>" . $row["ProductName"] . "</td>";
-                        echo "<td>" . $row["Brand"] . "</td>";
-                        echo "<td>" . $row["Model"] . "</td>";
-                        echo "<td>" . $row["Quantity"] . "</td>";
-                        echo "<td>" . $row["Unit"] . "</td>";
-                        echo "<td>" . $row["SRP"] . "</td>";
-                        echo "<td>" . $row["DiscountType"] . "</td>";
-                        echo "<td>" . $row["Discount"] . "</td>";
-                        echo "<td>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
+                        echo "<td style='font-size: 12px'>" . $row["ProductName"] .", ". $row["Brand"] .", ". $row["Model"] .", ".$row["Unit"] . "</td>";
+                        echo "<td style='font-size: 12px'>" . $row["Quantity"] . "</td>";
+                        echo "<td style='font-size: 12px'>₱ " . $row["SRP"] . "</td>";
+                        echo "<td style='font-size: 12px'>" . $row["Discount"] ."(". $row["DiscountType"] . ")</td>";
+                        echo "<td style='font-size: 12px'>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
                         echo "</tr>";
                     }
                 } else {
