@@ -18,15 +18,15 @@ include '../config/config.php';
     <div>
         <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
             <h5 class="fw-bolder">Purchase</h5>
-            <a href="purchase" class="btn btn-sm  border rounded mb-2">Purchase Warehouse</a>
-            <a href="purchase" class="btn  btn-sm  border rounded mb-2">Purchase Store</a>
-            <a href="purchase_terms" class="btn btn-sm border rounded mb-2">Purchase with Terms</a>
+            <a href="purchase" class="btn btn-sm  border rounded mb-2">Purchase Walk-in</a>
+            <a href="purchase_delivery" class="btn btn-sm border rounded mb-2">Purchase Delivery</a>
             <a href="purchase_online" class="btn btn-sm border rounded mb-2">Purchase Online</a>
+            <a href="purchase_terms" class="btn btn-sm border rounded mb-2">Purchase with Terms</a>
             <a href="store_stocks" class="btn btn-sm border btn-primary rounded mb-2">Store Stocks</a>
             
         </div>
 
-        <div style="background-color: white; height: 83vh;" class="rounded border p-3 mb-3 w-100">
+        <div style="background-color: white; height: 90vh;" class="rounded border p-3 mb-3 w-100">
             <div class="row">
                 <h6>Store Stocks</h6>
                 <div style="display: flex; justify-content: space-between; align-items: center;"> 
@@ -44,8 +44,8 @@ include '../config/config.php';
 
 
             
-<div style="height: 65vh; overflow: auto">
-    <table id="tabledataMaterial" class="table stripe hover order-column row-border ">
+<div>
+    <table id="tabledataMaterial" class="table table-bordered stripe hover order-column row-border ">
         <thead>
                         <tr>
                             <td scope="col" width="15%">Material Invoice No.</td>
@@ -57,12 +57,48 @@ include '../config/config.php';
                             <td class="text-end" scope="col" width="10%">Action</td>
                         </tr>
         </thead>
-        <tbody id="tabledataMaterial">
-        <!-- dynamic populate -->
+        <tbody id="MaterialTableBody">
+<!-- dynamic populate -->
         </tbody>
     </table>
 </div>
 
+<!-- end purchase-->
+
+<!-- Modal -->
+<div class="modal fade" id="add_stocks" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Material Transfer</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body " style="display: flex; flex-direction: column; align-items: center; justify-content: center">
+<input type="date" class="form-control mb-2" id="materialDate">
+<input type="text" class="form-control mb-2" placeholder="Material Invoice No." id="materialInvoiceNo">
+<input type="text" class="form-control mb-2" placeholder="Cashier Name" id="cashierName" pattern="[A-Za-z ]{1,}" required>
+<div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+    <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="receivedBy">
+   
+    </select>
+    <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="inspectedBy">
+    
+    </select>
+    <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="verifiedBy">
+      
+    </select>
+</div>
+        
+      </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="saveMaterialTransfer">Save</button>
+            <button type="button" class="btn btn-primary" id="editMaterialTransfer" style="display: none;">Edit</button>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
 
 
 </div>
@@ -72,7 +108,6 @@ include '../config/config.php';
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
 
 <script type="text/javascript">
@@ -82,30 +117,28 @@ $(document).ready(function () {
         "fnCreatedRow": function (nRow, aData, iDataIndex) {
             $(nRow).attr('id', aData[0]);
         },
-        'serverSide': true,
-        'processing': true,
-        'paging': true,
+        'serverSide': 'true',
+        'processing': 'true',
+        'paging': 'true',
         'order': [],
         'ajax': {
             'url': '../php/store_stocks_fetch.php',
             'type': 'post',
         },
-        'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, "All"]],
         "aoColumnDefs": [{
             "bSortable": false,
             "aTargets": [6] // Adjust the index to match the actual number of columns
         }]
-        
     });
 
+    // Define click event handler for view button
     $('#tabledataMaterial tbody').on('click', '.view', function () {
-        // Get the data associated with the clicked row
+        // Handle button click event here
         var rowData = table.row($(this).closest('tr')).data();
-        var materialId = rowData[0]; // Assuming material_id is in the first column
-        // Redirect to store_product.php page with material_id as a query parameter
-        window.location.href = "store_product.php?material_transaction=" + material_invoice_id;
+        window.location.href = "store_product";
+        console.log('View button clicked for row:', rowData);
     });
-    
+
    // Define click event handler for edit button
    $('#tabledataMaterial tbody').on('click', '.edit', function () {
     // Get the data associated with the clicked row
@@ -231,7 +264,7 @@ $('#tabledataMaterial tbody').on('click', '.delete', function () {
             var verifiedBy = fetchAdminData(verifiedById, data);    
             swal({
   title: "Are you sure?",
-  text: "Once deleted, you will not be able to see the record",
+  text: "Once deleted, you will not be able to recover this imaginary file!",
   icon: "warning",
   buttons: true,
   dangerMode: true,
@@ -262,11 +295,11 @@ $('#tabledataMaterial tbody').on('click', '.delete', function () {
             console.error(error);
         }
     });
-    swal("Record has been deleted!", {
+    swal("Poof! Your imaginary file has been deleted!", {
       icon: "success",
     });
   } else {
-    swal("Your Record file is safe!");
+    swal("Your imaginary file is safe!");
   }
 });
         },
