@@ -25,10 +25,11 @@ include '../config/config.php';
         </div>
 
         <div style="background-color: white; height: auto;" class="rounded border p-3 pb-5 mb-3 w-100">
-        <div class="row">  
+        <div class="row">
+                <h6>Store Stocks</h6>
                 <div style="display: flex; justify-content: space-between; align-items: center;"> 
                     <div style="width: 50%">
-                        <h5>Store Stocks</h5>
+                        <input  class="form-control form-control-sm" placeholder="Search">
                     </div>
 
                     <div>
