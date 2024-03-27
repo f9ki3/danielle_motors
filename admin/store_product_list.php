@@ -114,7 +114,7 @@ $(document).ready(function () {
         },
         "aoColumnDefs": [{
             "bSortable": false,
-            "aTargets": [8] // Adjust the index to match the actual number of columns
+            "aTargets": [8, 9] // Adjust the index to match the actual number of columns
         }]
     });
 
