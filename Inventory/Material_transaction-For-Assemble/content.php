@@ -35,8 +35,8 @@ $user_id = "Christian Azul";//on session
     <h1 class="mb-2">Material Transfer : <?php echo $invoice_id; ?></h1>
 </div>
 <ul class="nav nav-links mb-3 mb-lg-2 mx-n3">
-    <li class="nav-item"><a class="nav-link" aria-current="page" href="../Material_transaction-For-Assemble/"><span>For Assemble Sheet Document</a></li>
-    <li class="nav-item"><a class="nav-link active" href="../Material_transaction">Material Transfer Document</a></li>
+    <li class="nav-item"><a class="nav-link active" aria-current="page" href="../Material_transaction-For-Assemble/"><span>For Assemble Sheet Document</a></li>
+    <li class="nav-item"><a class="nav-link" href="../Material_transaction">Material Transfer Document</a></li>
 </ul>
 
 <div class="row fs--1 mb">
@@ -93,12 +93,8 @@ $user_id = "Christian Azul";//on session
                                             <th>Name</th>
                                             <th>Models</th>
                                             <th>Code</th>
-                                            <th>Based Price</th>
-                                            <th>Requested QTY</th>
-                                            <th>Sent QTY</th>
-                                            <th>Markup</th>
-                                            <th>Status</th></th>
-                                            <th>Selling Price</th>
+                                            <th>WH Location</th>
+                                            <th>take QTY</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -138,33 +134,36 @@ $user_id = "Christian Azul";//on session
                                                     $hidden = "";
                                                     $class= "";
                                                 }
-                                                
-                                                $total_quantity_sql = "SELECT COALESCE(SUM(qty), 0) AS total_available_qty FROM stocks WHERE product_id = '$product_id'";
-                                                $total_quantity_res = $conn->query($total_quantity_sql);
-                                                if($total_quantity_res -> num_rows > 0){
-                                                    $taq_row = $total_quantity_res -> fetch_assoc();
-                                                    $total_available_quantity = $taq_row['total_available_qty'];
-                                                } else {
-                                                    $total_available_quantity = 0;
-                                                }
 
-                                                if($total_available_quantity > $qty_added){
-                                                    $total_qty_given = $qty_added;
+                                                $stocks_sql = "SELECT qty, ware_loc_id FROM stocks WHERE product_id = '$product_id'";
+                                                $stocks_res = $conn->query($stocks_sql);
+                                                
+                                                if ($stocks_res) {
+                                                    // Check if there are rows returned
+                                                    if ($stocks_res->num_rows > 0) {
+                                                        // Fetch the result row
+                                                        $row = $stocks_res->fetch_assoc();
+                                                        // Get the product count
+                                                        $product_count = $row['product_count'];
+                                                    } else {
+                                                        // No rows matched the condition, set count to 0
+                                                        $product_count = 0;
+                                                    }
                                                 } else {
-                                                    $total_qty_given = $total_available_quantity;
+                                                    // Error handling if query fails
+                                                    echo "Error: " . $conn->error;
                                                 }
+                                                
+                                                // Now $product_count contains the count of rows where product_id = $product_id
+                                                
                                         ?>
                                         <tr>
                                             <td class="text-center p-0"><img src="../../uploads/<?php echo basename($product_img); ?>" class="img-fluid" style="height: 50px;"></td>
                                             <td><?php echo $product_name; ?></td>
                                             <td><?php echo $product_model; ?></td>
-                                            <td><?php echo $product_code; ?></td>
-                                            <td class="text-end"><?php echo number_format($input_srp, 2);?></td>
-                                            <td><?php echo $qty_added;?></td>
-                                            <td class="text-end"><input name="transaction_id[]" type="text" value="<?php echo $id; ?>" hidden><input name="qty_sent[]" type="number" class="form-control" min="0" max="<?php echo $total_available_quantity;?>" value="<?php echo $total_qty_given;?>" <?php echo $hidden;?>><?php if($status === '1' || $status === '2'){} else { echo $qty_added; }?></td>
-                                            <td class="text-end"><?php echo number_format($markup_peso, 2);?></td>
-                                            <td><?php echo $formatted_stats; ?></td>
-                                            <td class="text-end pe-2"><?php echo number_format($input_selling_price, 2);?></td>
+                                            <td><?php echo $product_count;?></td>
+                                            <td></td>
+                                            <td></td>
                                         </tr>
                                         <?php
                                             }
