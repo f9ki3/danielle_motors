@@ -31,7 +31,7 @@ if ($result->num_rows > 0) {
 ?>
 
 
-<div style="width: 100%; display: none" class="content print_hide p-3" >
+<div style="width: 100%;" class="content print_hide p-3" >
     <div>
         <div style="background-color: white;" class="rounded border p-3 mb-3 w-100 purchase_header">
             <h5 class="fw-bolder">Purchase</h5>
@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
             <button class="btn btn-sm border rounded mb-2">Store Stocks</button>
         </div>
 
-        <div style="background-color: white; height: 82vh" class="rounded border p-3 mb-3 w-100 transact">
+        <div style="background-color: white; height: 82vh" class=" rounded border p-3 mb-3 w-100 transact">
             <h5 class="fw-bolder">Purchase Receipt</h5>
             <div class="row">
                 <div>
@@ -154,8 +154,8 @@ if ($result->num_rows > 0) {
         </div>                           
 
 </div>
-<div style="background-white" class=" p-3 w-100">
-    <div class="d-flex flex-row justify-content-between">
+<div class="printable p-3 w-100" style="display: none;">
+    <div class="d-flex flex-row justify-content-between rounded border p-3">
         <div>
             <h4 class='m-0 fw-bolder '>Danielle Motors Parts</h4>
             <p class='m-0 ' >Prenza 2, 3019 Marilao, Bulacan, Philippines</p>
@@ -195,7 +195,7 @@ if ($result->num_rows > 0) {
             
         </div>
         
-        <div class="w-100 p-2 mb-3 cart">
+        <div class="w-100 p-2 mb-3 rounded border mt-3 cart">
                         
             <table class="table">
                 <tr>
@@ -232,6 +232,78 @@ if ($result->num_rows > 0) {
                 <!-- end loop -->
             </table>
                         
+        </div>
+
+        <div class="border rounded p-3">
+            <div class="">
+                <h4 class="fw-bolder">Summary</h4>
+            </div>
+            <div class="d-flex flex-row justify-content-between">
+                <div style="width: 70%">
+                    <p class="m-0" style="font-size: 12px">Subtotal </p>
+                </div>
+                <div style="width: 30%">
+                    <p class="m-0" style="font-size: 12px">₱ <?php echo $transactionDetails["Subtotal"]; ?></p>
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-between">
+                <div style="width: 70%">
+                    <p class="m-0" style="font-size: 12px">Tax </p>
+                </div>
+                <div style="width: 30%">
+                    <p class="m-0" style="font-size: 12px">₱ <?php echo $transactionDetails["Tax"]; ?></p>
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-between">
+                <div style="width: 70%">
+                    <p class="m-0" style="font-size: 12px">Discount </p>
+                </div>
+                <div style="width: 30%">
+                    <p class="m-0" style="font-size: 12px">₱ <?php echo $transactionDetails["Discount"]; ?></p>
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-between">
+                <div style="width: 70%">
+                    <p class="m-0" style="font-size: 12px">Total </p>
+                </div>
+                <div style="width: 30%">
+                    <p class="m-0" style="font-size: 12px">₱ <?php echo $transactionDetails["Total"]; ?></p>
+                </div>
+            </div>
+            <hr class="m-0">
+            <div class="d-flex flex-row justify-content-between">
+                <div style="width: 70%">
+                    <p class="m-0" style="font-size: 12px">Payment </p>
+                </div>
+                <div style="width: 30%">
+                    <p class="m-0" style="font-size: 12px">₱ <?php echo $transactionDetails["Payment"]; ?></p>
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-between">
+                <div style="width: 70%">
+                    <p class="m-0" style="font-size: 12px">Change </p>
+                </div>
+                <div style="width: 30%">
+                    <p class="m-0" style="font-size: 12px">₱ <?php echo $transactionDetails["ChangeAmount"]; ?></p>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row justify-content-between p-3 mt-5">
+            <div class="w-25">
+                <p style="font-size: 12px; text-align: center; margin-bottom: 0px"><?php echo $transactionDetails["TransactionReceivedBy"]; ?></p>
+                <hr class="m-0">
+                <p style="font-size: 12px; text-align: center">Received By</p>
+            </div>
+            <div class="w-25">
+                <p style="font-size: 12px; text-align: center; margin-bottom: 0px"><?php echo $transactionDetails["TransactionInspectedBy"]; ?></p>
+                <hr class="m-0">
+                <p style="font-size: 12px; text-align: center">Inspected By</p>
+            </div>
+            <div class="w-25">
+                <p style="font-size: 12px; text-align: center; margin-bottom: 0px"><?php echo $transactionDetails["TransactionVerifiedBy"]; ?></p>
+                <hr class="m-0">
+                <p style="font-size: 12px; text-align: center">Verified By</p>
+            </div>
         </div>
     </div>
     
