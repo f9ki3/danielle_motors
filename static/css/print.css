@@ -14,5 +14,13 @@
     .cart{
         overflow: hidden;
     }
+
+    .print_hide{
+        display: none;
+    }
+
+    .printable{
+        display: flex;
+    }
     
 }
