@@ -15,19 +15,31 @@ if(isset($_POST['productId'], $_POST['qty_sent'], $_POST['srp'])) {
 
     // Prepare the SQL statement
     $sql = "UPDATE product SET stocks = stocks + ?, srp = ? WHERE id = ?";
+    $updatestatus = "UPDATE material_transfer SET status = ? WHERE material_invoice = ?";
 
     // Prepare and bind parameters to the statement
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "idi", $quantity, $srp, $product_id);
 
-    // Execute the statement
+    // Execute the statement to update product stocks
     if(mysqli_stmt_execute($stmt)) {
-        echo "Product stocks updated successfully!";
+        // Prepare and bind parameters for updating the material_transfer status
+        $stmt2 = mysqli_prepare($conn, $updatestatus);
+        mysqli_stmt_bind_param($stmt2, "i", $_POST['status']); // Assuming materialInvoiceNo is sent in the POST data
+
+        // Execute the statement to update the material_transfer status
+        if(mysqli_stmt_execute($stmt2)) {
+            echo "Product stocks updated successfully and material transfer status updated!";
+        } else {
+            echo "Error updating material transfer status: " . mysqli_error($conn);
+        }
+        // Close the statement for updating material_transfer status
+        mysqli_stmt_close($stmt2);
     } else {
         echo "Error updating product stocks: " . mysqli_error($conn);
     }
 
-    // Close the statement
+    // Close the statement for updating product stocks
     mysqli_stmt_close($stmt);
 } else {
     // Handle case where required POST data is not set
