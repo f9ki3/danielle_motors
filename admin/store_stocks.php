@@ -19,8 +19,8 @@ include '../config/config.php';
         <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
             <h5 class="fw-bolder">Purchase</h5>
             <a href="purchase" class="btn btn-sm  border rounded mb-2">Purchase Walk-in</a>
-            <a href="purchase_online" class="btn btn-sm border rounded mb-2">Purchase Online</a>
             <a href="purchase_terms" class="btn btn-sm border rounded mb-2">Purchase with Terms</a>
+            <a href="purchase_online" class="btn btn-sm border rounded mb-2">Purchase Online</a>
             <a href="store_stocks" class="btn btn-sm border btn-primary rounded mb-2">Store Stocks</a>
             
         </div>
