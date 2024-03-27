@@ -118,6 +118,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
         <table class="table">
             <thead>
             <tr> 
+                <th>Checkbox</th>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Models</th>
@@ -151,6 +152,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                         // output data of each row
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
+                            echo "<td><input type='checkbox' name='product_checkbox[]' value='{$row['product_id']}' style='max-width: 50px; height: 50px'></td>";
                             echo "<input type='hidden' name='product_id[]' value='{$row['product_id']}'>";
                             echo "<td><img src='{$row['image']}' alt='Product Image' style='max-width: 50px; height: 50px'></td>";
                             echo "<td>{$row['name']}</td>";
@@ -188,8 +190,8 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                             // Only include rows with status other than 5 in the calculation
                             if ($row['status'] != 5) {
                                 // Calculate totalSellingPrice and totalCostPrice
-                                $totalSellingPrice += $row['input_selling_price'] * $row['qty_added'];
-                                $totalCostPrice += $row['input_srp'] * $row['qty_added'];
+                                $totalSellingPrice += $row['input_selling_price'] * $row['qty_sent'];
+                                $totalCostPrice += $row['input_srp'] * $row['qty_sent'];
                                 $qty_receive = $row['qty_sent'];
                                 $input_selling_price = $row['input_selling_price'];
                             }
@@ -223,7 +225,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                     </div>
                     <div style="width: 30%">
                         <button type="button" id="acceptMaterialTransfer" class="btn w-100 btn-primary mb-2">Accept</button>
-                        <button type="button" class="btn w-100 btn-outline-primary mb-2">Decline</button>
+                        <button type="button" id="declineMaterialTransfer" class="btn w-100 btn-outline-primary mb-2">Decline</button>
                     </div>
                 </div> 
             </div>
@@ -252,78 +254,79 @@ $(document).ready(function () {
 
         var quantity = '<?php echo $qty_receive; ?>';
         var input_selling_price = '<?php echo $input_selling_price; ?>';
-        
-        // Your existing JavaScript code for accepting the transfer goes here
+
+        // Save Material Transfer with total values
         $.ajax({
-            url: '../php/fetch_admin_data.php',
-            method: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                // Save Material Transfer with total values
+            url: '../php/store_stocks_recompute.php',
+            method: 'POST',
+            data: {
+                materialInvoiceID: materialInvoiceNo,
+                totalSellingPrice: totalSellingPrice,
+                totalCostPrice: totalCostPrice,
+                totalGrossProfit: totalGrossProfit
+            },
+            success: function (response) {
+                console.log(response);
+                // Send notification
                 $.ajax({
-                    url: '../php/store_stocks_recompute.php',
+                    url: '../php/update_notification.php',
                     method: 'POST',
                     data: {
-                        materialInvoiceID: materialInvoiceNo,
-                        totalSellingPrice: totalSellingPrice,
-                        totalCostPrice: totalCostPrice,
-                        totalGrossProfit: totalGrossProfit
+                        sessionID: sessionID,
+                        type_id: materialInvoiceNo,
+                        type: 'Material Transaction',
+                        sender: cashierName,
+                        message: 'The Store accepted the Material Transfer'
                     },
                     success: function (response) {
-                        console.log(response);
-                        $.ajax({
-                            url: '../php/update_notification.php',
-                            method: 'POST',
-                            data: {
-                                sessionID : sessionID,
-                                type_id: materialInvoiceNo,
-                                type: 'Material Transaction',
-                                sender: cashierName,
-                                message: 'The Store accept the Material Transfer'
-                            },
-                            success: function (response) {
-                                console.log('Notification sent successfully');
-                                // Make AJAX call to update product stocks
-                                $('input[name="product_id[]"]').each(function() {
-                                    var productId = $(this).val();
-                                    var sellingPrice = $(this).closest('tr').find('td:eq(5)').text(); // Assuming input selling price is in the 7th column
-                                    var qtySent = $(this).closest('tr').find('td:eq(7)').text(); // Assuming qty sent is in the 8th column
-                                    var status = $(this).closest('tr').find('td:eq(9)').text(); // Assuming qty sent is in the 8th column
-                                    if (status != 'Declined') {
-                                        $.ajax({
-                                            url: '../php/add_product_stocks.php',
-                                            method: 'POST',
-                                            data: {
-                                                productId: productId,
-                                                qty_sent: qtySent,
-                                                srp: sellingPrice,
-                                                status: status // Pass the status to the PHP script
-                                            },
-                                            success: function (response) {
-                                                console.log('Product stocks updated successfully for product ID ' + productId);
-                                            },
-                                            error: function (xhr, status, error) {
-                                                console.error('Error updating product stocks for product ID ' + productId + ':', error);
-                                            }
-                                        });
+                        console.log('Notification sent successfully');
+                        // Loop through checked checkboxes and update product stocks
+                        $('input[name="product_checkbox[]"]:checked').each(function() {
+                            var productId = $(this).closest('tr').find('input[name="product_id[]"]').val();
+                            var sellingPrice = $(this).closest('tr').find('td:eq(6)').text(); // Assuming input selling price is in the 7th column
+                            var qtySent = $(this).closest('tr').find('td:eq(8)').text(); // Assuming qty sent is in the 8th column
+                            var status = $(this).closest('tr').find('td:eq(10)').text(); // Assuming status is in the 10th column
+                            if (status !== 'Declined') {
+                                // Only update product stocks if status is not 'Declined'
+                                $.ajax({
+                                    url: '../php/add_product_stocks.php',
+                                    method: 'POST',
+                                    data: {
+                                        productId: productId,
+                                        qty_sent: qtySent,
+                                        srp: sellingPrice,
+                                        status: status // Pass the status to the PHP script
+                                    },
+                                    success: function (response) {
+                                        console.log('Product stocks updated successfully for product ID ' + productId);
+                                    },
+                                    error: function (xhr, status, error) {
+                                        console.error('Error updating product stocks for product ID ' + productId + ':', error);
                                     }
-});
-                                swal("Material Added", "Product has been added", "success");
-                            },
-                            error: function (xhr, status, error) {
-                                console.error('Error sending notification:', error);
+                                });
                             }
                         });
+                        swal("Material Accepted", "Products have been accepted", "success");
                     },
                     error: function (xhr, status, error) {
-                        console.error('Error saving data:', error);
+                        console.error('Error sending notification:', error);
                     }
                 });
             },
             error: function (xhr, status, error) {
-                console.error('Error fetching admin data:', error);
+                console.error('Error saving data:', error);
             }
         });
+    });
+
+    // Decline Material Transfer
+    $('#declineMaterialTransfer').click(function () {
+        // Loop through checked checkboxes and perform decline action
+        $('input[name="product_checkbox[]"]:checked').each(function() {
+            // Implement decline action here
+            console.log('Product with ID ' + $(this).val() + ' has been declined');
+        });
+        swal("Material Declined", "Products have been declined", "error");
     });
 });
 
