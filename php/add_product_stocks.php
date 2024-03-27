@@ -2,13 +2,13 @@
 include '../config/config.php';
 
 // Check if the necessary POST data is set
-if(isset($_POST['productId'], $_POST['stocksToAdd'], $_POST['srp'])) {
+if(isset($_POST['productId'], $_POST['qty_sent'], $_POST['srp'])) {
     // Sanitize and validate input data
-    $productId = intval($_POST['productId']); // Convert to integer
+    $product_id = intval($_POST['productId']); // Convert to integer
     $quantity = intval($_POST['qty_sent']); // Convert to integer
-    $srp = floatval($_POST['input_selling_price']); // Convert to float
+    $srp = floatval($_POST['srp']); // Convert to float
 
-    if($productId <= 0 || $quantity <= 0 || $srp <= 0) {
+    if($product_id <= 0 || $quantity <= 0 || $srp <= 0) {
         echo "Error: Invalid product ID, quantity, or SRP";
         exit; // Stop execution if input data is invalid
     }
@@ -18,7 +18,7 @@ if(isset($_POST['productId'], $_POST['stocksToAdd'], $_POST['srp'])) {
 
     // Prepare and bind parameters to the statement
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "idi", $quantity, $srp, $productId);
+    mysqli_stmt_bind_param($stmt, "idi", $quantity, $srp, $product_id);
 
     // Execute the statement
     if(mysqli_stmt_execute($stmt)) {

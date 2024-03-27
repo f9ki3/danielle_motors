@@ -11,6 +11,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     $lname = $_SESSION['lname'];
     $email = $_SESSION['email'];
     $profile = $_SESSION['img'];
+
+    //for alex
+    $user_id =$_SESSION['id'];
 } else {
     // User is not logged in, redirect to the login page
     header("Location: ../");
