@@ -1,5 +1,9 @@
+#printable {
+    display: none;
+}
+
 @media print {
-    .printable{
+    #printable {
         display: block;
     }
     .print_hide{

@@ -154,18 +154,19 @@ if ($result->num_rows > 0) {
         </div>                           
 
 </div>
-<div class="printable p-3 w-100" style="display: none;">
+
+<div id="printable" class="p-3 w-100">
     <div class="d-flex flex-row justify-content-between rounded border p-3">
         <div>
-            <h4 class='m-0 fw-bolder '>Danielle Motors Parts</h4>
-            <p class='m-0 ' >Prenza 2, 3019 Marilao, Bulacan, Philippines</p>
-            <p class='m-0 ' >dmp@gmail.com | 09120987768</p>
+            <h4 class="m-0 fw-bolder">Danielle Motors Parts</h4>
+            <p class="m-0">Prenza 2, 3019 Marilao, Bulacan, Philippines</p>
+            <p class="m-0">dmp@gmail.com | 09120987768</p>
         </div>
         <img src="../static/img/dmp_logo.png" alt="">
     </div>
     <div>
         <div class="border rounded p-3 mt-3">
-            <div class="">
+            <div>
                 <h4 class="fw-bolder">Purchase Receipt</h4>
             </div>
             <div class="d-flex flex-row justify-content-between">
@@ -173,7 +174,7 @@ if ($result->num_rows > 0) {
                     <p class="m-0" style="font-size: 12px">Customer: <?php echo $transactionDetails["CustomerName"]; ?></p>
                 </div>
                 <div style="width: 30%">
-                    <p class="m-0" style="font-size: 12px">Invoice No: <?php echo $transactionID?></p>
+                    <p class="m-0" style="font-size: 12px">Invoice No: <?php echo $transactionID; ?></p>
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-between">
@@ -192,9 +193,9 @@ if ($result->num_rows > 0) {
                     <p class="m-0" style="font-size: 12px">Transaction Type: <?php echo $transactionDetails["TransactionType"]; ?></p>
                 </div>
             </div>
-            
         </div>
         
+        <!-- Cart details -->
         <div class="w-100 p-2 mb-3 rounded border mt-3 cart">
                         
             <table class="table">
@@ -220,8 +221,21 @@ if ($result->num_rows > 0) {
                         echo "<tr>";
                         echo "<td style='font-size: 12px'>" . $row["ProductName"] .", ". $row["Brand"] .", ". $row["Model"] .", ".$row["Unit"] . "</td>";
                         echo "<td style='font-size: 12px'>" . $row["Quantity"] . "</td>";
-                        echo "<td style='font-size: 12px'>₱ " . $row["SRP"] . "</td>";
-                        echo "<td style='font-size: 12px'>" . $row["Discount"] ."(". $row["DiscountType"] . ")</td>";
+                        echo "<td style='font-size: 12px'>₱ " . number_format($row["SRP"], 2) . "</td>";
+                        echo "<td style='font-size: 12px'>";
+                        if ($row["Discount"] == 0.00) {
+                            echo "-";
+                        } else {
+                            $discount = $row["Discount"];
+                            if (is_int($discount) || floor($discount) == $discount) {
+                                echo (int)$discount;
+                            } else {
+                                echo number_format($discount, 2);
+                            }
+                            echo " " . $row["DiscountType"];
+                        }
+                        echo "</td>";
+
                         echo "<td style='font-size: 12px'>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
                         echo "</tr>";
                     }
@@ -233,17 +247,23 @@ if ($result->num_rows > 0) {
             </table>
                         
         </div>
-
+        
         <div class="border rounded p-3">
-            <div class="">
+            <div>
                 <h4 class="fw-bolder">Summary</h4>
             </div>
+            <!-- Summary details -->
+            <?php
+            function formatCurrency($amount) {
+                return '₱ ' . number_format($amount, 2);
+            }
+            ?>
             <div class="d-flex flex-row justify-content-between">
                 <div style="width: 70%">
                     <p class="m-0" style="font-size: 12px">Subtotal </p>
                 </div>
                 <div style="width: 30%">
-                    <p class="m-0" style="font-size: 12px">₱ <?php echo $transactionDetails["Subtotal"]; ?></p>
+                    <p class="m-0" style="font-size: 12px"><?php echo formatCurrency($transactionDetails["Subtotal"]); ?></p>
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-between">
@@ -251,7 +271,7 @@ if ($result->num_rows > 0) {
                     <p class="m-0" style="font-size: 12px">Tax </p>
                 </div>
                 <div style="width: 30%">
-                    <p class="m-0" style="font-size: 12px">₱ <?php echo $transactionDetails["Tax"]; ?></p>
+                    <p class="m-0" style="font-size: 12px"><?php echo formatCurrency($transactionDetails["Tax"]); ?></p>
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-between">
@@ -259,7 +279,7 @@ if ($result->num_rows > 0) {
                     <p class="m-0" style="font-size: 12px">Discount </p>
                 </div>
                 <div style="width: 30%">
-                    <p class="m-0" style="font-size: 12px">₱ <?php echo $transactionDetails["Discount"]; ?></p>
+                    <p class="m-0" style="font-size: 12px"><?php echo formatCurrency($transactionDetails["Discount"]); ?></p>
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-between">
@@ -267,7 +287,7 @@ if ($result->num_rows > 0) {
                     <p class="m-0" style="font-size: 12px">Total </p>
                 </div>
                 <div style="width: 30%">
-                    <p class="m-0" style="font-size: 12px">₱ <?php echo $transactionDetails["Total"]; ?></p>
+                    <p class="m-0" style="font-size: 12px"><?php echo formatCurrency($transactionDetails["Total"]); ?></p>
                 </div>
             </div>
             <hr class="m-0">
@@ -276,7 +296,7 @@ if ($result->num_rows > 0) {
                     <p class="m-0" style="font-size: 12px">Payment </p>
                 </div>
                 <div style="width: 30%">
-                    <p class="m-0" style="font-size: 12px">₱ <?php echo $transactionDetails["Payment"]; ?></p>
+                    <p class="m-0" style="font-size: 12px"><?php echo formatCurrency($transactionDetails["Payment"]); ?></p>
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-between">
@@ -284,16 +304,21 @@ if ($result->num_rows > 0) {
                     <p class="m-0" style="font-size: 12px">Change </p>
                 </div>
                 <div style="width: 30%">
-                    <p class="m-0" style="font-size: 12px">₱ <?php echo $transactionDetails["ChangeAmount"]; ?></p>
+                    <p class="m-0" style="font-size: 12px"><?php echo formatCurrency($transactionDetails["ChangeAmount"]); ?></p>
                 </div>
             </div>
         </div>
+
+        
+        <!-- Signatures -->
+        
         <div class="d-flex flex-row justify-content-between p-3 mt-5">
             <div class="w-25">
                 <p style="font-size: 12px; text-align: center; margin-bottom: 0px"><?php echo $transactionDetails["TransactionReceivedBy"]; ?></p>
                 <hr class="m-0">
                 <p style="font-size: 12px; text-align: center">Received By</p>
             </div>
+            <!-- Other signature details -->
             <div class="w-25">
                 <p style="font-size: 12px; text-align: center; margin-bottom: 0px"><?php echo $transactionDetails["TransactionInspectedBy"]; ?></p>
                 <hr class="m-0">
@@ -306,9 +331,7 @@ if ($result->num_rows > 0) {
             </div>
         </div>
     </div>
-    
 </div>
-
 
 
 <?php include 'footer.php'?>

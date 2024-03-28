@@ -11,7 +11,6 @@ function purchase() {
     var amountPayment = parseFloat(document.getElementById('amount_payment').value) || 0;
     var change = Math.max(amountPayment - total, 0);
 
-    // Add totalAmount, quantity, discountType to each cartItem
     cartItems.forEach(function(item, index) {
         var discountedPrice;
         if (item.discountType === "%") {
@@ -19,13 +18,22 @@ function purchase() {
         } else if (item.discountType === "₱") { // Handle fixed discount amount
             discountedPrice = item.srp - item.discount;
         } else {
-            discountedPrice = item.srp; // Default to full price if discount type is unknown
+            item.discountType = "₱"; // Default discount type to peso currency if not specified
+            discountedPrice = item.srp - item.discount; // Default to full price if discount type is unknown
         }
-        item.totalAmount = discountedPrice * item.qty;
+        item.totalAmount = discountedPrice * item.qty; // compute total amount
         item.quantity = item.qty; // Add quantity
-        item.discountType = item.discountType; // Add discountType
-        item.totalAmount = item.totalAmount; // Add totalAmount
     });
+    
+    // User input to change discount type to "%" if selected
+    var userInputDiscountType = ""; // Assume user input is provided here
+    if (userInputDiscountType === "%") {
+        cartItems.forEach(function(item) {
+            item.discountType = "%";
+        });
+    }
+    
+    
 
     // Collect transaction details
     var transaction_customer_name = document.getElementById('transaction_customer_name').value || '';
