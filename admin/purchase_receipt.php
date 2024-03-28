@@ -44,7 +44,7 @@ if ($result->num_rows > 0) {
         </div>
 
         <div style="background-color: white; height: 82vh" class=" rounded border p-3 mb-3 w-100 transact">
-            <h5 class="fw-bolder">Purchase Receipt</h5>
+            <h5 class="fw-bolder my-3">Purchase Receipt</h5>
             <div class="row">
                 <div>
                 <div class="w-100 border rounded p-3 mb-3">
