@@ -24,22 +24,21 @@
             <div class="row">
                 <div style="display: flex; justify-content: space-between; align-items: center;"> 
                     <div style="width: 100%">
-<div class="border rounded p-3"  id="add_stocks" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="border rounded p-3" id="add_stocks" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <h5 class="fw-bolder">Add Stocks</h5>
     <div style="display: flex; flex-direction: row;">
-    <datalist id="suggestions">
-        <?php foreach ($products as $product): ?>
-            <option value="<?php echo $product['id'] . ' - ' . $product['name'] . ' - ' . $product['models'] . ' - ' . $product['brand_name']; ?>"></option>
-        <?php endforeach; ?>
-    </datalist>
-        
-        
-        <input type="text" class="form-control me-2" style="width: 20%" id="select_product" list="suggestions" placeholder="Search Item to Add">
-        <input type="text" class="form-control me-2" style="width: 20%" id="based_price" placeholder="SRP" <?php echo isset($delivery_receipt_content['price']) ? 'value="' . $delivery_receipt_content['price'] . '"' : ''; ?>>
-        <input type="text" class="form-control me-2" style="width: 20%" id="suggested_retail_price" placeholder="Selling Price" <?php echo isset($delivery_receipt_content['orig_price']) ? 'value="' . $delivery_receipt_content['orig_price'] . '"' : ''; ?>>
-        <input type="text" class="form-control me-2" style="width: 20%" id="quantity" placeholder="Qty">
+        <datalist id="suggestions">
+            <?php foreach ($products as $product): ?>
+                <option value="<?php echo $product['id'] . ' - ' . $product['name'] . ' - ' . $product['models'] . ' - ' . $product['brand_name']; ?>"></option>
+            <?php endforeach; ?>
+        </datalist>
+
+        <input type="text" class="form-control me-2" style="width: 33%" id="select_product" list="suggestions" placeholder="Search Item to Add">
+        <input type="text" class="form-control me-2" style="width: 33%" id="suggested_retail_price" placeholder="Selling Price" >
+        <input type="text" class="form-control me-2" style="width: 33%" id="quantity" placeholder="Qty">
         <button class="btn btn-primary" onclick="addItem()">Submit</button>
     </div>
+</div>
     <!-- List to display submitted items -->
  
                                 </div>
@@ -54,24 +53,12 @@
                     <table class="table">
                     <thead class="sticky-top">
                         <tr>
-                            <th scope="col" width="15%">Product Name</th>
+                            <th scope="col" width="30%">Product Name</th>
                             <th scope="col" width="10%">Model</th>
                             <th scope="col" width="10%">Brand</th>
                             <th scope="col" width="10%">SRP</th>
-                            <th scope="col" width="10%">Selling Price</th>
                             <th scope="col" width="10%">Quantity</th>
-                            <th scope="col" width="10%" >Markup
-                                <select id="markup">
-                                    <option value="perC">%</option>
-                                    <option value="inT">₱</option>
-                                </select>
-                            </th>
-                            <th scope="col" width="10%" >Total
-                                <select id="totalType">
-                                    <option value="BasePrice">CostPrice</option>
-                                    <option value="SellingPrice">SellingPrice</option>
-                                </select>
-                            </th>
+                            <th scope="col" width="10%">Amount</th>
                             <th scope="col" width="5%">Action</th>
                         </tr>
                     </thead>
@@ -116,14 +103,14 @@
                                     <h5 class="">Total Selling Price</h5>
                                     <h5 class="" id="SellingPrice">₱0.00</h5>
                                 </div>
-                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                <!-- <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="">Total Cost Price</h5>
                                     <h5 class="" id="BasePrice">₱0.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="">Total Gross Profit</h5>
                                     <h5 class="" id="GrossProfit">₱0.00</h5>
-                                </div>
+                                </div> -->
                                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="mt-2">
                                 <button id="cancelButton" class="btn text-primary border-primary" style="width: 49%">Cancel</button>
                                 <button type="button" class="btn btn-primary" style="width: 49%" id="saveMaterialTransfer">Save</button>
@@ -159,7 +146,6 @@ var savedQuantity; // Variable to store the quantity
 function addItem() {
     var productInput = document.getElementById("select_product");
     var retailPriceInput = document.getElementById("suggested_retail_price");
-    var basedPriceInput = document.getElementById("based_price");
     var quantityInput = document.getElementById("quantity");
 
     // Get the selected product value from the input field
@@ -170,11 +156,10 @@ function addItem() {
 
     // Get the values from input fields
     var retailPrice = parseFloat(retailPriceInput.value.trim()); // Parse as float
-    var basedPrice = parseFloat(basedPriceInput.value.trim()); // Parse as float
     var quantity = parseInt(quantityInput.value.trim()); // Parse as integer
 
     // Check if any input field is empty
-    if (productName === '' || isNaN(retailPrice) || isNaN(basedPrice) || isNaN(quantity)) {
+    if (productName === '' || isNaN(retailPrice) || isNaN(quantity)) {
         alert("Please fill out all fields with valid numbers");
         return;
     }
@@ -183,12 +168,8 @@ function addItem() {
     savedProductId = productId;
     savedQuantity = quantity;
 
-    // Calculate markup as percentage
-    var markupPercent = ((retailPrice - basedPrice) / basedPrice) * 100;
-    var markupInteger = Math.round(markupPercent); // Convert to real integer
-
     // Calculate amount
-    var amount = quantity * basedPrice;
+    var amount = quantity * retailPrice;
 
     // Create a new table row to display the submitted item
     
@@ -198,10 +179,8 @@ function addItem() {
         <td>${productName}</td>
         <td>${models}</td>
         <td>${brand_name}</td>
-        <td>${basedPrice}</td>
         <td>${retailPrice}</td>
         <td>${quantity}</td>
-        <td>${markupInteger}%</td>
         <td>${amount}</td>
         <td>
             <button class="btn btn-danger btn-sm" onclick="removeItem(this)">Remove</button>
@@ -214,7 +193,6 @@ function addItem() {
     // Clear input fields after submission
     productInput.value = '';
     retailPriceInput.value = '';
-    basedPriceInput.value = '';
     quantityInput.value = '';
 
     updateSummary();
@@ -247,11 +225,11 @@ $(document).ready(function () {
   
   fetchAdminData('receivedBy', 'Recieved By');
   
-  // Fetch data for inspectedBy dropdown
-  fetchAdminData('inspectedBy', 'Inspected by');
+//   // Fetch data for inspectedBy dropdown
+//   fetchAdminData('inspectedBy', 'Inspected by');
 
-  // Fetch data for verifiedBy dropdown
-  fetchAdminData('verifiedBy', 'Verified By');
+//   // Fetch data for verifiedBy dropdown
+//   fetchAdminData('verifiedBy', 'Verified By');
 });
 
 function fetchAdminData(adminId, adminData) {
@@ -303,99 +281,36 @@ function removeItem(button) {
     updateSummary();
 });
 
-document.getElementById("markup").addEventListener("change", function() {
-    // Get the selected value from the dropdown
-    var markup = this.value;
-
-    // Get all table rows containing markup values
-    var markupRows = document.querySelectorAll("#cartList tr td:nth-child(7)"); // Change child index to 7
-
-    // Loop through each markup row and update the markup value based on the selected type
-    markupRows.forEach(function(markupRow) {
-        var markupValue = parseFloat(markupRow.textContent); // Get the current markup value
-
-        // Check the selected markup type and update the markup value accordingly
-        if (markup === "perC") {
-            // Calculate markup as based price minus SRP and display it as a real integer
-            var basedPrice = parseFloat(markupRow.previousElementSibling.previousElementSibling.previousElementSibling.textContent);
-            var srp = parseFloat(markupRow.previousElementSibling.previousElementSibling.textContent);
-            var markupPercent = ((srp - basedPrice) / basedPrice) * 100;
-            markupRow.textContent = markupPercent.toFixed(2) + "%"; // Display markup as percentage
-        } else if (markup === "inT") {
-            // Calculate markup as based price minus SRP and display it as a real integer
-            var basedPrice = parseFloat(markupRow.previousElementSibling.previousElementSibling.textContent);
-            var srp = parseFloat(markupRow.previousElementSibling.previousElementSibling.previousElementSibling.textContent);
-            var realMarkup = basedPrice - srp;
-            markupRow.textContent = "₱"+ realMarkup.toFixed(2); // Display markup as a real integer
-        }
-    });
-});
-
-
-document.getElementById("totalType").addEventListener("change", function() {
-    // Get the selected value from the dropdown
-    var totalType = this.value;
-
-    // Get all table rows containing total values
-    var totalRows = document.querySelectorAll("#cartList tr");
-
-    // Loop through each total row and update the total value based on the selected type
-    totalRows.forEach(function(totalRow) {
-        var basedPrice = parseFloat(totalRow.cells[3].textContent); // Based Price
-        var retailPrice = parseFloat(totalRow.cells[4].textContent); // SRP
-        var quantity = parseInt(totalRow.cells[5].textContent); // Quantity
-        var markup = parseFloat(totalRow.cells[6].textContent); // Markup
-        var amount = 0;
-
-        // Calculate the total based on the selected type
-        if (totalType === "BasePrice") {
-            // Calculate total based on Based Price
-            amount = basedPrice * quantity;
-        } else if (totalType === "SellingPrice") {
-            // Calculate total based on Selling Price (SRP)
-            amount = retailPrice * quantity;
-        }
-
-        // Update the total value in the last column
-        totalRow.cells[7].textContent = amount.toFixed(2);
-    });
-});
 
 
 function updateSummary() {
-    // Initialize variables for total selling price, total cost price, and total gross profit
+    // Initialize variables for total selling price
     var totalSellingPrice = 0;
-    var totalCostPrice = 0;
-    var totalGrossProfit = 0;
 
     // Iterate through each row in the table
     document.querySelectorAll("#cartList tr").forEach(function(row) {
         // Extract the relevant values from the row
-        var basedPrice = parseFloat(row.cells[3].textContent); // Based Price
-        var retailPrice = parseFloat(row.cells[4].textContent); // SRP
-        var quantity = parseInt(row.cells[5].textContent); // Quantity
+        var retailPrice = parseFloat(row.cells[3].textContent); // SRP
+        var quantity = parseInt(row.cells[4].textContent); // Quantity
 
-        // Calculate the total cost price and total selling price for this row
-        var amount = basedPrice * quantity;
-        var markupPercent = ((retailPrice - basedPrice) / basedPrice) * 100;
-        var totalMarkup = markupPercent * quantity;
+        // Calculate the selling price for the current row
         var sellingPrice = retailPrice * quantity;
 
-        // Add the row's values to the running totals
+        // Add the row's selling price to the running total
         totalSellingPrice += sellingPrice;
-        totalCostPrice += amount;
+
+        // Log the computed selling price for this row
+        console.log('Row Selling Price:', sellingPrice);
     });
 
-    // Calculate the total gross profit
-    totalGrossProfit = totalSellingPrice - totalCostPrice;
-    // Update the corresponding elements in the Summary div
-    document.getElementById("SellingPrice").textContent = "₱"+ totalSellingPrice.toFixed(2);
-    document.getElementById("BasePrice").textContent = "₱"+totalCostPrice.toFixed(2);
-    document.getElementById("GrossProfit").textContent = "₱"+ totalGrossProfit.toFixed(2);
-}
+    // Log the total selling price after computing
+    console.log('Total Selling Price:', totalSellingPrice);
 
+    // Update the corresponding element in the Summary div
+    document.getElementById("SellingPrice").textContent = "₱" + totalSellingPrice.toFixed(2);
+}
 // Call the updateSummary function whenever there is a change in the table values
-document.getElementById("markup").addEventListener("change", updateSummary);
+document.getElementById("SellingPrice").addEventListener("change", updateSummary);
 // Add any other event listeners here if needed
 
 
@@ -415,14 +330,9 @@ $(document).ready(function () {
     
             // Get the quantity from the table cell
             var inputSrp = parseFloat($(this).find('td:eq(3)').text()); // Assuming input SRP is in the fourth column
-            var retailPrice = parseFloat($(this).find('td:eq(4)').text()); // Assuming SRP is in the fifth column
-            var quantity = parseInt($(this).find('td:eq(5)').text()); // Assuming the quantity is in the sixth column
+            var quantity = parseInt($(this).find('td:eq(4)').text()); // Assuming the quantity is in the sixth column
+            var SellingPrice = parseInt($(this).find('td:eq(5)').text()); // Assuming the quantity is in the sixth column
 
-            
-            // var markupPercent = parseFloat($('#markupPercent').val()); // Assuming you have an input field for markup amount
-            var markupPeso = parseFloat($('#markupInteger').val()); // Assuming you have an input field for markup amount
-            var SellingPrice = parseFloat($('#SellingPrice').val()); // Assuming you have an input field for markup amount
-         // Make AJAX call to update product stocks
 
                         $.ajax({
                             url: '../php/material_transaction.php',
@@ -431,7 +341,6 @@ $(document).ready(function () {
                                 productId: productId,
                                 material_invoice_id: materialInvoiceNo, 
                                 input_srp: inputSrp,
-                                input_selling_price: retailPrice,
                                 qty_added: quantity,
                                 selling_price: SellingPrice,
                             },
@@ -464,29 +373,19 @@ $(document).ready(function () {
         var materialInvoiceNo = $('#materialInvoiceNo').val();
         var cashierName = $('#cashierName').val();
         var receivedById = $('#receivedBy').val();
-        var inspectedById = $('#inspectedBy').val();
-        var verifiedById = $('#verifiedBy').val();
 
         // Calculate total selling price, total cost price, and total gross profit
         var totalSellingPrice = 0;
-        var totalCostPrice = 0;
-        var totalGrossProfit = 0;
 
         // Iterate through each row in the table
         $('#cartList tr').each(function () {
-            var basedPrice = parseFloat($(this).find('td:eq(3)').text());
-            var retailPrice = parseFloat($(this).find('td:eq(4)').text());
-            var quantity = parseInt($(this).find('td:eq(5)').text());
+            var retailPrice = parseFloat($(this).find('td:eq(3)').text());
+            var quantity = parseInt($(this).find('td:eq(4)').text());
 
-            var amount = basedPrice * quantity;
-            var markupPercent = ((retailPrice - basedPrice) / basedPrice) * 100;
             var sellingPrice = retailPrice * quantity;
 
             totalSellingPrice += sellingPrice;
-            totalCostPrice += amount;
         });
-
-        totalGrossProfit = totalSellingPrice - totalCostPrice;
 
 
         // Fetch first name and last name based on the selected IDs
@@ -496,11 +395,8 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data) {
                 var receivedBy = fetchAdminData(receivedById, data);
-                var inspectedBy = fetchAdminData(inspectedById, data);
-                var verifiedBy = fetchAdminData(verifiedById, data);
-
                                 // Save Material Transfer with total values
-                                $.ajax({
+                    $.ajax({
                     url: '../php/store_stocks_save.php', // Your server-side script to save material transfer
                     method: 'POST',
                     data: {
@@ -508,11 +404,7 @@ $(document).ready(function () {
                         materialInvoiceNo: materialInvoiceNo,
                         cashierName: cashierName,
                         receivedBy: receivedBy,
-                        inspectedBy: inspectedBy,
-                        verifiedBy: verifiedBy,
                         totalSellingPrice: totalSellingPrice,
-                        totalCostPrice: totalCostPrice,
-                        totalGrossProfit: totalGrossProfit
 
                     },
                     success: function (response) {
@@ -546,5 +438,6 @@ $(document).ready(function () {
         });
     });
 });
+
 
 </script>

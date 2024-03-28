@@ -16,8 +16,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
     
     // Prepare and execute SQL query (using prepared statement to prevent SQL injection)
     $sql = "SELECT id, material_invoice, material_date, material_cashier, material_recieved_by, 
-    material_inspected_by, material_verified_by, active, totalSellingPrice, 
-    totalCostPrice, totalGrossProfit FROM material_transfer WHERE material_invoice = ?";
+    material_inspected_by, material_verified_by, active, totalSellingPrice FROM material_transfer WHERE material_invoice = ?";
     
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $material_transaction);
@@ -38,9 +37,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
         $material_inspected_by = $row['material_inspected_by'];
         $material_verified_by = $row['material_verified_by'];
         $active = $row['active'];
-        $totalSellingPrice = $row['totalSellingPrice'];
-        $totalCostPrice = $row['totalCostPrice'];
-        $totalGrossProfit = $row['totalGrossProfit'];
+        $totalSellingPrice = $row['totalSellingPrice'];;
 
         // Now you can use these variables anywhere in your PHP page
     } else {
@@ -123,11 +120,8 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                 <th>Name</th>
                 <th>Models</th>
                 <th>Code</th>
-                <th>Based Price</th>
-                <th>Selling Price</th>
+                <th>SRP</th>
                 <th>Quantity Request</th>
-                <th>Quantity Received</th>
-                <th>Markup</th>
                 <th>Status</th>
             </tr>
             </thead>
@@ -135,7 +129,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
             <?php 
                     $material_invoice_id = $material_transaction; // replace with your material_invoice_id
 
-                    $sql = "SELECT mt.product_id, mt.input_srp, mt.input_selling_price, mt.qty_added, mt.qty_sent, mt.markup_peso, mt.created_at, mt.status, p.name, p.models, p.code, p.image
+                    $sql = "SELECT mt.product_id, mt.input_srp, mt.qty_added, mt.created_at, mt.status, p.name, p.models, p.code, p.image
                                 FROM material_transaction mt
                                 JOIN product p ON mt.product_id = p.id
                                 WHERE material_invoice_id = ?";
@@ -144,9 +138,6 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                     $stmt->bind_param("s", $material_invoice_id);
                     $stmt->execute();
                     $result = $stmt->get_result();
-
-                    $totalSellingPrice = 0;
-                    $totalCostPrice = 0;
                     
                     if ($result->num_rows > 0) {
                         // output data of each row
@@ -159,10 +150,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                             echo "<td>{$row['models']}</td>";
                             echo "<td>{$row['code']}</td>";
                             echo "<td>{$row['input_srp']}</td>";
-                            echo "<td>{$row['input_selling_price']}</td>";
                             echo "<td>{$row['qty_added']}</td>";
-                            echo "<td>{$row['qty_sent']}</td>";
-                            echo "<td>{$row['markup_peso']}</td>";
                             $status_text = '';
                             switch ($row['status']) {
                                 case 1:
@@ -188,12 +176,11 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                             echo "</tr>";
                     
                             // Only include rows with status other than 5 in the calculation
-                            if ($row['status'] != 5) {
+                            // if ($row['status'] == 3 || $row['status'] == 4) {
+                            if ($row['status'] == 3 || $row['status'] == 4) {
                                 // Calculate totalSellingPrice and totalCostPrice
-                                $totalSellingPrice += $row['input_selling_price'] * $row['qty_sent'];
-                                $totalCostPrice += $row['input_srp'] * $row['qty_sent'];
-                                $qty_receive = $row['qty_sent'];
-                                $input_selling_price = $row['input_selling_price'];
+                                $totalSellingPrice += $row['input_srp'] * $row['qty_added'];
+                                $qty_receive = $row['qty_added'];
                             }
                         }
                     } else {
@@ -202,7 +189,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
 
 
                 // Calculate total gross profit
-                $totalGrossProfit = $totalSellingPrice - $totalCostPrice;
+           
                 ?>
             </tbody>
         </table>
@@ -212,15 +199,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-3 mb-4">
                     <div>
                         <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-                            <h4 class="">Total Cost Price ₱<?php echo number_format($totalCostPrice, 2); ?></h4>
-                        </div>
-                        
-                        <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                             <h4 class="">Total Selling Price ₱<?php echo number_format($totalSellingPrice, 2); ?></h4>
-                        </div>
-                        
-                        <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-                            <h4 class="">Total Gross Profit ₱<?php echo number_format($totalGrossProfit, 2); ?></h4>
                         </div>
                     </div>
                     <div style="width: 30%">
@@ -244,13 +223,16 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
 $(document).ready(function () {
     // Accept Material Transfer
     $('#acceptMaterialTransfer').click(function () {
+        // Check if the button is enabled
+        if ($(this).prop('disabled')) {
+            return; // Do nothing if the button is disabled
+        }
         var materialInvoiceNo = $('#material_invoice').val();
         var sessionID = $('#sessionID').val();
         var cashierName = $('#cashierName').val();
         // Define total values (replace with actual values)
         var totalSellingPrice = '<?php echo $totalSellingPrice; ?>';
-        var totalCostPrice = '<?php echo $totalCostPrice; ?>';
-        var totalGrossProfit = '<?php echo $totalGrossProfit; ?>';
+
 
         var quantity = '<?php echo $qty_receive; ?>';
         var input_selling_price = '<?php echo $input_selling_price; ?>';
@@ -261,9 +243,7 @@ $(document).ready(function () {
             method: 'POST',
             data: {
                 materialInvoiceID: materialInvoiceNo,
-                totalSellingPrice: totalSellingPrice,
-                totalCostPrice: totalCostPrice,
-                totalGrossProfit: totalGrossProfit
+                totalSellingPrice: totalSellingPrice
             },
             success: function (response) {
                 console.log(response);
@@ -283,18 +263,22 @@ $(document).ready(function () {
                         // Loop through checked checkboxes and update product stocks
                         $('input[name="product_checkbox[]"]:checked').each(function() {
                             var productId = $(this).closest('tr').find('input[name="product_id[]"]').val();
-                            var sellingPrice = $(this).closest('tr').find('td:eq(6)').text(); // Assuming input selling price is in the 7th column
-                            var qtySent = $(this).closest('tr').find('td:eq(8)').text(); // Assuming qty sent is in the 8th column
-                            var status = $(this).closest('tr').find('td:eq(10)').text(); // Assuming status is in the 10th column
-                            if (status !== 'Declined') {
-                                // Only update product stocks if status is not 'Declined'
+                            var sellingPrice = $(this).closest('tr').find('td:eq(5)').text(); // Assuming input selling price is in the 6th column
+                            var qtySent = $(this).closest('tr').find('td:eq(7)').text(); // Assuming qty sent is in the 8th column
+                            var status = $(this).closest('tr').find('td:eq(9)').text(); // Assuming status is in the 12th column
+                            
+                            console.log('Status:', status); // Log the status value
+                            
+                            if (status === 'Approved') {
+                                // Only update product stocks if status is 'Accepted'
                                 $.ajax({
                                     url: '../php/add_product_stocks.php',
                                     method: 'POST',
                                     data: {
                                         productId: productId,
-                                        qty_sent: qtySent,
+                                        qty_added: qtySent,
                                         srp: sellingPrice,
+                                        materialInvoiceID: materialInvoiceNo,
                                         status: status // Pass the status to the PHP script
                                     },
                                     success: function (response) {
@@ -304,8 +288,14 @@ $(document).ready(function () {
                                         console.error('Error updating product stocks for product ID ' + productId + ':', error);
                                     }
                                 });
+                            } else {
+                                console.log('Status is not "Accepted", skipping product ID ' + productId);
+                                console.log('Status is not "Accepted", status is ' + status);
+                                // Handle other statuses here
+                                // You can add any desired behavior for statuses other than "Accepted"
                             }
                         });
+
                         swal("Material Accepted", "Products have been accepted", "success");
                     },
                     error: function (xhr, status, error) {
@@ -328,6 +318,39 @@ $(document).ready(function () {
         });
         swal("Material Declined", "Products have been declined", "error");
     });
+    $(document).ready(function () {
+    // Update button status based on status value
+    function updateButtonStatus() {
+        console.log('Function updateButtonStatus() is running.'); // Log that the function is running
+        var isChecked = $('input[name="product_checkbox[]"]:checked').length > 0; // Check if any checkbox is checked
+        console.log('isChecked:', isChecked); // Log the isChecked value
+        
+        var status = '';
+        if (isChecked) {
+            var closestRow = $('input[name="product_checkbox[]"]:checked').closest('tr');
+            console.log('closestRow:', closestRow); // Log the closest row to inspect its structure
+            status = closestRow.find('td:eq(9)').text().trim(); // Assuming status is in the 11th column
+        }
+        console.log('Status:', status); // Log the status value
+        
+        if (status === 'Approved') { // Check if status is 'Approved'
+            $('#acceptMaterialTransfer').prop('disabled', false); // Enable accept button
+            $('#declineMaterialTransfer').prop('disabled', false); // Enable decline button
+        } else {
+            $('#acceptMaterialTransfer').prop('disabled', true); // Disable accept button
+            $('#declineMaterialTransfer').prop('disabled', true); // Disable decline button
+        }
+    }
+
+    // Update button status when a checkbox is clicked
+    $('input[name="product_checkbox[]"]').click(function() {
+        updateButtonStatus();
+    });
+
+    // Initial update of button status
+    updateButtonStatus();
+});
+
 });
 
 </script>
