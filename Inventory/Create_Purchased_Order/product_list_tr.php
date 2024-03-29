@@ -1,33 +1,60 @@
-<?php 
-// Prepare SQL query to fetch product information with total stocks
-$product_sql = "SELECT p.id, p.name, p.code, p.barcode, p.image, p.models, p.unit_id, p.brand_id, p.category_id, 
-                c.category_name, b.brand_name, u.name as unit_name, COALESCE(SUM(s.qty), 0) AS total_qty
-                FROM product p
-                LEFT JOIN category c ON p.category_id = c.id
-                LEFT JOIN brand b ON p.brand_id = b.id
-                LEFT JOIN unit u ON p.unit_id = u.id
-                LEFT JOIN stocks s ON p.id = s.product_id
-                GROUP BY p.id";
+<?php
 
-// Execute the SQL query
+// Fetch products with related information using JOINs
+$product_sql = "
+    SELECT 
+        p.id AS product_id, 
+        p.name AS product_name, 
+        p.models AS product_models, 
+        b.brand_name, 
+        c.category_name, 
+        u.name AS unit_name, 
+        COALESCE(SUM(s.qty), 0) AS total_stocks
+    FROM 
+        product p
+    LEFT JOIN 
+        brand b ON p.brand_id = b.id
+    LEFT JOIN 
+        category c ON p.category_id = c.id
+    LEFT JOIN 
+        unit u ON p.unit_id = u.id
+    LEFT JOIN 
+        stocks s ON p.id = s.product_id
+    GROUP BY 
+        p.id";
+
 $product_res = $conn->query($product_sql);
 
-// Check if there are any products retrieved
-if ($product_res->num_rows > 0) {
-    while ($row = $product_res->fetch_assoc()) {
-        // Retrieve product information from the fetched row
-        $product_id = $row['id'];
-        $product_name = $row['name'];
-        $total_stocks = $row['total_qty'];
+$critical_stocks = 20;
+$warning_stocks = 25;
+$max_stocks = 30;
+if ($product_res) {
+    while ($product_row = $product_res->fetch_assoc()) {
+        $product_id = $product_row['product_id'];
+        $product_name = $product_row['product_name'];
+        $product_models = $product_row['product_models'];
+        $brand_name = $product_row['brand_name'];
+        $category_name = $product_row['category_name'];
+        $unit_name = $product_row['unit_name'];
+        $stocks = $product_row['total_stocks'];
 
-        // Display product information in table row
         echo '<tr>
-                <td colspan="11">' . $total_stocks . ' ' . $product_name . '</td>
-              </tr>';
+            <td class="white-space-nowrap align-middle ps-0" style="max-width:20px; width:18px;"><input type="checkbox" class="form-check-input"  name="" id=""></td>
+            <td class="text-start">' . $product_name . '</td>
+            <td class="text-start">' . $category_name . '</td>
+            <td class="text-start">' . $brand_name . '</td>
+            <td class="text-start">' . $unit_name . '</td>
+            <td class="text-start">' . $product_models . '</td>
+            <td class="text-center">' . $stocks . '</td>
+            <td></td>
+        </tr>';
+        
     }
 } else {
-    echo '<tr>
-        <td colspan="11" class="text-center" style="padding:250px;"><h1><span class="far fa-angry"></span></h1><br> Empty!</td>
-    </tr>';
+    // Handle query execution error
+    echo "Error: " . $conn->error;
 }
+
+// Close the database connection
+$conn->close();
 ?>
