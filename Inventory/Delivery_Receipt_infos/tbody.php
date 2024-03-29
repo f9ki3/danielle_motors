@@ -1,6 +1,6 @@
 <?php
 // session_start();
-// include_once "../../database/database.php";
+include_once "../../database/database.php";
 // $dr_id = $_SESSION['dr_id'];
 $dr_id = $_GET['id'];
 // $servername = "sql.freedb.tech";
@@ -13,10 +13,10 @@ $dr_id = $_GET['id'];
 // $password = "DMPInterns123!"; 
 // $dbname = "u450836125_dmp_office";
 // =======
-$servername = "localhost";
-$username = "root"; 
-$password = ""; 
-$dbname = "updatd";
+// $servername = "localhost";
+// $username = "root"; 
+// $password = ""; 
+// $dbname = "updatd";
 
 // Create a new MySQLi instance
 $conn = new mysqli($servername, $username, $password, $dbname);
