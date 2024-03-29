@@ -37,6 +37,15 @@ if ($product_res) {
         $category_name = $product_row['category_name'];
         $unit_name = $product_row['unit_name'];
         $stocks = $product_row['total_stocks'];
+        if ($stocks < $critical_stocks) {
+            $bg = '<span class="badge badge-phoenix badge-phoenix-danger">' . $stocks . '</span>';
+        } elseif ($stocks <= $warning_stocks) {
+            $bg = '<span class="badge badge-phoenix badge-phoenix-warning">' . $stocks . '</span>';
+        } elseif ($stocks >= $max_stocks) {
+            $bg = '<span class="badge badge-phoenix badge-phoenix-danger">' . $stocks . '</span>';
+        } else {
+            $bg = '<span class="badge badge-phoenix badge-phoenix-success">' . $stocks . '</span>';
+        }
 
         echo '<tr>
             <td class="white-space-nowrap align-middle ps-0" style="max-width:20px; width:18px;"><input type="checkbox" class="form-check-input"  name="" id=""></td>
@@ -45,7 +54,7 @@ if ($product_res) {
             <td class="text-start">' . $brand_name . '</td>
             <td class="text-start">' . $unit_name . '</td>
             <td class="text-start">' . $product_models . '</td>
-            <td class="text-center">' . $stocks . '</td>
+            <td class="text-center">' . $bg . '</td>
             <td></td>
         </tr>';
         
