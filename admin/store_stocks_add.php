@@ -176,7 +176,16 @@ document.getElementById('select_product').addEventListener('change', function() 
     xhrSrp.open('POST', '../php/get_srp.php');
     xhrSrp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhrSrp.send('product_id=' + productId);
+});
 
+document.getElementById('select_product').addEventListener('change', function() {
+    // Get the selected product value
+    var selectedProduct = this.value;
+
+    // Split the selected product value to extract the product ID
+    var productId = selectedProduct.split(' - ')[0];
+
+    // Send an AJAX request to get_srp.php with the product ID to fetch suggested retail price
     // Send an AJAX request to get_maxqty.php with the product ID to fetch maximum quantity
     var xhrMaxQty = new XMLHttpRequest();
     xhrMaxQty.onreadystatechange = function() {
@@ -202,6 +211,7 @@ document.getElementById('select_product').addEventListener('change', function() 
     xhrMaxQty.open('POST', '../php/get_maxqty.php');
     xhrMaxQty.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhrMaxQty.send('product_id=' + productId);
+
 });
 
 
@@ -292,7 +302,7 @@ $(document).ready(function () {
               selectElement.empty();
               selectElement.append('<option selected>Select ' + role + '</option>');
               $.each(data, function (index, admin) {
-                  selectElement.append('<option value="' + admin.id + '">' + admin.user_fname + ' ' + admin.user_lname + ' ' + admin._user_position +'</option>');
+                  selectElement.append('<option value="' + admin.id + '">' + admin.user_fname + ' ' + admin.user_lname + ' ' + admin.user_position +'</option>');
               });
           },
           error: function (xhr, status, error) {

@@ -1,12 +1,14 @@
 <?php
+include '../admin/session.php';
 include '../config/config.php';
 
-
 $output = array();
-$sql = "SELECT p.`id`, p.`name`, p.`code`, p.`supplier_code`, p.`image`, p.`models`, p.`stocks`, p.`srp`, p.`unit_id`, p.`brand_id`, p.`category_id`, b.`brand_name` 
-        FROM `product` p 
-        INNER JOIN `brand` b ON p.`brand_id` = b.`id` 
-        WHERE p.`active` = 1";
+$sql = "SELECT p.id, p.name, p.code, p.supplier_code, p.image, p.models, pl.srp, s.stocks, s.branch_code, p.unit_id, p.brand_id, p.category_id, b.brand_name 
+        FROM product p 
+        INNER JOIN brand b ON p.brand_id = b.id 
+        INNER JOIN price_list pl ON p.id = pl.product_id 
+        INNER JOIN stocks s ON p.id = s.product_id 
+        WHERE p.active = 1 AND s.branch_code = '$branch_code'";
 
 // Array to map column indexes to column names for searching and filtering
 $columns = array(
@@ -83,4 +85,3 @@ echo json_encode($output);
 
 mysqli_close($conn);
 ?>
-
