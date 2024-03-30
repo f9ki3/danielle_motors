@@ -196,7 +196,7 @@ function fetchAdminData(adminId, adminData) {
     var admin = adminData.find(function (admin) {
         return admin.id == adminId;
     });
-    return admin ? admin.fname + ' ' + admin.lname : '';
+    return admin ? admin.user_fname + ' ' + admin.user_lname : '';
 }
 
 
@@ -214,7 +214,7 @@ function fetchAdminData(adminId, adminData) {
                  selectElement.empty();
                  selectElement.append('<option selected>Select ' + role + '</option>');
                  $.each(data, function (index, admin) {
-                     selectElement.append('<option value="' + admin.id + '">' + admin.fname + ' ' + admin.lname + '</option>');
+                     selectElement.append('<option value="' + admin.id + '">' + admin.user_fname + ' ' + admin.user_lname + '</option>');
                  });
              },
              error: function (xhr, status, error) {

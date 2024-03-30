@@ -2,7 +2,7 @@
 include '../config/config.php';
 
 // Check if all required parameters are set
-if (isset($_POST['materialDate'], $_POST['materialInvoiceNo'], $_POST['cashierName'], $_POST['receivedBy'], $_POST['totalSellingPrice'])) {
+if (isset($_POST['materialDate'], $_POST['materialInvoiceNo'], $_POST['cashierName'], $_POST['receivedBy'], $_POST['totalSellingPrice'], $_POST['user_brn_code'])) {
 
     // Retrieve data from the AJAX request
     $materialDate = mysqli_real_escape_string($conn, $_POST['materialDate']);
@@ -10,12 +10,13 @@ if (isset($_POST['materialDate'], $_POST['materialInvoiceNo'], $_POST['cashierNa
     $cashierName = mysqli_real_escape_string($conn, $_POST['cashierName']);
     $receivedBy = mysqli_real_escape_string($conn, $_POST['receivedBy']);
     $totalSellingPrice = (float)$_POST['totalSellingPrice']; // Convert to float
+    $user_brn_code = mysqli_real_escape_string($conn, $_POST['user_brn_code']);
 
     // Validate and sanitize data if needed...
 
     // Insert data into the database
-    $sql = "INSERT INTO material_transfer (material_date, material_invoice, material_cashier, material_recieved_by, totalSellingPrice) 
-            VALUES ('$materialDate', '$materialInvoiceNo', '$cashierName', '$receivedBy', $totalSellingPrice)";
+    $sql = "INSERT INTO material_transfer (material_date, material_invoice, material_cashier, material_recieved_by, totalSellingPrice, branch_code) 
+            VALUES ('$materialDate', '$materialInvoiceNo', '$cashierName', '$receivedBy', $totalSellingPrice, '$user_brn_code')";
 
     if (mysqli_query($conn, $sql)) {
         echo "Data saved successfully!";

@@ -1,8 +1,8 @@
 <?php 
 include "../database/database.php";
-$notification_sql = "SELECT notification.*, admin.fname, admin.lname, admin.img AS profile_photo 
+$notification_sql = "SELECT notification.*, admin.user_fname, admin.user_lname, admin.img AS profile_photo 
                      FROM notification 
-                     LEFT JOIN admin ON notification.sessionID = admin.id";
+                     LEFT JOIN user ON notification.sessionID = admin.id";
 $notification_res = $conn->query($notification_sql);
 if($notification_res->num_rows<0){
     echo '<div class="text-center p-9">
@@ -16,7 +16,7 @@ if($notification_res->num_rows<0){
         $message = $row['message'];
         $status = $row['status'];
         $date = $row['date'];
-        $sender_name = $row['fname'] . " " . $row['lname'];
+        $sender_name = $row['user_fname'] . " " . $row['user_lname'];
         $profile_photo = $row['profile_photo'];
 
         

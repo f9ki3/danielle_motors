@@ -2,19 +2,16 @@
 include '../config/config.php';
 
 // Check if all required parameters are set
-if (isset($_POST['totalSellingPrice'], $_POST['totalCostPrice'], $_POST['totalGrossProfit'], $_POST['materialInvoiceID'])) {
+if (isset($_POST['totalSellingPrice'], $_POST['materialInvoiceID'])) {
 
     // Convert and sanitize input data
     $totalSellingPrice = (float)$_POST['totalSellingPrice'];
-    $totalCostPrice = (float)$_POST['totalCostPrice'];
-    $totalGrossProfit = (float)$_POST['totalGrossProfit'];
     $materialInvoiceID = mysqli_real_escape_string($conn, $_POST['materialInvoiceID']);
 
     // Prepare and execute the SQL query to update the data
     $sql = "UPDATE material_transfer 
             SET totalSellingPrice = $totalSellingPrice, 
-                totalCostPrice = $totalCostPrice, 
-                totalGrossProfit = $totalGrossProfit
+
             WHERE material_invoice = '$materialInvoiceID'";
 
     if (mysqli_query($conn, $sql)) {
