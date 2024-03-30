@@ -9,7 +9,7 @@ $product_sql = "
         b.brand_name, 
         c.category_name, 
         u.name AS unit_name, 
-        COALESCE(SUM(s.qty), 0) AS total_stocks
+        COALESCE(SUM(s.stocks), 0) AS total_stocks
     FROM 
         product p
     LEFT JOIN 
@@ -46,21 +46,22 @@ if ($product_res) {
         } else {
             $bg = '<span class="badge badge-phoenix badge-phoenix-success">' . $stocks . '</span>';
         }
-
-        echo '<tr>
+?>
+        <tr>
             <td class="fs--1 align-middle">
                 <div class="form-check mb-0 fs-0">
-                    <input class="form-check-input" type="checkbox" data-bulk-select-row="{&quot;name&quot;:&quot;Anna&quot;,&quot;email&quot;:&quot;anna@example.com&quot;,&quot;age&quot;:18}" />
+                    <input class="form-check-input" type="checkbox" data-bulk-select-row="{<input type='checkbox' name='product_id[]' value='<?php echo $product_id; ?>'  checked><input type='text' name='product_name[]' value='<?php echo $product_name; ?>' hidden><input type='text' name='category[]' value='<?php echo $category_name; ?>' hidden><input type='text' name='brand[]' value='<?php echo $brand_name; ?>' hidden><input type='text' name='unit[]' value='<?php echo $unit_name; ?>' hidden><input type='text' name='models[]' value='<?php echo $product_models; ?>' hidden>}" />
                 </div>
             </td>
-            <td class="text-start name">' . $product_name . '</td>
-            <td class="text-start category">' . $category_name . '</td>
-            <td class="text-start brand">' . $brand_name . '</td>
-            <td class="text-start unit">' . $unit_name . '</td>
-            <td class="text-start models">' . $product_models . '</td>
-            <td class="text-center stock">' . $bg . '</td>
+            <td class="text-start name"><?php echo $product_name; ?></td>
+            <td class="text-start category"><?php echo $category_name; ?></td>
+            <td class="text-start brand"><?php echo $brand_name; ?></td>
+            <td class="text-start unit"><?php echo $unit_name; ?></td>
+            <td class="text-start models"><?php echo $product_models; ?></td>
+            <td class="text-center stock"><?php echo $bg; ?></td>
             
-        </tr>';
+        </tr>
+<?php
         
     }
 } else {
