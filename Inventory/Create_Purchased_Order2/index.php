@@ -41,27 +41,6 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    const btnToTrigger = document.getElementById('btn_to_trigger');
-
-    checkboxes.forEach(function(checkbox) {
-        checkbox.addEventListener('change', function() {
-            if (this.checked) {
-                btnToTrigger.click();
-            }
-        });
-    });
-
-    // Trigger button click every 1 second
-    setInterval(function() {
-        btnToTrigger.click();
-    }, 1000);
-});
-
-    </script>
-    
   </body>
 
 

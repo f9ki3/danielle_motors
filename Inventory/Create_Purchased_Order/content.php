@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-white border-top border-bottom border-200 position-relative top-1">
-        <form action="action.php" Method="POST">
+        <!-- <form action="action.php" Method="POST"> -->
             
             <div class="d-flex align-items-center justify-content-end my-3">
                 <div id="bulk-select-replace-element">
@@ -29,7 +29,10 @@
                             <option value="Delete">Delete</option>
                             <option value="Archive">Archive</option>
                         </select> -->
+                        <form action="../Create_Purchased_Order2/index.php" method="post">
+                        <pre id="selectedRows" hidden></pre>
                         <button class="btn btn-phoenix-success btn-sm ms-2" type="submit">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -63,7 +66,7 @@
                     <p class="mb-0 fs--1">
                         <span class="d-none d-sm-inline-block" data-list-info="data-list-info"></span>
                         <span class="d-none d-sm-inline-block"> &mdash; </span>
-                        <a class="fw-semi-bold" href="#!" data-list-view="*">
+                        <a id="viewAllButton" class="fw-semi-bold" href="#!" data-list-view="*">
                             View all
                             <span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span>
                         </a>
@@ -78,6 +81,12 @@
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
+        <!-- </form> -->
+    <!-- </div>
+    <form action="test.php" method="post">
+    <p class="mb-2">Click the button to get selected rows</p> -->
+    <button id="btn_to_trigger" type="button" class="btn btn-warning d-none" data-selected-rows="data-selected-rows">Get Selected Rows</button>
+    <!-- <pre id="selectedRows"></pre>
+    <input type="submit" value="submit">
+    </form> -->
 </div>
