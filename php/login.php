@@ -11,7 +11,7 @@ if(isset($_POST['uname'], $_POST['pass'])) {
     $password = $_POST['pass'];
 
     // Prepare a SQL statement to check if the username and password exist
-    $sql = "SELECT * FROM admin WHERE username = ? AND password = ? AND status = ?";
+    $sql = "SELECT * FROM user WHERE username = ? AND user_password = ? AND user_status = ?";
     $stmt = $conn->prepare($sql);
 
     if ($stmt === false) {
@@ -36,11 +36,17 @@ if(isset($_POST['uname'], $_POST['pass'])) {
 
         // Set session variables
         $_SESSION['id'] = $row['id'];
-        $_SESSION['fname'] = $row['fname'];
-        $_SESSION['lname'] = $row['lname'];
-        $_SESSION['email'] = $row['email'];
-        $_SESSION['contact'] = $row['contact'];
-        $_SESSION['img'] = $row['img'];
+        $_SESSION['fname'] = $row['user_fname'];
+        $_SESSION['lname'] = $row['user_lname'];
+        $_SESSION['email'] = $row['user_email'];
+        $_SESSION['contact'] = $row['user_contact'];
+        $_SESSION['position'] = $row['user_position'];
+        $_SESSION['address'] = $row['user_address'];
+        $_SESSION['brgy'] = $row['user_brgy'];
+        $_SESSION['municipality'] = $row['user_municipality'];
+        $_SESSION['province'] = $row['user_province'];
+        $_SESSION['postal_code'] = $row['user_postal_code'];
+        $_SESSION['img'] = $row['user_img'];
         $_SESSION['username'] = $username;
         $_SESSION['loggedin'] = true;
 
