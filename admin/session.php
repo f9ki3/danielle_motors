@@ -11,7 +11,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     $lname = $_SESSION['lname'];
     $email = $_SESSION['email'];
     $profile = $_SESSION['img'];
-
+    $address = $_SESSION['address'];
+    $municipality = $_SESSION['municipality'];
+    $province = $_SESSION['province'];
+    $postal_code = $_SESSION['postal_code'];
     //for alex
     $user_id =$_SESSION['id'];
 } else {
