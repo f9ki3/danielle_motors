@@ -78,6 +78,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                         </div>
                         <input type="hidden" id="sessionID" value="<?php echo $user_id; ?>">
                         <input type="hidden" id="material_invoice" value="<?php echo $material_invoice; ?>">
+                        <input type="hidden" id="user_brn_code" value="<?php echo $branch_code; ?>">
                      <div>
                             <!-- <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#add_stocks">+ Add Stocks</button> -->
                             <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#print">Print</button>
@@ -227,6 +228,7 @@ $(document).ready(function () {
         if ($(this).prop('disabled')) {
             return; // Do nothing if the button is disabled
         }
+        var user_brn_code = $('#user_brn_code').val();
         var materialInvoiceNo = $('#material_invoice').val();
         var sessionID = $('#sessionID').val();
         var cashierName = $('#cashierName').val();

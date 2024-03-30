@@ -1,7 +1,7 @@
 <?php
 include '../config/config.php';
 
-$sql = "SELECT id, fname, lname FROM admin";
+$sql = "SELECT id, user_fname, user_lname, user_position FROM user";
 $result = mysqli_query($conn, $sql);
 
 $data = array();
