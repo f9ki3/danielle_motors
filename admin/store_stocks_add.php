@@ -27,16 +27,23 @@
                     <div class="border rounded p-3" id="add_stocks" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <h5 class="fw-bolder">Add Stocks</h5>
     <div style="display: flex; flex-direction: row;">
-        <datalist id="suggestions">
-            <?php foreach ($products as $product): ?>
-                <option value="<?php echo $product['id'] . ' - ' . $product['name'] . ' - ' . $product['models'] . ' - ' . $product['brand_name']; ?>"></option>
-            <?php endforeach; ?>
-        </datalist>
+    <datalist id="suggestions">
+    <?php foreach ($products as $product): ?>
+        <?php 
+            // Check if the current product ID exists in the price list
+            $srp = isset($price_list[$product['id']]) ? $price_list[$product['id']]['srp'] : ''; 
+            echo '<!-- Debug: Product ID: ' . $product['id'] . ', SRP: ' . $srp . ', Max Qty: ' . $maxQty . ' -->'; // Debug statement
+        ?>
+        <option value="<?php echo $product['id'] . ' - ' . $product['name'] . ' - ' . $product['models'] . ' - ' . $product['brand_name'] . ' - ' . $srp; ?>" data-max-qty="<?php echo $maxQty; ?>"></option>
+    <?php endforeach; ?>
+    </datalist>
 
-        <input type="text" class="form-control me-2" style="width: 33%" id="select_product" list="suggestions" placeholder="Search Item to Add">
-        <input type="text" class="form-control me-2" style="width: 33%" id="suggested_retail_price" placeholder="Selling Price" >
-        <input type="text" class="form-control me-2" style="width: 33%" id="quantity" placeholder="Qty">
-        <button class="btn btn-primary" onclick="addItem()">Submit</button>
+
+
+    <input type="text" class="form-control me-2" style="width: 33%" id="select_product" list="suggestions" placeholder="Search Item to Add">
+    <input type="disable" class="form-control me-2" style="width: 33%" id="suggested_retail_price" placeholder="Selling Price" disabled>
+    <input type="number" class="form-control me-2" style="width: 33%" id="quantity" placeholder="Qty">
+    <button class="btn btn-primary" onclick="addItem()">Submit</button>
     </div>
 </div>
     <!-- List to display submitted items -->
@@ -143,6 +150,61 @@
 var savedProductId; // Variable to store the productId
 var savedQuantity; // Variable to store the quantity
 
+document.getElementById('select_product').addEventListener('change', function() {
+    // Get the selected product value
+    var selectedProduct = this.value;
+
+    // Split the selected product value to extract the product ID
+    var productId = selectedProduct.split(' - ')[0];
+
+    // Send an AJAX request to get_srp.php with the product ID to fetch suggested retail price
+    var xhrSrp = new XMLHttpRequest();
+    xhrSrp.onreadystatechange = function() {
+        if (xhrSrp.readyState === XMLHttpRequest.DONE) {
+            if (xhrSrp.status === 200) {
+                // Parse the JSON response
+                var response = JSON.parse(xhrSrp.responseText);
+
+                // Set the value of the suggested retail price input field
+                document.getElementById('suggested_retail_price').value = response.srp;
+            } else {
+                console.error('Error fetching SRP:', xhrSrp.status);
+            }
+        }
+    };
+    xhrSrp.open('POST', '../php/get_srp.php');
+    xhrSrp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhrSrp.send('product_id=' + productId);
+
+    // Send an AJAX request to get_maxqty.php with the product ID to fetch maximum quantity
+    var xhrMaxQty = new XMLHttpRequest();
+    xhrMaxQty.onreadystatechange = function() {
+        if (xhrMaxQty.readyState === XMLHttpRequest.DONE) {
+            console.log('Response:', xhrMaxQty.responseText); // Log the response data
+            if (xhrMaxQty.status === 200) {
+                // Parse the JSON response
+                var response = JSON.parse(xhrMaxQty.responseText);
+                console.log('Parsed Response:', response); // Log the parsed response object
+
+                // Set the maximum quantity value
+                var maxQty = response.max_qty;
+
+                // Set the value of the maximum quantity input field
+                document.getElementById('quantity').setAttribute('value', maxQty);
+                document.getElementById('quantity').setAttribute('max', maxQty);
+
+            } else {
+                console.error('Error fetching max quantity:', xhrMaxQty.status);
+            }
+        }
+    };
+    xhrMaxQty.open('POST', '../php/get_maxqty.php');
+    xhrMaxQty.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhrMaxQty.send('product_id=' + productId);
+});
+
+
+
 function addItem() {
     var productInput = document.getElementById("select_product");
     var retailPriceInput = document.getElementById("suggested_retail_price");
@@ -151,18 +213,35 @@ function addItem() {
     // Get the selected product value from the input field
     var selectedProduct = productInput.value.trim();
 
-    // Split the selected product value to extract id, name, models, and brand_id
-    var [productId, productName, models, brand_name] = selectedProduct.split(' - ');
+// Split the selected product value to extract id, name, models, brand_id, and SRP
+var [productId, productName, models, brand_name, srp] = selectedProduct.split(' - ');
 
     // Get the values from input fields
     var retailPrice = parseFloat(retailPriceInput.value.trim()); // Parse as float
     var quantity = parseInt(quantityInput.value.trim()); // Parse as integer
 
-    // Check if any input field is empty
+    // Check if any input field is empty or if values are not valid numbers
     if (productName === '' || isNaN(retailPrice) || isNaN(quantity)) {
         alert("Please fill out all fields with valid numbers");
         return;
     }
+
+    // Check if quantity is negative
+    if (quantity < 0) {
+        alert("Negative stocks are not allowed");
+        return;
+    }
+
+    // Get the maximum quantity allowed
+    var maxQty = parseInt(document.getElementById('quantity').getAttribute('max'));
+
+    // Check if the entered quantity exceeds the maximum quantity
+    if (quantity > maxQty) {
+        alert("Quantity exceeds maximum available stocks");
+        return;
+    }
+
+    // Proceed with form submission or further processing
 
     // Store productId and quantity
     savedProductId = productId;
