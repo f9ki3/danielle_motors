@@ -25,7 +25,7 @@
                 <div style="display: flex; justify-content: space-between; align-items: center;"> 
                     <div style="width: 100%">
                     <div class="border rounded p-3" id="add_stocks" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <h5 class="fw-bolder">Add Stocks</h5>
+    <h5 class="fw-bolder"><?php echo $branch_code?></h5>
     <div style="display: flex; flex-direction: row;">
     <datalist id="suggestions">
     <?php foreach ($products as $product): ?>

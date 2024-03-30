@@ -35,20 +35,24 @@ if(isset($_POST['uname'], $_POST['pass'])) {
         $row = $result->fetch_assoc();
 
         // Set session variables
-        $_SESSION['id'] = $row['id'];
-        $_SESSION['fname'] = $row['user_fname'];
-        $_SESSION['lname'] = $row['user_lname'];
-        $_SESSION['email'] = $row['user_email'];
-        $_SESSION['contact'] = $row['user_contact'];
-        $_SESSION['position'] = $row['user_position'];
-        $_SESSION['address'] = $row['user_address'];
-        $_SESSION['brgy'] = $row['user_brgy'];
-        $_SESSION['municipality'] = $row['user_municipality'];
-        $_SESSION['province'] = $row['user_province'];
-        $_SESSION['postal_code'] = $row['user_postal_code'];
-        $_SESSION['img'] = $row['user_img'];
-        $_SESSION['username'] = $username;
         $_SESSION['loggedin'] = true;
+        $_SESSION['id'] = $row['id'];
+        $_SESSION['user_img'] = $row['user_img'];
+        $_SESSION['username'] = $row['username'];
+        $_SESSION['user_fname'] = $row['user_fname'];
+        $_SESSION['user_lname'] = $row['user_lname'];
+        $_SESSION['user_position'] = $row['user_position'];
+        $_SESSION['user_email'] = $row['user_email'];
+        $_SESSION['user_contact'] = $row['user_contact'];
+        $_SESSION['user_status'] = $row['user_status'];
+        $_SESSION['user_otp'] = $row['user_otp'];
+        $_SESSION['user_address'] = $row['user_address'];
+        $_SESSION['user_brgy'] = $row['user_brgy'];
+        $_SESSION['user_municipality'] = $row['user_municipality'];
+        $_SESSION['user_province'] = $row['user_province'];
+        $_SESSION['user_postalcode'] = $row['user_postalcode'];
+        $_SESSION['user_account_type'] = $row['user_account_type'];
+        $_SESSION['user_brn_code'] = $row['user_brn_code'];
 
         // Respond with '1' to indicate successful login
         echo '1';

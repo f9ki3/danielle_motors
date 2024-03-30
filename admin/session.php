@@ -4,22 +4,30 @@ session_start();
 
 // Check if the user is logged in
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-    // User is logged in, display the landing page content
+    // Retrieve session variables
     $username = $_SESSION['username'];
     $id = $_SESSION['id'];
-    $fname = $_SESSION['fname'];
-    $lname = $_SESSION['lname'];
-    $email = $_SESSION['email'];
-    $profile = $_SESSION['img'];
-    $address = $_SESSION['address'];
-    $municipality = $_SESSION['municipality'];
-    $province = $_SESSION['province'];
-    $postal_code = $_SESSION['postal_code'];
-    //for alex
-    $user_id =$_SESSION['id'];
+    $fname = $_SESSION['user_fname']; // Corrected variable name
+    $lname = $_SESSION['user_lname']; // Corrected variable name
+    $email = $_SESSION['user_email']; // Corrected variable name
+    $contact = $_SESSION['user_contact']; // Corrected variable name
+    $position = $_SESSION['user_position']; // Corrected variable name
+    $profile = $_SESSION['user_img']; // Corrected variable name
+    $address = $_SESSION['user_address']; // Corrected variable name
+    $brgy = $_SESSION['user_brgy']; // Corrected variable name
+    $municipality = $_SESSION['user_municipality']; // Corrected variable name
+    $province = $_SESSION['user_province']; // Corrected variable name
+    $postal_code = $_SESSION['user_postalcode']; // Corrected variable name
+    $branch_code = $_SESSION['user_brn_code']; // Corrected variable name
+    
+    // Additional variable for user_id (assuming you need it)
+    $user_id = $_SESSION['id'];
+
+    // Optionally, you can perform additional actions here if needed
+
 } else {
     // User is not logged in, redirect to the login page
-    header("Location: ../");
+    header("Location: ../"); // Assuming your login page is located at the root
     exit;
 }
 ?>
