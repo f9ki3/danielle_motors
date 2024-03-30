@@ -48,14 +48,18 @@ if ($product_res) {
         }
 
         echo '<tr>
-            <td class="white-space-nowrap align-middle ps-0" style="max-width:20px; width:18px;"><input type="checkbox" class="form-check-input"  name="" id=""></td>
-            <td class="text-start">' . $product_name . '</td>
-            <td class="text-start">' . $category_name . '</td>
-            <td class="text-start">' . $brand_name . '</td>
-            <td class="text-start">' . $unit_name . '</td>
-            <td class="text-start">' . $product_models . '</td>
-            <td class="text-center">' . $bg . '</td>
-            <td></td>
+            <td class="fs--1 align-middle">
+                <div class="form-check mb-0 fs-0">
+                    <input class="form-check-input" type="checkbox" data-bulk-select-row="{&quot;name&quot;:&quot;Anna&quot;,&quot;email&quot;:&quot;anna@example.com&quot;,&quot;age&quot;:18}" />
+                </div>
+            </td>
+            <td class="text-start name">' . $product_name . '</td>
+            <td class="text-start category">' . $category_name . '</td>
+            <td class="text-start brand">' . $brand_name . '</td>
+            <td class="text-start unit">' . $unit_name . '</td>
+            <td class="text-start models">' . $product_models . '</td>
+            <td class="text-center stock">' . $bg . '</td>
+            
         </tr>';
         
     }

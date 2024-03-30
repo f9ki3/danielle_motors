@@ -1,78 +1,83 @@
-<div class="mb-9">
-    <div class="row g-3 mb-4">
+<div class="mb-9" id="tableExample" data-list='{"valueNames":["name","category","brand", "unit", "models", "stock"],"page":5,"pagination":true}'>
+    <div class="row g-3 mb-2">
         <div class="col-auto">
             <h2 class="mb-0">PRODUCTS</h2>
         </div>
     </div>
     <hr class="py-3">
-    <!-- <ul class="nav nav-links mb-3 mb-lg-2 mx-n3">
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"><span>All </span><span class="text-700 fw-semi-bold" id="total_product">(68817)</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="#"><span>Archived </span><span class="text-700 fw-semi-bold">(70348)</span></a></li>
-    </ul> -->
-    <div id="products" data-list='{"valueNames":["product","price","category","tags","vendor","time"],"page":10,"pagination":true}'>
-        <div class="mb-4">
-            <div class="d-flex flex-wrap gap-3">
-            <div class="search-box">
-                <form class="position-relative" data-bs-toggle="search" data-bs-display="static">
-                    <input class="form-control search-input search" type="search" placeholder="Search" aria-label="Search" />
+    <div class="row">
+        <div class="search-box mb-3 mt-3">
+            <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input search form-control-sm" type="search" placeholder="Search" aria-label="Search" />
                 <span class="fas fa-search search-box-icon"></span>
-                </form>
-            </div>
-            <div class="col-auto">
-                <select class="form-control" name="supplier" id="" required>
-                    <option value="">Choose Supplier</option>
-                    <?php 
-                    $supplier_sql = "SELECT id, supplier_name FROM supplier";
-                    $supplier_res = $conn->query($supplier_sql);
-                    if($supplier_res->num_rows>0){
-                        while($row=$supplier_res->fetch_assoc()){
-                            echo '<option value="' . $row['id'] . '">' . $row['supplier_name'] . '</option>';
-                        }
-                    } else {
-                        echo '<option value="">N/A</option>';
-                    }
-                    ?>
-                </select>
-            </div>
+            </form>
+        </div>
+    </div>
+    <div class="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-white border-top border-bottom border-200 position-relative top-1">
+        <form action="action.php" Method="POST">
             
-            <div class="ms-xxl-auto">
-                <button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button>
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_product"><span class="fas fa-plus me-2"></span>Add product</button>
-            </div>
-            </div>
-        </div>
-        <div class="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-white border-top border-bottom border-200 position-relative top-1">
-            <div class="table-responsive scrollbar mx-n1 px-1">
-            <table class="table mb-0">
-                <thead>
-                <tr>
-                    <th class="white-space-nowrap align-middle ps-0" style="max-width:20px; width:18px;">
-                    <div class="form-check mb-0 fs-0">
-                        <input class="form-check-input" id="checkbox-bulk-products-select" type="checkbox"/>
+            <div class="d-flex align-items-center justify-content-end my-3">
+                <div id="bulk-select-replace-element">
+                    <!-- <button class="btn btn-phoenix-success btn-sm" type="button">
+                        <span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span>
+                        <span class="ms-1">New</span>
+                    </button> -->
+                </div>
+                <div class="d-none ms-3" id="bulk-select-actions">
+                    <div class="d-flex">
+                        <!-- <select class="form-select form-select-sm" aria-label="Bulk actions">
+                            <option selected="selected">Bulk actions</option>
+                            <option value="Delete">Delete</option>
+                            <option value="Archive">Archive</option>
+                        </select> -->
+                        <button class="btn btn-phoenix-success btn-sm ms-2" type="submit">Submit</button>
                     </div>
-                    </th>
-                    <th class="sort text-start" scope="col" data-sort="product">PRODUCT NAME</th>
-                    <th class="sort align-middle text-start" scope="col" data-sort="tags">CATEGORY</th>
-                    <th class="sort align-middle text-start" scope="col" data-sort="vendor">BRAND</th>
-                    <th class="sort align-middle text-start" scope="col" data-sort="time">UNIT</th>
-                    <th class="sort align-middle text-start" scope="col" data-sort="time">MODEL</th>
-                    <th class="sort align-middle text-center" scope="col" data-sort="time">WH STOCKS</th>
-                    <th class="sort text-end align-middle pe-0 ps-4" scope="col"></th>
-                </tr>
-                </thead>
-                <tbody class="list" id="products-table-body">
-                <?php include "product_list_tr.php"; ?>
-                </tbody>
-            </table>
+                </div>
             </div>
-            <div class="row align-items-center justify-content-between py-2 pe-0 fs--1">
-            <div class="col-auto d-flex">
-                <p class="mb-0 d-none d-sm-block me-3 fw-semi-bold text-900" data-list-info="data-list-info"></p><a class="fw-semi-bold" href="#!" data-list-view="*">View all<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semi-bold d-none" href="#!" data-list-view="less">View Less<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
+
+            <div  >
+                <div class="table-responsive mx-n1 px-1">
+                    <table class="table table-sm border-top border-200 mb-0">
+                        <thead>
+                            <tr>
+                                <th class="white-space-nowrap fs--1 align-middle ps-0" style="max-width:20px; width:18px;">
+                                    <div class="form-check mb-0 fs-0">
+                                        <input class="form-check-input" id="bulk-select-example" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
+                                    </div>
+                                </th>
+                                <th class="sort" data-sort="name">Product Name</th>
+                                <th class="sort" data-sort="category">Category</th>
+                                <th class="sort" data-sort="brand">Brand</th>
+                                <th class="sort" data-sort="unit">Unit</th>
+                                <th class="sort" data-sort="models">Models</th>
+                                <th class="sort" data-sort="stock">WH Stocks</th>
+                            </tr>
+                        </thead>
+                        <tbody class="list" id="bulk-select-body">
+                            <?php include "product_list_tr.php"; ?>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="d-flex flex-between-center pt-3 mb-3">
+                    <div class="pagination d-none"></div>
+                    <p class="mb-0 fs--1">
+                        <span class="d-none d-sm-inline-block" data-list-info="data-list-info"></span>
+                        <span class="d-none d-sm-inline-block"> &mdash; </span>
+                        <a class="fw-semi-bold" href="#!" data-list-view="*">
+                            View all
+                            <span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span>
+                        </a>
+                        <a class="fw-semi-bold d-none" href="#!" data-list-view="less">
+                            View Less
+                            <span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span>
+                        </a>
+                    </p>
+                    <div class="d-flex">
+                        <button class="btn btn-sm btn-primary" type="button" data-list-pagination="prev"><span>Previous</span></button>
+                        <button class="btn btn-sm btn-primary px-4 ms-2" type="button" data-list-pagination="next"><span>Next</span></button>
+                    </div>
+                </div>
             </div>
-            <div class="col-auto d-flex"><button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-                <ul class="mb-0 pagination"></ul><button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
-            </div>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
