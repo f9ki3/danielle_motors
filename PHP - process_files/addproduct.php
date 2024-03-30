@@ -2,9 +2,10 @@
     require_once '../database/database.php';
 
     //azul ni remove ko lng un back slash para pumasok sa uploads directory "/" 
-    $uploadDir = '../uploads';
+    $uploadDir = '../uploads/';
     $uploadFile = basename($_FILES['image']['name']);
-    move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile);
+    $path = $uploadDir . $uploadFile;
+    move_uploaded_file($_FILES['image']['tmp_name'], $path);
 
     $image = $uploadFile;
     $product_name = $_POST['product_name'];
