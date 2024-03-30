@@ -2,11 +2,12 @@
 include '../config/config.php';
 
 // Check if the necessary POST data is set
-if(isset($_POST['productId'], $_POST['qty_sent'], $_POST['srp'])) {
+if(isset($_POST['productId'], $_POST['qty_sent'], $_POST['srp'], $_POST['materialInvoiceID'])) {
     // Sanitize and validate input data
     $product_id = intval($_POST['productId']); // Convert to integer
     $quantity = intval($_POST['qty_sent']); // Convert to integer
     $srp = floatval($_POST['srp']); // Convert to float
+    $materialInvoiceID = mysqli_real_escape_string($conn, $_POST['materialInvoiceID']);
 
     if($product_id <= 0 || $quantity <= 0 || $srp <= 0) {
         echo "Error: Invalid product ID, quantity, or SRP";
@@ -15,7 +16,7 @@ if(isset($_POST['productId'], $_POST['qty_sent'], $_POST['srp'])) {
 
     // Prepare the SQL statement
     $sql = "UPDATE product SET stocks = stocks + ?, srp = ? WHERE id = ?";
-    $updatestatus = "UPDATE material_transfer SET status = ? WHERE material_invoice = ?";
+    $updatestatus = "UPDATE material_transaction SET status = 4 WHERE material_invoice_id = '$materialInvoiceID'";
 
     // Prepare and bind parameters to the statement
     $stmt = mysqli_prepare($conn, $sql);
@@ -29,7 +30,7 @@ if(isset($_POST['productId'], $_POST['qty_sent'], $_POST['srp'])) {
 
         // Execute the statement to update the material_transfer status
         if(mysqli_stmt_execute($stmt2)) {
-            echo "Product stocks updated successfully and material transfer status updated!";
+            echo "Product stocks updated successfully and material transaction status updated!";
         } else {
             echo "Error updating material transfer status: " . mysqli_error($conn);
         }
