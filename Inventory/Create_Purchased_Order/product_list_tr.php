@@ -50,7 +50,7 @@ if ($product_res) {
         <tr>
             <td class="fs--1 align-middle">
                 <div class="form-check mb-0 fs-0">
-                    <input class="form-check-input" type="checkbox" data-bulk-select-row="{<input type='checkbox' name='product_id[]' value='<?php echo $product_id; ?>'  checked><input type='text' name='product_name[]' value='<?php echo $product_name; ?>' hidden><input type='text' name='category[]' value='<?php echo $category_name; ?>' hidden><input type='text' name='brand[]' value='<?php echo $brand_name; ?>' hidden><input type='text' name='unit[]' value='<?php echo $unit_name; ?>' hidden><input type='text' name='models[]' value='<?php echo $product_models; ?>' hidden>}" />
+                    <input class="form-check-input" type="checkbox" data-bulk-select-row="{<input type='checkbox' name='product_id[]' value='<?php echo $product_id; ?>'  checked><input type='text' name='product_name[]' value='<?php echo $product_name; ?>' hidden><input type='text' name='category[]' value='<?php echo $category_name; ?>' hidden><input type='text' name='brand[]' value='<?php echo $brand_name; ?>' hidden><input type='text' name='unit[]' value='<?php echo $unit_name; ?>' hidden><input type='text' name='models[]' value='<?php echo $product_models; ?>' hidden> <input type='text' name='current_stock[]' value='<?php echo $stocks; ?>' hidden>}" />
                 </div>
             </td>
             <td class="text-start name"><?php echo $product_name; ?></td>

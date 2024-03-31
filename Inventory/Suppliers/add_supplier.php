@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-4">
-                        <input class="form-control" type="file" name="supplier_logo" id="supplier_logo" accept="image/png" required>
+                        <input class="form-control" type="file" name="supplier_logo" id="supplier_logo" accept="image/*" required>
                     </div>
                     <div class="col-lg-8">
                         <div class="form-floating mb-3">

@@ -30,6 +30,7 @@
                             <option value="Archive">Archive</option>
                         </select> -->
                         <form action="../Create_Purchased_Order2/index.php" method="post">
+                        <!-- <form action="action.php" method="post"> -->
                         <pre id="selectedRows" hidden></pre>
                         <button class="btn btn-phoenix-success btn-sm ms-2" type="submit">Submit</button>
                         </form>

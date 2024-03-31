@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <th>Brand</th>
                         <th>Unit</th>
                         <th>Models</th>
+                        <th>Stock</th>
                     </tr>
                 </thead>
                 <tbody>';
@@ -25,6 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $brand = $_POST['brand'][$product_key];
             $unit = $_POST['unit'][$product_key];
             $models = $_POST['models'][$product_key];
+            $current_stock = $_POST['current_stock'][$product_key];
+
 
             // Display the data in the table row
             echo '<tr>
@@ -33,7 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <td>' . $brand . '</td>
                     <td>' . $unit . '</td>
                     <td>' . $models . '</td>
+                    <td>' . $current_stock . '</td>
                 </tr>';
+
+                
         }
         
         // Close the table
