@@ -309,79 +309,15 @@ $(document).ready(function () {
         });
     });
 
-    $(document).ready(function () {
-    // Return Material Transfer
+    // Decline Material Transfer
     $('#returnMaterialTransfer').click(function () {
-        // Check if the button is enabled
-        if ($(this).prop('disabled')) {
-            return; // Do nothing if the button is disabled
-        }
-        
-        var user_brn_code = $('#user_brn_code').val();
-        var materialInvoiceNo = $('#material_invoice').val();
-        var sessionID = $('#sessionID').val();
-        var cashierName = $('#cashierName').val();
-        
-        // Send notification
-        $.ajax({
-            url: '../php/update_notification.php',
-            method: 'POST',
-            data: {
-                sessionID: sessionID,
-                type_id: materialInvoiceNo,
-                type: 'Material Transaction',
-                sender: cashierName,
-                message: 'The Store return the Material Transfer'
-            },
-            success: function (response) {
-                console.log('Notification sent successfully');
-                
-                // Loop through checked checkboxes and update product stocks
-                $('input[name="product_checkbox[]"]:checked').each(function() {
-                    var productId = $(this).closest('tr').find('input[name="product_id[]"]').val();
-                    var qtySent = $(this).closest('tr').find('td:eq(6)').text(); // Assuming qty sent is in the 7th column
-                    var status = $(this).closest('tr').find('td:eq(7)').text(); // Assuming status is in the 8th column
-                    
-                    console.log('Status:', status); // Log the status value
-                    console.log('Branch_code:', user_brn_code); // Log the status value
-                    console.log('productId:', productId); // Log the status value
-                    
-                    if (status === 'Approved') {
-                        // Only update product stocks if status is 'Approved'
-                        $.ajax({
-                            url: '../php/return_product_stocks.php',
-                            method: 'POST',
-                            data: {
-                                        productId: productId,
-                                        qty_sent: qtySent,
-                                        // user_brn_code: user_brn_code not needed because the value is 'WAREHOUSE'
-                                        materialInvoiceID: materialInvoiceNo,
-                                        status: status // Pass the status to the PHP script
-                            },
-                            success: function (response) {
-                                console.log('Product stocks updated successfully for product ID ' + productId);
-                            },
-                            error: function (xhr, status, error) {
-                                console.error('Error updating product stocks for product ID ' + productId + ':', error);
-                            }
-                        });
-                    } else {
-                        console.log('Status is not "Approved", skipping product ID ' + productId);
-                        console.log('Status is:', status);
-                        // Handle other statuses here
-                        // You can add any desired behavior for statuses other than "Approved"
-                    }
-                });
-                
-                swal("Material Returned", "Products have been returned", "success");
-            },
-            error: function (xhr, status, error) {
-                console.error('Error sending notification:', error);
-            }
+        // Loop through checked checkboxes and perform decline action
+        $('input[name="product_checkbox[]"]:checked').each(function() {
+            // Implement decline action here
+            console.log('Product with ID ' + $(this).val() + ' has been declined');
         });
+        swal("Material Declined", "Products have been declined", "error");
     });
-});
-
 
 
     $(document).ready(function () {

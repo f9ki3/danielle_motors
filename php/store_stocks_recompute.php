@@ -10,8 +10,7 @@ if (isset($_POST['totalSellingPrice'], $_POST['materialInvoiceID'])) {
 
     // Prepare and execute the SQL query to update the data
     $sql = "UPDATE material_transfer 
-            SET totalSellingPrice = $totalSellingPrice, 
-
+            SET totalSellingPrice = $totalSellingPrice 
             WHERE material_invoice = '$materialInvoiceID'";
 
     if (mysqli_query($conn, $sql)) {

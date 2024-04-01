@@ -2,11 +2,10 @@
 include '../config/config.php';
 
 // Check if the necessary POST data is set
-if(isset($_POST['productId'], $_POST['qty_sent'], $_POST['user_brn_code'], $_POST['materialInvoiceID'])) {
+if(isset($_POST['productId'], $_POST['qty_sent'], $_POST['materialInvoiceID'])) {
     // Sanitize and validate input data
     $product_id = intval($_POST['productId']); // Convert to integer
     $quantity = intval($_POST['qty_sent']); // Convert to integer
-    $user_brn_code = mysqli_real_escape_string($conn, $_POST['user_brn_code']);
     $materialInvoiceID = mysqli_real_escape_string($conn, $_POST['materialInvoiceID']);
 
     if($product_id <= 0 || $quantity <= 0) {
@@ -15,11 +14,11 @@ if(isset($_POST['productId'], $_POST['qty_sent'], $_POST['user_brn_code'], $_POS
     }
 
     // Prepare the SQL statement to update stocks
-    $updateSql = "UPDATE stocks SET stocks = stocks + ? WHERE product_id = ? AND branch_code = ?";
+    $updateSql = "UPDATE stocks SET stocks = stocks + ? WHERE product_id = ? AND branch_code = 'WAREHOUSE'";
     
     // Prepare and bind parameters to the statement
     $stmt = mysqli_prepare($conn, $updateSql);
-    mysqli_stmt_bind_param($stmt, "iis", $quantity, $product_id, $user_brn_code);
+    mysqli_stmt_bind_param($stmt, "ii", $quantity, $product_id);
 
     // Execute the statement to update product stocks
     if(mysqli_stmt_execute($stmt)) {
@@ -27,15 +26,15 @@ if(isset($_POST['productId'], $_POST['qty_sent'], $_POST['user_brn_code'], $_POS
         if(mysqli_stmt_affected_rows($stmt) == 0) {
             // If no rows were affected, it means there's no existing row with the provided product_id and branch_code
             // Insert a new row into the stocks table
-            $insertSql = "INSERT INTO stocks (product_id, branch_code, stocks) VALUES (?, ?, ?)";
+            $insertSql = "INSERT INTO stocks (product_id, branch_code, stocks) VALUES (?, 'WAREHOUSE', ?)";
             $insertStmt = mysqli_prepare($conn, $insertSql);
-            mysqli_stmt_bind_param($insertStmt, "isi", $product_id, $user_brn_code, $quantity);
+            mysqli_stmt_bind_param($insertStmt, "ii", $product_id, $quantity);
             
             if(mysqli_stmt_execute($insertStmt)) {
                 echo "New row inserted into stocks table!";
                 
                 // Update the material_transaction status
-                $updateStatusSql = "UPDATE material_transaction SET status = 4 WHERE product_id = ? AND material_invoice_id = ?";
+                $updateStatusSql = "UPDATE material_transaction SET status = 5 WHERE product_id = ? AND material_invoice_id = ?";
                 $stmt2 = mysqli_prepare($conn, $updateStatusSql);
                 mysqli_stmt_bind_param($stmt2, "is", $product_id, $materialInvoiceID);
                 
@@ -55,7 +54,7 @@ if(isset($_POST['productId'], $_POST['qty_sent'], $_POST['user_brn_code'], $_POS
             echo "Product stocks updated successfully!";
             
             // Update the material_transaction status
-            $updateStatusSql = "UPDATE material_transaction SET status = 4 WHERE product_id = ? AND material_invoice_id = ?";
+            $updateStatusSql = "UPDATE material_transaction SET status = 5 WHERE product_id = ? AND material_invoice_id = ?";
             $stmt2 = mysqli_prepare($conn, $updateStatusSql);
             mysqli_stmt_bind_param($stmt2, "is", $product_id, $materialInvoiceID);
             
