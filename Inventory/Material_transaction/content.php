@@ -1,6 +1,6 @@
 <?php
 $invoice_id = $_SESSION['invoice'];
-$material_transfer_sql = "SELECT mt.material_date, mt.material_cashier, mt.material_recieved_by, mt.material_inspected_by, mt.material_verified_by, mt.active, mt.totalSellingPrice, mt.totalCostPrice, mt.totalGrossProfit, m.status 
+$material_transfer_sql = "SELECT mt.material_date, mt.material_cashier, mt.material_recieved_by, mt.material_inspected_by, mt.material_verified_by, mt.active, mt.totalSellingPrice, m.status 
 FROM material_transfer AS mt 
 LEFT JOIN material_transaction AS m ON mt.material_invoice = m.material_invoice_id 
 WHERE mt.material_invoice = '$invoice_id' 
@@ -14,8 +14,6 @@ $material_inspected_by = $row['material_inspected_by'];
 $material_verified_by = $row['material_verified_by'];
 $status = $row['active'];
 $totalSellingPrice = $row['totalSellingPrice'];
-$totalCostPrice = $row['totalCostPrice'];
-$totalGrossProfit = $row['totalGrossProfit'];
 $unformatted_status = $row['status'];
 if($unformatted_status === '1' || $unformatted_status === '2'){
     $formatted_stats = '<b class="text-primary"> Pending</b>';

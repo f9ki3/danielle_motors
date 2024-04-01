@@ -41,6 +41,11 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
+    <script>
+      function confirmSubmit() {
+        return confirm("Are you sure you want to submit the form?");
+      }
+    </script>
   </body>
 
 
