@@ -31,8 +31,8 @@
     <div>
         <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
             <h5 class="fw-bolder">Purchase</h5>
-            <a href="purchase" class="btn btn-primary btn-sm  border rounded mb-2" id="resetButton" onclick="resetCart()">Purchase Warehouse</a>
-            <a href="purchase_store" class="btn btn-sm  border rounded mb-2" id="resetButton" onclick="resetCart()">Purchase Store</a>
+            <a href="purchase" class="btn btn-sm  border rounded mb-2" id="resetButton" onclick="resetCart()">Purchase Warehouse</a>
+            <a href="purchase_store" class="btn btn-primary btn-sm  border rounded mb-2" id="resetButton" onclick="resetCart()">Purchase Store</a>
             <a href="purchase_terms" class="btn btn-sm border rounded mb-2">Purchase with Terms</a>
             <a href="purchase_online" class="btn btn-sm border rounded mb-2">Purchase Online</a>
             <a href="store_stocks" class="btn btn-sm border  rounded mb-2">Store Stocks</a>
@@ -61,9 +61,9 @@
                         </select>
                     </div> -->
                     <div class="button-container">
-                        <a href="purchase" class="btn border  btn-sm me-5 rounded">Purchase</a>
+                        <a href="purchase_store" class="btn border  btn-sm me-5 rounded">Purchase</a>
                         <div class="badge-container">
-                            <a href="purchase_cart" class="btn btn-primary border btn-sm rounded">Cart</a>
+                            <a href="purchase_cart_store" class="btn btn-primary border btn-sm rounded">Cart</a>
                             <span class="badge text-bg-danger" id="counter"></span>
                         </div>
                     </div>
@@ -81,7 +81,8 @@
                                 <th scope="col" width="10%"> Price</th>
                                 <th scope="col" width="5%"> Unit</th>
                                 <th scope="col" width="10%">QTY</th>
-                                <th scope="col" width="10%">Discount</th>
+                                <th scope="col" width="10%">Selling Price</th>
+                                <th scope="col" width="10%">Markup</th>
                                 <th scope="col" width="10%">Amount</th>
                                 <th scope="col" width="5%">Action</th>
                                 </tr>
@@ -90,7 +91,6 @@
                                 <!-- Cart items will be populated here -->
                             </tbody>
                         </table>
-                        
                     </div>
                     <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                         <div style="width: 49%" class="py-2">
@@ -224,6 +224,6 @@
 
 </div>
 <?php include 'footer.php'?>
-<script src="../jquery/purchase_cart.js"></script>
+<script src="../jquery/purchase_cart_store.js"></script>
 </body>
 </html>
