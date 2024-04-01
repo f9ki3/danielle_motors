@@ -2,6 +2,7 @@
 <?php include 'session.php'?>
 <html lang="en">
 <?php include 'header.php'?>
+<?php include 'loader.php'?>
 <body>
 <div style="display: flex; flex-direction: row">
 <?php include 'navigation_bar.php'?>
@@ -42,7 +43,7 @@
 
     <input type="text" class="form-control me-2" style="width: 33%" id="select_product" list="suggestions" placeholder="Search Item to Add">
     <input type="disable" class="form-control me-2" style="width: 33%" id="suggested_retail_price" placeholder="Selling Price" disabled>
-    <input type="number" class="form-control me-2" style="width: 33%" id="quantity" placeholder="Qty">
+    <input type="text" class="form-control me-2" style="width: 33%" id="quantity" list="suggestions" placeholder="Qty">
     <button class="btn btn-primary" onclick="addItem()">Submit</button>
     </div>
 </div>
@@ -151,7 +152,24 @@
 var savedProductId; // Variable to store the productId
 var savedQuantity; // Variable to store the quantity
 
+// Function to show loading animation
+function showLoading() {
+    // Display the loading animation element
+    document.getElementById('loading').style.display = 'block';
+}
+
+// Function to hide the loader
+function hideLoading() {
+    // Hide the loading animation
+    document.getElementById('loading').style.display = 'none';
+}
+
+
+// Add event listener for the 'input' event on the select_product input
 document.getElementById('select_product').addEventListener('change', function() {
+    // Show loading animation when the user starts typing
+    showLoading();
+
     // Get the selected product value
     var selectedProduct = this.value;
 
@@ -162,6 +180,9 @@ document.getElementById('select_product').addEventListener('change', function() 
     var xhrSrp = new XMLHttpRequest();
     xhrSrp.onreadystatechange = function() {
         if (xhrSrp.readyState === XMLHttpRequest.DONE) {
+            // Hide loading animation when the response is received
+            hideLoading();
+
             if (xhrSrp.status === 200) {
                 // Parse the JSON response
                 var response = JSON.parse(xhrSrp.responseText);
@@ -176,33 +197,29 @@ document.getElementById('select_product').addEventListener('change', function() 
     xhrSrp.open('POST', '../php/get_srp.php');
     xhrSrp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhrSrp.send('product_id=' + productId);
-});
-
-document.getElementById('select_product').addEventListener('change', function() {
-    // Get the selected product value
-    var selectedProduct = this.value;
-
-    // Split the selected product value to extract the product ID
-    var productId = selectedProduct.split(' - ')[0];
-
-    // Send an AJAX request to get_srp.php with the product ID to fetch suggested retail price
+    
     // Send an AJAX request to get_maxqty.php with the product ID to fetch maximum quantity
     var xhrMaxQty = new XMLHttpRequest();
     xhrMaxQty.onreadystatechange = function() {
         if (xhrMaxQty.readyState === XMLHttpRequest.DONE) {
-            console.log('Response:', xhrMaxQty.responseText); // Log the response data
+            // Hide loading animation when the response is received
+            hideLoading();
+
             if (xhrMaxQty.status === 200) {
                 // Parse the JSON response
                 var response = JSON.parse(xhrMaxQty.responseText);
-                console.log('Parsed Response:', response); // Log the parsed response object
 
-                // Set the maximum quantity value
-                var maxQty = response.max_qty;
+                // Check if max_qty is defined in the response
+                if (response.hasOwnProperty('max_qty')) {
+                    // Set the maximum quantity value
+                    var maxQty = response.max_qty;
 
-                // Set the value of the maximum quantity input field
-                document.getElementById('quantity').setAttribute('value', maxQty);
-                document.getElementById('quantity').setAttribute('max', maxQty);
-
+                    // Set the value and maximum attribute of the quantity input field
+                    document.getElementById('quantity').value = maxQty;
+                    document.getElementById('quantity').setAttribute('max', maxQty);
+                } else {
+                    console.error('Error: max_qty not found in the response');
+                }
             } else {
                 console.error('Error fetching max quantity:', xhrMaxQty.status);
             }
@@ -210,26 +227,34 @@ document.getElementById('select_product').addEventListener('change', function() 
     };
     xhrMaxQty.open('POST', '../php/get_maxqty.php');
     xhrMaxQty.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhrMaxQty.send('product_id=' + productId);
-
+    xhrMaxQty.send('product_id=' + encodeURIComponent(productId)); // Encode productId to handle special characters
 });
 
 
 
+// Array to store product IDs of items already added to the cart
+var addedProductIds = [];
+
 function addItem() {
     var productInput = document.getElementById("select_product");
     var retailPriceInput = document.getElementById("suggested_retail_price");
-    var quantityInput = document.getElementById("quantity");
+    var qtyInput = document.getElementById("quantity");
 
     // Get the selected product value from the input field
     var selectedProduct = productInput.value.trim();
 
-// Split the selected product value to extract id, name, models, brand_id, and SRP
-var [productId, productName, models, brand_name, srp] = selectedProduct.split(' - ');
+    // Split the selected product value to extract id, name, models, brand_id, and SRP
+    var [productId, productName, models, brand_name, srp] = selectedProduct.split(' - ');
+
+    // Check if the product is already added to the cart
+    if (addedProductIds.includes(productId)) {
+        alert("This product is already added to the cart");
+        return;
+    }
 
     // Get the values from input fields
     var retailPrice = parseFloat(retailPriceInput.value.trim()); // Parse as float
-    var quantity = parseInt(quantityInput.value.trim()); // Parse as integer
+    var quantity = parseInt(qtyInput.value.trim()); // Parse as integer
 
     // Check if any input field is empty or if values are not valid numbers
     if (productName === '' || isNaN(retailPrice) || isNaN(quantity)) {
@@ -244,7 +269,7 @@ var [productId, productName, models, brand_name, srp] = selectedProduct.split(' 
     }
 
     // Get the maximum quantity allowed
-    var maxQty = parseInt(document.getElementById('quantity').getAttribute('max'));
+    var maxQty = parseInt(qtyInput.getAttribute('max'));
 
     // Check if the entered quantity exceeds the maximum quantity
     if (quantity > maxQty) {
@@ -255,6 +280,7 @@ var [productId, productName, models, brand_name, srp] = selectedProduct.split(' 
     // Proceed with form submission or further processing
 
     // Store productId and quantity
+    addedProductIds.push(productId); // Add the product ID to the array of added product IDs
     savedProductId = productId;
     savedQuantity = quantity;
 
@@ -283,10 +309,11 @@ var [productId, productName, models, brand_name, srp] = selectedProduct.split(' 
     // Clear input fields after submission
     productInput.value = '';
     retailPriceInput.value = '';
-    quantityInput.value = '';
+    qtyInput.value = '';
 
     updateSummary();
 }
+
 
 $(document).ready(function () {
   
@@ -351,6 +378,12 @@ function removeItem(button) {
     // Get the product ID from the data-product-id attribute
     var productId = row.getAttribute("data-product-id");
     
+    // Remove the product ID from the addedProductIds array
+    var index = addedProductIds.indexOf(productId);
+    if (index !== -1) {
+        addedProductIds.splice(index, 1);
+    }
+    
     // Use the product ID as needed
     console.log("Product ID:", productId);
     
@@ -360,6 +393,7 @@ function removeItem(button) {
     // Update the summary
     updateSummary();
 }
+
 
 
     document.getElementById("cancelButton").addEventListener("click", function() {
