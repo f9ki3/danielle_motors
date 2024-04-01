@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Make sure to sanitize input to prevent SQL injection
         // Perform database update query
         // Example:
-        $sql = "UPDATE material_transaction SET qty_sent = '$quantity_sent', status='3' WHERE id = '$transaction_id'";
+        $sql = "UPDATE material_transaction SET qty_added = '$quantity_sent', status='3' WHERE id = '$transaction_id'";
         $conn->query($sql);
         // Note: Replace $conn with your database connection variable
 

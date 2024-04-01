@@ -15,13 +15,16 @@ if($material_transfer_res -> num_rows > 0){
     $check_status_res = $conn->query($check_status_sql);
     if($check_status_res->num_rows> 0 ){
         $status = '<span class="text-primary">Pending</span>';
+        $footer = "pending";
     } else {
         $check_verified_status = "SELECT status FROM material_transaction WHERE material_invoice_id = '$invoice_id' AND status = '3'";
         $check_verified_status_res = $conn->query($check_verified_status);
         if($check_verified_status_res -> num_rows > 0){
             $status = '<span class="text-success">Verified</span>';
+            $footer = "verified";
         } else {
             $status = '<span class="text-success">Transaction Complete</span>';
+            $footer="complete";
         }
     }
 }
@@ -85,7 +88,7 @@ if($material_transfer_res -> num_rows > 0){
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th colspan="3">Name</th>
+                                            <th colspan="2">Name</th>
                                             <th>Models</th>
                                             <th>Code</th>
                                             <th>SRP</th>
@@ -96,57 +99,57 @@ if($material_transfer_res -> num_rows > 0){
                                     </thead>
                                     <tbody>
                                         <?php 
-                                        $mt_sql = "SELECT * FROM material_transaction WHERE material_invoice_id = '$invoice_id'";
-                                        $mt_res = $conn->query($mt_sql);
-                                        if($mt_res->num_rows > 0){
-                                            while($mt_row = $mt_res->fetch_assoc()){
-                                                $product_id = $mt_row['product_id'];
-                                                $input_srp = $mt_row['input_srp'];
-                                                $qty_added = $mt_row['qty_added'];
-                                                $item_status = $mt_row['status'];
-                                                
-                                                $product_sql = "SELECT * from product WHERE id='$product_id' LIMIT 1";
-                                                $product_res = $conn->query($product_sql);
-                                                if($product_res->num_rows>0){
-                                                    $product_row = $product_res -> fetch_assoc();
-                                                    $product_name = $product_row['name'];
-                                                    $product_image = $product_row['image'];
-                                                    $product_code = $product_row['code'];
-                                                    $brand_id = $product_row['brand_id'];
-                                                    $category_id = $product_row['category_id'];
-                                                    $unit_id = $product_row['unit_id'];
-                                                    $models = $product_row['models'];
+                                            $mt_sql = "SELECT mt.id, mt.rack_loc_id, mt.product_id, mt.input_srp, mt.qty_added, mt.status, p.name AS product_name, p.image AS product_image, p.code AS product_code, p.brand_id, p.category_id, p.unit_id, p.models, c.category_name, b.brand_name
+                                                    FROM material_transaction AS mt
+                                                    INNER JOIN product AS p ON mt.product_id = p.id
+                                                    LEFT JOIN category AS c ON p.category_id = c.id
+                                                    LEFT JOIN brand AS b ON p.brand_id = b.id
+                                                    WHERE mt.material_invoice_id = '$invoice_id'";
+                                            $mt_res = $conn->query($mt_sql);
 
-                                                    $category_sql = "SELECT category_name FROM category WHERE id ='$category_id' LIMIT 1";
-                                                    $category_res = $conn->query($category_sql);
-                                                    if($category_res->num_rows > 0 ){
-                                                        $cat_row = $category_res -> fetch_assoc();
-                                                        $category_name = $cat_row['category_name'];
+                                            if($mt_res->num_rows > 0){
+                                                while($mt_row = $mt_res->fetch_assoc()){
+                                                    $transaction_id = $mt_row['id'];
+                                                    $product_id = $mt_row['product_id'];
+                                                    $input_srp = $mt_row['input_srp'];
+                                                    $qty_added = $mt_row['qty_added'];
+                                                    $item_status = $mt_row['status'];
+                                                    $product_name = $mt_row['product_name'];
+                                                    $product_image = $mt_row['product_image'];
+                                                    $product_code = $mt_row['product_code'];
+                                                    $brand_id = $mt_row['brand_id'];
+                                                    $category_id = $mt_row['category_id'];
+                                                    $unit_id = $mt_row['unit_id'];
+                                                    $models = $mt_row['models'];
+                                                    $category_name = $mt_row['category_name'];
+                                                    $brand_name = $mt_row['brand_name'];
+                                                    $wh_location = $mt_row['rack_loc_id'];
+                                                    if($item_status == 1 || $item_status == 2){
+                                                        $product_status = '<span class="text-warning">Pending</span>';
+                                                    } elseif($item_status == 3){
+                                                        $product_status = '<span class="text-success">Verified</span>';
+                                                    } elseif($item_status == 4){
+                                                        $product_status = '<span class="text-success">Accepted</span>';
+                                                    } else {
+                                                        $product_status = '<span class="text-danger">Declined</span>';
                                                     }
-
-                                                    $brandname_sql = "SELECT brand_name FROM brand WHERE id = '$brand_id' LIMIT 1";
-                                                    $brandname_res = $conn->query($brandname_sql);
-                                                    
-                                                }
-                                            }
-                                        }
                                         ?>
                                         <tr>
-                                            <td class="p-0">
-                                                <div class="form-check mb-0 fs-0">
-                                                    <input class="form-check-input ms-3" type="checkbox">
-                                                </div>
-                                            </td>
-                                            <td class="text-center p-0"><img src="../../uploads/" class="img-fluid" style="height: 50px;"></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="text-end"></td>
-                                            <td></td>
-                                            <td class="text-end"></td>
-                                            <td class="text-end"></td>
+                                            <td class="text-center p-0"><img src="../../uploads/<?php echo basename($product_image);?>" class="img-fluid" style="height: 50px;"></td>
+                                            <td><?php echo $product_name;?></td>
+                                            <td><?php echo $models;?></td>
+                                            <td><?php echo $product_code;?></td>
+                                            <td class="text-end"><?php echo $input_srp;?></td>
+                                            <td class="text-end"><?php echo $qty_added;?></td>
+                                            <td class="text-end"><?php echo $product_status;?></td>
+                                            <td class="text-end"><?php echo $wh_location;?></td>
+                                            <input type="text" name="qty_sent[]" value="<?php echo $qty_added; ?>" hidden>
+                                            <input type="text" name="transaction_id[]" value="<?php echo $transaction_id;?>" hidden>
                                         </tr>
-
+                                        <?php
+                                                }
+                                            }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -156,6 +159,9 @@ if($material_transfer_res -> num_rows > 0){
                         <div class="col-lg-9">
                             <h6 class="mb-1">Total Selling Price:  ₱<span> <?php echo $total_selling_price;?></span></h6>
                         </div>
+                        <?php 
+                        if($footer === "pending"){
+                        ?>
                         <div class="col-lg-3 text-start <?php echo $class;?>">
                             <div class="row">
                                 <div class="form-check">
@@ -167,6 +173,9 @@ if($material_transfer_res -> num_rows > 0){
                             </div>
                             
                         </div>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </form>
             </div>
