@@ -1,32 +1,30 @@
 <?php
 $invoice_id = $_SESSION['invoice'];
-$material_transfer_sql = "SELECT mt.material_date, mt.material_cashier, mt.material_recieved_by, mt.material_inspected_by, mt.material_verified_by, mt.active, mt.totalSellingPrice, m.status 
-FROM material_transfer AS mt 
-LEFT JOIN material_transaction AS m ON mt.material_invoice = m.material_invoice_id 
-WHERE mt.material_invoice = '$invoice_id' 
-LIMIT 1";
+$material_transfer_sql = "SELECT * FROM material_transfer WHERE material_invoice = '$invoice_id' LIMIT 1";
 $material_transfer_res = $conn->query($material_transfer_sql);
-$row = $material_transfer_res->fetch_assoc();
-$date = $row['material_date'];
-$cashier = $row['material_cashier'];
-$material_recieved_by = $row['material_recieved_by'];
-$material_inspected_by = $row['material_inspected_by'];
-$material_verified_by = $row['material_verified_by'];
-$status = $row['active'];
-$totalSellingPrice = $row['totalSellingPrice'];
-$unformatted_status = $row['status'];
-if($unformatted_status === '1' || $unformatted_status === '2'){
-    $formatted_stats = '<b class="text-primary"> Pending</b>';
-} elseif($unformatted_status === '3'){
-    $formatted_stats = '<b class="text-success"> Verified</b>';
-} elseif($unformatted_status === '4'){
-    $formatted_stats = '<b class="text-danger"> Denied</b>';
-} elseif($unformatted_status === '5'){
-    $formatted_stats = '<b class="text-success"> Accepted</b>';
+if($material_transfer_res -> num_rows > 0){
+    $row=$material_transfer_res->fetch_assoc();
+    $material_date = $row['material_date'];
+    $material_cashier = $row['material_cashier'];
+    $material_received_by = $row['material_recieved_by'];
+    $material_inspected_by = $row['material_inspected_by'];
+    $material_verified_by = $row['material_verified_by'];
+    $total_selling_price = $row['totalSellingPrice'];
+
+    $check_status_sql = "SELECT status FROM material_transaction WHERE material_invoice_id = '$invoice_id' AND (status = '1' OR status='2')";
+    $check_status_res = $conn->query($check_status_sql);
+    if($check_status_res->num_rows> 0 ){
+        $status = '<span class="text-primary">Pending</span>';
+    } else {
+        $check_verified_status = "SELECT status FROM material_transaction WHERE material_invoice_id = '$invoice_id' AND status = '3'";
+        $check_verified_status_res = $conn->query($check_verified_status);
+        if($check_verified_status_res -> num_rows > 0){
+            $status = '<span class="text-success">Verified</span>';
+        } else {
+            $status = '<span class="text-success">Transaction Complete</span>';
+        }
+    }
 }
-
-$user_id = "Christian Azul";//on session
-
 ?>
 
 <div class="row">
@@ -45,16 +43,16 @@ $user_id = "Christian Azul";//on session
                     <div class="row">
                         <div class="col-lg-6 text-start">
                             <h6>Material Invoice : <b><?php echo $invoice_id; ?></b></h6>
-                            <input type="text" name="invoice_id" value="<?php echo $invoice_id; ?>" hidden>
+                            <input type="text" name="invoice_id" value="<?php echo $invoice_id;?>" hidden>
                         </div>
                         <div class="col-lg-3">
-                            <h6>Status : <?php echo $formatted_stats; ?></h6>
+                            <h6>Status : <?php echo $status;?></h6>
                         </div>
                         <div class="col-lg-3 text-end">
                             <button class="btn btn-outline-secondary">Print</button>
                         </div>
                         <div class="col-lg-12">
-                            <h6>Date: <b>2024-02-24</b></h6>
+                            <h6>Date: <b><?php echo $material_date; ?></b></h6>
                         </div>
                     </div>
                     <div class="row my-2">
@@ -71,10 +69,10 @@ $user_id = "Christian Azul";//on session
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><?php echo $cashier; ?></td>
-                                            <td><?php echo $material_recieved_by; ?></td>
-                                            <td><input name="inspected_by" type="text" class="form-control" value="<?php echo $user_id;?>" hidden><?php echo $material_inspected_by; ?></td>
-                                            <td><input name="verified_by" type="text" class="form-control" value="<?php echo $user_id;?>" hidden><?php echo $material_verified_by; ?></td>
+                                            <td><?php echo $material_cashier;?></td>
+                                            <td><?php echo $material_received_by;?></td>
+                                            <td><input name="inspected_by" type="text" class="form-control" value="1" hidden><?php echo $material_inspected_by; ?></td>
+                                            <td><input name="verified_by" type="text" class="form-control" value="1" hidden><?php echo $material_verified_by; ?></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -87,87 +85,67 @@ $user_id = "Christian Azul";//on session
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th class="p-0"></th>
-                                            <th>Name</th>
+                                            <th colspan="3">Name</th>
                                             <th>Models</th>
                                             <th>Code</th>
-                                            <th>Based Price</th>
+                                            <th>SRP</th>
                                             <th>Requested QTY</th>
-                                            <th>Sent QTY</th>
-                                            <th>Markup</th>
                                             <th>Status</th></th>
-                                            <th>Selling Price</th>
+                                            <th>WH Location</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!-- <?php include "material_transaction_tr.php"; ?> -->
-                                        <?php
-                                        $sql = "SELECT mt.*, p.name AS product_name, p.models AS product_model, p.image, p.code, c.category_name, b.brand_name, u.name AS unit_name
-                                                FROM material_transaction mt
-                                                LEFT JOIN product p ON mt.product_id = p.id
-                                                LEFT JOIN category c ON p.category_id = c.id
-                                                LEFT JOIN brand b ON p.brand_id = b.id
-                                                LEFT JOIN unit u ON p.unit_id = u.id
-                                                WHERE mt.material_invoice_id = '$invoice'";
-                                        $res = $conn->query($sql);
-
-                                        if ($res->num_rows > 0) {
-                                            while ($row = $res->fetch_assoc()) {
-                                                $id = $row['id'];
-                                                $product_id = $row['product_id'];
-                                                $input_srp = $row['input_srp'];
-                                                $input_selling_price = $row['input_selling_price'];
-                                                $qty_added = $row['qty_added'];
-                                                $qty_sent = $row['qty_sent'];
-                                                $markup_peso = $row['markup_peso'];
-                                                $created_at = $row['created_at'];
-                                                $status = $row['status'];
-                                                $product_name = $row['product_name'];
-                                                $product_model = $row['product_model'];
-                                                $category_name = $row['category_name'];
-                                                $brand_name = $row['brand_name'];
-                                                $unit_name = $row['unit_name'];
-                                                $product_img = $row['image'];
-                                                $product_code = $row['code'];
-                                                if($status === '3' || $status === '4' || $status === '5' ){
-                                                    $hidden = "hidden";
-                                                    $class="d-none";
-                                                } else {
-                                                    $hidden = "";
-                                                    $class= "";
-                                                }
+                                        <?php 
+                                        $mt_sql = "SELECT * FROM material_transaction WHERE material_invoice_id = '$invoice_id'";
+                                        $mt_res = $conn->query($mt_sql);
+                                        if($mt_res->num_rows > 0){
+                                            while($mt_row = $mt_res->fetch_assoc()){
+                                                $product_id = $mt_row['product_id'];
+                                                $input_srp = $mt_row['input_srp'];
+                                                $qty_added = $mt_row['qty_added'];
+                                                $item_status = $mt_row['status'];
                                                 
-                                                $total_quantity_sql = "SELECT COALESCE(SUM(qty), 0) AS total_available_qty FROM stocks WHERE product_id = '$product_id'";
-                                                $total_quantity_res = $conn->query($total_quantity_sql);
-                                                if($total_quantity_res -> num_rows > 0){
-                                                    $taq_row = $total_quantity_res -> fetch_assoc();
-                                                    $total_available_quantity = $taq_row['total_available_qty'];
-                                                } else {
-                                                    $total_available_quantity = 0;
-                                                }
+                                                $product_sql = "SELECT * from product WHERE id='$product_id' LIMIT 1";
+                                                $product_res = $conn->query($product_sql);
+                                                if($product_res->num_rows>0){
+                                                    $product_row = $product_res -> fetch_assoc();
+                                                    $product_name = $product_row['name'];
+                                                    $product_image = $product_row['image'];
+                                                    $product_code = $product_row['code'];
+                                                    $brand_id = $product_row['brand_id'];
+                                                    $category_id = $product_row['category_id'];
+                                                    $unit_id = $product_row['unit_id'];
+                                                    $models = $product_row['models'];
 
-                                                if($total_available_quantity > $qty_added){
-                                                    $total_qty_given = $qty_added;
-                                                } else {
-                                                    $total_qty_given = $total_available_quantity;
+                                                    $category_sql = "SELECT category_name FROM category WHERE id ='$category_id' LIMIT 1";
+                                                    $category_res = $conn->query($category_sql);
+                                                    if($category_res->num_rows > 0 ){
+                                                        $cat_row = $category_res -> fetch_assoc();
+                                                        $category_name = $cat_row['category_name'];
+                                                    }
+
+                                                    $brandname_sql = "SELECT brand_name FROM brand WHERE id = '$brand_id' LIMIT 1";
+                                                    $brandname_res = $conn->query($brandname_sql);
+                                                    
                                                 }
-                                        ?>
-                                        <tr>
-                                            <td class="text-center p-0"><img src="../../uploads/<?php echo basename($product_img); ?>" class="img-fluid" style="height: 50px;"></td>
-                                            <td><?php echo $product_name; ?></td>
-                                            <td><?php echo $product_model; ?></td>
-                                            <td><?php echo $product_code; ?></td>
-                                            <td class="text-end"><?php echo number_format($input_srp, 2);?></td>
-                                            <td><?php echo $qty_added;?></td>
-                                            <td class="text-end"><input name="transaction_id[]" type="text" value="<?php echo $id; ?>" hidden><input name="qty_sent[]" type="number" class="form-control" min="0" max="<?php echo $total_available_quantity;?>" value="<?php echo $total_qty_given;?>" <?php echo $hidden;?>><?php if($status === '1' || $status === '2'){} else { echo $qty_added; }?></td>
-                                            <td class="text-end"><?php echo number_format($markup_peso, 2);?></td>
-                                            <td><?php echo $formatted_stats; ?></td>
-                                            <td class="text-end pe-2"><?php echo number_format($input_selling_price, 2);?></td>
-                                        </tr>
-                                        <?php
                                             }
                                         }
                                         ?>
+                                        <tr>
+                                            <td class="p-0">
+                                                <div class="form-check mb-0 fs-0">
+                                                    <input class="form-check-input ms-3" type="checkbox">
+                                                </div>
+                                            </td>
+                                            <td class="text-center p-0"><img src="../../uploads/" class="img-fluid" style="height: 50px;"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="text-end"></td>
+                                            <td></td>
+                                            <td class="text-end"></td>
+                                            <td class="text-end"></td>
+                                        </tr>
 
                                     </tbody>
                                 </table>
@@ -176,9 +154,7 @@ $user_id = "Christian Azul";//on session
                     </div>
                     <div class="row">
                         <div class="col-lg-9">
-                            <h6 class="mb-1">Total Selling Price:  ₱<span> <?php echo number_format($totalSellingPrice, 2); ?></span></h6>
-                            <h6 class="mb-1">Total Cost Price:  ₱<span> <?php echo number_format($totalCostPrice, 2);?></span></h6>
-                            <h6 class="mb-1">Total Gross Profit:  ₱ <span> <?php echo number_format($totalGrossProfit, 2); ?></span></h6>
+                            <h6 class="mb-1">Total Selling Price:  ₱<span> <?php echo $total_selling_price;?></span></h6>
                         </div>
                         <div class="col-lg-3 text-start <?php echo $class;?>">
                             <div class="row">
