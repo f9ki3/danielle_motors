@@ -9,7 +9,7 @@
                     <div class="card-body">
                         <div class="text-center">
                             <h3>95</h3>
-                            <h5>Inventory Stocks</h5>
+                            <h5> Stocks In/Out</h5>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                     <div class="card-body">
                         <div class="text-center">
                             <h3>5</h3>
-                            <h5>stocks</h5>
+                            <h5>Delivery In/Out</h5>
                         </div>
                     </div>
                 </div>
@@ -72,8 +72,8 @@
                 <div class="card mb-2">
                     <div class="card-body">
                         <div class="text-center">
-                            <h3>95</h3>
-                            <h5>stocks</h5>
+                            <h3>1</h3>
+                            <h5>Stocks Report</h5>
                         </div>
                     </div>
                 </div>
@@ -85,8 +85,8 @@
                 <div class="card mb-2">
                     <div class="card-body">
                         <div class="text-center">
-                            <h3>95</h3>
-                            <h5>stocks</h5>
+                            <h3>2</h3>
+                            <h5>Sales Report</h5>
                         </div>
                     </div>
                 </div>
@@ -98,8 +98,8 @@
                 <div class="card mb-2">
                     <div class="card-body">
                         <div class="text-center">
-                            <h3>95</h3>
-                            <h5>stocks</h5>
+                            <h3>3</h3>
+                            <h5>Accounts</h5>
                         </div>
                     </div>
                 </div>
