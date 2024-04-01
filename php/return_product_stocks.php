@@ -40,6 +40,19 @@ if(isset($_POST['productId'], $_POST['qty_sent'], $_POST['materialInvoiceID'])) 
                 
                 if(mysqli_stmt_execute($stmt2)) {
                     echo " Material transaction status updated!";
+                    
+                    // Update the declined column in another table
+                    $updateDeclinedSql = "UPDATE material_transfer SET declined = 2 WHERE material_invoice = ?";
+                    $stmt3 = mysqli_prepare($conn, $updateDeclinedSql);
+                    mysqli_stmt_bind_param($stmt3, "s", $materialInvoiceID);
+                    
+                    if(mysqli_stmt_execute($stmt3)) {
+                        echo " Declined status updated in another table!";
+                    } else {
+                        echo "Error updating declined status in another table: " . mysqli_error($conn);
+                    }
+                    
+                    mysqli_stmt_close($stmt3);
                 } else {
                     echo "Error updating material transaction status: " . mysqli_error($conn);
                 }
@@ -60,6 +73,19 @@ if(isset($_POST['productId'], $_POST['qty_sent'], $_POST['materialInvoiceID'])) 
             
             if(mysqli_stmt_execute($stmt2)) {
                 echo " Material transaction status updated!";
+                
+                // Update the declined column in another table
+                $updateDeclinedSql = "UPDATE material_transfer SET declined = 2 WHERE material_invoice = ?";
+                $stmt3 = mysqli_prepare($conn, $updateDeclinedSql);
+                mysqli_stmt_bind_param($stmt3, "s", $materialInvoiceID);
+                
+                if(mysqli_stmt_execute($stmt3)) {
+                    echo " Declined status updated in another table!";
+                } else {
+                    echo "Error updating declined status in another table: " . mysqli_error($conn);
+                }
+                
+                mysqli_stmt_close($stmt3);
             } else {
                 echo "Error updating material transaction status: " . mysqli_error($conn);
             }

@@ -17,7 +17,7 @@ include '../config/config.php';
 <div style="width: 100%" class="content p-3">
     <div>
         <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
-            <h5 class="fw-bolder">Purchase</h5>
+            <h5 class="fw-bolder">Return</h5>
             <a href="purchase" class="btn btn-sm  border rounded mb-2">Purchase Warehouse</a>
             <a href="purchase" class="btn  btn-sm  border rounded mb-2">Purchase Store</a>
             <a href="purchase_terms" class="btn btn-sm border rounded mb-2">Purchase with Terms</a>
@@ -33,7 +33,7 @@ include '../config/config.php';
                     </div>
 
                     <div>
-                    <button id="addStocksBtn" class="btn border btn-sm rounded" data-bs-target="#add_stocks">+ Add Stocks</button>
+                    <button id="addStocksBtn" class="btn border btn-sm rounded" data-bs-target="#add_stocks">+ Add Return</button>
                         <a href="store_stocks" class="btn btn-primary border btn-sm rounded" >Stocks</a>
                         <a href="store_product_list" class="btn border btn-sm rounded" >Product</a>
                     </div>
@@ -85,7 +85,7 @@ $(document).ready(function () {
         'paging': 'true',
         'order': [],
         'ajax': {
-            'url': '../php/store_stocks_fetch.php',
+            'url': '../php/store_stocks_return.php',
             'type': 'post',
         },
         "aoColumnDefs": [{
@@ -235,7 +235,7 @@ function fetchAdminData(adminId, adminData) {
  });
 
 document.getElementById('addStocksBtn').addEventListener('click', function() {
-    window.location.href = 'store_stocks_add.php';
+    window.location.href = 'store_stocks_return.php';
 });
 
 

@@ -134,7 +134,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                     $sql = "SELECT mt.product_id, mt.input_srp, mt.qty_added, mt.created_at, mt.status, p.name, p.models, p.code, p.image
                                 FROM material_transaction mt
                                 JOIN product p ON mt.product_id = p.id
-                                WHERE material_invoice_id = ?";
+                                WHERE material_invoice_id = ? AND status = 5";
                                 
                     $stmt = $conn->prepare($sql);
                     $stmt->bind_param("s", $material_invoice_id);
@@ -179,7 +179,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                     
                             // Only include rows with status other than 5 in the calculation
                             // if ($row['status'] == 3 || $row['status'] == 4) {
-                            if ($row['status'] == 3 || $row['status'] == 4) {
+                            if ($row['status'] == 5) {
                                 // Calculate totalSellingPrice and totalCostPrice
                                 $comSellingPrice += $row['input_srp'] * $row['qty_added'];
                                 $qty_added = $row['qty_added'];
@@ -201,7 +201,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-3 mb-4">
                     <div>
                         <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-                            <h4 class="">Total Selling Price ₱<?php echo number_format($comSellingPrice, 2); ?></h4>
+                            <h4 class="">Total Return Price ₱<?php echo number_format($comSellingPrice, 2); ?></h4>
                         </div>
                     </div>
                     <div style="width: 30%">

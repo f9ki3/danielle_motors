@@ -373,7 +373,7 @@ $(document).ready(function () {
                     }
                 });
                 
-                swal("Material Returned", "Products have been returned", "success");
+                swal("Material Returned", "Products have been returned", "error");
             },
             error: function (xhr, status, error) {
                 console.error('Error sending notification:', error);
