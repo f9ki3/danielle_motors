@@ -3,5 +3,4 @@
 <script src="../jquery/date_time.js"></script>
 <script src="../jquery/add_rack.js"></script>
 <script src="../jquery/select_product_srp.js"></script>
-<script src="../jquery/purchase_cart.js"></script>
 <script src="../jquery/purchase_list_search.js"></script>

@@ -36,8 +36,8 @@
     <div>
         <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
             <h5 class="fw-bolder">Purchase</h5>
-            <a href="purchase" class="btn btn-primary btn-sm  border rounded mb-2" id="resetButton" onclick="resetCart()">Purchase Warehouse</a>
-            <a href="purchase_store" class="btn btn-sm  border rounded mb-2" id="resetButton" onclick="resetCart()">Purchase Store</a>
+            <a href="purchase" class="btn  btn-sm  border rounded mb-2" id="resetButton" onclick="resetCart()">Purchase Warehouse</a>
+            <a href="purchase_store" class="btn btn-sm btn-primary  border rounded mb-2" id="resetButton" onclick="resetCart()">Purchase Store</a>
             <a href="purchase_terms" class="btn btn-sm border rounded mb-2">Purchase with Terms</a>
             <a href="purchase_online" class="btn btn-sm border rounded mb-2">Purchase Online</a>
             <a href="store_stocks" class="btn btn-sm border  rounded mb-2">Store Stocks</a>
@@ -65,9 +65,9 @@
                         </select>
                     </div> -->
                     <div class="button-container">
-                        <a href="purchase" class="btn border btn-primary btn-sm me-5 rounded">Purchase</a>
+                        <a href="purchase_store" class="btn border btn-primary btn-sm me-5 rounded">Purchase</a>
                         <div class="badge-container">
-                            <a href="purchase_cart" class="btn border btn-sm rounded">Cart</a>
+                            <a href="purchase_cart_store" class="btn border btn-sm rounded">Cart</a>
                             <span class="badge text-bg-danger" id="counter"></span>
                         </div>
                     </div>
