@@ -43,7 +43,7 @@
 
     <input type="text" class="form-control me-2" style="width: 33%" id="select_product" list="suggestions" placeholder="Search Item to Add">
     <input type="disable" class="form-control me-2" style="width: 33%" id="suggested_retail_price" placeholder="Selling Price" disabled>
-    <input type="text" class="form-control me-2" style="width: 33%" id="quantity" list="suggestions" placeholder="Qty">
+    <input type="text" class="form-control me-2" style="width: 33%" id="quantity" placeholder="Qty">
     <button class="btn btn-primary" onclick="addItem()">Submit</button>
     </div>
 </div>
@@ -515,55 +515,74 @@ $(document).ready(function () {
         });
 
 
-        // Fetch first name and last name based on the selected IDs
-        $.ajax({
-            url: '../php/fetch_admin_data.php',
-            method: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                var receivedBy = fetchAdminData(receivedById, data);
-                                // Save Material Transfer with total values
+            // Fetch first name and last name based on the selected IDs
+            $.ajax({
+                url: '../php/fetch_admin_data.php',
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    var receivedBy = fetchAdminData(receivedById, data);
+                    // Save Material Transfer with total values
                     $.ajax({
-                    url: '../php/store_stocks_save.php', // Your server-side script to save material transfer
-                    method: 'POST',
-                    data: {
-                        materialDate: materialDate,
-                        materialInvoiceNo: materialInvoiceNo,
-                        cashierName: cashierName,
-                        receivedBy: receivedBy,
-                        totalSellingPrice: totalSellingPrice,
-                        user_brn_code : user_brn_code
-
-                    },
-                    success: function (response) {
-                        console.log(response);
+                        url: '../php/store_stocks_save.php', // Your server-side script to save material transfer
+                        method: 'POST',
+                        data: {
+                            materialDate: materialDate,
+                            materialInvoiceNo: materialInvoiceNo,
+                            cashierName: cashierName,
+                            receivedBy: receivedBy,
+                            totalSellingPrice: totalSellingPrice,
+                            user_brn_code: user_brn_code
+                        },
+                        success: function(response) {
+                            console.log(response);
+                            $.ajax({
+                                url: '../php/update_notification.php', // Your server-side script to update the notification table
+                                method: 'POST',
+                                data: {
+                                    sessionID: sessionID,
+                                    type_id: materialInvoiceNo, // Adjust according to your notification type ID
+                                    type: 'Material Transaction', // Notification type
+                                    sender: cashierName, // Adjust with the recipient user ID
+                                    message: 'The Store request Material Transfer' // Message content
+                                },
+                                success: function(response) {
+                                    console.log('Notification sent successfully');
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error('Error sending notification:', error);
+                                }
+                            });
+                            // Deduct product stocks
+                            $('#cartList tr').each(function() {
+                                var productId = $(this).attr('data-product-id');
+                                var quantity = parseInt($(this).find('td:eq(4)').text());
                                 $.ajax({
-                                    url: '../php/update_notification.php', // Your server-side script to update the notification table
+                                    url: '../php/remove_product_stocks.php',
                                     method: 'POST',
                                     data: {
-                                        sessionID : sessionID,
-                                        type_id: materialInvoiceNo, // Adjust according to your notification type ID
-                                        type: 'Material Transaction', // Notification type
-                                        sender: cashierName, // Adjust with the recipient user ID
-                                        message: 'The Store request Material Transfer' // Message content
+                                        productId: productId,
+                                        qty_sent: quantity
                                     },
-                                    success: function (response) {
-                                        console.log('Notification sent successfully');
+                                    success: function(response) {
+                                        console.log('Product stocks deducted successfully for product ID ' + productId);
                                     },
-                                    error: function (xhr, status, error) {
-                                        console.error('Error sending notification:', error);
+                                    error: function(xhr, status, error) {
+                                        console.error('Error deducting product stocks for product ID ' + productId + ':', error);
                                     }
                                 });
-                    },
-                    error: function (xhr, status, error) {
-                        console.error('Error saving data:', error);
-                    }
-                });
-            },
-            error: function (xhr, status, error) {
-                console.error('Error fetching admin data:', error);
-            }
-        });
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error saving data:', error);
+                        }
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching admin data:', error);
+                }
+            });
+
     });
 });
 
