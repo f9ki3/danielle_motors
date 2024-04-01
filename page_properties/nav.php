@@ -1,3 +1,4 @@
+
 <?php 
 // check if page is active
 include "check page if active/checkPageIfActive.php";
@@ -28,12 +29,22 @@ if($logoText_result -> num_rows > 0){
             document.querySelector('body').classList.add(`navbar-${navbarStyle}`);
           }
         </script>
+
         <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
           <!-- scrollbar removed-->
           <div class="navbar-vertical-content">
             <ul class="navbar-nav flex-column" id="navbarVerticalNav">
               <li class="nav-item">
                 <!-- parent pages-->
+
+              <div class="nav-item-wrapper">
+                <a class="nav-link <?php if($current_folder === "Dashboard"){ echo "active"; } else { echo "";}?>" href="../Dashboard/" data-bs-toggle="" aria-expanded="false">
+                  <div class="d-flex align-items-center">
+                  <span class="nav-link-icon"><span data-feather="layout"></span></span><span class="nav-link-text">Dashboard</span>
+                  </div> 
+                </a>
+              </div>
+
                 <div class="nav-item-wrapper"><a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier" || $current_folder === "Manage-Inventory"){ echo "active"; }?> dropdown-indicator label-1" href="#nv-home" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-home">
                     <div class="d-flex align-items-center">
                       <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div><span class="nav-link-icon"><span data-feather="package"></span></span><span class="nav-link-text">Inventory</span>
@@ -42,38 +53,43 @@ if($logoText_result -> num_rows > 0){
                   <div class="parent-wrapper label-1">
                     <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-home">
                       <li class="collapsed-nav-item-title d-none">Inventory</li>
-                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Category_Maintenance"){ echo "active"; }?>" href="../Category_Maintenance/" data-bs-toggle="" aria-expanded="false">
+                      <!-- <li class="nav-item"><a class="nav-link <?php if($current_folder === "Category_Maintenance"){ echo "active"; }?>" href="../Category_Maintenance/" data-bs-toggle="" aria-expanded="false">
                           <div class="d-flex align-items-center"><span class="nav-link-text">Maintenance Category</span></div>
-                        </a><!-- more inner pages-->
+                        </a>
                       </li>
               
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Brand_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Brand_Maintenance/" data-bs-toggle="" aria-expanded="false">
                           <div class="d-flex align-items-center"><span class="nav-link-text">Maintenance Brand</span></div>
-                        </a><!-- more inner pages-->
+                        </a>
                       </li>
 
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Model_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Model_Maintenance/" data-bs-toggle="" aria-expanded="false">
                           <div class="d-flex align-items-center"><span class="nav-link-text">Maintenance Model</span></div>
-                        </a><!-- more inner pages-->
+                        </a>
                       </li>
 
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Unit_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Unit_Maintenance/" data-bs-toggle="" aria-expanded="false">
                           <div class="d-flex align-items-center"><span class="nav-link-text">Maintenance Unit</span></div>
-                        </a><!-- more inner pages-->
-                      </li>
+                        </a>
+                      </li> -->
+
+                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?>" href="../#/" data-bs-toggle="" aria-expanded="false">
+                          <div class="d-flex align-items-center"><span class="fas fa-clipboard-list"></span><span class="nav-link-text">Stocks</span></div>
+                        </a>
+                      </li> 
 
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Product_List"){ echo "active"; } else { echo "";}?>" href="../Product_List/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Product List</span></div>
-                        </a><!-- more inner pages-->
-                      </li>
+                          <div class="d-flex align-items-center"><span data-feather="grid"></span><span class="nav-link-text">Product List</span></div>
+                        </a>
+                      </li> 
 
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Price_List"){ echo "active"; } else { echo "";}?>" href="../Price_List/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Price List</span></div>
+                          <div class="d-flex align-items-center"><span class="fas fa-scroll"></span><span class="nav-link-text">Price List</span></div>
                         </a><!-- more inner pages-->
                       </li>
 
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Delivery_Reciept"){ echo "active"; } else { echo "";}?>" href="../Delivery_Reciept/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Delivery Receipt List</span></div>
+                          <div class="d-flex align-items-center"><span class="fas fa-receipt"></span><span class="nav-link-text">Delivery Receipt List</span></div>
                         </a><!-- more inner pages-->
                       </li>
                     </ul>
@@ -88,26 +104,45 @@ if($logoText_result -> num_rows > 0){
                 
                 <div class="nav-item-wrapper"><a class="nav-link dropdown-indicator label-1" href="#nv-CRM" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-CRM">
                     <div class="d-flex align-items-center">
-                      <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div><span class="nav-link-icon"><span data-feather="phone"></span></span><span class="nav-link-text">Maintenance</span><span class="fa-solid fa-circle text-info ms-1 new-page-indicator" style="font-size: 6px"></span>
+                      <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div><span class="nav-link-icon"><span class="fas fa-cog"></span></span><span class="nav-link-text">Maintenance</span><span class="fa-solid fa-circle text-info ms-1 new-page-indicator" style="font-size: 6px"></span>
                     </div>
                   </a>
                   <div class="parent-wrapper label-1">
                     <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-CRM">
                       <li class="collapsed-nav-item-title d-none">Maintenance</li>
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Logo_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Logo_Maintenance/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Logo </span></div>
+                          <div class="d-flex align-items-center"><span data-feather="image"></span><span class="nav-link-text">Logo </span></span></div>
+                        </a><!-- more inner pages-->
+                      </li>
+
+                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Category_Maintenance"){ echo "active"; }?>" href="../Category_Maintenance/" data-bs-toggle="" aria-expanded="false">
+                          <div class="d-flex align-items-center"><span class="fas fa-clipboard-list"></span><span class="nav-link-text">Maintenance Category</span></div>
+                        </a><!-- more inner pages-->
+                      </li>
+
+                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Brand_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Brand_Maintenance/" data-bs-toggle="" aria-expanded="false">
+                          <div class="d-flex align-items-center"><span class="fas fa-file-alt"></span><span class="nav-link-text">Maintenance Brand</span></div>
+                        </a><!-- more inner pages-->
+                      </li>
+
+                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Model_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Model_Maintenance/" data-bs-toggle="" aria-expanded="false">
+                          <div class="d-flex align-items-center"><span class="fas fa-list-ul"></span><span class="nav-link-text">Maintenance Model</span></div>
+                        </a><!-- more inner pages-->
+                      </li>
+
+                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Unit_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Unit_Maintenance/" data-bs-toggle="" aria-expanded="false">
+                          <div class="d-flex align-items-center"><span class="fas fa-book-open"></span><span class="nav-link-text">Maintenance Unit</span></div>
                         </a><!-- more inner pages-->
                       </li>
 
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Suppliers"){ echo "active"; } else { echo "";}?>" href="../Suppliers/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Suppliers Maintenance </span></div>
+                          <div class="d-flex align-items-center"><span class="uil-wrench"></span><span class="nav-link-text">Suppliers Maintenance </span></div>
                         </a><!-- more inner pages-->
                       </li>
                       
                     </ul>
                   </div>
                 </div><!-- parent pages-->
-                
               </li>
               
             </ul>
