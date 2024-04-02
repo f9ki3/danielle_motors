@@ -69,9 +69,6 @@ if(isset($_POST['uname'], $_POST['pass'])) {
     echo '0';
 }
 
-// Close the statement
-$stmt->close();
-
 // Close the connection
 $conn->close();
 ?>
