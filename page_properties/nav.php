@@ -139,6 +139,11 @@ if($logoText_result -> num_rows > 0){
                           <div class="d-flex align-items-center"><span class="uil-wrench"></span><span class="nav-link-text">Suppliers Maintenance </span></div>
                         </a><!-- more inner pages-->
                       </li>
+
+                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Material_transfer"){ echo "active"; }?>" href="../Material_transfer/" data-bs-toggle="" aria-expanded="false">
+                          <div class="d-flex align-items-center"><span data-feather="truck"></span><span class="nav-link-text">Material Transfer</span></div>
+                        </a><!-- more inner pages-->
+                      </li>
                       
                     </ul>
                   </div>
