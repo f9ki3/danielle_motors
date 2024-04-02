@@ -2,13 +2,17 @@
 // Start a session
 session_start();
 
-include ("../config/config.php");
+// Include the database configuration file
+include("../config/config.php");
 
 // Check if the POST data is set
 if(isset($_POST['uname'], $_POST['pass'])) {
     // Get the posted username and password
     $username = $_POST['uname'];
     $password = $_POST['pass'];
+    
+    // Hash the password using SHA256
+    $hashed_password = hash('sha256', $password);
 
     // Prepare a SQL statement to check if the username and password exist
     $sql = "SELECT * FROM user WHERE username = ? AND user_password = ? AND user_status = ?";
@@ -64,6 +68,9 @@ if(isset($_POST['uname'], $_POST['pass'])) {
     // Respond with '0' to indicate failed login
     echo '0';
 }
+
+// Close the statement
+$stmt->close();
 
 // Close the connection
 $conn->close();
