@@ -149,91 +149,92 @@ if($material_transfer_res -> num_rows > 0){
              
 <div style=" background-color: white;" class="p-3 rounded">
     <div style="height: 40vh; overflow: auto">
-        <table class="table">
-            <thead>
-            <tr> 
-                <th>Checkbox</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Models</th>
-                <th>Code</th>
-                <th>SRP</th>
-                <th>Quantity Request</th>
-                <th>Status</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php 
-                $comSellingPrice = 0;
-                    $material_invoice_id = $material_transaction; // replace with your material_invoice_id
+    <table class="table">
+    <thead>
+        <tr> 
+            <th>Checkbox</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Models</th>
+            <th>Code</th>
+            <th>SRP</th>
+            <th>Quantity Request</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php 
+        $comSellingPrice = 0;
+        $material_invoice_id = $material_transaction; // replace with your material_invoice_id
 
-                    $sql = "SELECT mt.product_id, mt.input_srp, mt.qty_added, mt.created_at, mt.status, p.name, p.models, p.code, p.image
-                                FROM material_transaction mt
-                                JOIN product p ON mt.product_id = p.id
-                                WHERE material_invoice_id = ?";
-                                
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bind_param("s", $material_invoice_id);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
+        $sql = "SELECT mt.product_id, mt.input_srp, mt.qty_added, mt.created_at, mt.status, p.name, p.models, p.code, p.image
+                    FROM material_transaction mt
+                    JOIN product p ON mt.product_id = p.id
+                    WHERE material_invoice_id = ?";
                     
-                    if ($result->num_rows > 0) {
-                        // output data of each row
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<tr>";
-                            echo "<td><input type='checkbox' name='product_checkbox[]' value='{$row['product_id']}' style='max-width: 50px; height: 50px'></td>";
-                            echo "<input type='hidden' name='product_id[]' value='{$row['product_id']}'>";
-                            echo "<td><img src='{$row['image']}' alt='Product Image' style='max-width: 50px; height: 50px'></td>";
-                            echo "<td>{$row['name']}</td>";
-                            echo "<td>{$row['models']}</td>";
-                            echo "<td>{$row['code']}</td>";
-                            echo "<td>{$row['input_srp']}</td>";
-                            echo "<td>{$row['qty_added']}</td>";
-                            $status_text = '';
-                            switch ($row['status']) {
-                                case 1:
-                                    $status_text = 'Pending';
-                                    break;
-                                case 2:
-                                    $status_text = 'Reviewed';
-                                    break;
-                                case 3:
-                                    $status_text = 'Approved';
-                                    break;
-                                case 4:
-                                    $status_text = 'Received';
-                                    break;
-                                case 5:
-                                    $status_text = 'Return';
-                                    break;
-                                case 6:
-                                    $status_text = 'Partial Return';
-                                    break;
-                                default:
-                                    $status_text = 'Unknown';
-                                    break;
-                            }
-                            echo "<td>{$status_text}</td>";
-                            echo "</tr>";
-                    
-                            // Only include rows with status other than 5 in the calculation
-                            // if ($row['status'] == 3 || $row['status'] == 4) {
-                            if ($row['status'] == 3 || $row['status'] == 4) {
-                                // Calculate totalSellingPrice and totalCostPrice
-                                $comSellingPrice += $row['input_srp'] * $row['qty_added'];
-                                $qty_added = $row['qty_added'];
-                            }
-                        }
-                    } else {
-                        echo "0 results";
-                    }
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $material_invoice_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                if ($row['status'] == 3) {
+                    echo "<td><input type='checkbox' name='product_checkbox[]' value='{$row['product_id']}' style='max-width: 50px; height: 50px'></td>";
+                } else {
+                    echo "<td></td>"; // Empty cell if status is 4, 5, or 6
+                }
+                echo "<input type='hidden' name='product_id[]' value='{$row['product_id']}'>";
+                echo "<td><img src='{$row['image']}' alt='Product Image' style='max-width: 50px; height: 50px'></td>";
+                echo "<td>{$row['name']}</td>";
+                echo "<td>{$row['models']}</td>";
+                echo "<td>{$row['code']}</td>";
+                echo "<td>{$row['input_srp']}</td>";
+                echo "<td>{$row['qty_added']}</td>";
+                $status_text = '';
+                switch ($row['status']) {
+                    case 1:
+                        $status_text = 'Pending';
+                        break;
+                    case 2:
+                        $status_text = 'Reviewed';
+                        break;
+                    case 3:
+                        $status_text = 'Approved';
+                        break;
+                    case 4:
+                        $status_text = 'Received';
+                        break;
+                    case 5:
+                        $status_text = 'Return';
+                        break;
+                    case 6:
+                        $status_text = 'Partial Return';
+                        break;
+                    default:
+                        $status_text = 'Unknown';
+                        break;
+                }
+                echo "<td>{$status_text}</td>";
+                echo "</tr>";
 
+                // Only include rows with status other than 5 in the calculation
+                // if ($row['status'] == 3 || $row['status'] == 4) {
+                if ($row['status'] == 3 || $row['status'] == 4) {
+                    // Calculate totalSellingPrice and totalCostPrice
+                    $comSellingPrice += $row['input_srp'] * $row['qty_added'];
+                    $qty_added = $row['qty_added'];
+                }
+            }
+        } else {
+            echo "0 results";
+        }
+    ?>
+    </tbody>
+</table>
 
-                // Calculate total gross profit
-           
-                ?>
-            </tbody>
-        </table>
     </div>
 
         <div>

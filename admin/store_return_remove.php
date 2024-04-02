@@ -128,24 +128,29 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
             </thead>
             <tbody>
             <?php 
-                $comSellingPrice = 0;
+                    
+                    $comSellingPrice = 0;
                     $material_invoice_id = $material_transaction; // replace with your material_invoice_id
-
+                    
                     $sql = "SELECT mt.product_id, mt.input_srp, mt.qty_added, mt.created_at, mt.status, p.name, p.models, p.code, p.image
                                 FROM material_transaction mt
                                 JOIN product p ON mt.product_id = p.id
-                                WHERE material_invoice_id = ? AND status = 5 || status = 6";
+                                WHERE material_invoice_id = ? AND (status = 5 OR status = 6)";
                                 
                     $stmt = $conn->prepare($sql);
                     $stmt->bind_param("s", $material_invoice_id);
                     $stmt->execute();
                     $result = $stmt->get_result();
-                    
+                                        
                     if ($result->num_rows > 0) {
                         // output data of each row
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
-                            echo "<td><input type='checkbox' name='product_checkbox[]' value='{$row['product_id']}' style='max-width: 50px; height: 50px'></td>";
+                            if ($row['status'] == 5) {
+                                echo "<td><input type='checkbox' name='product_checkbox[]' value='{$row['product_id']}' style='max-width: 50px; height: 50px'></td>";
+                            } else {
+                                echo "<td></td>"; // Empty cell if status is 4, 5, or 6
+                            }
                             echo "<input type='hidden' name='product_id[]' value='{$row['product_id']}'>";
                             echo "<td><img src='{$row['image']}' alt='Product Image' style='max-width: 50px; height: 50px'></td>";
                             echo "<td>{$row['name']}</td>";
@@ -172,7 +177,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                                     break;
                                 case 6:
                                     $status_text = 'Partial Return';
-                                     break;
+                                    break;
                                 default:
                                     $status_text = 'Unknown';
                                     break;
@@ -182,7 +187,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                     
                             // Only include rows with status other than 5 in the calculation
                             // if ($row['status'] == 3 || $row['status'] == 4) {
-                            if ($row['status'] == 5) {
+                            if ($row['status'] == 5 || $row['status'] == 6) {
                                 // Calculate totalSellingPrice and totalCostPrice
                                 $comSellingPrice += $row['input_srp'] * $row['qty_added'];
                                 $qty_added = $row['qty_added'];
@@ -256,7 +261,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                     $('input[name="product_checkbox[]"]:checked').each(function() {
                         var closestRow = $(this).closest('tr');
                         var productId = closestRow.find('input[name="product_id[]"]').val();
-                        var qtyRequested = parseInt(closestRow.find('td:eq(6)').attr('data-quantity-requested'));
+                        var qtytotal = parseInt(closestRow.find('td:eq(6)').attr('data-quantity-requested'));
                         var status = closestRow.find('td:eq(7)').text().trim();
                         var inputId = 'quantityInput_' + closestRow.attr('data-row-index');
                         var qtySent = $('#' + inputId).val(); // Retrieve input value
@@ -273,6 +278,8 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                                 method: 'POST',
                                 data: {
                                     productId: productId,
+                                    qty_total: qtytotal,
+                                    user_brn_code: user_brn_code,
                                     qty_sent: qtySent,
                                     input_id: inputId,
                                     materialInvoiceID: materialInvoiceNo,
