@@ -76,7 +76,10 @@ body, html {
   <div class="bar6"></div>
 </div>
 
-<!-- Your PHP code goes here -->
+<?php
+// Include your PHP code here
+// include("store_stocks_add.php");
+?>
 
 </body>
 </html>

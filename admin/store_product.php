@@ -52,6 +52,37 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
 
 ?>
 
+<?php
+$invoice_id = $_GET['material_transaction'];
+$material_transfer_sql = "SELECT * FROM material_transfer WHERE material_invoice = '$invoice_id' LIMIT 1";
+$material_transfer_res = $conn->query($material_transfer_sql);
+if($material_transfer_res -> num_rows > 0){
+    $row=$material_transfer_res->fetch_assoc();
+    $material_date = $row['material_date'];
+    $material_cashier = $row['material_cashier'];
+    $material_received_by = $row['material_recieved_by'];
+    $material_inspected_by = $row['material_inspected_by'];
+    $material_verified_by = $row['material_verified_by'];
+    $total_selling_price = $row['totalSellingPrice'];
+
+    $check_status_sql = "SELECT status FROM material_transaction WHERE material_invoice_id = '$invoice_id' AND (status = '1' OR status='2')";
+    $check_status_res = $conn->query($check_status_sql);
+    if($check_status_res->num_rows> 0 ){
+        $status = '<span class="text-primary">Pending</span>';
+        $footer = "pending";
+    } else {
+        $check_verified_status = "SELECT status FROM material_transaction WHERE material_invoice_id = '$invoice_id' AND status = '3'";
+        $check_verified_status_res = $conn->query($check_verified_status);
+        if($check_verified_status_res -> num_rows > 0){
+            $status = '<span class="text-success">Verified</span>';
+            $footer = "verified";
+        } else {
+            $status = '<span class="text-success">Transaction Complete</span>';
+            $footer="complete";
+        }
+    }
+}
+?>
     
 
 <div style="width: 100%" class="content p-3">
@@ -76,6 +107,11 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                             echo "<h4>Date: ".$row['material_date']."</h4>";
                             ?>
                         </div>
+                        <div class="col-lg-3" id="status_refresh">
+                                    <div class="row">
+                                        <?php echo $status;?>
+                                    </div>
+                                </div>
                         <input type="hidden" id="sessionID" value="<?php echo $user_id; ?>">
                         <input type="hidden" id="material_invoice" value="<?php echo $material_invoice; ?>">
                         <input type="hidden" id="user_brn_code" value="<?php echo $branch_code; ?>">
@@ -168,7 +204,10 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                                     $status_text = 'Received';
                                     break;
                                 case 5:
-                                    $status_text = 'Declined';
+                                    $status_text = 'Return';
+                                    break;
+                                case 6:
+                                    $status_text = 'Partial Return';
                                     break;
                                 default:
                                     $status_text = 'Unknown';
@@ -201,12 +240,12 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-3 mb-4">
                     <div>
                         <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-                            <h4 class="">Total Selling Price ₱<?php echo number_format($comSellingPrice, 2); ?></h4>
+                            <h4 class="">Total Product Amount ₱<?php echo number_format($comSellingPrice, 2); ?></h4>
                         </div>
                     </div>
                     <div style="width: 30%">
                         <button type="button" id="acceptMaterialTransfer" class="btn w-100 btn-primary mb-2">Accept</button>
-                        <button type="button" id="returnMaterialTransfer" class="btn w-100 btn-outline-primary mb-2">Return</button>
+                        <button type="button" id="returnMaterialTransfer" class="btn w-100 btn-outline-primary mb-2">Request Return</button>
                     </div>
                 </div> 
             </div>
@@ -349,7 +388,7 @@ $(document).ready(function () {
                     if (status === 'Approved') {
                         // Only update product stocks if status is 'Approved'
                         $.ajax({
-                            url: '../php/return_product_stocks.php',
+                            url: '../php/return_product_stocks_status.php',
                             method: 'POST',
                             data: {
                                         productId: productId,

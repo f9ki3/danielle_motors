@@ -84,8 +84,8 @@
                                 <input type="text" class="form-control" placeholder="Material Invoice" style="width: 49%" id="materialInvoiceNo" value="" readonly>
                                     <input type="date" class="form-control" placeholder="Date" style="width: 49%" id="materialDate">
                                 </div>
-                               
 
+                                
                                 <div style="display: flex; flex-direction: row; justify-content: space-between" >
                                 <input type="text" class="form-control mb-2" aria-label="Default select example" placeholder="Cashier Name" style="width: 49%" id="cashierName" readonly required value="<?php echo $fname . ' ' . $lname; ?>">
                                 <input type="hidden" id="sessionID" value="<?php echo $id; ?>">
@@ -109,7 +109,7 @@
                             <div class="border rounded p-4">
                                 <h3 class="fw-bolder">Summary</h3><hr>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-                                    <h5 class="">Total Selling Price</h5>
+                                    <h5 class="">Total Product Amount</h5>
                                     <h5 class="" id="SellingPrice">₱0.00</h5>
                                 </div>
                                 <!-- <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
@@ -158,11 +158,18 @@ function showLoading() {
     document.getElementById('loading').style.display = 'block';
 }
 
-// Function to hide the loader
-function hideLoading() {
-    // Hide the loading animation
+  // Function to stop the loader after a specified time (in milliseconds)
+  function stopLoader() {
+    // Hide the loader element
     document.getElementById('loading').style.display = 'none';
-}
+  }
+
+    // Call the stopLoader function when the page finishes loading
+    window.onload = function() {
+    stopLoader();
+  };
+  // Call the stopLoader function after 3000 milliseconds (3 seconds)
+  setTimeout(stopLoader, 1000); // Adjust the time as needed
 
 
 // Add event listener for the 'input' event on the select_product input
@@ -181,7 +188,7 @@ document.getElementById('select_product').addEventListener('change', function() 
     xhrSrp.onreadystatechange = function() {
         if (xhrSrp.readyState === XMLHttpRequest.DONE) {
             // Hide loading animation when the response is received
-            hideLoading();
+            stopLoader();
 
             if (xhrSrp.status === 200) {
                 // Parse the JSON response
@@ -203,7 +210,7 @@ document.getElementById('select_product').addEventListener('change', function() 
     xhrMaxQty.onreadystatechange = function() {
         if (xhrMaxQty.readyState === XMLHttpRequest.DONE) {
             // Hide loading animation when the response is received
-            hideLoading();
+            stopLoader();
 
             if (xhrMaxQty.status === 200) {
                 // Parse the JSON response
