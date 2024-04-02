@@ -88,6 +88,11 @@ if($logoText_result -> num_rows > 0){
                         </a><!-- more inner pages-->
                       </li>
 
+                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier"){ echo "active"; } else { echo "";}?>" href="../Purchased-Order-Supplier/" data-bs-toggle="" aria-expanded="false">
+                          <div class="d-flex align-items-center"><span class="far fa-clipboard"></span><span class="nav-link-text">Purchase Order Supplier</span></div>
+                        </a>
+                      </li> 
+
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Delivery_Reciept"){ echo "active"; } else { echo "";}?>" href="../Delivery_Reciept/" data-bs-toggle="" aria-expanded="false">
                           <div class="d-flex align-items-center"><span class="fas fa-receipt"></span><span class="nav-link-text">Delivery Receipt List</span></div>
                         </a><!-- more inner pages-->
