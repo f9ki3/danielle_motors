@@ -41,15 +41,17 @@ if($material_transfer_res -> num_rows > 0){
 <div class="row fs--1 mb">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-body">
-                <form action="../../PHP - process_files/material_transfer_verification.php" method="POST">
+            <div class="card-body" id="to_refresh">
+                <form id="material_transaction_form" action="../../PHP - process_files/material_transfer_verification.php" method="POST">
                     <div class="row">
                         <div class="col-lg-6 text-start">
                             <h6>Material Invoice : <b><?php echo $invoice_id; ?></b></h6>
                             <input type="text" name="invoice_id" value="<?php echo $invoice_id;?>" hidden>
                         </div>
-                        <div class="col-lg-3">
-                            <h6>Status : <?php echo $status;?></h6>
+                        <div class="col-lg-3" id="status_refresh">
+                            <div class="row">
+                                <?php echo $status;?>
+                            </div>
                         </div>
                         <div class="col-lg-3 text-end">
                             <button class="btn btn-outline-secondary">Print</button>
@@ -74,8 +76,36 @@ if($material_transfer_res -> num_rows > 0){
                                         <tr>
                                             <td><?php echo $material_cashier;?></td>
                                             <td><?php echo $material_received_by;?></td>
-                                            <td><input name="inspected_by" type="text" class="form-control" value="1" hidden><?php echo $material_inspected_by; ?></td>
-                                            <td><input name="verified_by" type="text" class="form-control" value="1" hidden><?php echo $material_verified_by; ?></td>
+                                            <td>
+                                                <?php 
+                                                if(empty($material_inspected_by)){
+                                                    echo '<select class="form-select mb-2" aria-label="Default select example" style="width: 33%" name="inspected_by" id="inspectedBy">
+                                                    </select>';
+                                                } else {
+                                                    $inspector_sql = "SELECT user_fname, user_lname FROM user WHERE id='$material_inspected_by' LIMIT 1";
+                                                    $inspector_res = $conn->query($inspector_sql);
+                                                    if($inspector_res->num_rows>0){
+                                                        $row=$inspector_res->fetch_assoc();
+                                                        echo $row['user_fname'] . " " . $row['user_lname'];
+                                                    }
+                                                }
+                                                ?>
+                                                
+                                            </td>
+                                            <td>
+                                                <?php 
+                                                if(empty($material_verified_by)){
+                                                    echo '<input name="verified_by" type="text" class="form-control" value="' . $id . '" hidden>';
+                                                } else {
+                                                    $verifier_sql = "SELECT user_fname, user_lname FROM user WHERE id='$material_verified_by' LIMIT 1";
+                                                    $verifier_res = $conn->query($verifier_sql);
+                                                    if($verifier_res->num_rows>0){
+                                                        $row=$verifier_res->fetch_assoc();
+                                                        echo $row['user_fname'] . " " . $row['user_lname'];
+                                                    }
+                                                }
+                                                ?>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -94,7 +124,6 @@ if($material_transfer_res -> num_rows > 0){
                                             <th>SRP</th>
                                             <th>Requested QTY</th>
                                             <th>Status</th></th>
-                                            <th>WH Location</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -139,10 +168,9 @@ if($material_transfer_res -> num_rows > 0){
                                             <td><?php echo $product_name;?></td>
                                             <td><?php echo $models;?></td>
                                             <td><?php echo $product_code;?></td>
-                                            <td class="text-end"><?php echo $input_srp;?></td>
+                                            <td class="text-end"><?php echo number_format($input_srp, 2);?></td>
                                             <td class="text-end"><?php echo $qty_added;?></td>
-                                            <td class="text-end"><?php echo $product_status;?></td>
-                                            <td class="text-end"><?php echo $wh_location;?></td>
+                                            <td class="text-start ps-2 status_refresh"><?php echo $product_status;?></td>
                                             <input type="text" name="qty_sent[]" value="<?php echo $qty_added; ?>" hidden>
                                             <input type="text" name="transaction_id[]" value="<?php echo $transaction_id;?>" hidden>
                                         </tr>
@@ -157,7 +185,7 @@ if($material_transfer_res -> num_rows > 0){
                     </div>
                     <div class="row">
                         <div class="col-lg-9">
-                            <h6 class="mb-1">Total Selling Price:  ₱<span> <?php echo $total_selling_price;?></span></h6>
+                            <h6 class="mb-1">Total Selling Price:  ₱<span> <?php echo number_format($total_selling_price, 2);?></span></h6>
                         </div>
                         <?php 
                         if($footer === "pending"){
@@ -168,8 +196,8 @@ if($material_transfer_res -> num_rows > 0){
                                 <input class="form-check-input" id="flexCheckDefault" type="checkbox" value="" required/>
                                 <label class="form-check-label" for="flexCheckDefault">As I approve this transaction, I hereby confirm that I inspected the items before they left the warehouse.</label>
                                 </div>
-                                <button type="submit" class="btn btn-primary col-12 mb-2">Approve</button>
-                                <button class="btn btn-secondary col-12">Decline</button>
+                                <button type="submit" id="material_transaction_form_button" class="btn btn-primary col-12 mb-2">Verify</button>
+                                <!-- <button class="btn btn-secondary col-12">Decline</button> -->
                             </div>
                             
                         </div>
@@ -183,3 +211,12 @@ if($material_transfer_res -> num_rows > 0){
     </div>
 </div>
 
+<div class="modal fade" id="verticallyCentered" tabindex="-1" aria-labelledby="verticallyCenteredModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content bg-transparent">
+        <div class="modal-body text-center">
+            <div class="spinner-border" role="status" ><span class="visually-hidden">Loading...</span></div>
+        </div>
+    </div>
+  </div>
+</div>

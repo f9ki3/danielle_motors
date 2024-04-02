@@ -35,13 +35,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Example:
         if ($conn->query($sql) === TRUE) {
-            echo "Record updated successfully";
+            echo "success";
             
         } else {
             echo "Error updating record: " . $conn->error;
+            // header("Location: ../Inventory/Material_transaction/transaction=$invoice_id");
+            $conn->close();
+            exit();
         }
     }
-
+    // header("Location: ../Inventory/Material_transaction/transaction=$invoice_id");
     $conn->close();
     exit();
 
