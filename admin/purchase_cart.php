@@ -157,7 +157,7 @@
 
                                 <div style="display: flex; flex-direction: row; justify-content: space-between" >
                                     <div class="form-floating" style="width: 49%;">
-                                        <input type="text" id="subtotal_discount_percentage" class="form-control" placeholder="" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); if(parseFloat(this.value) < 0) this.value = 0;" maxlength="3">
+                                        <input type="text" id="subtotal_discount_percentage" class="form-control" placeholder="" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); if(parseFloat(this.value) < 0) this.value = 0;" maxlength="3" value="0">
                                         <label for="subtotal_discount_percentage">Subtotal Discount (%)</label>
                                     </div>
                                     <div class="form-floating" style="width: 49%;">
