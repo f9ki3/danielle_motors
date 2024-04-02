@@ -34,7 +34,7 @@ if(isset($_POST['productId'], $_POST['qty_sent'], $_POST['materialInvoiceID'])) 
                 echo "New row inserted into stocks table!";
                 
                 // Update the material_transaction status
-                $updateStatusSql = "UPDATE material_transaction SET status = 5 WHERE product_id = ? AND material_invoice_id = ?";
+                $updateStatusSql = "UPDATE material_transaction SET status = 6 WHERE product_id = ? AND material_invoice_id = ?";
                 $stmt2 = mysqli_prepare($conn, $updateStatusSql);
                 mysqli_stmt_bind_param($stmt2, "is", $product_id, $materialInvoiceID);
                 
@@ -67,7 +67,7 @@ if(isset($_POST['productId'], $_POST['qty_sent'], $_POST['materialInvoiceID'])) 
             echo "Product stocks updated successfully!";
             
             // Update the material_transaction status
-            $updateStatusSql = "UPDATE material_transaction SET status = 5 WHERE product_id = ? AND material_invoice_id = ?";
+            $updateStatusSql = "UPDATE material_transaction SET status = 6 WHERE product_id = ? AND material_invoice_id = ?";
             $stmt2 = mysqli_prepare($conn, $updateStatusSql);
             mysqli_stmt_bind_param($stmt2, "is", $product_id, $materialInvoiceID);
             
