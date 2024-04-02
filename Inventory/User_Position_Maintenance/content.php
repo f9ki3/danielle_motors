@@ -1,7 +1,7 @@
 <div class="mb-9">
   <div class="row g-3 mb-4">
     <div class="col-auto">
-      <h2 class="mb-0">Branches</h2>
+      <h2 class="mb-0">Employee Positions</h2>
     </div>
   </div>
 
@@ -20,7 +20,7 @@
             <span class="fa-solid fa-file-export fs--1 me-2"></span>Export
           </button>
           <a class="btn btn-primary" id="addBtn" href="../Add_branch/">
-            <span class="fas fa-plus me-2"></span>Add branch
+            <span class="fas fa-plus me-2"></span>Add position
           </a>
         </div>
       </div>
@@ -31,22 +31,20 @@
         <table class="table fs--1 mb-0">
           <thead>
             <tr>
-              <th class="white-space-nowrap fs--1 align-middle ps-0" style="max-width:20px; width:18px;" rowspan="2">
+              <th class="white-space-nowrap fs--1 align-middle ps-0" style="max-width:20px; width:18px;">
                 <div class="form-check mb-0 fs-0">
                   <input class="form-check-input" id="checkbox-bulk-products-select" type="checkbox" data-bulk-select='{"body":"products-table-body"}' />
                 </div>
               </th>
-              <th class="sort" scope="col" data-sort="branch_name" rowspan="2">POSITION NAME</th>
-              <th class="sort" scope="col" data-sort="status">STATUS</th>
-              <th class="sort" scope="col" data-sort="address">ADDRESS</th>
-              <th class="sort" scope="col" data-sort="telephone">TELEPHONE</th>
-              <!-- <th class="sort" scope="col" data-sort="phone">PHONE</th> -->
-              <th class="sort" scope="col" data-sort="email">EMAIL</th>
-              <th class="sort" scope="col"></th>
+              <th class="sort" scope="col" data-sort="branch_name">POSITION NAME</th>
+              <th class="sort text-start" scope="col" data-sort="status">STATUS</th>
+              <th class="sort text-center" scope="col" data-sort="address">INVENTORY</th>
+              <th class="sort text-center" scope="col" data-sort="address">SALES</th>
             </tr>
           </thead>
 
           <tbody class="list" id="products-table-body">
+            <?php include "tr.php";?>
           </tbody>
         </table>
       </div>
