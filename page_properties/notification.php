@@ -3,7 +3,7 @@ include "../database/database.php";
 
 $notification_sql = "SELECT notification.*, user.user_fname, user.user_lname, user.user_img AS profile_photo 
                      FROM notification 
-                     LEFT JOIN user ON notification.sessionID = user.id";
+                     LEFT JOIN user ON notification.sessionID = user.id ORDER BY notification.id DESC";
 $notification_res = $conn->query($notification_sql);
 
 // Array to store grouped notifications
@@ -15,10 +15,12 @@ if ($notification_res->num_rows < 0) {
     </div>';
 } else {
     while ($row = $notification_res->fetch_assoc()) {
+        $notif_id = $row['id'];
         $id_of_ewan = $row['type_id'];
         $document_type = $row['type'];
         $sender = $row['sender'];
         $message = $row['message'];
+        $notif_status = $row['status'];
         if ($row['status'] == 0) { 
             $status = "unread"; 
         } else { 
@@ -44,7 +46,9 @@ if ($notification_res->num_rows < 0) {
                 'sender_name' => $sender_name,
                 'message' => $message,
                 'date' => $date,
-                'profile_photo' => $profile_photo
+                'profile_photo' => $profile_photo,
+                'notif_status' => $notif_status,
+                'type_id' => $id_of_ewan
             );
         }
     }
@@ -53,9 +57,9 @@ if ($notification_res->num_rows < 0) {
     foreach ($grouped_notifications as $group) {
         // Define the href based on the count of notifications
         if ($group['count'] > 1) {
-            $href = "../" . $group['document_type'] . ".php";
+            $href = "../../PHP - process_files/notif_controller.php?status=" . $group['notif_status'] ."&&doc=" . $group['document_type'] . "";
         } else {
-            $href = "../" . $group['document_type'] . "/?id=" . $id_of_ewan;
+            $href = "../../PHP - process_files/notif_controller.php?status=" . $group['notif_status'] . "&&doc=" . $group['document_type'] . "&&doc_id=" . $group['type_id'];
         }
 
         echo '<div class="px-2 px-sm-3 py-3 border-300 notification-card position-relative ' . $group['status'] . ' border-bottom">';

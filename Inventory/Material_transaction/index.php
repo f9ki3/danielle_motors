@@ -1,5 +1,5 @@
 <?php
-session_start();
+include "../../admin/session.php";
 include "../../database/database.php";
 date_default_timezone_set('Asia/Manila');
 if(isset($_GET['transaction'])){
@@ -49,6 +49,84 @@ if(isset($_GET['transaction'])){
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
+    <script>
+      $(document).ready(function(){
+        $('#material_transaction_form').submit(function(e){
+            e.preventDefault(); // Prevent default form submission
+
+            // Serialize form data
+            var formData = $(this).serialize();
+
+            // AJAX request
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: formData,
+                beforeSend: function(){
+                    // Show modal before AJAX request is sent
+                    $('#verticallyCentered').modal('show');
+                },
+                success: function(response){
+                    // Hide modal when AJAX request is successful
+                    $('#verticallyCentered').modal('hide');
+                    
+                    // Refresh content of #to_refresh
+                    $('#to_refresh').load(window.location.href + ' #to_refresh');
+                },
+                error: function(){
+                    // Hide modal on error
+                    $('#verticallyCentered').modal('hide');
+                    alert('An error occurred. Please try again.');
+                }
+            });
+        });
+    });
+
+    
+
+    </script>
+    <script>
+      $(document).ready(function () {
+  
+        function fetchAdminData(selectElementId, role) {
+            $.ajax({
+                url: '../../php/fetch_admin_data.php', // Your server-side script to fetch admin data
+                method: 'GET',
+                data: { role: role }, // Optional: send role if needed
+                dataType: 'json',
+                success: function (data) {
+                    // Populate the dropdown options
+                    var selectElement = $('#' + selectElementId);
+                    selectElement.empty();
+                    selectElement.append('<option selected>Select ' + role + '</option>');
+                    $.each(data, function (index, admin) {
+                        selectElement.append('<option value="' + admin.id + '">' + admin.user_fname + ' ' + admin.user_lname + ' ' + admin.user_position +'</option>');
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error fetching admin data:', error);
+                }
+            });
+        }
+
+        // Fetch data for receivedBy dropdown
+        
+        // fetchAdminData('receivedBy', 'Recieved By');
+        
+      //   // Fetch data for inspectedBy dropdown
+        fetchAdminData('inspectedBy', 'Inspected by');
+
+      //   // Fetch data for verifiedBy dropdown
+      //   fetchAdminData('verifiedBy', 'Verified By');
+      });
+
+      function fetchAdminData(adminId, adminData) {
+          var admin = adminData.find(function (admin) {
+              return admin.id == adminId;
+          });
+          return admin ? admin.user_fname + ' ' + admin.user_lname + ' ' + admin.user_position: '';
+      }
+    </script>
   </body>
 
 
