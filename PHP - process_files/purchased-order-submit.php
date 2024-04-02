@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             
         }
-            echo "tangina";
+            echo "Successful! UI ASAP";
             $conn->close();
             exit();
     }else {
