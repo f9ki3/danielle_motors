@@ -80,7 +80,7 @@ if(isset($_GET['telnum'])){
             </div>
             <div class="col-sm-6 col-md-6">
             <div class="flatpickr-input-container">
-                <div class="form-floating"><input class="form-control" name="email" id="email" type="text" placeholder="Project title" value="<?php echo $email;?>" required /><label for="floatingInputGrid">Branch Email</label></div>
+                <div class="form-floating"><input class="form-control" name="email" id="email" type="email" placeholder="Project title" value="<?php echo $email;?>" required /><label for="floatingInputGrid">Branch Email</label></div>
             </div>
             </div>
             <div class="col-sm-6 col-md-6">

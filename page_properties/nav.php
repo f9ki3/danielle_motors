@@ -119,16 +119,25 @@ if($logoText_result -> num_rows > 0){
                           <div class="d-flex align-items-center"><span data-feather="image"></span><span class="nav-link-text">Logo </span></span></div>
                         </a><!-- more inner pages-->
                       </li>
-
+                      <?php 
+                      if(strpos($session_permission, 'CATEGORY MAINTENANCE') !== false) {
+                      ?>
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Category_Maintenance"){ echo "active"; }?>" href="../Category_Maintenance/" data-bs-toggle="" aria-expanded="false">
                           <div class="d-flex align-items-center"><span class="fas fa-clipboard-list"></span><span class="nav-link-text">Maintenance Category</span></div>
                         </a><!-- more inner pages-->
                       </li>
+                      <?php 
+                      } 
+                      if(strpos($session_permission, 'BRAND MAINTENANCE') !== false) {
+                      ?>
 
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Brand_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Brand_Maintenance/" data-bs-toggle="" aria-expanded="false">
                           <div class="d-flex align-items-center"><span class="fas fa-file-alt"></span><span class="nav-link-text">Maintenance Brand</span></div>
                         </a><!-- more inner pages-->
                       </li>
+                      <?php 
+                      }
+                      ?>
 
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Model_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Model_Maintenance/" data-bs-toggle="" aria-expanded="false">
                           <div class="d-flex align-items-center"><span class="fas fa-list-ul"></span><span class="nav-link-text">Maintenance Model</span></div>

@@ -57,7 +57,29 @@ if(isset($_POST['uname'], $_POST['pass'])) {
         $_SESSION['user_postalcode'] = $row['user_postalcode'];
         $_SESSION['user_account_type'] = $row['user_account_type'];
         $_SESSION['user_brn_code'] = $row['user_brn_code'];
+        // ------ inadd ko to pre --azul -- pacheck na lang if magkaconflict
+        //azul to fyke may tinatry lang
+        $permission_sql = "SELECT permission_name FROM `groups` WHERE position_name = ?";
+        $permission_stmt = $conn->prepare($permission_sql);
 
+        if ($permission_stmt === false) {
+            // Handle error, perhaps by logging it or showing a message to the user
+            die('Error: ' . htmlspecialchars($conn->error));
+        }
+    
+        $permission_stmt->bind_param("s", $row['user_position']);
+        // Execute the statement
+        $permission_stmt->execute();
+
+        // Get the result
+        $permission_result = $permission_stmt->get_result();
+
+        // Check if a row was returned
+        if ($permission_result->num_rows > 0) {
+            $row = $permission_result->fetch_assoc();
+            $_SESSION['user_permissions'] = $row['permission_name'];
+        }
+        // ------ inadd ko to pre --azul -- pacheck na lang if magkaconflict
         // Respond with '1' to indicate successful login
         echo '1';
     } else {
