@@ -86,6 +86,7 @@
                                 <th scope="col" width="10%"> Model</th> 
                                 <th scope="col" width="10%">Brand</th>
                                 <th scope="col" width="5%">SRP</th>
+                                <th scope="col" width="5%">Stocks</th>
                                 <th scope="col" width="5%">Unit</th>
                                 <th scope="col" width="5%" class="text-center">Action</th>
                                 </tr>

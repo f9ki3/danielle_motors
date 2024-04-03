@@ -46,20 +46,7 @@
                         <h5 class="fw-bolder ">Cart List</h5>
                         <!-- <input class="form-control form-control-sm" id="searchInput" placeholder="Search by Product Name"> -->
                     </div>
-                    <!-- <div style="display: flex; flex-direction: row">
-                        <select id="brandSelect"  class="form-select form-select-sm " aria-label="Default select example" style="width:100%">
-                            <option selected>Select Brand</option>
-                             <?php foreach ($brands as $brand): ?>
-                            <option value="<?php echo $brand['id']; ?>"><?php echo $brand['brand_name']; ?></option>
-                             <?php endforeach; ?>
-                        </select>
-                        <select id="categorySelect"  class="form-select form-select-sm " aria-label="Default select example" style="width: 100%">
-                            <option selected>Select Category</option>
-                             <?php foreach ($categories as $category): ?>
-                            <option value="<?php echo $category['id']; ?>"><?php echo $category['category_name']; ?></option>
-                             <?php endforeach; ?>
-                        </select>
-                    </div> -->
+
                     <div class="button-container">
                         <a href="purchase" class="btn border  btn-sm me-5 rounded">Purchase</a>
                         <div class="badge-container">
@@ -79,6 +66,7 @@
                                 <th scope="col" width="10%">Model</th>
                                 <th scope="col" width="10%">Brand</th>
                                 <th scope="col" width="10%"> Price</th>
+                                <th scope="col" width="10%"> Stocks</th>
                                 <th scope="col" width="5%"> Unit</th>
                                 <th scope="col" width="10%">QTY</th>
                                 <th scope="col" width="10%">Discount</th>

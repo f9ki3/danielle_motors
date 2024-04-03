@@ -19,7 +19,8 @@ document.addEventListener("DOMContentLoaded", function() {
             unit: product.unit_name,
             srp: product.srp,
             qty: 1, // Default quantity
-            discount: 0 // Default discount
+            discount: 0, // Default discount
+            markup: 0 // Default discount
         };
 
         // Retrieve existing cart items from session storage

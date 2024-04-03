@@ -1,3 +1,24 @@
+function validateInput(index, inputValue) {
+    // Assuming you have an array of items with 'total_stocks' property
+    var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+    var item = cartItems[index];
+
+    // Parse the input value as a float
+    var enteredValue = parseFloat(inputValue);
+
+    // Check if the entered value exceeds the available stock
+    if (enteredValue > item.total_stocks) {
+        // Display an error message or prevent further processing
+        console.error('Entered value exceeds available stock for item: ' + item.name);
+        // Optionally, you can reset the input value to the available stock
+        // document.getElementById('your_input_id').value = item.total_stocks;
+    } else {
+        // Proceed with other logic (e.g., updating discounts)
+        updateDiscount(index, inputValue);
+    }
+}
+
+
 function purchase() {
     document.getElementById("purchase_btn").style.display = "none";
     document.getElementById("loading").style.display = "block";
@@ -381,6 +402,7 @@ function renderCartItems() {
             <td scope="row">${item.model}</td>
             <td>${item.brand}</td>
             <td> ₱ ${item.srp}</td>
+            <td> ${item.total_stocks}</td>
             <td>${item.unit}</td>
             <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
@@ -391,7 +413,7 @@ function renderCartItems() {
             </td>
             <td>
                 <div class="input-group">
-                    <input type="text" class="form-control text-center w-25" value="${discountValue}" placeholder="" onchange="updateDiscount(${index}, this.value)" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); if(parseFloat(this.value) < 0) this.value = 0;" maxlength="7">
+                    <input type="text" class="form-control text-center w-25"  value="${discountValue}" placeholder="" onchange="updateDiscount(${index}, this.value)" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); if(parseFloat(this.value) < 0) this.value = 0;" maxlength="7">
                     <select class="form-select" style="width: auto;" aria-label="Default select example" onchange="updateDiscountType(${index}, this.value)">
                         <option ${item.discountType === "." ? "selected" : ""}>₱</option>
                         <option ${item.discountType === "%" ? "selected" : ""}>%</option>

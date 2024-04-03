@@ -81,8 +81,8 @@
                                 <th scope="col" width="10%"> Price</th>
                                 <th scope="col" width="5%"> Unit</th>
                                 <th scope="col" width="10%">QTY</th>
-                                <th scope="col" width="10%">Selling Price</th>
                                 <th scope="col" width="10%">Markup</th>
+                                <th scope="col" width="10%">Discount</th>
                                 <th scope="col" width="10%">Amount</th>
                                 <th scope="col" width="5%">Action</th>
                                 </tr>

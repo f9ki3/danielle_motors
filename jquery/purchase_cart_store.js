@@ -389,7 +389,7 @@ function renderCartItems() {
                     <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty + 1})">+</button>
                 </div>
             </td>
-            <td> ₱ ${item.srp}</td>
+            <td><input type="text" class="form-control" value="${item.markup}"></td>
             <td>
                 <div class="input-group">
                     <input type="text" class="form-control text-center w-25" value="${discountValue}" placeholder="" onchange="updateDiscount(${index}, this.value)" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); if(parseFloat(this.value) < 0) this.value = 0;" maxlength="7">
