@@ -5,7 +5,7 @@ date_default_timezone_set('Asia/Manila');
 ?>
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
-
+<?php include "../../admin/header.php" ?>
 <?php include "../../page_properties/header.php" ?>
 
     <!-- <script>
@@ -85,13 +85,13 @@ date_default_timezone_set('Asia/Manila');
                             bsToast.show();
                         } else {
                             // Handle unexpected response
-                            alert("Unexpected response from server");
+                            swal("Error", "Unexpected response from server", "error");
                         }
                     },
                     error: function(xhr, status, error) {
                         // Handle AJAX errors
                         console.error(xhr.responseText);
-                        alert("An error occurred while processing the request.");
+                        swal("Error", "An error occurred while processing the request.", "error")
                     }
                 });
             });
@@ -144,13 +144,13 @@ date_default_timezone_set('Asia/Manila');
                             bsToast_2.show();
                         } else {
                             // Handle unexpected response
-                            alert("Unexpected response from server");
+                            swal("Error", "Unexpected response from server", "error");
                         }
                     },
                     error: function(xhr, status, error) {
                         // Handle AJAX errors
                         console.error(xhr.responseText);
-                        alert("An error occurred while processing the request.");
+                        swal("Error", "An error occurred while processing the request.", "error")
                     }
                 });
             });

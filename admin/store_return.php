@@ -33,7 +33,7 @@ include '../config/config.php';
                     </div>
 
                     <div>
-                    <button id="addStocksBtn" class="btn border btn-sm rounded" data-bs-target="#add_stocks">+ Add Return</button>
+                    <!-- <button id="addStocksBtn" class="btn border btn-sm rounded" data-bs-target="#add_stocks">+ Add Return</button> -->
                         <a href="store_stocks" class="btn btn-primary border btn-sm rounded" >Stocks</a>
                         <a href="store_product_list" class="btn border btn-sm rounded" >Product</a>
                     </div>

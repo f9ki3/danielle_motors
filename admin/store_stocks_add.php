@@ -255,7 +255,7 @@ function addItem() {
 
     // Check if the product is already added to the cart
     if (addedProductIds.includes(productId)) {
-        alert("This product is already added to the cart");
+        swal("Error", "This product is already added to the cart", "error");
         return;
     }
 
@@ -265,13 +265,13 @@ function addItem() {
 
     // Check if any input field is empty or if values are not valid numbers
     if (productName === '' || isNaN(retailPrice) || isNaN(quantity)) {
-        alert("Please fill out all fields with valid numbers");
+        swal("Error", "Please fill out all fields with valid numbers", "error");
         return;
     }
 
     // Check if quantity is negative
     if (quantity < 0) {
-        alert("Negative stocks are not allowed");
+        swal("Error", "Negative stocks are not allowed", "error");
         return;
     }
 
@@ -279,8 +279,8 @@ function addItem() {
     var maxQty = parseInt(qtyInput.getAttribute('max'));
 
     // Check if the entered quantity exceeds the maximum quantity
-    if (quantity > maxQty) {
-        alert("Quantity exceeds maximum available stocks");
+        if (quantity > maxQty) {
+        swal("Error", "Quantity exceeds maximum available stocks", "error");
         return;
     }
 
