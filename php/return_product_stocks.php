@@ -1,7 +1,7 @@
 <?php
 include '../config/config.php';
 
-if(isset($_POST['productId'],$_POST['sessionID'], $_POST['sender'], $_POST['qty_sent'], $_POST['qty_warehouse'], $_POST['user_brn_code'], $_POST['qty_total'], $_POST['materialInvoiceID'])) {
+if(isset($_POST['productId'], $_POST['sessionID'], $_POST['sender'], $_POST['qty_sent'], $_POST['qty_warehouse'], $_POST['user_brn_code'], $_POST['qty_total'], $_POST['materialInvoiceID'], $_POST['message'])) {
     $product_id = intval($_POST['productId']);
     $quantity = intval($_POST['qty_sent']);
     $user_brn_code = mysqli_real_escape_string($conn, $_POST['user_brn_code']);
@@ -10,7 +10,7 @@ if(isset($_POST['productId'],$_POST['sessionID'], $_POST['sender'], $_POST['qty_
     $sessionID = intval($_POST['sessionID']); // Convert to integer
     $sender = mysqli_real_escape_string($conn, $_POST['sender']); // Assuming cashierName is a string
     $qtyWarehouse = intval($_POST['qty_warehouse']);
-
+    $reason = mysqli_real_escape_string($conn, $_POST['message']); // Retrieve reason from the AJAX request
 
     if($product_id <= 0 || $quantity <= 0) {
         echo "Error: Invalid product ID or quantity";
@@ -18,7 +18,7 @@ if(isset($_POST['productId'],$_POST['sessionID'], $_POST['sender'], $_POST['qty_
     }
 
     // Prepare the SQL statement to update stocks
-    $updateSql = "UPDATE stocks SET stocks = stocks + ?,rack_loc_id = 1 WHERE product_id = ? AND branch_code = ?";
+    $updateSql = "UPDATE stocks SET stocks = stocks + ?, rack_loc_id = 1 WHERE product_id = ? AND branch_code = ?";
 
     // Prepare and bind parameters to the statement
     $stmt = mysqli_prepare($conn, $updateSql);
@@ -30,7 +30,7 @@ if(isset($_POST['productId'],$_POST['sessionID'], $_POST['sender'], $_POST['qty_
         if(mysqli_stmt_affected_rows($stmt) == 0) {
             // If no rows were affected, it means there's no existing row with the provided product_id and branch_code
             // Insert a new row into the stocks table
-            $insertSql = "INSERT INTO stocks (product_id, branch_code, stocks,rack_loc_id) VALUES (?, ?, ?,1)";
+            $insertSql = "INSERT INTO stocks (product_id, branch_code, stocks, rack_loc_id) VALUES (?, ?, ?, 1)";
             $insertStmt = mysqli_prepare($conn, $insertSql);
             mysqli_stmt_bind_param($insertStmt, "isi", $product_id, $user_brn_code, $qtyWarehouse);
 
@@ -50,7 +50,7 @@ if(isset($_POST['productId'],$_POST['sessionID'], $_POST['sender'], $_POST['qty_
         // Update the material_transaction status
         $updateStatusSql = "UPDATE material_transaction SET status = 6, qty_receive = ?, qty_warehouse = ? WHERE product_id = ? AND material_invoice_id = ?";
         $stmt2 = mysqli_prepare($conn, $updateStatusSql);
-        mysqli_stmt_bind_param($stmt2, "iiis", $qtyWarehouse,$quantity, $product_id, $materialInvoiceID); // Corrected parameter order
+        mysqli_stmt_bind_param($stmt2, "iiis", $qtyWarehouse, $quantity, $product_id, $materialInvoiceID); // Corrected parameter order
 
         // Execute the status update statement
         if(mysqli_stmt_execute($stmt2)) {
@@ -61,13 +61,12 @@ if(isset($_POST['productId'],$_POST['sessionID'], $_POST['sender'], $_POST['qty_
 
         // Close the status update statement
         mysqli_stmt_close($stmt2);
-        
+
         // Insert into returns table
         $sqlReturns = "INSERT INTO returns (user_id, product_id, reason, branch_code, return_date, qty, status) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, ?, 'status')";
         $stmtReturns = mysqli_prepare($conn, $sqlReturns);
-        $reason = ''; // Replace this with the value of your textbox
-
-        mysqli_stmt_bind_param($stmtReturns, "iissi", $sessionID, $product_id, $reason, $user_brn_code, $quantity);
+        
+        mysqli_stmt_bind_param($stmtReturns, "iissi", $sessionID, $product_id, $reason, $user_brn_code, $quantity); // Bind the reason to the SQL statement
 
         // Execute the returns insert statement
         if (mysqli_stmt_execute($stmtReturns)) {

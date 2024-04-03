@@ -210,9 +210,10 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
         <div>
                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-3 mb-4">
                     <div>
-                        <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-                            <h4 class="">Total Return Amount ₱<?php echo number_format($comReturnPrice, 2); ?></h4>
-                        </div>
+                    <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                        <h4 class="">Total Return Amount ₱<?php echo number_format($comReturnPrice, 2); ?></h4>
+                        <input type="text" id="Reason" class="form-control" placeholder="Enter Reason to return">
+                    </div>
                     </div>
                     <div style="width: 30%">
                         <!-- <button type="button" id="acceptMaterialTransfer" class="btn w-100 btn-primary mb-2">Accept</button> -->
@@ -244,6 +245,7 @@ $(document).ready(function () {
         var materialInvoiceNo = $('#material_invoice').val();
         var sessionID = $('#sessionID').val();
         var cashierName = $('#cashierName').val();
+        var reason = $('#Reason').val(); // Get the value of the "Reason" input field
 
         var comReturnPrice = '<?php echo $comReturnPrice; ?>';
         
@@ -266,7 +268,7 @@ $(document).ready(function () {
                         type_id: materialInvoiceNo,
                         type: 'Material Transaction',
                         sender: cashierName,
-                        message: 'The Store return the Material Transfer'
+                        message: reason
                     },
                     success: function (response) {
                         console.log('Notification sent successfully');
@@ -303,7 +305,8 @@ $(document).ready(function () {
                                         materialInvoiceID: materialInvoiceNo,
                                         sessionID: sessionID,
                                         sender: cashierName,
-                                        status: status
+                                        status: status,
+                                        message: reason
                                     },
                                     success: function (response) {
                                         console.log('Product stocks updated successfully for product ID ' + productId);
