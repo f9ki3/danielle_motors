@@ -19,6 +19,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     $province = $_SESSION['user_province']; // Corrected variable name
     $postal_code = $_SESSION['user_postalcode']; // Corrected variable name
     $branch_code = $_SESSION['user_brn_code']; // Corrected variable name
+    // dinagdag ko to fyke --azul patanggal na lang if magerror
+    $session_permission = $_SESSION['user_permissions'];
     
     // Additional variable for user_id (assuming you need it)
     $user_id = $_SESSION['id'];

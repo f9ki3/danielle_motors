@@ -1,7 +1,7 @@
 <div class="mb-9">
   <div class="row g-3 mb-4">
     <div class="col-auto">
-      <h2 class="mb-0">Employee Positions</h2>
+      <h2 class="mb-0">Permissions</h2>
     </div>
   </div>
 
@@ -19,8 +19,8 @@
           <button class="btn btn-link text-900 me-4 px-0">
             <span class="fa-solid fa-file-export fs--1 me-2"></span>Export
           </button>
-          <button class="btn btn-primary"  type="button" data-bs-toggle="offcanvas" data-bs-target="#add_position" aria-controls="offcanvasRight">
-            <span class="fas fa-plus me-2"></span>Add position
+          <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_permission">
+            <span class="fas fa-plus me-2"></span>Add permission
           </button>
         </div>
       </div>
@@ -37,10 +37,9 @@
                   <input class="form-check-input" id="checkbox-bulk-products-select" type="checkbox" data-bulk-select='{"body":"products-table-body"}' />
                 </div>
               </th>
-              <th class="sort" scope="col" data-sort="branch_name">POSITION NAME</th>
-              <th class="sort text-start" scope="col" data-sort="status">STATUS</th>
-              <th class="sort text-center" scope="col" data-sort="address">INVENTORY</th>
-              <th class="sort text-center" scope="col" data-sort="address">SALES</th>
+              <th class="sort" scope="col" data-sort="branch_name">PERMISSION NAME</th>
+              <th class="sort text-start" scope="col" data-sort="address">PUBLISH BY</th>
+              <th class="sort text-start" scope="col" data-sort="address">DATE</th>
             </tr>
           </thead>
 
