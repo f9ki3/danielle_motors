@@ -149,91 +149,94 @@ if($material_transfer_res -> num_rows > 0){
              
 <div style=" background-color: white;" class="p-3 rounded">
     <div style="height: 40vh; overflow: auto">
-        <table class="table">
-            <thead>
-            <tr> 
-                <th>Checkbox</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Models</th>
-                <th>Code</th>
-                <th>SRP</th>
-                <th>Quantity Request</th>
-                <th>Status</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php 
-                $comSellingPrice = 0;
-                    $material_invoice_id = $material_transaction; // replace with your material_invoice_id
+    <table class="table">
+    <thead>
+        <tr> 
+            <th>Checkbox</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Models</th>
+            <th>Code</th>
+            <th>SRP</th>
+            <th>Quantity Request</th>
+            <th>Quantity Receive</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php 
+        $comSellingPrice = 0;
+        $material_invoice_id = $material_transaction; // replace with your material_invoice_id
 
-                    $sql = "SELECT mt.product_id, mt.input_srp, mt.qty_added, mt.created_at, mt.status, p.name, p.models, p.code, p.image
-                                FROM material_transaction mt
-                                JOIN product p ON mt.product_id = p.id
-                                WHERE material_invoice_id = ?";
-                                
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bind_param("s", $material_invoice_id);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
+        $sql = "SELECT mt.product_id, mt.input_srp, mt.qty_added,mt.qty_receive, mt.created_at, mt.status, p.name, p.models, p.code, p.image
+                    FROM material_transaction mt
+                    JOIN product p ON mt.product_id = p.id
+                    WHERE material_invoice_id = ?";
                     
-                    if ($result->num_rows > 0) {
-                        // output data of each row
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<tr>";
-                            echo "<td><input type='checkbox' name='product_checkbox[]' value='{$row['product_id']}' style='max-width: 50px; height: 50px'></td>";
-                            echo "<input type='hidden' name='product_id[]' value='{$row['product_id']}'>";
-                            echo "<td><img src='{$row['image']}' alt='Product Image' style='max-width: 50px; height: 50px'></td>";
-                            echo "<td>{$row['name']}</td>";
-                            echo "<td>{$row['models']}</td>";
-                            echo "<td>{$row['code']}</td>";
-                            echo "<td>{$row['input_srp']}</td>";
-                            echo "<td>{$row['qty_added']}</td>";
-                            $status_text = '';
-                            switch ($row['status']) {
-                                case 1:
-                                    $status_text = 'Pending';
-                                    break;
-                                case 2:
-                                    $status_text = 'Reviewed';
-                                    break;
-                                case 3:
-                                    $status_text = 'Approved';
-                                    break;
-                                case 4:
-                                    $status_text = 'Received';
-                                    break;
-                                case 5:
-                                    $status_text = 'Return';
-                                    break;
-                                case 6:
-                                    $status_text = 'Partial Return';
-                                    break;
-                                default:
-                                    $status_text = 'Unknown';
-                                    break;
-                            }
-                            echo "<td>{$status_text}</td>";
-                            echo "</tr>";
-                    
-                            // Only include rows with status other than 5 in the calculation
-                            // if ($row['status'] == 3 || $row['status'] == 4) {
-                            if ($row['status'] == 3 || $row['status'] == 4) {
-                                // Calculate totalSellingPrice and totalCostPrice
-                                $comSellingPrice += $row['input_srp'] * $row['qty_added'];
-                                $qty_added = $row['qty_added'];
-                            }
-                        }
-                    } else {
-                        echo "0 results";
-                    }
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $material_invoice_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                if ($row['status'] == 3) {
+                    echo "<td><input type='checkbox' name='product_checkbox[]' value='{$row['product_id']}' style='max-width: 50px; height: 50px'></td>";
+                } else {
+                    echo "<td></td>"; // Empty cell if status is 4, 5, or 6
+                }
+                echo "<input type='hidden' name='product_id[]' value='{$row['product_id']}'>";
+                echo "<td><img src='{$row['image']}' alt='Product Image' style='max-width: 50px; height: 50px'></td>";
+                echo "<td>{$row['name']}</td>";
+                echo "<td>{$row['models']}</td>";
+                echo "<td>{$row['code']}</td>";
+                echo "<td>{$row['input_srp']}</td>";
+                echo "<td>{$row['qty_added']}</td>";
+                echo "<td>{$row['qty_receive']}</td>";
+                $status_text = '';
+                switch ($row['status']) {
+                    case 1:
+                        $status_text = 'Pending';
+                        break;
+                    case 2:
+                        $status_text = 'Reviewed';
+                        break;
+                    case 3:
+                        $status_text = 'Approved';
+                        break;
+                    case 4:
+                        $status_text = 'Received';
+                        break;
+                    case 5:
+                        $status_text = 'Request Return';
+                        break;
+                    case 6:
+                        $status_text = 'Returned';
+                        break;
+                    default:
+                        $status_text = 'Unknown';
+                        break;
+                }
+                echo "<td>{$status_text}</td>";
+                echo "</tr>";
 
+                // Only include rows with status other than 5 in the calculation
+                // if ($row['status'] == 3 || $row['status'] == 4) {
+                if ($row['status'] !== 5) {
+                    // Calculate totalSellingPrice and totalCostPrice
+                    $comSellingPrice += $row['input_srp'] * $row['qty_receive'];
+                    $qty_receivetotal = $row['qty_receive'];
+                }
+            }
+        } else {
+            echo "0 results";
+        }
+    ?>
+    </tbody>
+</table>
 
-                // Calculate total gross profit
-           
-                ?>
-            </tbody>
-        </table>
     </div>
 
         <div>
@@ -278,7 +281,7 @@ $(document).ready(function () {
 
         // Save Material Transfer with total values
         $.ajax({
-            url: '../php/store_stocks_recompute.php',
+            url: '../php/store_stocks_recompute_product.php',
             method: 'POST',
             data: {
                 materialInvoiceID: materialInvoiceNo,
@@ -303,7 +306,8 @@ $(document).ready(function () {
                         $('input[name="product_checkbox[]"]:checked').each(function() {
                             var productId = $(this).closest('tr').find('input[name="product_id[]"]').val();
                             var qtySent = $(this).closest('tr').find('td:eq(6)').text(); // Assuming qty sent is in the 7th column
-                            var status = $(this).closest('tr').find('td:eq(7)').text(); // Assuming status is in the 8th column
+                            var qtyReceive = $(this).closest('tr').find('td:eq(7)').text(); // Assuming qty sent is in the 7th column
+                            var status = $(this).closest('tr').find('td:eq(8)').text(); // Assuming status is in the 8th column
                             
                             console.log('Status:', status); // Log the status value
                             console.log('Branch_code:', user_brn_code); // Log the status value
@@ -316,6 +320,7 @@ $(document).ready(function () {
                                     data: {
                                         productId: productId,
                                         qty_sent: qtySent,
+                                        qty_receive: qtyReceive,
                                         user_brn_code: user_brn_code,
                                         materialInvoiceID: materialInvoiceNo,
                                         status: status // Pass the status to the PHP script
@@ -335,7 +340,12 @@ $(document).ready(function () {
                             }
                         });
 
-                        swal("Material Accepted", "Products have been accepted", "success");
+                        swal("Material Returned", "Products has been accepted", "success").then((value) => {
+                                    if (value) {
+                                        // Reload the page
+                                        window.location.reload();
+                                    }
+                                });
                     },
                     error: function (xhr, status, error) {
                         console.error('Error sending notification:', error);
@@ -360,6 +370,7 @@ $(document).ready(function () {
         var materialInvoiceNo = $('#material_invoice').val();
         var sessionID = $('#sessionID').val();
         var cashierName = $('#cashierName').val();
+        var comSellingPrice = '<?php echo $comSellingPrice; ?>';
         
         // Send notification
         $.ajax({
@@ -378,24 +389,36 @@ $(document).ready(function () {
                 // Loop through checked checkboxes and update product stocks
                 $('input[name="product_checkbox[]"]:checked').each(function() {
                     var productId = $(this).closest('tr').find('input[name="product_id[]"]').val();
-                    var qtySent = $(this).closest('tr').find('td:eq(6)').text(); // Assuming qty sent is in the 7th column
-                    var status = $(this).closest('tr').find('td:eq(7)').text(); // Assuming status is in the 8th column
+                    var status = $(this).closest('tr').find('td:eq(8)').text(); // Assuming status is in the 9th column
                     
                     console.log('Status:', status); // Log the status value
-                    console.log('Branch_code:', user_brn_code); // Log the status value
-                    console.log('productId:', productId); // Log the status value
+                    console.log('Branch_code:', user_brn_code); // Log the branch_code value
+                    console.log('productId:', productId); // Log the productId value
                     
                     if (status === 'Approved') {
                         // Only update product stocks if status is 'Approved'
                         $.ajax({
+                            url: '../php/store_stocks_recompute.php',
+                            method: 'POST',
+                            data: {
+                                materialInvoiceID: materialInvoiceNo,
+                                totalSellingPrice: comSellingPrice
+                            },
+                            success: function (response) {
+                                console.log(response);
+                            },
+                            error: function (xhr, status, error) {
+                                console.error('Error recomputing store stocks:', error);
+                            }
+                        });
+
+                        $.ajax({
                             url: '../php/return_product_stocks_status.php',
                             method: 'POST',
                             data: {
-                                        productId: productId,
-                                        qty_sent: qtySent,
-                                        // user_brn_code: user_brn_code not needed because the value is 'WAREHOUSE'
-                                        materialInvoiceID: materialInvoiceNo,
-                                        status: status // Pass the status to the PHP script
+                                productId: productId,
+                                materialInvoiceID: materialInvoiceNo,
+                                status: status // Pass the status to the PHP script
                             },
                             success: function (response) {
                                 console.log('Product stocks updated successfully for product ID ' + productId);
@@ -412,7 +435,12 @@ $(document).ready(function () {
                     }
                 });
                 
-                swal("Material Returned", "Products have been returned", "error");
+                swal("Material Returned", "Products have request to return", "error").then((value) => {
+                            if (value) {
+                                // Reload the page
+                                window.location.reload();
+                            }
+                        });
             },
             error: function (xhr, status, error) {
                 console.error('Error sending notification:', error);
@@ -420,6 +448,7 @@ $(document).ready(function () {
         });
     });
 });
+
 
 
 
@@ -433,7 +462,7 @@ $(document).ready(function () {
         // Loop through each selected checkbox
         $('input[name="product_checkbox[]"]:checked').each(function() {
             var closestRow = $(this).closest('tr');
-            var status = closestRow.find('td:eq(7)').text().trim(); // Assuming status is in the 8th column
+            var status = closestRow.find('td:eq(8)').text().trim(); // Assuming status is in the 8th column
             console.log('Status:', status); // Log the status value
             
             // If status is null or not "Approved"

@@ -465,8 +465,7 @@ $(document).ready(function () {
             var quantity = parseInt($(this).find('td:eq(4)').text()); // Assuming the quantity is in the sixth column
             var SellingPrice = parseInt($(this).find('td:eq(5)').text()); // Assuming the quantity is in the sixth column
 
-
-                        $.ajax({
+                                    $.ajax({
                             url: '../php/material_transaction.php',
                             method: 'POST',
                             data: {
@@ -474,6 +473,7 @@ $(document).ready(function () {
                                 material_invoice_id: materialInvoiceNo, 
                                 input_srp: inputSrp,
                                 qty_added: quantity,
+                                qty_receive: quantity, // Set qty_receive to the same value as qty_added
                                 selling_price: SellingPrice,
                                 user_brn_code : user_brn_code
                             },

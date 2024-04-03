@@ -2,15 +2,16 @@
 include '../config/config.php';
 
 // Check if the necessary POST data is set
-if(isset($_POST['productId'], $_POST['qty_sent'], $_POST['user_brn_code'], $_POST['materialInvoiceID'])) {
+if(isset($_POST['productId'], $_POST['qty_sent'],$_POST['qty_receive'], $_POST['user_brn_code'], $_POST['materialInvoiceID'])) {
     // Sanitize and validate input data
     $product_id = intval($_POST['productId']); // Convert to integer
-    $quantity = intval($_POST['qty_sent']); // Convert to integer
+    $qtySent = intval($_POST['qty_sent']); // Convert to integer
+    $qtyReceive = intval($_POST['qty_receive']); // Convert to integer
     $user_brn_code = mysqli_real_escape_string($conn, $_POST['user_brn_code']);
     $materialInvoiceID = mysqli_real_escape_string($conn, $_POST['materialInvoiceID']);
 
-    if($product_id <= 0 || $quantity <= 0) {
-        echo "Error: Invalid product ID or quantity";
+    if($product_id <= 0 || $qtySent <= 0) {
+        echo "Error: Invalid product ID or qtySent";
         exit; // Stop execution if input data is invalid
     }
 
@@ -19,7 +20,7 @@ if(isset($_POST['productId'], $_POST['qty_sent'], $_POST['user_brn_code'], $_POS
     
     // Prepare and bind parameters to the statement
     $stmt = mysqli_prepare($conn, $updateSql);
-    mysqli_stmt_bind_param($stmt, "iis", $quantity, $product_id, $user_brn_code);
+    mysqli_stmt_bind_param($stmt, "iis", $qtyReceive, $product_id, $user_brn_code);
 
     // Execute the statement to update product stocks
     if(mysqli_stmt_execute($stmt)) {
@@ -29,7 +30,7 @@ if(isset($_POST['productId'], $_POST['qty_sent'], $_POST['user_brn_code'], $_POS
             // Insert a new row into the stocks table
             $insertSql = "INSERT INTO stocks (product_id, branch_code, stocks) VALUES (?, ?, ?)";
             $insertStmt = mysqli_prepare($conn, $insertSql);
-            mysqli_stmt_bind_param($insertStmt, "isi", $product_id, $user_brn_code, $quantity);
+            mysqli_stmt_bind_param($insertStmt, "isi", $product_id, $user_brn_code, $qtyReceive);
             
             if(mysqli_stmt_execute($insertStmt)) {
                 echo "New row inserted into stocks table!";

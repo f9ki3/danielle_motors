@@ -123,19 +123,22 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                 <th>Code</th>
                 <th>SRP</th>
                 <th>Quantity Request</th>
+                <th>Quantity Store</th>
+                <th>Quantity Return</th>
                 <th>Status</th>
             </tr>
             </thead>
             <tbody>
             <?php 
-                $comSellingPrice = 0;
+                    
+                    $comReturnPrice = 0;
                     $material_invoice_id = $material_transaction; // replace with your material_invoice_id
-
-                    $sql = "SELECT mt.product_id, mt.input_srp, mt.qty_added, mt.created_at, mt.status, p.name, p.models, p.code, p.image
+                    
+                    $sql = "SELECT mt.product_id, mt.input_srp, mt.qty_added, mt.qty_receive,mt.qty_warehouse, mt.created_at, mt.status, p.name, p.models, p.code, p.image
                                 FROM material_transaction mt
                                 JOIN product p ON mt.product_id = p.id
-                                WHERE material_invoice_id = ? AND status = 5 || status = 6";
-                                
+                                WHERE material_invoice_id = ? AND (status = 5 OR status = 6)";
+                    
                     $stmt = $conn->prepare($sql);
                     $stmt->bind_param("s", $material_invoice_id);
                     $stmt->execute();
@@ -145,7 +148,11 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                         // output data of each row
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
-                            echo "<td><input type='checkbox' name='product_checkbox[]' value='{$row['product_id']}' style='max-width: 50px; height: 50px'></td>";
+                            if ($row['status'] == 5) {
+                                echo "<td><input type='checkbox' name='product_checkbox[]' value='{$row['product_id']}' style='max-width: 50px; height: 50px'></td>";
+                            } else {
+                                echo "<td></td>"; // Empty cell if status is 4, 5, or 6
+                            }
                             echo "<input type='hidden' name='product_id[]' value='{$row['product_id']}'>";
                             echo "<td><img src='{$row['image']}' alt='Product Image' style='max-width: 50px; height: 50px'></td>";
                             echo "<td>{$row['name']}</td>";
@@ -153,6 +160,8 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                             echo "<td>{$row['code']}</td>";
                             echo "<td>{$row['input_srp']}</td>";
                             echo "<td>{$row['qty_added']}</td>";
+                            echo "<td data-quantity-added='{$row['qty_receive']}'>{$row['qty_receive']}</td>";
+                            echo "<td>{$row['qty_warehouse']}</td>";
                             $status_text = '';
                             switch ($row['status']) {
                                 case 1:
@@ -168,25 +177,23 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                                     $status_text = 'Received';
                                     break;
                                 case 5:
-                                    $status_text = 'Return';
+                                    $status_text = 'Request Return';
                                     break;
                                 case 6:
-                                    $status_text = 'Partial Return';
-                                     break;
+                                    $status_text = 'Returned';
+                                    break;
                                 default:
                                     $status_text = 'Unknown';
                                     break;
                             }
                             echo "<td>{$status_text}</td>";
                             echo "</tr>";
-                    
-                            // Only include rows with status other than 5 in the calculation
-                            // if ($row['status'] == 3 || $row['status'] == 4) {
-                            if ($row['status'] == 5) {
-                                // Calculate totalSellingPrice and totalCostPrice
-                                $comSellingPrice += $row['input_srp'] * $row['qty_added'];
-                                $qty_added = $row['qty_added'];
-                            }
+                            
+                            // Only include rows with status 5 or 6 in the calculation
+                            if ($row['status'] == 5 || $row['status'] == 6) {
+                                // Calculate total return price
+                                $comReturnPrice += $row['input_srp'] * $row['qty_warehouse'];
+                            }                            
                         }
                     } else {
                         echo "0 results";
@@ -203,9 +210,10 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
         <div>
                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-3 mb-4">
                     <div>
-                        <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-                            <h4 class="">Total Return Price ₱<?php echo number_format($comSellingPrice, 2); ?></h4>
-                        </div>
+                    <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                        <h4 class="">Total Return Amount ₱<?php echo number_format($comReturnPrice, 2); ?></h4>
+                        <input type="text" id="Reason" class="form-control" placeholder="Enter Reason to return">
+                    </div>
                     </div>
                     <div style="width: 30%">
                         <!-- <button type="button" id="acceptMaterialTransfer" class="btn w-100 btn-primary mb-2">Accept</button> -->
@@ -225,81 +233,114 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
 <script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 <script>
-    $(document).ready(function () {
-        // Return Material Transfer
-        $('#returnMaterialTransfer').click(function () {
-            // Check if the button is enabled
-            if ($(this).prop('disabled')) {
-                return; // Do nothing if the button is disabled
+$(document).ready(function () {
+    // Return Material Transfer
+    $('#returnMaterialTransfer').click(function () {
+        // Check if the button is enabled
+        if ($(this).prop('disabled')) {
+            return; // Do nothing if the button is disabled
+        }
+        
+        var user_brn_code = $('#user_brn_code').val();
+        var materialInvoiceNo = $('#material_invoice').val();
+        var sessionID = $('#sessionID').val();
+        var cashierName = $('#cashierName').val();
+        var reason = $('#Reason').val(); // Get the value of the "Reason" input field
+
+        var comReturnPrice = '<?php echo $comReturnPrice; ?>';
+        
+        // Save Material Transfer with total values
+        $.ajax({
+            url: '../php/store_stocks_recompute_return.php',
+            method: 'POST',
+            data: {
+                materialInvoiceID: materialInvoiceNo,
+                totalReturnPrice: comReturnPrice // Assuming comReturnPrice is defined somewhere in your code
+            },
+            success: function (response) {
+                console.log(response);
+                // Send notification
+                $.ajax({
+                    url: '../php/update_notification.php',
+                    method: 'POST',
+                    data: {
+                        sessionID: sessionID,
+                        type_id: materialInvoiceNo,
+                        type: 'Material Transaction',
+                        sender: cashierName,
+                        message: reason
+                    },
+                    success: function (response) {
+                        console.log('Notification sent successfully');
+                        
+                        // Loop through checked checkboxes and update product stocks
+                        $('input[name="product_checkbox[]"]:checked').each(function() {
+                            var closestRow = $(this).closest('tr');
+                            var productId = closestRow.find('input[name="product_id[]"]').val();
+                            var qtytotal = closestRow.find('td:eq(7)').data('quantity-added'); // Retrieve data attribute value
+                            var inputId = 'quantityInput_' + closestRow.attr('data-row-index');
+                            var qtySent = $('#' + inputId).val(); // Retrieve input value
+                            var qtyWarehouse = qtytotal - qtySent; // Calculate qtyWarehouse
+                            var status = closestRow.find('td:eq(9)').text().trim(); // Assuming status is in the 9th column
+                            
+                            console.log('Status:', status); // Log the status value
+                            console.log('Branch_code:', user_brn_code); // Log the branch code value
+                            console.log('productId:', productId); // Log the product ID value
+                            console.log('Qtytotal:', qtytotal); // Log qtytotal
+                            console.log('QtySent:', qtySent); // Log qtySent
+                            console.log('QtyWarehouse:', qtyWarehouse); // Log qtyWarehouse
+                            
+                            if (status === 'Request Return') {
+                                // Only update product stocks if status is 'Request Return'
+                                $.ajax({
+                                    url: '../php/return_product_stocks.php',
+                                    method: 'POST',
+                                    data: {
+                                        productId: productId,
+                                        qty_total: qtytotal,
+                                        qty_warehouse: qtyWarehouse,
+                                        user_brn_code: user_brn_code,
+                                        qty_sent: qtySent,
+                                        input_id: inputId,
+                                        materialInvoiceID: materialInvoiceNo,
+                                        sessionID: sessionID,
+                                        sender: cashierName,
+                                        status: status,
+                                        message: reason
+                                    },
+                                    success: function (response) {
+                                        console.log('Product stocks updated successfully for product ID ' + productId);
+                                    },
+                                    error: function (xhr, status, error) {
+                                        console.error('Error updating product stocks for product ID ' + productId + ':', error);
+                                    }
+                                });
+                            } else {
+                                console.log('Status is not "Request Return", skipping product ID ' + productId);
+                                console.log('Status is:', status);
+                                // Handle other statuses here
+                                // You can add any desired behavior for statuses other than "Request Return"
+                            }
+                        });
+                        
+                        swal("Material Returned", "Products have been returned", "success").then((value) => {
+                            if (value) {
+                                // Reload the page
+                                window.location.reload();
+                            }
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error sending notification:', error);
+                    }
+                });
+            },
+            error: function (xhr, status, error) {
+                console.error('Error saving material transfer:', error);
             }
-
-            var user_brn_code = $('#user_brn_code').val();
-            var materialInvoiceNo = $('#material_invoice').val();
-            var sessionID = $('#sessionID').val();
-            var cashierName = $('#cashierName').val();
-
-            // Send notification
-            $.ajax({
-                url: '../php/update_notification.php',
-                method: 'POST',
-                data: {
-                    sessionID: sessionID,
-                    type_id: materialInvoiceNo,
-                    type: 'Material Transaction',
-                    sender: cashierName,
-                    message: 'The Store return the Material Transfer'
-                },
-                success: function (response) {
-                    console.log('Notification sent successfully');
-
-                    // Loop through checked checkboxes and update product stocks
-                    $('input[name="product_checkbox[]"]:checked').each(function() {
-                        var closestRow = $(this).closest('tr');
-                        var productId = closestRow.find('input[name="product_id[]"]').val();
-                        var qtyRequested = parseInt(closestRow.find('td:eq(6)').attr('data-quantity-requested'));
-                        var status = closestRow.find('td:eq(7)').text().trim();
-                        var inputId = 'quantityInput_' + closestRow.attr('data-row-index');
-                        var qtySent = $('#' + inputId).val(); // Retrieve input value
-
-                        console.log('Status:', status);
-                        console.log('Branch_code:', user_brn_code);
-                        console.log('productId:', productId);
-                        console.log('QtySent:', qtySent);
-
-                        if (status === 'Return') {
-                            // Only update product stocks if status is 'Return'
-                            $.ajax({
-                                url: '../php/return_product_stocks.php',
-                                method: 'POST',
-                                data: {
-                                    productId: productId,
-                                    qty_sent: qtySent,
-                                    input_id: inputId,
-                                    materialInvoiceID: materialInvoiceNo,
-                                    status: status
-                                },
-                                success: function (response) {
-                                    console.log('Product stocks updated successfully for product ID ' + productId);
-                                },
-                                error: function (xhr, status, error) {
-                                    console.error('Error updating product stocks for product ID ' + productId + ':', error);
-                                }
-                            });
-                        } else {
-                            console.log('Status is not "Return", skipping product ID ' + productId);
-                            console.log('Status is:', status);
-                            // Handle other statuses here
-                            // You can add any desired behavior for statuses other than "Return"
-                        }
-                    });
-
-                    swal("Material Returned", "Products have been returned", "error");
-                },
-                error: function (xhr, status, error) {
-                    console.error('Error sending notification:', error);
-                }
-            });
         });
+    });
+});
 
         // Function to update button status based on status value
         function updateButtonStatus() {
@@ -310,17 +351,17 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
 
             $('input[name="product_checkbox[]"]').each(function () {
                 var closestRow = $(this).closest('tr');
-                var status = closestRow.find('td:eq(7)').text().trim();
+                var status = closestRow.find('td:eq(9)').text().trim();
                 console.log('Status:', status);
 
                 if ($(this).prop('checked')) {
                     anyChecked = true;
 
-                    if (status !== 'Return') {
+                    if (status !== 'Request Return') {
                         allReturn = false;
                     }
                 } else {
-                    closestRow.find('td:eq(6)').text(closestRow.find('td:eq(6)').attr('data-quantity-requested'));
+                    closestRow.find('td:eq(6)').text(closestRow.find('td:eq(8)').attr('data-quantity-requested'));
                 }
             });
 
@@ -347,9 +388,9 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                 inputField.attr('id', inputId);
                 inputField.attr('max', qtyRequested);
                 inputField.val(qtyRequested);
-                closestRow.find('td:eq(6)').html(inputField);
+                closestRow.find('td:eq(8)').html(inputField);
             } else {
-                closestRow.find('td:eq(6)').text(closestRow.find('td:eq(6)').attr('data-quantity-requested'));
+                closestRow.find('td:eq(6)').text(closestRow.find('td:eq(8)').attr('data-quantity-requested'));
             }
 
             updateButtonStatus();
@@ -357,217 +398,6 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
 
         // Initial update of button status
         updateButtonStatus();
-    });
+
+        
 </script>
-
-<!-- 
-
-Backup code to working pang add at return
-
-<script>
-$(document).ready(function () {
-    // Accept Material Transfer
-    $('#acceptMaterialTransfer').click(function () {
-        // Check if the button is enabled
-        if ($(this).prop('disabled')) {
-            return; // Do nothing if the button is disabled
-        }
-        var user_brn_code = $('#user_brn_code').val();
-        var materialInvoiceNo = $('#material_invoice').val();
-        var sessionID = $('#sessionID').val();
-        var cashierName = $('#cashierName').val();
-        // Define total values (replace with actual values)
-        var comSellingPrice = '<?php echo $comSellingPrice; ?>';
-
-
-        // Save Material Transfer with total values
-        $.ajax({
-            url: '../php/store_stocks_recompute.php',
-            method: 'POST',
-            data: {
-                materialInvoiceID: materialInvoiceNo,
-                totalSellingPrice: comSellingPrice
-            },
-            success: function (response) {
-                console.log(response);
-                // Send notification
-                $.ajax({
-                    url: '../php/update_notification.php',
-                    method: 'POST',
-                    data: {
-                        sessionID: sessionID,
-                        type_id: materialInvoiceNo,
-                        type: 'Material Transaction',
-                        sender: cashierName,
-                        message: 'The Store accepted the Material Transfer'
-                    },
-                    success: function (response) {
-                        console.log('Notification sent successfully');
-                        // Loop through checked checkboxes and update product stocks
-                        $('input[name="product_checkbox[]"]:checked').each(function() {
-                            var productId = $(this).closest('tr').find('input[name="product_id[]"]').val();
-                            var qtySent = $(this).closest('tr').find('td:eq(6)').text(); // Assuming qty sent is in the 7th column
-                            var status = $(this).closest('tr').find('td:eq(7)').text(); // Assuming status is in the 8th column
-                            
-                            console.log('Status:', status); // Log the status value
-                            console.log('Branch_code:', user_brn_code); // Log the status value
-                            console.log('productId:', productId); // Log the status value
-                            if (status === 'Approved') {
-                                // Only update product stocks if status is 'Accepted'
-                                $.ajax({
-                                    url: '../php/add_product_stocks.php',
-                                    method: 'POST',
-                                    data: {
-                                        productId: productId,
-                                        qty_sent: qtySent,
-                                        user_brn_code: user_brn_code,
-                                        materialInvoiceID: materialInvoiceNo,
-                                        status: status // Pass the status to the PHP script
-                                    },
-                                    success: function (response) {
-                                        console.log('Product stocks updated successfully for product ID ' + productId);
-                                    },
-                                    error: function (xhr, status, error) {
-                                        console.error('Error updating product stocks for product ID ' + productId + ':', error);
-                                    }
-                                });
-                            } else {
-                                console.log('Status is not "Accepted", skipping product ID ' + productId);
-                                console.log('Status is not "status", status is ' + status);
-                                // Handle other statuses here
-                                // You can add any desired behavior for statuses other than "Accepted"
-                            }
-                        });
-
-                        swal("Material Accepted", "Products have been accepted", "success");
-                    },
-                    error: function (xhr, status, error) {
-                        console.error('Error sending notification:', error);
-                    }
-                });
-            },
-            error: function (xhr, status, error) {
-                console.error('Error saving data:', error);
-            }
-        });
-    });
-
-    $(document).ready(function () {
-    // Return Material Transfer
-    $('#returnMaterialTransfer').click(function () {
-        // Check if the button is enabled
-        if ($(this).prop('disabled')) {
-            return; // Do nothing if the button is disabled
-        }
-        
-        var user_brn_code = $('#user_brn_code').val();
-        var materialInvoiceNo = $('#material_invoice').val();
-        var sessionID = $('#sessionID').val();
-        var cashierName = $('#cashierName').val();
-        
-        // Send notification
-        $.ajax({
-            url: '../php/update_notification.php',
-            method: 'POST',
-            data: {
-                sessionID: sessionID,
-                type_id: materialInvoiceNo,
-                type: 'Material Transaction',
-                sender: cashierName,
-                message: 'The Store return the Material Transfer'
-            },
-            success: function (response) {
-                console.log('Notification sent successfully');
-                
-                // Loop through checked checkboxes and update product stocks
-                $('input[name="product_checkbox[]"]:checked').each(function() {
-                    var productId = $(this).closest('tr').find('input[name="product_id[]"]').val();
-                    var qtySent = $(this).closest('tr').find('td:eq(6)').text(); // Assuming qty sent is in the 7th column
-                    var status = $(this).closest('tr').find('td:eq(7)').text(); // Assuming status is in the 8th column
-                    
-                    console.log('Status:', status); // Log the status value
-                    console.log('Branch_code:', user_brn_code); // Log the status value
-                    console.log('productId:', productId); // Log the status value
-                    
-                    if (status === 'Approved') {
-                        // Only update product stocks if status is 'Approved'
-                        $.ajax({
-                            url: '../php/return_product_stocks.php',
-                            method: 'POST',
-                            data: {
-                                        productId: productId,
-                                        qty_sent: qtySent,
-                                        // user_brn_code: user_brn_code not needed because the value is 'WAREHOUSE'
-                                        materialInvoiceID: materialInvoiceNo,
-                                        status: status // Pass the status to the PHP script
-                            },
-                            success: function (response) {
-                                console.log('Product stocks updated successfully for product ID ' + productId);
-                            },
-                            error: function (xhr, status, error) {
-                                console.error('Error updating product stocks for product ID ' + productId + ':', error);
-                            }
-                        });
-                    } else {
-                        console.log('Status is not "Approved", skipping product ID ' + productId);
-                        console.log('Status is:', status);
-                        // Handle other statuses here
-                        // You can add any desired behavior for statuses other than "Approved"
-                    }
-                });
-                
-                swal("Material Returned", "Products have been returned", "error");
-            },
-            error: function (xhr, status, error) {
-                console.error('Error sending notification:', error);
-            }
-        });
-    });
-});
-
-
-
-    $(document).ready(function () {
-    // Update button status based on status value
-    function updateButtonStatus() {
-        console.log('Function updateButtonStatus() is running.'); // Log that the function is running
-        
-        var allApproved = true; // Flag to track if all selected products have status "Approved"
-        
-        // Loop through each selected checkbox
-        $('input[name="product_checkbox[]"]:checked').each(function() {
-            var closestRow = $(this).closest('tr');
-            var status = closestRow.find('td:eq(7)').text().trim(); // Assuming status is in the 8th column
-            console.log('Status:', status); // Log the status value
-            
-            // If status is null or not "Approved"
-            if (status === 'Approved') { 
-                allApproved = false; // Set the flag to false
-                return true; // Exit the loop
-            }
-        });
-        
-        console.log('All approved:', allApproved); // Log the flag value
-        
-        // Update button status based on the flag value
-        if (allApproved) {
-            $('#acceptMaterialTransfer').prop('disabled', true); // Enable accept button
-            $('#returnMaterialTransfer').prop('disabled', true); // Enable decline button
-        } else {
-            $('#acceptMaterialTransfer').prop('disabled', false); // Disable accept button
-            $('#returnMaterialTransfer').prop('disabled', false); // Disable decline button
-        }
-    }
-
-    // Update button status when a checkbox is clicked
-    $('input[name="product_checkbox[]"]').click(function() {
-        updateButtonStatus();
-    });
-
-    // Initial update of button status
-    updateButtonStatus();
-    });
-
-});
-
-</script> -->
