@@ -1,4 +1,11 @@
-<div >
+<div id="spinner" style="height: 80vh; display: flex; justify-content: center; align-items: center;">
+<iframe src="https://giphy.com/embed/3oz8xzJjbG2Etm0f04" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/3oz8xzJjbG2Etm0f04">via GIPHY</a></p>
+    <!-- <div class="spinner-grow text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div> -->
+</div>
+
+<div id="content" style="display: none">
     <div class="row g-3 mb-4">
         <div class="col-auto">
             <h2 class="mb-0">Purchase Warehouse</h2>
@@ -61,3 +68,22 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Function to reload spinner for 3 seconds
+    function reloadSpinner() {
+        // Show spinner
+        document.getElementById('spinner').style.display = 'flex';
+        // Hide content
+        document.getElementById('content').style.display = 'none';
+        
+        // Set timeout to hide spinner and show content after 3 seconds
+        setTimeout(function() {
+            document.getElementById('spinner').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }, 3000); // 3000 milliseconds = 3 seconds
+    }
+
+    // Call the function to reload spinner
+    reloadSpinner();
+</script>
