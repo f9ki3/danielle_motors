@@ -1,9 +1,21 @@
 <?php
+include "../admin/session.php";
 include_once "../database/database.php";
 date_default_timezone_set('Asia/Manila');
 $currentDateTime = date('Y-m-d H:i:s');
-$branch_code = "BRN005";
-$user_id = "1";
+$user_id = $id;
+
+// Check if there is an existing row in the table
+$result = mysqli_query($conn, "SELECT MAX(po_id) AS max_po_id FROM purchased_order");
+$row = mysqli_fetch_assoc($result);
+
+if ($row['max_po_id'] === null) {
+    // If no existing row, set $po_id to 1000
+    $po_id = 1000;
+} else {
+    // If existing row(s) found, increment the maximum po_id value by 1
+    $po_id = $row['max_po_id'] + 1;
+}
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
@@ -12,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $selected_products = $_POST['product_id']; // This will be an array of selected product IDs
     $order_quantities = $_POST['order_qty']; // This will be an array of corresponding order quantities
     $estimated_amounts = $_POST['est_amount']; // This will be an array of estimated amounts
-    $insert_po = "INSERT INTO purchased_order_wh (supplier_id, date_requested, total_est_amount, status, requested_by, branch_code) VALUES ('$supplier_id', '$currentDateTime','$estimated_total_amount', '1', '$user_id', '$branch_code')";
+    $insert_po = "INSERT INTO purchased_order (po_id, supplier_id, publish_on, total_est_amount, status, requested_by, branch_code) VALUES ('$po_id', '$supplier_id', '$currentDateTime','$estimated_total_amount', '1', '$user_id', '$branch_code')";
     if($conn->query($insert_po) === TRUE){
         $po_id = $conn->insert_id;
         foreach ($selected_products as $index => $product_id) {
@@ -29,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             
         }
-            echo "Successful! UI ASAP";
+            header("Location: ../Inventory/Purchased-Order-supplier/?error=success");
             $conn->close();
             exit();
     }else {

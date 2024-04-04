@@ -1,27 +1,5 @@
-<div class="row">
-  <div class="col-lg-12">
-    <?php
-    // Initialize total amount variable
-    
-
-    $supplier_sql = "SELECT * FROM supplier WHERE status = '1'";
-    $supplier_res = $conn->query($supplier_sql);
-    if($supplier_res->num_rows > 0){
-      while($supplier_row = $supplier_res->fetch_assoc()){
-        $supplier_id = $supplier_row['id'];
-        $supplier_name = $supplier_row['supplier_name'];
-        $supplier_logo = $supplier_row['supplier_logo'];
-        $supplier_email = $supplier_row['supplier_email'];
-        $supplier_address = $supplier_row['supplier_address'];
-        $supplier_phone = $supplier_row['phone'];
-        $totalAmount = 0;
-        $count=0;
-        $count_existing = 0;
-
-        ?>
-        <form action="../../PHP - process_files/purchased-order-submit.php" method="POST" onsubmit="return confirmSubmit()">
-        <input type="text" name="supp_id" value="<?php echo $supplier_id?>" hidden>
-        <div class="card mb-3">
+<!-- iget ang supplier_name, supplier_logo mamaya-->
+<div class="card mb-3">
           <div class="card-header">
             <div class="row">
               <div class="col-lg-2">
@@ -149,10 +127,3 @@
             </div>
           </div>
         </div>
-        </form>
-        <?php
-      }
-    }
-    ?>
-  </div>
-</div>

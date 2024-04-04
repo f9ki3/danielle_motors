@@ -20,9 +20,6 @@ if($user_position_res->num_rows>0){
     <td class="address text-center">
         <button class="btn btn-outline-secondary mb-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#inventory_offcanvas_<?php echo $row['id'];?>" aria-controls="offcanvasRight">View Permissions</button>
     </td>
-    <td class="address text-center">
-        <button class="btn btn-outline-secondary mb-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#pos_offcanvas_<?php echo $row['id'];?>" aria-controls="offcanvasRight">View Permissions</button>
-    </td>
 </tr>
 <?php
     }

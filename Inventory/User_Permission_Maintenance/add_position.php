@@ -13,6 +13,24 @@
                 <label for="floatingInput">Permission Name</label>
               </div>
             </div>
+            <div class="col-lg-12">
+              <div class="form-floating mb-3">
+                <select class="form-select" name="permission_group" id="permission_group_select">
+                  <option value="" selected></option>
+                  <option value="others">others</option>
+                  <?php 
+                  $permission_group_sql = "SELECT permission_group FROM permission GROUP BY permission_group ORDER BY id DESC";
+                  $permission_group_res = $conn->query($permission_group_sql);
+                  if($permission_group_res->num_rows>0){
+                    while($permission_row = $permission_group_res -> fetch_assoc()){
+                      echo '<option value="' . $permission_row['permission_group'] . '">' . ucwords(strtolower($permission_row['permission_group'])) . '</option>';
+                    }
+                  }
+                  ?>
+                </select>
+                <label for="floatingInput">Permission Name</label>
+              </div>
+            </div>
           </div>
       </div>
       <div class="modal-footer"><button class="btn btn-primary" type="submit">Okay</button><button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Cancel</button></div>

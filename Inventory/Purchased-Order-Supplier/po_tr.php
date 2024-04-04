@@ -1,7 +1,8 @@
 <?php
-$purchased_orders_sql = "SELECT po.id, po.supplier_id, po.status, po.po_id, po.requested_by, po.publish_on, s.supplier_name, s.supplier_logo
+$purchased_orders_sql = "SELECT po.id, po.supplier_id, po.status, po.po_id, po.requested_by, po.publish_on, s.supplier_name, s.supplier_logo, u.user_fname, u.user_lname
 FROM purchased_order po 
 LEFT JOIN supplier s ON po.supplier_id = s.id 
+LEFT JOIN user u ON po.requested_by = u.id
 ORDER BY po.id DESC";
 
 $purchased_orders_res = $conn->query($purchased_orders_sql);
@@ -12,19 +13,26 @@ if ($purchased_orders_res->num_rows > 0) {
     $supplier_id = $row['supplier_id'];
     $status = $row['status'];
     $po_id = $row['po_id'];
-    $requested_by = $row['requested_by'];
     $publish_on = $row['publish_on'];
     $supplier_name = $row['supplier_name'];
     $supplier_logo = $row['supplier_logo'];
+    $requested_by = $row['user_fname'] . " " . $row['user_lname'];
 
+    if($status== 1){
+        $styled_status = 'Pending';
+    } elseif($status==2){
+        $styled_status = 'Received';
+    } else {
+        $styled_status = 'Not Received';
+    }
     echo '<tr class="position-static">
     <td class="fs--1 align-middle">
         <div class="form-check mb-0 fs-0"><input class="form-check-input" type="checkbox"/></div>
     </td>
-    <td class="align-middle white-space-nowrap py-0"><a class="d-block border rounded-2" href="../landing/product-details.html"><img src="../../uploads/' . $supplier_logo  . '" alt="" width="53" /></a></td>
-    <td class="supplier text-start"><a class="fw-semi-bold line-clamp-3 mb-0" href="../landing/product-details.html">' . $supplier_name . '</a></td>
+    <td class="align-middle white-space-nowrap py-0"><a class="d-block border rounded-2" href="../Purchased_Order_WH?id=' . $po_id . '"><img src="../../uploads/' . $supplier_logo  . '" alt="" width="53" /></a></td>
+    <td class="supplier text-start"><a class="fw-semi-bold line-clamp-3 mb-0" href="../Purchased_Order_WH?id=' . $po_id . '">' . $supplier_name . '</a></td>
     <td class="po text-start">' . $po_id . '</td>
-    <td class="status text-start">' . $status . '</td>
+    <td class="status text-start">' . $styled_status . '</td>
     <td class="requestedby text-start">' . $requested_by . '</td>
     <td class="publishon text-start">' . $publish_on . '</td>
     <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">

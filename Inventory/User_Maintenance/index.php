@@ -41,26 +41,8 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var selectElement = document.getElementById("permission_group_select");
-        
-        selectElement.addEventListener("change", function() {
-            if (selectElement.value === "others") {
-                var inputElement = document.createElement("input");
-                inputElement.setAttribute("type", "text");
-                inputElement.setAttribute("name", "permission_group");
-                inputElement.setAttribute("class", "form-control");
-
-                // Replace select with input
-                selectElement.parentNode.replaceChild(inputElement, selectElement);
-            }
-        });
-    });
-    </script>
   </body>
 
 
 <!-- Mirrored from prium.github.io/phoenix/v1.13.0/pages/starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Aug 2023 05:15:14 GMT -->
 </html>
-
