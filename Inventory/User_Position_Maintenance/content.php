@@ -39,8 +39,7 @@
               </th>
               <th class="sort" scope="col" data-sort="branch_name">POSITION NAME</th>
               <th class="sort text-start" scope="col" data-sort="status">STATUS</th>
-              <th class="sort text-center" scope="col" data-sort="address">INVENTORY</th>
-              <th class="sort text-center" scope="col" data-sort="address">SALES</th>
+              <th class="sort text-center" scope="col" data-sort="address">PERMISSION(s)</th>
             </tr>
           </thead>
 
@@ -68,49 +67,4 @@
 </div>
 
 <?php include "add_position.php"; ?>
-<?php
-$permissions_sql = "SELECT id, permission_name FROM `groups`";
-$permissions_res = $conn->query($permissions_sql);
-if($permissions_res->num_rows>0){
-  while($perm_row=$permissions_res->fetch_assoc()){
-    $permission = $perm_row['permission_name'];
-    $permission_id = $perm_row['id'];
-?>
-<div class="offcanvas offcanvas-end" id="inventory_offcanvas_<?php echo $permission_id;?>" tabindex="-1" aria-labelledby="offcanvasRightLabel">
-  <div class="offcanvas-header">
-    <h5 id="offcanvasRightLabel">Permissions</h5><button class="btn-close text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <div class="row"></div>
-    <?php
-    // Split the permission string into an array of individual permissions
-    $permissionsArray = explode(', ', $permission);
-    ?>
-    <div class="row">
-    <form action="update_permissions.php" method="post">
-      
-        <?php foreach ($permissionsArray as $perm) { ?>
-            <div class="form-check">
-              <input class="form-check-input" id="<?php echo $perm; ?>" type="checkbox" name="permission[]" value="<?php echo $perm; ?>" />
-              <label class="form-check-label" for="<?php echo $perm; ?>"><?php echo ucwords(str_replace("_", " ", $perm)); ?></label>
-            </div>
-        <?php } ?>
-          <div class="col-lg-12 text-center my-3">
-            <button class="btn btn-primary" type="submit">Save</button>
-          </div>
-        
-    </form>
-    </div>  
-  </div>
-</div>
-
-<div class="offcanvas offcanvas-end" id="pos_offcanvas_<?php echo $permission_id;?>" tabindex="-1" aria-labelledby="offcanvasRightLabel">
-  <div class="offcanvas-header">
-    <h5 id="offcanvasRightLabel">Permissions</h5><button class="btn-close text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">...</div>
-</div>
-<?php
-  }
-}
-?>
+<?php include "permission.php"; ?>

@@ -27,7 +27,7 @@ if ($emailCount > 0) {
 
 // Generate branch code
 $baseBranchCode = substr(strtoupper($_POST['brn_name']), 0, 4); // First 4 letters of branchname
-$branchcode = $baseBranchCode . "000"; // Initial branch code
+$branchcode = $baseBranchCode . '-' . "000"; // Initial branch code
 
 // Check if the branch code already exists
 $stmt = $conn->prepare("SELECT COUNT(*) FROM branch WHERE brn_code = ?");
@@ -40,7 +40,7 @@ $stmt->close();
 
 if ($count > 0) {
     // Branch code already exists, find the next available branch code
-    $stmt = $conn->prepare("SELECT MAX(SUBSTRING_INDEX(brn_code, -1)) FROM branch WHERE brn_code LIKE ?");
+    $stmt = $conn->prepare("SELECT MAX(SUBSTRING_INDEX(brn_code,'-', -1)) FROM branch WHERE brn_code LIKE ?");
     $likeParam = $baseBranchCode . "-%";
     $stmt->bind_param("s", $likeParam);
     $stmt->execute();

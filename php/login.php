@@ -25,7 +25,7 @@ if(isset($_POST['uname'], $_POST['pass'])) {
 
     // Bind parameters
     $status = 0; // Assuming status is an integer
-    $stmt->bind_param("ssi", $username, $password, $status);
+    $stmt->bind_param("ssi", $username, $hashed_password, $status);
 
     // Execute the statement
     $stmt->execute();

@@ -1,7 +1,7 @@
 <div class="mb-9">
   <div class="row g-3 mb-4">
     <div class="col-auto">
-      <h2 class="mb-0">Permissions</h2>
+      <h2 class="mb-0">Permissions/ Privilege</h2>
     </div>
   </div>
 
