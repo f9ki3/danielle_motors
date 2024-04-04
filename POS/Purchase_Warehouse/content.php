@@ -1,4 +1,4 @@
-        <div class="mb-9">
+<div >
     <div class="row g-3 mb-4">
         <div class="col-auto">
             <h2 class="mb-0">Purchase Warehouse</h2>
@@ -37,7 +37,6 @@
                         <th class="sort white-space-nowrap align-middle" scope="col"></th>
                         <th class="sort white-space-nowrap align-middle ps-4" scope="col" data-sort="product">PRODUCT NAME</th>
                         <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">ITEM CODE</th>
-                        <th class="sort align-middle text-start ps-4" scope="col" data-sort="category">SUPPLIER CODE</th>
                         <th class="sort align-middle text-start ps-3" scope="col" data-sort="tags">CATEGORY</th>
                         <th class="sort align-middle text-start ps-4" scope="col" data-sort="vendor">BRAND</th>
                         <th class="sort align-middle text-start ps-4" scope="col" data-sort="time">UNIT</th>
@@ -46,27 +45,9 @@
                         <th class="sort text-end align-middle pe-0 ps-4" scope="col"></th>
                     </tr>
                     </thead>
-                    <tbody class="list" id="products-table-body"><tr>
-                <td class="fs--1 align-middle">
-                    <div class="form-check mb-0 fs-0">
-                        <input class="form-check-input" type="checkbox">
-                    </div>
-                </td>
-                <td class="align-middle white-space-nowrap py-0"><img src="../../uploads/CVT-Pulley-Set-Assembly.png" alt="" width="53"></td>
-                <td class="product align-middle ps-4">CVT Pulley Set Assembly</td>
-                <td class="price align-middle white-space-nowrap text-start ps-4"><span class="badge badge-phoenix badge-phoenix-primary">PSA-001</span></td>
-                <td class="category align-middle white-space-nowrap ps-4 text-start"><span class="badge badge-phoenix badge-phoenix-secondary">HCS-402-10</span></td>
-                <td class="tags align-middle review pb-2 ps-3" style="min-width:225px;">Pulley Set</td>
-                <td class="vendor align-middle text-start fw-semi-bold ps-4">HIRC</td>
-                <td class="time align-middle white-space-nowrap text-600 ps-4">11gg</td>
-                <td class="time align-middle white-space-nowrap text-600 ps-4">VESPA 125</td>
-                <td class="time align-middle white-space-nowrap text-600 ps-4"><span class="badge badge-phoenix fs--2 badge-phoenix-success"><span class="badge-label">active</span><svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check ms-1" style="height:12.8px;width:12.8px;"><polyline points="20 6 9 17 4 12"></polyline></svg></span></td>
-                <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
-                    <button class="btn rounded border rounded rounded-5 m-0 p-3"><span class="fas fa-cart-plus fs-1"></span></button>
-                </td>
-            </tr>
-        
-        </tbody>
+                    <tbody class="list" id="products-table-body">
+                        <?php include 'purchase_warehouse.php'?>
+                    </tbody>
                 </table>
             </div>
             <div class="row align-items-center justify-content-between py-2 pe-0 fs--1">
@@ -80,21 +61,3 @@
         </div>
     </div>
 </div>
-
-
-        <!-- <div class="d-flex flex-center content-min-h">
-          <div class="text-center py-9"><img class="img-fluid mb-7 d-dark-none" src="../../assets/img/spot-illustrations/2.png" width="470" alt="" /><img class="img-fluid mb-7 d-light-none" src="../../assets/img/spot-illustrations/dark_2.png" width="470" alt="" />
-            <h1 class="text-800 fw-normal mb-5">Product_List</h1><a class="btn btn-lg btn-primary" href="../../documentation/getting-started.html">Getting Started</a>
-          </div>
-        </div> -->
-        <!-- footer -->
-        <footer class="footer position-absolute">
-    <div class="row g-0 justify-content-between align-items-center h-100">
-        <div class="col-12 col-sm-auto text-center">
-            <p class="mb-0 mt-2 mt-sm-0 text-900">PDM Interns<span class="d-none d-sm-inline-block"></span><span class="d-none d-sm-inline-block mx-1">|</span><br class="d-sm-none">2023 ©<a class="mx-1" href="https://www.instagram.com/p/C1oCOyePsPL/?img_index=1">Click here</a></p>
-        </div>
-        <div class="col-12 col-sm-auto text-center">
-            <p class="mb-0 text-600">v1.13.0</p>
-        </div>
-    </div>
-</footer> 
