@@ -41,6 +41,38 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
+    <script>
+        $(document).ready(function(){
+            $('.update').on('click', function(){
+                $('#updateLabel').text('Editing `' + $(this).data('unit-name') + '`');
+                $('#update_id').val($(this).data('unit-id'));
+                $('#update_unit').val($(this).data('unit-name'));
+                $('#updateModal').modal('show');
+            });
+
+            $('#update-form').on('submit', function(event){
+                event.preventDefault();
+                var id = $('#update_id').val();
+                var unit = $('#update_unit').val();
+                console.log(id + ' ' + unit);
+
+                $.ajax({
+                    url: '../../PHP - process_files/updateUnit.php',
+                    method: 'POST',
+                    data: {
+                        id : id,
+                        unit : unit
+                    },
+                    dataType: 'json',
+                    success: function(response){
+                        if (response.redirect) {
+                            window.location.href = response.redirect;
+                        }
+                    }
+                })
+            })
+        })
+    </script>
   </body>
 
 

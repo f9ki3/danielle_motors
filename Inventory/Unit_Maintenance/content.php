@@ -48,4 +48,4 @@
         </div>
     </div>
 </div>
-<?php include "add_unit_modal.php";?>
+<?php include "add_unit_modal.php"; include 'update_unit_modal.php'; ?>

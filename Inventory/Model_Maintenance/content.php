@@ -49,7 +49,7 @@
         </div>
     </div>
 </div>
-<?php include "add_model_modal.php";?>
+<?php include "add_model_modal.php"; include 'update_model_modal.php'; ?>
 
 
 
