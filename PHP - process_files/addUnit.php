@@ -13,7 +13,7 @@
             $row = $stmt->num_rows;
             $stmt->close();
             if ($row > 0) {
-                header('Location: /dms_ims/unit.php');
+                header('Location: ../Inventory/Unit_Maintenance/');
                 exit;
             }
 
