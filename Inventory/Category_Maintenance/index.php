@@ -41,6 +41,37 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
+    <script>
+        $(document).ready(function(){
+            $('.update').on('click', function(){
+                $('#updateLabel').text('Editing `' + $(this).data('category-name') + '`');
+                $('#update_id').val($(this).data('category-id'));
+                $('#update_category').val($(this).data('category-name'));
+                $('#updateModal').modal('show');
+            });
+
+            $('#update-form').on('submit', function(event){
+                event.preventDefault();
+                var id = $('#update_id').val();
+                var category = $('#update_category').val();
+
+                $.ajax({
+                    url: '../../PHP - process_files/updateCategory.php',
+                    method: 'POST',
+                    data: {
+                        id : id,
+                        category : category
+                    },
+                    dataType: 'json',
+                    success: function(response){
+                        if (response.redirect) {
+                            window.location.href = response.redirect;
+                        }
+                    }
+                })
+            })
+        })
+    </script>
   </body>
 
 

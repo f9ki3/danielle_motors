@@ -50,4 +50,5 @@
         </div>
     </div>
 </div>
-<?php include "add_brand_modal.php";?>
+<?php include "add_brand_modal.php"; include 'update_brand_modal.php'; ?>
+
