@@ -48,11 +48,6 @@ $stmt->bind_result($price_list_id, $pl_product_id, $dealer, $wholesale, $srp, $p
 while ($stmt->fetch()) {
     echo '
     <tr>
-    <td class="fs--1 align-middle">
-        <div class="form-check mb-0 fs-0">
-            <input class="form-check-input" type="checkbox">
-        </div>
-    </td>
     <td class="align-middle white-space-nowrap py-0">
         <div style="height: 50px; width: 50px">
             <img style="width: 100%; height: 100%; object-fit: cover" src="../../uploads/'. basename($image) .'" alt="" width="53">
@@ -92,6 +87,7 @@ while ($stmt->fetch()) {
 }
 
 ?>
+
 <script>
 function addToCart(productId, image, productName, supplierCode, brandName, unitName, models, srp, totalStocks) {
     // Create an object to hold the item data
@@ -104,7 +100,9 @@ function addToCart(productId, image, productName, supplierCode, brandName, unitN
         unitName: unitName,
         models: models,
         srp: srp,
-        totalStocks: totalStocks
+        totalStocks: totalStocks,
+        qty: 1, // Default quantity
+        discount: 0 // Default discount
     };
     
     // Retrieve existing cart items from session storage
@@ -134,4 +132,16 @@ function addToCart(productId, image, productName, supplierCode, brandName, unitN
         updateCounter(cartItems.length);
     }
 }
+
+// Function to update the counter
+function updateCounter(count) {
+    var counterElement = document.getElementById('counter');
+    if (counterElement) {
+        counterElement.textContent = count; // Update counter to total items in the cart
+    }
+}
+
+// Initialize the counter with the number of items in the cart
+var initialCartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+updateCounter(initialCartItems.length);
 </script>

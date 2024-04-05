@@ -21,11 +21,11 @@
             </div>
             
             <div class="ms-xxl-auto">
-                <button class="btn border border-primary text-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_product"><span class="fas fa-plus me-2"></span> Purchase</button>
-                <button class="btn btn-primary position-relative" type="button" data-bs-toggle="modal" data-bs-target="#add_product">
+                <a href="../Purchase_Warehouse" class="btn btn-primary " ><span class="fas fa-plus me-2"></span> Purchase</a>
+                <a href="../Purchase_Warehouse_Cart" class="btn border text-primary border-primary position-relative" >
                     <span class="fas fa-shopping-cart me-2"></span> Cart
                     <span class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-circle" id="counter"></span>
-                </button>
+                </a>
 
             </div>
             </div>
@@ -36,9 +36,6 @@
                     <thead>
                     <tr>
                         <th class="white-space-nowrap align-middle ps-0" style="max-width:20px; width:18px;">
-                        <div class="form-check mb-0 fs-0">
-                            <input class="form-check-input" id="checkbox-bulk-products-select" type="checkbox">
-                        </div>
                         </th>
                         <th class="sort white-space-nowrap align-middle " style="width: 5%" scope="col">IMG</th>
                         <th class="sort white-space-nowrap align-middle " style="width: 15%" scope="col" data-sort="product">PRODUCT NAME</th>
@@ -69,3 +66,4 @@
         </div>
     </div>
 </div>
+
