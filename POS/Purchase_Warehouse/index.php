@@ -6,7 +6,7 @@ date_default_timezone_set('Asia/Manila');
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 
- <?php include "../../page_properties/header.php" ?>
+ <?php include "../../page_properties/header_pos.php" ?>
 
   <body>
     <!-- ===============================================-->

@@ -24,7 +24,7 @@
                 <button class="btn border border-primary text-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_product"><span class="fas fa-plus me-2"></span> Purchase</button>
                 <button class="btn btn-primary position-relative" type="button" data-bs-toggle="modal" data-bs-target="#add_product">
                     <span class="fas fa-shopping-cart me-2"></span> Cart
-                    <span class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-circle">0</span>
+                    <span class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-circle" id="counter"></span>
                 </button>
 
             </div>
@@ -49,7 +49,7 @@
                         <th class="sort align-middle text-start " style="width: 15%" scope="col" data-sort="model">MODEL</th>
                         <th class="sort align-middle text-start " style="width: 10%" scope="col" data-sort="status">STATUS</th>
                         <th class="sort align-middle text-start " style="width: 10%" scope="col" data-sort="tags">SRP</th>
-                        <th class="sort align-middle text-start " style="width: 10%" scope="col" data-sort="tags">QTY</th>
+                        <th class="sort align-middle text-start " style="width: 10%" scope="col" data-sort="tags">STOCKS</th>
                         <th class="sort text-end align-middle" style="width: 10%" scope="col"></th>
                     </tr>
                     </thead>
