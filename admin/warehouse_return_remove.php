@@ -57,12 +57,9 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
 <div style="width: 100%" class="content p-3">
     <div>
         <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
-            <h5 class="fw-bolder">Purchase</h5>
-            <a href="purchase" class="btn btn-sm  border rounded mb-2">Purchase Walk-in</a>
-            <a href="purchase_delivery" class="btn btn-sm border rounded mb-2">Purchase Delivery</a>
-            <a href="purchase_online" class="btn btn-sm border rounded mb-2">Purchase Online</a>
-            <a href="purchase_terms" class="btn btn-sm border rounded mb-2">Purchase with Terms</a>
-            <a href="store_stocks" class="btn btn-sm border btn-primary rounded mb-2">Store Stocks</a>
+        <h5 class="fw-bolder">Return</h5>
+            <a href="warehouse_return.php" class="btn btn-primary btn-sm border rounded mb-2">Return Warehouse</a>
+            <a href="store_return.php" class="btn btn-sm border rounded mb-2">Return Store</a>
             
         </div>
 
@@ -325,8 +322,23 @@ $(document).ready(function () {
                         
                         swal("Material Returned", "Products have been returned", "success").then((value) => {
                             if (value) {
-                                // Reload the page
-                                window.location.reload();
+                                // Save Material Transfer with total values
+                                $.ajax({
+                                    url: '../php/store_stocks_recompute_return.php',
+                                    method: 'POST',
+                                    data: {
+                                        materialInvoiceID: materialInvoiceNo,
+                                        totalReturnPrice: comReturnPrice // Assuming comReturnPrice is defined somewhere in your code
+                                    },
+                                    success: function(response) {
+                                        // Reload the page after the AJAX request completes
+                                        window.location.reload();
+                                    },
+                                    error: function(xhr, status, error) {
+                                        // Handle errors if needed
+                                        console.error(xhr.responseText);
+                                    }
+                                });
                             }
                         });
                     },

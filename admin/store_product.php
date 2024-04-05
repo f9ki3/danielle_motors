@@ -224,7 +224,7 @@ if($material_transfer_res -> num_rows > 0){
 
                 // Only include rows with status other than 5 in the calculation
                 // if ($row['status'] == 3 || $row['status'] == 4) {
-                if ($row['status'] !== 5) {
+                if ($row['status'] === 3 || $row['status'] === 4 || $row['status'] === 6) {
                     // Calculate totalSellingPrice and totalCostPrice
                     $comSellingPrice += $row['input_srp'] * $row['qty_receive'];
                     $qty_receivetotal = $row['qty_receive'];
@@ -312,7 +312,7 @@ $(document).ready(function () {
                             console.log('Status:', status); // Log the status value
                             console.log('Branch_code:', user_brn_code); // Log the status value
                             console.log('productId:', productId); // Log the status value
-                            if (status === 'Approved') {
+                            if (status === 'Approved' || status === 'Returned') {
                                 // Only update product stocks if status is 'Accepted'
                                 $.ajax({
                                     url: '../php/add_product_stocks.php',
@@ -333,7 +333,7 @@ $(document).ready(function () {
                                     }
                                 });
                             } else {
-                                console.log('Status is not "Accepted", skipping product ID ' + productId);
+                                console.log('Status is not "Approved", skipping product ID ' + productId);
                                 console.log('Status is not "status", status is ' + status);
                                 // Handle other statuses here
                                 // You can add any desired behavior for statuses other than "Accepted"
