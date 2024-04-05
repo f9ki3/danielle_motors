@@ -18,8 +18,8 @@ include '../config/config.php';
     <div>
         <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
             <h5 class="fw-bolder">Return</h5>
-            <a href="warehouse_return.php" class="btn btn-sm border rounded mb-2">Return Warehouse</a>
-            <a href="store_return.php" class="btn btn-primary btn-sm  border rounded mb-2">Return Store</a>
+            <a href="warehouse_return.php" class="btn btn-primary btn-sm border rounded mb-2">Return Warehouse</a>
+            <a href="store_return.php" class="btn btn-sm border rounded mb-2">Return Store</a>
             <!-- <a href="purchase_terms" class="btn btn-sm border rounded mb-2">Purchase with Terms</a> -->
             
         </div>
@@ -33,7 +33,7 @@ include '../config/config.php';
                     </div>
 
                     <div>
-                    <button id="addStocksBtn" class="btn border btn-sm rounded" data-bs-target="#add_stocks">+ Store Return</button>
+                    <!-- <button id="addStocksBtn" class="btn border btn-sm rounded" data-bs-target="#add_stocks">+ Add Return</button> -->
                         <a href="store_stocks" class="btn btn-primary border btn-sm rounded" >Stocks</a>
                         <a href="store_product_list" class="btn border btn-sm rounded" >Product</a>
                     </div>
