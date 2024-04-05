@@ -1,3 +1,10 @@
+<div id="initialContent" class="my-9 py-9 text-center">
+    <div id="spinner" class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<div class="mb-9" id="actualContent" style="display: none;">
 <div class="container">
     <h3 class="mt-4 mb-4" >Inventory Dashboard</h3>
 </div>
@@ -108,3 +115,4 @@
         <div class="echart-basic-bar-chart-example" style="min-height:300px"></div>
     </div>
 
+</div>

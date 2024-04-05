@@ -1,3 +1,10 @@
+<div id="initialContent" class="my-9 py-9 text-center">
+    <div id="spinner" class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<div class="mb-9" id="actualContent" style="display: none;">
 <div class="row">
     <div class="col-lg-12">
         <h1>Logo Maintenance</h1>
@@ -53,6 +60,7 @@
         
         <!-- ----------- -->
     </div>
+</div>
 </div>
 
 <?php include "MODAL_add_product.php"; ?>

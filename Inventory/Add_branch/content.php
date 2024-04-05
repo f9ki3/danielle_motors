@@ -15,6 +15,13 @@ if(isset($_GET['telnum'])){
     $telnum = "";
 }
 ?>
+<div id="initialContent" class="my-9 py-9 text-center">
+    <div id="spinner" class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<div class="mb-9" id="actualContent" style="display: none;">
 <nav class="mb-2" aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
             <li class="breadcrumb-item"><a href="#!">Maintenance</a></li>
@@ -111,4 +118,5 @@ if(isset($_GET['telnum'])){
         
         </div>
     </div>
+</div>
 </div>

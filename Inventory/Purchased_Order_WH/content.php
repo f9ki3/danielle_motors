@@ -1,3 +1,10 @@
+<div id="initialContent" class="my-9 py-9 text-center">
+    <div id="spinner" class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<div class="mb-9" id="actualContent" style="display: none;">
 <!-- iget ang supplier_name, supplier_logo mamaya-->
 <div class="card mb-3">
           <div class="card-header">
@@ -127,3 +134,4 @@
             </div>
           </div>
         </div>
+</div>
