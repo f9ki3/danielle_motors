@@ -16,7 +16,7 @@ date_default_timezone_set('Asia/Manila');
       <!-- navigation -->
       <?php include "../../page_properties/navbar_pos.php";?>
       <!-- /navigation -->
-      <div class="content">
+      <div class="content bg-white">
         <?php 
         include "content.php";
         ?>
@@ -53,7 +53,7 @@ date_default_timezone_set('Asia/Manila');
               setTimeout(function() {
                   document.getElementById('spinner').style.display = 'none';
                   document.getElementById('content').style.display = 'block';
-              }, 3000); // 3000 milliseconds = 3 seconds
+              }, 2000); // 3000 milliseconds = 3 seconds
           }
 
           // Call the function to reload spinner
