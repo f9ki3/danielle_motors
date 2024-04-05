@@ -29,9 +29,9 @@ while ($stmt->fetch()) {
     <td class="price align-middle white-space-nowrap text-start ps-4"><span class="badge badge-phoenix badge-phoenix-primary">' . $supplier_code . '</span></td>
     <td class="tags align-middle review pb-2 ps-3" style="min-width:225px;">Pulley Set</td>
     <td class="vendor align-middle text-start fw-semi-bold ps-4">HIRC</td>
-    <td class="time align-middle white-space-nowrap text-600 ps-4">11gg</td>
-    <td class="time align-middle white-space-nowrap text-600 ps-4">' . $models . '</td>
-    <td class="time align-middle white-space-nowrap text-600 ps-4"><span class="badge badge-phoenix fs--2 badge-phoenix-success"><span class="badge-label">active</span><svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check ms-1" style="height:12.8px;width:12.8px;"><polyline points="20 6 9 17 4 12"></polyline></svg></span></td>
+    <td class="unit align-middle white-space-nowrap text-600 ps-4">11gg</td>
+    <td class="model align-middle white-space-nowrap text-600 ps-4">' . $models . '</td>
+    <td class="status align-middle white-space-nowrap text-600 ps-4"><span class="badge badge-phoenix fs--2 badge-phoenix-success"><span class="badge-label">active</span><svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check ms-1" style="height:12.8px;width:12.8px;"><polyline points="20 6 9 17 4 12"></polyline></svg></span></td>
     <td class="text-center align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
         <button class="btn me-3 btn-primary rounded rounded rounded-5 m-0 p-2"><span class="fas fa-cart-plus "></span></button>
     </td>

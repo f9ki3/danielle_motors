@@ -1,8 +1,7 @@
 <div id="spinner" style="height: 80vh; display: flex; justify-content: center; align-items: center;">
-<iframe src="https://giphy.com/embed/3oz8xzJjbG2Etm0f04" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/3oz8xzJjbG2Etm0f04">via GIPHY</a></p>
-    <!-- <div class="spinner-grow text-primary" role="status">
+    <div class="spinner-grow text-primary" role="status">
         <span class="visually-hidden">Loading...</span>
-    </div> -->
+    </div>
 </div>
 
 <div id="content" style="display: none">
@@ -11,7 +10,7 @@
             <h2 class="mb-0">Purchase Warehouse</h2>
         </div>
     </div>
-    <div id="products" data-list="{&quot;valueNames&quot;:[&quot;product&quot;,&quot;price&quot;,&quot;category&quot;,&quot;tags&quot;,&quot;vendor&quot;,&quot;time&quot;],&quot;page&quot;:10,&quot;pagination&quot;:true}">
+    <div id="products" data-list="{&quot;valueNames&quot;:[&quot;product&quot;,&quot;price&quot;,&quot;category&quot;,&quot;tags&quot;,&quot;vendor&quot;,&quot;unit&quot;],&quot;unit&quot;],&quot;model&quot;],&quot;status&quot;],&quot;page&quot;:10,&quot;pagination&quot;:true}">
         <div class="mb-4">
             <div class="d-flex flex-wrap gap-3">
             <div class="search-box">
@@ -46,9 +45,9 @@
                         <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">ITEM CODE</th>
                         <th class="sort align-middle text-start ps-3" scope="col" data-sort="tags">CATEGORY</th>
                         <th class="sort align-middle text-start ps-4" scope="col" data-sort="vendor">BRAND</th>
-                        <th class="sort align-middle text-start ps-4" scope="col" data-sort="time">UNIT</th>
-                        <th class="sort align-middle text-start ps-4" scope="col" data-sort="time">MODEL</th>
-                        <th class="sort align-middle text-start ps-4" scope="col" data-sort="time">STATUS</th>
+                        <th class="sort align-middle text-start ps-4" scope="col" data-sort="unit">UNIT</th>
+                        <th class="sort align-middle text-start ps-4" scope="col" data-sort="model">MODEL</th>
+                        <th class="sort align-middle text-start ps-4" scope="col" data-sort="status">STATUS</th>
                         <th class="sort text-end align-middle pe-0 ps-4" scope="col"></th>
                     </tr>
                     </thead>
@@ -68,22 +67,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    // Function to reload spinner for 3 seconds
-    function reloadSpinner() {
-        // Show spinner
-        document.getElementById('spinner').style.display = 'flex';
-        // Hide content
-        document.getElementById('content').style.display = 'none';
-        
-        // Set timeout to hide spinner and show content after 3 seconds
-        setTimeout(function() {
-            document.getElementById('spinner').style.display = 'none';
-            document.getElementById('content').style.display = 'block';
-        }, 3000); // 3000 milliseconds = 3 seconds
-    }
-
-    // Call the function to reload spinner
-    reloadSpinner();
-</script>
