@@ -209,7 +209,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-3 mb-4">
                     <div>
                     <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-                    <h4 id="totalSellingPrice" class="">Total Selling Amount ₱<?php echo number_format($totalSellingPrice, 2); ?></h4>
+                    <h4 id="totalSellingPrice" class="">Total Selling Amount: ₱<?php echo number_format($totalSellingPrice, 2); ?></h4>
                     <h4 id="totalReturnAmount" class="">Total Return Amount ₱<?php echo number_format($totalReturnAmount, 2); ?></h4>
 
                         <input type="text" id="Reason" class="form-control" placeholder="Enter Reason to return">
@@ -247,23 +247,26 @@ $(document).ready(function () {
         var cashierName = $('#cashierName').val();
         var reason = $('#Reason').val(); // Get the value of the "Reason" input field
         
-        // Calculate total return amount
+        // Calculate total return amount and total selling price
         var totalReturnAmount = 0;
         var totalSellingPrice = 0;
         $('input.quantity-return').each(function() {
             var closestRow = $(this).closest('tr');
             var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
             var qtyReceive = parseFloat(closestRow.find('td:eq(7)').text()); // Get quantity receive
-            var productTotalSellingPrice = inputSrp * qtyReceive;
-            // Add to total selling price
+            
             var quantityReturn = parseFloat($(this).val()); // Get quantity return value
+            
             if (!isNaN(inputSrp) && !isNaN(quantityReturn)) {
-                // totalSellingPrice += inputSrp * quantityRetain;
-                totalSellingPrice += productTotalSellingPrice;
+                totalSellingPrice += inputSrp * (qtyReceive - quantityReturn);
                 totalReturnAmount += inputSrp * quantityReturn; // Calculate total return amount
             }
         });
 
+        // Update total selling price display
+        $('#totalSellingPrice').text('Total Selling Amount: ₱' + totalSellingPrice.toFixed(2));
+
+        console.log('Total return Price:', totalReturnAmount);
         console.log('Total Selling Price:', totalSellingPrice); // Log the total selling price
         // Save Material Transfer with total values
         $.ajax({

@@ -165,10 +165,10 @@ if($material_transfer_res -> num_rows > 0){
     </thead>
     <tbody>
     <?php 
-        $comSellingPrice = 0;
+        $totalSellingPrice = 0;
         $material_invoice_id = $material_transaction; // replace with your material_invoice_id
 
-        $sql = "SELECT mt.product_id, mt.input_srp, mt.qty_added,mt.qty_receive, mt.created_at, mt.status, p.name, p.models, p.code, p.image
+        $sql = "SELECT mt.product_id, mt.input_srp, mt.qty_added,mt.qty_receive,mt.qty_warehouse, mt.created_at, mt.status, p.name, p.models, p.code, p.image
                     FROM material_transaction mt
                     JOIN product p ON mt.product_id = p.id
                     WHERE material_invoice_id = ?";
@@ -224,11 +224,11 @@ if($material_transfer_res -> num_rows > 0){
 
                 // Only include rows with status other than 5 in the calculation
                 // if ($row['status'] == 3 || $row['status'] == 4) {
-                if ($row['status'] == 3 || $row['status'] == 4 || $row['status'] == 6) {
-                    // Calculate totalSellingPrice and totalCostPrice
-                    $comSellingPrice += $row['input_srp'] * $row['qty_receive'];
-                    $qty_receivetotal = $row['qty_receive'];
-                }
+                // if ($row['status'] == 3 || $row['status'] == 4 || $row['status'] == 6) {
+                //     // Calculate totalSellingPrice and totalCostPrice
+                //     $totalSellingPrice += $row['input_srp'] * $row['qty_receive'];
+                //     $qty_receivetotal = $row['qty_receive'];
+                // }
             }
         } else {
             echo "0 results";
@@ -265,7 +265,22 @@ if($material_transfer_res -> num_rows > 0){
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 <script>
 
+// Calculate total selling amount
+var totalSellingPrice = 0;
+$('tr').each(function() {
+    var status = $(this).find('td:eq(8)').text().trim(); // Get status from the table cell
+    if (status === 'Approved' ||status === 'Received' || status === 'Returned') {
+        var inputSrp = parseFloat($(this).find('td:eq(5)').text()); // Get input SRP
+        var qtyReceive = parseFloat($(this).find('td:eq(6)').text()); // Get quantity receive
+        var productTotalSellingPrice = inputSrp * qtyReceive;
+        totalSellingPrice += productTotalSellingPrice;
+    }
+});
+
+console.log('Total Selling Price:', totalSellingPrice); // Log the total selling price
+
 $(document).ready(function () {
+    $('#totalSellingPrice').text('Total Product Amount ₱' + totalSellingPrice.toFixed(2)); // compute value
     // Function to update button status based on status value
     function updateButtonStatus() {
         console.log('Function updateButtonStatus() is running.'); // Log that the function is running
@@ -311,35 +326,54 @@ $(document).ready(function () {
         if (status === 'Approved' || status === 'Returned') {
             var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
             var qtyReceive = parseFloat(closestRow.find('td:eq(6)').text()); // Get quantity receive
-            var comSellingPrice = inputSrp * qtyReceive; // Calculate total selling price
-            closestRow.find('td:eq(10)').text(comSellingPrice.toFixed(2)); // Update total selling price column
+            var totalSellingPrice = inputSrp * qtyReceive; // Calculate total selling price
+            closestRow.find('td:eq(10)').text(totalSellingPrice.toFixed(2)); // Update total selling price column
         }
     });
 
 
     // Accept Material Transfer
-    $('#acceptMaterialTransfer').click(function () {
-        // Check if the button is enabled
-        if ($(this).prop('disabled')) {
-            return; // Do nothing if the button is disabled
-        }
-        var user_brn_code = $('#user_brn_code').val();
-        var materialInvoiceNo = $('#material_invoice').val();
-        var sessionID = $('#sessionID').val();
-        var cashierName = $('#cashierName').val();
-        // Define total values (replace with actual values)
-        var comSellingPrice = '<?php echo $comSellingPrice; ?>';
+$('#acceptMaterialTransfer').click(function () {
+    // Check if the button is enabled
+    if ($(this).prop('disabled')) {
+        return; // Do nothing if the button is disabled
+    }
+    var user_brn_code = $('#user_brn_code').val();
+    var materialInvoiceNo = $('#material_invoice').val();
+    var sessionID = $('#sessionID').val();
+    var cashierName = $('#cashierName').val();
+   
+    // Compute total selling price
+    var totalSellingPrice = 0;
 
-        // Save Material Transfer with total values
-        $.ajax({
-            url: '../php/store_stocks_recompute_product.php',
-            method: 'POST',
-            data: {
-                materialInvoiceID: materialInvoiceNo,
-                totalSellingPrice: comSellingPrice
-            },
-            success: function (response) {
-                console.log(response);
+$('input[name="product_checkbox[]"]').each(function() {
+    // Check if the checkbox is checked
+    if ($(this).is(":checked")) {
+        var closestRow = $(this).closest('tr');
+        var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
+        var qtyReceive = parseFloat(closestRow.find('td:eq(7)').text()); // Get quantity receive
+
+        // Add to total selling price if inputSrp and qtyReceive are valid numbers
+        if (!isNaN(inputSrp) && !isNaN(qtyReceive)) {
+            totalSellingPrice += inputSrp * qtyReceive;
+        }
+    }
+});
+
+console.log('Total Selling Price:', totalSellingPrice);
+
+    console.log('Total Selling Price:', totalSellingPrice); // Log the total selling price
+    
+    // Save Material Transfer with total values
+    $.ajax({
+        url: '../php/store_stocks_recompute_product.php',
+        method: 'POST',
+        data: {
+            materialInvoiceID: materialInvoiceNo,
+            totalSellingPrice: totalSellingPrice
+        },
+        success: function (response) {
+            console.log(response);
                 // Send notification
                 $.ajax({
                     url: '../php/update_notification.php',
@@ -357,7 +391,7 @@ $(document).ready(function () {
                         $('input[name="product_checkbox[]"]:checked').each(function() {
                             var productId = $(this).closest('tr').find('input[name="product_id[]"]').val();
                             var qtySent = $(this).closest('tr').find('td:eq(6)').text(); // Assuming qty sent is in the 7th column
-                            var qtyReceive = $(this).closest('tr').find('td:eq(7)').text(); // Assuming qty sent is in the 7th column
+                            var qtyReceive = $(this).closest('tr').find('td:eq(6)').text(); // Assuming qty sent is in the 7th column
                             var status = $(this).closest('tr').find('td:eq(8)').text(); // Assuming status is in the 8th column
                             
                             console.log('Status:', status); // Log the status value
@@ -420,7 +454,7 @@ $(document).ready(function () {
         var materialInvoiceNo = $('#material_invoice').val();
         var sessionID = $('#sessionID').val();
         var cashierName = $('#cashierName').val();
-        var comSellingPrice = '<?php echo $comSellingPrice; ?>';
+        var totalSellingPrice = '<?php echo $totalSellingPrice; ?>';
         
         // Send notification
         $.ajax({
@@ -452,7 +486,7 @@ $(document).ready(function () {
                             method: 'POST',
                             data: {
                                 materialInvoiceID: materialInvoiceNo,
-                                totalSellingPrice: comSellingPrice
+                                totalSellingPrice: totalSellingPrice
                             },
                             success: function (response) {
                                 console.log(response);
@@ -507,6 +541,24 @@ $(document).ready(function () {
             }
         });
     });
+});
+
+// Recompute total selling price when checkbox state inputs
+$('input[name="product_checkbox[]"]').click(function () {
+    var totalSellingPrice = 0;
+
+    $('input[name="product_checkbox[]"]:checked').each(function () {
+        var closestRow = $(this).closest('tr');
+        var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
+        var quantityRequested = parseFloat(closestRow.find('td:eq(6)').text()); // Get quantity requested
+
+        if (!isNaN(inputSrp) && !isNaN(quantityRequested)) {
+            totalSellingPrice += inputSrp * quantityRequested; // Calculate total selling price
+        }
+    });
+
+    // Update total selling price display
+    $('#totalSellingPrice').text('Total Selected Product: ₱' + totalSellingPrice.toFixed(2));
 });
 
 </script>
