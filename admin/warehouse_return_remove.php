@@ -57,12 +57,9 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
 <div style="width: 100%" class="content p-3">
     <div>
         <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
-            <h5 class="fw-bolder">Purchase</h5>
-            <a href="purchase" class="btn btn-sm  border rounded mb-2">Purchase Walk-in</a>
-            <a href="purchase_delivery" class="btn btn-sm border rounded mb-2">Purchase Delivery</a>
-            <a href="purchase_online" class="btn btn-sm border rounded mb-2">Purchase Online</a>
-            <a href="purchase_terms" class="btn btn-sm border rounded mb-2">Purchase with Terms</a>
-            <a href="store_stocks" class="btn btn-sm border btn-primary rounded mb-2">Store Stocks</a>
+        <h5 class="fw-bolder">Return</h5>
+            <a href="warehouse_return.php" class="btn btn-primary btn-sm border rounded mb-2">Return Warehouse</a>
+            <a href="store_return.php" class="btn btn-sm border rounded mb-2">Return Store</a>
             
         </div>
 
@@ -130,8 +127,8 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
             </thead>
             <tbody>
             <?php 
-                    
-                    $comReturnPrice = 0;
+            $totalReturnAmount = 0;
+            $totalSellingPrice = 0;
                     $material_invoice_id = $material_transaction; // replace with your material_invoice_id
                     
                     $sql = "SELECT mt.product_id, mt.input_srp, mt.qty_added, mt.qty_receive,mt.qty_warehouse, mt.created_at, mt.status, p.name, p.models, p.code, p.image
@@ -192,7 +189,8 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                             // Only include rows with status 5 or 6 in the calculation
                             if ($row['status'] == 5 || $row['status'] == 6) {
                                 // Calculate total return price
-                                $comReturnPrice += $row['input_srp'] * $row['qty_warehouse'];
+                                $totalReturnAmount += $row['input_srp'] * $row['qty_warehouse'];
+                                $totalSellingPrice += $row['input_srp'] * $row['qty_receive'];
                             }                            
                         }
                     } else {
@@ -211,7 +209,9 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-3 mb-4">
                     <div>
                     <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-                        <h4 class="">Total Return Amount ₱<?php echo number_format($comReturnPrice, 2); ?></h4>
+                    <h4 id="totalSellingPrice" class="">Total Selling Amount ₱<?php echo number_format($totalSellingPrice, 2); ?></h4>
+                    <h4 id="totalReturnAmount" class="">Total Return Amount ₱<?php echo number_format($totalReturnAmount, 2); ?></h4>
+
                         <input type="text" id="Reason" class="form-control" placeholder="Enter Reason to return">
                     </div>
                     </div>
@@ -246,16 +246,34 @@ $(document).ready(function () {
         var sessionID = $('#sessionID').val();
         var cashierName = $('#cashierName').val();
         var reason = $('#Reason').val(); // Get the value of the "Reason" input field
-
-        var comReturnPrice = '<?php echo $comReturnPrice; ?>';
         
+        // Calculate total return amount
+        var totalReturnAmount = 0;
+        var totalSellingPrice = 0;
+        $('input.quantity-return').each(function() {
+            var closestRow = $(this).closest('tr');
+            var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
+            var qtyReceive = parseFloat(closestRow.find('td:eq(7)').text()); // Get quantity receive
+            var productTotalSellingPrice = inputSrp * qtyReceive;
+            // Add to total selling price
+            var quantityReturn = parseFloat($(this).val()); // Get quantity return value
+            if (!isNaN(inputSrp) && !isNaN(quantityReturn)) {
+                // totalSellingPrice += inputSrp * quantityRetain;
+                totalSellingPrice += productTotalSellingPrice;
+                totalReturnAmount += inputSrp * quantityReturn; // Calculate total return amount
+            }
+        });
+
+        console.log('Total Selling Price:', totalSellingPrice); // Log the total selling price
         // Save Material Transfer with total values
         $.ajax({
             url: '../php/store_stocks_recompute_return.php',
             method: 'POST',
             data: {
+
                 materialInvoiceID: materialInvoiceNo,
-                totalReturnPrice: comReturnPrice // Assuming comReturnPrice is defined somewhere in your code
+                totalReturnAmount: totalReturnAmount, // Pass totalReturnAmount to the AJAX request
+                totalSellingPrice: totalSellingPrice // Pass totalReturnAmount to the AJAX request
             },
             success: function (response) {
                 console.log(response);
@@ -325,7 +343,7 @@ $(document).ready(function () {
                         
                         swal("Material Returned", "Products have been returned", "success").then((value) => {
                             if (value) {
-                                // Reload the page
+                                // Reload the page after the AJAX request completes
                                 window.location.reload();
                             }
                         });
@@ -340,64 +358,136 @@ $(document).ready(function () {
             }
         });
     });
-});
 
-        // Function to update button status based on status value
-        function updateButtonStatus() {
-            console.log('Function updateButtonStatus() is running.');
+    // Update input field when checkbox is clicked
+    $('input[name="product_checkbox[]"]').click(function () {
+        var closestRow = $(this).closest('tr');
+        var qtyRequested = parseInt(closestRow.find('td:eq(6)').text());
 
-            var allReturn = true;
-            var anyChecked = false;
-
-            $('input[name="product_checkbox[]"]').each(function () {
-                var closestRow = $(this).closest('tr');
-                var status = closestRow.find('td:eq(9)').text().trim();
-                console.log('Status:', status);
-
-                if ($(this).prop('checked')) {
-                    anyChecked = true;
-
-                    if (status !== 'Request Return') {
-                        allReturn = false;
-                    }
-                } else {
-                    closestRow.find('td:eq(6)').text(closestRow.find('td:eq(8)').attr('data-quantity-requested'));
-                }
-            });
-
-            console.log('Any checkbox checked:', anyChecked);
-            console.log('All return:', allReturn);
-
-            if (allReturn && anyChecked) {
-                $('#acceptMaterialTransfer').prop('disabled', false);
-                $('#returnMaterialTransfer').prop('disabled', false);
-            } else {
-                $('#acceptMaterialTransfer').prop('disabled', true);
-                $('#returnMaterialTransfer').prop('disabled', true);
-            }
+        if ($(this).prop('checked')) {
+            var inputField = $('<input type="number" class="form-control quantity-return" min="0">');
+            var inputId = 'quantityInput_' + closestRow.attr('data-row-index');
+            inputField.attr('id', inputId);
+            inputField.attr('max', qtyRequested);
+            inputField.val(qtyRequested);
+            closestRow.find('td:eq(8)').html(inputField);
+        } else {
+            closestRow.find('td:eq(6)').text(closestRow.find('td:eq(8)').attr('data-quantity-requested'));
+            closestRow.find('td:eq(8)').empty(); // Clear the input field
         }
 
-        // Update input field when checkbox is clicked
-        $('input[name="product_checkbox[]"]').click(function () {
+        updateButtonStatus();
+    });
+
+    // Recompute total return amount when quantity return is changed
+    $(document).on('change', '.quantity-return', function() {
+        var totalReturnAmount = 0;
+        $('.quantity-return').each(function() {
             var closestRow = $(this).closest('tr');
-            var qtyRequested = parseInt(closestRow.find('td:eq(6)').text());
+            var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
+            var quantityReturn = parseFloat($(this).val()); // Get quantity return value
+
+            if (!isNaN(inputSrp) && !isNaN(quantityReturn)) {
+                totalReturnAmount += inputSrp * quantityReturn; // Calculate total return amount
+            }
+        });
+        $('#totalReturnAmount').text('Total Return Amount: ₱' + totalReturnAmount.toFixed(2)); // Update total return amount display
+    });
+
+    // Recompute total selling price when quantity return is changed
+    $(document).on('change', '.quantity-return', function () {
+        var totalSellingPrice = 0;
+
+        $('input[name="product_checkbox[]"]:checked').each(function () {
+            var closestRow = $(this).closest('tr');
+            var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
+            var qtyAdded = parseFloat(closestRow.find('td:eq(7)').data('quantity-added')); // Get quantity added
+            var quantityReturn = parseFloat($(this).val()); // Get quantity return value
+            var quantityRetain = qtyAdded - quantityReturn; // Calculate quantity retained
+
+            if (!isNaN(inputSrp) && !isNaN(quantityRetain)) {
+                totalSellingPrice == inputSrp * quantityRetain; // Calculate total selling price
+            }
+        });
+
+        // Update total selling price display
+        $('#totalSellingPrice').text('Total Selling Amount: ₱' + totalSellingPrice.toFixed(2));
+    });
+    // Recompute total selling price when checkbox state changes
+$('input[name="product_checkbox[]"]').click(function () {
+    var totalSellingPrice = 0;
+
+    $('input[name="product_checkbox[]"]:checked').each(function () {
+        var closestRow = $(this).closest('tr');
+        var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
+        var quantityRequested = parseFloat(closestRow.find('td:eq(6)').text()); // Get quantity requested
+        var quantityReturned = parseFloat(closestRow.find('td:eq(7)').text()); // Get quantity returned
+
+        if (!isNaN(inputSrp) && !isNaN(quantityRequested) && !isNaN(quantityReturned)) {
+            totalSellingPrice += inputSrp * (quantityRequested - quantityReturned); // Calculate total selling price
+        }
+    });
+
+    // Update total selling price display
+    $('#totalSellingPrice').text('Total Selling Amount: ₱' + totalSellingPrice.toFixed(2));
+});
+
+// Recompute total selling price when quantity return is changed
+$(document).on('change', '.quantity-return', function () {
+    var totalSellingPrice = 0;
+
+    $('input[name="product_checkbox[]"]:checked').each(function () {
+        var closestRow = $(this).closest('tr');
+        var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
+        var quantityRequested = parseFloat(closestRow.find('td:eq(6)').text()); // Get quantity requested
+        var quantityReturned = parseFloat(closestRow.find('.quantity-return').val()); // Get quantity returned
+
+        if (!isNaN(inputSrp) && !isNaN(quantityRequested) && !isNaN(quantityReturned)) {
+            totalSellingPrice += inputSrp * (quantityRequested - quantityReturned); // Calculate total selling price
+        }
+    });
+
+    // Update total selling price display
+    $('#totalSellingPrice').text('Total Selling Price: ₱' + totalSellingPrice.toFixed(2));
+});
+
+
+    // Initial update of button status
+    updateButtonStatus();
+
+    // Function to update button status based on status value
+    function updateButtonStatus() {
+        console.log('Function updateButtonStatus() is running.');
+
+        var allReturn = true;
+        var anyChecked = false;
+
+        $('input[name="product_checkbox[]"]').each(function () {
+            var closestRow = $(this).closest('tr');
+            var status = closestRow.find('td:eq(9)').text().trim();
+            console.log('Status:', status);
 
             if ($(this).prop('checked')) {
-                var inputField = $('<input type="number" class="form-control" min="0">');
-                var inputId = 'quantityInput_' + closestRow.attr('data-row-index');
-                inputField.attr('id', inputId);
-                inputField.attr('max', qtyRequested);
-                inputField.val(qtyRequested);
-                closestRow.find('td:eq(8)').html(inputField);
+                anyChecked = true;
+
+                if (status !== 'Request Return') {
+                    allReturn = false;
+                }
             } else {
                 closestRow.find('td:eq(6)').text(closestRow.find('td:eq(8)').attr('data-quantity-requested'));
             }
-
-            updateButtonStatus();
         });
 
-        // Initial update of button status
-        updateButtonStatus();
+        console.log('Any checkbox checked:', anyChecked);
+        console.log('All return:', allReturn);
 
-        
+        if (allReturn && anyChecked) {
+            $('#acceptMaterialTransfer').prop('disabled', false);
+            $('#returnMaterialTransfer').prop('disabled', false);
+        } else {
+            $('#acceptMaterialTransfer').prop('disabled', true);
+            $('#returnMaterialTransfer').prop('disabled', true);
+        }
+    }
+});
 </script>

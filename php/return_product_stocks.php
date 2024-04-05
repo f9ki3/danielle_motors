@@ -48,9 +48,9 @@ if(isset($_POST['productId'], $_POST['sessionID'], $_POST['sender'], $_POST['qty
         }
 
         // Update the material_transaction status
-        $updateStatusSql = "UPDATE material_transaction SET status = 6, qty_receive = ?, qty_warehouse = ? WHERE product_id = ? AND material_invoice_id = ?";
+        $updateStatusSql = "UPDATE material_transaction SET status = 6, branch_code = ?, qty_receive = ?, qty_warehouse = ? WHERE product_id = ? AND material_invoice_id = ?";
         $stmt2 = mysqli_prepare($conn, $updateStatusSql);
-        mysqli_stmt_bind_param($stmt2, "iiis", $qtyWarehouse, $quantity, $product_id, $materialInvoiceID); // Corrected parameter order
+        mysqli_stmt_bind_param($stmt2, "ssiii", $user_brn_code, $qtyWarehouse, $quantity, $product_id, $materialInvoiceID);              
 
         // Execute the status update statement
         if(mysqli_stmt_execute($stmt2)) {
