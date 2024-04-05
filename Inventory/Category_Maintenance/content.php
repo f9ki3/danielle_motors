@@ -1,3 +1,10 @@
+<div id="initialContent" class="my-9 py-9 text-center">
+    <div id="spinner" class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<div class="mb-9" id="actualContent" style="display: none;">
 <div class="row">
     <div class="col-lg-12 mb-5">
         <h1>CATEGORY</h1>
@@ -49,6 +56,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <?php include "add_category_modal.php"; include 'update_category_modal.php';?>
 <!-- <h1>CATEGORY</h1>
