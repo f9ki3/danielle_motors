@@ -98,7 +98,7 @@ $(document).ready(function () {
     $('#tabledataMaterial tbody').on('click', '.view', function () {
         // Handle button click event here
         var rowData = table.row($(this).closest('tr')).data();
-        window.location.href = "store_product";
+        window.location.href = "warehouse_return_remove";
         console.log('View button clicked for row:', rowData);
     });
 
