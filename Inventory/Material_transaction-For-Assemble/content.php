@@ -30,7 +30,13 @@ if($unformatted_status === '1' || $unformatted_status === '2'){
 $user_id = "Christian Azul";//on session
 
 ?>
+<div id="initialContent" class="my-9 py-9 text-center">
+    <div id="spinner" class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
 
+<div class="mb-9" id="actualContent" style="display: none;">
 <div class="row">
     <h1 class="mb-2">Material Transfer : <?php echo $invoice_id; ?></h1>
 </div>
@@ -198,4 +204,4 @@ $user_id = "Christian Azul";//on session
         </div>
     </div>
 </div>
-
+</div>

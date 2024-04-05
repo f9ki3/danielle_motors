@@ -16,6 +16,7 @@
 <script src="../../vendors/choices/choices.min.js"></script>
 <script src="../../vendors/echarts/echarts.min.js"></script>
 <script src="../../assets/js/regions.js"></script>
+<script src="../../vendors/sortablejs/sortable.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     // Function to load content from notification.php into the specified div
@@ -41,4 +42,12 @@
         // Optionally, you can set a timer to periodically update the content
         setInterval(loadNotification, 5000); // Refresh every 5 seconds (adjust the interval as needed)
     });
+</script>
+<script>
+    // Simulating content loading delay
+    setTimeout(function() {
+        // Replace spinner with actual content
+        document.getElementById('initialContent').style.display = 'none';
+        document.getElementById('actualContent').style.display = 'block';
+    }, 3000); // Change 3000 to the actual loading time in milliseconds
 </script>

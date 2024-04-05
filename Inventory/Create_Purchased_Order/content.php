@@ -1,4 +1,10 @@
-<div class="mb-9" id="tableExample" data-list='{"valueNames":["name","category","brand", "unit", "models", "stock"],"page":5,"pagination":true}'>
+<div id="initialContent" class="my-9 py-9 text-center">
+    <div id="spinner" class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<div class="mb-9" id="actualContent" style="display: none;" data-list='{"valueNames":["name","category","brand", "unit", "models", "stock"],"page":5,"pagination":true}'>
     <div class="row g-3 mb-2">
         <div class="col-auto">
             <h2 class="mb-0">PRODUCTS</h2>

@@ -36,9 +36,9 @@ if(isset($_POST['productId'], $_POST['qty_sent'],$_POST['qty_receive'], $_POST['
                 echo "New row inserted into stocks table!";
                 
                 // Update the material_transaction status
-                $updateStatusSql = "UPDATE material_transaction SET status = 4 WHERE product_id = ? AND material_invoice_id = ?";
+                $updateStatusSql = "UPDATE material_transaction SET status = 4, branch_code = ? WHERE product_id = ? AND material_invoice_id = ?";
                 $stmt2 = mysqli_prepare($conn, $updateStatusSql);
-                mysqli_stmt_bind_param($stmt2, "is", $product_id, $materialInvoiceID);
+                mysqli_stmt_bind_param($stmt2, "sis", $user_brn_code, $product_id, $materialInvoiceID);
                 
                 if(mysqli_stmt_execute($stmt2)) {
                     echo " Material transaction status updated!";
@@ -56,9 +56,9 @@ if(isset($_POST['productId'], $_POST['qty_sent'],$_POST['qty_receive'], $_POST['
             echo "Product stocks updated successfully!";
             
             // Update the material_transaction status
-            $updateStatusSql = "UPDATE material_transaction SET status = 4 WHERE product_id = ? AND material_invoice_id = ?";
+            $updateStatusSql = "UPDATE material_transaction SET status = 4, branch_code = ? WHERE product_id = ? AND material_invoice_id = ?";
             $stmt2 = mysqli_prepare($conn, $updateStatusSql);
-            mysqli_stmt_bind_param($stmt2, "is", $product_id, $materialInvoiceID);
+            mysqli_stmt_bind_param($stmt2, "sis", $user_brn_code, $product_id, $materialInvoiceID);
             
             if(mysqli_stmt_execute($stmt2)) {
                 echo " Material transaction status updated!";

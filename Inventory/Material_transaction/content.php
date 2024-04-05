@@ -29,7 +29,13 @@ if($material_transfer_res -> num_rows > 0){
     }
 }
 ?>
+<div id="initialContent" class="my-9 py-9 text-center">
+    <div id="spinner" class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
 
+<div class="mb-9" id="actualContent" style="display: none;">
 <div class="row">
     <h1 class="mb-2">Material Transfer : <?php echo $invoice_id; ?></h1>
 </div>
@@ -209,6 +215,7 @@ if($material_transfer_res -> num_rows > 0){
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <div class="modal fade" id="verticallyCentered" tabindex="-1" aria-labelledby="verticallyCenteredModalLabel" aria-hidden="true">

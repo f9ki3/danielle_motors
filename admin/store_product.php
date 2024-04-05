@@ -224,7 +224,7 @@ if($material_transfer_res -> num_rows > 0){
 
                 // Only include rows with status other than 5 in the calculation
                 // if ($row['status'] == 3 || $row['status'] == 4) {
-                if ($row['status'] !== 5) {
+                if ($row['status'] == 3 || $row['status'] == 4 || $row['status'] == 6) {
                     // Calculate totalSellingPrice and totalCostPrice
                     $comSellingPrice += $row['input_srp'] * $row['qty_receive'];
                     $qty_receivetotal = $row['qty_receive'];
@@ -243,7 +243,7 @@ if($material_transfer_res -> num_rows > 0){
                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-3 mb-4">
                     <div>
                         <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-                            <h4 class="">Total Product Amount ₱<?php echo number_format($comSellingPrice, 2); ?></h4>
+                        <h4 id="totalSellingPrice" class="">Total Product Amount ₱<?php echo number_format($totalSellingPrice, 2); ?></h4>
                         </div>
                     </div>
                     <div style="width: 30%">
@@ -264,7 +264,59 @@ if($material_transfer_res -> num_rows > 0){
 <script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 <script>
+
 $(document).ready(function () {
+    // Function to update button status based on status value
+    function updateButtonStatus() {
+        console.log('Function updateButtonStatus() is running.'); // Log that the function is running
+        
+        var allApproved = true; // Flag to track if all selected products have status "Approved"
+        
+        // Loop through each selected checkbox
+        $('input[name="product_checkbox[]"]:checked').each(function() {
+            var closestRow = $(this).closest('tr');
+            var status = closestRow.find('td:eq(8)').text().trim(); // Assuming status is in the 8th column
+            console.log('Status:', status); // Log the status value
+            
+            // If status is null or not "Approved"
+            if (status === 'Approved') { 
+                allApproved = false; // Set the flag to false
+                return true; // Exit the loop
+            }
+        });
+        
+        console.log('All approved:', allApproved); // Log the flag value
+        
+        // Update button status based on the flag value
+        if (allApproved) {
+            $('#acceptMaterialTransfer').prop('disabled', true); // Enable accept button
+            $('#returnMaterialTransfer').prop('disabled', true); // Enable decline button
+        }
+        else {
+            $('#acceptMaterialTransfer').prop('disabled', false); // Disable accept button
+            $('#returnMaterialTransfer').prop('disabled', false); // Disable decline button
+        }
+    }
+
+    // Initial update of button status
+    updateButtonStatus();
+
+    // Update button status when a checkbox is clicked
+    $('input[name="product_checkbox[]"]').click(function() {
+        updateButtonStatus();
+
+        // Recompute totalSellingPrice and totalCostPrice when checkbox is clicked
+        var closestRow = $(this).closest('tr');
+        var status = closestRow.find('td:eq(8)').text().trim();
+        if (status === 'Approved' || status === 'Returned') {
+            var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
+            var qtyReceive = parseFloat(closestRow.find('td:eq(6)').text()); // Get quantity receive
+            var comSellingPrice = inputSrp * qtyReceive; // Calculate total selling price
+            closestRow.find('td:eq(10)').text(comSellingPrice.toFixed(2)); // Update total selling price column
+        }
+    });
+
+
     // Accept Material Transfer
     $('#acceptMaterialTransfer').click(function () {
         // Check if the button is enabled
@@ -277,7 +329,6 @@ $(document).ready(function () {
         var cashierName = $('#cashierName').val();
         // Define total values (replace with actual values)
         var comSellingPrice = '<?php echo $comSellingPrice; ?>';
-
 
         // Save Material Transfer with total values
         $.ajax({
@@ -312,7 +363,7 @@ $(document).ready(function () {
                             console.log('Status:', status); // Log the status value
                             console.log('Branch_code:', user_brn_code); // Log the status value
                             console.log('productId:', productId); // Log the status value
-                            if (status === 'Approved') {
+                            if (status === 'Approved' || status === 'Returned') {
                                 // Only update product stocks if status is 'Accepted'
                                 $.ajax({
                                     url: '../php/add_product_stocks.php',
@@ -333,7 +384,7 @@ $(document).ready(function () {
                                     }
                                 });
                             } else {
-                                console.log('Status is not "Accepted", skipping product ID ' + productId);
+                                console.log('Status is not "Approved", skipping product ID ' + productId);
                                 console.log('Status is not "status", status is ' + status);
                                 // Handle other statuses here
                                 // You can add any desired behavior for statuses other than "Accepted"
@@ -341,11 +392,11 @@ $(document).ready(function () {
                         });
 
                         swal("Material Returned", "Products has been accepted", "success").then((value) => {
-                                    if (value) {
-                                        // Reload the page
-                                        window.location.reload();
-                                    }
-                                });
+                            if (value) {
+                                // Reload the page
+                                window.location.reload();
+                            }
+                        });
                     },
                     error: function (xhr, status, error) {
                         console.error('Error sending notification:', error);
@@ -358,7 +409,6 @@ $(document).ready(function () {
         });
     });
 
-    $(document).ready(function () {
     // Return Material Transfer
     $('#returnMaterialTransfer').click(function () {
         // Check if the button is enabled
@@ -435,64 +485,28 @@ $(document).ready(function () {
                     }
                 });
                 
-                swal("Material Returned", "Products have request to return", "error").then((value) => {
-                            if (value) {
-                                // Reload the page
-                                window.location.reload();
-                            }
-                        });
+                swal({
+                    title: "Material Returned",
+                    text: "Products have requested to return",
+                    icon: "error"
+                    // buttons: true, // Show the confirm button
+                })
+                .then((value) => {
+                    if (value) {
+                        // Redirect to the specified URL
+                        window.location.href = 'warehouse_return_remove.php?material_transaction=<?php echo $invoice_id; ?>';
+                    }
+                    else {
+                        // If the user cancels, reload the page
+                        window.location.reload();
+                    }
+                });
             },
             error: function (xhr, status, error) {
                 console.error('Error sending notification:', error);
             }
         });
     });
-});
-
-
-
-
-    $(document).ready(function () {
-    // Update button status based on status value
-    function updateButtonStatus() {
-        console.log('Function updateButtonStatus() is running.'); // Log that the function is running
-        
-        var allApproved = true; // Flag to track if all selected products have status "Approved"
-        
-        // Loop through each selected checkbox
-        $('input[name="product_checkbox[]"]:checked').each(function() {
-            var closestRow = $(this).closest('tr');
-            var status = closestRow.find('td:eq(8)').text().trim(); // Assuming status is in the 8th column
-            console.log('Status:', status); // Log the status value
-            
-            // If status is null or not "Approved"
-            if (status === 'Approved') { 
-                allApproved = false; // Set the flag to false
-                return true; // Exit the loop
-            }
-        });
-        
-        console.log('All approved:', allApproved); // Log the flag value
-        
-        // Update button status based on the flag value
-        if (allApproved) {
-            $('#acceptMaterialTransfer').prop('disabled', true); // Enable accept button
-            $('#returnMaterialTransfer').prop('disabled', true); // Enable decline button
-        } else {
-            $('#acceptMaterialTransfer').prop('disabled', false); // Disable accept button
-            $('#returnMaterialTransfer').prop('disabled', false); // Disable decline button
-        }
-    }
-
-    // Update button status when a checkbox is clicked
-    $('input[name="product_checkbox[]"]').click(function() {
-        updateButtonStatus();
-    });
-
-    // Initial update of button status
-    updateButtonStatus();
-    });
-
 });
 
 </script>
