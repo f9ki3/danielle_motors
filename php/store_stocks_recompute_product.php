@@ -10,7 +10,7 @@ if (isset($_POST['totalSellingPrice'], $_POST['materialInvoiceID'])) {
 
     // Prepare the SQL statement
     $sql = "UPDATE material_transfer 
-            SET totalSellingPrice = ? 
+            SET totalSellingPrice = totalSellingPrice + ? 
             WHERE material_invoice = ?";
 
     // Prepare the SQL statement

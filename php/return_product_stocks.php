@@ -63,10 +63,11 @@ if(isset($_POST['productId'], $_POST['sessionID'], $_POST['sender'], $_POST['qty
         mysqli_stmt_close($stmt2);
 
         // Insert into returns table
-        $sqlReturns = "INSERT INTO returns (user_id, product_id, reason, branch_code, return_date, qty, status) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, ?, 'status')";
-        $stmtReturns = mysqli_prepare($conn, $sqlReturns);
-        
-        mysqli_stmt_bind_param($stmtReturns, "iissi", $sessionID, $product_id, $reason, $user_brn_code, $quantity); // Bind the reason to the SQL statement
+      // Insert into returns table
+    $sqlReturns = "INSERT INTO returns (user_id, product_id, reason, branch_code, return_date, qty, status) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, ?, 6)";
+    $stmtReturns = mysqli_prepare($conn, $sqlReturns);
+
+    mysqli_stmt_bind_param($stmtReturns, "iissi", $sessionID, $product_id, $reason, $user_brn_code, $quantity); // Bind the parameters to the SQL statement
 
         // Execute the returns insert statement
         if (mysqli_stmt_execute($stmtReturns)) {

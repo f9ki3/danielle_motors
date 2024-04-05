@@ -11,9 +11,8 @@ if (isset($_POST['totalReturnAmount'],$_POST['totalSellingPrice'], $_POST['mater
 
     // Prepare the SQL statement
     $sql = "UPDATE material_transfer 
-            SET totalReturnPrice = totalReturnPrice = ?, totalSellingPrice = ?
+            SET totalReturnPrice = totalReturnPrice + ?, totalSellingPrice = totalSellingPrice + ?
             WHERE material_invoice = ?";
-
 
     // Prepare the SQL statement
     $stmt = mysqli_prepare($conn, $sql);
