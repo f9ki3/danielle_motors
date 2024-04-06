@@ -45,80 +45,60 @@ date_default_timezone_set('Asia/Manila');
     <script type="text/javascript">
       window.addEventListener('load', function () {
         let selectedDeviceId;
-        const codeReader = new ZXing.BrowserMultiFormatReader()
-        console.log('ZXing code reader initialized')
+        const codeReader = new ZXing.BrowserMultiFormatReader();
+        console.log('ZXing code reader initialized');
         codeReader.listVideoInputDevices()
           .then((videoInputDevices) => {
-            const sourceSelect = document.getElementById('sourceSelect')
-            selectedDeviceId = videoInputDevices[0].deviceId
+            const sourceSelect = document.getElementById('sourceSelect');
+            selectedDeviceId = videoInputDevices[0].deviceId;
             if (videoInputDevices.length >= 1) {
               videoInputDevices.forEach((element) => {
-                const sourceOption = document.createElement('option')
-                sourceOption.text = element.label
-                sourceOption.value = element.deviceId
-                sourceSelect.appendChild(sourceOption)
-              })
+                const sourceOption = document.createElement('option');
+                sourceOption.text = element.label;
+                sourceOption.value = element.deviceId;
+                sourceSelect.appendChild(sourceOption);
+              });
 
               sourceSelect.onchange = () => {
                 selectedDeviceId = sourceSelect.value;
               };
 
-              const sourceSelectPanel = document.getElementById('sourceSelectPanel')
-              sourceSelectPanel.style.display = 'block'
+              const sourceSelectPanel = document.getElementById('sourceSelectPanel');
+              sourceSelectPanel.style.display = 'block';
             }
 
             document.getElementById('startButton').addEventListener('click', () => {
               codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
                 if (result) {
-                  console.log(result)
-                  document.getElementById('result').textContent = result.text
+                  console.log(result);
+                  document.getElementById('result').textContent = result.text;
                   // Set the value of the input field to the scanned barcode
                   document.getElementById('barcodeInput').value = result.text;
                   // Play the success sound
                   document.getElementById('successSound').play();
-                  // Submit the form using AJAX
-                  submitFormWithAjax();
                 }
                 if (err && !(err instanceof ZXing.NotFoundException)) {
-                  console.error(err)
-                  document.getElementById('result').textContent = err
+                  console.error(err);
+                  document.getElementById('result').textContent = err;
                 }
-              })
-              console.log(`Started continuous decode from camera with id ${selectedDeviceId}`)
-            })
+              });
+              console.log(`Started continuous decode from camera with id ${selectedDeviceId}`);
+            });
 
             document.getElementById('resetButton').addEventListener('click', () => {
-              codeReader.reset()
+              codeReader.reset();
               document.getElementById('result').textContent = '';
-              console.log('Reset.')
-            })
+              console.log('Reset.');
+            });
 
           })
           .catch((err) => {
-            console.error(err)
-          })
-
-        function submitFormWithAjax() {
-          const form = document.getElementById('barcodeForm');
-          const formData = new FormData(form);
-          const xhr = new XMLHttpRequest();
-          xhr.onreadystatechange = function () {
-              if (xhr.readyState === XMLHttpRequest.DONE) {
-                  if (xhr.status === 200) {
-                      alert('Form submitted successfully via AJAX.');
-                      // Reset the value of the input field
-                      document.getElementById('barcodeInput').value = '';
-                  } else {
-                      alert('Form submission failed.');
-                  }
-              }
-          };
-          xhr.open(form.method, form.action, true);
-          xhr.send(formData);
-      }
-
-      })
+            console.error(err);
+          });
+      });
     </script>
+    
+
   </body>
 
 
