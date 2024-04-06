@@ -42,7 +42,7 @@ date_default_timezone_set('Asia/Manila');
 
     <?php include "../../page_properties/footer_main.php"; ?>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script type="text/javascript" src="../node_modules/@zxing/library/umd/index.min.js"></script>
+    <script type="text/javascript" src="../../assets/libs/node_modules/@zxing/library/umd/index.min.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
         const product_id_input = document.getElementById('product_id');
