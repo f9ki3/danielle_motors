@@ -12,7 +12,7 @@
     </div>
     <hr class="my-3">
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-5">
             <div class="text-end my-2">
                 <button class="btn btn-outline-primary" id="startButton" type="button" data-bs-toggle="collapse" data-bs-target="#videofeed" aria-expanded="false" aria-controls="collapseExample">
                     <span data-feather="eye"></span> Camera
@@ -40,111 +40,157 @@
                 <pre hidden><code id="result"></code></pre>
                 <form id="barcodeForm" action="action.php" method="post">
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-12">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" name="barcodeInput" id="barcodeInput" value="">
                                 <label for="">Barcode</label>
                             </div>
                         </div>
-                        <input type="text" id="product_id" name="product_id">
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
+                        <div class="col-lg-12">
                             <div class="form-floating mb-3">
-                                <input class="form-control" type="text" id="product_name" name="product_name">
-                                <label for="floatingInput">Product Name</label>
+                                <select class="form-select" id="product_id" name="product_id" required>
+                                    <option value="">Product Details</option>
+                                    <?php
+                                    $product_id_query = 'SELECT 
+                                                            product.id, 
+                                                            product.name, 
+                                                            product.code,
+                                                            product.supplier_code,
+                                                            product.image,
+                                                            product.models,
+                                                            category.category_name,
+                                                            brand.brand_name,
+                                                            unit.name,
+                                                            product.active
+                                                        FROM product
+                                                        INNER JOIN category ON category.id = product.category_id
+                                                        INNER JOIN brand ON brand.id = product.brand_id
+                                                        INNER JOIN unit ON unit.id = product.unit_id';
+                                    $product_id_result = $conn->query($product_id_query);
+                                    if($product_id_result -> num_rows>0){
+                                        while($pid_row = $product_id_result -> fetch_assoc()){
+                                            echo '<option value="' . $pid_row['id'] . '">' . $pid_row['brand_name'] . ' ' . $pid_row['category_name'] . ' ' . $pid_row['name'] . ' ' . $pid_row['models'] . '</option>';
+                                        }
+                                    } else {
+                                        echo '<option value="">No Data</option>';
+                                    }
+                                    ?>
+                                </select>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
-                            <div class="form-floating mb-3">
-                                <input type="text" id="item_code" name="item_code" class="form-control" >
-                                <label for="product_name">Item Code</label>
+
+                        <div class="col-lg-12">
+                            <button class="btn btn-primary" id="enterDetailsBtn" type="button"  data-bs-toggle="collapse" data-bs-target="#form-extension" aria-expanded="false" aria-controls="collapseExample" style="display:none;">Enter Details</button>
+                        </div>
+
+                        <div class="col-lg-12 collapse" id="form-extension">
+                            <button class="btn btn-primary" id="undoBtn" type="button"  data-bs-toggle="collapse" data-bs-target="#form-extension" aria-expanded="false" aria-controls="collapseExample">Undo</button>
+                            <div class="row my-2">
+                                <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-1">
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" type="text" id="product_name" name="product_name">
+                                        <label for="floatingInput">Product Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-1">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" id="item_code" name="item_code" class="form-control" >
+                                        <label for="product_name">Item Code</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12">
+                                    <select class="form-select" id="category" id="category" name="category" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
+                                        <option select-disabled>Select a category</option>
+                                        <?php
+                                            $query = 'SELECT id, category_name, status FROM category';
+                                            $stmt = $conn->prepare($query);
+                                            $stmt->execute();
+                                            $stmt->bind_result($id, $category_name, $status);
+                                            while ($stmt->fetch()) {
+                                                if ($status == 0) {
+                                                    continue;
+                                                }
+
+                                                echo '<option value="'.$id.'">'.$category_name.'</option>';
+                                            }
+
+                                            $stmt->close();
+                                        ?>
+                                    </select>
+
+                                </div>
+
+
+                                <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-1">
+                                    <select  id="brand" name="brand" class="form-select mb-3" id="brand" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
+                                        <option select-disabled>Select a brand</option>
+                                        <?php
+                                            $query = 'SELECT id, brand_name, status FROM brand';
+                                            $stmt = $conn->prepare($query);
+                                            $stmt->execute();
+                                            $stmt->bind_result($id, $brand_name, $status);
+                                            while ($stmt->fetch()) {
+                                                if ($status == 0) {
+                                                    continue;
+                                                }
+
+                                                echo '<option value="'.$id.'">'.$brand_name.'</option>';
+                                            }
+
+                                            $stmt->close();
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-1">
+                                    <select class="form-select" id="unit" name="unit" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
+                                    <option value="">Select unit</option>
+                                    <?php
+                                            $query = 'SELECT id, name, active FROM unit';
+                                            $stmt = $conn->prepare($query);
+                                            $stmt->execute();
+                                            $stmt->bind_result($id, $unit_name, $status);
+                                            while ($stmt->fetch()) {
+                                                if ($status == 0) {
+                                                    continue;
+                                                }
+
+                                                echo '<option value="'.$id.'">'.$unit_name.'</option>';
+                                            }
+
+                                            $stmt->close();
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-1">
+                                    <select class="form-select" id="models" name="models[]" data-choices="data-choices" multiple="multiple" data-options='{"removeItemButton":true,"placeholder":true}'>
+                                        <option value="">Select model/s</option>
+                                        <?php
+                                            $query = 'SELECT id, model_name, status FROM model';
+                                            $stmt = $conn->prepare($query);
+                                            $stmt->execute();
+                                            $stmt->bind_result($id, $model_name, $status);
+                                            while ($stmt->fetch()) {
+                                                if ($status == 0) {
+                                                    continue;
+                                                }
+
+                                                echo '<option value="'.$model_name.'">'.$model_name.'</option>';
+                                            }
+
+                                            $stmt->close();
+                                        ?>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12">
-                            <select class="form-select" id="category" id="category" name="category" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
-                                <option select-disabled>Select a category</option>
-                                <?php
-                                    $query = 'SELECT id, category_name, status FROM category';
-                                    $stmt = $conn->prepare($query);
-                                    $stmt->execute();
-                                    $stmt->bind_result($id, $category_name, $status);
-                                    while ($stmt->fetch()) {
-                                        if ($status == 0) {
-                                            continue;
-                                        }
-
-                                        echo '<option value="'.$id.'">'.$category_name.'</option>';
-                                    }
-
-                                    $stmt->close();
-                                ?>
-                            </select>
-
-                        </div>
+                        
 
 
-                        <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-1">
-                            <select  id="brand" name="brand" class="form-select mb-3" id="brand" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
-                                <option select-disabled>Select a brand</option>
-                                <?php
-                                    $query = 'SELECT id, brand_name, status FROM brand';
-                                    $stmt = $conn->prepare($query);
-                                    $stmt->execute();
-                                    $stmt->bind_result($id, $brand_name, $status);
-                                    while ($stmt->fetch()) {
-                                        if ($status == 0) {
-                                            continue;
-                                        }
 
-                                        echo '<option value="'.$id.'">'.$brand_name.'</option>';
-                                    }
-
-                                    $stmt->close();
-                                ?>
-                            </select>
-                        </div>
-                        <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-1">
-                            <select class="form-select" id="unit" name="unit" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
-                            <option value="">Select unit</option>
-                            <?php
-                                    $query = 'SELECT id, name, active FROM unit';
-                                    $stmt = $conn->prepare($query);
-                                    $stmt->execute();
-                                    $stmt->bind_result($id, $unit_name, $status);
-                                    while ($stmt->fetch()) {
-                                        if ($status == 0) {
-                                            continue;
-                                        }
-
-                                        echo '<option value="'.$id.'">'.$unit_name.'</option>';
-                                    }
-
-                                    $stmt->close();
-                                ?>
-                            </select>
-                        </div>
-                        <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-1">
-                            <select class="form-select" id="models" name="models[]" data-choices="data-choices" multiple="multiple" data-options='{"removeItemButton":true,"placeholder":true}'>
-                                <option value="">Select model/s</option>
-                                <?php
-                                    $query = 'SELECT id, model_name, status FROM model';
-                                    $stmt = $conn->prepare($query);
-                                    $stmt->execute();
-                                    $stmt->bind_result($id, $model_name, $status);
-                                    while ($stmt->fetch()) {
-                                        if ($status == 0) {
-                                            continue;
-                                        }
-
-                                        echo '<option value="'.$model_name.'">'.$model_name.'</option>';
-                                    }
-
-                                    $stmt->close();
-                                ?>
-                            </select>
-                        </div>
+                        
 
                         <div class="col-lg-12 my-2 text-center">
-                            <button class="btn btn-success">Save</button>
+                            <button class="btn btn-success" id="submitBtn" type="submit">Save</button>
                         </div>
                         <!-- ---------- -->
                     </div>

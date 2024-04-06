@@ -97,7 +97,115 @@ date_default_timezone_set('Asia/Manila');
           });
       });
     </script>
-    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const barcodeInput = document.getElementById('barcodeInput');
+        const productIdSelect = document.getElementById('product_id');
+        const enterDetailsBtn = document.getElementById('enterDetailsBtn');
+        let timeoutId;
+
+        // Function to handle AJAX request
+function makeAjaxRequest() {
+    const barcode = barcodeInput.value;
+
+    // Reset the select element
+    productIdSelect.selectedIndex = -1;
+
+    // AJAX request
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'get_content.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            if (response.error) {
+                // Handle error response
+                console.error(response.error);
+                swal("Product not found", "Enter the barcode again, or manually enter the product data", "error");
+                productIdSelect.value = '';
+                enterDetailsBtn.style.display = 'inline-block'; // Show "Enter Details" button
+            } else {
+                // Update select options with response data
+                const productId = response.product_id;
+                const option = productIdSelect.querySelector(`option[value="${productId}"]`);
+                if (option) {
+                    option.selected = true;
+                    enterDetailsBtn.style.display = 'none'; // Hide "Enter Details" button
+                    productIdSelect.style.display = 'inline-block'; // Show select tag for product_id
+                    productIdSelect.value = productId; // Set value of productIdSelect
+                    document.getElementById('form-extension').style.display = 'none'; // Hide the form extension
+                } else {
+                    swal("Product not found", "Enter the barcode again, or manually enter the product data", "error");
+                    productIdSelect.value = '';
+                    enterDetailsBtn.style.display = 'inline-block'; // Show "Enter Details" button
+                }
+            }
+        } else {
+            // Handle other HTTP status
+            console.error('Request failed. Status code: ' + xhr.status);
+        }
+    };
+    xhr.send('barcodeInput=' + encodeURIComponent(barcode));
+}
+
+// Event listener for "Enter Details" button
+enterDetailsBtn.addEventListener('click', function() {
+    document.getElementById('form-extension').style.display = 'block'; // Unhide the form extension
+});
+
+
+
+
+
+
+        // Event listener for input change
+        function handleInput() {
+            // Clear previous timeout
+            clearTimeout(timeoutId);
+
+            // Set new timeout
+            timeoutId = setTimeout(makeAjaxRequest, 2000);
+        }
+
+        // Trigger AJAX request when the page loads if barcode input has a value
+        if (barcodeInput.value.trim() !== '') {
+            makeAjaxRequest();
+        }
+
+        // Event listener for input change
+        barcodeInput.addEventListener('input', handleInput);
+
+        // Event listener for Enter key press
+        barcodeInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                clearTimeout(timeoutId); // Clear timeout if Enter is pressed
+                makeAjaxRequest();
+            }
+        });
+
+        // Event listener for "Enter Details" button click
+        enterDetailsBtn.addEventListener('click', function() {
+            enterDetailsBtn.style.display = 'none'; // Hide "Enter Details" button
+            productIdSelect.style.display = 'none'; // Hide select tag
+            productIdSelect.selectedIndex = -1; // Deselect the option
+        });
+
+
+        // Event listener for "Undo" button click
+        document.getElementById('undoBtn').addEventListener('click', function() {
+            enterDetailsBtn.style.display = 'inline-block'; // Show "Enter Details" button
+            productIdSelect.style.display = 'inline-block'; // Show select tag
+            document.getElementById('form-extension').style.display = 'none'; // Hide the form extension
+        });
+
+        // Event listener for "Submit" button click
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            enterDetailsBtn.style.display = 'inline-block'; // Show "Enter Details" button
+            productIdSelect.style.display = 'inline-block'; // Show select tag
+        });
+    });
+</script>
 
   </body>
 
