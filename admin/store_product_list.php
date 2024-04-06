@@ -9,6 +9,7 @@
 <?php
 include 'navigation_bar.php';
 include '../config/config.php';
+
 ?>
 <link href="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.css" rel="stylesheet">
 <!-- start inventory-->
