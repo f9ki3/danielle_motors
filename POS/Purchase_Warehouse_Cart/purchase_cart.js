@@ -1,3 +1,47 @@
+function purchase() {
+    // Get cart items from session storage
+    var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+    console.log(cartItems);
+
+    // Get values of transaction details
+    var customerName = document.getElementById('transaction_customer_name').value;
+    var address = document.getElementById('transaction_address').value;
+    var date = document.getElementById('transaction_date').value;
+    var verified = document.getElementById('transaction_verified').value;
+    var inspected = document.getElementById('transaction_inspected').value;
+    var received = document.getElementById('transaction_received').value;
+    var payment_type = document.getElementById('transaction_payment').value;
+    var type = document.getElementById('transaction_type').value;
+
+    // Get values of transaction totals
+    var subtotal = parseFloat(document.getElementById('subtotal').textContent.replace('₱ ', '').replace(/,/g, ''));
+    var tax = parseFloat(document.getElementById('tax').textContent.replace('₱ ', '').replace(/,/g, ''));
+    var subtotalDiscount = parseFloat(document.getElementById('subtotal_discount').textContent.replace('₱ ', '').replace(/,/g, ''));
+    var total = parseFloat(document.getElementById('total').textContent.replace('₱ ', '').replace(/,/g, ''));
+    var payment = parseFloat(document.getElementById('payment').textContent.replace('₱ ', '').replace(/,/g, ''));
+    var change = parseFloat(document.getElementById('change').textContent.replace('₱ ', '').replace(/,/g, ''));
+
+    // Log transaction details
+    console.log("Customer Name:", customerName);
+    console.log("Address:", address);
+    console.log("Date:", date);
+    console.log("Verified:", verified);
+    console.log("Inspected:", inspected);
+    console.log("Received:", received);
+    console.log("Payment:", payment_type);
+    console.log("Type:", type);
+
+    // Log transaction totals
+    console.log("Subtotal:", subtotal);
+    console.log("Tax:", tax);
+    console.log("Subtotal Discount:", subtotalDiscount);
+    console.log("Total:", total);
+    console.log("Payment:", payment);
+    console.log("Change:", change);
+}
+
+
+
 // Function to handle validation and enable/disable purchase button
 function validateAndEnablePurchaseButton() {
     var customerNameInput = document.getElementById('transaction_customer_name');
@@ -229,10 +273,11 @@ function addToCart(productId, image, productName, supplierCode, brandName, unitN
                     <td>₱ ${item.srp}</td>
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty - 1})">-</button>
-                            <input type="number" class="form-control w-75 text-center" value="${item.qty}" onchange="updateQuantity(${index}, this.value)" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(parseFloat(this.value) < 0) this.value = 1;" maxlength="7">
-                            <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty + 1})">+</button>
+                            <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty - 1}, ${item.totalStocks})">-</button>
+                            <input type="number" class="form-control w-75 text-center" value="${item.qty}" onchange="updateQuantity(${index}, this.value, ${item.totalStocks})" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(parseFloat(this.value) < 0) this.value = 1; if(parseFloat(this.value) > ${item.totalStocks}) this.value = ${item.totalStocks};" maxlength="7">
+                            <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty + 1}, ${item.totalStocks})">+</button>
                         </div>
+                
                     </td>
                     <td>
                         <div class="input-group">
@@ -344,43 +389,43 @@ function addToCart(productId, image, productName, supplierCode, brandName, unitN
 
     
    // Function to update the quantity of an item in the cart
-    function updateQuantity(index, newQuantity) {
-        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-        // Create an audio element
-        let click = new Audio('click_button.mp3'); // Replace 'path_to_your_audio_file.mp3' with the actual path to your audio file
+   function updateQuantity(index, newQuantity, totalStocks) {
+    var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+    // Create an audio element
+    let click = new Audio('click_button.mp3'); // Replace 'click_button.mp3' with the actual path to your audio file
 
-        if (!newQuantity || newQuantity <= 0) {
-            // If the quantity is empty or zero, set it to one
-            newQuantity = 1;
-        }
-
-        // Update the quantity of the specified item
-        cartItems[index].qty = parseInt(newQuantity); // Update quantity
-
-        // Recalculate total amount for the item considering the discount
-        var discountAmount = (cartItems[index].discountType === "%") ? (cartItems[index].srp * cartItems[index].discount / 100) : cartItems[index].discount;
-        cartItems[index].totalAmount = (cartItems[index].srp - discountAmount) * newQuantity;
-
-        // Play audio
-        click.play();
-        sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
-        displayCartItems(); // Update displayed cart items
-        updateCounter(cartItems.length); // Update counter
-
-        // Update subtotal
-        updateSubtotal();
+    if (!newQuantity || newQuantity <= 0) {
+        // If the quantity is empty or zero, set it to one
+        newQuantity = 1;
     }
 
-    // Function to console log all cart items
-    function consoleLogCartItems() {
-        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-        console.log("Cart Items:");
-        console.log(cartItems);
-    }
+    // Ensure that the quantity does not exceed the totalStocks limit
+    newQuantity = Math.min(newQuantity, totalStocks);
 
-    // Call the function to console log all cart items
-    consoleLogCartItems();
+    // Update the quantity of the specified item
+    cartItems[index].qty = parseInt(newQuantity); // Update quantity
 
-    
+    // Recalculate total amount for the item considering the discount
+    var discountAmount = (cartItems[index].discountType === "%") ? (cartItems[index].srp * cartItems[index].discount / 100) : cartItems[index].discount;
+    cartItems[index].totalAmount = (cartItems[index].srp - discountAmount) * newQuantity;
+
+    // Play audio
+    click.play();
+    sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
+    displayCartItems(); // Update displayed cart items
+    updateCounter(cartItems.length); // Update counter
+
+    // Update subtotal
+    updateSubtotal();
+}
+
+// Get today's date
+var today = new Date();
+  
+// Format date as YYYY-MM-DD
+var formattedDate = today.toISOString().substr(0, 10);
+
+// Set the input field's value to today's date
+document.getElementById('transaction_date').value = formattedDate;
 
     

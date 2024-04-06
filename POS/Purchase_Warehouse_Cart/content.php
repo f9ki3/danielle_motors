@@ -67,7 +67,7 @@
                                         <label for="transaction_address">Address</label>
                                     </div>
                                     <div class="form-floating" style="width: 32%;">
-                                        <input type="date" id="transaction_date" class="form-control" placeholder="Date" readonly >
+                                        <input type="date" id="transaction_date" class="form-control" placeholder="Date" readonly>
                                         <label for="transaction_date">Date</label>
                                     </div>
                                     
