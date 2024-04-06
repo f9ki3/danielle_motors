@@ -45,7 +45,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           <div class="nav-item-wrapper"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator label-1" href="../Dashboard/">
               <div class="d-flex align-items-center">
                 <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div>
-                <span class="nav-link-icon"><span data-feather="pie-chart"></span></span>
+                <span class="nav-link-icon"><span data-feather="grid"></span></span>
                 <span class="nav-link-text">Dashboard</span>
               </div>
             </a>
@@ -277,7 +277,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
             <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator label-1" href="#nv-forms" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-forms">
               <div class="d-flex align-items-center">
                 <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div>
-                <span class="nav-link-icon"><span data-feather="file-text"></span></span>
+                <span class="nav-link-icon"><span data-feather="user"></span></span>
                 <span class="nav-link-text">Users</span>
               </div>
             </a>
@@ -392,7 +392,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           <div class="nav-item-wrapper">
             <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="http://localhost/danielle_motors/Inventory/Brand_Maintenance/" role="button" data-bs-toggle="" aria-expanded="false">
               <div class="d-flex align-items-center">
-                <span class="nav-link-icon"><span data-feather="server"></span></span>
+                <span class="nav-link-icon"><span data-feather="trello"></span></span>
                 <span class="nav-link-text-wrapper"><span class="nav-link-text">Brands</span></span>
               </div>
             </a>
@@ -405,7 +405,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           <div class="nav-item-wrapper">
             <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="http://localhost/danielle_motors/Inventory/Category_Maintenance/" role="button" data-bs-toggle="" aria-expanded="false">
               <div class="d-flex align-items-center">
-                <span class="nav-link-icon"><span data-feather="server"></span></span>
+                <span class="nav-link-icon"><span data-feather="life-buoy"></span></span>
                 <span class="nav-link-text-wrapper"><span class="nav-link-text">Category</span></span>
               </div>
             </a>
@@ -418,7 +418,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           <div class="nav-item-wrapper">
             <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="http://localhost/danielle_motors/Inventory/Model_Maintenance/" role="button" data-bs-toggle="" aria-expanded="false">
               <div class="d-flex align-items-center">
-                <span class="nav-link-icon"><span data-feather="server"></span></span>
+                <span class="nav-link-icon"><span data-feather="package"></span></span>
                 <span class="nav-link-text-wrapper"><span class="nav-link-text">Models</span></span>
               </div>
             </a>
@@ -431,7 +431,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           <div class="nav-item-wrapper">
             <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="http://localhost/danielle_motors/Inventory/Unit_Maintenance/" role="button" data-bs-toggle="" aria-expanded="false">
               <div class="d-flex align-items-center">
-                <span class="nav-link-icon"><span data-feather="server"></span></span>
+                <span class="nav-link-icon"><span data-feather="tag"></span></span>
                 <span class="nav-link-text-wrapper"><span class="nav-link-text">Units</span></span>
               </div>
             </a>
