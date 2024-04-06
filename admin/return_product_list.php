@@ -12,7 +12,7 @@ include 'navigation_bar.php';
 include '../config/config.php';
 
 // SQL query to fetch data from the table and sort by TransactionDate in descending order
-$sql = "SELECT * FROM purchase_transactions WHERE TransactionType = 'Walk-in' ORDER BY TransactionDate DESC";
+$sql = "SELECT * FROM purchase_transactions WHERE TransactionType = 'Walk-in' AND status = 3 || status = 4 ORDER BY TransactionDate DESC";
 $result = $conn->query($sql);
 
 ?>
@@ -39,8 +39,8 @@ $result = $conn->query($sql);
 
                     <div>
                     <!-- <button id="addStocksBtn" class="btn border btn-sm rounded" data-bs-target="#add_stocks">+ Store Return</button> -->
-                        <a href="return_product_list" class="btn border btn-sm rounded" >Returns</a>
-                        <a href="store_stocks" class="btn btn-primary border btn-sm rounded" >Transactions</a>
+                        <a href="return_product_list" class="btn btn-primary border btn-sm rounded" >Returns</a>
+                        <a href="store_return" class="btn border btn-sm rounded" >Transactions</a>
                         
                     </div>
                 </div>
