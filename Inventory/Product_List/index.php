@@ -105,7 +105,7 @@ date_default_timezone_set('Asia/Manila');
         fetchTableContent();
 
         // Call the function every 5 seconds (adjust the interval as needed)
-        setInterval(fetchTableContent, 5000); // 5000 milliseconds = 5 seconds
+        setInterval(fetchTableContent, 1000); // 5000 milliseconds = 5 seconds
     });
     </script>
 
