@@ -160,7 +160,7 @@
                                     <h5 class="fw-bolder">Change</h5>
                                     <h5 class="fw-bolder" id="change">PHP 100.00</h5>
                                 </div>
-                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between" class="mb-2 mt-2">
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between" class=" mt-3">
                                     <button style="width: 49%" id="resetButton" class="btn btn-lg mt-3 border-primary text-primary" onclick="resetCart()" disabled>Reset</button>
                                     <button style="width: 49%;" id="purchase_btn" class="btn btn-lg mt-3 btn-primary" disabled onclick="purchase()">Purchase</button>
                                     <button style="width: 49%; display: none" disabled id="loading" class="btn btn-primary" ">

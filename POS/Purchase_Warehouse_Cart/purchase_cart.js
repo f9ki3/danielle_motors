@@ -1,4 +1,135 @@
-    function addToCart(productId, image, productName, supplierCode, brandName, unitName, models, srp, totalStocks) {
+// Function to handle validation and enable/disable purchase button
+function validateAndEnablePurchaseButton() {
+    var customerNameInput = document.getElementById('transaction_customer_name');
+    var addressInput = document.getElementById('transaction_address');
+    var paymentAmount = parseFloat(document.getElementById('payment').textContent.replace('₱ ', '').replace(/,/g, ''));
+    var totalAmount = parseFloat(document.getElementById('total').textContent.replace('₱ ', '').replace(/,/g, ''));
+
+    // Check if customer name and address are filled
+    var isCustomerNameValid = customerNameInput.value.trim() !== '';
+    var isAddressValid = addressInput.value.trim() !== '';
+
+    // Check if payment is greater than or equal to total
+    var isPaymentValid = paymentAmount >= totalAmount;
+
+    // Enable/disable purchase button based on validation
+    var purchaseButton = document.getElementById('purchase_btn');
+    purchaseButton.disabled = !(isCustomerNameValid && isAddressValid && isPaymentValid);
+}
+
+// Event listeners for input changes
+document.getElementById('transaction_customer_name').addEventListener('input', validateAndEnablePurchaseButton);
+document.getElementById('transaction_address').addEventListener('input', validateAndEnablePurchaseButton);
+document.getElementById('payment').addEventListener('DOMSubtreeModified', validateAndEnablePurchaseButton); // Using DOMSubtreeModified to detect changes in the payment display
+
+// Initial validation and button state
+validateAndEnablePurchaseButton();
+
+
+// Function to update the subtotal
+function updateSubtotal() {
+    var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+    var subtotal = 0;
+
+    // Calculate subtotal by summing up totalAmount of each cart item
+    cartItems.forEach(function(item) {
+        subtotal += item.totalAmount;
+    });
+
+    // Calculate tax (12% of subtotal)
+    var tax = subtotal * 0.12;
+
+    // Format subtotal and tax as currency with commas for thousands separators and two decimal places
+    var formattedSubtotal = '₱ ' + subtotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    var formattedTax = '₱ ' + tax.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    // Update the UI with the calculated subtotal and tax
+    document.getElementById('subtotal').textContent = formattedSubtotal;
+    document.getElementById('tax').textContent = formattedTax;
+
+    // Calculate and update values whenever subtotal changes
+    updateValues();
+}
+
+// Function to calculate and update subtotal discount, total, payment, and change
+// Function to calculate and update subtotal discount, total, payment, and change
+function updateValues() {
+    // Get input values
+    var subtotal = parseFloat(document.getElementById('subtotal').textContent.replace('₱ ', '').replace(/,/g, ''));
+    var discountPercentageInput = document.getElementById('subtotal_discount_percentage');
+    var discountPercentage = parseFloat(discountPercentageInput.value);
+    var amountPaymentInput = document.getElementById('amount_payment');
+    var amountPayment = parseFloat(amountPaymentInput.value);
+
+    // Check if the input is null or exceeds 100, set it to 0 or 100 accordingly
+    if (discountPercentage === null || isNaN(discountPercentage) || discountPercentage < 0) {
+        discountPercentage = 0;
+    } else if (discountPercentage > 100) {
+        discountPercentage = 100;
+    }
+
+    // Check if payment is null, set it to 0
+    if (amountPayment === null || isNaN(amountPayment)) {
+        amountPayment = 0;
+    }
+
+    // Update the input values
+    discountPercentageInput.value = discountPercentage;
+    amountPaymentInput.value = amountPayment;
+
+    // Calculate subtotal discount
+    var subtotalDiscount = subtotal * (discountPercentage / 100);
+
+    // Update subtotal discount field
+    document.getElementById('subtotal_discount').textContent = '₱ ' + subtotalDiscount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    // Calculate total
+    var total = subtotal - subtotalDiscount;
+
+    // Update total field
+    document.getElementById('total').textContent = '₱ ' + total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    // Calculate change
+    var change = 0;
+    if (amountPayment !== 0) {
+        change = amountPayment - total;
+    }
+
+    // Ensure change is not negative
+    if (change < 0) {
+        change = 0;
+    }
+
+    // Update payment and change fields
+    document.getElementById('payment').textContent = '₱ ' + amountPayment.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('change').textContent = '₱ ' + change.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    // Color payment input and payment display red if payment is less than the total and not equal to 0
+    if (amountPayment < total && amountPayment !== 0) {
+        amountPaymentInput.style.color = 'red';
+        document.getElementById('payment').style.color = 'red';
+    } else {
+        amountPaymentInput.style.color = ''; // Reset to default color
+        document.getElementById('payment').style.color = ''; // Reset to default color
+    }
+}
+
+// Event listener for input changes
+document.getElementById('subtotal_discount_percentage').addEventListener('input', function() {
+    updateValues();
+});
+
+document.getElementById('amount_payment').addEventListener('input', function() {
+    updateValues();
+});
+
+// Initial update
+updateSubtotal();
+
+    
+// Modify existing functions to call updateSubtotal after updating cart items
+
+function addToCart(productId, image, productName, supplierCode, brandName, unitName, models, srp, totalStocks) {
     // Calculate total amount
     var totalAmount = srp * 1; // Multiply srp by quantity (initially 1)
 
@@ -15,6 +146,7 @@
         totalStocks: totalStocks,
         qty: 1, // Default quantity
         discount: 0, // Default discount
+        discountType: ".", // Default discount type
         totalAmount: totalAmount // Total amount calculation
     };
 
@@ -22,7 +154,7 @@
     var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
 
     // Check if the product already exists in the cart
-    var existingItem = cartItems.find(function (item) {
+    var existingItem = cartItems.find(function(item) {
         return item.productId === cartItem.productId;
     });
 
@@ -43,8 +175,12 @@
 
         // Update the counter
         updateCounter(cartItems.length);
+
+        // Update subtotal
+        updateSubtotal();
     }
 }
+
 
 
     // Function to update the counter
@@ -73,7 +209,7 @@
             var emptyRow = document.createElement('tr');
             emptyRow.innerHTML = `<td colspan="9">
                 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 100%;">
-                    <p style="margin-top: 44px; color: ">Cart is empty</p>
+                    <p style="margin-top: 28px; color: ">Cart is empty</p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" style="margin-bottom: 70px;" fill="gainsboro" class="bi bi-cart-fill" viewBox="0 0 16 16">
                         <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
                     </svg>
@@ -129,7 +265,7 @@
     // Function to remove item from cart
     function removeFromCart(index) {
         // Create an audio element
-        let click = new Audio('delete.mp3'); // Replace 'path_to_your_audio_file.mp3' with the actual path to your audio file
+        let click = new Audio('delete.mp3'); // Replace 'delete.mp3' with the actual path to your audio file
         var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
         cartItems.splice(index, 1); // Remove item at specified index
         click.play();
@@ -138,14 +274,19 @@
         sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
         displayCartItems(); // Update displayed cart items
         updateCounter(cartItems.length); // Update counter
+
+        // Update subtotal and values after removing an item
+        updateSubtotal();
+        updateValues();
     }
+
 
     // Function to update the discount of an item in the cart
     function updateDiscount(index, newDiscount) {
         var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
         // Create an audio element
         let click = new Audio('click_button.mp3'); // Replace 'path_to_your_audio_file.mp3' with the actual path to your audio file
-        
+
         // If the new discount value is null, set it to 0
         if (newDiscount === null || newDiscount === '') {
             newDiscount = 0;
@@ -159,27 +300,29 @@
             // If the discount type is peso, set the maximum discount based on srp
             newDiscount = Math.min(parseFloat(newDiscount), cartItems[index].srp);
         }
-        
+
         // Update the discount of the specified item
         cartItems[index].discount = newDiscount; // Update discount
 
         // Recalculate total amount for the item considering discount
         var discountAmount = (cartItems[index].discountType === "%") ? (cartItems[index].srp * cartItems[index].qty * cartItems[index].discount / 100) : cartItems[index].discount * cartItems[index].qty;
         cartItems[index].totalAmount = (cartItems[index].srp * cartItems[index].qty) - discountAmount;
-        
+
         // Play audio
         click.play();
         sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
         displayCartItems(); // Update displayed cart items
         updateCounter(cartItems.length); // Update counter
-    }
 
+        // Update subtotal
+        updateSubtotal();
+    }
 
 
     // Function to update the discount type of an item in the cart
     function updateDiscountType(index, newDiscountType) {
         var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-        
+
         // Update the discount type of the specified item
         cartItems[index].discountType = newDiscountType; // Update discount type
 
@@ -193,6 +336,9 @@
         sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
         displayCartItems(); // Update displayed cart items
         updateCounter(cartItems.length); // Update counter
+
+        // Update subtotal
+        updateSubtotal();
     }
 
 
@@ -202,7 +348,7 @@
         var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
         // Create an audio element
         let click = new Audio('click_button.mp3'); // Replace 'path_to_your_audio_file.mp3' with the actual path to your audio file
-        
+
         if (!newQuantity || newQuantity <= 0) {
             // If the quantity is empty or zero, set it to one
             newQuantity = 1;
@@ -220,8 +366,10 @@
         sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
         displayCartItems(); // Update displayed cart items
         updateCounter(cartItems.length); // Update counter
-    }
 
+        // Update subtotal
+        updateSubtotal();
+    }
 
     // Function to console log all cart items
     function consoleLogCartItems() {
@@ -233,14 +381,6 @@
     // Call the function to console log all cart items
     consoleLogCartItems();
 
-     // Function to calculate and display subtotal
-     function calculateSubtotal() {
-        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-        var subtotal = cartItems.reduce((acc, item) => acc + item.totalAmount, 0); // Calculate subtotal
-        
-        // Display subtotal in the specified element
-        document.getElementById('subtotal').textContent = "PHP " + subtotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    }
+    
 
-    // Call the function to calculate and display subtotal
-    calculateSubtotal();
+    
