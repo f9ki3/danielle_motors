@@ -1,4 +1,5 @@
 <div id="spinner" style="height: 80vh; display: flex; justify-content: center; align-items: center;">
+<!-- <iframe src="https://giphy.com/embed/3oz8xzJjbG2Etm0f04" width="480" height="270" frameBorder="0" class="giphy-embed rounded rounded-5" allowFullScreen></iframe><p></p> -->
     <div class="spinner-grow text-primary" role="status">
         <span class="visually-hidden">Loading...</span>
     </div>
@@ -35,8 +36,6 @@
                 <table class="table mb-0">
                     <thead>
                     <tr>
-                        <th class="white-space-nowrap align-middle ps-0" style="max-width:20px; width:18px;">
-                        </th>
                         <th class="sort white-space-nowrap align-middle " style="width: 5%" scope="col">IMG</th>
                         <th class="sort white-space-nowrap align-middle " style="width: 15%" scope="col" data-sort="product">PRODUCT NAME</th>
                         <th class="sort align-middle text-start " style="width: 10%" scope="col" data-sort="price">ITEM CODE</th>

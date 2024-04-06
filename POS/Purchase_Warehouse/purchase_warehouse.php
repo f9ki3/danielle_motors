@@ -71,18 +71,25 @@ while ($stmt->fetch()) {
 
     echo '</td>
     <td class="text-center align-middle text-end pe-0 ps-4 btn-reveal-trigger">
-        <button class="btn me-3 btn-primary rounded rounded rounded-5 m-0 p-2" onclick="addToCart(
-        \''.$product_id.'\', 
-        \''.$image.'\', 
-        \''.$product_name.'\', 
-        \''.$supplier_code.'\', 
-        \''.$brand_name.'\', 
-        \''.$unit_name.'\', 
-        \''.$models.'\', 
-        \''.$srp.'\', 
-        \''.$total_stocks.'\'
-        )"><span class="fas fa-cart-plus "></span></button>
+        <button class="btn me-3 btn-primary rounded rounded rounded-5 m-0 p-2" ';
+        if($total_stocks == 0){
+            echo 'disabled';
+        } else {
+            echo 'enabled';
+        }
+        echo ' onclick="addToCart(
+                \''.$product_id.'\', 
+                \''.$image.'\', 
+                \''.$product_name.'\', 
+                \''.$supplier_code.'\', 
+                \''.$brand_name.'\', 
+                \''.$unit_name.'\', 
+                \''.$models.'\', 
+                \''.$srp.'\', 
+                \''.$total_stocks.'\'
+                )"><span class="fas fa-cart-plus "></span></button>
     </td>
+
     </tr>';
 }
 
@@ -90,48 +97,55 @@ while ($stmt->fetch()) {
 
 <script>
 function addToCart(productId, image, productName, supplierCode, brandName, unitName, models, srp, totalStocks) {
-    // Create an object to hold the item data
-    var cartItem = {
-        productId: productId,
-        image: image,
-        productName: productName,
-        supplierCode: supplierCode,
-        brandName: brandName,
-        unitName: unitName,
-        models: models,
-        srp: srp,
-        totalStocks: totalStocks,
-        qty: 1, // Default quantity
-        discount: 0 // Default discount
-    };
-    
-    // Retrieve existing cart items from session storage
-    var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+        // Calculate total amount
+        var totalAmount = srp * 1; // Multiply srp by quantity (initially 1)
+        let click = new Audio('click_button.mp3'); // Replace 'path_to_your_audio_file.mp3' with the actual path to your audio file
+        click.play();
 
-    // Check if the product already exists in the cart
-    var existingItem = cartItems.find(function(item) {
-        return item.productId === cartItem.productId;
-    });
+        // Create an object to hold the item data
+        var cartItem = {
+            productId: productId,
+            image: image,
+            productName: productName,
+            supplierCode: supplierCode,
+            brandName: brandName,
+            unitName: unitName,
+            models: models,
+            srp: srp,
+            totalStocks: totalStocks,
+            qty: 1, // Default quantity
+            discount: 0, // Default discount,
+            discountType: "₱",
+            totalAmount: totalAmount // Total amount calculation
+        };
 
-    if (existingItem) {
-        // If the product already exists, display an alert and do not add it again
-        alertify.set('notifier', 'position', 'bottom-left');
-        alertify.error('Already Added');
-    } else {
-        // Add new item to cart
-        cartItems.push(cartItem);
+        // Retrieve existing cart items from session storage
+        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
 
-        // Store updated cart items in session storage
-        sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
-        
-        // Display a confirmation message
-        alertify.set('notifier', 'position', 'bottom-left');
-        alertify.success('Added Success');
+        // Check if the product already exists in the cart
+        var existingItem = cartItems.find(function (item) {
+            return item.productId === cartItem.productId;
+        });
 
-        // Update the counter
-        updateCounter(cartItems.length);
+        if (existingItem) {
+            // If the product already exists, display an alert and do not add it again
+            alertify.set('notifier', 'position', 'bottom-left');
+            alertify.error('Already Added');
+        } else {
+            // Add new item to cart
+            cartItems.push(cartItem);
+
+            // Store updated cart items in session storage
+            sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+            // Display a confirmation message
+            alertify.set('notifier', 'position', 'bottom-left');
+            alertify.success('Added Success');
+
+            // Update the counter
+            updateCounter(cartItems.length);
+        }
     }
-}
 
 // Function to update the counter
 function updateCounter(count) {

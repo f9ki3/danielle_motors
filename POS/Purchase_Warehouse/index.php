@@ -16,7 +16,7 @@ date_default_timezone_set('Asia/Manila');
       <!-- navigation -->
       <?php include "../../page_properties/navbar_pos.php";?>
       <!-- /navigation -->
-      <div class="content">
+      <div class="content bg-white">
         <?php 
         include "content.php";
         ?>
@@ -42,22 +42,31 @@ date_default_timezone_set('Asia/Manila');
 
     <?php include "../../page_properties/footer_main.php"; ?>
     <script>
-          // Function to reload spinner for 3 seconds
+          // Function to reload spinner for 3 seconds and play audio
           function reloadSpinner() {
               // Show spinner
               document.getElementById('spinner').style.display = 'flex';
               // Hide content
               document.getElementById('content').style.display = 'none';
               
-              // Set timeout to hide spinner and show content after 3 seconds
+              // // Create an audio element
+              // var audio = new Audio('yamete-kudasai-mp3-(original)-made-with-Voicemod.mp3'); // Replace 'path_to_your_audio_file.mp3' with the actual path to your audio file
+              
+              // // Play audio
+              // audio.play();
+              
+              // Set timeout to hide spinner, stop audio, and show content after 3 seconds
               setTimeout(function() {
                   document.getElementById('spinner').style.display = 'none';
                   document.getElementById('content').style.display = 'block';
+                  audio.pause(); // Pause audio
+                  audio.currentTime = 0; // Reset audio to beginning
               }, 3000); // 3000 milliseconds = 3 seconds
           }
 
           // Call the function to reload spinner
           reloadSpinner();
+
     </script>
   </body>
 
