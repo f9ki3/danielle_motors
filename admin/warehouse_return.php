@@ -26,7 +26,7 @@ include '../config/config.php';
 
         <div style="background-color: white; height: 83vh;" class="rounded border p-3 mb-3 w-100">
             <div class="row">
-                <h6>Store Stocks</h6>
+                <h6>Warehouse Return</h6>
                 <div style="display: flex; justify-content: space-between; align-items: center;"> 
                     <div style="width: 50%">
                         <input  class="form-control form-control-sm" placeholder="Search">
@@ -35,7 +35,7 @@ include '../config/config.php';
                     <div>
                     <!-- <button id="addStocksBtn" class="btn border btn-sm rounded" data-bs-target="#add_stocks">+ Add Return</button> -->
                         <a href="store_stocks" class="btn btn-primary border btn-sm rounded" >Stocks</a>
-                        <a href="store_product_list" class="btn border btn-sm rounded" >Product</a>
+                        <!-- <a href="store_product_list" class="btn border btn-sm rounded" >Product</a> -->
                     </div>
                 </div>
             </div>

@@ -11,7 +11,12 @@
 include 'navigation_bar.php';
 include '../config/config.php';
 
+// SQL query to fetch data from the table and sort by TransactionDate in descending order
+$sql = "SELECT * FROM purchase_transactions WHERE TransactionType = 'Walk-in' ORDER BY TransactionDate DESC";
+$result = $conn->query($sql);
+
 ?>
+
 <!-- start inventory-->
 
 <div style="width: 100%" class="content p-3">
@@ -26,7 +31,7 @@ include '../config/config.php';
 
         <div style="background-color: white; height: 83vh;" class="rounded border p-3 mb-3 w-100">
             <div class="row">
-                <h6>Store Stocks</h6>
+                <h6>Store Return</h6>
                 <div style="display: flex; justify-content: space-between; align-items: center;"> 
                     <div style="width: 50%">
                         <input  class="form-control form-control-sm" placeholder="Search">
@@ -35,7 +40,7 @@ include '../config/config.php';
                     <div>
                     <button id="addStocksBtn" class="btn border btn-sm rounded" data-bs-target="#add_stocks">+ Store Return</button>
                         <a href="store_stocks" class="btn btn-primary border btn-sm rounded" >Stocks</a>
-                        <a href="store_product_list" class="btn border btn-sm rounded" >Product</a>
+                        <!-- <a href="store_product_list" class="btn border btn-sm rounded" >Product</a> -->
                     </div>
                 </div>
             </div>
@@ -44,22 +49,53 @@ include '../config/config.php';
             
     <div style="height: 65vh; overflow: auto">
     <input type="hidden" class="form-control mb-2" placeholder="Material Invoice No." id="materialInvoiceNo">
-    <table id="tabledataMaterial" class="table stripe hover order-column row-border ">
-        <thead>
-                        <tr>
-                            <td scope="col" width="15%">Material Invoice No.</td>
-                            <td scope="col" width="15%" >Date</td>
-                            <td scope="col" width="15%">Cashier Name</td>
-                            <td scope="col" width="15%">Recieved by</td>
-                            <td scope="col" width="15%">Inspected by</td>
-                            <td scope="col" width="15%">Verified by</td>
-                            <td class="text-end" scope="col" width="10%">Action</td>
-                        </tr>
-        </thead>
-        <tbody id="MaterialTableBody">
-<!-- dynamic populate -->
-        </tbody>
-    </table>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" width="10%" >Transaction Code</th>
+                                <th scope="col" width="10%" >Transaction Date</th>
+                                <th scope="col" width="10%">Customer Name</th>
+                                <th scope="col" width="10%">Payment Method </th>
+                                <th scope="col" width="5%">Subtotal</th>
+                                <th scope="col" width="5%">Tax</th>
+                                <th scope="col" width="5%">Discount</th>
+                                <th scope="col" width="5%">Total</th>
+                                <th scope="col" width="5%">Payment</th>
+                                <th scope="col" width="5%">Change</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            // Fetch and display data from the table
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo "<a href='purchase_receipt.php?transaction_code=" . $row["TransactionID"] . "'>";
+                                    echo "<tr onclick=\"window.location='sales_receipt.php?transaction_code=" . $row["TransactionID"] . "';\" style=\"cursor: pointer;\">";
+                                    echo "<td>".$row["TransactionID"]."</td>";
+                                    echo "<td>".$row["TransactionDate"]."</td>";
+                                    echo "<td>".$row["CustomerName"]."</td>";
+                                    echo "<td>".$row["TransactionType"]."</td>";
+
+                                    // Format currency fields to pesos
+                                    echo "<td> ₱ ".number_format($row["Subtotal"], 2, '.', ',')."</td>";
+                                    echo "<td> ₱ ".number_format($row["Tax"], 2, '.', ',')."</td>";
+                                    echo "<td> ₱ ".number_format($row["Discount"], 2, '.', ',')."</td>";
+                                    echo "<td> ₱ ".number_format($row["Total"], 2, '.', ',')."</td>";
+                                    echo "<td> ₱ ".number_format($row["Payment"], 2, '.', ',')."</td>";
+                                    echo "<td> ₱ ".number_format($row["ChangeAmount"], 2, '.', ',')."</td>";
+                                    echo "</tr>";
+                                    echo "</a>";
+                                }
+                            } else {
+                                echo "<tr><td colspan='10'>No transactions found.</td></tr>";
+                            }
+                        ?>
+
+
+
+                            
+                        </tbody>
+                    </table>
 </div>
 <!-- end purchase-->
 
@@ -74,123 +110,6 @@ include '../config/config.php';
 
 
 <script type="text/javascript">
-$(document).ready(function () {
-    // Initialize DataTable
-    var table = $('#tabledataMaterial').DataTable({
-        "fnCreatedRow": function (nRow, aData, iDataIndex) {
-            $(nRow).attr('id', aData[0]);
-        },
-        'serverSide': 'true',
-        'processing': 'true',
-        'paging': 'true',
-        'order': [],
-        'ajax': {
-            'url': '../php/warehouse_stocks_return.php',
-            'type': 'post',
-        },
-        "aoColumnDefs": [{
-            "bSortable": false,
-            "aTargets": [6] // Adjust the index to match the actual number of columns
-        }]
-    });
-
-    // Define click event handler for view button
-    $('#tabledataMaterial tbody').on('click', '.view', function () {
-        // Handle button click event here
-        var rowData = table.row($(this).closest('tr')).data();
-        window.location.href = "store_product";
-        console.log('View button clicked for row:', rowData);
-    });
-
-$('#tabledataMaterial tbody').on('click', '.delete', function () {
-    // Get the data associated with the clicked row
-    var rowData = table.row($(this).closest('tr')).data();
-        // Perform any action you want based on the row data
-        // For example, you can open a modal with the row data for viewing
-        console.log('View button clicked for row:', rowData);
-    
-    // Populate modal with row data
-    // $('#id').val(rowData[0]); // Assuming date is in the firsts column
-    $('#materialInvoiceNo').val(rowData[0]); // Assuming material invoice number is in the second column
-    $('#materialDate').val(rowData[1]); // Assuming date is in the third column
-    $('#cashierName').val(rowData[2]); // Assuming cashier name is in the fourth column
-
-    // Set selected options for dropdowns
-    $('#receivedBy').val(rowData[3]); // Assuming received by is in the fifth column
-    $('#inspectedBy').val(rowData[4]); // Assuming inspected by is in the sixth column
-    $('#verifiedBy').val(rowData[5]); // Assuming verified by is in the seventh column
-
-});
-
-$('#tabledataMaterial tbody').on('click', '.delete', function () {
-    var rowData = table.row($(this).closest('tr')).data();
-    console.log('Delete button clicked for row:', rowData);
-
-    // Get other updated values from the modal inputs
-    var materialDate = $('#materialDate').val();
-    var materialInvoiceNo = $('#materialInvoiceNo').val();
-    var cashierName = $('#cashierName').val();
-    var receivedById = $('#receivedBy').val();
-    var inspectedById = $('#inspectedBy').val();
-    var verifiedById = $('#verifiedBy').val();
-
-    // Fetch first name and last name based on the selected IDs
-    $.ajax({
-        url: '../php/fetch_admin_data.php', // Your server-side script to fetch admin data
-        method: 'GET',
-        dataType: 'json',
-        success: function (data) {    
-            var receivedBy = fetchAdminData(receivedById, data);
-            var inspectedBy = fetchAdminData(inspectedById, data);
-            var verifiedBy = fetchAdminData(verifiedById, data);    
-            swal({
-  title: "Are you sure?",
-  text: "Once deleted, you will not be able to see the record",
-  icon: "warning",
-  buttons: true,
-  dangerMode: true,
-})
-.then((willDelete) => {
-  if (willDelete) {
-
-    // Perform AJAX request to update the active column
-    $.ajax({
-        url: '../php/store_stocks_archive.php', // Change the URL to your PHP script that updates the active column
-        method: 'POST',
-        data: {     materialDate: materialDate,
-                    materialInvoiceNo: materialInvoiceNo,
-                    cashierName: cashierName,
-                    receivedBy: receivedBy,
-                    inspectedBy: inspectedBy,
-                    verifiedBy: verifiedBy
-        
-        },
-        success: function (response) {
-            // Handle the response from the server
-            console.log(response);
-            // Reload or update the DataTable if needed
-            table.ajax.reload();
-        },
-        error: function (xhr, status, error) {
-            // Handle errors
-            console.error(error);
-        }
-    });
-    swal("Record has been deleted!", {
-      icon: "success",
-    });
-  } else {
-    swal("Your Record file is safe!");
-  }
-});
-        },
-        error: function (xhr, status, error) {
-            console.error('Error fetching admin data:', error);
-        }
-    });
-    });
-});
-
 
 function fetchAdminData(adminId, adminData) {
     var admin = adminData.find(function (admin) {
