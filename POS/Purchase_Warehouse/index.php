@@ -50,7 +50,7 @@ date_default_timezone_set('Asia/Manila');
               document.getElementById('content').style.display = 'none';
               
               // // Create an audio element
-              // var audio = new Audio('yamete-kudasai-mp3-(original)-made-with-Voicemod.mp3.mp3'); // Replace 'path_to_your_audio_file.mp3' with the actual path to your audio file
+              // var audio = new Audio('yamete-kudasai-mp3-(original)-made-with-Voicemod.mp3'); // Replace 'path_to_your_audio_file.mp3' with the actual path to your audio file
               
               // // Play audio
               // audio.play();
@@ -61,12 +61,12 @@ date_default_timezone_set('Asia/Manila');
                   document.getElementById('content').style.display = 'block';
                   audio.pause(); // Pause audio
                   audio.currentTime = 0; // Reset audio to beginning
-              }, 2000); // 3000 milliseconds = 3 seconds
+              }, 3000); // 3000 milliseconds = 3 seconds
           }
-
 
           // Call the function to reload spinner
           reloadSpinner();
+
     </script>
   </body>
 

@@ -1,8 +1,8 @@
 <div id="spinner" style="height: 80vh; display: flex; justify-content: center; align-items: center;">
-<iframe src="https://giphy.com/embed/3oz8xzJjbG2Etm0f04" width="480" height="270" frameBorder="0" class="giphy-embed rounded rounded-5" allowFullScreen></iframe><p></p>
-    <!-- <div class="spinner-grow text-primary" role="status">
+<!-- <iframe src="https://giphy.com/embed/3oz8xzJjbG2Etm0f04" width="480" height="270" frameBorder="0" class="giphy-embed rounded rounded-5" allowFullScreen></iframe><p></p> -->
+    <div class="spinner-grow text-primary" role="status">
         <span class="visually-hidden">Loading...</span>
-    </div> -->
+    </div>
 </div>
 
 <div id="content" style="display: none">
