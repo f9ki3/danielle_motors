@@ -42,7 +42,7 @@ date_default_timezone_set('Asia/Manila');
 
     <?php include "../../page_properties/footer_main.php"; ?>
     <script type="text/javascript" src="../../assets/libs/node_modules/@zxing/library/umd/index.min.js"></script>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
       window.addEventListener('load', function () {
         let selectedDeviceId;
         const codeReader = new ZXing.BrowserMultiFormatReader();
@@ -96,8 +96,115 @@ date_default_timezone_set('Asia/Manila');
             console.error(err);
           });
       });
-    </script>
+    </script> -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        window.addEventListener('load', function () {
+            let selectedDeviceId;
+            const codeReader = new ZXing.BrowserMultiFormatReader();
+            console.log('ZXing code reader initialized');
+            codeReader.listVideoInputDevices()
+                .then((videoInputDevices) => {
+                    const sourceSelect = document.getElementById('sourceSelect');
+                    selectedDeviceId = videoInputDevices[0].deviceId;
+                    if (videoInputDevices.length >= 1) {
+                        videoInputDevices.forEach((element) => {
+                            const sourceOption = document.createElement('option');
+                            sourceOption.text = element.label;
+                            sourceOption.value = element.deviceId;
+                            sourceSelect.appendChild(sourceOption);
+                        });
+
+                        sourceSelect.onchange = () => {
+                            selectedDeviceId = sourceSelect.value;
+                        };
+
+                        const sourceSelectPanel = document.getElementById('sourceSelectPanel');
+                        sourceSelectPanel.style.display = 'block';
+                    }
+
+                    document.getElementById('startButton').addEventListener('click', () => {
+                        codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
+                            if (result) {
+                                console.log(result);
+                                document.getElementById('result').textContent = result.text;
+                                // Set the value of the input field to the scanned barcode
+                                document.getElementById('barcodeInput').value = result.text;
+                                // Play the success sound
+                                document.getElementById('successSound').play();
+                                
+                                // Check the barcode against the database
+                                makeAjaxRequest();
+                            }
+                            if (err && !(err instanceof ZXing.NotFoundException)) {
+                                console.error(err);
+                                document.getElementById('result').textContent = err;
+                            }
+                        });
+                        console.log(`Started continuous decode from camera with id ${selectedDeviceId}`);
+                    });
+
+                    document.getElementById('resetButton').addEventListener('click', () => {
+                        codeReader.reset();
+                        document.getElementById('result').textContent = '';
+                        console.log('Reset.');
+                    });
+
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+
+            // Function to handle AJAX request
+            function makeAjaxRequest() {
+                const barcodeInput = document.getElementById('barcodeInput');
+                const productIdSelect = document.getElementById('product_id');
+                const enterDetailsBtn = document.getElementById('enterDetailsBtn');
+                const barcode = barcodeInput.value;
+
+                // Reset the select element
+                productIdSelect.selectedIndex = -1;
+
+                // AJAX request
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'get_content.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.error) {
+                            // Handle error response
+                            console.error(response.error);
+                            swal("Product not found", "Enter the barcode again, or manually enter the product data", "error");
+                            productIdSelect.value = '';
+                            enterDetailsBtn.style.display = 'inline-block'; // Show "Enter Details" button
+                            document.getElementById('errorSound').play();
+                        } else {
+                            // Update select options with response data
+                            const productId = response.product_id;
+                            const option = productIdSelect.querySelector(`option[value="${productId}"]`);
+                            if (option) {
+                                option.selected = true;
+                                enterDetailsBtn.style.display = 'none'; // Hide "Enter Details" button
+                                productIdSelect.style.display = 'inline-block'; // Show select tag for product_id
+                                productIdSelect.value = productId; // Set value of productIdSelect
+                                document.getElementById('form-extension').style.display = 'none'; // Hide the form extension
+                            } else {
+                                swal("Product not found", "Enter the barcode again, or manually enter the product data", "error");
+                                productIdSelect.value = '';
+                                enterDetailsBtn.style.display = 'inline-block'; // Show "Enter Details" button
+                            }
+                        }
+                    } else {
+                        // Handle other HTTP status
+                        console.error('Request failed. Status code: ' + xhr.status);
+                    }
+                };
+                xhr.send('barcodeInput=' + encodeURIComponent(barcode));
+            }
+        });
+    </script>
+
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         const barcodeInput = document.getElementById('barcodeInput');
@@ -106,54 +213,54 @@ date_default_timezone_set('Asia/Manila');
         let timeoutId;
 
         // Function to handle AJAX request
-function makeAjaxRequest() {
-    const barcode = barcodeInput.value;
+        function makeAjaxRequest() {
+            const barcode = barcodeInput.value;
 
-    // Reset the select element
-    productIdSelect.selectedIndex = -1;
+            // Reset the select element
+            productIdSelect.selectedIndex = -1;
 
-    // AJAX request
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'get_content.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText);
-            if (response.error) {
-                // Handle error response
-                console.error(response.error);
-                swal("Product not found", "Enter the barcode again, or manually enter the product data", "error");
-                productIdSelect.value = '';
-                enterDetailsBtn.style.display = 'inline-block'; // Show "Enter Details" button
-                document.getElementById('errorSound').play();
-            } else {
-                // Update select options with response data
-                const productId = response.product_id;
-                const option = productIdSelect.querySelector(`option[value="${productId}"]`);
-                if (option) {
-                    option.selected = true;
-                    enterDetailsBtn.style.display = 'none'; // Hide "Enter Details" button
-                    productIdSelect.style.display = 'inline-block'; // Show select tag for product_id
-                    productIdSelect.value = productId; // Set value of productIdSelect
-                    document.getElementById('form-extension').style.display = 'none'; // Hide the form extension
+            // AJAX request
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'get_content.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    if (response.error) {
+                        // Handle error response
+                        console.error(response.error);
+                        swal("Product not found", "Enter the barcode again, or manually enter the product data", "error");
+                        productIdSelect.value = '';
+                        enterDetailsBtn.style.display = 'inline-block'; // Show "Enter Details" button
+                        document.getElementById('errorSound').play();
+                    } else {
+                        // Update select options with response data
+                        const productId = response.product_id;
+                        const option = productIdSelect.querySelector(`option[value="${productId}"]`);
+                        if (option) {
+                            option.selected = true;
+                            enterDetailsBtn.style.display = 'none'; // Hide "Enter Details" button
+                            productIdSelect.style.display = 'inline-block'; // Show select tag for product_id
+                            productIdSelect.value = productId; // Set value of productIdSelect
+                            document.getElementById('form-extension').style.display = 'none'; // Hide the form extension
+                        } else {
+                            swal("Product not found", "Enter the barcode again, or manually enter the product data", "error");
+                            productIdSelect.value = '';
+                            enterDetailsBtn.style.display = 'inline-block'; // Show "Enter Details" button
+                        }
+                    }
                 } else {
-                    swal("Product not found", "Enter the barcode again, or manually enter the product data", "error");
-                    productIdSelect.value = '';
-                    enterDetailsBtn.style.display = 'inline-block'; // Show "Enter Details" button
+                    // Handle other HTTP status
+                    console.error('Request failed. Status code: ' + xhr.status);
                 }
-            }
-        } else {
-            // Handle other HTTP status
-            console.error('Request failed. Status code: ' + xhr.status);
+            };
+            xhr.send('barcodeInput=' + encodeURIComponent(barcode));
         }
-    };
-    xhr.send('barcodeInput=' + encodeURIComponent(barcode));
-}
 
-// Event listener for "Enter Details" button
-enterDetailsBtn.addEventListener('click', function() {
-    document.getElementById('form-extension').style.display = 'block'; // Unhide the form extension
-});
+        // Event listener for "Enter Details" button
+        enterDetailsBtn.addEventListener('click', function() {
+            document.getElementById('form-extension').style.display = 'block'; // Unhide the form extension
+        });
 
 
 
@@ -206,7 +313,7 @@ enterDetailsBtn.addEventListener('click', function() {
             productIdSelect.style.display = 'inline-block'; // Show select tag
         });
     });
-</script>
+    </script>
 
   </body>
 

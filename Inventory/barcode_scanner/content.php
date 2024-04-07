@@ -48,12 +48,12 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-floating mb-3">
-                                <select class="form-select" id="product_id" name="product_id">
-                                    <option value="">Product Details</option>
+                                <select class="form-select" id="product_id" name="product_id" >
+                                    <option value="">Select product</option>
                                     <?php
                                     $product_id_query = 'SELECT 
                                                             product.id, 
-                                                            product.name, 
+                                                            product.name AS product_name, 
                                                             product.code,
                                                             product.supplier_code,
                                                             product.image,
@@ -65,11 +65,13 @@
                                                         FROM product
                                                         INNER JOIN category ON category.id = product.category_id
                                                         INNER JOIN brand ON brand.id = product.brand_id
-                                                        INNER JOIN unit ON unit.id = product.unit_id';
+                                                        INNER JOIN unit ON unit.id = product.unit_id
+                                                        ORDER BY product.name ASC
+                                                        ';
                                     $product_id_result = $conn->query($product_id_query);
                                     if($product_id_result -> num_rows>0){
                                         while($pid_row = $product_id_result -> fetch_assoc()){
-                                            echo '<option value="' . $pid_row['id'] . '">' . $pid_row['brand_name'] . ' ' . $pid_row['category_name'] . ' ' . $pid_row['name'] . ' ' . $pid_row['models'] . '</option>';
+                                            echo '<option value="' . $pid_row['id'] . '">' . $pid_row['brand_name'] . ' ' . $pid_row['category_name'] . ' ' . $pid_row['product_name'] . ' ' . $pid_row['models'] . '</option>';
                                         }
                                     } else {
                                         echo '<option value="">No Data</option>';

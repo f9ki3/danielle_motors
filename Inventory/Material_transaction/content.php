@@ -88,12 +88,7 @@ if($material_transfer_res -> num_rows > 0){
                                                     echo '<select class="form-select mb-2" aria-label="Default select example" style="width: 33%" name="inspected_by" id="inspectedBy">
                                                     </select>';
                                                 } else {
-                                                    $inspector_sql = "SELECT user_fname, user_lname FROM user WHERE id='$material_inspected_by' LIMIT 1";
-                                                    $inspector_res = $conn->query($inspector_sql);
-                                                    if($inspector_res->num_rows>0){
-                                                        $row=$inspector_res->fetch_assoc();
-                                                        echo $row['user_fname'] . " " . $row['user_lname'];
-                                                    }
+                                                    echo $material_inspected_by;
                                                 }
                                                 ?>
                                                 
@@ -103,12 +98,7 @@ if($material_transfer_res -> num_rows > 0){
                                                 if(empty($material_verified_by)){
                                                     echo '<input name="verified_by" type="text" class="form-control" value="' . $id . '" hidden>';
                                                 } else {
-                                                    $verifier_sql = "SELECT user_fname, user_lname FROM user WHERE id='$material_verified_by' LIMIT 1";
-                                                    $verifier_res = $conn->query($verifier_sql);
-                                                    if($verifier_res->num_rows>0){
-                                                        $row=$verifier_res->fetch_assoc();
-                                                        echo $row['user_fname'] . " " . $row['user_lname'];
-                                                    }
+                                                   echo $material_verified_by;
                                                 }
                                                 ?>
                                             </td>
