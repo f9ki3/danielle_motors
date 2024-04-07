@@ -125,6 +125,7 @@ function makeAjaxRequest() {
                 swal("Product not found", "Enter the barcode again, or manually enter the product data", "error");
                 productIdSelect.value = '';
                 enterDetailsBtn.style.display = 'inline-block'; // Show "Enter Details" button
+                document.getElementById('errorSound').play();
             } else {
                 // Update select options with response data
                 const productId = response.product_id;

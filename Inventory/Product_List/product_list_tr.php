@@ -13,7 +13,8 @@
                 FROM product
                 INNER JOIN category ON category.id = product.category_id
                 INNER JOIN brand ON brand.id = product.brand_id
-                INNER JOIN unit ON unit.id = product.unit_id';
+                INNER JOIN unit ON unit.id = product.unit_id
+                ORDER BY product.id DESC';
     $stmt = $conn->prepare($query);
     $stmt->execute();
     $stmt->bind_result($product_id, $product_name, $product_sku, $product_upc, $product_image, $models, $category, $brand, $unit, $active);

@@ -48,7 +48,7 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-floating mb-3">
-                                <select class="form-select" id="product_id" name="product_id" required>
+                                <select class="form-select" id="product_id" name="product_id">
                                     <option value="">Product Details</option>
                                     <?php
                                     $product_id_query = 'SELECT 
@@ -202,6 +202,12 @@
     <!-- Sound effect -->
     <audio id="successSound">
         <source src="success.wav" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Sound effect -->
+    <audio id="errorSound">
+        <source src="error-3-125761.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 </div>
