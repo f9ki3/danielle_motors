@@ -271,7 +271,7 @@ $('tr').each(function() {
     var status = $(this).find('td:eq(8)').text().trim(); // Get status from the table cell
     if (status === 'Approved' ||status === 'Received' || status === 'Returned') {
         var inputSrp = parseFloat($(this).find('td:eq(5)').text()); // Get input SRP
-        var qtyReceive = parseFloat($(this).find('td:eq(6)').text()); // Get quantity receive
+        var qtyReceive = parseFloat($(this).find('td:eq(7)').text()); // Get quantity receive
         var productTotalSellingPrice = inputSrp * qtyReceive;
         totalSellingPrice += productTotalSellingPrice;
     }
