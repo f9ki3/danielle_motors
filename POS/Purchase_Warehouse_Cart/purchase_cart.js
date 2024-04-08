@@ -1,37 +1,12 @@
 function purchase() {
+    // Hide purchase button and show loading spinner
     document.getElementById("purchase_btn").style.display = "none";
     document.getElementById("loading").style.display = "block";
 
+    // Get cart items from session storage
     var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-    var subtotal = calculateSubtotal();
-    var tax = calculateTax(subtotal);
-    var discountPercentage = parseFloat(document.getElementById('subtotal_discount_percentage').value) || 0;
-    var discount = calculateDiscount(subtotal, discountPercentage);
-    var total = calculateTotal(subtotal, tax, discount);
-    var amountPayment = parseFloat(document.getElementById('amount_payment').value) || 0;
-    var change = Math.max(amountPayment - total, 0);
 
-    cartItems.forEach(function(item, index) {
-        var discountedPrice;
-        if (item.discountType === "%") {
-            discountedPrice = item.srp - (item.srp * item.discount / 100);
-        } else if (item.discountType === "₱") {
-            discountedPrice = item.srp - item.discount;
-        } else {
-            item.discountType = "₱";
-            discountedPrice = item.srp - item.discount;
-        }
-        item.totalAmount = discountedPrice * item.qty;
-        item.quantity = item.qty;
-    });
-
-    var userInputDiscountType = ""; // Assume user input is provided here
-    if (userInputDiscountType === "%") {
-        cartItems.forEach(function(item) {
-            item.discountType = "%";
-        });
-    }
-
+    // Get transaction details from form inputs
     var transaction_customer_name = document.getElementById('transaction_customer_name').value || '';
     var transaction_date = new Date().toISOString();
     var transaction_address = document.getElementById('transaction_address').value || '';
@@ -41,6 +16,15 @@ function purchase() {
     var transaction_payment = document.getElementById('transaction_payment').value || '';
     var transaction_type = document.getElementById('transaction_type').value || '';
 
+    // Get transaction totals
+    var subtotal = parseFloat(document.getElementById('subtotal').textContent.replace('₱ ', '').replace(/,/g, ''));
+    var tax = parseFloat(document.getElementById('tax').textContent.replace('₱ ', '').replace(/,/g, ''));
+    var subtotalDiscount = parseFloat(document.getElementById('subtotal_discount').textContent.replace('₱ ', '').replace(/,/g, ''));
+    var total = parseFloat(document.getElementById('total').textContent.replace('₱ ', '').replace(/,/g, ''));
+    var payment = parseFloat(document.getElementById('payment').textContent.replace('₱ ', '').replace(/,/g, ''));
+    var change = parseFloat(document.getElementById('change').textContent.replace('₱ ', '').replace(/,/g, ''));
+
+    // Prepare data to be sent
     var data = {
         cartItems: cartItems,
         transaction_customer_name: transaction_customer_name,
@@ -53,32 +37,40 @@ function purchase() {
         transaction_type: transaction_type,
         subtotal: subtotal,
         tax: tax,
-        discount: discount,
+        discount: subtotalDiscount,
         total: total,
-        amountPayment: amountPayment,
+        amountPayment: payment,
         change: change
     };
 
-    console.log("Cart Items:", cartItems);
-    console.log("Data to be sent:", data);
+    // console.log("Cart Items:", cartItems);
+    // console.log("Data to be sent:", data);
 
+    // Send AJAX request to purchase_transaction.php
     $.ajax({
         type: "POST",
         url: "purchase_transaction.php",
         data: data,
         success: function(transaction_code) {
+            alertify.set('notifier', 'position', 'bottom-left');
+            alertify.success('Successfully Purchased');
+            let click = new Audio('success.mp3');
+            click.play()
+
             console.log(transaction_code);
 
+            // Determine redirect URL based on transaction type
             var redirectURL;
             if (transaction_type.toLowerCase() === 'walk-in') {
-                redirectURL = 'purchase_receipt';
+                redirectURL = '../Purchase_Warehouse_Walkin_Receipt';
             } else if (transaction_type.toLowerCase() === 'delivery') {
-                redirectURL = 'purchase_delivery_receipt';
+                redirectURL = '../Purchase_Warehouse_Delivery_Receipt';
             } else {
-                redirectURL = 'purchase_receipt.php';
+                redirectURL = '../Purchase_Warehouse';
             }
-            redirectURL += '?transaction_code=' + encodeURIComponent(transaction_code);
+            redirectURL += '?transaction_code=' + transaction_code;
 
+            // Redirect to receipt page
             window.location.href = redirectURL;
             
         },
@@ -86,9 +78,27 @@ function purchase() {
             console.error("Error:", error);
         }
     });
+
+    displayCartItems()
+    resetCart()
 }
 
 
+function resetCart() {
+    // Clear the cartItems from session storage
+    sessionStorage.removeItem('cartItems');
+    displayCartItems();
+    updateCounter();
+    updateSubtotal();
+    updateDiscountType();
+    updateValues();
+    var updatebtn = document.getElementById('resetBtn');
+    updatebtn.disabled = true;
+
+    // Update payment and change amounts
+    document.getElementById('paymentAmount').textContent = '₱ 0.00';
+    document.getElementById('changeAmount').textContent = '₱ 0.00';
+}
 
 // Function to handle validation and enable/disable purchase button
 function validateAndEnablePurchaseButton() {
@@ -276,13 +286,23 @@ function addToCart(productId, image, productName, supplierCode, brandName, unitN
 
 
 
-    // Function to update the counter
-    function updateCounter(count) {
-        var counterElement = document.getElementById('counter');
-        if (counterElement) {
-            counterElement.textContent = count; // Update counter to total items in the cart
+function updateCounter(count) {
+    var counterElement = document.getElementById('counter');
+    var resetButton = document.getElementById('resetBtn');
+
+    if (counterElement) {
+        counterElement.textContent = count; // Update counter to total items in the cart
+
+        // Check if count is 0 and disable the reset button if it is
+        if (count === 0 && resetButton) {
+            resetButton.disabled = true;
+        } else {
+            // Enable the reset button if count is not 0
+            resetButton.disabled = false;
         }
     }
+}
+
 
     // Initialize the counter with the number of items in the cart
     var initialCartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];

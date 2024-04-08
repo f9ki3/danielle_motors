@@ -160,15 +160,16 @@
                                     <h5 class="fw-bolder">Change</h5>
                                     <h5 class="fw-bolder" id="change">PHP 100.00</h5>
                                 </div>
-                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between" class=" mt-3">
-                                    <button style="width: 49%" id="resetButton" class="btn btn-lg mt-3 border-primary text-primary" onclick="resetCart()" disabled>Reset</button>
-                                    <button style="width: 49%;" id="purchase_btn" class="btn btn-lg mt-3 btn-primary" disabled onclick="purchase()">Purchase</button>
-                                    <button style="width: 49%; display: none" disabled id="loading" class="btn btn-primary" ">
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between;" class="mt-3">
+                                    <button style="flex: 0 0 49%;" id="resetBtn" class="btn btn-lg mt-3 border border-primary text-primary" onclick="resetCart()">Reset</button>
+                                    <button style="flex: 0 0 49%;" id="purchase_btn" class="btn btn-lg mt-3 btn-primary" onclick="purchase()">Purchase</button>
+                                    <button style="flex: 0 0 49%; display: none;" id="loading" disabled class="btn btn-lg mt-3 btn-primary">
                                         <div class="spinner-grow spinner-grow-sm m-1" role="status">
                                             <span class="visually-hidden">Loading...</span>
                                         </div>
                                     </button>
                                 </div>
+
                             </div>
                         </div>
                     </div>

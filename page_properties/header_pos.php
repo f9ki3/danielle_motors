@@ -66,6 +66,7 @@
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css"/>
     <!-- kay fyke tong alertify wag gagalawin -->
+    <link rel="stylesheet" href="../../static/css/print.css">
 
 
     <script>
@@ -82,6 +83,12 @@
         linkRTL.setAttribute('disabled', true);
         userLinkRTL.setAttribute('disabled', true);
       }
+    </script>
+    <script>
+        function printDocument() {
+        window.print();
+    }
+
     </script>
 
   </head>

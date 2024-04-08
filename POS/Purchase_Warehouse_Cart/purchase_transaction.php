@@ -45,12 +45,12 @@ $sql = "INSERT INTO purchase_transactions (TransactionID, CustomerName, Transact
 if ($conn->query($sql) === TRUE) {
     // Insert data into purchase_cart table
     foreach ($cartItems as $item) {
-        $product_id = $item['product_id'];
-        $product_name = $item['product_name'];
-        $brand = $item['brand'];
-        $model = $item['model'];
-        $quantity = $item['quantity'];
-        $unit = $item['unit'];
+        $product_id = $item['productId'];
+        $product_name = $item['productName'];
+        $brand = $item['brandName'];
+        $model = $item['models'];
+        $quantity = $item['qty'];
+        $unit = $item['unitName'];
         $srp = $item['srp'];
         $discount = $item['discount'];
         $discount_type = isset($item['discountType']) && !empty($item['discountType']) ? $item['discountType'] : '₱';
@@ -60,6 +60,53 @@ if ($conn->query($sql) === TRUE) {
         $conn->query($sql_cart);
     }
     echo $transaction_id; // Echoing the transaction ID as response
+
+
+    //for FIFO ng stocks
+    foreach ($cartItems as $item) {
+        $product_id = $item['productId'];
+        $quantity = $item['qty'];
+        $branch_code = "WAREHOUSE";
+
+        // Update stocks in FIFO order
+        $sql_stocks = "SELECT id, stocks FROM stocks 
+                    WHERE branch_code = '$branch_code' 
+                    AND product_id = '$product_id'
+                    AND stocks > 0 
+                    ORDER BY id ASC 
+                    FOR UPDATE";
+
+        $result = $conn->query($sql_stocks);
+        $rows = $result->fetch_all(MYSQLI_ASSOC);
+
+        $remainingQuantity = $quantity;
+
+        foreach ($rows as $row) {
+            $id = $row['id'];
+            $availableStock = $row['stocks'];
+            $deductAmount = min($availableStock, $remainingQuantity);
+            $remainingQuantity -= $deductAmount;
+
+            // Deduct stock
+            $sql_deduct = "UPDATE stocks 
+                        SET stocks = stocks - $deductAmount 
+                        WHERE id = $id";
+            $conn->query($sql_deduct);
+
+            if ($remainingQuantity <= 0) {
+                break; // All requested quantity deducted
+            }
+        }
+
+        // If there's remaining quantity, distribute it to another row
+        if ($remainingQuantity > 0) {
+            $sql_insert = "INSERT INTO stocks (branch_code, product_id, stocks) 
+                        VALUES ('$branch_code', '$product_id', -$remainingQuantity)";
+            $conn->query($sql_insert);
+        }
+    }
+
+    
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
