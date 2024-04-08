@@ -170,40 +170,43 @@ date_default_timezone_set('Asia/Manila');
 
     
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        document.getElementById('submitBtn').addEventListener('click', function (event) {
-            // Prevent the default form submission behavior
-            event.preventDefault();
-            
-            // Create a FormData object from the form
-            var formData = new FormData(document.getElementById('barcodeForm'));
-            
-            // Create an AJAX request
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'action.php', true);
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('submitBtn').addEventListener('click', function (event) {
+                // Prevent the default form submission behavior
+                event.preventDefault();
+                
+                // Create a FormData object from the form
+                var formData = new FormData(document.getElementById('barcodeForm'));
+                
+                // Create an AJAX request
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '../../PHP - process_files/add_stocks_draft.php', true);
 
-            // Set up the onload event handler
-            xhr.onload = function () {
-                // Check if the request was successful
-                if (xhr.status === 200) {
-                    // Clear input fields
-                    document.getElementById('barcodeForm').reset();
-                    // Set focus to barcode input
-                    document.getElementById('barcodeInput').focus();
-                }
-            };
+                // Set up the onload event handler
+                xhr.onload = function () {
+                    // Check if the request was successful
+                    if (xhr.status === 200) {
+                        // Clear input fields
+                        document.getElementById('barcodeForm').reset();
+                        // Set focus to barcode input
+                        document.getElementById('barcodeInput').focus();
+                        // Log the response in the console
+                        console.log(xhr.responseText);
+                    }
+                };
 
-            // Set up the onerror event handler
-            xhr.onerror = function () {
-                // Handle any errors that occur during the request
-                console.error('Error occurred during AJAX request.');
-            };
+                // Set up the onerror event handler
+                xhr.onerror = function () {
+                    // Handle any errors that occur during the request
+                    console.error('Error occurred during AJAX request.');
+                };
 
-            // Send the AJAX request with the form data
-            xhr.send(formData);
+                // Send the AJAX request with the form data
+                xhr.send(formData);
+            });
         });
-    });
     </script>
+
 
     <script>
     $(document).ready(function(){
