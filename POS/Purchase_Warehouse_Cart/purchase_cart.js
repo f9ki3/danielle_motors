@@ -1,43 +1,91 @@
 function purchase() {
-    // Get cart items from session storage
+    document.getElementById("purchase_btn").style.display = "none";
+    document.getElementById("loading").style.display = "block";
+
     var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-    console.log(cartItems);
+    var subtotal = calculateSubtotal();
+    var tax = calculateTax(subtotal);
+    var discountPercentage = parseFloat(document.getElementById('subtotal_discount_percentage').value) || 0;
+    var discount = calculateDiscount(subtotal, discountPercentage);
+    var total = calculateTotal(subtotal, tax, discount);
+    var amountPayment = parseFloat(document.getElementById('amount_payment').value) || 0;
+    var change = Math.max(amountPayment - total, 0);
 
-    // Get values of transaction details
-    var customerName = document.getElementById('transaction_customer_name').value;
-    var address = document.getElementById('transaction_address').value;
-    var date = document.getElementById('transaction_date').value;
-    var verified = document.getElementById('transaction_verified').value;
-    var inspected = document.getElementById('transaction_inspected').value;
-    var received = document.getElementById('transaction_received').value;
-    var payment_type = document.getElementById('transaction_payment').value;
-    var type = document.getElementById('transaction_type').value;
+    cartItems.forEach(function(item, index) {
+        var discountedPrice;
+        if (item.discountType === "%") {
+            discountedPrice = item.srp - (item.srp * item.discount / 100);
+        } else if (item.discountType === "₱") {
+            discountedPrice = item.srp - item.discount;
+        } else {
+            item.discountType = "₱";
+            discountedPrice = item.srp - item.discount;
+        }
+        item.totalAmount = discountedPrice * item.qty;
+        item.quantity = item.qty;
+    });
 
-    // Get values of transaction totals
-    var subtotal = parseFloat(document.getElementById('subtotal').textContent.replace('₱ ', '').replace(/,/g, ''));
-    var tax = parseFloat(document.getElementById('tax').textContent.replace('₱ ', '').replace(/,/g, ''));
-    var subtotalDiscount = parseFloat(document.getElementById('subtotal_discount').textContent.replace('₱ ', '').replace(/,/g, ''));
-    var total = parseFloat(document.getElementById('total').textContent.replace('₱ ', '').replace(/,/g, ''));
-    var payment = parseFloat(document.getElementById('payment').textContent.replace('₱ ', '').replace(/,/g, ''));
-    var change = parseFloat(document.getElementById('change').textContent.replace('₱ ', '').replace(/,/g, ''));
+    var userInputDiscountType = ""; // Assume user input is provided here
+    if (userInputDiscountType === "%") {
+        cartItems.forEach(function(item) {
+            item.discountType = "%";
+        });
+    }
 
-    // Log transaction details
-    console.log("Customer Name:", customerName);
-    console.log("Address:", address);
-    console.log("Date:", date);
-    console.log("Verified:", verified);
-    console.log("Inspected:", inspected);
-    console.log("Received:", received);
-    console.log("Payment:", payment_type);
-    console.log("Type:", type);
+    var transaction_customer_name = document.getElementById('transaction_customer_name').value || '';
+    var transaction_date = new Date().toISOString();
+    var transaction_address = document.getElementById('transaction_address').value || '';
+    var transaction_verified = document.getElementById('transaction_verified').value || '';
+    var transaction_inspected = document.getElementById('transaction_inspected').value || '';
+    var transaction_received = document.getElementById('transaction_received').value || '';
+    var transaction_payment = document.getElementById('transaction_payment').value || '';
+    var transaction_type = document.getElementById('transaction_type').value || '';
 
-    // Log transaction totals
-    console.log("Subtotal:", subtotal);
-    console.log("Tax:", tax);
-    console.log("Subtotal Discount:", subtotalDiscount);
-    console.log("Total:", total);
-    console.log("Payment:", payment);
-    console.log("Change:", change);
+    var data = {
+        cartItems: cartItems,
+        transaction_customer_name: transaction_customer_name,
+        transaction_date: transaction_date,
+        transaction_address: transaction_address,
+        transaction_verified: transaction_verified,
+        transaction_inspected: transaction_inspected,
+        transaction_received: transaction_received,
+        transaction_payment: transaction_payment,
+        transaction_type: transaction_type,
+        subtotal: subtotal,
+        tax: tax,
+        discount: discount,
+        total: total,
+        amountPayment: amountPayment,
+        change: change
+    };
+
+    console.log("Cart Items:", cartItems);
+    console.log("Data to be sent:", data);
+
+    $.ajax({
+        type: "POST",
+        url: "purchase_transaction.php",
+        data: data,
+        success: function(transaction_code) {
+            console.log(transaction_code);
+
+            var redirectURL;
+            if (transaction_type.toLowerCase() === 'walk-in') {
+                redirectURL = 'purchase_receipt';
+            } else if (transaction_type.toLowerCase() === 'delivery') {
+                redirectURL = 'purchase_delivery_receipt';
+            } else {
+                redirectURL = 'purchase_receipt.php';
+            }
+            redirectURL += '?transaction_code=' + encodeURIComponent(transaction_code);
+
+            window.location.href = redirectURL;
+            
+        },
+        error: function(xhr, status, error) {
+            console.error("Error:", error);
+        }
+    });
 }
 
 
@@ -193,6 +241,7 @@ function addToCart(productId, image, productName, supplierCode, brandName, unitN
         discountType: ".", // Default discount type
         totalAmount: totalAmount // Total amount calculation
     };
+
 
     // Retrieve existing cart items from session storage
     var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
