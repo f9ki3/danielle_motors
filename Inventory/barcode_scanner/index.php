@@ -98,6 +98,16 @@ date_default_timezone_set('Asia/Manila');
       });
     </script> -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        // JavaScript to focus on the input element when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                document.getElementById('barcodeInput').focus();
+            } catch (error) {
+                console.error('An error occurred while trying to focus on the input element:', error);
+            }
+        });
+    </script>
     <script type="text/javascript">
         window.addEventListener('load', function () {
             let selectedDeviceId;
@@ -314,6 +324,7 @@ date_default_timezone_set('Asia/Manila');
         });
     });
     </script>
+    
 
   </body>
 
