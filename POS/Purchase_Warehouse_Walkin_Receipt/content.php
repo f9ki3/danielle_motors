@@ -37,7 +37,7 @@ $stmt->close();
 <div style="width: 100%;" class="print_hide" >
     <div>
 
-        <div style=" height: 82vh" class=" w-100 transact">
+        <div style=" height: auto" class=" w-100 transact">
             <h2 class="mb-3">Purchase Warehouse</h2>
             <div class="row">
                 <div>
