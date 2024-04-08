@@ -1,143 +1,349 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motorcycle Parts & Accessories Shop</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Danielle Motor Parts</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        /* Add CSS for the modal */
-        .account-options-modal {
-            display: none;
-            position: fixed;
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 300px; /* Adjust the height as needed */
+            overflow: hidden;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-content {
+            position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 1000;
-            background-color: #fff;
-            border: 1px solid #ccc;
+        }
+
+        .banner-text {
+            font-family: 'Arial', sans-serif; /* Change the font family to your preferred font */
+            font-size: 36px; /* Adjust the font size as needed */
+            color: #fff; /* Text color */
+        }
+
+        .product {
+            border: 1px solid #ddd;
             border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            padding: 20px;
+            margin-bottom: 20px;
         }
 
-        .account-options-modal-content {
-            text-align: center;
+        .product img {
+            width: 100%;
+            height: auto;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
         }
 
-        .account-options-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            font-size: 18px;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+
+        .product-description {
+            font-size: 14px;
+        }
+
+        .modal-body .product {
+            border: none;
+            margin-bottom: 15px;
+        }
+
+        .modal-body .product img {
+            width: 80px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .modal-body .product-info {
+            padding: 0 15px;
+        }
+
+        .total-price-section {
+            font-size: 18px;
+            font-weight: bold;
+            margin-right: auto;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Motorcycle Parts & Accessories Shop</h1>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li class="products-link">
-                        <a href="#">Products</a>
-                        <ul class="categories-dropdown">
-                            <li><a href="helmets.html">Helmets</a></li>
-                            <li><a href="jackets.html">Jackets</a></li>
-                            <li><a href="gloves.html">Gloves</a></li>
-                            <li><a href="tires.html">Tires</a></li>
-                            <li><a href="brakes.html">Brakes</a></li>
-                            <!-- Add more categories as needed -->
-                        </ul>
-                    </li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#" class="cart" onclick="showCart()">Cart <span id="cart-items">0</span></a></li>
-                    <li><a href="#" class="account-icon" onclick="showAccountOptions()">Account</a></li>
-                </ul>
-            </nav>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="path_to_your_logo.png" alt="Company Logo" class="mr-2" style="max-width: 60px;"> Danielle Motor Parts
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Products
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Motorcycle Engine Parts</a>
+                        <a class="dropdown-item" href="#">Motorcycle Electrical Parts</a>
+                        <a class="dropdown-item" href="#">Motorcycle Body & Frame Parts</a>
+                        <!-- Add more categories as needed -->
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#registerModal">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#cartModal">Cart <span id="cart-count" class="badge badge-light">0</span></a>
+                </li>
+            </ul>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h2>Welcome to Our Shop</h2>
-                <p>Find the best motorcycle parts and accessories here!</p>
+    <!-- Main Content -->
+    <div class="container text-center">
+        <!-- Banner -->
+        <div class="banner">
+            <img src="path_to_banner_image.jpg" alt="Banner Image">
+            <div class="banner-content">
+                <h1 class="banner-text">Welcome to Danielle Motor Parts</h1>
             </div>
-        </section>
+        </div>
 
-        <section class="search">
-            <div class="container">
-                <input type="text" id="searchInput" placeholder="Search products...">
-                <button onclick="searchProducts()">Search</button>
-            </div>
-        </section>
-
-        <section class="products">
-            <div class="container" id="productContainer">
-                <h2>Featured Products</h2>
-                <div class="products-container">
-                    <div class="product" id="fullFaceHelmet">
-                        <img src="full_face_helmet.jpg" alt="Full Face Helmet">
-                        <h3>Full Face Helmet</h3>
-                        <div class="product-description">
-                            <p>Description of Full Face Helmet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                        <p class="price">$199.99</p>
-                        <button onclick="addToCart('fullFaceHelmet', 'Full Face Helmet', 199.99)">Add to Cart</button>
+        <!-- Featured Products -->
+        <h2 class="mt-4">Featured Products</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="path_to_product_image1.jpg" alt="Product 1">
+                    <div class="product-info">
+                        <h3 class="product-title">Product 1</h3>
+                        <p class="product-price">$19.99</p>
+                        <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <button class="btn btn-primary add-to-cart" data-product-id="1">Add to Cart</button>
                     </div>
-                    <div class="product" id="modularHelmet">
-                        <img src="modular_helmet.jpg" alt="Modular Helmet">
-                        <h3>Modular Helmet</h3>
-                        <div class="product-description">
-                            <p>Description of Modular Helmet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                        <p class="price">$249.99</p>
-                        <button onclick="addToCart('modularHelmet', 'Modular Helmet', 249.99)">Add to Cart</button>
-                    </div>
-                    <!-- Add more product listings -->
                 </div>
             </div>
-        </section>
-        
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Motorcycle Parts & Accessories Shop. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <div id="cart-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeCart()">&times;</span>
-            <h2>Shopping Cart</h2>
-            <ul id="cart-list">
-                <!-- Cart items will be added here dynamically -->
-            </ul>
-            <p>Total: <span id="cart-total">$0.00</span></p>
-            <button onclick="checkout()">Checkout</button>
-        </div>
-    </div>
-
-    <!-- Account Options Modal -->
-    <div id="account-options-modal" class="account-options-modal">
-        <div class="account-options-modal-content">
-            <span class="account-options-close" onclick="closeAccountOptions()">&times;</span>
-            <h2>Account Options</h2>
-            <ul>
-                <li><a href="#">Sign In</a></li>
-                <li><a href="#">Sign Up</a></li>
-                <li><a href="#">Sign Up with Facebook</a></li>
-                <li><a href="#">Sign Up with Gmail</a></li>
-            </ul>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="path_to_product_image2.jpg" alt="Product 2">
+                    <div class="product-info">
+                        <h3 class="product-title">Product 2</h3>
+                        <p class="product-price">$24.99</p>
+                        <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <button class="btn btn-primary add-to-cart" data-product-id="2">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="path_to_product_image3.jpg" alt="Product 3">
+                    <div class="product-info">
+                        <h3 class="product-title">Product 3</h3>
+                        <p class="product-price">$29.99</p>
+                        <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <button class="btn btn-primary add-to-cart" data-product-id="3">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Login form -->
+                    <form>
+                        <div class="form-group">
+                            <label for="loginEmail">Email address</label>
+                            <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" class="form-control" id="loginPassword">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Registration form -->
+                    <form>
+                        <div class="form-group">
+                            <label for="registerName">Full Name</label>
+                            <input type="text" class="form-control" id="registerName">
+                        </div>
+                        <div class="form-group">
+                            <label for="registerEmail">Email address</label>
+                            <input type="email" class="form-control" id="registerEmail">
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPassword">Password</label>
+                            <input type="password" class="form-control" id="registerPassword">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Cart items will be dynamically added here -->
+                </div>
+                <div class="modal-footer">
+                    <div class="total-price-section">
+                        Total Amount Pay: <span id="total-amount-pay">$0.00</span>
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="checkout-btn">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        var cartItems = [];
+
+        $(document).ready(function(){
+            // Function to add item to cart
+            $('.add-to-cart').click(function(){
+                var productId = $(this).data('product-id');
+                var productName = $(this).closest('.product').find('.product-title').text();
+                var productPrice = parseFloat($(this).closest('.product').find('.product-price').text().replace('$', ''));
+                var productInfo = {
+                    id: productId,
+                    name: productName,
+                    price: productPrice,
+                    quantity: 1 // Default quantity is 1
+                };
+                cartItems.push(productInfo);
+                updateCartCount();
+                renderCartItems();
+                computeTotalAmount();
+            });
+
+            // Function to handle change in quantity input
+            $(document).on('change', '.quantity-input', function(){
+                var productId = $(this).data('product-id');
+                var quantity = parseInt($(this).val());
+                updateCartItemQuantity(productId, quantity);
+                renderCartItems();
+                computeTotalAmount();
+            });
+
+            // Other functions remain the same
+        });
+
+        function updateCartItemQuantity(productId, quantity) {
+            cartItems.forEach(function(item) {
+                if (item.id === productId) {
+                    item.quantity = quantity;
+                }
+            });
+        }
+
+        function renderCartItems() {
+            var modalBody = $('.modal-body');
+            modalBody.empty();
+            if (cartItems.length === 0) {
+                modalBody.append('<p>Your cart is empty.</p>');
+            } else {
+                $.each(cartItems, function(index, item){
+                    var subtotal = item.price * item.quantity;
+                    var productHTML = `
+                        <div class="product">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img src="path_to_product_image${item.id}.jpg" alt="${item.name}">
+                                </div>
+                                <div class="col-md-6 product-info">
+                                    <h5>${item.name}</h5>
+                                    <p>$${item.price.toFixed(2)} x <input type="number" class="quantity-input" data-product-id="${item.id}" value="${item.quantity}" min="1"></p>
+                                    <p>Subtotal: $${subtotal.toFixed(2)}</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn btn-danger remove-from-cart" data-product-id="${item.id}">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    modalBody.append(productHTML);
+                });
+            }
+        }
+
+        function computeTotalAmount() {
+            var totalAmount = 0;
+            cartItems.forEach(function(item) {
+                totalAmount += item.price * item.quantity;
+            });
+            $('#total-amount-pay').text('$' + totalAmount.toFixed(2));
+        }
+
+        function updateCartCount() {
+            var cartCount = cartItems.length;
+            $('#cart-count').text(cartCount);
+        }
+    </script>
 </body>
 </html>
