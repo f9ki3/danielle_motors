@@ -38,7 +38,7 @@
             <div class="col-lg-12">
                 <label hidden>Result:</label>
                 <pre hidden><code id="result"></code></pre>
-                <form id="barcodeForm" action="action.php" method="post">
+                <form id="barcodeForm" >
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-floating mb-3">
@@ -197,6 +197,29 @@
                         <!-- ---------- -->
                     </div>
                 </form>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- ------------------- -->
+        <div class="col-lg-7">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Products</h1>
+                </div>
+                <div class="card-body">
+                    
+                </div>
             </div>
         </div>
     </div>

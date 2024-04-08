@@ -58,7 +58,8 @@
     </div>
 </div>
 </div>
-<?php include "add_category_modal.php"; include 'update_category_modal.php';?>
+<?php include "add_category_modal.php"; 
+include 'update_category_modal.php';?>
 <!-- <h1>CATEGORY</h1>
 <form action="../../PHP - process_files/addCategory.php" method="POST">
     <label for="category_name">Category Name</label>
