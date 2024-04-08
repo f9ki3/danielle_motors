@@ -538,7 +538,7 @@ $(document).ready(function () {
                             materialInvoiceNo: materialInvoiceNo,
                             cashierName: cashierName,
                             receivedBy: receivedBy,
-                            totalSellingPrice: totalSellingPrice,
+                            // totalSellingPrice: totalSellingPrice,
                             user_brn_code: user_brn_code
                         },
                         success: function(response) {
