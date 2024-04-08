@@ -112,7 +112,113 @@
                 </div>
             </a>    
         </div>
+
+        <div class="col-lg-6">
+            <a class="text-decoration-none">
+                <div class="card mb-6">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <table class="table">
+                                <thead><h3>Total Deliver</h3>
+                                    <tr>
+                                        <th scope="col">Product</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>TRC Racing</td>
+                                        <td>Suspension</td>
+                                        <td>525</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mishiba</td>
+                                        <td>Sprocker</td>
+                                        <td>250</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Speed Power</td>
+                                        <td>Swing Arm</td>
+                                        <td>311</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Speed Power</td>
+                                        <td>Swing Arm</td>
+                                        <td>311</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Speed Power</td>
+                                        <td>Swing Arm</td>
+                                        <td>311</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Speed Power</td>
+                                        <td>Swing Arm</td>
+                                        <td>311</td>
+                                    </tr>
+                                 <!-- Add more rows as needed -->
+                                </tbody>
+                            </table>
+                         </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-6">
+            <a class="text-decoration-none">
+                <div class="card mb-6">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <table class="table">
+                                <thead><h3>Total Expenses</h3>
+                                    <tr>
+                                        <th scope="col">Month</th>
+                                        <th scope="col">Amount</th>
+                                        <th scope="col">Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>TRC Racing</td>
+                                        <td>Suspension</td>
+                                        <td>525</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mishiba</td>
+                                        <td>Sprocker</td>
+                                        <td>250</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Speed Power</td>
+                                        <td>Swing Arm</td>
+                                        <td>311</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Speed Power</td>
+                                        <td>Swing Arm</td>
+                                        <td>311</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Speed Power</td>
+                                        <td>Swing Arm</td>
+                                        <td>311</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Speed Power</td>
+                                        <td>Swing Arm</td>
+                                        <td>311</td>
+                                    </tr>
+                                 <!-- Add more rows as needed -->
+                                </tbody>
+                            </table>
+                         </div>
+                    </div>
+                </div>
+            </a>
+        </div>
         <div class="echart-basic-bar-chart-example" style="min-height:300px"></div>
     </div>
-
 </div>
+
