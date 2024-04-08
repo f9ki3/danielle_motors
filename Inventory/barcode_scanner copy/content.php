@@ -215,14 +215,10 @@
         <div class="col-lg-7">
             <div class="card">
                 <div class="card-header">
-                    <h3>To store in:</h3>
-                    <select class="form-control" name="" id="">
-                        <option value=""></option>
-                    </select>
+                    <h1>Products</h1>
                 </div>
                 <div class="card-body">
-                    <div id="stock_in_preview">
-                    </div>
+                    
                 </div>
             </div>
         </div>
