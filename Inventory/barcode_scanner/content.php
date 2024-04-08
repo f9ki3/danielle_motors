@@ -81,108 +81,29 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-12">
-                            <button class="btn btn-primary" id="enterDetailsBtn" type="button"  data-bs-toggle="collapse" data-bs-target="#form-extension" aria-expanded="false" aria-controls="collapseExample" style="display:none;">Enter Details</button>
+                        <div class="col-lg-6">
+                            <div class="form-floating mb-3">
+                                <select class="form-select" name="rack_id" id="" required>
+                                    <option value=""></option>
+                                    <?php 
+                                    $location_sql = "SELECT * FROM ware_location WHERE branch_code = '$branch_code'";
+                                    $location_res = $conn -> query($location_sql);
+                                    if($location_res->num_rows>0){
+                                        $loc_row = $location_res -> fetch_assoc();
+                                        $loc_id = $loc_row['id'];
+                                        $location_name = $loc_row['location_name'];
+                                        echo '<option value="' . $loc_id . '">' . $location_name . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                                <label for="">Warehouse Location</label>
+                            </div>
                         </div>
 
-                        <div class="col-lg-12 collapse" id="form-extension">
-                            <button class="btn btn-primary" id="undoBtn" type="button"  data-bs-toggle="collapse" data-bs-target="#form-extension" aria-expanded="false" aria-controls="collapseExample">Undo</button>
-                            <div class="row my-2">
-                                <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-1">
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" type="text" id="product_name" name="product_name">
-                                        <label for="floatingInput">Product Name</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-1">
-                                    <div class="form-floating mb-3">
-                                        <input type="text" id="item_code" name="item_code" class="form-control" >
-                                        <label for="product_name">Item Code</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12">
-                                    <select class="form-select" id="category" id="category" name="category" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
-                                        <option select-disabled>Select a category</option>
-                                        <?php
-                                            $query = 'SELECT id, category_name, status FROM category';
-                                            $stmt = $conn->prepare($query);
-                                            $stmt->execute();
-                                            $stmt->bind_result($id, $category_name, $status);
-                                            while ($stmt->fetch()) {
-                                                if ($status == 0) {
-                                                    continue;
-                                                }
-
-                                                echo '<option value="'.$id.'">'.$category_name.'</option>';
-                                            }
-
-                                            $stmt->close();
-                                        ?>
-                                    </select>
-
-                                </div>
-
-
-                                <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-1">
-                                    <select  id="brand" name="brand" class="form-select mb-3" id="brand" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
-                                        <option select-disabled>Select a brand</option>
-                                        <?php
-                                            $query = 'SELECT id, brand_name, status FROM brand';
-                                            $stmt = $conn->prepare($query);
-                                            $stmt->execute();
-                                            $stmt->bind_result($id, $brand_name, $status);
-                                            while ($stmt->fetch()) {
-                                                if ($status == 0) {
-                                                    continue;
-                                                }
-
-                                                echo '<option value="'.$id.'">'.$brand_name.'</option>';
-                                            }
-
-                                            $stmt->close();
-                                        ?>
-                                    </select>
-                                </div>
-                                <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-1">
-                                    <select class="form-select" id="unit" name="unit" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
-                                    <option value="">Select unit</option>
-                                    <?php
-                                            $query = 'SELECT id, name, active FROM unit';
-                                            $stmt = $conn->prepare($query);
-                                            $stmt->execute();
-                                            $stmt->bind_result($id, $unit_name, $status);
-                                            while ($stmt->fetch()) {
-                                                if ($status == 0) {
-                                                    continue;
-                                                }
-
-                                                echo '<option value="'.$id.'">'.$unit_name.'</option>';
-                                            }
-
-                                            $stmt->close();
-                                        ?>
-                                    </select>
-                                </div>
-                                <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-1">
-                                    <select class="form-select" id="models" name="models[]" data-choices="data-choices" multiple="multiple" data-options='{"removeItemButton":true,"placeholder":true}'>
-                                        <option value="">Select model/s</option>
-                                        <?php
-                                            $query = 'SELECT id, model_name, status FROM model';
-                                            $stmt = $conn->prepare($query);
-                                            $stmt->execute();
-                                            $stmt->bind_result($id, $model_name, $status);
-                                            while ($stmt->fetch()) {
-                                                if ($status == 0) {
-                                                    continue;
-                                                }
-
-                                                echo '<option value="'.$model_name.'">'.$model_name.'</option>';
-                                            }
-
-                                            $stmt->close();
-                                        ?>
-                                    </select>
-                                </div>
+                        <div class="col-lg-6">
+                            <div class="form-floating">
+                                <input type="number" name="qty" class="form-control" min="1" max="10000" required>
+                                <label for="">Qty</label>
                             </div>
                         </div>
                         
