@@ -81,7 +81,7 @@ if($logoText_result -> num_rows > 0){
 
               <li class="nav-item">
                 <!-- parent pages-->
-                <div class="nav-item-wrapper"><a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier" || $current_folder === "Manage-Inventory"){ echo "active"; }?> dropdown-indicator label-1" href="#nv-Sales" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-Sales">
+                <div class="nav-item-wrapper"><a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier" || $current_folder === "Sales_Warehouse"){ echo "active"; }?> dropdown-indicator label-1" href="#nv-Sales" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-Sales">
                     <div class="d-flex align-items-center">
                       <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div><span class="nav-link-icon"><span data-feather="trending-up"></span></span><span class="nav-link-text ms-2" style="font-size: 15px">Sales</span>
                     </div>
@@ -89,7 +89,7 @@ if($logoText_result -> num_rows > 0){
                   <div class="parent-wrapper label-1">
                     <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-Sales">
                       <li class="collapsed-nav-item-title d-none" style="font-size: 15px">Sales</li>
-                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Category_Maintenance"){ echo "active"; }?>" href="../Category_Maintenance/" data-bs-toggle="" aria-expanded="false">
+                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Sales_Warehouse"){ echo "active"; }?>" href="../Sales_Warehouse/" data-bs-toggle="" aria-expanded="false">
                           <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2" style="font-size: 15px">Sales Warehouse</span></div>
                         </a>
                       </li>
