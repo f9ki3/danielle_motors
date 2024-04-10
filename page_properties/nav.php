@@ -71,7 +71,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 <li class="collapsed-nav-item-title d-none">Purchased Order</li>
                 <?php if(strpos($session_permission, 'VIEW PO') !== false){?>
                 <li class="nav-item">
-                  <a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="http://localhost/danielle_motors/Inventory/Purchased-Order-Supplier/">
+                  <a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="../../Inventory/Purchased-Order-Supplier/">
                     <div class="d-flex align-items-center">
                       <div class="dropdown-indicator-icon"></div>
                       <span class="nav-link-text">View</span>
@@ -83,7 +83,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 if(strpos($session_permission, 'ADD PO') !== false) {
                 ?>
                 <li class="nav-item">
-                  <a class="nav-link <?php if($current_folder === "Create_Purchased_Order"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="http://localhost/danielle_motors/Inventory/Create_Purchased_Order/">
+                  <a class="nav-link <?php if($current_folder === "Create_Purchased_Order"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="../../Inventory/Create_Purchased_Order/">
                     <div class="d-flex align-items-center">
                       <div class="dropdown-indicator-icon"></div>
                       <span class="nav-link-text">Create</span>
@@ -116,7 +116,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 <li class="collapsed-nav-item-title d-none">Delivery Receipt</li>
                 <?php  if(strpos($session_permission, 'VIEW DR') !== false) { ?>
                 <li class="nav-item">
-                  <a class="nav-link" href="http://localhost/danielle_motors/Inventory/Delivery_Reciept/" data-bs-toggle="" aria-expanded="false">
+                  <a class="nav-link" href="../../Inventory/Delivery_Reciept/" data-bs-toggle="" aria-expanded="false">
                     <div class="d-flex align-items-center"><span class="nav-link-text">View</span></div>
                   </a>
                 </li>
@@ -125,7 +125,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 if(strpos($session_permission, 'ADD DR') !== false) {
                 ?>
                 <li class="nav-item">
-                  <a class="nav-link" href="http://localhost/danielle_motors/Inventory/Create_D.R/" data-bs-toggle="" aria-expanded="false">
+                  <a class="nav-link" href="../../Inventory/Create_D.R/" data-bs-toggle="" aria-expanded="false">
                     <div class="d-flex align-items-center"><span class="nav-link-text">Create</span></div>
                   </a>
                 </li>
@@ -141,7 +141,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           ?>
           <!-- Material Transfer -->
           <div class="nav-item-wrapper">
-            <a class="nav-link <?php if($current_folder === "Material_transfer"){ echo "active"; } else { echo "";}?> dropdown-indicator label-1" href="http://localhost/danielle_motors/Inventory/Material_transfer/">
+            <a class="nav-link <?php if($current_folder === "Material_transfer"){ echo "active"; } else { echo "";}?> dropdown-indicator label-1" href="../../Inventory/Material_transfer/">
               <div class="d-flex align-items-center">
                 <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div>
                 <span class="nav-link-icon"><span data-feather="clipboard"></span></span>
@@ -150,7 +150,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
             </a>
             <div class="parent-wrapper label-1">
               <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-project-management">
-                <li class="collapsed-nav-item-title d-none"><a href="http://localhost/danielle_motors/Inventory/Material_transfer/" style="text-decoration: none;">Material Transfer</a></li>
+                <li class="collapsed-nav-item-title d-none"><a href="../../Inventory/Material_transfer/" style="text-decoration: none;">Material Transfer</a></li>
               </ul>
             </div>
           </div>
@@ -175,7 +175,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 if(strpos($session_permission, 'VIEW ALL STOCKS') !== false) {
                 ?>
                 <li class="nav-item">
-                  <a class="nav-link" href="http://localhost/danielle_motors/Inventory/all_stocks/" data-bs-toggle="" aria-expanded="false">
+                  <a class="nav-link" href="../../Inventory/all_stocks/" data-bs-toggle="" aria-expanded="false">
                     <div class="d-flex align-items-center"><span class="nav-link-text">All stocks</span></div>
                   </a>
                 </li>
@@ -184,7 +184,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 if(strpos($session_permission, 'VIEW WAREHOUSE STOCKS') !== false) {
                 ?>
                 <li class="nav-item">
-                  <a class="nav-link" href="http://localhost/danielle_motors/Inventory/Warehouse/" data-bs-toggle="" aria-expanded="false">
+                  <a class="nav-link" href="../../Inventory/Warehouse/" data-bs-toggle="" aria-expanded="false">
                     <div class="d-flex align-items-center"><span class="nav-link-text">Warehouse</span></div>
                   </a>
                 </li>
@@ -193,7 +193,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 if(strpos($session_permission, 'MANAGE PRODUCT LIST') !== false) {
                 ?>
                 <li class="nav-item">
-                  <a class="nav-link" href="http://localhost/danielle_motors/Inventory/Product_List/" data-bs-toggle="" aria-expanded="false">
+                  <a class="nav-link" href="../../Inventory/Product_List/" data-bs-toggle="" aria-expanded="false">
                     <div class="d-flex align-items-center"><span class="nav-link-text">Product List</span></div>
                   </a>
                 </li>
@@ -202,7 +202,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 if(strpos($session_permission, 'MANAGE PRICELIST') !== false) {
                 ?>
                 <li class="nav-item">
-                  <a class="nav-link" href="http://localhost/danielle_motors/Inventory/Price_List/" data-bs-toggle="" aria-expanded="false">
+                  <a class="nav-link" href="../../Inventory/Price_List/" data-bs-toggle="" aria-expanded="false">
                     <div class="d-flex align-items-center"><span class="nav-link-text">Price List</span></div>
                   </a>
                 </li>
@@ -289,7 +289,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           
                 ?>
                 <li class="nav-item">
-                  <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="http://localhost/danielle_motors/Inventory/User_Maintenance/">
+                  <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="../../Inventory/User_Maintenance/">
                     <div class="d-flex align-items-center">
                       <div class="dropdown-indicator-icon"></div>
                       <span class="nav-link-text">Employees Accounts</span>
@@ -322,7 +322,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           
                 ?>
                 <li class="nav-item">
-                  <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="http://localhost/danielle_motors/Inventory/User_Position_Maintenance/">
+                  <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="../../Inventory/User_Position_Maintenance/">
                     <div class="d-flex align-items-center">
                       <div class="dropdown-indicator-icon"></div>
                       <span class="nav-link-text">Positions</span>
@@ -333,7 +333,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           
                 ?>
                 <li class="nav-item">
-                  <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="http://localhost/danielle_motors/Inventory/User_Permission_Maintenance/">
+                  <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="../../Inventory/User_Permission_Maintenance/">
                     <div class="d-flex align-items-center">
                       <div class="dropdown-indicator-icon"></div>
                       <span class="nav-link-text">Permissions</span>
@@ -366,7 +366,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 
                 ?>
                 <li class="nav-item">
-                  <a class="nav-link" href="http://localhost/danielle_motors/Inventory/Branch_Maintenance/" data-bs-toggle="" aria-expanded="false">
+                  <a class="nav-link" href="../../Inventory/Branch_Maintenance/" data-bs-toggle="" aria-expanded="false">
                     <div class="d-flex align-items-center"><span class="nav-link-text">View branches</span></div>
                   </a>
                 </li>
@@ -374,7 +374,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 
                 ?>
                 <li class="nav-item">
-                  <a class="nav-link" href="http://localhost/danielle_motors/Inventory/Add_branch/" data-bs-toggle="" aria-expanded="false">
+                  <a class="nav-link" href="../../Inventory/Add_branch/" data-bs-toggle="" aria-expanded="false">
                     <div class="d-flex align-items-center"><span class="nav-link-text">Create branch</span></div>
                   </a>
                 </li>
@@ -390,7 +390,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           ?>
           <!-- Brands -->
           <div class="nav-item-wrapper">
-            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="http://localhost/danielle_motors/Inventory/Brand_Maintenance/" role="button" data-bs-toggle="" aria-expanded="false">
+            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../../Inventory/Brand_Maintenance/" role="button" data-bs-toggle="" aria-expanded="false">
               <div class="d-flex align-items-center">
                 <span class="nav-link-icon"><span data-feather="trello"></span></span>
                 <span class="nav-link-text-wrapper"><span class="nav-link-text">Brands</span></span>
@@ -403,7 +403,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           ?>
           <!-- Category -->
           <div class="nav-item-wrapper">
-            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="http://localhost/danielle_motors/Inventory/Category_Maintenance/" role="button" data-bs-toggle="" aria-expanded="false">
+            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../../Inventory/Category_Maintenance/" role="button" data-bs-toggle="" aria-expanded="false">
               <div class="d-flex align-items-center">
                 <span class="nav-link-icon"><span data-feather="life-buoy"></span></span>
                 <span class="nav-link-text-wrapper"><span class="nav-link-text">Category</span></span>
@@ -416,7 +416,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           ?>
           <!-- Models -->
           <div class="nav-item-wrapper">
-            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="http://localhost/danielle_motors/Inventory/Model_Maintenance/" role="button" data-bs-toggle="" aria-expanded="false">
+            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../../Inventory/Model_Maintenance/" role="button" data-bs-toggle="" aria-expanded="false">
               <div class="d-flex align-items-center">
                 <span class="nav-link-icon"><span data-feather="package"></span></span>
                 <span class="nav-link-text-wrapper"><span class="nav-link-text">Models</span></span>
@@ -429,7 +429,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           ?>
           <!-- Units -->
           <div class="nav-item-wrapper">
-            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="http://localhost/danielle_motors/Inventory/Unit_Maintenance/" role="button" data-bs-toggle="" aria-expanded="false">
+            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../../Inventory/Unit_Maintenance/" role="button" data-bs-toggle="" aria-expanded="false">
               <div class="d-flex align-items-center">
                 <span class="nav-link-icon"><span data-feather="tag"></span></span>
                 <span class="nav-link-text-wrapper"><span class="nav-link-text">Units</span></span>
@@ -647,7 +647,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="user-plus"></span>Add another account</a></li>
               </ul>
               <hr />
-              <div class="px-3"> <a class="btn btn-phoenix-secondary d-flex flex-center w-100" href="http://localhost/danielle_motors/PHP%20-%20process_files/signout.php"> <span class="me-2" data-feather="log-out"> </span>Sign out</a></div>
+              <div class="px-3"> <a class="btn btn-phoenix-secondary d-flex flex-center w-100" href="../../PHP%20-%20process_files/signout.php"> <span class="me-2" data-feather="log-out"> </span>Sign out</a></div>
               <div class="my-2 text-center fw-bold fs--2 text-600"><a class="text-600 me-1" href="#!">Privacy policy</a>&bull;<a class="text-600 mx-1" href="#!">Terms</a>&bull;<a class="text-600 ms-1" href="#!">Cookies</a></div>
             </div>
           </div>
