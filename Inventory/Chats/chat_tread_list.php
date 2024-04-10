@@ -1,7 +1,7 @@
 <?php 
 include "../../admin/session.php";
 include "../../database/database.php";
-$message_list_sql = "SELECT cm.id, cm.from_user_id, cm.message, cm.date_sent, u.user_fname, u.user_lname, u.user_img
+$message_list_sql = "SELECT cm.id, cm.from_user_id, cm.message, cm.date_sent, cm.status, u.user_fname, u.user_lname, u.user_img
                     FROM chat_messages cm
                     INNER JOIN (
                         SELECT MAX(id) AS max_id, from_user_id
@@ -13,7 +13,6 @@ $message_list_sql = "SELECT cm.id, cm.from_user_id, cm.message, cm.date_sent, u.
                     ORDER BY cm.id DESC";
 $message_list_result = $conn->query($message_list_sql);
 if($message_list_result->num_rows > 0){
-    $firstIteration = true;
     while($row = $message_list_result->fetch_assoc()){
         $message_id = $row['id'];
         $from_user_id = $row['from_user_id'];
@@ -21,20 +20,23 @@ if($message_list_result->num_rows > 0){
         $date_Sent = $row['date_sent'];
         $user_pfp = $row['user_img'];
         $from_user_fullname = $row['user_fname'] . " " . $row['user_lname'];
+        if($row['status'] == 0){
+            $chat_status = "unread";
+        } else {
+            $chat_status = "read";
+        }
         
         // Check if $_SESSION['selected_message'] is set
+        $isActive = '';
+        $ariaSelected = 'false';
         if(isset($_SESSION['selected_message'])){
             // If it's set, check if it matches the current $from_user_id
             $isActive = ($_SESSION['selected_message'] == $from_user_id) ? 'active' : '';
             $ariaSelected = ($_SESSION['selected_message'] == $from_user_id) ? 'true' : 'false';
-        } else {
-            // If not set, apply first iteration rule
-            $isActive = ($firstIteration) ? 'active' : '';
-            $ariaSelected = ($firstIteration) ? 'true' : 'false';
         }
 ?>
-<li class="nav-item read" role="presentation">
-    <a id="message_id_<?php echo $from_user_id;?>" class="nav-link d-flex align-items-center justify-content-center p-2 <?php echo $isActive; ?>" data-bs-toggle="tab" data-chat-thread="data-chat-thread" href="#tab-thread-<?php echo $message_id;?>"
+<li class="nav-item <?php echo $chat_status;?>" role="presentation">
+    <a id="message_id_<?php echo $from_user_id;?>" class="nav-link d-flex align-items-center justify-content-center p-2 <?php echo $isActive; ?> <?php echo $chat_status;?>" data-bs-toggle="tab" data-chat-thread="data-chat-thread" href="#tab-thread-<?php echo $from_user_id;?>"
         role="tab" aria-selected="<?php echo $ariaSelected; ?>">
         
         <div class="avatar avatar-xl status-online position-relative me-2 me-sm-0 me-xl-2"><img class="rounded-circle border border-2 border-white" src="../../uploads/<?php echo basename($user_pfp); ?>" alt="" /></div>
@@ -50,8 +52,6 @@ if($message_list_result->num_rows > 0){
     </a>
 </li>
 <?php 
-        // Set $firstIteration to false after the first iteration
-        $firstIteration = false;
     }
 } else {
 ?>
