@@ -1,3 +1,3 @@
 <?php 
-header ('location: DMP/dmp_online')
+header ('location: DMP/user/home')
 ?>
