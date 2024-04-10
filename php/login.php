@@ -80,8 +80,13 @@ if(isset($_POST['uname'], $_POST['pass'])) {
             $_SESSION['user_permissions'] = $row['permission_name'];
         }
         // ------ inadd ko to pre --azul -- pacheck na lang if magkaconflict
-        // Respond with '1' to indicate successful login
-        echo '1';
+
+        // Echo '1' if user_account_type is 0, '2' if it's 1
+        if ($_SESSION['user_account_type'] == 0) {
+            echo '1';
+        } elseif ($_SESSION['user_account_type'] == 1) {
+            echo '2';
+        }
     } else {
         // Respond with '0' to indicate failed login
         echo '0';
