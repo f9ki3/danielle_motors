@@ -54,6 +54,7 @@ date_default_timezone_set('Asia/Manila');
                     if(response === "A row was deleted." || response === "A new row was inserted.") {
                         // If a change occurred, load chat threads
                         loadChatThreads();
+                        loadChatBodyThreads();
                     }
                 },
                 error: function(xhr, status, error) {
@@ -84,8 +85,24 @@ date_default_timezone_set('Asia/Manila');
         });
     }
 
+    // Function to load content from chat_thread_list.php
+    function loadChatBodyThreads() {
+        $.ajax({
+            url: "chat_body_thread.php",
+            type: "GET",
+            success: function(response) {
+                // Replace the content of the ul element with the response from chat_thread_list.php
+                $('#chat_body_thread').html(response);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error loading chat threads:", error);
+            }
+        });
+    }
+
     // Call the function initially when the page loads
     loadChatThreads();
+    loadChatBodyThreads();
     </script>
 
 
