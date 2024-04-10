@@ -1,6 +1,6 @@
 <?php 
 
-$material_transfer_sql = "SELECT id, material_invoice, material_date, material_cashier FROM material_transfer";
+$material_transfer_sql = "SELECT id, material_invoice, material_date, material_cashier FROM material_transfer ORDER BY id DESC";
 $material_transfer_res = $conn->query($material_transfer_sql);
 if ($material_transfer_res->num_rows > 0) {
     while ($row = $material_transfer_res->fetch_assoc()) {

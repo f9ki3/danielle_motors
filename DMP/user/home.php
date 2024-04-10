@@ -77,7 +77,7 @@
             <div class="col-md-4">
                 <div class="product border d-flex justify-content-center w=100 flex-column align-item-center text-center">
                     <div style="border: 1px solid black; width: 100px; height: 100px;">
-                    <img style="object-fit: cover; width:100%; height:100%; " src="<?php echo $row["image"] ?>" alt="Product Image">
+                    <img style="object-fit: cover; width:100%; height:100%; " src="../../uploads/<?php echo basename($row["image"]); ?>" alt="Product Image">
                     </div>
                     <div class="product-info">
                         <h3 class="product-title"><?php echo $row["product_name"] ?></h3>
