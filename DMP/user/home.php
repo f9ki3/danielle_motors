@@ -43,7 +43,7 @@
                 </li> -->
             </ul>
             <div>
-                            <input type="text" class="form-control w-50" placeholder="search">
+                            <input type="text" class="form-control w-100" placeholder="search">
                         </div>
         </div>
     </nav>
