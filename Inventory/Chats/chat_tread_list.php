@@ -61,6 +61,7 @@ if($message_list_result->num_rows > 0){
 
 ?>
 
+
 <script>
 $(document).ready(function() {
     <?php 
@@ -72,6 +73,7 @@ $(document).ready(function() {
     ?>
     // Add click event listener to the tag with the specified ID
     $('#message_id_<?php echo $ml_fromuser_id;?>').on('click', function() {
+        loadChatBodyThreads();
         // Get the user ID from the ID attribute
         var userId = <?php echo $ml_fromuser_id; ?>;
         
@@ -95,7 +97,6 @@ $(document).ready(function() {
     ?>
 });
 </script>
-
 
 <?php 
 $conn->close();

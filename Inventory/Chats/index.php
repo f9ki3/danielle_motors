@@ -54,7 +54,8 @@ date_default_timezone_set('Asia/Manila');
                     if(response === "A row was deleted." || response === "A new row was inserted.") {
                         // If a change occurred, load chat threads
                         loadChatThreads();
-                        loadChatBodyThreads();
+                        // loadChatBodyThreads();
+                        loadActualChat()
                     }
                 },
                 error: function(xhr, status, error) {
@@ -100,10 +101,14 @@ date_default_timezone_set('Asia/Manila');
         });
     }
 
+    
+
     // Call the function initially when the page loads
     loadChatThreads();
     loadChatBodyThreads();
     </script>
+
+    
 
 
 
