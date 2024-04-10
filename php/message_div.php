@@ -13,6 +13,7 @@ if ($result->num_rows > 0) {
         $from = $row['from_user_id'];
         $to = $row['to_user_id'];
         $initial_message = $row['message'];
+        $date = $row['date_sent'];
         if($from == $user_id ){
           $message = '
           <div class="d-flex chat-message">
@@ -32,7 +33,7 @@ if ($result->num_rows > 0) {
                           </div>
                         </div>
                         <div class="text-end">
-                          <p class="mb-0 fs--2 text-600 fw-semi-bold">Yesterday, 10 AM</p>
+                          <p class="mb-0 fs--2 text-600 fw-semi-bold">'.$date.'</p>
                         </div>
                       </div>
                     </div>
@@ -57,7 +58,7 @@ if ($result->num_rows > 0) {
                             <div class="bg-white rounded-pill d-flex align-items-center border border-300 px-2 actions"><button class="btn p-2" type="button"><span class="fa-solid fa-reply text-primary"></span></button><button class="btn p-2" type="button"><span class="fa-solid fa-trash text-primary"></span></button><button class="btn p-2" type="button"><span class="fa-solid fa-share text-primary"></span></button><button class="btn p-2" type="button"><span class="fa-solid fa-face-smile text-primary"></span></button></div>
                           </div>
                         </div>
-                        <p class="mb-0 fs--2 text-600 fw-semi-bold ms-7">Yesterday, 10 AM</p>
+                        <p class="mb-0 fs--2 text-600 fw-semi-bold ms-7">'.$date.'</p>
                       </div>
                     </div>
                   </div>
