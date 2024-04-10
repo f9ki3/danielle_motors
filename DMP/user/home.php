@@ -45,10 +45,27 @@
             <div>
                 <input type="text" class="form-control w-100" placeholder="Search" list="product-names">
                 <datalist id="product-names">
-                    <option value="Product 1">
-                    <option value="Product 2">
-                    <option value="Product 3">
+                <?php
+                        require_once 'config.php';
+                        $sql = 'SELECT 
+                        p.id AS product_id,
+                        p.name AS product_name,
+                        p.image,
+                        p.models,
+                        pl.id AS price_list_id,
+                        pl.srp
+                    FROM 
+                        product p
+                    JOIN 
+                        price_list pl ON p.id = pl.product_id';
+                        $all_product = $conn->query($sql);
+                        while ($row = mysqli_fetch_assoc($all_product)) {
+                ?>
+                    <option value="<?php echo $row["product_name"] ?>">
                     <!-- Add more options as needed -->
+                    <?php
+            }
+            ?>
                 </datalist>
             </div>
         </div>
