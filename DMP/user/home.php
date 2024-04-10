@@ -31,7 +31,7 @@
                         <a class="dropdown-item" href="#">Motorcycle Body & Frame Parts</a>
                         <!-- Add more categories as needed -->
                     </div>
-                </li>
+                <!-- </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
                 </li>
@@ -40,7 +40,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#cartModal">Cart <span id="cart-count" class="badge badge-light">0</span></a>
-                </li>
+                </li> -->
             </ul>
         </div>
     </nav>
@@ -95,7 +95,7 @@
     </div>
 
     <!-- Login Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -104,9 +104,9 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body"> -->
                     <!-- Login form -->
-                    <form>
+                    <!-- <form>
                         <div class="form-group">
                             <label for="loginEmail">Email address</label>
                             <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp">
@@ -120,9 +120,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <!-- Register Modal -->
+    <!-- Register Modal
     <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -133,8 +133,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!-- Registration form -->
-                    <form>
+                    Registration form -->
+                    <!-- <form>
                         <div class="form-group">
                             <label for="registerName">Full Name</label>
                             <input type="text" class="form-control" id="registerName">
@@ -152,10 +152,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Cart Modal -->
-    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -176,7 +176,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Bootstrap JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
