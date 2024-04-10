@@ -42,13 +42,16 @@
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#cartModal">Cart <span id="cart-count" class="badge badge-light">0</span></a>
                 </li> -->
             </ul>
+            <div>
+                            <input type="text" class="form-control w-50" placeholder="search">
+                        </div>
         </div>
     </nav>
 
     <!-- Main Content -->
     <div class="container text-center">
         <!-- Banner -->
-        <div class="banner">
+        <div class="banner d-relative">
             <img style="width:100%; " src="../img/banner.png" alt="Banner Image">
             <div class="banner-content">
                 <h1 class="banner-text">Welcome to Danielle Motor Parts</h1>
