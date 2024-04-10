@@ -11,7 +11,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
-            <img src="path_to_your_logo.png" alt="Company Logo" class="mr-2" style="max-width: 60px;"> Danielle Motor Parts
+            <img src="../img/dmplogo0005.png" alt="Company Logo" class="mr-2" style="max-width: 60px;"> Danielle Motor Parts
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
