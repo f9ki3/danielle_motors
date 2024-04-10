@@ -43,8 +43,14 @@
                 </li> -->
             </ul>
             <div>
-                            <input type="text" class="form-control w-100" placeholder="search">
-                        </div>
+                <input type="text" class="form-control w-100" placeholder="Search" list="product-names">
+                <datalist id="product-names">
+                    <option value="Product 1">
+                    <option value="Product 2">
+                    <option value="Product 3">
+                    <!-- Add more options as needed -->
+                </datalist>
+            </div>
         </div>
     </nav>
 
