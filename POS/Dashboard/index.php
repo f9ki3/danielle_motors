@@ -30,7 +30,7 @@ date_default_timezone_set('Asia/Manila');
         <!-- /footer -->
       </div>
       <!-- chat-container -->
-      <!-- <?php include "../../page_properties/chat-container.php"; ?> -->
+      <?php include "../../page_properties/chat-container pos.php"; ?>
       <!-- /chat container -->
     </main><!-- ===============================================-->
     <!--    End of Main Content-->
