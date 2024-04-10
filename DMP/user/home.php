@@ -96,7 +96,8 @@
         FROM 
             product p
         JOIN 
-            price_list pl ON p.id = pl.product_id';
+            price_list pl ON p.id = pl.product_id'
+            WHERE p.name="CVT Pulley Set Assembly";
             $all_product = $conn->query($sql);
             while ($row = mysqli_fetch_assoc($all_product)) {
             ?>
