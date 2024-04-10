@@ -49,7 +49,7 @@
     <div class="container text-center">
         <!-- Banner -->
         <div class="banner">
-            <img src="path_to_banner_image.jpg" alt="Banner Image">
+            <img src="../image/banner.png" alt="Banner Image">
             <div class="banner-content">
                 <h1 class="banner-text">Welcome to Danielle Motor Parts</h1>
             </div>
