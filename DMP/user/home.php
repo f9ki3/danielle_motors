@@ -86,8 +86,17 @@
         <div class="row">
             <?php
             require_once 'config.php';
-            $sql = 'SELECT * FROM product' 
-            ;
+            $sql = 'SELECT 
+            p.id AS product_id,
+            p.name AS product_name,
+            p.image,
+            p.models,
+            pl.id AS price_list_id,
+            pl.srp
+        FROM 
+            product p
+        JOIN 
+            price_list pl ON p.id = pl.product_id';
         //     $sql = 'SELECT 
         //     p.id AS product_id,
         //     p.name AS product_name,
@@ -111,7 +120,7 @@
                     <img style="object-fit: cover; width:100%; height:100%; " src="../../uploads/<?php echo basename($row["image"]); ?>" alt="Product Image">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title"><?php echo $row["name"] ?></h3>
+                        <h3 class="product-title"><?php echo $row["product_name"] ?></h3>
                         <p class="product model"> <?php echo $row["models"] ?>   </p>
                         <p class="product-price">₱<?php echo $row["srp"] ?></p>
                         <!-- Add more details as needed -->
