@@ -111,7 +111,7 @@
                     <img style="object-fit: cover; width:100%; height:100%; " src="../../uploads/<?php echo basename($row["image"]); ?>" alt="Product Image">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title"><?php echo $row["product_name"] ?></h3>
+                        <h3 class="product-title"><?php echo $row["name"] ?></h3>
                         <p class="product model"> <?php echo $row["models"] ?>   </p>
                         <p class="product-price">₱<?php echo $row["srp"] ?></p>
                         <!-- Add more details as needed -->
