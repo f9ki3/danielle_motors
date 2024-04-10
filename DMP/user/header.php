@@ -20,10 +20,13 @@
                     <nav>
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item"><a href="products.php" class="text-white">Products</a></li>
-                            <li class="list-inline-item"><a href="contact.php" class="text-white">Contact</a></li>
-                            <li class="list-inline-item"><a href="login.php" class="text-white">Login/Register</a></li>
+                            <!-- <li class="list-inline-item"><a href="contact.php" class="text-white">Contact</a></li>
+                            <li class="list-inline-item"><a href="login.php" class="text-white">Login/Register</a></li> -->
                             <!-- <li class="list-inline-item"><a href="cart.php" class="text-white">Cart</a></li> -->
                         </ul>
+                        <div>
+                            <input type="text" class="form-control w-50" placeholder="search">
+                        </div>
                     </nav>
                 </div>
             </div>
