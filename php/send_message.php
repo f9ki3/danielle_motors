@@ -1,11 +1,12 @@
 <?php
 include '../config/config.php';
+include '../admin/session.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the message and other necessary data from the POST request
     $message = $_POST["message"];
     $to_user_id = 11; // Replace 1 with the actual ID of the recipient user
-    $from_user_id = 1; // Replace 2 with the actual ID of the sender user
+    $from_user_id = $user_id; // Replace 2 with the actual ID of the sender user
     $status = "sent"; // Assuming the message is sent initially
     
     // Prepare and bind the SQL statement
