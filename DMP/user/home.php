@@ -86,17 +86,19 @@
         <div class="row">
             <?php
             require_once 'config.php';
-            $sql = 'SELECT 
-            p.id AS product_id,
-            p.name AS product_name,
-            p.image,
-            p.models,
-            pl.id AS price_list_id,
-            pl.srp
-        FROM 
-            product p
-        JOIN 
-            price_list pl ON p.id = pl.product_id';
+            $sql = 'SELECT * FROM product' 
+            ;
+        //     $sql = 'SELECT 
+        //     p.id AS product_id,
+        //     p.name AS product_name,
+        //     p.image,
+        //     p.models,
+        //     pl.id AS price_list_id,
+        //     pl.srp
+        // FROM 
+        //     product p
+        // JOIN 
+        //     price_list pl ON p.id = pl.product_id';
         // -- WHERE 
         // --     p.name = "CVT Pulley Set Assembly"
 
