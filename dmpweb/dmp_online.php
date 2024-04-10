@@ -134,7 +134,7 @@
         </div>
 
         <!-- Featured Products -->
-        <h2 class="mt-4">Featured Products</h2>
+        <h2 class="mt-4">Andrada Products</h2>
         <div class="row">
             <div class="col-md-4">
                 <div class="product">
