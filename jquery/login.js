@@ -25,7 +25,7 @@ $(document).ready(function(){
                     $('#loading').show();
                     setTimeout(function() {
                         $('#loading').hide();
-                        window.location.href = '/POS/dashboard';
+                        window.location.href = 'POS/dashboard';
                     }, 3000);
                     
                 }else{
