@@ -25,14 +25,14 @@ $(document).ready(function(){
                     $('#loading').show();
                     setTimeout(function() {
                         $('#loading').hide();
-                        window.location.href = '/Inventory/Dashboard';
+                        window.location.href = 'Inventory/Dashboard';
                     }, 3000);
                     
                 }else if( respond=="2"){
                     $('#loading').show();
                     setTimeout(function() {
                         $('#loading').hide();
-                        window.location.href = '/POS/Dashboard';
+                        window.location.href = 'POS/Dashboard';
                     }, 3000);
                     
                 }else{
