@@ -49,7 +49,7 @@
         // Replace spinner with actual content
         document.getElementById('initialContent').style.display = 'none';
         document.getElementById('actualContent').style.display = 'block';
-    }, 3000); // Change 3000 to the actual loading time in milliseconds
+    }, 1500); // Change 3000 to the actual loading time in milliseconds
 </script>
 
 
