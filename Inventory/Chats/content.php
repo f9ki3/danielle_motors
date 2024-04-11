@@ -4,9 +4,9 @@
     </div>
 </div>
 
-<div id="actualContent" class="mb-9" style="display: none;">
+<div id="actualContent" class="p-0 m-0" style="display: none;">
     <!-- ----------------- -->
-        <div class="chat d-flex phoenix-offcanvas-container pt-1 mt-n1 mb-9">
+        <div class="chat d-flex phoenix-offcanvas-container">
           <div class="card p-3 p-xl-1 mt-xl-n1 chat-sidebar me-3 phoenix-offcanvas phoenix-offcanvas-start" id="chat-sidebar"><button class="btn d-none d-sm-block d-xl-none mb-2" data-bs-toggle="modal" data-bs-target="#chatSearchBoxModal"><span class="fa-solid fa-magnifying-glass text-600 fs-1"></span></button>
             <div class="d-none d-sm-block d-xl-none mb-5"><button class="btn w-100 mx-auto" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fa-solid fa-bars text-600 fs-1"></span></button>
               <ul class="dropdown-menu dropdown-menu-end p-0">

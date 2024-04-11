@@ -56,7 +56,7 @@ date_default_timezone_set('Asia/Manila');
                             // If a change occurred, load chat threads
                             loadChatThreads();
                             // loadChatBodyThreads();
-                            loadActualChat()
+                            loadActualChat();
                         }
                     },
                     error: function(xhr, status, error) {
