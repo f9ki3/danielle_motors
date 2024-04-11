@@ -16,7 +16,7 @@ date_default_timezone_set('Asia/Manila');
       <!-- navigation -->
       <?php include "../../page_properties/nav.php";?>
       <!-- /navigation -->
-      <div class="content ps-0 pe-0 pb-0 m-0">
+      <div class="content">
         <?php 
         include "content.php";
         ?>
@@ -56,7 +56,7 @@ date_default_timezone_set('Asia/Manila');
                             // If a change occurred, load chat threads
                             loadChatThreads();
                             // loadChatBodyThreads();
-                            loadActualChat()
+                            loadActualChat();
                         }
                     },
                     error: function(xhr, status, error) {
@@ -69,7 +69,7 @@ date_default_timezone_set('Asia/Manila');
             checkMessageChanges();
             
             // Set interval to call the function every 5 seconds
-            setInterval(checkMessageChanges, 2000);
+            setInterval(checkMessageChanges, 5000);
         });
 
         // Function to load content from chat_thread_list.php
