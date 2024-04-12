@@ -53,5 +53,3 @@
 </script>
 
 
-
-<?php $conn->close();?>
