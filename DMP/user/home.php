@@ -56,7 +56,7 @@
                     <input class="form-control mb-2" id="category-search" type="text" placeholder="Search...">
                     <div class="dropdown-categories">
                         <?php
-                            require_once '../../config/config.php.php';
+                            require_once '../../config/config.php';
                             $sql = 'SELECT id, category_name FROM category ORDER BY category_name'; // Ordering categories alphabetically
                             $result = $conn->query($sql);
 
@@ -85,7 +85,7 @@
                 <h2 class="mt-4">Featured Products</h2>
                 <div class="row" id="featured-products">
                     <?php
-                        require_once '../../config/config.php.php';
+                        require_once '../../config/config.php';
                         $sql = 'SELECT 
                         p.id AS product_id,
                         p.name AS product_name,
