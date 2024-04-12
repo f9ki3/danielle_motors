@@ -17,9 +17,9 @@
     $supplier_code = $_POST['supplier_code'];
     $active = 1;
 
-    if (empty($sku) && empty($upc)) {
-        $upc = random_int(100000000, 999999999);
-    }
+    // if (empty($sku) && empty($upc)) {
+    //     $upc = random_int(100000000, 999999999);
+    // }
 
     $query = 'INSERT INTO product
                 (name, code, supplier_code, image, models, unit_id, brand_id, category_id, active)
