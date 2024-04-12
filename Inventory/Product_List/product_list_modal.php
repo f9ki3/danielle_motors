@@ -1,6 +1,6 @@
 <div class="modal fade" id="add_product" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-fullscreen-md-down">
-    <form id="add_brand_form" action="../../PHP - process_files/addproduct.php" method="POST" enctype="multipart/form-data">
+    <form id="add_brand_form" action="../../PHP - process_files/addProduct.php" method="POST" enctype="multipart/form-data">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">ENTER NEW PRODUCT</h5>
