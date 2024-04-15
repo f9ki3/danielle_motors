@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $estimated_amounts = $_POST['est_amount']; // This will be an array of estimated amounts
     $insert_po = "INSERT INTO purchased_order (po_id, supplier_id, publish_on, total_est_amount, status, requested_by, branch_code) VALUES ('$po_id', '$supplier_id', '$currentDateTime','$estimated_total_amount', '1', '$user_id', '$branch_code')";
     if($conn->query($insert_po) === TRUE){
-        $po_id = $conn->insert_id;
+        // $po_id = $conn->insert_id;
         foreach ($selected_products as $index => $product_id) {
             $quantity = $order_quantities[$index];
             $amount = $estimated_amounts[$index];
