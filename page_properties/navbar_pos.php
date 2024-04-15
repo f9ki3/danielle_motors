@@ -117,33 +117,24 @@ if($logoText_result -> num_rows > 0){
 
               <li class="nav-item">
                 <!-- parent pages-->
-                <div class="nav-item-wrapper"><a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier" || $current_folder === "Manage-Inventory"){ echo "active"; }?> dropdown-indicator label-1" href="#nv-home" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-home">
+                <div class="nav-item-wrapper"><a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier" || $current_folder === "Manage-Inventory"){ echo "active"; }?> dropdown-indicator label-1" href="#nv-return" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-return">
                     <div class="d-flex align-items-center">
                       <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div><span class="nav-link-icon"><span data-feather="shopping-cart"></span></span><span class="nav-link-text ms-2" style="font-size: 15px">Return</span>
                     </div>
                   </a>
                   <div class="parent-wrapper label-1">
-                    <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-home">
+                    <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-return">
                       <li class="collapsed-nav-item-title d-none" style="font-size: 15px">Return</li>
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Category_Maintenance"){ echo "active"; }?>" href="../Category_Maintenance/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Maintenance Category</span></div>
+                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Return Warehouse</span></div>
                         </a>
                       </li>
               
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Brand_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Brand_Maintenance/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Maintenance Brand</span></div>
+                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Return Store</span></div>
                         </a>
                       </li>
 
-                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Model_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Model_Maintenance/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Maintenance Model</span></div>
-                        </a>
-                      </li>
-
-                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Unit_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Unit_Maintenance/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Maintenance Unit</span></div>
-                        </a>
-                      </li>
 
                       </li>
                     </ul>
@@ -153,31 +144,31 @@ if($logoText_result -> num_rows > 0){
 
               <li class="nav-item">
                 <!-- parent pages-->
-                <div class="nav-item-wrapper"><a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier" || $current_folder === "Manage-Inventory"){ echo "active"; }?> dropdown-indicator label-1" href="#nv-home" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-home">
+                <div class="nav-item-wrapper"><a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier" || $current_folder === "Manage-Inventory"){ echo "active"; }?> dropdown-indicator label-1" href="#nv-report" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-report">
                     <div class="d-flex align-items-center">
                       <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div><span class="nav-link-icon"><span data-feather="book-open"></span></span><span class="nav-link-text ms-2" style="font-size: 15px">Reports</span>
                     </div>
                   </a>
                   <div class="parent-wrapper label-1">
-                    <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-home">
+                    <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-report">
                       <li class="collapsed-nav-item-title d-none" style="font-size: 15px">Reports</li>
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Category_Maintenance"){ echo "active"; }?>" href="../Category_Maintenance/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Maintenance Category</span></div>
+                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Create Report</span></div>
                         </a>
                       </li>
               
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Brand_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Brand_Maintenance/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Maintenance Brand</span></div>
+                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Daily</span></div>
                         </a>
                       </li>
 
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Model_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Model_Maintenance/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Maintenance Model</span></div>
+                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Monthly</span></div>
                         </a>
                       </li>
 
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Unit_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Unit_Maintenance/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Maintenance Unit</span></div>
+                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Yearly</span></div>
                         </a>
                       </li>
 
@@ -189,31 +180,21 @@ if($logoText_result -> num_rows > 0){
 
               <li class="nav-item">
                 <!-- parent pages-->
-                <div class="nav-item-wrapper"><a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier" || $current_folder === "Manage-Inventory"){ echo "active"; }?> dropdown-indicator label-1" href="#nv-home" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-home">
+                <div class="nav-item-wrapper"><a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier" || $current_folder === "Manage-Inventory"){ echo "active"; }?> dropdown-indicator label-1" href="#nv-account" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-account">
                     <div class="d-flex align-items-center">
                       <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div><span class="nav-link-icon"><span data-feather="users"></span></span><span class="nav-link-text ms-2" style="font-size: 15px">Accounts</span>
                     </div>
                   </a>
                   <div class="parent-wrapper label-1">
-                    <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-home">
+                    <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-account">
                       <li class="collapsed-nav-item-title d-none" style="font-size: 15px">Accounts</li>
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Category_Maintenance"){ echo "active"; }?>" href="../Category_Maintenance/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Maintenance Category</span></div>
+                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Create Account</span></div>
                         </a>
                       </li>
               
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Brand_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Brand_Maintenance/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Maintenance Brand</span></div>
-                        </a>
-                      </li>
-
-                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Model_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Model_Maintenance/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Maintenance Model</span></div>
-                        </a>
-                      </li>
-
-                      <li class="nav-item"><a class="nav-link <?php if($current_folder === "Unit_Maintenance"){ echo "active"; } else { echo "";}?>" href="../Unit_Maintenance/" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Maintenance Unit</span></div>
+                          <div class="d-flex align-items-center" style="font-size: 15px"><span class="nav-link-text ms-2">Employee Accounts</span></div>
                         </a>
                       </li>
 
@@ -225,13 +206,13 @@ if($logoText_result -> num_rows > 0){
 
               <li class="nav-item">
                 <!-- parent pages-->
-                <div class="nav-item-wrapper"><a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier" || $current_folder === "Manage-Inventory"){ echo "active"; }?> dropdown-indicator label-1" href="#nv-home" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-home">
+                <div class="nav-item-wrapper"><a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier" || $current_folder === "Manage-Inventory"){ echo "active"; }?> dropdown-indicator label-1" href="#nv-maintenance" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-maintenance">
                     <div class="d-flex align-items-center">
                       <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div><span class="nav-link-icon"><span data-feather="settings"></span></span><span class="nav-link-text ms-2" style="font-size: 15px">Maintenance</span>
                     </div>
                   </a>
                   <div class="parent-wrapper label-1">
-                    <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-home">
+                    <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-maintenance">
                       <li class="collapsed-nav-item-title d-none" style="font-size: 15px">Maintenance</li>
                       <li class="nav-item"><a class="nav-link <?php if($current_folder === "Category_Maintenance"){ echo "active"; }?>" href="../Category_Maintenance/" data-bs-toggle="" aria-expanded="false">
                           <div class="d-flex align-items-center"><span class="nav-link-text ms-2">Maintenance Category</span></div>
