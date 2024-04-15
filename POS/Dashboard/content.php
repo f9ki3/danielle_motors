@@ -5,7 +5,52 @@
             <div class="col-12 col-md-6 p-2">
                     <h6 class="fw-bolder">Today Sales</h6>
                     <div class="border bg-light border-primary rounded p-2" style="height: 120px;">
-                    <h1 class="fw-bolder text-center text-primary mt-4">PHP 10,00.00</h1>
+                    <?php
+                        $sql = "SELECT SUM(Total) AS TotalAmount
+                        FROM purchase_transactions
+                        WHERE TransactionType = 'Walk-in'
+                        AND DATE(TransactionDate) = CURDATE()";
+
+                        // Execute the query
+                        $result = $conn->query($sql);
+
+                        // Check if there are any results
+                        if ($result->num_rows > 0) {
+                        // Fetch the result and store it in a variable
+                        $row = $result->fetch_assoc();
+                        $totalAmount = $row["TotalAmount"];
+                        } else {
+                        // If no results found, set totalAmount to 0 or handle as needed
+                        $totalAmount = 0;
+                        }
+
+                        // Construct the SQL query
+                        $sql = "SELECT COUNT(*) AS TransactionCount
+                        FROM purchase_transactions
+                        WHERE TransactionType = 'Walk-in'
+                        AND DATE(TransactionDate) = CURDATE()";
+
+                        // Execute the query
+                        $result = $conn->query($sql);
+
+                        // Check if there are any results
+                        if ($result->num_rows > 0) {
+                        // Fetch the result and store it in a variable
+                        $row = $result->fetch_assoc();
+                        $transactionCount = $row["TransactionCount"];
+                        } else {
+                        // If no results found, set transactionCount to 0 or handle as needed
+                        $transactionCount = 0;
+                        }
+
+                        // Close the connection
+                        $conn->close();
+
+                        
+                    ?>
+
+                    
+                    <h1 class="fw-bolder text-center text-primary mt-4">PHP <?php echo $totalAmount?></h1>
                 </div>
             </div>
             <div class="col-12 col-md-6 p-2">
@@ -21,7 +66,7 @@
             <div class="col-6 col-md-3 p-2">
                     <h6 class="fw-bolder">Today Customers</h6>
                     <div class="border bg-light border-primary rounded p-2" style="height: 120px;">
-                    <h1 class="fw-bolder text-center text-primary mt-4">10</h1>
+                    <h1 class="fw-bolder text-center text-primary mt-4"><?php echo $transactionCount?></h1>
                     </div>
             </div>
             <div class="col-6 col-md-3 p-2">
@@ -238,3 +283,5 @@
 
 </div>
 
+
+<script src="../../jquery/date_time.js"></script>
