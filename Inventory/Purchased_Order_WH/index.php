@@ -21,6 +21,7 @@ if(isset($_GET['id'])){
     $po_row = $purchased_order_res->fetch_assoc();
     if($po_row){
       // Assign retrieved values to session variables
+      $_SESSION['po_id'] = $po_row['po_id'];
       $_SESSION['po_status'] = $po_row['status'];
       $_SESSION['po_requested_by'] = $po_row['requested_by'];
       $_SESSION['po_publish_on'] = $po_row['publish_on'];
@@ -43,6 +44,7 @@ if(isset($_GET['id'])){
     exit();
   }
 }
+$po_id = $_SESSION['po_id'];
 ?>
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">

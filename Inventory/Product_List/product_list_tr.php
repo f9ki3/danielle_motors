@@ -9,15 +9,18 @@
                     category.category_name,
                     brand.brand_name,
                     unit.name,
-                    product.active
+                    product.active,
+                    user.user_fname,
+                    user.user_lname
                 FROM product
                 INNER JOIN category ON category.id = product.category_id
                 INNER JOIN brand ON brand.id = product.brand_id
                 INNER JOIN unit ON unit.id = product.unit_id
+                LEFT JOIN user ON user.id = product.publish_by
                 ORDER BY product.id DESC';
     $stmt = $conn->prepare($query);
     $stmt->execute();
-    $stmt->bind_result($product_id, $product_name, $product_sku, $product_upc, $product_image, $models, $category, $brand, $unit, $active);
+    $stmt->bind_result($product_id, $product_name, $product_sku, $product_upc, $product_image, $models, $category, $brand, $unit, $active, $user_fname, $user_lname);
     while ($stmt->fetch()) {
         if ($active == 1) {
             $status = 'active';
@@ -40,6 +43,7 @@
                 <td class="time align-middle white-space-nowrap text-600 ps-4">'.$unit.'</td>
                 <td class="time align-middle white-space-nowrap text-600 ps-4">'.$models.'</td>
                 <td class="time align-middle white-space-nowrap text-600 ps-4"><span class="badge badge-phoenix fs--2 badge-phoenix-success"><span class="badge-label">'.$status.'</span><span class="ms-1" data-feather="check" style="height:12.8px;width:12.8px;"></span></span></td>
+                <td class="publish align-middle white-space-nowrap text-600 ps-4">' . $user_fname . ' ' . $user_lname . '</td>
                 <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
                     <div class="font-sans-serif btn-reveal-trigger position-static"><button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs--2"></span></button>
                         <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Export</a>

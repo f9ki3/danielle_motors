@@ -21,6 +21,11 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     $branch_code = $_SESSION['user_brn_code'];
     $session_permission = $_SESSION['user_permissions'];
     $user_id = $_SESSION['id']; // Additional variable for user_id (assuming you need it)
+    // additional
+    $branch_name_insession = $_SESSION['branch_name'];
+    $branch_address_insession = $_SESSION['branch_address'];
+    $branch_telephone_insession = $_SESSION['branch_telephone'];
+    $branch_email_insession = $_SESSION['branch_email'];
 } else {
     // User is not logged in, redirect to the login page
     header("Location: ../"); // Assuming your login page is located at the root

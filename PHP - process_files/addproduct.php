@@ -1,4 +1,5 @@
 <?php
+    require_once '../admin/session.php';
     require_once '../database/database.php';
 
     //azul ni remove ko lng un back slash para pumasok sa uploads directory "/" 
@@ -25,10 +26,10 @@
     }
 
     $query = 'INSERT INTO product
-                (name, code, supplier_code, image, models, unit_id, brand_id, category_id, active)
-            VALUES (?,?,?,?,?,?,?,?,?)';
+                (name, code, supplier_code, image, models, unit_id, brand_id, category_id, active, publish_by)
+            VALUES (?,?,?,?,?,?,?,?,?,?)';
     $stmt = $conn->prepare($query);
-    $stmt->bind_param('sssssiiii', $product_name, $code, $supplier_code, $image, $models, $unit, $brand, $category, $active);
+    $stmt->bind_param('sssssiiiii', $product_name, $code, $supplier_code, $image, $models, $unit, $brand, $category, $active, $user_id);
     if ($stmt) {
         if ($stmt->execute()) {
             $stmt->close();

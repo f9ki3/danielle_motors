@@ -14,7 +14,7 @@
         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"><span>All </span><span class="text-700 fw-semi-bold" id="total_product">(68817)</span></a></li>
         <li class="nav-item"><a class="nav-link" href="#"><span>Archived </span><span class="text-700 fw-semi-bold">(70348)</span></a></li>
     </ul>
-    <div id="products" data-list='{"valueNames":["product","price","category","tags","vendor","time"],"page":10,"pagination":true}'>
+    <div id="products" data-list='{"valueNames":["product","price","category","tags","vendor","time","publish"],"page":10,"pagination":true}'>
         <div class="mb-4">
             <div class="d-flex flex-wrap gap-3">
             <div class="search-box">
@@ -49,6 +49,7 @@
                         <th class="sort align-middle text-start ps-4" scope="col" data-sort="time">UNIT</th>
                         <th class="sort align-middle text-start ps-4" scope="col" data-sort="time">MODEL</th>
                         <th class="sort align-middle text-start ps-4" scope="col" data-sort="time">STATUS</th>
+                        <th class="sort align-middle text-start ps-4" scope="col" data-sort="publish">PUBLISH BY</th>
                         <th class="sort text-end align-middle pe-0 ps-4" scope="col"></th>
                     </tr>
                     </thead>

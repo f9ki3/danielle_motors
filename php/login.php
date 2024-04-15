@@ -57,6 +57,7 @@ if(isset($_POST['uname'], $_POST['pass'])) {
         $_SESSION['user_postalcode'] = $row['user_postalcode'];
         $_SESSION['user_account_type'] = $row['user_account_type'];
         $_SESSION['user_brn_code'] = $row['user_brn_code'];
+        $brn_code = $_SESSION['user_brn_code'];
         // ------ inadd ko to pre --azul -- pacheck na lang if magkaconflict
         //azul to fyke may tinatry lang
         $permission_sql = "SELECT permission_name FROM `groups` WHERE position_name = ?";
@@ -80,6 +81,28 @@ if(isset($_POST['uname'], $_POST['pass'])) {
             $_SESSION['user_permissions'] = $row['permission_name'];
         }
         // ------ inadd ko to pre --azul -- pacheck na lang if magkaconflict
+
+        //azul to ulit pre kunin ko lang branch info
+        $branch_sql = "SELECT * FROM branch WHERE brn_code = ? LIMIT 1";
+        $branch_stmt = $conn->prepare($branch_sql);
+
+        if($branch_stmt === false){
+            // Handle error, perhaps by logging it or showing a message to the user
+            die('Error: ' . htmlspecialchars($conn->error));
+        }
+
+        $branch_stmt->bind_param("s", $brn_code);
+        $branch_stmt->execute();
+
+        $branch_result = $branch_stmt->get_result();
+
+        if($branch_result->num_rows > 0){
+            $row = $branch_result->fetch_assoc();
+            $_SESSION['branch_name'] = $row['brn_name'];
+            $_SESSION['branch_address'] = $row['brn_address'] . ", " . $row['brn_brgy'] . ", " .$row['brn_municipality'] . ", " . $row['brn_province'];
+            $_SESSION['branch_telephone'] = $row['brn_telnum'];
+            $_SESSION['branch_email'] = $row['brn_email'];
+        }
 
         // Echo '1' if user_account_type is 0, '2' if it's 1
         if ($_SESSION['user_account_type'] == 0) {
