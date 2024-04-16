@@ -8,7 +8,8 @@
                     product.models,
                     product.id
             FROM price_list
-            INNER JOIN product ON price_list.product_id = product.id';
+            INNER JOIN product ON price_list.product_id = product.id
+            ORDER BY id DESC';
     $stmt = $conn->prepare($query);
     $stmt->execute();
     $stmt->bind_result($dealer, $wholesale, $srp, $image, $name, $supplier_code, $models, $id);
