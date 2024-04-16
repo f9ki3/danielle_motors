@@ -1,5 +1,5 @@
 <?php
-$delivery_reciept_Sql = "SELECT * FROM delivery_receipt ORDER BY id DESC";
+$delivery_reciept_Sql = "SELECT * FROM delivery_receipt WHERE branch_code = '$branch_code' ORDER BY id DESC";
 $delivery_reciept_res = $conn->query($delivery_reciept_Sql);
 if($delivery_reciept_res -> num_rows > 0){
     while($row = $delivery_reciept_res -> fetch_assoc()){
