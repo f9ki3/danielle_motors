@@ -1,4 +1,5 @@
 <?php
+require_once '../admin/session.php';
 include "../database/database.php";
 // Set the timezone to Philippines
 date_default_timezone_set('Asia/Manila');
@@ -7,7 +8,6 @@ $currentDateTime = date('Y-m-d H:i:s');
 
 // Validate and sanitize input (e.g., $dr_id)
 $dr_id = isset($_GET['id']) ? intval($_GET['id']) : null; // Ensure it's an integer
-$user_id = "1";
 
 $supplier_id_Sql = "SELECT supplier_id FROM delivery_receipt WHERE id = '$dr_id' LIMIT 1";
 $supplier_id_res = $conn -> query($supplier_id_Sql);
@@ -149,9 +149,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $qty = $_POST['qty'][$i];
 
             // Execute query - you should use prepared statements for better security
-            $insert_to_stocks = "INSERT INTO stocks (product_id, rack_loc_id, expiration_date, stocks, date_added, publish_by) VALUES ('$product_id', '$rack_id', '$expiration_date', '$qty', '$currentDateTime', '$user_id')";
+            $insert_to_stocks = "INSERT INTO stocks (product_id, rack_loc_id, expiration_date, stocks, date_added, publish_by, branch_code) VALUES ('$product_id', '$rack_id', '$expiration_date', '$qty', '$currentDateTime', '$user_id', '$branch_code')";
             if($conn->query($insert_to_stocks) === TRUE ){
-
+                // Send success response
+                $response = array("success" => "Data inserted successfully");
             } else {
                 $response = array("error" => "Error: " . $conn->error);
             }
@@ -160,20 +161,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Rack or quantity data not received.";
     }
 
-    // add to total stocks in product_list
-    $get_stocks_qty_sql = "SELECT stocks FROM product WHERE id = '$product_id' LIMIT 1";
-    $get_stocks_qty_res = $conn->query($get_stocks_qty_sql);
-    if($get_stocks_qty_res->num_rows>0){
-        $row=$get_stocks_qty_res->fetch_assoc();
-        $current_stocks = $row['stocks'];
-        $new_stocks = $total_qty + $current_stocks;
-        $update_product_stocks = "UPDATE product SET stocks = '$new_stocks' WHERE id = '$product_id'";
-        if($conn->query($update_product_stocks) === TRUE ){
-
-        } else {
-            $response = array("error" => "Error: " . $conn->error);
-        }
-    }
 
     $check_supplier_product_duplicate_sql = "SELECT id FROM supplier_product WHERE product_id = '$product_id' AND supplier_id = '$supplier_id' LIMIT 1";
     $check_supplier_product_duplicate_res = $conn->query($check_supplier_product_duplicate_sql);
