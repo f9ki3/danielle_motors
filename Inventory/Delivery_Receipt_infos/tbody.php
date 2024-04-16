@@ -1,3 +1,4 @@
+<<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     function handleLinkClick(event, endpoint) {
         event.preventDefault(); // Prevent the default behavior of the link (page reload)
@@ -9,13 +10,35 @@
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     console.log("Server Response:", xhr.responseText);
+                    handleServerResponse(xhr.responseText);
                 } else {
                     console.error("Request failed:", xhr.status);
+                    showAlert("Error", "Failed to make request. Please try again later.");
                 }
             }
         };
         xhr.open('GET', endpoint, true);
         xhr.send();
+    }
+
+    function handleServerResponse(response) {
+        if (response === "Record deleted successfully") {
+            showAlert("Success", "Record deleted successfully.");
+        } else if (response.startsWith("Error deleting record")) {
+            showAlert("Error", response);
+        } else if (response === "ID parameter not provided") {
+            showAlert("Error", "ID parameter not provided.");
+        } else {
+            console.log("Unhandled server response:", response);
+        }
+    }
+
+    function showAlert(title, message) {
+        Swal.fire({
+            title: title,
+            text: message,
+            icon: "error",
+        });
     }
 </script>
 
