@@ -1,7 +1,7 @@
 <?php
 include_once "../../database/database.php";
 
-$sql = "SELECT COUNT(*) FROM product";
+$sql = "SELECT COUNT(*) FROM product WHERE active = 1";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
