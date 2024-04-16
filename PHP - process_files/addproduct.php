@@ -37,7 +37,7 @@
     // Check if a duplicate exists
     if ($result->num_rows > 0) {
         $conn->close();
-        header("Location: ../Inventory/Product_List/?duplicate=false");
+        header("Location: ../Inventory/Product_List/?duplicate=true");
         exit;
     }
 
