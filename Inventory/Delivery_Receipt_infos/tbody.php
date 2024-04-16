@@ -1,24 +1,3 @@
-<script>
-    function handleLinkClick(event) {
-        event.preventDefault(); // Prevent the default behavior of the link (page reload)
-        var href = event.target.getAttribute('href'); // Get the href attribute of the clicked link
-        console.log("Link clicked:", href);
-
-        // Make an AJAX request
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    console.log("Server Response:", xhr.responseText);
-                } else {
-                    console.error("Request failed:", xhr.status);
-                }
-            }
-        };
-        xhr.open('GET', href, true);
-        xhr.send();
-    }
-</script>
 <?php
 // session_start();
 include_once "../../database/database.php";
