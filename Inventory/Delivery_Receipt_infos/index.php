@@ -202,6 +202,9 @@ date_default_timezone_set('Asia/Manila');
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == XMLHttpRequest.DONE) {
                     if (xhr.status == 200) {
+                        if (xhr.responseText.trim() === "changes were made") {
+                            tbody(); // Call tbody() function if changes were made
+                        }
                         console.log(xhr.responseText);
                     } else {
                         console.error('Error occurred: ' + xhr.status);
@@ -217,7 +220,26 @@ date_default_timezone_set('Asia/Manila');
         setInterval(function() {
             checkDRChanges(dr_id);
         }, 5000); // Check every 5 seconds
+
+
+        // Function to reload the preview
+        function tbody() {
+            $.ajax({
+                url: 'tbody.php?id=<?php echo $_SESSION['dr_id'];?>',
+                type: 'GET',
+                success: function(response){
+                    $('#live_product_data').html(response);
+                },
+                error: function(xhr, status, error){
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
+        // Call the function initially
+        tbody();
     </script>
+
 
 
 
