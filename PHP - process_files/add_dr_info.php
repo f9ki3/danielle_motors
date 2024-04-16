@@ -1,6 +1,8 @@
 <?php
-require_once '../admin/session.php';
-include "../database/database.php";
+// Include necessary files
+require_once '../admin/session.php'; // Ensures user is logged in
+include "../database/database.php"; // Includes database connection
+
 // Set the timezone to Philippines
 date_default_timezone_set('Asia/Manila');
 // Get the current datetime
@@ -9,51 +11,50 @@ $currentDateTime = date('Y-m-d H:i:s');
 // Validate and sanitize input (e.g., $dr_id)
 $dr_id = isset($_GET['id']) ? intval($_GET['id']) : null; // Ensure it's an integer
 
+// Retrieve supplier ID from delivery receipt
 $supplier_id_Sql = "SELECT supplier_id FROM delivery_receipt WHERE id = '$dr_id' LIMIT 1";
 $supplier_id_res = $conn -> query($supplier_id_Sql);
 if($supplier_id_res->num_rows>0){
     $row=$supplier_id_res->fetch_assoc();
     $supplier_id = $row['supplier_id'];
 
+    // Retrieve supplier name
     $supplier_name_sql = "SELECT supplier_name FROM supplier WHERE id = '$supplier_id' LIMIT 1";
     $supplier_name_res = $conn->query($supplier_name_sql);
     if($supplier_name_res->num_rows>0){
         $row=$supplier_name_res->fetch_assoc();
         $supplier_name = $row['supplier_name'];
+        // Remove vowels and spaces from supplier name
         $supplier_name_code = str_replace([' ', 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'], '', $supplier_name);
-
     }
-} else {
-
 }
+
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    
     // Retrieve form data
-    // $supplier_code = $_POST['supplier_code'];
     if(!empty($_POST['supplier_code'])){
         $supplier_code = $_POST['supplier_code'];
     } else {
+        // Generate a random supplier code if not provided
         $characters_0 = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ12345678901234567890";
         $randomized_0 = str_shuffle($characters_0);
         $randomized_0 = substr($randomized_0, 0, 16);
         $supplier_code = $supplier_name_code . "-" . $randomized_0;
     }
+
+    // Check if product ID is provided
     if(isset($_POST['product_id'])){
         $product_id = $_POST["product_id"];
     } else {
+        // Process product details if product ID is not provided
         if(isset($_POST['product_name'])){
-
-
-            // Check if file is uploaded without errors
+            // Check if an image file is uploaded
             if (isset($_FILES["product_image"]) && $_FILES["product_image"]["error"] == 0) {
+                // Upload the image file
                 $targetDir = "../uploads/";
                 $fileName = basename($_FILES["product_image"]["name"]);
                 $targetPath = $targetDir . $fileName;
                 $fileType = pathinfo($targetPath, PATHINFO_EXTENSION);
-            
-                // Check if file already exists, if not, upload it
                 if (!file_exists($targetPath)) {
                     if (move_uploaded_file($_FILES["product_image"]["tmp_name"], $targetPath)) {
                     } else {
@@ -65,30 +66,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 $fileName = "";
             }
+            // Retrieve other product details
             $product_name = $_POST['product_name'];
             $product_code = $_POST['product_code'];
             $category = $_POST['category'];
             $brand = $_POST['brand'];
             $unit = $_POST['unit'];
-            // $models = $_POST['models'];
-            // Check if models were selected
+            // Retrieve selected models
             if (isset($_POST['models']) && !empty($_POST['models'])) {
-                // Concatenate selected models into a comma-separated string
                 $models = implode(', ', $_POST['models']);
-             
             } else {
-                // No models were selected
                 echo "No models selected.";
             }
-
-
+            // Check for duplicate product entry
             $check_product_Table_duplicate_sql = "SELECT id FROM product WHERE name = '$product_name' AND brand_id = '$brand'  AND category_id = '$category' AND unit_id = '$unit'  AND models = '' LIMIT 1";
             $check_product_Table_duplicate_res = $conn -> query($check_product_Table_duplicate_sql);
             if($check_product_Table_duplicate_res->num_rows>0){
                 $product_table_row = $check_product_Table_duplicate_res->fetch_assoc();
                 $product_table_id = $product_table_row['id'];
             } else {
-
+                // Generate a random barcode if not provided
                 if(!empty($_POST['barcode'])){
                     $barcode = $_POST['barcode'];
                 } else {
@@ -105,20 +102,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $barcode = $randomized;
                     }
                 }
-                
-                
+                // Insert product details into the database
                 $insert_to_product = "INSERT INTO product (name, code, supplier_code, barcode, `image`, models, unit_id, brand_id, category_id, active, publish_by) VALUES ('$product_name', '$product_code', '$supplier_code', '$barcode', '$fileName', '$models', '$unit', '$brand', '$category', '1', '$user_id')";
                 if($conn->query($insert_to_product) === TRUE){
-                    // Get the ID of the inserted data
                     $product_table_id = $conn->insert_id;
                 } else {
                     $response = array("error" => "Product cant be inserted" . $conn-> error());
                 }
             }
-            
-        }   
-        $product_id = $product_table_id; // For example, you can access them using $_POST['fieldname']
+        }
+        // Set product ID for further processing
+        $product_id = $product_table_id;
     }
+    // Retrieve other form data
     $original_price = $_POST["original_price"];
     $price = $_POST["price"];
     $discount = $_POST["discount"];
@@ -130,10 +126,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $expiration_date = "";
     }
 
-    
-
-    
-    $check_product_duplicate_sql = "SELECT product_id FROM delivery_receipt_content WHERE product_id = '$product_id'";
+    // Check for duplicate product entry in delivery receipt content
+    $check_product_duplicate_sql = "SELECT product_id FROM delivery_receipt_content WHERE product_id = '$product_id' AND delivery_receipt_id = '$dr_id'";
     $check_product_duplicate_res = $conn->query($check_product_duplicate_sql);
     if($check_product_duplicate_res->num_rows>0){
         $response = array("error" => "Duplicate Entry");
@@ -141,18 +135,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // If $dr_id is not valid, return an error response
         $response = array("error" => "Invalid or missing delivery receipt ID");
     } else {
-        // Perform database operation
+        // Insert data into delivery receipt content
         $insert_sql = "INSERT INTO delivery_receipt_content (delivery_receipt_id, product_id, orig_price, price, discount, quantity, total) VALUES ('$dr_id', '$product_id', '$original_price', '$price', '$discount', '$total_qty', '$total')";
-        
         if ($conn->query($insert_sql) === TRUE) {
-            // Send success response
             $response = array("success" => "Data inserted successfully");
         } else {
-            // Handle database errors
             $response = array("error" => "Error: " . $conn->error);
         }
     }
 
+    // Check for existing pricelist entry
     $check_pricelist_sql = "SELECT id, dealer FROM price_list WHERE product_id = '$product_id' LIMIT 1";
     $check_pricelist_res = $conn->query($check_pricelist_sql);
     if($check_pricelist_res->num_rows>0){
@@ -160,11 +152,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pricelist_id = $pl_row['id'];
         $srp = $pl_row['dealer'];
         if($srp<$original_price){
+            // Update pricelist if original price is greater
             $update_pricelist = "UPDATE price_list SET dealer = '$original_price', srp = '$original_price' WHERE id = '$pricelist_id'";
             $conn->query($update_pricelist);
         } 
-        
     } else {
+        // Insert new pricelist entry
         $insert_to_pricelist_sql = "INSERT INTO price_list SET product_id = '$product_id', dealer = '$original_price', srp='$original_price', publish_by = '$user_id'";
         $conn->query($insert_to_pricelist_sql);
     }
@@ -177,25 +170,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $rack_id = $_POST['rack'][$i];
             $qty = $_POST['qty'][$i];
 
-            // Execute query - you should use prepared statements for better security
-            $insert_to_stocks = "INSERT INTO stocks (product_id, rack_loc_id, expiration_date, stocks, date_added, publish_by, branch_code) VALUES ('$product_id', '$rack_id', '$expiration_date', '$qty', '$currentDateTime', '$user_id', '$branch_code')";
-            if($conn->query($insert_to_stocks) === TRUE ){
-                // Send success response
-                $response = array("success" => "Data inserted successfully");
+            // check if product exist on the branch
+            $check_stock_duplicate_sql = "SELECT id, rack_loc_id FROM stocks WHERE product_id = '$product_id' AND branch_code = '$branch_code'";
+            $check_stock_duplicate_res = $conn->query($check_stock_duplicate_sql);
+            if($check_stock_duplicate_res->num_rows>0){
+                $stock_row = $check_stock_duplicate_res->fetch_assoc();
+                $stock_id = $stock_row['id'];
+                $new_location = $stock_row['rack_loc_id'] . ", " . $rack_id;
+
+                $update_stocks = "UPDATE stocks SET rack_loc_id = '$new_location' WHERE id = '$stock_id'";
+                if($conn->query($update_stocks)===TRUE){
+                    $response = array("success" => "Data inserted successfully");
+                } else {
+                    $response = array("error" => "Error: " . $conn->error);
+                }
             } else {
-                $response = array("error" => "Error: " . $conn->error);
+                // Insert data into stocks table
+                $insert_to_stocks = "INSERT INTO stocks (product_id, rack_loc_id, expiration_date, stocks, date_added, publish_by, branch_code) VALUES ('$product_id', '$rack_id', '$expiration_date', '$qty', '$currentDateTime', '$user_id', '$branch_code')";
+                if($conn->query($insert_to_stocks) === TRUE ){
+                    $response = array("success" => "Data inserted successfully");
+                } else {
+                    $response = array("error" => "Error: " . $conn->error);
+                }
             }
+            
         }
     } else {
         echo "Rack or quantity data not received.";
     }
 
-
+    // Check for duplicate entry in supplier product table
     $check_supplier_product_duplicate_sql = "SELECT id FROM supplier_product WHERE product_id = '$product_id' AND supplier_id = '$supplier_id' LIMIT 1";
     $check_supplier_product_duplicate_res = $conn->query($check_supplier_product_duplicate_sql);
     if($check_supplier_product_duplicate_res->num_rows>0){
         
     } else {
+        // Insert data into supplier product table
         $insert_to_supplier_products = "INSERT INTO supplier_product (date_added, product_id, supplier_code, orig_price, price, discount, `status`, supplier_id) VALUES ('$currentDateTime', '$product_id', '$supplier_code', '$original_price', '$price', '$discount', '1', '$supplier_id')";
         if($conn->query($insert_to_supplier_products) === TRUE ){
 
@@ -204,8 +214,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-
-    
 } else {
     // If the form is not submitted, return an error response
     $response = array("error" => "Form not submitted");

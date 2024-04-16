@@ -1,5 +1,5 @@
 <?php
-session_start();
+include "../admin/session.php";
 include "../database/database.php";
 date_default_timezone_set('Asia/Manila');
 
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $status = "2"; //incomplete process
 
 
-    $insert_sql = "INSERT INTO delivery_receipt (supplier_id, delivered_to, status, checked_by, approved_by, delivered_by, received_date, publish_by) VALUES ('$supplier_id', '$delivered_to', '$status', '$checked_by', '$approved_by', '$delivered_by', '$received_date', '$user_id')";
+    $insert_sql = "INSERT INTO delivery_receipt (supplier_id, delivered_to, status, checked_by, approved_by, delivered_by, received_date, publish_by, branch_code) VALUES ('$supplier_id', '$delivered_to', '$status', '$checked_by', '$approved_by', '$delivered_by', '$received_date', '$user_id', '$branch_code')";
     if($conn -> query($insert_sql) === TRUE ){
         $_SESSION['dr_id'] = $conn->insert_id;
         $conn->close();
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 } else {
     // If someone tries to access this page directly without submitting the form, redirect them
-    header("Location: index.php"); // Replace index.php with the actual page you want to redirect to
+    header("Location: ../Inventory/Create_D.R/?error=undefined"); // Replace index.php with the actual page you want to redirect to
     exit;
 }
 ?>

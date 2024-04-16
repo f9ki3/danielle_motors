@@ -24,6 +24,7 @@
 
     function handleServerResponse(response) {
         if (response === "Record deleted successfully") {
+            tbody();
             showAlert("Success", "Record deleted successfully.");
         } else if (response.startsWith("Error deleting record")) {
             showAlert("Error", response);

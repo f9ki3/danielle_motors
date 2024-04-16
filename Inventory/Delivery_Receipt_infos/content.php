@@ -297,7 +297,7 @@
                                                         $defwr_id = $row['id'];
                                                         $defloc_name = $row['location_name'];
                                                 ?>
-                                                <option value="<?php echo $defwr_id?>"><?php echo $defloc_name; ?></option>
+                                                <option value="<?php echo $defloc_name?>"><?php echo $defloc_name; ?></option>
                                                 <?php 
                                                     }
                                                 }
