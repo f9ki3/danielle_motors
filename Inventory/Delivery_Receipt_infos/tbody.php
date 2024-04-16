@@ -57,15 +57,17 @@ if($dr_content_res->num_rows > 0){
             $unit_id = $row_product['unit_id'];
             $brand_id = $row_product['brand_id'];
             $category_id = $row_product['category_id'];
-            echo '<tr>
-                <td class="ps-3"><a class="me-1 mb-1" href="delete.php?id='. $drc_id .'" onclick="handleLinkClick(event)"><span class="text-danger fas fa-trash-alt"></span></a></td>
+            ?>
+            <tr>
+                <td class="ps-3"><a class="me-1 mb-1" href="#" onclick="handleLinkClick(event, 'delete.php?id=<?php echo $drc_id?>')"><span class="text-danger fas fa-trash-alt"></span></a></td>
                 <td>' . $qty . '</td>
-                <td>' . $product_name . ' ' . $product_model . ' ' . $brand_id . ' ' . $category_id . ' ' . $unit_id . '</td>
-                <td class="text-end">' . number_format((float)$orig_price, 2) . '</td>
-                <td class="text-end">' . number_format((float)$price, 2) . '</td>
-                <td class="text-end"> % ' . $discount . '</td>
-                <td class="text-end">' . number_format((float)$total, 2) . '</td>
-            </tr>';
+                <td><?php echo $product_name . ' ' . $product_model . ' ' . $brand_id . ' ' . $category_id . ' ' . $unit_id;?></td>
+                <td class="text-end"><?php echo number_format((float)$orig_price, 2);?></td>
+                <td class="text-end"><?php echo number_format((float)$price, 2);?></td>
+                <td class="text-end"> % <?php echo $discount; ?></td>
+                <td class="text-end"><?php echo number_format((float)$total, 2);?></td>
+            </tr>
+            <?php
         } else {
             
         }
@@ -81,10 +83,9 @@ if($dr_content_res->num_rows > 0){
     </tbody>
 </table>
 <script>
-    function handleLinkClick(event) {
+    function handleLinkClick(event, endpoint) {
         event.preventDefault(); // Prevent the default behavior of the link (page reload)
-        var href = event.target.getAttribute('href'); // Get the href attribute of the clicked link
-        console.log("Link clicked:", href);
+        console.log("Link clicked:", endpoint);
 
         // Make an AJAX request
         var xhr = new XMLHttpRequest();
@@ -97,7 +98,7 @@ if($dr_content_res->num_rows > 0){
                 }
             }
         };
-        xhr.open('GET', href, true);
+        xhr.open('GET', endpoint, true);
         xhr.send();
     }
 </script>
