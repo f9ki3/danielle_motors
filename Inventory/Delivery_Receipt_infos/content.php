@@ -7,7 +7,7 @@
 <div class="mb-9" id="actualContent" style="display: none;">
     <div class="row">
         <div class="col-auto">
-            <h1>Enter Delivery Receipt <i class="text-success">#<?php echo str_pad($_SESSION['dr_id'], 6, '0', STR_PAD_LEFT); ?></i> Products Received</h1>
+            <h1>Enter Delivery Receipt HOHOHOH<i class="text-success">#<?php echo str_pad($_SESSION['dr_id'], 6, '0', STR_PAD_LEFT); ?></i> Products Received</h1>
         </div>
     </div>
     <hr class="mb-5">
