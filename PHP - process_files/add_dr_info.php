@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
                 
                 
-                $insert_to_product = "INSERT INTO product (name, code, supplier_code, barcode, `image`, models, unit_id, brand_id, category_id, active) VALUES ('$product_name', '$product_code', '$supplier_code', '$barcode', '$fileName', '$models', '$unit', '$brand', '$category', '1')";
+                $insert_to_product = "INSERT INTO product (name, code, supplier_code, barcode, `image`, models, unit_id, brand_id, category_id, active, publish_by) VALUES ('$product_name', '$product_code', '$supplier_code', '$barcode', '$fileName', '$models', '$unit', '$brand', '$category', '1', '$user_id')";
                 if($conn->query($insert_to_product) === TRUE){
                     // Get the ID of the inserted data
                     $product_table_id = $conn->insert_id;
@@ -164,6 +164,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $conn->query($update_pricelist);
         } 
         
+    } else {
+        $insert_to_pricelist_sql = "INSERT INTO price_list SET product_id = '$product_id', dealer = '$original_price', srp='$original_price', publish_by = '$user_id'";
+        $conn->query($insert_to_pricelist_sql);
     }
 
     // Check if rack and qty arrays are set in the POST data
