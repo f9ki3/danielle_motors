@@ -131,6 +131,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $check_product_duplicate_res = $conn->query($check_product_duplicate_sql);
     if($check_product_duplicate_res->num_rows>0){
         $response = array("error" => "Duplicate Entry");
+        $conn->close();
+        exit;
     } elseif ($dr_id === null) {
         // If $dr_id is not valid, return an error response
         $response = array("error" => "Invalid or missing delivery receipt ID");
