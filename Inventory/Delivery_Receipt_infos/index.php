@@ -19,7 +19,7 @@ date_default_timezone_set('Asia/Manila');
                 // Send AJAX request
                 $.ajax({
                     type: 'POST',
-                    url: '../../PHP - process_files/add_dr_info.php?id=<?php echo $_SESSION['dr_id']; ?>',
+                    url: '../../PHP - process_files/add_dr_info.php?id=<?php //echo $_SESSION['dr_id']; ?>',
                     data: formData,
                     dataType: 'json', // Expect JSON response from server
                     success: function(response){
@@ -196,80 +196,32 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
-
-
     <script>
-        $(document).ready(function(){
-            // Function to fetch PHP-generated content
-            function fetchTableContent() {
-                $.ajax({
-                    url: 'tbody.php?id=<?php echo $_SESSION['dr_id']; ?>',
-                    success: function(response) {
-                        $('#live_product_data').html(response);
-                        // After successfully updating content, initiate the next long poll
-                        fetchTableContent();
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(xhr.responseText);
-                        // In case of error, retry the long poll after some time
-                        setTimeout(fetchTableContent, 5000); // Retry after 5 seconds
+        function checkDRChanges(dr_id) {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    if (xhr.status == 200) {
+                        console.log(xhr.responseText);
+                    } else {
+                        console.error('Error occurred: ' + xhr.status);
                     }
-                });
-            }
-
-            // Call the function initially
-            fetchTableContent();
-
-
-
-            // ------total
-            // Function to fetch PHP-generated content
-            function fetchTotalContent() {
-                $.ajax({
-                    url: 'dr_footer.php?id=<?php echo $_SESSION['dr_id']; ?>',
-                    success: function(response) {
-                        $('#dr_footer').html(response);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(xhr.responseText);
-                    }
-                });
-            }
-
-            // Call the function initially
-            fetchTotalContent();
-
-            // Call the function every 5 seconds (adjust the interval as needed)
-            setInterval(fetchTotalContent, 5000); // 5000 milliseconds = 5 seconds
-        });
-
-    </script>
-    <!-- <script>
-    $(document).ready(function(){
-        // Function to fetch PHP-generated content
-        function fetchContent(url, targetElement) {
-            $.ajax({
-                url: url,
-                success: function(response) {
-                    $(targetElement).html(response);
-                },
-                error: function(xhr, status, error) {
-                    console.error(xhr.responseText);
                 }
-            });
+            };
+            xhr.open("GET", "check_dr_changes.php?id=" + dr_id, true);
+            xhr.send();
         }
 
-        // Call the functions initially
-        fetchContent('tbody.php', '#live_product_data');
-        fetchContent('dr_footer.php', '#dr_footer');
-
-        // Call the functions every 5 seconds (adjust the interval as needed)
+        // Replace dr_id with the actual delivery receipt id
+        var dr_id = "<?php echo $_SESSION['dr_id']; ?>";
         setInterval(function() {
-            fetchContent('tbody.php', '#live_product_data');
-            fetchContent('dr_footer.php', '#dr_footer');
-        }, 5000); // 5000 milliseconds = 5 seconds
-    });
-    </script> -->
+            checkDRChanges(dr_id);
+        }, 5000); // Check every 5 seconds
+    </script>
+
+
+
+    
 
   </body>
 
