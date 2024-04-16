@@ -149,7 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $qty = $_POST['qty'][$i];
 
             // Execute query - you should use prepared statements for better security
-            $insert_to_stocks = "INSERT INTO stocks (product_id, ware_loc_id, expiration_date, qty, date_added, publish_by) VALUES ('$product_id', '$rack_id', '$expiration_date', '$qty', '$currentDateTime', '$user_id')";
+            $insert_to_stocks = "INSERT INTO stocks (product_id, rack_loc_id, expiration_date, stocks, date_added, publish_by) VALUES ('$product_id', '$rack_id', '$expiration_date', '$qty', '$currentDateTime', '$user_id')";
             if($conn->query($insert_to_stocks) === TRUE ){
 
             } else {
