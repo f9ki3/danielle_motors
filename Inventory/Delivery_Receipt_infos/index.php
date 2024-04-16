@@ -220,7 +220,7 @@ date_default_timezone_set('Asia/Manila');
         var dr_id = "<?php echo $_SESSION['dr_id']; ?>";
         setInterval(function() {
             checkDRChanges(dr_id);
-        }, 5000); // Check every 5 seconds
+        }, 2000); // Check every 5 seconds
 
 
         // Function to reload the preview
