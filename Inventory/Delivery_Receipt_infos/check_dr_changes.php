@@ -24,3 +24,5 @@ if($old_count != $new_count){
     echo "no changes";
 }
 
+
+$_SESSION['dr_changes'] = $new_count;
