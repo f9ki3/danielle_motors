@@ -130,7 +130,7 @@
                                                         $defwr_id = $row['id'];
                                                         $defloc_name = $row['location_name'];
                                                 ?>
-                                                <option value="<?php echo $defwr_id?>"><?php echo $defloc_name; ?></option>
+                                                <option value="<?php echo $defloc_name;?>"><?php echo $defloc_name; ?></option>
                                                 <?php 
                                                     }
                                                 }
@@ -397,7 +397,7 @@
                 $loc_name = $row['location_name'];
         ?>
         var option<?php echo $wr_id; ?> = document.createElement('option');
-        option<?php echo $wr_id; ?>.value = '<?php echo $wr_id; ?>';
+        option<?php echo $wr_id; ?>.value = '<?php echo $loc_name; ?>';
         option<?php echo $wr_id; ?>.textContent = '<?php echo $loc_name; ?>';
         selectLocation.appendChild(option<?php echo $wr_id; ?>);
         <?php 
