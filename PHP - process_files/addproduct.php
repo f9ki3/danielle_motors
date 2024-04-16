@@ -1,7 +1,14 @@
-_check<?php
+<?php
     require_once '../admin/session.php';
     require_once '../database/database.php';
 
+    //azul ni remove ko lng un back slash para pumasok sa uploads directory "/" 
+    $uploadDir = '../uploads/';
+    $uploadFile = basename($_FILES['image']['name']);
+    $path = $uploadDir . $uploadFile;
+    move_uploaded_file($_FILES['image']['tmp_name'], $path);
+
+    
     $image = $uploadFile;
     $product_name = $_POST['product_name'];
     $category = $_POST['category'];
@@ -42,13 +49,6 @@ _check<?php
     }
 
 
-    //azul ni remove ko lng un back slash para pumasok sa uploads directory "/" 
-    $uploadDir = '../uploads/';
-    $uploadFile = basename($_FILES['image']['name']);
-    $path = $uploadDir . $uploadFile;
-    move_uploaded_file($_FILES['image']['tmp_name'], $path);
-
-    
 
 
     if (empty($sku) && empty($upc)) {
