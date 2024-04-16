@@ -1,4 +1,4 @@
-<?php
+_check<?php
     require_once '../admin/session.php';
     require_once '../database/database.php';
 
@@ -16,10 +16,10 @@
     $check_duplicate_sql = "SELECT id FROM product WHERE name = ? AND models = ? AND unit_id = ? AND category_id = ? AND brand_id = ? AND active = 1 LIMIT 1";
 
     // Prepare the statement
-    $stmt = $conn->prepare($check_duplicate_sql);
+    $stmt_check = $conn->prepare($check_duplicate_sql);
 
     // Bind parameters with values
-    $stmt->bind_param("ssiii", $product_name, $models, $unit, $category, $brand);
+    $stmt_check->bind_param("ssiii", $product_name, $models, $unit, $category, $brand);
 
     // Set parameter values
     $product_name = $product_name;
@@ -29,13 +29,13 @@
     $brand = $brand;
 
     // Execute the query
-    $stmt->execute();
+    $stmt_check->execute();
 
     // Get the result
-    $result = $stmt->get_result();
+    $result_check = $stmt_check->get_result();
 
     // Check if a duplicate exists
-    if ($result->num_rows > 0) {
+    if ($result_check->num_rows > 0) {
         $conn->close();
         header("Location: ../Inventory/Product_List/?duplicate=true");
         exit;
