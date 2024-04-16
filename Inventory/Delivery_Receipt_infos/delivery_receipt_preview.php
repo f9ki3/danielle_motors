@@ -45,20 +45,8 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-12 table-responsive" style="min-height: 300px;">
-        <table class="table table-sm">
-            <thead>
-                <th></th>
-                <th>QTY</th>
-                <th>PRODUCT NAME</th>
-                <th class="text-end">ORIG PRICE</th>
-                <th class="text-end">PRICE</th>
-                <th class="text-end">DISCOUNT</th>
-                <th class="text-end">AMOUNT</th>
-            </thead>
-            <tbody id="live_product_data">
-            </tbody>
-        </table>
+    <div class="col-lg-12 table-responsive" id="live_product_data" style="min-height: 300px;">
+        
     </div>
     <hr class="mt-5 mb-5">
     <div class="col-lg-12 mb-5">

@@ -1,3 +1,14 @@
+<table class="table table-sm">
+    <thead>
+        <th></th>
+        <th>QTY</th>
+        <th>PRODUCT NAME</th>
+        <th class="text-end">ORIG PRICE</th>
+        <th class="text-end">PRICE</th>
+        <th class="text-end">DISCOUNT</th>
+        <th class="text-end">AMOUNT</th>
+    </thead>
+    <tbody>
 <?php
 // session_start();
 include_once "../../database/database.php";
@@ -67,3 +78,26 @@ if($dr_content_res->num_rows > 0){
     echo '<tr><td colspan="7" class="text-center"><b>No data</b></td></tr>';
 }
 ?>
+    </tbody>
+</table>
+<script>
+        function handleLinkClick(event) {
+            event.preventDefault(); // Prevent the default behavior of the link (page reload)
+            var href = event.target.getAttribute('href'); // Get the href attribute of the clicked link
+            console.log("Link clicked:", href);
+
+            // Make an AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log("Server Response:", xhr.responseText);
+                    } else {
+                        console.error("Request failed:", xhr.status);
+                    }
+                }
+            };
+            xhr.open('GET', href, true);
+            xhr.send();
+        }
+    </script>
