@@ -1,3 +1,24 @@
+<script>
+    function handleLinkClick(event, endpoint) {
+        event.preventDefault(); // Prevent the default behavior of the link (page reload)
+        console.log("Link clicked:", endpoint);
+
+        // Make an AJAX request
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    console.log("Server Response:", xhr.responseText);
+                } else {
+                    console.error("Request failed:", xhr.status);
+                }
+            }
+        };
+        xhr.open('GET', endpoint, true);
+        xhr.send();
+    }
+</script>
+
 <table class="table table-sm">
     <thead>
         <th></th>
@@ -59,8 +80,8 @@ if($dr_content_res->num_rows > 0){
             $category_id = $row_product['category_id'];
             ?>
             <tr>
-                <td class="ps-3"><a class="me-1 mb-1" href="#" onclick="handleLinkClick(event, 'delete.php?id=<?php echo $drc_id?>')"><span class="text-danger fas fa-trash-alt"></span></a></td>
-                <td>' . $qty . '</td>
+                <td class="ps-3"><a class="me-1 mb-1" onclick="handleLinkClick(event, 'delete.php?id=<?php echo $drc_id?>')"><span class="text-danger fas fa-trash-alt"></span></a></td>
+                <td><?php echo $qty; ?></td>
                 <td><?php echo $product_name . ' ' . $product_model . ' ' . $brand_id . ' ' . $category_id . ' ' . $unit_id;?></td>
                 <td class="text-end"><?php echo number_format((float)$orig_price, 2);?></td>
                 <td class="text-end"><?php echo number_format((float)$price, 2);?></td>
@@ -82,23 +103,3 @@ if($dr_content_res->num_rows > 0){
 ?>
     </tbody>
 </table>
-<script>
-    function handleLinkClick(event, endpoint) {
-        event.preventDefault(); // Prevent the default behavior of the link (page reload)
-        console.log("Link clicked:", endpoint);
-
-        // Make an AJAX request
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    console.log("Server Response:", xhr.responseText);
-                } else {
-                    console.error("Request failed:", xhr.status);
-                }
-            }
-        };
-        xhr.open('GET', endpoint, true);
-        xhr.send();
-    }
-</script>
