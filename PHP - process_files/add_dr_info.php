@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $product_table_row = $check_product_Table_duplicate_res->fetch_assoc();
                 $product_table_id = $product_table_row['id'];
             } else {
-                
+
                 if(!empty($_POST['barcode'])){
                     $barcode = $_POST['barcode'];
                 } else {
@@ -151,6 +151,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Handle database errors
             $response = array("error" => "Error: " . $conn->error);
         }
+    }
+
+    $check_pricelist_sql = "SELECT id, dealer FROM price_list WHERE product_id = '$product_id' LIMIT 1";
+    $check_pricelist_res = $conn->query($check_pricelist_sql);
+    if($check_pricelist_res->num_rows>0){
+        $pl_row = $check_pricelist_res->fetch_assoc();
+        $pricelist_id = $pl_row['id'];
+        $srp = $pl_row['dealer'];
+        if($srp<$original_price){
+            $update_pricelist = "UPDATE price_list SET dealer = '$original_price', srp = '$original_price' WHERE id = '$pricelist_id'";
+            $conn->query($update_pricelist);
+        } 
+        
     }
 
     // Check if rack and qty arrays are set in the POST data
