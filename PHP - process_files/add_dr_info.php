@@ -44,6 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $product_id = $_POST["product_id"];
     } else {
         if(isset($_POST['product_name'])){
+
+
             // Check if file is uploaded without errors
             if (isset($_FILES["product_image"]) && $_FILES["product_image"]["error"] == 0) {
                 $targetDir = "../uploads/";
@@ -78,33 +80,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // No models were selected
                 echo "No models selected.";
             }
-            if(!empty($_POST['barcode'])){
-                $barcode = $_POST['barcode'];
+
+
+            $check_product_Table_duplicate_sql = "SELECT id FROM product WHERE name = '$product_name' AND brand_id = '$brand'  AND category_id = '$category' AND unit_id = '$unit'  AND models = '' LIMIT 1";
+            $check_product_Table_duplicate_res = $conn -> query($check_product_Table_duplicate_sql);
+            if($check_product_Table_duplicate_res->num_rows>0){
+                $product_table_row = $check_product_Table_duplicate_res->fetch_assoc();
+                $product_table_id = $product_table_row['id'];
             } else {
-                $characters = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ12345678901234567890";
-                $randomized = str_shuffle($characters);
-                $randomized = substr($randomized, 0, 16);
-                $check_barcode_duplicate = "SELECT barcode FROM product WHERE barcode = '$randomized'";
-                $check_barcode_duplicate_res = $conn->query($check_barcode_duplicate);
-                if($check_barcode_duplicate_res->num_rows>0){
-                    $randomizedagain = str_shuffle($characters);
-                    $randomizedagain = substr($randomizedagain, 0, 15);
-                    $barcode = $randomizedagain;
+                
+                if(!empty($_POST['barcode'])){
+                    $barcode = $_POST['barcode'];
                 } else {
-                    $barcode = $randomized;
+                    $characters = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ12345678901234567890";
+                    $randomized = str_shuffle($characters);
+                    $randomized = substr($randomized, 0, 16);
+                    $check_barcode_duplicate = "SELECT barcode FROM product WHERE barcode = '$randomized'";
+                    $check_barcode_duplicate_res = $conn->query($check_barcode_duplicate);
+                    if($check_barcode_duplicate_res->num_rows>0){
+                        $randomizedagain = str_shuffle($characters);
+                        $randomizedagain = substr($randomizedagain, 0, 15);
+                        $barcode = $randomizedagain;
+                    } else {
+                        $barcode = $randomized;
+                    }
+                }
+                
+                
+                $insert_to_product = "INSERT INTO product (name, code, supplier_code, barcode, `image`, models, unit_id, brand_id, category_id, active) VALUES ('$product_name', '$product_code', '$supplier_code', '$barcode', '$fileName', '$models', '$unit', '$brand', '$category', '1')";
+                if($conn->query($insert_to_product) === TRUE){
+                    // Get the ID of the inserted data
+                    $product_table_id = $conn->insert_id;
+                } else {
+                    $response = array("error" => "Product cant be inserted" . $conn-> error());
                 }
             }
             
-            
-            $insert_to_product = "INSERT INTO product (name, code, supplier_code, barcode, `image`, models, unit_id, brand_id, category_id, active) VALUES ('$product_name', '$product_code', '$supplier_code', '$barcode', '$fileName', '$models', '$unit', '$brand', '$category', '1')";
-            if($conn->query($insert_to_product) === TRUE){
-                // Get the ID of the inserted data
-                $inserted_product_id = $conn->insert_id;
-            } else {
-                $response = array("error" => "Product cant be inserted" . $conn-> error());
-            }
         }   
-        $product_id = $inserted_product_id; // For example, you can access them using $_POST['fieldname']
+        $product_id = $product_table_id; // For example, you can access them using $_POST['fieldname']
     }
     $original_price = $_POST["original_price"];
     $price = $_POST["price"];
