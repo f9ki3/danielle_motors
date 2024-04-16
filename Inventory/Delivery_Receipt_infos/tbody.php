@@ -1,4 +1,4 @@
-<<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     function handleLinkClick(event, endpoint) {
         event.preventDefault(); // Prevent the default behavior of the link (page reload)
@@ -9,8 +9,9 @@
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    console.log("Server Response:", xhr.responseText);
-                    handleServerResponse(xhr.responseText);
+                    var response = xhr.responseText.trim(); // Trim whitespace from the response
+                    console.log("Server Response:", response);
+                    handleServerResponse(response);
                 } else {
                     console.error("Request failed:", xhr.status);
                     showAlert("Error", "Failed to make request. Please try again later.");

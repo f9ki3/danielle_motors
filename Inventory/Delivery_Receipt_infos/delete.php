@@ -1,5 +1,6 @@
 <?php 
 require_once "../../database/database.php";
+
 if(isset($_GET['id'])) {
     $drc_id = $_GET['id'];
     // Sanitize input to prevent SQL injection
