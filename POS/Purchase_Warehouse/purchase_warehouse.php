@@ -30,7 +30,8 @@ $query = 'SELECT
         category c ON p.category_id = c.id
         JOIN 
         unit u ON p.unit_id = u.id
-        LEFT JOIN 
+        -- LEFT JOIN 
+        JOIN
         stocks s ON p.id = s.product_id -- Assuming p.id refers to product_id in stocks table
         WHERE 
         s.branch_code = ? -- Filter by branch_code
