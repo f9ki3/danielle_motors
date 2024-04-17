@@ -338,7 +338,8 @@ function updateCounter(count) {
                     <td scope="row">${item.models}</td>
                     <td>${item.brandName}</td>
                     <td>${item.unitName}</td>
-                    <td>${item.totalStocks}</td>
+                    // <td>${item.totalStocks}</td>
+                    <td></td>
                     <td>₱ ${item.srp}</td>
                     <td>
                         
