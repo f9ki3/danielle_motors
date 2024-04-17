@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "No models selected.";
             }
             // Check for duplicate product entry
-            $check_product_Table_duplicate_sql = "SELECT id FROM product WHERE name = '$product_name' AND brand_id = '$brand'  AND category_id = '$category' AND unit_id = '$unit'  AND models = '' LIMIT 1";
+            $check_product_Table_duplicate_sql = "SELECT id FROM product WHERE name = '$product_name' AND brand_id = '$brand'  AND category_id = '$category' AND unit_id = '$unit'  AND models = '$models' LIMIT 1";
             $check_product_Table_duplicate_res = $conn -> query($check_product_Table_duplicate_sql);
             if($check_product_Table_duplicate_res->num_rows>0){
                 $product_table_row = $check_product_Table_duplicate_res->fetch_assoc();
