@@ -140,7 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Insert data into delivery receipt content
         $insert_sql = "INSERT INTO delivery_receipt_content (delivery_receipt_id, product_id, orig_price, price, discount, quantity, total) VALUES ('$dr_id', '$product_id', '$original_price', '$price', '$discount', '$total_qty', '$total')";
         if ($conn->query($insert_sql) === TRUE) {
-            $response = array("success" => "Data inserted successfully");
+            
         } else {
             $response = array("error" => "Error: " . $conn->error);
         }
@@ -157,7 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Update pricelist if original price is greater
             $update_pricelist = "UPDATE price_list SET dealer = '$original_price', srp = '$original_price' WHERE id = '$pricelist_id'";
             if($conn->query($update_pricelist)=== TRUE){
-                $response = array("success" => "Data inserted successfully");
+
             } else {
                 $response = array("error" => "Error: " . $conn->error);
             }
@@ -166,7 +166,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Insert new pricelist entry
         $insert_to_pricelist_sql = "INSERT INTO price_list SET product_id = '$product_id', dealer = '$original_price', srp='$original_price', publish_by = '$user_id'";
         if($conn->query($insert_to_pricelist_sql) === TRUE){
-            $response = array("success" => "Data inserted successfully");
+
         } else {
             $response = array("error" => "Error: " . $conn->error);
         }
