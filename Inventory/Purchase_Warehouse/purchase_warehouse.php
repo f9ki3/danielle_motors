@@ -82,7 +82,7 @@ while ($stmt->fetch()) {
                 \''.$unit_name.'\', 
                 \''.$models.'\', 
                 \''.$srp.'\', 
-                \''.0.'\'
+                \''.$total_stocks.'\'
                 )"><span class="fas fa-cart-plus "></span></button>
     </td>
 
