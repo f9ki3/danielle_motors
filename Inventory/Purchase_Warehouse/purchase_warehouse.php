@@ -59,20 +59,20 @@ while ($stmt->fetch()) {
     <td class="product align-middle ">₱ ' . number_format($srp, 2, '.', ',') . '</td>
     <td class="product align-middle ">';
 
-    if($total_stocks == 0){
-        echo '<span class="badge badge-phoenix badge-phoenix-danger"> No Stocks</span>';
-    } else {
+    // if($total_stocks == 0){
+    //     echo '<span class="badge badge-phoenix badge-phoenix-danger"> No Stocks</span>';
+    // } else {
         echo '<span class="badge badge-phoenix badge-phoenix-success">Available (' . $total_stocks . ')</span>';
-    }
+    // }
 
     echo '</td>
     <td class="text-center align-middle text-end pe-0 ps-4 btn-reveal-trigger">
         <button class="btn me-3 btn-primary rounded rounded rounded-5 m-0 p-2" ';
-        if($total_stocks == 0){
-            echo 'disabled';
-        } else {
+        // if($total_stocks == 0){
+        //     echo 'disabled';
+        // } else {
             echo 'enabled';
-        }
+        // }
         echo ' onclick="addToCart(
                 \''.$product_id.'\', 
                 \''.$image.'\', 
