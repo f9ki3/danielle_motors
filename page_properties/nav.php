@@ -264,6 +264,21 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
         </li>
         <?php 
         }
+          ?>
+          <!-- Reports -->
+          <li class="nav-item">
+            <p class="navbar-vertical-label">Purchased Warehouse</p>
+            <hr class="navbar-vertical-line" />
+            <div class="nav-item-wrapper">
+              <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> active label-1" href="starter.html" role="button" data-bs-toggle="" aria-expanded="false">
+                <div class="d-flex align-items-center">
+                  <span class="nav-link-icon"><span data-feather="compass"></span></span>
+                  <span class="nav-link-text-wrapper"><span class="nav-link-text">test</span></span>
+                </div>
+              </a>
+            </div>
+          </li>
+          <?php 
         if(strpos($session_permission, 'VIEW SUPPLIER AND PRODUCTS') !== false) {
         ?>
         <li class="nav-item">
