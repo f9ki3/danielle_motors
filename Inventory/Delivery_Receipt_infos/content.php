@@ -115,47 +115,11 @@
                                 <div class="col-lg-12 mb-2">
                                     <input class="form-control datetimepicker" id="expiration_date" name="expiration_date" type="text" placeholder="Expiration date(if applicable)" data-options='{"disableMobile":true,"dateFormat":"Y-m-d"}' />
                                 </div>
-                                <hr class="mb-2">
-                                <h5 class="mb-3 card-title">Where to store</h5>
-                                <div class="row">
-                                    <div class="col-lg-6 mb-2">
-                                        <div class="form-floating">
-                                            <select name="rack[]"  id="rack[]" class="form-select mb-2" required>
-                                                <option value=""></option>
-                                                <?php 
-                                                $defwareloc_sql = "SELECT id, location_name FROM ware_location WHERE status = '1'";
-                                                $defwareloc_res = $conn->query($defwareloc_sql);
-                                                if($defwareloc_res->num_rows>0){
-                                                    while($row=$defwareloc_res->fetch_assoc()){
-                                                        $defwr_id = $row['id'];
-                                                        $defloc_name = $row['location_name'];
-                                                ?>
-                                                <option value="<?php echo $defloc_name;?>"><?php echo $defloc_name; ?></option>
-                                                <?php 
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
-                                            <label for="rack[]">Location</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 mb-2">
-                                        <div class="form-floating">
-                                            <input type="number" class="form-control" name="qty[]" id="qty[]" min="1">
-                                            <label for="">Quantity</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="dynamicLocations" class="row">
-                                
-                                <!-- Dynamic locations will be added here -->
-                                </div>
 
                             </div>
                         
                     </div>
                     <div class="card-footer">
-                        <button type="button" id="new_location" class="btn btn-primary"><span class="fas fa-plus"></span> location</button>
                         <button type="button" id="submitForm" class="btn btn-success">Submit</button>
                         </form>
                     </div>
@@ -282,47 +246,11 @@
                                 <div class="col-lg-12 mb-2">
                                     <input class="form-control datetimepicker" id="expiration_date" name="expiration_date" type="text" placeholder="Expiration date(if applicable)" data-options='{"disableMobile":true,"dateFormat":"Y-m-d"}' />
                                 </div>
-                                <hr class="mb-2">
-                                <h5 class="mb-3 card-title">Where to store</h5>
-                                <div class="row">
-                                    <div class="col-lg-6 mb-2">
-                                        <div class="form-floating">
-                                            <select name="rack[]"  id="rack[]" class="form-select mb-2" required>
-                                                <option value=""></option>
-                                                <?php 
-                                                $defwareloc_sql = "SELECT id, location_name FROM ware_location WHERE status = '1'";
-                                                $defwareloc_res = $conn->query($defwareloc_sql);
-                                                if($defwareloc_res->num_rows>0){
-                                                    while($row=$defwareloc_res->fetch_assoc()){
-                                                        $defwr_id = $row['id'];
-                                                        $defloc_name = $row['location_name'];
-                                                ?>
-                                                <option value="<?php echo $defloc_name?>"><?php echo $defloc_name; ?></option>
-                                                <?php 
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
-                                            <label for="rack[]">Location</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 mb-2">
-                                        <div class="form-floating">
-                                            <input type="number" class="form-control" name="qty[]" id="qty[]" min="1">
-                                            <label for="">Quantity</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="dynamicLocations" class="row">
                                 
-                                <!-- Dynamic locations will be added here -->
-                                </div>
-
                             </div>
                         
                     </div>
                     <div class="card-footer">
-                        <button type="button" id="new_location" class="btn btn-primary"><span class="fas fa-plus"></span> location</button>
                         <button type="submit" id="submitForm_2" class="btn btn-success">Submit</button>
                         </form>
                     </div>
