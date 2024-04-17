@@ -273,7 +273,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
               <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> active label-1" href="starter.html" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
                   <span class="nav-link-icon"><span data-feather="compass"></span></span>
-                  <span class="nav-link-text-wrapper"><span class="nav-link-text">Starter</span></span>
+                  <span class="nav-link-text-wrapper"><span class="nav-link-text">test</span></span>
                 </div>
               </a>
             </div>
