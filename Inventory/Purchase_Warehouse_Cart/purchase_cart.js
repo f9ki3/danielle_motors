@@ -341,6 +341,8 @@ function updateCounter(count) {
                     <td>${item.totalStocks}</td>
                     <td>₱ ${item.srp}</td>
                     <td>
+                        
+                        //prevent to exceed to totalStocks
                         // <div class="btn-group" role="group" aria-label="Basic example">
                         //     <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty - 1}, ${item.totalStocks})">-</button>
                         //     <input type="number" class="form-control w-75 text-center" value="${item.qty}" onchange="updateQuantity(${index}, this.value, ${item.totalStocks})" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(parseFloat(this.value) < 0) this.value = 1; if(parseFloat(this.value) > ${item.totalStocks}) this.value = ${item.totalStocks};" maxlength="7">
@@ -349,11 +351,11 @@ function updateCounter(count) {
 
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty - 1})">-</button>
-                            <input type="number" class="form-control w-75 text-center" value="${item.qty}" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(parseFloat(this.value) < 0) this.value = 1;" maxlength="7">
+                            <input type="number" class="form-control w-75 text-center" value="${item.qty}" onchange="updateQuantity(${index}, this.value)" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(parseFloat(this.value) < 0) this.value = 1;" maxlength="7">
                             <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty + 1})">+</button>
                         </div>
 
-
+                
                     </td>
                     <td>
                         <div class="input-group">
@@ -463,8 +465,8 @@ function updateCounter(count) {
     }
 
 
-    
-   // Function to update the quantity of an item in the cart
+//prevent to exceed to totalStocks    
+//    // Function to update the quantity of an item in the cart
 //    function updateQuantity(index, newQuantity, totalStocks) {
 //     var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
 //     // Create an audio element
@@ -495,7 +497,7 @@ function updateCounter(count) {
 //     updateSubtotal();
 // }
 
-// Function to update the quantity of an item in the cart
+//new without qty validation
 function updateQuantity(index, newQuantity) {
     var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
     // Create an audio element
