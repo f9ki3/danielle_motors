@@ -264,7 +264,6 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
         </li>
         <?php 
         }
-        if(strpos($session_permission, 'VIEW REPORTS') !== false) {
           ?>
           <!-- Reports -->
           <li class="nav-item">
@@ -280,7 +279,6 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
             </div>
           </li>
           <?php 
-          }
         if(strpos($session_permission, 'VIEW SUPPLIER AND PRODUCTS') !== false) {
         ?>
         <li class="nav-item">
