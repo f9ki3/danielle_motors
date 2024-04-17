@@ -480,6 +480,12 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
   </div>
 </nav>
 
+
+
+
+
+
+
 <nav class="navbar navbar-top fixed-top navbar-expand" id="navbarDefault" style="display:none;">
   <div class="collapse navbar-collapse justify-content-between">
     <div class="navbar-logo">
@@ -1220,7 +1226,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
       <li class="nav-item dropdown"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-toggle lh-1" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false"><span class="uil fs-0 me-2 uil-files-landscapes-alt"></span>Pages</a>
         <ul class="dropdown-menu navbar-dropdown-caret">
           <li><a class="dropdown-item active" href="starter.html">
-              <div class="dropdown-item-wrapper"><span class="me-2 uil" data-feather="compass"></span>Sample</div>
+              <div class="dropdown-item-wrapper"><span class="me-2 uil" data-feather="compass"></span>Starter</div>
             </a></li>
           <li class="dropdown"><a class="dropdown-item dropdown-toggle" id="faq" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">
               <div class="dropdown-item-wrapper"><span class="uil fs-0 uil-angle-right lh-1 dropdown-indicator-icon"></span><span><span class="me-2 uil" data-feather="help-circle"></span>Faq</span></div>
