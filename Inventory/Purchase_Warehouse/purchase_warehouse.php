@@ -60,9 +60,9 @@ while ($stmt->fetch()) {
     <td class="product align-middle ">';
 
     // if($total_stocks == 0){
-        echo '<span class="badge badge-phoenix badge-phoenix-danger"> No Stocks</span>';
+    //     echo '<span class="badge badge-phoenix badge-phoenix-danger"> No Stocks</span>';
     // } else {
-    //     echo '<span class="badge badge-phoenix badge-phoenix-success">Available (' . $total_stocks . ')</span>';
+        echo '<span class="badge badge-phoenix badge-phoenix-success">Available (' . $total_stocks . ')</span>';
     // }
 
     echo '</td>
