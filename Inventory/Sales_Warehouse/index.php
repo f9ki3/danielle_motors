@@ -14,7 +14,7 @@ date_default_timezone_set('Asia/Manila');
     <!-- ===============================================-->
     <main class="main" id="top">
       <!-- navigation -->
-      <?php include "../../page_properties/navb.php";?>
+      <?php include "../../page_properties/nav.php";?>
       <!-- /navigation -->
       <div class="content bg-white">
         <?php 
