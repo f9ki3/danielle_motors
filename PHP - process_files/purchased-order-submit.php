@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             
         }
-            header("Location: ../Inventory/Purchased-Order-supplier/?error=success");
+            header("Location: ../Inventory/Purchased-Order-Supplier/?error=success");
             $conn->close();
             exit();
     }else {
