@@ -350,12 +350,10 @@ function updateCounter(count) {
                         // uncomment this
 
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <div class="btn-group" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty - 1})">-</button>
-                            <input type="number" class="form-control w-75 text-center" value="${item.qty}" onchange="updateQuantity(${index}, this.value, ${item.totalStocks})" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(parseFloat(this.value) < 1) this.value = 1;" maxlength="7">
+                            <input type="number" class="form-control w-75 text-center" value="${item.qty}" onchange="updateQuantity(${index})" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(parseFloat(this.value) < 0) this.value = 1; " maxlength="7">
                             <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty + 1})">+</button>
                         </div>
-                    
                 
                     </td>
                     <td>
