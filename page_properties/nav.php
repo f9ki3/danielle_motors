@@ -246,6 +246,26 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           }
           ?>
         </li>
+        <!-- Sales and Transactions -->
+        <li class="nav-item">
+            <p class="navbar-vertical-label">Sales and Transactions</p>
+            <hr class="navbar-vertical-line" />
+            <div class="nav-item-wrapper">
+              <a class="nav-link <?php if($current_folder === "Purchase_Warehouse" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Purchase_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+                <div class="d-flex align-items-center">
+                  <span class="nav-link-icon"><span data-feather="shopping-cart"></span></span>
+                  <span class="nav-link-text-wrapper"><span class="nav-link-text">Purchase Warehouse</span></span>
+                </div>
+              </a>
+              <a class="nav-link <?php if($current_folder === "Sales_Warehouse" || $current_folder === "Sales_Warehouse_Walkin_Receipt" || $current_folder === "Sales_Warehouse_Delivery" || $current_folder === "Sales_Warehouse_Walkin_Receipt"){ echo "active"; } else { echo "";}?>  label-1" href="../Sales_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+                <div class="d-flex align-items-center">
+                  <span class="nav-link-icon"><span data-feather="activity"></span></span>
+                  <span class="nav-link-text-wrapper"><span class="nav-link-text">Purchase Sales</span></span>
+                </div>
+              </a>
+            </div>
+          </li>
+
         <?php 
         if(strpos($session_permission, 'VIEW REPORTS') !== false) {
         ?>
@@ -254,7 +274,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           <p class="navbar-vertical-label">Reports</p>
           <hr class="navbar-vertical-line" />
           <div class="nav-item-wrapper">
-            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> active label-1" href="starter.html" role="button" data-bs-toggle="" aria-expanded="false">
+            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="starter.html" role="button" data-bs-toggle="" aria-expanded="false">
               <div class="d-flex align-items-center">
                 <span class="nav-link-icon"><span data-feather="compass"></span></span>
                 <span class="nav-link-text-wrapper"><span class="nav-link-text">Starter</span></span>
@@ -265,19 +285,6 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
         <?php 
         }
           ?>
-          <!-- Reports -->
-          <li class="nav-item">
-            <p class="navbar-vertical-label">Purchased Warehouse</p>
-            <hr class="navbar-vertical-line" />
-            <div class="nav-item-wrapper">
-              <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> active label-1" href="starter.html" role="button" data-bs-toggle="" aria-expanded="false">
-                <div class="d-flex align-items-center">
-                  <span class="nav-link-icon"><span data-feather="compass"></span></span>
-                  <span class="nav-link-text-wrapper"><span class="nav-link-text">test</span></span>
-                </div>
-              </a>
-            </div>
-          </li>
           <?php 
         if(strpos($session_permission, 'VIEW SUPPLIER AND PRODUCTS') !== false) {
         ?>
