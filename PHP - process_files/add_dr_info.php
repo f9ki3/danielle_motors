@@ -153,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pl_row = $check_pricelist_res->fetch_assoc();
         $pricelist_id = $pl_row['id'];
         $srp = $pl_row['dealer'];
-        if($srp<$original_price){
+        if($srp<=$original_price){
             // Update pricelist if original price is greater
             $update_pricelist = "UPDATE price_list SET dealer = '$original_price', srp = '$original_price' WHERE id = '$pricelist_id'";
             if($conn->query($update_pricelist)=== TRUE){
