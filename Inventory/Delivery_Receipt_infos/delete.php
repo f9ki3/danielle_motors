@@ -8,10 +8,18 @@ if(isset($_GET['id'])) {
     $delete_sql = "DELETE FROM delivery_receipt_content WHERE id = '$drc_id'";
     if(mysqli_query($conn, $delete_sql)) {
         echo "Record deleted successfully";
+        $conn->close();
+        exit;
     } else {
         echo "Error deleting record: " . mysqli_error($conn);
+        $conn->close();
+        exit;
     }
 } else {
     echo "ID parameter not provided";
+    $conn->close();
+    exit;
 }
+$conn->close();
+exit;
 ?>
