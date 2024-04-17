@@ -6,7 +6,7 @@ date_default_timezone_set('Asia/Manila');
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 
- <?php include "../../page_properties/header.php" ?>
+ <?php include "../../page_properties/header_pos.php" ?>
 
   <body>
     <!-- ===============================================-->
@@ -14,7 +14,7 @@ date_default_timezone_set('Asia/Manila');
     <!-- ===============================================-->
     <main class="main" id="top">
       <!-- navigation -->
-      <?php include "../../page_properties/nav.php";?>
+      <?php include "../../page_properties/navb.php";?>
       <!-- /navigation -->
       <div class="content bg-white">
         <?php 
@@ -68,6 +68,7 @@ date_default_timezone_set('Asia/Manila');
           reloadSpinner();
 
     </script>
+    
   </body>
 
 
