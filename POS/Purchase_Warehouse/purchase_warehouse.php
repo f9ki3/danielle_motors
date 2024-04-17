@@ -32,15 +32,15 @@ $query = 'SELECT
         unit u ON p.unit_id = u.id
         LEFT JOIN 
         stocks s ON p.id = s.product_id -- Assuming p.id refers to product_id in stocks table
-        -- WHERE 
-        -- s.branch_code = ? -- Filter by branch_code
+        WHERE 
+        s.branch_code = ? -- Filter by branch_code
         GROUP BY 
         pl.product_id -- Group by product_id
         ORDER BY 
         price_list_id DESC';
 
 $stmt = $conn->prepare($query);
-$branch_code = 'WAREHOUSE'; // Assuming WAREHOUSE is the branch code
+$branch_code = 'DMP -000'; // Assuming WAREHOUSE is the branch code
 $stmt->bind_param('s', $branch_code); // Bind parameter
 $stmt->execute();
 $stmt->bind_result($price_list_id, $pl_product_id, $dealer, $wholesale, $srp, $product_id, $product_name, $product_code, $supplier_code, $barcode, $image, $models, $unit_id, $unit_name, $brand_id, $brand_name, $category_id, $category_name, $total_stocks, $pending_order);
