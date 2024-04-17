@@ -156,50 +156,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if($srp<$original_price){
             // Update pricelist if original price is greater
             $update_pricelist = "UPDATE price_list SET dealer = '$original_price', srp = '$original_price' WHERE id = '$pricelist_id'";
-            $conn->query($update_pricelist);
+            if($conn->query($update_pricelist)=== TRUE){
+                $response = array("success" => "Data inserted successfully");
+            } else {
+                $response = array("error" => "Error: " . $conn->error);
+            }
         } 
     } else {
         // Insert new pricelist entry
         $insert_to_pricelist_sql = "INSERT INTO price_list SET product_id = '$product_id', dealer = '$original_price', srp='$original_price', publish_by = '$user_id'";
-        $conn->query($insert_to_pricelist_sql);
-    }
-
-    // Check if rack and qty arrays are set in the POST data
-    if (isset($_POST['rack']) && isset($_POST['qty'])) {
-        // Loop through each selected rack and corresponding quantity
-        for ($i = 0; $i < count($_POST['rack']); $i++) {
-            // Sanitize input to prevent SQL injection (you should use prepared statements instead)
-            $rack_id = $_POST['rack'][$i];
-            $qty = $_POST['qty'][$i];
-
-            // check if product exist on the branch
-            $check_stock_duplicate_sql = "SELECT id, rack_loc_id FROM stocks WHERE product_id = '$product_id' AND branch_code = '$branch_code'";
-            $check_stock_duplicate_res = $conn->query($check_stock_duplicate_sql);
-            if($check_stock_duplicate_res->num_rows>0){
-                $stock_row = $check_stock_duplicate_res->fetch_assoc();
-                $stock_id = $stock_row['id'];
-                $new_location = $stock_row['rack_loc_id'] . ", " . $rack_id;
-
-                $update_stocks = "UPDATE stocks SET rack_loc_id = '$new_location' WHERE id = '$stock_id'";
-                if($conn->query($update_stocks)===TRUE){
-                    $response = array("success" => "Data inserted successfully");
-                } else {
-                    $response = array("error" => "Error: " . $conn->error);
-                }
-            } else {
-                // Insert data into stocks table
-                $insert_to_stocks = "INSERT INTO stocks (product_id, rack_loc_id, expiration_date, stocks, date_added, publish_by, branch_code) VALUES ('$product_id', '$rack_id', '$expiration_date', '$qty', '$currentDateTime', '$user_id', '$branch_code')";
-                if($conn->query($insert_to_stocks) === TRUE ){
-                    $response = array("success" => "Data inserted successfully");
-                } else {
-                    $response = array("error" => "Error: " . $conn->error);
-                }
-            }
-            
+        if($conn->query($insert_to_pricelist_sql) === TRUE){
+            $response = array("success" => "Data inserted successfully");
+        } else {
+            $response = array("error" => "Error: " . $conn->error);
         }
-    } else {
-        echo "Rack or quantity data not received.";
     }
+
+    
 
     // Check for duplicate entry in supplier product table
     $check_supplier_product_duplicate_sql = "SELECT id FROM supplier_product WHERE product_id = '$product_id' AND supplier_id = '$supplier_id' LIMIT 1";
@@ -210,7 +183,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Insert data into supplier product table
         $insert_to_supplier_products = "INSERT INTO supplier_product (date_added, product_id, supplier_code, orig_price, price, discount, `status`, supplier_id) VALUES ('$currentDateTime', '$product_id', '$supplier_code', '$original_price', '$price', '$discount', '1', '$supplier_id')";
         if($conn->query($insert_to_supplier_products) === TRUE ){
-
+            $response = array("success" => "Data inserted successfully");
         } else {
             $response = array("error" => "Error: " . $conn->error);
         }
