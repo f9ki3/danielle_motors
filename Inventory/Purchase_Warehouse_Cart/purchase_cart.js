@@ -341,7 +341,6 @@ function updateCounter(count) {
                     <td>${item.totalStocks}</td>
                     <td>₱ ${item.srp}</td>
                     <td>
-                    
 
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty - 1})">-</button>
