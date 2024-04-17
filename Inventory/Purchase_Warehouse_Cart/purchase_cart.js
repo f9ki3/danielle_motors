@@ -341,12 +341,18 @@ function updateCounter(count) {
                     <td>${item.totalStocks}</td>
                     <td>₱ ${item.srp}</td>
                     <td>
+                        // <div class="btn-group" role="group" aria-label="Basic example">
+                        //     <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty - 1}, ${item.totalStocks})">-</button>
+                        //     <input type="number" class="form-control w-75 text-center" value="${item.qty}" onchange="updateQuantity(${index}, this.value, ${item.totalStocks})" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(parseFloat(this.value) < 0) this.value = 1; if(parseFloat(this.value) > ${item.totalStocks}) this.value = ${item.totalStocks};" maxlength="7">
+                        //     <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty + 1}, ${item.totalStocks})">+</button>
+                        // </div>
+
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty - 1}, ${item.totalStocks})">-</button>
-                            <input type="number" class="form-control w-75 text-center" value="${item.qty}" onchange="updateQuantity(${index}, this.value, ${item.totalStocks})" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(parseFloat(this.value) < 0) this.value = 1; if(parseFloat(this.value) > ${item.totalStocks}) this.value = ${item.totalStocks};" maxlength="7">
+                            <input type="number" class="form-control w-75 text-center" value="${item.qty}" onchange="updateQuantity(${index}, this.value, ${item.totalStocks})" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(parseFloat(this.value) < 0) this.value = 1;" maxlength="7">
                             <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty + 1}, ${item.totalStocks})">+</button>
                         </div>
-                
+
                     </td>
                     <td>
                         <div class="input-group">
