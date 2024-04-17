@@ -13,7 +13,7 @@
 // $dbname = "u680032315_dmp_db";   // We will be using FTP and GitAccess
 
 $servername = "localhost";
-$username = "root"; 
+$username = "u680032315_dmp"; 
 $password = "Dmpoffice2023"; 
 $dbname = "u680032315_dmp_db";
 // =======
