@@ -46,31 +46,32 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
             <p class="navbar-vertical-label">Purchasing </p>
             <hr class="navbar-vertical-line" />
             <div class="nav-item-wrapper">
-              <a class="nav-link <?php if($current_folder === "Purchase_Warehouse" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Purchase_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+            <a class="nav-link label-1 <?php echo ($current_folder === "Dashboard") ? 'active' : ''; ?>" href="../Dashboard" role="button" aria-expanded="false">
                 <div class="d-flex align-items-center">
-                  <span class="nav-link-icon"><span data-feather="shopping-cart"></span></span>
-                  <span class="nav-link-text-wrapper"><span class="nav-link-text">Dashboard</span></span>
+                    <span class="nav-link-icon"><span data-feather="bar-chart-2"></span></span>
+                    <span class="nav-link-text-wrapper"><span class="nav-link-text">Dashboard</span></span>
                 </div>
-              </a>
-              <a class="nav-link <?php if($current_folder === "Purchase_Warehouse" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Purchase_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+            </a>
+            <a class="nav-link label-1 <?php echo ($current_folder === "Purchase_Warehouse") ? 'active' : ''; ?>" href="../Purchase_Warehouse" role="button" aria-expanded="false">
                 <div class="d-flex align-items-center">
-                  <span class="nav-link-icon"><span data-feather="shopping-cart"></span></span>
-                  <span class="nav-link-text-wrapper"><span class="nav-link-text">Store Purchase</span></span>
+                    <span class="nav-link-icon"><span data-feather="shopping-cart"></span></span>
+                    <span class="nav-link-text-wrapper"><span class="nav-link-text">Store Purchase</span></span>
                 </div>
-              </a>
-              <a class="nav-link <?php if($current_folder === "Sales_Warehouse" || $current_folder === "Sales_Warehouse_Walkin_Receipt" || $current_folder === "Sales_Warehouse_Delivery" || $current_folder === "Sales_Warehouse_Walkin_Receipt"){ echo "active"; } else { echo "";}?>  label-1" href="../Sales_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+            </a>
+            <a class="nav-link label-1 <?php echo ($current_folder === "Online_Purchase") ? 'active' : ''; ?>" href="../Online_Purchase" role="button" aria-expanded="false">
                 <div class="d-flex align-items-center">
-                  <span class="nav-link-icon"><span data-feather="activity"></span></span>
-                  <span class="nav-link-text-wrapper"><span class="nav-link-text">Online Purchase</span></span>
+                    <span class="nav-link-icon"><span data-feather="globe"></span></span>
+                    <span class="nav-link-text-wrapper"><span class="nav-link-text">Online Purchase</span></span>
                 </div>
-              </a>
-              <a class="nav-link <?php if($current_folder === "Sales_Warehouse" || $current_folder === "Sales_Warehouse_Walkin_Receipt" || $current_folder === "Sales_Warehouse_Delivery" || $current_folder === "Sales_Warehouse_Walkin_Receipt"){ echo "active"; } else { echo "";}?>  label-1" href="../Sales_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+            </a>
+            <a class="nav-link label-1 <?php echo ($current_folder === "Purchase_with_Terms") ? 'active' : ''; ?>" href="../Sales_Warehouse" role="button" aria-expanded="false">
                 <div class="d-flex align-items-center">
-                  <span class="nav-link-icon"><span data-feather="activity"></span></span>
-                  <span class="nav-link-text-wrapper"><span class="nav-link-text">Purchase with Terms</span></span>
+                    <span class="nav-link-icon"><span data-feather="file"></span></span>
+                    <span class="nav-link-text-wrapper"><span class="nav-link-text">Purchase with Terms</span></span>
                 </div>
-              </a>
-            </div>
+            </a>
+        </div>
+
           </li>
 
           <!-- Sales and Transactions -->
@@ -78,15 +79,15 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
             <p class="navbar-vertical-label">Store Sales</p>
             <hr class="navbar-vertical-line" />
             <div class="nav-item-wrapper">
-              <a class="nav-link <?php if($current_folder === "Purchase_Warehouse" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Purchase_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+              <a class="nav-link <?php if($current_folder === "Sales_Warehouse" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Sales_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
-                  <span class="nav-link-icon"><span data-feather="shopping-cart"></span></span>
+                  <span class="nav-link-icon"><span data-feather="dollar-sign"></span></span>
                   <span class="nav-link-text-wrapper"><span class="nav-link-text">Store Sales</span></span>
                 </div>
               </a>
-              <a class="nav-link <?php if($current_folder === "Purchase_Warehouse" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Purchase_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+              <a class="nav-link <?php if($current_folder === "Store_Reports" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Purchase_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
-                  <span class="nav-link-icon"><span data-feather="shopping-cart"></span></span>
+                  <span class="nav-link-icon"><span data-feather="trending-up"></span></span>
                   <span class="nav-link-text-wrapper"><span class="nav-link-text">Store Reports</span></span>
                 </div>
               </a>
@@ -98,19 +99,18 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
             <p class="navbar-vertical-label">Return and Request</p>
             <hr class="navbar-vertical-line" />
             <div class="nav-item-wrapper">
-              <a class="nav-link <?php if($current_folder === "Purchase_Warehouse" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Purchase_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+              <a class="nav-link <?php if($current_folder === "Return_Product" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Purchase_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
-                  <span class="nav-link-icon"><span data-feather="shopping-cart"></span></span>
+                  <span class="nav-link-icon"><span data-feather="corner-right-up"></span></span>
                   <span class="nav-link-text-wrapper"><span class="nav-link-text">Return Product</span></span>
                 </div>
               </a>
-              <a class="nav-link <?php if($current_folder === "Purchase_Warehouse" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Purchase_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+              <a class="nav-link <?php if($current_folder === "Material_Transfer" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Purchase_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
-                  <span class="nav-link-icon"><span data-feather="shopping-cart"></span></span>
+                  <span class="nav-link-icon"><span data-feather="truck"></span></span>
                   <span class="nav-link-text-wrapper"><span class="nav-link-text">Material Transfer</span></span>
                 </div>
               </a>
-              
             </div>
           </li>
           <!-- Maintenance -->
@@ -118,15 +118,15 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
             <p class="navbar-vertical-label">Maintenance</p>
             <hr class="navbar-vertical-line" />
             <div class="nav-item-wrapper">
-              <a class="nav-link <?php if($current_folder === "Purchase_Warehouse" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Purchase_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+              <a class="nav-link <?php if($current_folder === "Manage_Product" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Purchase_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
-                  <span class="nav-link-icon"><span data-feather="shopping-cart"></span></span>
+                  <span class="nav-link-icon"><span data-feather="box"></span></span>
                   <span class="nav-link-text-wrapper"><span class="nav-link-text">Manage Product</span></span>
                 </div>
               </a>
-              <a class="nav-link <?php if($current_folder === "Purchase_Warehouse" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Purchase_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+              <a class="nav-link <?php if($current_folder === "Manage_Branch" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Purchase_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
-                  <span class="nav-link-icon"><span data-feather="shopping-cart"></span></span>
+                  <span class="nav-link-icon"><span data-feather="archive"></span></span>
                   <span class="nav-link-text-wrapper"><span class="nav-link-text">Manage Branch</span></span>
                 </div>
               </a>
