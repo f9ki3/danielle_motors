@@ -485,10 +485,20 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           <?php 
           }
           ?>
+          <!-- Category -->
+          <div class="nav-item-wrapper">
+            <a class="nav-link <?php if($current_folder === "Rack_Maintenance"){ echo "active"; } else { echo "";}?> label-1" href="../../Inventory/Rack_Maintenance/" role="button" data-bs-toggle="" aria-expanded="false">
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon"><span data-feather="life-buoy"></span></span>
+                <span class="nav-link-text-wrapper"><span class="nav-link-text">Rack</span></span>
+              </div>
+            </a>
+          </div>
         </li>
         <?php 
         }
         ?>
+        
       </ul>
     </div>
   </div>
