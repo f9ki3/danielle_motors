@@ -3,7 +3,6 @@ include "../../admin/session.php";
 include "../../database/database.php";
 ?>
 
-<form action="" method="post">
     <div class="table-responsive">
         <table class="table ">
             <thead>
@@ -72,4 +71,8 @@ include "../../database/database.php";
             </tbody>
         </table>
     </div>
-</form>
+
+    <div class="text-end mt-3">
+        <a class="btn btn-primary" type="submit" href="../../PHP - process_files/save_to_stocks.php">Save</a>
+    </div>
+    
