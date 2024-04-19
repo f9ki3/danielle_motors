@@ -97,85 +97,11 @@ date_default_timezone_set('Asia/Manila');
           });
       });
     </script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-          // Get references to the barcode input and product select elements
-          const barcodeInput = document.getElementById('barcodeInput');
-          const productIdSelect = document.getElementById('product_id');
-
-          // Add event listener for input change on barcode input
-          barcodeInput.addEventListener('input', function () {
-              // Get the barcode value
-              const barcodeValue = barcodeInput.value;
-
-              // Make an AJAX request to get the product ID
-              const xhr = new XMLHttpRequest();
-              xhr.onreadystatechange = function () {
-                  if (xhr.readyState === XMLHttpRequest.DONE) {
-                      if (xhr.status === 200) {
-                          // Parse the JSON response
-                          const response = JSON.parse(xhr.responseText);
-                          if (response.product_id) {
-                              // Product found, select the corresponding option in the select element
-                              productIdSelect.value = response.product_id;
-                              document.getElementById('productfoundSound').play();
-                          } else if (response.error && response.error === 'Product not found') {
-                              // Product not found, show a SweetAlert
-                              swal("Product not found", "Enter the barcode again, or manually enter the product data", "error");
-                              // Play the error sound
-                              document.getElementById('errorSound').play();
-                          }
-                      } else {
-                          // Error handling
-                          console.error('Error fetching product ID:', xhr.status);
-                      }
-                  }
-              };
-              xhr.open('POST', 'get_content.php', true);
-              xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-              xhr.send('barcodeInput=' + encodeURIComponent(barcodeValue));
-          });
-      });
-  </script>
+    
 
 
     
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        document.getElementById('submitBtn').addEventListener('click', function (event) {
-            // Prevent the default form submission behavior
-            event.preventDefault();
-            
-            // Create a FormData object from the form
-            var formData = new FormData(document.getElementById('barcodeForm'));
-            
-            // Create an AJAX request
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'action.php', true);
-
-            // Set up the onload event handler
-            xhr.onload = function () {
-                // Check if the request was successful
-                if (xhr.status === 200) {
-                    // Clear input fields
-                    document.getElementById('barcodeForm').reset();
-                    // Set focus to barcode input
-                    document.getElementById('barcodeInput').focus();
-                }
-            };
-
-            // Set up the onerror event handler
-            xhr.onerror = function () {
-                // Handle any errors that occur during the request
-                console.error('Error occurred during AJAX request.');
-            };
-
-            // Send the AJAX request with the form data
-            xhr.send(formData);
-        });
-    });
-    </script>
+   
 
   </body>
 
