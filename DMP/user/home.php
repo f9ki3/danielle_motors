@@ -129,11 +129,16 @@
     </div>
 
     <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <p>Contact us: <a href="tel:+1234567890">+1234567890</a> | <a href="https://www.facebook.com/profile.php?id=61550312534384" target="_blank">Facebook</a> | <a href="https://shopee.ph/daniellemotorparts?is_from_login=true" target="_blank">Shopee</a> | <a href="https://www.google.com/maps/place/Danielle+Motor+Parts/@14.7815018,120.9782232,17z/data=!3m1!4b1!4m6!3m5!1s0x3397ad5d5b6b5e2b:0x22ac9c0bd1bc764c!8m2!3d14.7814966!4d120.9807981!16s%2Fg%2F11k6yrzyn9?entry=ttu" target="_blank">Location</a></p>
-            </div>
-        </footer>
+    <footer class="footer">
+        <div class="container">
+            <p>Contact us: 
+                <a href="tel:+1234567890">+1234567890</a> | 
+                <a href="https://www.facebook.com/profile.php?id=61550312534384" target="_blank">Facebook</a> | 
+                <a href="https://shopee.ph/daniellemotorparts?is_from_login=true" target="_blank">Shopee</a> | 
+                <a href="https://www.google.com/maps/place/Danielle+Motor+Parts/@14.7815018,120.9782232,17z/data=!3m1!4b1!4m6!3m5!1s0x3397ad5d5b6b5e2b:0x22ac9c0bd1bc764c!8m2!3d14.7814966!4d120.9807981!16s%2Fg%2F11k6yrzyn9?entry=ttu" target="_blank">Location</a>
+            </p>
+        </div>
+    </footer>
 
 
     <!-- Bootstrap JavaScript -->

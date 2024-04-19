@@ -9,6 +9,12 @@
         <div class="col-auto">
             <h1>Stocks-in</h1>
         </div>
+        <div class="col-lg-12">
+            <ul class="nav">
+                <li class="nav-item"><a class="nav-link text-dark" aria-current="page" href="#"><b>Existing product stock-in</b></a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="#">New product stock-in</a></li>
+            </ul>
+        </div>
     </div>
     <hr class="my-3">
     <div class="row">
@@ -71,7 +77,7 @@
                                     $product_id_result = $conn->query($product_id_query);
                                     if($product_id_result -> num_rows>0){
                                         while($pid_row = $product_id_result -> fetch_assoc()){
-                                            echo '<option value="' . $pid_row['id'] . '">' . $pid_row['brand_name'] . ' ' . $pid_row['category_name'] . ' ' . $pid_row['product_name'] . ' ' . $pid_row['models'] . '</option>';
+                                            echo '<option value="' . $pid_row['id'] . '">' . $pid_row['id'] . $pid_row['brand_name'] . ' ' . $pid_row['category_name'] . ' ' . $pid_row['product_name'] . ' ' . $pid_row['models'] . '</option>';
                                         }
                                     } else {
                                         echo '<option value="">No Data</option>';
@@ -86,15 +92,18 @@
                                 <select class="form-select" name="rack_id" id="" required>
                                     <option value=""></option>
                                     <?php 
-                                    $location_sql = "SELECT * FROM ware_location WHERE branch_code = '$branch_code'";
-                                    $location_res = $conn -> query($location_sql);
-                                    if($location_res->num_rows>0){
-                                        $loc_row = $location_res -> fetch_assoc();
-                                        $loc_id = $loc_row['id'];
-                                        $location_name = $loc_row['location_name'];
-                                        echo '<option value="' . $loc_id . '">' . $location_name . '</option>';
+                                    $location_sql = "SELECT * FROM ware_location WHERE branch_code = '$branch_code' AND `status`= 1";
+                                    $location_res = $conn->query($location_sql);
+
+                                    if ($location_res->num_rows > 0) {
+                                        while ($loc_row = $location_res->fetch_assoc()) {
+                                            $loc_id = $loc_row['id'];
+                                            $location_name = $loc_row['location_name'];
+                                            echo '<option value="' . $location_name . '">' . $location_name . '</option>';
+                                        }
                                     }
                                     ?>
+
                                 </select>
                                 <label for="">Warehouse Location</label>
                             </div>
@@ -136,10 +145,7 @@
         <div class="col-lg-7">
             <div class="card">
                 <div class="card-header">
-                    <h3>To store in:</h3>
-                    <select class="form-control" name="" id="">
-                        <option value=""></option>
-                    </select>
+                    <h3>Log</h3>
                 </div>
                 <div class="card-body">
                     <div id="stock_in_preview">
@@ -167,3 +173,4 @@
         Your browser does not support the audio element.
     </audio>
 </div>
+

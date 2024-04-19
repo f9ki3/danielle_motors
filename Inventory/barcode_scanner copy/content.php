@@ -42,13 +42,13 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" name="barcodeInput" id="barcodeInput" value="">
+                                <input type="text" class="form-control" name="barcodeInput" id="barcodeInput" value="" required>
                                 <label for="">Barcode</label>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-floating mb-3">
-                                <select class="form-select" id="product_id" name="product_id" >
+                                <select class="form-select" id="product_id" name="product_id" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
                                     <option value="">Select product</option>
                                     <?php
                                     $product_id_query = 'SELECT 
@@ -79,6 +79,10 @@
                                     ?>
                                 </select>
                             </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" name="">
                         </div>
 
                         <div class="col-lg-12">
