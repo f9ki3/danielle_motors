@@ -97,6 +97,50 @@ date_default_timezone_set('Asia/Manila');
           });
       });
     </script>
+
+    <script>
+        $(document).ready(function(){
+            function checkStocksDraft(){
+                $.ajax({
+                    url: '../barcode_scanner/check_stocks_draft.php',
+                    type: 'GET',
+                    dataType: 'text',
+                    success: function(response){
+                        console.log(response);
+                        // Reload the preview if a new row was inserted or deleted
+                        if(response === "A new row was inserted." || response === "A row was deleted.") {
+                            reloadPreview();
+                        }
+                    },
+                    error: function(xhr, status, error){
+                        console.error(xhr.responseText);
+                        console.log("Error occurred while checking stocks draft.");
+                    }
+                });
+            }
+
+            // Function to reload the preview
+            function reloadPreview() {
+                $.ajax({
+                    url: '../barcode_scanner/preview.php',
+                    type: 'GET',
+                    success: function(response){
+                        $('#stock_in_preview').html(response);
+                    },
+                    error: function(xhr, status, error){
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+
+            // Call the function initially
+            reloadPreview();
+
+            // Call the function to check stocks draft initially and then every 5 seconds
+            checkStocksDraft();
+            setInterval(checkStocksDraft, 5000); // 5000 milliseconds = 5 seconds
+        });
+    </script>
     
 
 
