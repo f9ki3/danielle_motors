@@ -1,14 +1,14 @@
-<div id="spinner" style="height: 80vh; display: flex; justify-content: center; align-items: center;">
+<!-- <div id="spinner" style="height: 80vh; display: flex; justify-content: center; align-items: center;"> -->
 <!-- <iframe src="https://giphy.com/embed/3oz8xzJjbG2Etm0f04" width="480" height="270" frameBorder="0" class="giphy-embed rounded rounded-5" allowFullScreen></iframe><p></p> -->
-    <div class="spinner-grow text-primary" role="status">
+    <!-- <div class="spinner-grow text-primary" role="status">
         <span class="visually-hidden">Loading...</span>
     </div>
-</div>
+</div> -->
 
-<div id="content" style="display: none">
+<div id="content" >
     <div class="row g-3 mb-4">
         <div class="col-auto">
-            <h2 class="mb-0">Purchase Warehouse</h2>
+            <h2 class="mb-0">Material Transfer</h2>
         </div>
     </div>
     <div id="products" data-list="{&quot;valueNames&quot;:[&quot;product&quot;,&quot;price&quot;,&quot;category&quot;,&quot;tags&quot;,&quot;vendor&quot;,&quot;unit&quot;, &quot;model&quot;, &quot;status&quot;],&quot;page&quot;:10,&quot;pagination&quot;:true}">
@@ -22,13 +22,8 @@
             </div>
             
             <div class="ms-xxl-auto">
-                <a href="../Purchase_Warehouse" class="btn btn-primary " ><span class="fas fa-plus me-2"></span> Purchase</a>
-                <a href="../Purchase_Warehouse_Cart" class="btn border text-primary border-primary position-relative" >
-                    <span class="fas fa-shopping-cart me-2"></span> Cart
-                    <span class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-circle" id="counter"></span>
-                </a>
-                <a href="../Purchase_Warehouse" class="btn border border-primary text-primary " ><span class="fas fa-plus me-2"></span> Add Product</a>
-
+                <a href="../Purchase_Warehouse" class="btn text-primary border border-primary" ><span class="fas fa-plus me-2"></span> Material Request</a>
+                <a href="../Purchase_Warehouse" class="btn btn-primary " ><span class="fas fa-plus me-2"></span> Stocks</a>
             </div>
             </div>
         </div>
@@ -37,21 +32,16 @@
                 <table class="table mb-0">
                     <thead>
                     <tr>
-                        <th class="sort white-space-nowrap align-middle " style="width: 5%" scope="col">IMG</th>
-                        <th class="sort white-space-nowrap align-middle " style="width: 15%" scope="col" data-sort="product">PRODUCT NAME</th>
-                        <th class="sort align-middle text-start " style="width: 10%" scope="col" data-sort="price">ITEM CODE</th>
-                        <th class="sort align-middle text-start " style="width: 10%" scope="col" data-sort="tags">CATEGORY</th>
-                        <th class="sort align-middle text-start " style="width: 10%" scope="col" data-sort="vendor">BRAND</th>
-                        <th class="sort align-middle text-start " style="width: 5%" scope="col" data-sort="unit">UNIT</th>
-                        <th class="sort align-middle text-start " style="width: 15%" scope="col" data-sort="model">MODEL</th>
-                        <th class="sort align-middle text-start " style="width: 10%" scope="col" data-sort="status">STATUS</th>
-                        <th class="sort align-middle text-start " style="width: 10%" scope="col" data-sort="tags">SRP</th>
-                        <th class="sort align-middle text-start " style="width: 10%" scope="col" data-sort="tags">STOCKS</th>
-                        <th class="sort text-end align-middle" style="width: 10%" scope="col"></th>
+                        <th class="sort white-space-nowrap align-middle " scope="col">INVOICE NUMBER</th>
+                        <th class="sort white-space-nowrap align-middle " scope="col" data-sort="product">DATE OF REQUEST</th>
+                        <th class="sort align-middle text-start " scope="col" data-sort="price">CASHIER NAME</th>
+                        <th class="sort align-middle text-start " scope="col" data-sort="tags">RECEIVED BY</th>
+                        <th class="sort align-middle text-start " scope="col" data-sort="vendor">INSPECTED BY</th>
+                        <th class="sort align-middle text-start " scope="col" data-sort="unit">VERIFIED BY</th>
                     </tr>
                     </thead>
                     <tbody class="list" id="products-table-body">
-                        <?php include 'purchase_warehouse.php'?>
+                        <?php include 'material_request.php'?>
                     </tbody>
                 </table>
             </div>

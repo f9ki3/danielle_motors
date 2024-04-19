@@ -22,8 +22,8 @@
                 </div>
             
                 <div class="ms-xxl-auto">
-                    <a href="../Purchase_Warehouse" class="btn btn-primary"><span class="fas fa-plus me-2"></span> Walkin</a>
-                    <a href="../Purchase_Warehouse_Cart" class="btn border text-primary border-primary position-relative"><span class="fas fa-car-side me-2"></span> Delivery</a>
+                    <a href="../Sales_Warehouse" class="btn btn-primary"><span class="fas fa-plus me-2"></span> Walkin</a>
+                    <a href="../Sales_Warehouse_Delivery" class="btn border text-primary border-primary position-relative"><span class="fas fa-car-side me-2"></span> Delivery</a>
                 </div>
             </div>
         </div>
