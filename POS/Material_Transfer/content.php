@@ -29,15 +29,16 @@
         </div>
         <div class="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-white border-top border-bottom border-200 position-relative top-1">
             <div class="table-responsive scrollbar mx-n1 px-1">
-                <table class="table mb-0">
+                <table class="table table-hover mb-0">
                     <thead>
                     <tr>
-                        <th class="sort white-space-nowrap align-middle " scope="col">INVOICE NUMBER</th>
-                        <th class="sort white-space-nowrap align-middle " scope="col" data-sort="product">DATE OF REQUEST</th>
-                        <th class="sort align-middle text-start " scope="col" data-sort="price">CASHIER NAME</th>
-                        <th class="sort align-middle text-start " scope="col" data-sort="tags">RECEIVED BY</th>
-                        <th class="sort align-middle text-start " scope="col" data-sort="vendor">INSPECTED BY</th>
-                        <th class="sort align-middle text-start " scope="col" data-sort="unit">VERIFIED BY</th>
+                        <th class="sort align-middle " width="15%" scope="col">INVOICE NUMBER</th>
+                        <th class="sort align-middle " width="10%" scope="col" data-sort="product">DATE OF REQUEST</th>
+                        <th class="sort align-middle " width="20%" scope="col" data-sort="price">CASHIER NAME</th>
+                        <th class="sort align-middle " width="20%" scope="col" data-sort="tags">RECEIVED BY</th>
+                        <th class="sort align-middle " width="20%" scope="col" data-sort="vendor">INSPECTED BY</th>
+                        <th class="sort align-middle " width="20%" scope="col" data-sort="unit">VERIFIED BY</th>
+                        <th class="sort align-middle " width="15%"></th>
                     </tr>
                     </thead>
                     <tbody class="list" id="products-table-body">
