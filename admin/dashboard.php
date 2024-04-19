@@ -4,7 +4,7 @@
 <?php include 'header.php'?>
 <body>
 <div style="display: flex; flex-direction: row">
-<?php include 'navigation_bar.php'?>
+
 
 <!-- start inventory-->
 
