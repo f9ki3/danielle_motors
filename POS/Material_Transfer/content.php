@@ -1,11 +1,11 @@
-<!-- <div id="spinner" style="height: 80vh; display: flex; justify-content: center; align-items: center;"> -->
+<div id="spinner" style="height: 80vh; display: flex; justify-content: center; align-items: center;">
 <!-- <iframe src="https://giphy.com/embed/3oz8xzJjbG2Etm0f04" width="480" height="270" frameBorder="0" class="giphy-embed rounded rounded-5" allowFullScreen></iframe><p></p> -->
-    <!-- <div class="spinner-grow text-primary" role="status">
+    <div class="spinner-grow text-primary" role="status">
         <span class="visually-hidden">Loading...</span>
     </div>
-</div> -->
+</div>
 
-<div id="content" >
+<div id="content" style="display: none">
     <div class="row g-3 mb-4">
         <div class="col-auto">
             <h2 class="mb-0">Material Transfer</h2>
@@ -22,7 +22,7 @@
             </div>
             
             <div class="ms-xxl-auto">
-                <a href="../Purchase_Warehouse" class="btn text-primary border border-primary" ><span class="fas fa-plus me-2"></span> Material Request</a>
+                <a href="../Material_Request" class="btn text-primary border border-primary" ><span class="fas fa-plus me-2"></span> Material Request</a>
                 <a href="../Purchase_Warehouse" class="btn btn-primary " ><span class="fas fa-plus me-2"></span> Stocks</a>
             </div>
             </div>
@@ -33,7 +33,7 @@
                     <thead>
                     <tr>
                         <th class="sort align-middle " width="15%" scope="col">INVOICE NUMBER</th>
-                        <th class="sort align-middle " width="10%" scope="col" data-sort="product">DATE OF REQUEST</th>
+                        <th class="sort align-middle " width="15%" scope="col" data-sort="product">DATE OF REQUEST</th>
                         <th class="sort align-middle " width="20%" scope="col" data-sort="price">CASHIER NAME</th>
                         <th class="sort align-middle " width="20%" scope="col" data-sort="tags">RECEIVED BY</th>
                         <th class="sort align-middle " width="20%" scope="col" data-sort="vendor">INSPECTED BY</th>
