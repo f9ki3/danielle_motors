@@ -41,7 +41,7 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
-    <!-- <script>
+    <script>
           // Function to reload spinner for 3 seconds and play audio
           function reloadSpinner() {
               // Show spinner
@@ -67,7 +67,7 @@ date_default_timezone_set('Asia/Manila');
           // Call the function to reload spinner
           reloadSpinner();
 
-    </script> -->
+    </script>
   </body>
 
 
