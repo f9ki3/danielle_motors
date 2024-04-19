@@ -6,8 +6,15 @@
 
 <div class="mb-9" id="actualContent" style="display: none;">
 <div class="container">
-    <h3 class="mt-4 mb-4" >Inventory Dashboard</h3>
+    <h2 class="mt-4 mb-4" >Inventory Dashboard</h2>
 </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: end" >
+        <h1 class="fw-bolder text-center text-primary mt-4 realtime-time">time</h1>
+        <h1 class="fw-bolder text-center text-primary mt-4">&nbsp|&nbsp</h1>
+        <h1 class="fw-bolder text-center text-primary mt-4 realtime-date">date</h1>
+    </div>
+
 <Hr class="mt-3 mb-3"></Hr>
     <div class="row">
         <div class="col-lg-3">
@@ -221,4 +228,7 @@
         <div class="echart-basic-bar-chart-example" style="min-height:300px"></div>
     </div>
 </div>
+
+
+<script src="../../jquery/date_time.js"></script>
 
