@@ -41,7 +41,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $modelOutput = "";
         }
 
-        $insert_data_to_product_sql = "INSERT INTO product SET name = '$productName', category_id = '$categoryName', brand_id = '$brandName', unit_id = '$unitName', models = '$modelOutput', publish_by = '$user_id', barcode = '$barcodeInput'";
+        // Check if file was uploaded without errors
+        if (isset($_FILES["product_image"]) && $_FILES["product_image"]["error"] == 0) {
+            $targetDir = "../uploads/";
+            
+            // Generate a random filename
+            $randomFilename = uniqid() . mt_rand(100000, 999999);
+            $targetFile = $targetDir . $randomFilename;
+
+            // Check if file already exists
+            if (file_exists($targetFile)) {
+                echo "Sorry, the file already exists.";
+            } else {
+                // Attempt to move the uploaded file to the destination directory
+                if (move_uploaded_file($_FILES["product_image"]["tmp_name"], $targetFile)) {
+                    // echo "The file ". htmlspecialchars($randomFilename). " has been uploaded.";
+                } else {
+                    // echo "Sorry, there was an error uploading your file.";
+                }
+            }
+        } else {
+           $randomFilename = '';
+        }
+
+        $insert_data_to_product_sql = "INSERT INTO product SET name = '$productName', category_id = '$categoryName', brand_id = '$brandName', unit_id = '$unitName', models = '$modelOutput', publish_by = '$user_id', barcode = '$barcodeInput', image = '$randomFilename'";
         if($conn->query($insert_data_to_product_sql)===TRUE){
             $last_inserted_id = $conn->insert_id; // Corrected property name
         }
