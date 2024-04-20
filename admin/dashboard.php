@@ -5,7 +5,7 @@
 <body>
 <div style="display: flex; flex-direction: row">
 
-
+<?php include 'header.php'?>
 <!-- start inventory-->
 
 <div style="width: 100%" class="content p-3">
