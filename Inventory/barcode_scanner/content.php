@@ -169,7 +169,7 @@
 
     <!-- Sound effect -->
     <audio id="productfoundSound">
-        <source src="Filipino meme Sound effect.mp3" type="audio/mpeg">
+        <source src="../../assets/sounds/success-1-6297.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 </div>
