@@ -148,6 +148,7 @@ date_default_timezone_set('Asia/Manila');
                                 // Product found, select the corresponding option in the select element
                                 productIdSelect.value = response.product_id;
                                 document.getElementById('productfoundSound').play();
+                                return;
                             } else if (response.error && response.error === 'Product not found') {
                                 // Product not found, show a SweetAlert
                                 swal("Product not found", "Enter the barcode again, or manually enter the product data", "error");

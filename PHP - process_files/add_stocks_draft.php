@@ -15,14 +15,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Connection failed: " . $conn->connect_error);
     }
 
+    // Retrieve form data
+    $barcodeInput = isset($_POST["barcodeInput"]) ? $_POST["barcodeInput"] : "";
     if (isset($_POST['product_id'])) {
         $last_inserted_id = $_POST['product_id'];
+
+        $bc_product_code_sql = "SELECT barcode FROM product WHERE id = '$last_inserted_id' LIMIT 1";
+        $bc_product_code_result = $conn->query($bc_product_code_sql);
+        if($bc_product_code_result->num_rows>0){
+            $bc = $bc_product_code_result->fetch_assoc();
+            $current_barcode = $bc['barcode'];
+            if($barcodeInput !== $current_barcode){
+                $update_product_barcode = "UPDATE product SET barcode = '$barcodeInput' WHERE id = '$last_inserted_id'";
+                $conn->query($update_product_barcode);
+            }
+        } else {
+            
+        }
         
 
         
     } else {
-        // Retrieve form data
-        $barcodeInput = isset($_POST["barcodeInput"]) ? $_POST["barcodeInput"] : "";
         $productName = isset($_POST["product_name"]) ? $_POST["product_name"] : "";
         $brandName = isset($_POST["brand_name"]) ? $_POST["brand_name"] : "";
         $categoryName = isset($_POST["category_name"]) ? $_POST["category_name"] : "";
@@ -40,37 +53,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $modelOutput = "";
         }
-
-        // Check if file was uploaded without errors
-        if (isset($_FILES["product_image"]) && $_FILES["product_image"]["error"] == 0) {
-            $targetDir = "../uploads/";
-
-            // Get the original file extension
-            $fileExtension = pathinfo($_FILES["product_image"]["name"], PATHINFO_EXTENSION);
-
-            // Generate a random filename
-            $randomFilename = uniqid() . mt_rand(100000, 999999) . '.' . $fileExtension;
-            $targetFile = $targetDir . $randomFilename;
-
-            // Check if file already exists
-            if (file_exists($targetFile)) {
-                echo "Sorry, the file already exists.";
-            } else {
-                // Attempt to move the uploaded file to the destination directory
-                if (move_uploaded_file($_FILES["product_image"]["tmp_name"], $targetFile)) {
-                    echo "The file ". htmlspecialchars($randomFilename). " has been uploaded.";
-                } else {
-                    echo "Sorry, there was an error uploading your file.";
-                }
+        //check if product already exist
+        $check_product_duplication_sql = "SELECT id, barcode FROM product WHERE `name` = '$productName' AND brand_id = '$brandName' AND category_id = '$categoryName' AND unit_id = '$unitName' AND models = '$modelOutput'";
+        $check_product_duplication_result = $conn->query($check_product_duplication_sql);
+        // if product already exist perform this
+        if($check_product_duplication_result->num_rows>0){
+            $bc = $check_product_duplication_result->fetch_assoc();
+            $current_barcode = $bc['barcode'];
+            $last_inserted_id = $bc['id'];
+            if($barcodeInput !== $current_barcode){
+                $update_product_barcode = "UPDATE product SET barcode = '$barcodeInput' WHERE id = '$last_inserted_id'";
+                $conn->query($update_product_barcode);
             }
         } else {
-            $randomFilename = '';
+            // if product not exist
+            // Check if file was uploaded without errors
+            if (isset($_FILES["product_image"]) && $_FILES["product_image"]["error"] == 0) {
+                $targetDir = "../uploads/";
+
+                // Get the original file extension
+                $fileExtension = pathinfo($_FILES["product_image"]["name"], PATHINFO_EXTENSION);
+
+                // Generate a random filename
+                $randomFilename = uniqid() . mt_rand(100000, 999999) . '.' . $fileExtension;
+                $targetFile = $targetDir . $randomFilename;
+
+                // Check if file already exists
+                if (file_exists($targetFile)) {
+                    echo "Sorry, the file already exists.";
+                } else {
+                    // Attempt to move the uploaded file to the destination directory
+                    if (move_uploaded_file($_FILES["product_image"]["tmp_name"], $targetFile)) {
+                        echo "The file ". htmlspecialchars($randomFilename). " has been uploaded.";
+                    } else {
+                        echo "Sorry, there was an error uploading your file.";
+                    }
+                }
+            } else {
+                $randomFilename = '';
+            }
+
+            $insert_data_to_product_sql = "INSERT INTO product SET name = '$productName', category_id = '$categoryName', brand_id = '$brandName', unit_id = '$unitName', models = '$modelOutput', publish_by = '$user_id', barcode = '$barcodeInput', `image` = '$randomFilename'";
+            if($conn->query($insert_data_to_product_sql)===TRUE){
+                $last_inserted_id = $conn->insert_id; // Corrected property name
+            }
         }
 
-        $insert_data_to_product_sql = "INSERT INTO product SET name = '$productName', category_id = '$categoryName', brand_id = '$brandName', unit_id = '$unitName', models = '$modelOutput', publish_by = '$user_id', barcode = '$barcodeInput', `image` = '$randomFilename'";
-        if($conn->query($insert_data_to_product_sql)===TRUE){
-            $last_inserted_id = $conn->insert_id; // Corrected property name
-        }
+        
 
     }
     $product_id = $last_inserted_id;
