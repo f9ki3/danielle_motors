@@ -8,6 +8,7 @@ include "../../database/database.php";
             <thead>
                 <tr>
                     <th></th>
+                    <th></th>
                     <th>Product Name</th>
                     <th>Brand</th>
                     <th>Category</th>
@@ -53,10 +54,11 @@ include "../../database/database.php";
                         $product_qty = $sd_row['product_qty'];
                         echo '<tr>
                                     <td><a class="btn btn-outline-primary" href="../../PHP - process_files/delete_draft.php?id=' . $stock_draft_id . '">delete</a></td>
+                                    <td><img src="../../uploads/' . basename($product_img) . '" class="img img-fluid"></td>
                                     <td>' . $product_name . '</td>
                                     <td>' . $brand_name . '</td>
                                     <td>' . $category_name . '</td>
-                                    <td>' . $product_model . '</td>
+                                    <td style="min-width: 300px;">' . $product_model . '</td>
                                     <td>' . $unit_name . '</td>
                                     <td>' . $product_qty . '</td>
                                     <td>' . $date_added . '</td>
