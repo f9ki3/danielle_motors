@@ -38,7 +38,7 @@
             <div class="col-lg-12">
                 <label hidden>Result:</label>
                 <pre hidden><code id="result"></code></pre>
-                <form id="barcodeForm" action="../../PHP - process_files/add_stocks_draft.php" method="post">
+                <form id="barcodeForm" action="../../PHP - process_files/add_stocks_draft.php" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-floating mb-3">
@@ -78,6 +78,8 @@
                         <div class="col-lg-5">
                                 <input class="form-control" type="file" name="product_image" id="product_image">
                         </div>
+
+
                         <div class="col-lg-7">
                             <div class="form-floating mb-3">
                                 <select class="form-select" name="unit_name" id="" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
