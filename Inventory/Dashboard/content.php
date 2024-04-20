@@ -5,14 +5,19 @@
 </div>
 
 <div class="mb-9" id="actualContent" style="display: none;">
-<div class="container">
-    <h2 class="mt-4 mb-4" >Inventory Dashboard</h2>
-</div>
-
-    <div style="display: flex; flex-direction: row; justify-content: end" >
-        <h1 class="fw-bolder text-center text-primary mt-4 realtime-time">time</h1>
-        <h1 class="fw-bolder text-center text-primary mt-4">&nbsp|&nbsp</h1>
-        <h1 class="fw-bolder text-center text-primary mt-4 realtime-date">date</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="mt-4 mb-4" >Inventory Dashboard</h2>
+            </div>
+            <div class="col col-md-6">
+                <div style="display: flex; flex-direction: row; justify-content: end" >
+                    <h2 class="fw-bolder text-center text-black mt-4 realtime-time">time</h2>
+                    <h2 class="fw-bolder text-center text-black mt-4">&nbsp|&nbsp</h2>
+                    <h2 class="fw-bolder text-center text-black mt-4 realtime-date">date</h2>
+                </div>
+            </div>
+        </div>
     </div>
 
 <Hr class="mt-3 mb-3"></Hr>
@@ -230,5 +235,5 @@
 </div>
 
 
-<script src="../../jquery/date_time.js"></script>
+<script src="date_time.js"></script>
 
