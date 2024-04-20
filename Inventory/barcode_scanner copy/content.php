@@ -75,7 +75,7 @@
                         </div>
 
 
-                        <div class="col-lg-5">
+                        <div class="col-lg-5 mb-3">
                                 <input class="form-control" type="file" name="product_image" id="product_image">
                         </div>
 
@@ -141,7 +141,7 @@
                         </div>
 
                         <div class="col-lg-6">
-                            <div class="form-floating">
+                            <div class="form-floating mb-3">
                                 <input type="number" name="qty" class="form-control" min="1" max="10000" required>
                                 <label for="">Qty</label>
                             </div>
