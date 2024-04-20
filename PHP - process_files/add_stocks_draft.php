@@ -44,9 +44,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Check if file was uploaded without errors
         if (isset($_FILES["product_image"]) && $_FILES["product_image"]["error"] == 0) {
             $targetDir = "../uploads/";
-            
+
+            // Get the original file extension
+            $fileExtension = pathinfo($_FILES["product_image"]["name"], PATHINFO_EXTENSION);
+
             // Generate a random filename
-            $randomFilename = uniqid() . mt_rand(100000, 999999);
+            $randomFilename = uniqid() . mt_rand(100000, 999999) . '.' . $fileExtension;
             $targetFile = $targetDir . $randomFilename;
 
             // Check if file already exists
@@ -55,16 +58,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 // Attempt to move the uploaded file to the destination directory
                 if (move_uploaded_file($_FILES["product_image"]["tmp_name"], $targetFile)) {
-                    // echo "The file ". htmlspecialchars($randomFilename). " has been uploaded.";
+                    echo "The file ". htmlspecialchars($randomFilename). " has been uploaded.";
                 } else {
-                    // echo "Sorry, there was an error uploading your file.";
+                    echo "Sorry, there was an error uploading your file.";
                 }
             }
         } else {
-           $randomFilename = '';
+            $randomFilename = '';
         }
 
-        $insert_data_to_product_sql = "INSERT INTO product SET name = '$productName', category_id = '$categoryName', brand_id = '$brandName', unit_id = '$unitName', models = '$modelOutput', publish_by = '$user_id', barcode = '$barcodeInput', image = '$randomFilename'";
+        $insert_data_to_product_sql = "INSERT INTO product SET name = '$productName', category_id = '$categoryName', brand_id = '$brandName', unit_id = '$unitName', models = '$modelOutput', publish_by = '$user_id', barcode = '$barcodeInput', `image` = '$randomFilename'";
         if($conn->query($insert_data_to_product_sql)===TRUE){
             $last_inserted_id = $conn->insert_id; // Corrected property name
         }
