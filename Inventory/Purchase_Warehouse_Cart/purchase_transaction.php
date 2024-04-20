@@ -18,7 +18,7 @@
 //     die("Connection failed: " . $conn->connect_error);
 // }
 
-include '../../config/config.php'
+include '../../config/config.php';
 
 // Function to generate a unique TransactionID
 function generateTransactionID() {
