@@ -131,9 +131,10 @@ date_default_timezone_set('Asia/Manila');
             // Get references to the barcode input and product select elements
             const barcodeInput = document.getElementById('barcodeInput');
             const productIdSelect = document.getElementById('product_id');
+            let timeout;
 
-            // Add event listener for input change on barcode input
-            barcodeInput.addEventListener('input', function () {
+            // Function to make the AJAX request
+            function makeAjaxRequest() {
                 // Get the barcode value
                 const barcodeValue = barcodeInput.value;
 
@@ -163,9 +164,18 @@ date_default_timezone_set('Asia/Manila');
                 xhr.open('POST', 'get_content.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                 xhr.send('barcodeInput=' + encodeURIComponent(barcodeValue));
+            }
+
+            // Add event listener for input change on barcode input with debouncing and 2-second delay
+            barcodeInput.addEventListener('input', function () {
+                clearTimeout(timeout);
+                timeout = setTimeout(makeAjaxRequest, 2000); // Wait for 2 seconds before making the AJAX request
             });
         });
     </script>
+
+
+
 
 
     

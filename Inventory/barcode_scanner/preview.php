@@ -36,7 +36,9 @@ include "../../database/database.php";
                             INNER JOIN category ON category.id = product.category_id
                             INNER JOIN brand ON brand.id = product.brand_id
                             INNER JOIN unit ON unit.id = product.unit_id
-                            WHERE stocks_draft.branch_code = '$branch_code'";
+                            WHERE stocks_draft.branch_code = '$branch_code'
+                            ORDER BY stocks_draft.id DESC
+                            ";
                 $stock_draft_res = $conn->query($stock_draft_sql);
                 if($stock_draft_res->num_rows > 0){
                     while($sd_row = $stock_draft_res->fetch_assoc()){
