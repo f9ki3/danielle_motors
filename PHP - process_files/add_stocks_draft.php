@@ -17,6 +17,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Retrieve form data
     $barcodeInput = isset($_POST["barcodeInput"]) ? $_POST["barcodeInput"] : "";
+    $check_barcode_duplication = "SELECT id FROM product WHERE barcode = '$barcodeInput' LIMIT 1";
+    $check_barcode_duplication_result = $conn->query($check_barcode_duplication);
+    if($check_barcode_duplication_result -> num_rows >0){
+        if(isset($_POST['product_id'])){
+            echo "barcode already exist";
+        } else {
+            header("Location: ../Inventory/barcode_scanner copy/?successful=false&duplicate_barcode=true");
+        }
+        $conn->close();
+        exit();
+    } 
+
     if (isset($_POST['product_id'])) {
         $last_inserted_id = $_POST['product_id'];
 

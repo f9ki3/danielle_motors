@@ -484,6 +484,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           </div>
           <?php 
           }
+          if(strpos($session_permission, 'RACK MAINTENANCE') !== false) {
           ?>
           <!-- Category -->
           <div class="nav-item-wrapper">
@@ -496,6 +497,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           </div>
         </li>
         <?php 
+          }
         }
         ?>
         
