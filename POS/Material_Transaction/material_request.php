@@ -45,6 +45,6 @@ if ($stmt) {
 <script>
 function redirectToMaterialTransfer(materialInvoice) {
     var materialTransaction = encodeURIComponent(materialInvoice);
-    window.location.href = '../Material_Transaction/?material_transaction=' + materialTransaction;
+    window.location.href = '../Material_Request/?material_transaction=' + materialTransaction;
 }
 </script>

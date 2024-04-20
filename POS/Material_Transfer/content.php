@@ -11,7 +11,7 @@
             <h2 class="mb-0">Material Transfer</h2>
         </div>
     </div>
-    <div id="products" data-list="{&quot;valueNames&quot;:[&quot;product&quot;,&quot;price&quot;,&quot;category&quot;,&quot;tags&quot;,&quot;vendor&quot;,&quot;unit&quot;, &quot;model&quot;, &quot;status&quot;],&quot;page&quot;:10,&quot;pagination&quot;:true}">
+    <div id="products" data-list="{&quot;valueNames&quot;:[&quot;invoice&quot;,&quot;material_date&quot;,&quot;material_cashier&quot;,&quot;material_received_by&quot;,&quot;material_inspected_by&quot;,&quot;material_verified_by&quot;],&quot;page&quot;:10,&quot;pagination&quot;:true}">
         <div class="mb-4">
             <div class="d-flex flex-wrap gap-3">
             <div class="search-box">
@@ -32,12 +32,12 @@
                 <table class="table table-hover mb-0">
                     <thead>
                     <tr>
-                        <th class="sort align-middle " width="15%" scope="col">INVOICE NUMBER</th>
-                        <th class="sort align-middle " width="15%" scope="col" data-sort="product">DATE OF REQUEST</th>
-                        <th class="sort align-middle " width="20%" scope="col" data-sort="price">CASHIER NAME</th>
-                        <th class="sort align-middle " width="20%" scope="col" data-sort="tags">RECEIVED BY</th>
-                        <th class="sort align-middle " width="20%" scope="col" data-sort="vendor">INSPECTED BY</th>
-                        <th class="sort align-middle " width="20%" scope="col" data-sort="unit">VERIFIED BY</th>
+                        <th class="sort align-middle " width="15%" scope="col" data-sort="invoice">INVOICE NUMBER</th>
+                        <th class="sort align-middle " width="15%" scope="col" data-sort="material_date">DATE OF REQUEST</th>
+                        <th class="sort align-middle " width="20%" scope="col" data-sort="material_cashier">CASHIER NAME</th>
+                        <th class="sort align-middle " width="20%" scope="col" data-sort="material_received_by">RECEIVED BY</th>
+                        <th class="sort align-middle " width="20%" scope="col" data-sort="material_inspected_by">INSPECTED BY</th>
+                        <th class="sort align-middle " width="20%" scope="col" data-sort="material_verified_by">VERIFIED BY</th>
                         <th class="sort align-middle " width="15%"></th>
                     </tr>
                     </thead>

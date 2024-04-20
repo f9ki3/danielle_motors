@@ -105,7 +105,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                   <span class="nav-link-text-wrapper"><span class="nav-link-text">Return Product</span></span>
                 </div>
               </a>
-              <a class="nav-link <?php if($current_folder === "Material_Transfer"){ echo "active"; } else { echo "";}?>  label-1" href="../Material_Transfer" role="button" data-bs-toggle="" aria-expanded="false">
+              <a class="nav-link <?php if($current_folder === "Material_Transfer" || $current_folder === "Material_Request" || $current_folder === "Material_Transaction"){ echo "active"; } else { echo "";}?>  label-1" href="../Material_Transfer" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
                   <span class="nav-link-icon"><span data-feather="truck"></span></span>
                   <span class="nav-link-text-wrapper"><span class="nav-link-text">Material Transfer</span></span>
