@@ -47,6 +47,8 @@
                             </div>
                         </div>
 
+                        
+
                         <div class="col-lg-12">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" name="product_name">
@@ -72,7 +74,11 @@
                             </div>
                         </div>
 
+
                         <div class="col-lg-5">
+                                <input class="form-control" type="file" name="product_image" id="product_image">
+                        </div>
+                        <div class="col-lg-7">
                             <div class="form-floating mb-3">
                                 <select class="form-select" name="unit_name" id="" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
                                     <option value="">Unit</option>
@@ -81,7 +87,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-7">
+                        <div class="col-lg-12">
                             <div class="form-floating mb-3">
                                 <select class="form-select" name="models[]" id="" data-choices="data-choices" multiple="multiple" data-options='{"removeItemButton":true,"placeholder":true}'>
                                     <option value="">Model</option>
