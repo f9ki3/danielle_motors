@@ -39,6 +39,7 @@
     <link href="assets/css/theme.min.css" type="text/css" rel="stylesheet" id="style-default">
     <link href="assets/css/user-rtl.min.css" type="text/css" rel="stylesheet" id="user-style-rtl">
     <link href="assets/css/user.min.css" type="text/css" rel="stylesheet" id="user-style-default">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
       var phoenixIsRTL = window.config.config.phoenixIsRTL;
       if (phoenixIsRTL) {
@@ -76,17 +77,18 @@
                       <h3 class="mb-3 text-black fs-1">Danielle Motor Parts</h3>
                       <p class="text-700">Your Premier Source for Bulk Orders of Precision Motor Parts, Powering Innovation in the Philippines.</p>
                       <ul class="list-unstyled mb-0 w-max-content w-md-auto mx-auto">
-                        <li class="d-flex align-items-center"><span class="uil uil-check-circle text-success me-2"></span><span class="text-700 fw-semi-bold">Register</span></li>
-                        <li class="d-flex align-items-center"><span class="uil uil-check-circle text-success me-2"></span><span class="text-700 fw-semi-bold">Order</span></li>
-                        <li class="d-flex align-items-center"><span class="uil uil-check-circle text-success me-2"></span><span class="text-700 fw-semi-bold">Received</span></li>
+                        <hr>
+                        <li class="d-flex align-items-center"><span class="uil uil-check-circle text-success me-2"></span><span class="text-700 fw-semi-bold">Prenza II, Marilao, Bulacan</span></li>
+                        <li class="d-flex align-items-center"><span class="uil uil-check-circle text-success me-2"></span><span class="text-700 fw-semi-bold">dmp@gmail.com</span></li>
+                        <li class="d-flex align-items-center"><span class="uil uil-check-circle text-success me-2"></span><span class="text-700 fw-semi-bold">09120912091</span></li>
                       </ul>
                     </div>
-                    <div class="position-relative z-index--1 mb-6 d-none d-md-block text-center mt-md-15"><img class="auth-title-box-img d-dark-none" src="assets/img/spot-illustrations/auth.png" alt="" /><img class="auth-title-box-img d-light-none" src="assets/img/spot-illustrations/auth-dark.png" alt="" /></div>
+                    <div class="position-relative z-index--1 mb-6 d-none d-md-block text-center mt-md-15"><img class="auth-title-box-img d-dark-none" src="uploads/maskot_dmp.png" alt="" /><img class="auth-title-box-img d-light-none" src="assets/img/spot-illustrations/auth-dark.png" alt="" /></div>
                   </div>
                   <div class="col mx-auto">
                     <div class="auth-form-box">
                       <div class="text-center mb-7"><a class="d-flex flex-center text-decoration-none mb-4" href="../../../index.html">
-                          <div class="d-flex align-items-center fw-bolder fs-5 d-inline-block"><img src="uploads/dmp_logo.png" alt="phoenix" width="100" /></div>
+                          <div class="d-flex align-items-center fw-bolder fs-5 d-inline-block"><img src="uploads/dmp_logo.png" alt="phoenix" width="200" /></div>
                         </a>
                         <h3 class="text-1000">Sign In</h3>
                         <p class="text-700">Get access to your account</p>
@@ -96,7 +98,7 @@
                         <div class="divider-content-center bg-white">or use email</div>
                       </div> -->
                       <div class="mb-3 text-start"><label class="form-label" for="email">Email address</label>
-                        <div class="form-icon-container"><input class="form-control form-icon-input" id="email" type="email" placeholder="name@example.com" /><span class="fas fa-user text-900 fs--1 form-icon"></span></div>
+                        <div class="form-icon-container"><input class="form-control form-icon-input" id="username" type="email" placeholder="name@example.com" /><span class="fas fa-user text-900 fs--1 form-icon"></span></div>
                       </div>
                       <div class="mb-3 text-start"><label class="form-label" for="password">Password</label>
                         <div class="form-icon-container"><input class="form-control form-icon-input" id="password" type="password" placeholder="Password" /><span class="fas fa-key text-900 fs--1 form-icon"></span></div>
@@ -106,7 +108,21 @@
                           <div class="form-check mb-0"><input class="form-check-input" id="basic-checkbox" type="checkbox" checked="checked" /><label class="form-check-label mb-0" for="basic-checkbox">Remember me</label></div>
                         </div>
                         <div class="col-auto"><a class="fs--1 fw-semi-bold" href="forgot-password.html">Forgot Password?</a></div>
-                      </div><button class="btn btn-primary w-100 mb-3">Sign In</button>
+                      </div>
+                      <div style="height: 50px;">
+                            <button type="submit" class="btn w-100 btn-primary btn" id="login_btn">Login</button>
+                            <button type="submit" id="loading" class="btn btn-primary w-100 disabled" style="display: none">
+                                <div class="spinner-grow spinner-grow-sm " role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="alert alert-danger text-center error p-0 m-0 pt-3" role="alert" style="display: none; height: 50px">
+                          <p style="font-size: 15px"> Please check your login Credentials</p>
+                        </div>
+                        <div class="alert p-2 alert-secondary text-center success" id="loading" role="alert" style="display: none">
+                        
+                        </div>
                       <div class="text-center"><a class="fs--1 fw-bold" href="sign-up.html">Create an account</a></div>
                     </div>
                   </div>
@@ -237,6 +253,8 @@
     <script src="../../../vendors/feather-icons/feather.min.js"></script>
     <script src="../../../vendors/dayjs/dayjs.min.js"></script>
     <script src="assets/js/phoenix.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="jquery/login.js"></script>
   </body>
 
 
