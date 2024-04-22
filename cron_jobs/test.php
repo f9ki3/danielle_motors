@@ -6,7 +6,7 @@ require '../assets/libs/email/PHPMailer/Exception.php';
 require '../assets/libs/email/PHPMailer/SMTP.php';
 
     // $email = "andrada.joemarie.pdm@gmail.com";
-    $email = "cazul855@gmail.com";
+    $email = "floterina@gmail.com";
         // Send email with default password to the user
         $mail = new PHPMailer;
         $mail->isSMTP();
