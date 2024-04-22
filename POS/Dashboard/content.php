@@ -1,7 +1,9 @@
 <div>
     <div class=" p-3 mb-3 w-100">
         <div class="row">
-            
+            <h1 class="p-0 m-2"><?php echo $branch_name_insession?></h1>
+            <p class="p-0 m-2"><?php echo $branch_address_insession ; echo ' | ';echo '+63',$branch_telephone_insession; echo ' | '; echo $branch_email_insession;?></p>
+            <hr>
             <div class="col-12 col-md-6 p-2">
                     <h6 class="fw-bolder">Today Sales</h6>
                     <div class="border bg-light border-primary rounded p-2" style="height: 120px;">
@@ -9,7 +11,8 @@
                         $sql = "SELECT SUM(Total) AS TotalAmount
                         FROM purchase_transactions
                         WHERE TransactionType = 'Walk-in'
-                        AND DATE(TransactionDate) = CURDATE()";
+                        AND DATE(TransactionDate) = CURDATE()
+                        ";
 
                         // Execute the query
                         $result = $conn->query($sql);
