@@ -23,7 +23,7 @@ require '../assets/libs/email/PHPMailer/SMTP.php';
 
         if ($mail->send()) {
             // Redirect user with success message
-            echo "email_sent";
+            echo "email_sent to" . $email;
         } else {
             echo "Error sending email: " . $mail->ErrorInfo;
         }
