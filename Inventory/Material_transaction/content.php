@@ -96,7 +96,7 @@ if($material_transfer_res -> num_rows > 0){
                                             <td>
                                                 <?php 
                                                 if(empty($material_verified_by)){
-                                                    echo '<input name="verified_by" type="text" class="form-control" value="' . $id . '" hidden>';
+                                                    echo '<input name="verified_by" type="text" class="form-control" value="' . $id . '" hidden><input name="full_name" type="text" class="form-control" value="' . $fname . ' ' . $lname . '" readonly>';
                                                 } else {
                                                    echo $material_verified_by;
                                                 }
