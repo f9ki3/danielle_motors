@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "../admin/session.php";
 include_once "../database/database.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -36,6 +37,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Loop through transaction IDs
     foreach ($transaction_ids as $key => $transaction_id) {
         $quantity_sent = $qty_sent[$key];
+
+        $material_transaction_query = "SELECT product_id, qty_added FROM material_transaction WHERE id = '$transaction_id' LIMIT 1";
+        $material_transaction_result = $conn->query($material_transaction_query);
+        if($material_transaction_result ->num_rows>0){
+            $mtr_row = $material_transaction_result->fetch_assoc();
+            $material_transfer_product_id = $mtr_row['product_id'];
+            $material_transfer_qty_added = $mtr_row['qty_added'];
+            $stock_query = "SELECT pending_order, successful_stock_out_qty FROM stocks WHERE product_id = '$material_transfer_product_id' AND branch_code = '$branch_code' LIMIT 1";
+            $stock_result = $conn->query($stock_query);
+            $stock_row = $stock_result->fetch_assoc();
+            $new_pending_order = $stock_row['pending_order'] - $material_transfer_qty_added;
+            $new_successful_stock_out_qty = $stock_row['successful_stock_out_qty'] + $material_transfer_qty_added;
+
+            $update_stocks = "UPDATE stocks SET pending_order = '$new_pending_order', successful_stock_out_qty = '$new_successful_stock_out_qty' WHERE product_id = '$material_transfer_product_id' AND branch_code = '$branch_code'";
+            if($conn->query($update_stocks)===TRUE){
+                echo "okidoki";
+            } else {
+                echo $conn->error;
+            }
+        }
         
         // Update material_transaction table
         $sql_update_material_transaction = "UPDATE material_transaction SET qty_added = '$quantity_sent', status='3' WHERE id = '$transaction_id'";
