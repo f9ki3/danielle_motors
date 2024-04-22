@@ -52,7 +52,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                     <span class="nav-link-text-wrapper"><span class="nav-link-text">Dashboard</span></span>
                 </div>
             </a>
-            <a class="nav-link label-1 <?php echo ($current_folder === "Purchase_Warehouse") ? 'active' : ''; ?>" href="../Purchase_Warehouse" role="button" aria-expanded="false">
+            <a class="nav-link label-1 <?php echo ($current_folder === "Purchase_Warehouse" || $current_folder === "Purchase_Warehouse_Walkin_Receipt") ? 'active' : ''; ?>" href="../Purchase_Warehouse" role="button" aria-expanded="false">
                 <div class="d-flex align-items-center">
                     <span class="nav-link-icon"><span data-feather="shopping-cart"></span></span>
                     <span class="nav-link-text-wrapper"><span class="nav-link-text">Store Purchase</span></span>
