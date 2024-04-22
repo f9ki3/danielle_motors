@@ -17,6 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Retrieve form data
     $barcodeInput = isset($_POST["barcodeInput"]) ? $_POST["barcodeInput"] : "";
+
+    // check if barcode already exist
     $check_barcode_duplication = "SELECT id FROM product WHERE barcode = '$barcodeInput' LIMIT 1";
     $check_barcode_duplication_result = $conn->query($check_barcode_duplication);
     if($check_barcode_duplication_result -> num_rows >0){
@@ -28,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $conn->close();
         exit();
     } 
-
+    // check if product already exist in product table
     if (isset($_POST['product_id'])) {
         $last_inserted_id = $_POST['product_id'];
 
@@ -48,12 +50,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         
     } else {
+        // if product dont exist yet, create it
         $productName = isset($_POST["product_name"]) ? $_POST["product_name"] : "";
         $brandName = isset($_POST["brand_name"]) ? $_POST["brand_name"] : "";
         $categoryName = isset($_POST["category_name"]) ? $_POST["category_name"] : "";
         $unitName = isset($_POST["unit_name"]) ? $_POST["unit_name"] : "";
 
-        // Process model field
+        // implode the model
         $models = isset($_POST["models"]) ? $_POST["models"] : [];
         if (!empty($models)) {
             if (is_array($models)) {
@@ -65,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $modelOutput = "";
         }
-        //check if product already exist
+        //check if product that the user want to insert already exist
         $check_product_duplication_sql = "SELECT id, barcode FROM product WHERE `name` = '$productName' AND brand_id = '$brandName' AND category_id = '$categoryName' AND unit_id = '$unitName' AND models = '$modelOutput'";
         $check_product_duplication_result = $conn->query($check_product_duplication_sql);
         // if product already exist perform this
