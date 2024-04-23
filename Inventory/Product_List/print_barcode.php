@@ -3,7 +3,7 @@
 <?php
 
 if(isset($_GET['barcode'])){
-    echo '<img src="../../assets/php-barcode-master/barcode.php?codetype=Code39&size=50&text=' . $_GET['barcode']  . '&print=true" class="img img-fluid">';
+    echo '<img src="../../assets/php-barcode-master/barcode.php?codetype=Code128&size=50&text=' . $_GET['barcode']  . '&print=true" class="img img-fluid">';
 }
 ?>
 </div>

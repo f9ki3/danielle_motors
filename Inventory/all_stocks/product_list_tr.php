@@ -42,7 +42,7 @@
                 </td>
                 <td class="align-middle white-space-nowrap py-0"><img src="../../uploads/'.basename($product_image).'" alt="" width="53" ></td>
                 <td class="product align-middle ps-4">'.$product_name.'</td>
-                <td class="itemcode align-middle white-space-nowrap text-start ps-4"><img src="../../assets/php-barcode-master/barcode.php?codetype=Code39&size=50&text='.$product_barcode.'&print=true" class="img img-fluid"></td>
+                <td class="itemcode align-middle white-space-nowrap text-start ps-4"><img src="../../assets/php-barcode-master/barcode.php?codetype=Code128&size=50&text='.$product_barcode.'&print=true" class="img img-fluid"></td>
                 <td class="location align-middle white-space-nowrap ps-4 text-start"><span class="badge badge-phoenix badge-phoenix-secondary">'.$location.'</span></td>
                 <td class="category align-middle review pb-2 ps-3" style="min-width:225px;">'.$category.'</td>
                 <td class="brand align-middle text-start fw-semi-bold ps-4">'.$brand.'</td>
