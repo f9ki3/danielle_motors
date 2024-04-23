@@ -41,13 +41,13 @@ $model = $_SESSION['model'];
     ?>
     <div class="border bg-white m-2" style="max-width: 220px;">
         <div class="row">
-            <!-- <div class="col-lg-12 mb-3 p-3">
+            <div class="col-lg-12 mb-3 p-3">
                 <p class="m-0 fs--1">Product Name: <?php //  echo $product_name; ?></p>
                 <p class="m-0 fs--1">Brand: <?php  // echo $brand; ?></p>
                 <p class="m-0 fs--1">Category: <?php  // echo $category; ?></p>
                 <p class="m-0 fs--1">Unit: <?php  // echo $unit; ?></p>
                 <p class="m-0 fs--1">Model: <?php  // echo $model; ?></p>
-            </div> -->
+            </div>
             <div class="col-lg-12 ps-4 text-center pt-4">
                 <img src="../../assets/php-barcode-master/barcode.php?codetype=Code128&size=50&text=<?php echo $barcode;?>&print=true" class="img img-fluid">
             </div>
