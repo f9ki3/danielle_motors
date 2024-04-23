@@ -19,7 +19,7 @@
 
                         // Check if there are any results
                         if ($result->num_rows > 0) {
-                        // Fetch the result and store it in a variable
+                        // Fetch the result and store it in a variablex 
                         $row = $result->fetch_assoc();
                         $totalAmount = $row["TotalAmount"];
                         } else {
