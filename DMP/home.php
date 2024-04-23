@@ -176,7 +176,6 @@
                         </select>
 
                         <button type="button" class="btn btn-primary mt-3" onclick="applyFilters()">Apply Filter</button>
-                        <p>Filtered Amount: $<span id="filteredAmount">0</span></p>
                     </div>
                 </div>
             </div>
@@ -216,7 +215,7 @@
                             echo '<p class="card-text">Supplier Code: ' . $row["supplier_code"] . '</p>';
                             echo '<p class="card-text">Barcode: ' . $row["barcode"] . '</p>';
                             echo '<p class="card-text">Models: ' . $row["models"] . '</p>';
-                            echo '<p class="card-text srp">SRP: $' . $row["srp"] . '</p>';
+                            echo '<p class="card-text srp">SRP: ₱' . $row["srp"] . '</p>';
                             echo '<a href="#" class="btn btn-primary">Add to Cart</a>';
                             echo '</div>';
                             echo '</div>';
