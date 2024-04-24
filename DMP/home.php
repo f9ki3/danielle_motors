@@ -264,7 +264,7 @@
             // Show products within the selected price range, models, and categories
             $(".product").each(function() {
                 var product = $(this);
-                var srp = parseFloat(product.find(".srp").text().replace("SRP: $", ""));
+                var srp = parseFloat(product.find(".srp").text().replace("SRP: ₱", ""));
                 var productCategoryId = parseInt(product.data('category-id'));
                 var productModels = product.find(".card-text:contains('Models:')").text().toLowerCase(); // Get all models text
 
