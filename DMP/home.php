@@ -1,4 +1,4 @@
-<?php include 'C:\xampp\htdocs\onlineweb_dev\config.php'; ?>
+<?php include '../config/config.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
