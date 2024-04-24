@@ -35,25 +35,27 @@ $unit = $_SESSION['unit'];
 $model = $_SESSION['model'];
 ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<div class="d-flex flex-wrap" >
+<div class="row" >
+    
     <?php 
-    for($i = 0; $i < $qty; $i++){
+    // for($i = 0; $i < $qty; $i++){
+        for($i = 0; $i < 1; $i++){
     ?>
-    <div class="border bg-white m-2" style="max-width: 220px;">
+    <div class="col-lg-12 p-3 border bbg">
         <div class="row">
-            <div class="col-lg-12 mb-3 p-3">
-                <p class="m-0 fs--1">Product Name: <?php echo $product_name; ?></p>
-                <p class="m-0 fs--1">Brand: <?php echo $brand; ?></p>
-                <p class="m-0 fs--1">Category: <?php echo $category; ?></p>
-                <p class="m-0 fs--1">Unit: <?php echo $unit; ?></p>
-                <p class="m-0 fs--1">Model: <?php echo $model; ?></p>
+            <div class="col-lg-12 p-3">
+                <p class="m-0 fs--1">Product Name: <?php echo $product_name . ' ' . $brand . ' ' . $category . ' ' . $unit ; ?></p>
+                <!-- <p class="m-0 fs--1">Brand: <?php  // echo $brand; ?></p>
+                <p class="m-0 fs--1">Category: <?php  // echo $category; ?></p>
+                <p class="m-0 fs--1">Unit: <?php  // echo $unit; ?></p> -->
+                <p class="m-0 fs--1">Model: <?php  echo $model; ?></p>
             </div>
-            <div class="col-lg-12 ps-4 text-center">
-                <img src="../../assets/php-barcode-master/barcode.php?codetype=Code39&size=50&text=<?php echo $barcode;?>&print=true" class="img img-fluid">
+            <div class="col-lg-12 ps-4 text-center pt-2 mb-2">
+                <img src="../../assets/php-barcode-master/barcode.php?codetype=Code128&size=100&text=<?php echo $barcode;?>&print=true" class="img img-fluid" style="min-width: 70mm; min-height: 50mm; border: 1px solid black; padding: 10px;">
             </div>
         </div>
     </div>
-    <?php 
+    <?php
     }
     ?>
 </div>

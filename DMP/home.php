@@ -1,4 +1,4 @@
-<?php include '../config/config.php'; ?>
+<?php include 'C:\xampp\htdocs\onlineweb_dev\config.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,8 +49,6 @@
             height: 250px; /* Set the desired height for product images */
             object-fit: contain;
         }
-
-        /* Custom CSS for Sticky Footer */
         .footer {
             position: fixed;
             left: 0;
@@ -67,7 +65,7 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
                 <!-- Company Logo -->
-                <a class="navbar-brand" href="#"><img src="img/dmplogo0005.png" alt="Company Logo" style="max-width: 100px;"></a>
+                <a class="navbar-brand" href="#"><img src="imdmplogo0005.png" alt="Company Logo"></a>
                 <!-- Company Name -->
                 <h1 class="mr-auto">Your Shop</h1>
                 <!-- Navigation Menu -->
@@ -84,39 +82,39 @@
         </nav>
     </header>
 
-    <!-- Featured Brands Carousel -->
-    <div id="featuredBrandsCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <?php
-            // Directory path where images are stored
-            $directory = 'img';
-            // Get all files in the directory
-            $files = glob($directory . '/*.{jpg,png,gif}', GLOB_BRACE);
-            // Output carousel indicators
-            for ($i = 0; $i < count($files); $i++) {
-                echo '<li data-target="#featuredBrandsCarousel" data-slide-to="' . $i . '"' . ($i === 0 ? ' class="active"' : '') . '></li>';
-            }
-            ?>
-        </ol>
-        <div class="carousel-inner">
-            <?php
-            // Output carousel items
-            for ($i = 0; $i < count($files); $i++) {
-                echo '<div class="carousel-item' . ($i === 0 ? ' active' : '') . '">';
-                echo '<img class="d-block w-100 img-fluid" src="' . $files[$i] . '" alt="Slide ' . ($i + 1) . '">';
-                echo '</div>';
-            }
-            ?>
-        </div>
-        <a class="carousel-control-prev" href="#featuredBrandsCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#featuredBrandsCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+<!-- Featured Brands Carousel -->
+<div id="featuredBrandsCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <?php
+        // Directory path where images are stored
+        $directory = 'img';
+        // Get all files in the directory
+        $files = glob($directory . '/*.{jpg,png,gif}', GLOB_BRACE);
+        // Output carousel indicators
+        for ($i = 0; $i < count($files); $i++) {
+            echo '<li data-target="#featuredBrandsCarousel" data-slide-to="' . $i . '"' . ($i === 0 ? ' class="active"' : '') . '></li>';
+        }
+        ?>
+    </ol>
+    <div class="carousel-inner">
+        <?php
+        // Output carousel items
+        for ($i = 0; $i < count($files); $i++) {
+            echo '<div class="carousel-item' . ($i === 0 ? ' active' : '') . '">';
+            echo '<img class="d-block w-100 img-fluid" src="' . $files[$i] . '" alt="Slide ' . ($i + 1) . '">';
+            echo '</div>';
+        }
+        ?>
     </div>
+    <a class="carousel-control-prev" href="#featuredBrandsCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#featuredBrandsCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div
 
     <div class="container mt-5">
         <div class="row">
@@ -176,7 +174,6 @@
                         </select>
 
                         <button type="button" class="btn btn-primary mt-3" onclick="applyFilters()">Apply Filter</button>
-                        
                     </div>
                 </div>
             </div>
@@ -229,19 +226,18 @@
                 </div>
             </div>
         </div>
+            <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>Contact us: 
+                    <a href="tel:09173128059">0917 312 8059</a> | 
+                    <a href="https://www.facebook.com/dmpdaniellemotorparts" target="_blank">Facebook</a> | 
+                    <a href="https://shopee.ph/daniellemotorparts" target="_blank">Shopee</a> | 
+                    <a href="https://www.google.com/maps/place/Danielle+Motor+Parts/@14.7815018,120.9782232,17z/data=!3m1!4b1!4m6!3m5!1s0x3397ad5d5b6b5e2b:0x22ac9c0bd1bc764c!8m2!3d14.7814966!4d120.9807981!16s%2Fg%2F11k6yrzyn9?entry=ttu" target="_blank">Location</a>
+                </p>
+            </div>
+        </footer>
     </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>Contact us: 
-                <a href="tel:09173128059">0917 312 8059</a> | 
-                <a href="https://www.facebook.com/dmpdaniellemotorparts" target="_blank">Facebook</a> | 
-                <a href="https://shopee.ph/daniellemotorparts" target="_blank">Shopee</a> | 
-                <a href="https://www.google.com/maps/place/Danielle+Motor+Parts/@14.7815018,120.9782232,17z/data=!3m1!4b1!4m6!3m5!1s0x3397ad5d5b6b5e2b:0x22ac9c0bd1bc764c!8m2!3d14.7814966!4d120.9807981!16s%2Fg%2F11k6yrzyn9?entry=ttu" target="_blank">Location</a>
-            </p>
-        </div>
-    </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -287,6 +283,7 @@
                 }
             });
         }
+
     </script>
 </body>
 </html>
