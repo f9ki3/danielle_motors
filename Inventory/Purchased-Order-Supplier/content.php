@@ -60,12 +60,43 @@
     </div>
 </div>
 
-<script>
-    window.addEventListener('beforeunload', function (e) {
-        // Cancel the event
-        e.preventDefault();
-        // Chrome requires returnValue to be set
-        e.returnValue = '';
-    });
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="successToast" class="toast hide bg-warning text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-warning text-white">
+            <strong class="me-auto">Warning!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body text-white">
+            Your monthly expenses are nearing your limit, so please request purchase orders wisely.
+        </div>
+    </div>
 
+    <div id="errorToast" class="toast hide bg-danger text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-danger text-white">
+            <strong class="me-auto">Success</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body bg-danger text-white">
+            Kindly fill up missing fields
+        </div>
+    </div>
+
+    <div id="errorToast2" class="toast hide bg-danger text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-danger text-white">
+            <strong class="me-auto">Success</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body bg-danger text-white">
+            Kindly fill up missing fields
+        </div>
+    </div>
+</div>
+
+<script>
+    setInterval(function(){
+        var toast = document.getElementById('successToast');
+        toast.classList.toggle('hide');
+        toast.classList.toggle('show');
+    }, 5000);
 </script>
+

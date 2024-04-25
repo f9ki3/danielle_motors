@@ -25,8 +25,19 @@
             </div>
             
             <div class="ms-xxl-auto">
-                <button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button>
-                <a href="../barcode_scanner/" class="btn btn-primary" ><span class="fas fa-plus me-2"></span>Add product</a>
+                <!-- <button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button> -->
+                <div class="btn-group dropstart " role="group">
+                    <div class="btn-group mt-2">
+                        <div class="btn-group dropstart" role="group">
+                        <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">+ Add</span></button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../barcode_scanner/">Existing Product</a>
+                            <a class="dropdown-item" href="../barcode_scanner copy/">New Product</a>
+                        </div>
+                        </div>
+                        <button class="btn btn-primary" type="button">+ Add</button>
+                    </div>
+                <!-- <a href="../barcode_scanner/" class="btn btn-primary" ><span class="fas fa-plus me-2"></span>Add product</a> -->
             </div>
             </div>
         </div>
@@ -35,11 +46,11 @@
                 <table class="table mb-0">
                     <thead>
                     <tr>
-                        <th class="white-space-nowrap align-middle ps-0" style="max-width:20px; width:18px;">
+                        <!-- <th class="white-space-nowrap align-middle ps-0" style="max-width:20px; width:18px;">
                         <div class="form-check mb-0 fs-0">
                             <input class="form-check-input" id="checkbox-bulk-products-select" type="checkbox"/>
                         </div>
-                        </th>
+                        </th> -->
                         <th class="sort white-space-nowrap align-middle" scope="col"></th>
                         <th class="sort white-space-nowrap align-middle ps-4" scope="col" data-sort="product">PRODUCT NAME</th>
                         <th class="sort align-middle text-start ps-4" scope="col" data-sort="itemcode">ITEM CODE</th>
