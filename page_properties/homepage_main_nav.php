@@ -33,6 +33,7 @@
                 </div>
                 </div>
             </li>
+            <!-- //login modal -->
             <li class="nav-item dropdown"><a class="nav-link px-2" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false"><span class="text-700" data-feather="user" style="height:20px;width:20px;"></span></a>
                 <div class="dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-profile shadow border border-300 mt-2" aria-labelledby="navbarDropdownUser">
                 <div class="card position-relative border-0">
@@ -66,6 +67,7 @@
                 </div>
                 </div>
             </li>
+            <!-- end of login modal -->
             </ul>
         </div>
         <div class="col-12 col-md-6">

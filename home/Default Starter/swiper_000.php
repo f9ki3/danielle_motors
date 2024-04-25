@@ -10,7 +10,6 @@
 <div class="swiper-theme-container products-slider">
     <div class="swiper swiper-container theme-slider" data-swiper='{"slidesPerView":1,"spaceBetween":16,"breakpoints":{"450":{"slidesPerView":2,"spaceBetween":16},"768":{"slidesPerView":3,"spaceBetween":20},"1200":{"slidesPerView":4,"spaceBetween":16},"1540":{"slidesPerView":5,"spaceBetween":16}}}'>
         <div class="swiper-wrapper">
-
             <!-- loop this -->
             <div class="swiper-slide">
                 <div class="position-relative text-decoration-none product-card h-100">
@@ -42,12 +41,13 @@
                                 <h3 class="text-1100 mb-0">$89.00</h3>
                             </div>
                             <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
+                            <!-- Add to Cart Button -->
+                            <button onclick="addToCart('PlayStation 5 DualSense Wireless Controller', 89.00)" class="btn btn-primary mt-2">Add to Cart</button>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- end loop here -->
-
         </div>
     </div>
     <div class="swiper-nav swiper-product-nav">
@@ -57,3 +57,16 @@
 </div>
 
 <a class="fw-bold d-md-none px-0" href="#!">Explore more<span class="fas fa-chevron-right fs--1 ms-1"></span></a>
+
+<script>
+function addToCart(productName, price) {
+    // Retrieve existing cart items from localStorage or initialize an empty array
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Add the new item to the cart
+    cartItems.push({ name: productName, price: price });
+
+    // Update localStorage with the new cart items
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+}
+</script>

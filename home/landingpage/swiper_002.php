@@ -88,7 +88,6 @@ while (!$found_category) {
                         echo '</p>';
                         echo '</div>';
                         echo '<div>';
-                        echo '<h6 class="text-success lh-1 mb-0">35% off</h6>';
                         echo '</div>';
                         echo '</div>';
                         echo '</div>';
