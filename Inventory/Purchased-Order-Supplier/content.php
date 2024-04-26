@@ -73,30 +73,61 @@
 
     <div id="errorToast" class="toast hide bg-danger text-white" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header bg-danger text-white">
-            <strong class="me-auto">Success</strong>
+            <strong class="me-auto">Caution</strong>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
         <div class="toast-body bg-danger text-white">
-            Kindly fill up missing fields
-        </div>
-    </div>
-
-    <div id="errorToast2" class="toast hide bg-danger text-white" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-danger text-white">
-            <strong class="me-auto">Success</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body bg-danger text-white">
-            Kindly fill up missing fields
+            You've reached your monthly expense limit!
         </div>
     </div>
 </div>
 
 <script>
-    setInterval(function(){
-        var toast = document.getElementById('successToast');
-        toast.classList.toggle('hide');
-        toast.classList.toggle('show');
-    }, 5000);
+    // Function to make AJAX request every 5 seconds
+    function checkExpenses() {
+        // Make AJAX request
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'check_total_expense.php', true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Parse response as JSON
+                    var response = JSON.parse(xhr.responseText);
+
+                    // Log response to console
+                    console.log(response);
+
+                    // Handle different responses
+                    if (response === 'limit') {
+                        console.log('Expense limit reached!');
+                        // Add code to handle limit condition
+                        var toast = document.getElementById('errorToast');
+                        toast.classList.toggle('show');
+
+                        var toast = document.getElementById('successToast');
+                        toast.classList.toggle('hide');
+                    } else if (response === 'warning') {
+                        console.log('Approaching expense limit!');
+                        // Add code to handle warning condition
+                        var toast = document.getElementById('successToast');
+                        toast.classList.toggle('show');
+                    } else {
+                        console.log('Expenses within limits.');
+                        // Add code to handle other conditions
+                    }
+                } else {
+                    console.error('Error: ' + xhr.status);
+                }
+            }
+        };
+        xhr.send();
+    }
+
+    // Call the function initially
+    // checkExpenses();
+
+    // Set interval to call the function every 5 seconds
+    setInterval(checkExpenses, 10000);
 </script>
+
 
