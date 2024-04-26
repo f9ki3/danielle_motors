@@ -39,9 +39,9 @@ $model = $_SESSION['model'];
     
     <?php 
     // for($i = 0; $i < $qty; $i++){
-        for($i = 0; $i < 15; $i++){
+        for($i = 0; $i < 1; $i++){
     ?>
-    <div class="col-lg-6 p-3 border bbg m-1" style="width: 230px;">
+    <div class="col-lg-12 p-3 border bbg m-1" style="width: 100vh;">
         <div class="row">
             <div class="col-lg-12 p-3">
                 <p class="m-0" style="font-size: 8;">Product Name: <?php echo $product_name . ' ' . $brand . ' ' . $category . ' ' . $unit ; ?></p>
@@ -61,13 +61,13 @@ $model = $_SESSION['model'];
 </div>
 
 <script>
-        window.onload = function () {
-            // Set the scale to 85%, paper size to A4, and orientation to landscape
-            var style = document.createElement('style');
-            style.innerHTML = '@page { size: A4 portrait; }';
-            document.head.appendChild(style);
+    window.onload = function () {
+        // Set the scale to 85%, paper size to A4, and orientation to landscape
+        var style = document.createElement('style');
+        style.innerHTML = '@page { size: A4 portrait; }';
+        document.head.appendChild(style);
 
-            // Trigger Ctrl+P shortcut for printing
-            window.print();
-        };
-    </script>
+        // Trigger Ctrl+P shortcut for printing
+        window.print();
+    };
+</script>
