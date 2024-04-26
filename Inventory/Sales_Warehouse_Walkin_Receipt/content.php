@@ -58,15 +58,13 @@ $stmt->close();
                                 <p>Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
                             </div>
                         </div>
-                        <div style="display: flex; justify-content: space-between;" class="border-top pt-2">
+                        <div style="display: flex; justify-content: space-between;" class="border-top">
                             <div style="width: 35%">Payment Type: <?php echo $transactionDetails["TransactionPaymentMethod"]; ?></div>
                             <div style="width: 35%">Transaction Type: <?php echo $transactionDetails["TransactionType"]; ?></div>
                             <div style="width: 35%">Recieved by: <?php echo $transactionDetails["TransactionReceivedBy"]; ?></div>
                             <div style="width: 35%">Inspected by: <?php echo $transactionDetails["TransactionInspectedBy"]; ?></div>
                             <div style="width: 35%">Verified by: <?php echo $transactionDetails["TransactionVerifiedBy"]; ?></div>
                         </div>
-                </div>
-                <div class="w-100 border rounded p-3 mb-3 cart table-responsive" style=" height: 300px">
                         
                             <table class="table ">
                                 <tr>
@@ -151,55 +149,59 @@ $stmt->close();
 
 <!-- //print by fyke -->
 <div id="printable" style="margin-top: -90px">
-    <div class="d-flex flex-row justify-content-between rounded border p-3">
+   <div>
+   <div class="d-flex flex-row justify-content-between">
         <div>
             <h4 class="m-0 fw-bolder">Danielle Motors Parts</h4>
-            <p class="m-0">Prenza 2, 3019 Marilao, Bulacan, Philippines</p>
-            <p class="m-0">dmp@gmail.com | 09120987768</p>
+            <p class="m-0" style="font-size: 9px">Prenza 2, 3019 Marilao, Bulacan, Philippines</p>
+            <p class="m-0" style="font-size: 9px">dmp@gmail.com | 09120987768</p>
         </div>
-        <img src="../static/img/dmp_logo.png" alt="">
+        <img src="../../static/img/dmp_logo.png" style="width: 100px" alt="">
     </div>
     <div>
-        <div class="border rounded p-3 mt-3">
+    <hr style="margin: 0px; margin-top: 5px; margin-bottom: 5px">
+        
             <div>
                 <h4 class="fw-bolder">Purchase Receipt</h4>
             </div>
             <div class="d-flex flex-row justify-content-between">
                 <div style="width: 70%">
-                    <p class="m-0" style="font-size: 12px">Customer: <?php echo $transactionDetails["CustomerName"]; ?></p>
+                    <p class="m-0" style="font-size: 9px">Customer: <?php echo $transactionDetails["CustomerName"]; ?></p>
                 </div>
                 <div style="width: 30%">
-                    <p class="m-0" style="font-size: 12px">Invoice No: <?php echo $transactionID; ?></p>
+                    <p class="m-0" style="font-size: 9px">Invoice No: <?php echo $transactionID; ?></p>
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-between">
                 <div style="width: 70%">
-                    <p class="m-0" style="font-size: 12px">Address: <?php echo $transactionDetails["TransactionAddress"]; ?></p>
+                    <p class="m-0" style="font-size: 9px">Address: <?php echo $transactionDetails["TransactionAddress"]; ?></p>
                 </div>
                 <div style="width: 30%">
-                    <p class="m-0" style="font-size: 12px">Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
+                    <p class="m-0" style="font-size: 9px">Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-between">
                 <div style="width: 70%">
-                    <p class="m-0" style="font-size: 12px">Payment Type: <?php echo $transactionDetails["TransactionPaymentMethod"]; ?></p>
+                    <p class="m-0" style="font-size: 9px">Payment Type: <?php echo $transactionDetails["TransactionPaymentMethod"]; ?></p>
                 </div>
                 <div style="width: 30%">
-                    <p class="m-0" style="font-size: 12px">Transaction Type: <?php echo $transactionDetails["TransactionType"]; ?></p>
+                    <p class="m-0" style="font-size: 9px">Transaction Type: <?php echo $transactionDetails["TransactionType"]; ?></p>
                 </div>
             </div>
-        </div>
+    </div>
+   </div>
+    <div>
         
         <!-- Cart details -->
         <div class="w-100 p-2 mb-3 rounded border mt-3 cart">
                         
             <table class="table">
                 <tr>
-                    <th width=35%" style="font-size: 12px; padding-top: 0px; padding-bottom: 0px;">Product name</th>
-                    <th width="5%" style="font-size: 12px; padding-top: 0px; padding-bottom: 0px;">Qty</th>
-                    <th width="5%" style="font-size: 12px; padding-top: 0px; padding-bottom: 0px;">SRP</th>
-                    <th width="5%" style="font-size: 12px; padding-top: 0px; padding-bottom: 0px;">Discount</th>
-                    <th width="10%" style="font-size: 12px; padding-top: 0px; padding-bottom: 0px;">Amount</th>
+                    <th width=35%" style="font-size: 9px; padding-top: 0px; padding-bottom: 0px;">Product name</th>
+                    <th width="5%" style="font-size: 9px; padding-top: 0px; padding-bottom: 0px;">Qty</th>
+                    <th width="5%" style="font-size: 9px; padding-top: 0px; padding-bottom: 0px;">SRP</th>
+                    <th width="5%" style="font-size: 9px; padding-top: 0px; padding-bottom: 0px;">Discount</th>
+                    <th width="10%" style="font-size: 9px; padding-top: 0px; padding-bottom: 0px;">Amount</th>
                 </tr>
                 <!-- make a loop data here from data set -->
                 
@@ -214,10 +216,10 @@ $stmt->close();
                     // Output data of each row
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td style='font-size: 12px; padding: 2px; padding-left: 10px'>" . $row["ProductName"] .", ". $row["Brand"] .", ". $row["Model"] .", ".$row["Unit"] . "</td>";
-                        echo "<td style='font-size: 12px; padding: 2px; padding-left: 10px'>" . $row["Quantity"] . "</td>";
-                        echo "<td style='font-size: 12px; padding: 2px; padding-left: 10px'>₱ " . number_format($row["SRP"], 2) . "</td>";
-                        echo "<td style='font-size: 12px; padding: 2px; padding-left: 10px'>";
+                        echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>" . $row["ProductName"] .", ". $row["Brand"] .", ". $row["Model"] .", ".$row["Unit"] . "</td>";
+                        echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>" . $row["Quantity"] . "</td>";
+                        echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>₱ " . number_format($row["SRP"], 2) . "</td>";
+                        echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>";
                         if ($row["Discount"] == 0.00) {
                             echo "-";
                         } else {
@@ -231,7 +233,7 @@ $stmt->close();
                         }
                         echo "</td>";
 
-                        echo "<td style='font-size: 12px; padding: 2px; padding-left: 10px'>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
+                        echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
                         echo "</tr>";
                     }
                 } else {
@@ -264,51 +266,51 @@ $stmt->close();
                 <div style="width: 30%">
                     <div class="d-flex flex-row justify-content-between">
                         <div style="width: 30%">
-                            <p class="m-0" style="font-size: 12px">Subtotal </p>
+                            <p class="m-0" style="font-size: 9px">Subtotal </p>
                         </div>
                         <div style="width: 30%">
-                            <p class="m-0" style="font-size: 12px"><?php echo formatCurrency($transactionDetails["Subtotal"]); ?></p>
+                            <p class="m-0" style="font-size: 9px"><?php echo formatCurrency($transactionDetails["Subtotal"]); ?></p>
                         </div>
                     </div>
                     <div class="d-flex flex-row justify-content-between">
                         <div style="width: 70%">
-                            <p class="m-0" style="font-size: 12px">Tax </p>
+                            <p class="m-0" style="font-size: 9px">Tax </p>
                         </div>
                         <div style="width: 30%">
-                            <p class="m-0" style="font-size: 12px"><?php echo formatCurrency($transactionDetails["Tax"]); ?></p>
+                            <p class="m-0" style="font-size: 9px"><?php echo formatCurrency($transactionDetails["Tax"]); ?></p>
                         </div>
                     </div>
                     <div class="d-flex flex-row justify-content-between">
                         <div style="width: 70%">
-                            <p class="m-0" style="font-size: 12px">Discount </p>
+                            <p class="m-0" style="font-size: 9px">Discount </p>
                         </div>
                         <div style="width: 30%">
-                            <p class="m-0" style="font-size: 12px"><?php echo formatCurrency($transactionDetails["Discount"]); ?></p>
+                            <p class="m-0" style="font-size: 9px"><?php echo formatCurrency($transactionDetails["Discount"]); ?></p>
                         </div>
                     </div>
                     <div class="d-flex flex-row justify-content-between">
                         <div style="width: 70%">
-                            <p class="m-0" style="font-size: 12px">Total </p>
+                            <p class="m-0" style="font-size: 9px">Total </p>
                         </div>
                         <div style="width: 30%">
-                            <p class="m-0" style="font-size: 12px"><?php echo formatCurrency($transactionDetails["Total"]); ?></p>
+                            <p class="m-0" style="font-size: 9px"><?php echo formatCurrency($transactionDetails["Total"]); ?></p>
                         </div>
                     </div>
                     <hr class="m-0">
                     <div class="d-flex flex-row justify-content-between">
                         <div style="width: 70%">
-                            <p class="m-0" style="font-size: 12px">Payment </p>
+                            <p class="m-0" style="font-size: 9px">Payment </p>
                         </div>
                         <div style="width: 30%">
-                            <p class="m-0" style="font-size: 12px"><?php echo formatCurrency($transactionDetails["Payment"]); ?></p>
+                            <p class="m-0" style="font-size: 9px"><?php echo formatCurrency($transactionDetails["Payment"]); ?></p>
                         </div>
                     </div>
                     <div class="d-flex flex-row justify-content-between">
                         <div style="width: 70%">
-                            <p class="m-0" style="font-size: 12px">Change </p>
+                            <p class="m-0" style="font-size: 9px">Change </p>
                         </div>
                         <div style="width: 30%">
-                            <p class="m-0" style="font-size: 12px"><?php echo formatCurrency($transactionDetails["ChangeAmount"]); ?></p>
+                            <p class="m-0" style="font-size: 9px"><?php echo formatCurrency($transactionDetails["ChangeAmount"]); ?></p>
                         </div>
                     </div>
                 </div>
@@ -317,20 +319,20 @@ $stmt->close();
         
                     <div class="d-flex flex-row justify-content-between p-3 mt-5">
                         <div class="">
-                            <p style="font-size: 12px; text-align: center; margin-bottom: 0px"><?php echo $transactionDetails["TransactionReceivedBy"]; ?></p>
+                            <p style="font-size: 9px; text-align: center; margin-bottom: 0px"><?php echo $transactionDetails["TransactionReceivedBy"]; ?></p>
                             <hr class="m-0">
-                            <p style="font-size: 12px; text-align: center">Received By</p>
+                            <p style="font-size: 9px; text-align: center">Received By</p>
                         </div>
                         <!-- Other signature details -->
                         <div class="">
-                            <p style="font-size: 12px; text-align: center; margin-bottom: 0px"><?php echo $transactionDetails["TransactionInspectedBy"]; ?></p>
+                            <p style="font-size: 9px; text-align: center; margin-bottom: 0px"><?php echo $transactionDetails["TransactionInspectedBy"]; ?></p>
                             <hr class="m-0">
-                            <p style="font-size: 12px; text-align: center">Inspected By</p>
+                            <p style="font-size: 9px; text-align: center">Inspected By</p>
                         </div>
                         <div class="">
-                            <p style="font-size: 12px; text-align: center; margin-bottom: 0px"><?php echo $transactionDetails["TransactionVerifiedBy"]; ?></p>
+                            <p style="font-size: 9px; text-align: center; margin-bottom: 0px"><?php echo $transactionDetails["TransactionVerifiedBy"]; ?></p>
                             <hr class="m-0">
-                            <p style="font-size: 12px; text-align: center">Verified By</p>
+                            <p style="font-size: 9px; text-align: center">Verified By</p>
                         </div>
                     </div>
                 </div>
