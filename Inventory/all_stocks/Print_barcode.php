@@ -44,11 +44,11 @@ $model = $_SESSION['model'];
     <div class="col-lg-12 p-3 border bbg m-1" style="width: 100vh;">
         <div class="row">
             <div class="col-lg-12 p-1" >
-                <p class="m-0" style="font-size: 8;">Product Name: <?php echo $product_name . ' ' . $brand . ' ' . $category . ' ' . $unit ; ?></p>
+                <p class="m-0" style="font-size: 8;"><?php echo $product_name . ' ' . $brand . ' ' . $category . ' ' . $unit ; ?></p>
                 <!-- <p class="m-0 fs--1">Brand: <?php  // echo $brand; ?></p>
                 <p class="m-0 fs--1">Category: <?php  // echo $category; ?></p>
                 <p class="m-0 fs--1">Unit: <?php  // echo $unit; ?></p> -->
-                <p class="m-0" style="font-size: 8;">Model: <?php  echo $model; ?></p>
+                <p class="m-0" style="font-size: 8;"><?php  echo $model; ?></p>
             </div>
             <div class="col-lg-12 ps-4 text-center pt-2 mb-2">
                 <img src="../../assets/php-barcode-master/barcode.php?codetype=Code128&size=30&text=<?php echo $barcode;?>&print=true" class="img img-fluid">
