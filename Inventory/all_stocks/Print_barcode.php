@@ -43,7 +43,7 @@ $model = $_SESSION['model'];
     ?>
     <div class="col-lg-12 p-3 border bbg m-1" style="width: 100vh;">
         <div class="row">
-            <div class="col-lg-12 p-3">
+            <div class="col-lg-12 p-1">
                 <p class="m-0" style="font-size: 5;">Product Name: <?php echo $product_name . ' ' . $brand . ' ' . $category . ' ' . $unit ; ?></p>
                 <!-- <p class="m-0 fs--1">Brand: <?php  // echo $brand; ?></p>
                 <p class="m-0 fs--1">Category: <?php  // echo $category; ?></p>
