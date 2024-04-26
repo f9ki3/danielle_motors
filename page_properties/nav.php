@@ -519,7 +519,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
 
 
 
-
+<div class="print_hide">
 <nav class="navbar navbar-top fixed-top navbar-expand" id="navbarDefault" style="display:none;">
   <div class="collapse navbar-collapse justify-content-between">
     <div class="navbar-logo">
@@ -714,6 +714,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
     </ul>
   </div>
 </nav>
+</div>
 <!-- vertical navbar -->
 
 
