@@ -156,13 +156,13 @@ $stmt->close();
             <p class="m-0" style="font-size: 9px">Prenza 2, 3019 Marilao, Bulacan, Philippines</p>
             <p class="m-0" style="font-size: 9px">dmp@gmail.com | 09120987768</p>
         </div>
-        <img src="../../static/img/dmp_logo.png" style="width: 100px" alt="">
+        <img src="../../static/img/dmp_logo.png" style="width: 150px; margin-right: 60px;" alt="">
     </div>
     <div>
     <hr style="margin: 0px; margin-top: 5px; margin-bottom: 5px">
         
             <div>
-                <h4 class="fw-bolder">Purchase Receipt</h4>
+                <p class="fw-bolder" style="font-size: 12px; margin: 0px">Purchase Receipt</p>
             </div>
             <div class="d-flex flex-row justify-content-between">
                 <div style="width: 70%">
@@ -249,10 +249,10 @@ $stmt->close();
             <div>
             <div class="d-flex flex-row justify-content-between">
                     <div style="width: 55%">
-                        <h4 class="fw-bolder">Summary</h4>
+                        <p class="fw-bolder" style="font-size: 12px; margin: 0px">Summary</p>
                     </div>
                     <div style="width: 45%">
-                        <h4 class="fw-bolder">Validated Personnel</h4>
+                        <p class="fw-bolder" style="font-size: 12px; margin: 0px">Validated Personnel</p>
                     </div>
                 </div>
             </div>
