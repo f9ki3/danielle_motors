@@ -46,16 +46,16 @@ $qrcode = $_SESSION['qrcode'];
     ?>
     <div class="col-lg-6 p-3 border bbg m-1" style="width: 230px;">
         <div class="row">
-            <div class="col-lg-12 p-1 mb-1">
-                <p class="m-0" style="font-size: 12;"><b>Name: <?php echo $product_name . ' ' . $brand . ' ' . $category . ' ' . $unit ; ?></b></p>
+            <div class="col-lg-12 p-1 mb-0">
+                <p class="m-0" style="font-size: 10;"><b>Name: <?php echo $product_name . ' ' . $brand . ' ' . $category . ' ' . $unit ; ?></b></p>
                 <!-- <p class="m-0 fs--1">Brand: <?php  // echo $brand; ?></p>
                 <p class="m-0 fs--1">Category: <?php  // echo $category; ?></p>
                 <p class="m-0 fs--1">Unit: <?php  // echo $unit; ?></p> -->
-                <p class="m-0" style="font-size: 10;"><b>Model: <?php  echo $model; ?></b></p>
+                <p class="m-0" style="font-size: 8;"><b>Model: <?php  echo $model; ?></b></p>
             </div>
             <div class="col-lg-6">
-                <img src="../../uploads/<?php echo $qrcode;?>" class="img-fluid mb-0" alt="">
-                <p><?php echo $barcode;?></p>
+                <img src="../../uploads/<?php echo $qrcode;?>" class="img-fluid m-0" alt="">
+                <p class="m-0" style="font-size: 10;"><?php echo $barcode;?></p>
             </div>
             <!-- <div class="col-lg-6 ps-4 text-center pt-2 mb-2">
                 <img src="../../assets/php-barcode-master/barcode.php?codetype=Code128&size=45&text=<?php // echo $barcode;?>&print=true" class="img img-fluid">
