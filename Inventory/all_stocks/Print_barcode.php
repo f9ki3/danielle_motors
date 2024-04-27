@@ -58,7 +58,7 @@ $qrcode = $_SESSION['qrcode'];
                 <p class="m-0" style="font-size: 8;"><?php echo $barcode;?></p>
             </div>
             <div class="col-lg-6 ps-4 text-center pt-2 mb-2">
-                <img src="../../assets/php-barcode-master/barcode.php?codetype=Code128&size=45&text=<?php // echo $barcode;?>&print=true" class="img img-fluid">
+                <img src="../../assets/php-barcode-master/barcode.php?codetype=Code128&size=45&text=<?php  echo $barcode;?>&print=true" class="img img-fluid">
             </div>
         </div>
     </div>
