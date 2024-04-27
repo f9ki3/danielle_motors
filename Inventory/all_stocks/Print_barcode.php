@@ -11,6 +11,7 @@ if(isset($_GET['id'])){
     $category = $_GET['category'];
     $unit = $_GET['unit'];
     $model = $_GET['model'];
+    $qrcode = $_GET['qrcode'];
 
     // Storing variables in $_SESSION
     $_SESSION['id'] = $id;
@@ -21,6 +22,7 @@ if(isset($_GET['id'])){
     $_SESSION['category'] = $category;
     $_SESSION['unit'] = $unit;
     $_SESSION['model'] = $model;
+    $_SESSION['qrcode'] = $qrcode;
 
     header("Location: Print_barcode.php");
 } 
@@ -33,6 +35,7 @@ $brand = $_SESSION['brand'];
 $category = $_SESSION['category'];
 $unit = $_SESSION['unit'];
 $model = $_SESSION['model'];
+$qrcode = $_SESSION['qrcode'];
 ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <div class="d-flex align-content-end flex-wrap" >
@@ -50,16 +53,20 @@ $model = $_SESSION['model'];
                 <p class="m-0 fs--1">Unit: <?php  // echo $unit; ?></p> -->
                 <p class="m-0" style="font-size: 8;">Model: <?php  echo $model; ?></p>
             </div>
-            <div class="col-lg-12 ps-4 text-center pt-2 mb-2">
-                <img src="../../assets/php-barcode-master/barcode.php?codetype=Code128&size=45&text=<?php echo $barcode;?>&print=true" class="img img-fluid">
+            <div class="col-lg-6">
+                <img src="../../uploads/<?php echo $qrcode;?>" class="img-fluid mb-0" alt="">
+                <p><?php echo $barcode;?></p>
             </div>
+            <!-- <div class="col-lg-6 ps-4 text-center pt-2 mb-2">
+                <img src="../../assets/php-barcode-master/barcode.php?codetype=Code128&size=45&text=<?php // echo $barcode;?>&print=true" class="img img-fluid">
+            </div> -->
         </div>
     </div>
     <?php
     }
     ?>
 </div>
-
+NQLG230568Y6F786_662c5a3fbefa9.png
 <script>
     window.onload = function () {
         // Set the scale to 85%, paper size to A4, and orientation to landscape

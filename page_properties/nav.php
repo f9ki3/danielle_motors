@@ -519,8 +519,8 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
 
 
 
-<div class="print_hide">
-<nav class="navbar navbar-top fixed-top navbar-expand" id="navbarDefault" style="display:none;">
+<!-- <div class="print_hide"> -->
+<nav class="navbar navbar-top fixed-top navbar-expand print_hide" id="navbarDefault" style="display:none;">
   <div class="collapse navbar-collapse justify-content-between">
     <div class="navbar-logo">
       <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
@@ -714,7 +714,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
     </ul>
   </div>
 </nav>
-</div>
+<!-- </div> -->
 <!-- vertical navbar -->
 
 

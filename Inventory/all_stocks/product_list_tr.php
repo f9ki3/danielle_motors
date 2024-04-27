@@ -9,6 +9,7 @@
                     product.supplier_code,
                     product.image,
                     product.models,
+                    product.qr_code,
                     category.category_name,
                     brand.brand_name,
                     unit.name,
@@ -26,7 +27,7 @@
                 ORDER BY product.id DESC';
     $stmt = $conn->prepare($query);
     $stmt->execute();
-    $stmt->bind_result($stock_id, $stock_qty, $location, $product_id, $product_name, $product_barcode, $product_upc, $product_image, $models, $category, $brand, $unit, $active, $user_fname, $user_lname, $branch_name);
+    $stmt->bind_result($stock_id, $stock_qty, $location, $product_id, $product_name, $product_barcode, $product_upc, $product_image, $models, $qr_code, $category, $brand, $unit, $active, $user_fname, $user_lname, $branch_name);
     while ($stmt->fetch()) {
         if ($active == 1) {
             $status = 'active';
@@ -54,7 +55,7 @@
                 <td class="branch align-middle white-space-nowrap text-1000 ps-4"><b>' . $branch_name . '</b></td>
                 <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
                     <div class="font-sans-serif btn-reveal-trigger position-static"><button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs--2"></span></button>
-                        <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="Print_barcode.php?id=' . $product_id . '&barcode=' . $product_barcode . '&qty=' . $stock_qty . '&name=' . $product_name . '&brand=' . $brand . '&category=' . $category . '&unit=' . $unit . '&model=' . $models . '"  target="_blank">Print Barcodes</a>
+                        <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="Print_barcode.php?id=' . $product_id . '&barcode=' . $product_barcode . '&qty=' . $stock_qty . '&name=' . $product_name . '&brand=' . $brand . '&category=' . $category . '&unit=' . $unit . '&model=' . $models . '&qrcode=' . $qr_code . '"  target="_blank">Print Barcodes</a>
                         <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="#!">Remove</a>
                         </div>
                     </div>
