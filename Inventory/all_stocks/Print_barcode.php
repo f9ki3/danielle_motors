@@ -42,16 +42,16 @@ $qrcode = $_SESSION['qrcode'];
     
     <?php 
     // for($i = 0; $i < $qty; $i++){
-        for($i = 0; $i < 15; $i++){
+        for($i = 0; $i < 1; $i++){
     ?>
     <div class="col-lg-6 p-3 border bbg m-1" style="width: 230px;">
         <div class="row">
-            <div class="col-lg-12 p-3">
-                <p class="m-0" style="font-size: 8;">Product Name: <?php echo $product_name . ' ' . $brand . ' ' . $category . ' ' . $unit ; ?></p>
+            <div class="col-lg-12 p-1 mb-1">
+                <p class="m-0" style="font-size: 12;"><b>Name: <?php echo $product_name . ' ' . $brand . ' ' . $category . ' ' . $unit ; ?></b></p>
                 <!-- <p class="m-0 fs--1">Brand: <?php  // echo $brand; ?></p>
                 <p class="m-0 fs--1">Category: <?php  // echo $category; ?></p>
                 <p class="m-0 fs--1">Unit: <?php  // echo $unit; ?></p> -->
-                <p class="m-0" style="font-size: 8;">Model: <?php  echo $model; ?></p>
+                <p class="m-0" style="font-size: 10;"><b>Model: <?php  echo $model; ?></b></p>
             </div>
             <div class="col-lg-6">
                 <img src="../../uploads/<?php echo $qrcode;?>" class="img-fluid mb-0" alt="">
@@ -66,7 +66,6 @@ $qrcode = $_SESSION['qrcode'];
     }
     ?>
 </div>
-NQLG230568Y6F786_662c5a3fbefa9.png
 <script>
     window.onload = function () {
         // Set the scale to 85%, paper size to A4, and orientation to landscape
