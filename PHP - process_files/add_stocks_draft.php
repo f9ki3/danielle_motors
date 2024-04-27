@@ -1,6 +1,7 @@
 <?php
 include "../admin/session.php";
 include "../database/database.php";
+require_once "../assets/phpqrcode/qrlib.php";
 date_default_timezone_set('Asia/Manila');
 $currentDateTime = date('Y-m-d H:i:s');
 
@@ -120,6 +121,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $product_id = $last_inserted_id;
     $rack_id = $_POST['rack_id'];
     $rack_qty = $_POST['qty'];
+    //update barcode
+    $check_qrcode = "SELECT id FROM product WHERE id = '$product_id' LIMIT 1";
+    $check_qrcode_result = $conn->query($check_qrcode);
+    if($check_qrcode_result->num_rows>0){
+        $qrcode = $check_qrcode_result ->fetch_assoc();
+        $qrcode_product = $qrcode['qr_code'];
+        if(empty($qrcode_product) || !isset($qrcode_product)){
+            // Generate unique QR code filename
+            $qrFilename = $barcodeInput . "_" . uniqid() . ".png";
+            $qrImagePath = "../uploads/" . $qrFilename;
+
+            // Define the desired size of the QR code (in pixels)
+            $qrCodeSize = 600; // Adjust this value as needed
+
+            // Generate QR code with the specified size
+            QRcode::png($barcodeInput, $qrImagePath, QR_ECLEVEL_H, $qrCodeSize);
+
+            // Update qrimage column with the image file name
+            $updateQuery = "UPDATE product SET qr_code = '$qrFilename' WHERE id = '$product_id'";
+            if (mysqli_query($conn, $updateQuery)) {
+                // Check if files were uploaded
+                // header("Location: ../TruckInventory/");
+                
+            } else {
+                echo "Error updating QR code image: " . mysqli_error($conn);
+            }
+        }
+    }
 
     if(isset($_POST['dealer'])){
         $dealer = $_POST['dealer'];

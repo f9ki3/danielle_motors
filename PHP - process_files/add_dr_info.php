@@ -116,7 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Set product ID for further processing
         $product_id = $product_table_id;
     }
-
+    //check qrcode
     $check_qrcode = "SELECT id FROM product WHERE id = '$product_id' LIMIT 1";
     $check_qrcode_result = $conn->query($check_qrcode);
     if($check_qrcode_result->num_rows>0){
