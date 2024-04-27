@@ -66,9 +66,8 @@ while (!$found_category) {
 
                     while ($row = $result->fetch_assoc()) {
                         echo '<div class="swiper-slide">';
-                        echo '<div class="position-relative text-decoration-none product-card h-100">';
-                        echo '<div class="d-flex flex-column justify-content-between h-100">';
-                        echo '<div>';
+                        echo '<div class="product-card">'; // Updated class
+                        echo '<div class="product-card-inner">'; // Added inner container
                         echo '<div class="border border-1 rounded-3 position-relative mb-3">';
                         echo '<button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist">';
                         echo '<span class="fas fa-heart d-block-hover"></span>';
@@ -86,10 +85,11 @@ while (!$found_category) {
                         echo '<span class="fa fa-star text-warning"></span>';
                         echo '<span class="fa fa-star text-warning"></span>';
                         echo '</p>';
-                        echo '</div>';
                         echo '<div>';
                         echo '<h6 class="text-success lh-1 mb-0">35% off</h6>';
                         echo '</div>';
+                        // Add "Add to Cart" button
+                        echo '<button class="btn btn-primary btn-add-to-cart" data-product-id="' . $row["code"] . '">Add to Cart</button>';
                         echo '</div>';
                         echo '</div>';
                         echo '</div>';
@@ -112,3 +112,32 @@ while (!$found_category) {
     }
 }
 ?>
+
+<!-- JavaScript to handle "Add to Cart" button click -->
+<script>
+    // JavaScript to handle "Add to Cart" button click
+    document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.btn-add-to-cart').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var productId = this.getAttribute('data-product-id');
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/danielle_motors/home/cart/add_to_cart.php', true);
+ // Adjust the URL as needed
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log('Product added to cart successfully!');
+                    } else {
+                        console.error('Error adding product to cart');
+                    }
+                }
+            };
+            xhr.send('product_id=' + productId);
+        });
+    });
+});
+
+
+</script>
+

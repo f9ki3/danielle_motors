@@ -62,7 +62,8 @@ while (!$found_brand) {
                                     product.name AS product_name,
                                     product.models AS product_models,
                                     price_list.srp,
-                                    product.image
+                                    product.image,
+                                    product.code
                                 FROM 
                                     product
                                 JOIN 
@@ -118,6 +119,8 @@ while (!$found_brand) {
 
                         echo '</div>';
                         echo '<p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>';
+                        // Add "Add to Cart" button
+                        echo '<button class="btn btn-primary btn-add-to-cart" data-product-id="' . $row["code"] . '">Add to Cart</button>';
                         echo '</div>';
                         echo '</div>';
                         echo '</div>';
@@ -140,3 +143,32 @@ while (!$found_brand) {
     }
 }
 ?>
+
+
+<script>
+    // JavaScript to handle "Add to Cart" button click
+    document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.btn-add-to-cart').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var productId = this.getAttribute('data-product-id');
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/danielle_motors/home/cart/add_to_cart.php', true);
+ // Adjust the URL as needed
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log('Product added to cart successfully!');
+                    } else {
+                        console.error('Error adding product to cart');
+                    }
+                }
+            };
+            xhr.send('product_id=' + productId);
+        });
+    });
+});
+
+
+</script>
+

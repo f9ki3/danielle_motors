@@ -93,10 +93,11 @@ while (!$found_brand) {
                         echo '<div>';
                         echo '<p class="fs--1 text-1000 fw-bold mb-2">dbrand skin available</p>';
                         echo '<div class="d-flex align-items-center mb-1">';
-                        echo '<p class="me-2 text-900 text-decoration-line-through mb-0">$125.00</p>';
                         echo '<h3 class="text-1100 mb-0">&#8369;' . $row["srp"] . '</h3>'; // Using SRP here with peso sign
                         echo '</div>';
                         echo '<p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>';
+                        // Add "Add to Cart" button
+                        echo '<button class="btn btn-primary btn-add-to-cart" data-product-id="' . $row["code"] . '">Add to Cart</button>';
                         echo '</div>';
                         echo '</div>';
                         echo '</div>';
@@ -120,3 +121,29 @@ while (!$found_brand) {
     }
 }
 ?>
+
+<script>
+    // JavaScript to handle "Add to Cart" button click
+    document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.btn-add-to-cart').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var productId = this.getAttribute('data-product-id');
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/danielle_motors/home/cart/add_to_cart.php', true);
+ // Adjust the URL as needed
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log('Product added to cart successfully!');
+                    } else {
+                        console.error('Error adding product to cart');
+                    }
+                }
+            };
+            xhr.send('product_id=' + productId);
+        });
+    });
+});
+
+</script>
