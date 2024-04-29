@@ -148,6 +148,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $original_price = $_POST["original_price"];
     $price = $_POST["price"];
     $discount = $_POST["discount"];
+    $wholesale = $_POST['wholesale'];
     $total_qty = $_POST["total_qty"];
     $total = $price * $total_qty;
     if(isset($_POST['expiration_date'])){
@@ -185,7 +186,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $srp = $pl_row['dealer'];
         if($srp<=$original_price){
             // Update pricelist if original price is greater
-            $update_pricelist = "UPDATE price_list SET dealer = '$original_price', srp = '$original_price' WHERE id = '$pricelist_id'";
+            $update_pricelist = "UPDATE price_list SET dealer = '$original_price', srp = '$original_price', wholesale = '$wholesale' WHERE id = '$pricelist_id'";
             if($conn->query($update_pricelist)=== TRUE){
 
             } else {
@@ -194,7 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } 
     } else {
         // Insert new pricelist entry
-        $insert_to_pricelist_sql = "INSERT INTO price_list SET product_id = '$product_id', dealer = '$original_price', srp='$original_price', publish_by = '$user_id'";
+        $insert_to_pricelist_sql = "INSERT INTO price_list SET product_id = '$product_id', dealer = '$original_price', srp='$original_price', wholesale = '$wholesale', publish_by = '$user_id'";
         if($conn->query($insert_to_pricelist_sql) === TRUE){
 
         } else {
