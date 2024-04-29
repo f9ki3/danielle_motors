@@ -108,6 +108,12 @@
                                 </div>
                                 <div class="col-lg-12 mb-2">
                                     <div class="form-floating">
+                                        <input class="form-control" id="wholesale" name="wholesale" type="text" placeholder="" required/>
+                                        <label for="floatingInput">Wholesale</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-floating">
                                         <input class="form-control" id="total_qty" name="total_qty" type="number" min="1" placeholder="" required/>
                                         <label for="floatingInput">Total qty</label>
                                     </div>
@@ -235,6 +241,12 @@
                                     <div class="form-floating">
                                         <input class="form-control" id="discount" name="discount" type="number" min="1" max="100" placeholder="" required/>
                                         <label for="floatingInput">Discount ( % )</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-floating">
+                                        <input class="form-control" id="wholesale" name="wholesale" type="text" placeholder="" required/>
+                                        <label for="floatingInput">Wholesale</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-2">
