@@ -17,7 +17,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Retrieve form data
-    $barcodeInput = isset($_POST["barcodeInput"]) ? $_POST["barcodeInput"] : "";
+    // $barcodeInput = isset($_POST["barcodeInput"]) ? $_POST["barcodeInput"] : "";
+    // Generate a random barcode if not provided
+    if(!empty($_POST['barcodeInput'])){
+        $barcodeInput = $_POST['barcodeInput'];
+    } else {
+        $characters = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ12345678901234567890";
+        $randomized = str_shuffle($characters);
+        $randomized = substr($randomized, 0, 16);
+        $check_barcode_duplicate = "SELECT barcode FROM product WHERE barcode = '$randomized'";
+        $check_barcode_duplicate_res = $conn->query($check_barcode_duplicate);
+        if($check_barcode_duplicate_res->num_rows>0){
+            $randomizedagain = str_shuffle($characters);
+            $randomizedagain = substr($randomizedagain, 0, 15);
+            $barcodeInput = $randomizedagain;
+        } else {
+            $barcodeInput = $randomized;
+        }
+    }
 
     // check if barcode already exist
     // $check_barcode_duplication = "SELECT id FROM product WHERE barcode = '$barcodeInput' LIMIT 1";
