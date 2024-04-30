@@ -3,7 +3,7 @@
 include '../../config/config.php';
 
 // SQL query to fetch data
-$sql = "SELECT * FROM purchase_transactions ";
+$sql = "SELECT * FROM purchase_transactions  WHERE TransactionDate BETWEEN 2024-04-08 AND 2024-04-23";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
