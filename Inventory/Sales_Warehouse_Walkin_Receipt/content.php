@@ -213,10 +213,11 @@ $stmt->close();
                 // Check if any rows were returned
                 if ($result->num_rows > 0) {
 
+                    $count = 1; // Initialize the counter outside the loop
                     // Output data of each row
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>" . $row["ProductName"] .", ". $row["Brand"] .", ". $row["Model"] .", ".$row["Unit"] . "</td>";
+                        echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>". $count .". ". $row["ProductName"] .", ". $row["Brand"] .", ". $row["Model"] .", ".$row["Unit"] . "</td>";
                         echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>" . $row["Quantity"] . "</td>";
                         echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>₱ " . number_format($row["SRP"], 2) . "</td>";
                         echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>";
@@ -235,6 +236,7 @@ $stmt->close();
 
                         echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
                         echo "</tr>";
+                        $count++;
                     }
                 } else {
                     echo "0 results";
