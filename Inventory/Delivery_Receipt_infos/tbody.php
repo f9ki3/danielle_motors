@@ -103,11 +103,12 @@ if($dr_content_res->num_rows > 0){
             $unit_id = $row_product['unit_id'];
             $brand_id = $row_product['brand_id'];
             $category_id = $row_product['category_id'];
+            $product_image= $row_product['image'];
             ?>
             <tr>
                 <td class="ps-3"><a class="me-1 mb-1" onclick="handleLinkClick(event, 'delete.php?id=<?php echo $drc_id?>')"><span class="text-danger fas fa-trash-alt"></span></a></td>
                 <td><?php echo $qty; ?></td>
-                <td><?php echo $product_name . ' ' . $product_model . ' ' . $brand_id . ' ' . $category_id . ' ' . $unit_id;?></td>
+                <td><!--<img src="../../uploads/<?php // echo basename($product_image);?>" class="img img-fluid" height="43" alt="">--><?php echo $product_name . ' ' . $product_model . ' ' . $brand_id . ' ' . $category_id . ' ' . $unit_id;?></td>
                 <td class="text-end"><?php echo number_format((float)$orig_price, 2);?></td>
                 <td class="text-end"><?php echo number_format((float)$price, 2);?></td>
                 <td class="text-end"> % <?php echo $discount; ?></td>
