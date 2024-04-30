@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8 col-md-4">
+            <div class="col-lg-12 col-md-4">
                 <div class="table-responsive scrollbar mx-n1 px-1">
                     <table class="table table-sm mb-0">
                         <thead>
@@ -38,7 +38,7 @@
                                 <th class="sort align-middle" scope="col" data-sort="tags">DEALER</th>
                                 <th class="sort align-middle " scope="col" data-sort="vendor">WHOLESALE</th>
                                 <th class="sort align-middle " scope="col" data-sort="time">SRP</th>
-                                <th class="sort align-middle " scope="col"></th>
+                                <!-- <th class="sort align-middle " scope="col"></th> -->
                             </tr>
                         </thead>
                         <tbody class="list" id="products-table-body">
@@ -55,43 +55,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="card">
-                    <div class="card-body table-responsive">
-                        <h2 class="card-title">Cart</h2>
-                        <hr class="mt-3 mb-3">
-                        <table id="rightTable" class="table table-sm fs--1">
-                            <thead>
-                                <th>Name</th>
-                                <th>Models</th>
-                                <th>Stocks</th>
-                                <th>Unit Price</th>
-                                <th>Subtotal</th>
-                                <th>QTY</th>
-                                <th>Discount(%)</th>
-                                <th>Action</th>
-                            </thead>
-                            <tbody id="cart-body">
-
-                            </tbody>
-                        </table>
-
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <h2 class="text-start"><button class="btn btn-danger reset-cart">RESET</button></h2>
-                                <h2 class="text-start"><button class="btn btn-primary print">PRINT</button></h2>
-                            </div>
-                            <div class="col-lg-6">
-                                <h2 class="text-end" id="cart-total">Total: ₱0</h2>
-                            </div>
-                        </div>
-                        
-                        
-                        
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>
