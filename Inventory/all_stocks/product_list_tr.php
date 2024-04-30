@@ -16,7 +16,8 @@
                     product.active,
                     user.user_fname,
                     user.user_lname,
-                    branch.brn_name
+                    branch.brn_name,
+                    user.user_img
                 FROM stocks 
                 INNER JOIN product ON product.id = stocks.product_id
                 INNER JOIN category ON category.id = product.category_id
@@ -27,7 +28,7 @@
                 ORDER BY product.id DESC';
     $stmt = $conn->prepare($query);
     $stmt->execute();
-    $stmt->bind_result($stock_id, $stock_qty, $location, $product_id, $product_name, $product_barcode, $product_upc, $product_image, $models, $qr_code, $category, $brand, $unit, $active, $user_fname, $user_lname, $branch_name);
+    $stmt->bind_result($stock_id, $stock_qty, $location, $product_id, $product_name, $product_barcode, $product_upc, $product_image, $models, $qr_code, $category, $brand, $unit, $active, $user_fname, $user_lname, $branch_name, $pf_picture);
     while ($stmt->fetch()) {
         if ($active == 1) {
             $status = 'active';
@@ -41,9 +42,9 @@
                         <input class="form-check-input" type="checkbox"/>
                     </div>
                 </td>-->
-                <td class="align-middle white-space-nowrap py-0"><img src="../../uploads/'.basename($product_image).'" alt="" width="53" ></td>
+                <td class="align-middle white-space-nowrap py-0"><a href="../../uploads/'.basename($product_image).'" data-gallery="gallery-description" /><img src="../../uploads/'.basename($product_image).'" alt="" width="53" ></td>
                 <td class="product align-middle ps-4">'.$product_name.'</td>
-                <td class="itemcode align-middle white-space-nowrap text-start ps-4"><img src="../../assets/php-barcode-master/barcode.php?codetype=Code128&size=50&text='.$product_barcode.'&print=true" class="img img-fluid"></td>
+                <!--<td class="itemcode align-middle white-space-nowrap text-start ps-4"><img src="../../assets/php-barcode-master/barcode.php?codetype=Code128&size=50&text='.$product_barcode.'&print=true" class="img img-fluid"></td>-->
                 <td class="location align-middle white-space-nowrap ps-4 text-start"><span class="badge badge-phoenix badge-phoenix-secondary">'.$location.'</span></td>
                 <td class="category align-middle review pb-2 ps-3" style="min-width:225px;">'.$category.'</td>
                 <td class="brand align-middle text-start fw-semi-bold ps-4">'.$brand.'</td>
@@ -51,7 +52,19 @@
                 <td class="model align-middle white-space-nowrap text-600 ps-4">'.$models.'</td>
                 <td class="qty align-middle white-space-nowrap text-600 ps-4">'.$stock_qty.'</td>
                 <td class="status align-middle white-space-nowrap text-600 ps-4"></td>
-                <td class="publishby align-middle white-space-nowrap text-600 ps-4">' . $user_fname . ' ' . $user_lname . '</td>
+                <td class="publishby align-middle white-space-nowrap text-600 ps-4">
+                    <img src="../../uploads/' . basename($pf_picture) . '" class="img img-fluid rounded-circle" width="28" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown-menu">
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <img class="img img-fluid rounded-circle mb-3" src="../../uploads/' . basename($pf_picture) . '" width="58">
+                            </div>
+                            <div class="col-lg-12 text-center">
+                                <p>' . $user_fname . ' ' . $user_fname . '</p>
+                            </div>
+                        </div>
+                    </div>
+                </td>
                 <td class="branch align-middle white-space-nowrap text-1000 ps-4"><b>' . $branch_name . '</b></td>
                 <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
                     <div class="font-sans-serif btn-reveal-trigger position-static"><button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs--2"></span></button>

@@ -41,6 +41,8 @@
     <script src="../../assets/js/email-validation.js"></script> 
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css"> -->
     <link href="../../vendors/choices/choices.min.css" rel="stylesheet" />
+    <!-- <link href="../../vendors/swiper/swiper-bundle.min.css" rel="stylesheet"> -->
+    <link href="../../vendors/glightbox/glightbox.min.css" rel="stylesheet">
     <script>
       var phoenixIsRTL = window.config.config.phoenixIsRTL;
       if (phoenixIsRTL) {
