@@ -91,14 +91,18 @@ while (!$found_brand) {
                         echo '<div class="position-relative text-decoration-none product-card h-100">';
                         echo '<div class="d-flex flex-column justify-content-between h-100">';
                         echo '<div class="border border-1 rounded-3 position-relative mb-3">';
-                        echo '<button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist">';
-                        echo '<span class="fas fa-heart d-block-hover"></span>';
-                        echo '<span class="far fa-heart d-none-hover"></span>';
+                        echo '<button class="btn btn-primary text-light rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist">';
+                        echo '<span class="fas fa-heart "></span>';
+                        echo '</button>';
+                        echo '<button class="btn btn-primary text-light rounded-circle p-0 me-6 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist">';
+                        echo '<span class="fas fas fa-cart-plus"></span>';
                         echo '</button>';
                         if (isset($row["image"])) {
-                            echo '<img class="img-fluid" src="../../uploads/' . basename($row["image"]) . '" alt="' . $row["product_name"] . '" />';
+                            echo '<div style="height: 250px; width: 100%;">
+                                <img style="object-fit: cover; height: 100%; width: 100%;" class="rounded" src="../../uploads/' . basename($row["image"]) . '" alt="' . $row["product_name"] . '" />
+                             </div>';
                         } else {
-                            echo '<img class="img-fluid" src="../../default-image.jpg" alt="' . $row["product_name"] . '" />'; // Default image
+                            echo '<img class="img-fluid" src="../../uploads/product_dummy.jpg"  />'; // Default image
                         }
                         echo '</div>';
                         echo '<a class="stretched-link" href="product-details.html">';

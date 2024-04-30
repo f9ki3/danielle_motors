@@ -18,6 +18,10 @@
 <script src="../../assets/js/regions.js"></script>
 <script src="../../vendors/sortablejs/sortable.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../../vendors/swiper/swiper-bundle.min.js"></script>
+<script src="../../vendors/dropzone/dropzone.min.js"></script>
+<script src="../../vendors/swiper/swiper-bundle.min.js"></script>
+<script src="../../vendors/glightbox/glightbox.min.js"> </script>
 <script>
     // Function to load content from notification.php into the specified div
     function loadNotification() {

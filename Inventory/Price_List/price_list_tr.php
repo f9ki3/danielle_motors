@@ -22,14 +22,14 @@
                 <td class="tags align-middle review pb-2 ps-3">₱'.number_format($dealer).'</td>
                 <td class="vendor align-middle text-start fw-semi-bold ">₱'.number_format($wholesale).'</td>
                 <td class="time align-middle white-space-nowrap text-600 ">₱'.number_format($srp).'</td>
-                <td class="align-middle white-space-nowrap text-end pe-0  btn-reveal-trigger">
+                <!--<td class="align-middle white-space-nowrap text-end pe-0  btn-reveal-trigger">
                     <button class="btn btn-primary cart-button" 
                         data-product-id="'.$id.'"
                         data-product-srp="'.$srp.'"
                     >
                     <i class="fas fa-cart-plus"></i>
                     </button>
-                </td>
+                </td>-->
             </tr>';
     }
 ?>
