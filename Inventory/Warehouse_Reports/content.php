@@ -5,7 +5,7 @@
     </div>
 </div>
 
-<div id="content" class="display: none">
+<div id="content" style="display: none">
     <div class="row g-3 mb-4">
         <div class="col-auto">
             <h2 class="mb-0">Warehouse Reports</h2>
@@ -25,6 +25,8 @@
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         + Create Reports
                     </button>
+                    <a href="../Sales_Warehouse_Delivery" class="btn border text-primary border-primary position-relative"><span class="fas fa-car-side me-2"></span> Delivery</a>
+                    <a href="../Sales_Warehouse_Delivery" class="btn border text-primary border-primary position-relative"><span class="fas fa-car-side me-2"></span> Delivery</a>
                     <a href="../Sales_Warehouse_Delivery" class="btn border text-primary border-primary position-relative"><span class="fas fa-car-side me-2"></span> Delivery</a>
                 </div>
             </div>
@@ -83,11 +85,49 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="mb-2">
+            <p class="mb-0">Select Report Type</p>
+            <select id="type" class="form-control">
+                <option value="Daily">Daily</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Yearly">Yearly</option>
+            </select>
+        </div>
+        <div id="daily_div">
+            <div class="mb-2">
+                <p class="mb-0">Start Date</p>
+                <input type="date" class="form-control">
+            </div>
+            <div class="mb-2">
+                <p class="mb-0">End Date</p>
+                <input type="date" class="form-control">
+            </div>
+        </div>
+        <div id="monthly_div" style="display: none">
+            <div class="mb-2">
+                <p class="mb-0">Start Month</p>
+                <input type="date" class="form-control">
+            </div>
+            <div class="mb-2">
+                <p class="mb-0">End Month</p>
+                <input type="date" class="form-control">
+            </div>
+        </div>
+        <div id="yearly_div" style="display: none">
+            <div class="mb-2">
+                <p class="mb-0">Start Year</p>
+                <input type="date" class="form-control">
+            </div>
+            <div class="mb-2">
+                <p class="mb-0">End Year</p>
+                <input type="date" class="form-control">
+            </div>
+        </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        <button type="button" class="btn btn-primary">Create</button>
       </div>
     </div>
   </div>

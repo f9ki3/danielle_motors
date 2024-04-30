@@ -60,7 +60,14 @@ while (!$found_brand) {
                     echo '<h3 class="mx-2">' . $brand_name . '</h3>';
                     echo '<span class="fas fa-bolt text-warning fs-2"></span>';
                     echo '</div>';
-                    echo '<a class="btn btn-link btn-lg p-0 d-none d-md-block" href="#!">Explore more<span class="fas fa-chevron-right fs--1 ms-1"></span></a>';
+                    echo '<a 'product.name,
+                    product.code,
+                    product.supplier_code,
+                    product.barcode,
+                    product.image,
+                    product.models,
+                    price_list.srp,
+                    product.category_id' id="product" product.code class="btn btn-link btn-lg p-0 d-none d-md-block" href="#!">Explore more<span class="fas fa-chevron-right fs--1 ms-1"></span></a>';
                     echo '</div>';
 
                     // Display products
@@ -73,11 +80,19 @@ while (!$found_brand) {
                         echo '<div class="position-relative text-decoration-none product-card h-100">';
                         echo '<div class="d-flex flex-column justify-content-between h-100">';
                         echo '<div class="border border-1 rounded-3 position-relative mb-3">';
-                        echo '<button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist">';
-                        echo '<span class="fas fa-heart d-block-hover"></span>';
-                        echo '<span class="far fa-heart d-none-hover"></span>';
+                        echo '<button class="btn btn-primary text-light rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist">';
+                        echo '<span class="fas fa-heart "></span>';
                         echo '</button>';
-                        echo '<img class="img-fluid" src="../../uploads/' . basename($row["image"]) . '" alt="' . $row["name"] . '" />';
+                        echo '<button class="btn btn-primary text-light rounded-circle p-0 me-6 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist">';
+                        echo '<span class="fas fas fa-cart-plus"></span>';
+                        echo '</button>';
+                        if (isset($row["image"])) {
+                            echo '<div style="height: 250px; width: 100%;">
+                                <img style="object-fit: cover; height: 100%; width: 100%;" class="rounded" src="../../uploads/' . basename($row["image"]) . '" alt="' . $row["name"] . '" />
+                             </div>';
+                        } else {
+                            echo '<img class="img-fluid" src="../../uploads/product_dummy.jpg"  />'; // Default image
+                        }
                         echo '</div>';
                         echo '<a class="stretched-link" href="product-details.html">';
                         echo '<h6 class="mb-2 lh-sm line-clamp-3 product-name">' . $row["name"] . '</h6>';
@@ -97,6 +112,11 @@ while (!$found_brand) {
                         echo '<h3 class="text-1100 mb-0">&#8369;' . $row["srp"] . '</h3>'; // Using SRP here with peso sign
                         echo '</div>';
                         echo '<p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>';
+<<<<<<< Updated upstream
+=======
+                        // Add "Add to Cart" button
+                        // echo '<button class="btn btn-primary btn-add-to-cart" data-product-id="' . $row["code"] . '">Add to Cart</button>';
+>>>>>>> Stashed changes
                         echo '</div>';
                         echo '</div>';
                         echo '</div>';
@@ -120,3 +140,31 @@ while (!$found_brand) {
     }
 }
 ?>
+<<<<<<< Updated upstream
+=======
+<script>
+    // JavaScript to handle "Add to Cart" button click
+    document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.btn-add-to-cart').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var productId = this.getAttribute('data-product-id');
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/danielle_motors/home/cart/add_to_cart.php', true);
+ // Adjust the URL as needed
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log('Product added to cart successfully!');
+                    } else {
+                        console.error('Error adding product to cart');
+                    }
+                }
+            };
+            xhr.send('product_id=' + productId);
+        });
+    });
+});
+
+</script>
+>>>>>>> Stashed changes

@@ -74,7 +74,9 @@ while (!$found_category) {
                         echo '<span class="fas fa-heart d-block-hover"></span>';
                         echo '<span class="far fa-heart d-none-hover"></span>';
                         echo '</button>';
-                        echo '<img class="img-fluid" src="../../uploads/' . basename($row["image"]) . '" alt="' . $row["name"] . '" />';
+                        echo '<div style="height: 250px; width: 100%;">
+                                <img style="object-fit: cover; height: 100%; width: 100%;" class="rounded" src="../../uploads/' . basename($row["image"]) . '" alt="' . $row["name"] . '" />
+                             </div>';
                         echo '</div>';
                         echo '<a class="stretched-link" href="product-details.html">';
                         echo '<h6 class="mb-2 lh-sm line-clamp-3 product-name">' . $row["name"] . '</h6>';

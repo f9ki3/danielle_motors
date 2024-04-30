@@ -68,6 +68,7 @@ date_default_timezone_set('Asia/Manila');
           reloadSpinner();
 
     </script>
+    <script src="../../jquery/reports.js"></script>
     
   </body>
 
