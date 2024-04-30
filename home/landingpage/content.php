@@ -1,3 +1,29 @@
+<?php
+session_start();
+
+// Function to add a product to the cart
+function addToCart($productId) {
+    // Retrieve product details based on product ID
+    // This is a placeholder; you need to implement your own logic to fetch product details
+    $productDetails = getProductDetails($productId);
+    
+    // Add product to the cart session variable
+    $_SESSION['cart'][] = $productDetails;
+}
+
+// Placeholder function to retrieve product details based on product ID
+function getProductDetails($productId) {
+    // You need to implement this function to retrieve product details from your database or elsewhere
+    // Return product details as an associative array
+}
+
+// Check if a product is being added to the cart
+if(isset($_POST['add_to_cart'])) {
+    $productId = $_POST['product_id'];
+    addToCart($productId);
+}
+?>
+
 <?php include "upper_buttons.php";?>
 
 <!-- ============================================-->
@@ -42,6 +68,13 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Form for adding product to cart -->
+        <form action="landingpage.php" method="post">
+            <input type="hidden" name="add_to_cart" value="true">
+            <input type="hidden" name="product_id" value="1"> <!-- Replace with actual product ID -->
+            <button type="submit" class="btn btn-primary">Add Product to Cart</button>
+        </form>
     </div><!-- end of .container-->
 </section><!-- <section> close ============================-->
 <!-- ============================================-->

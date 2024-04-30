@@ -108,15 +108,12 @@ while (!$found_brand) {
                         echo '<div>';
                         echo '<p class="fs--1 text-1000 fw-bold mb-2">dbrand skin available</p>';
                         echo '<div class="d-flex align-items-center mb-1">';
-                        echo '<p class="me-2 text-900 text-decoration-line-through mb-0">$125.00</p>';
                         echo '<h3 class="text-1100 mb-0">&#8369;' . $row["srp"] . '</h3>'; // Using SRP here with peso sign
                         echo '</div>';
                         echo '<p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>';
-<<<<<<< Updated upstream
-=======
+
                         // Add "Add to Cart" button
-                        // echo '<button class="btn btn-primary btn-add-to-cart" data-product-id="' . $row["code"] . '">Add to Cart</button>';
->>>>>>> Stashed changes
+                        echo '<button class="btn btn-primary btn-add-to-cart" data-product-id="' . $row["code"] . '">Add to Cart</button>';
                         echo '</div>';
                         echo '</div>';
                         echo '</div>';
@@ -140,8 +137,7 @@ while (!$found_brand) {
     }
 }
 ?>
-<<<<<<< Updated upstream
-=======
+
 <script>
     // JavaScript to handle "Add to Cart" button click
     document.addEventListener('DOMContentLoaded', function() {
@@ -167,4 +163,4 @@ while (!$found_brand) {
 });
 
 </script>
->>>>>>> Stashed changes
+

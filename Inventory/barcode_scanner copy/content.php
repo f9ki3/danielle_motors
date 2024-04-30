@@ -42,7 +42,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" name="barcodeInput" id="barcodeInput" value="" required>
+                                <input type="text" class="form-control" name="barcodeInput" id="barcodeInput" value="">
                                 <label for="">Barcode</label>
                             </div>
                         </div>

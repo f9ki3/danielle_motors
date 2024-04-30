@@ -4,7 +4,7 @@
     </div>
 </div>
 
-<div class="mb-9" id="actualContent" style="display: none;" data-list='{"valueNames":["name","category","brand", "unit", "models", "stock"],"page":5,"pagination":true}'>
+<div class="mb-9" id="actualContent" style="display: none;" data-list='{"valueNames":["name","category","brand", "unit", "models", "stock"],"page":10,"pagination":true}'>
     <div class="row g-3 mb-2">
         <div class="col-auto">
             <h2 class="mb-0">PRODUCTS</h2>
@@ -54,6 +54,7 @@
                                         <input class="form-check-input" id="bulk-select-example" type="checkbox" data-bulk-select='{"body":"bulk-select-body","actions":"bulk-select-actions","replacedElement":"bulk-select-replace-element"}' />
                                     </div>
                                 </th>
+                                <th></th>
                                 <th class="sort" data-sort="name">Product Name</th>
                                 <th class="sort" data-sort="category">Category</th>
                                 <th class="sort" data-sort="brand">Brand</th>
@@ -97,3 +98,74 @@
     <input type="submit" value="submit">
     </form> -->
 </div>
+
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="successToast" class="toast hide bg-warning text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-warning text-white">
+            <strong class="me-auto">Warning!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body text-white">
+            Your monthly expenses are nearing your limit, so please request purchase orders wisely.
+        </div>
+    </div>
+
+    <div id="errorToast" class="toast hide bg-danger text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-danger text-white">
+            <strong class="me-auto">Caution</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body bg-danger text-white">
+            You've reached your monthly expense limit!
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to make AJAX request every 5 seconds
+    function checkExpenses() {
+        // Make AJAX request
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '../Purchased-Order-Supplier/check_total_expense.php', true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Parse response as JSON
+                    var response = JSON.parse(xhr.responseText);
+
+                    // Log response to console
+                    console.log(response);
+
+                    // Handle different responses
+                    if (response === 'limit') {
+                        console.log('Expense limit reached!');
+                        // Add code to handle limit condition
+                        var toast = document.getElementById('errorToast');
+                        toast.classList.toggle('show');
+
+                        var toast = document.getElementById('successToast');
+                        toast.classList.toggle('hide');
+                    } else if (response === 'warning') {
+                        console.log('Approaching expense limit!');
+                        // Add code to handle warning condition
+                        var toast = document.getElementById('successToast');
+                        toast.classList.toggle('show');
+                    } else {
+                        console.log('Expenses within limits.');
+                        // Add code to handle other conditions
+                    }
+                } else {
+                    console.error('Error: ' + xhr.status);
+                }
+            }
+        };
+        xhr.send();
+    }
+
+    // Call the function initially
+    // checkExpenses();
+
+    // Set interval to call the function every 5 seconds
+    setInterval(checkExpenses, 10000);
+</script>

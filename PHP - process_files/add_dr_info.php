@@ -2,6 +2,7 @@
 // Include necessary files
 require_once '../admin/session.php'; // Ensures user is logged in
 include "../database/database.php"; // Includes database connection
+require_once "../assets/phpqrcode/qrlib.php";
 
 // Set the timezone to Philippines
 date_default_timezone_set('Asia/Manila');
@@ -106,6 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $insert_to_product = "INSERT INTO product (name, code, supplier_code, barcode, `image`, models, unit_id, brand_id, category_id, active, publish_by) VALUES ('$product_name', '$product_code', '$supplier_code', '$barcode', '$fileName', '$models', '$unit', '$brand', '$category', '1', '$user_id')";
                 if($conn->query($insert_to_product) === TRUE){
                     $product_table_id = $conn->insert_id;
+                    
                 } else {
                     $response = array("error" => "Product cant be inserted" . $conn-> error());
                 }
@@ -114,10 +116,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Set product ID for further processing
         $product_id = $product_table_id;
     }
+    //check qrcode
+    $check_qrcode = "SELECT id FROM product WHERE id = '$product_id' LIMIT 1";
+    $check_qrcode_result = $conn->query($check_qrcode);
+    if($check_qrcode_result->num_rows>0){
+        $qrcode = $check_qrcode_result ->fetch_assoc();
+        $qrcode_product = $qrcode['qr_code'];
+        if(empty($qrcode_product) || !isset($qrcode_product)){
+            // Generate unique QR code filename
+            $qrFilename = $barcode . "_" . uniqid() . ".png";
+            $qrImagePath = "../uploads/" . $qrFilename;
+
+            // Define the desired size of the QR code (in pixels)
+            $qrCodeSize = 600; // Adjust this value as needed
+
+            // Generate QR code with the specified size
+            QRcode::png($barcode, $qrImagePath, QR_ECLEVEL_H, $qrCodeSize);
+
+            // Update qrimage column with the image file name
+            $updateQuery = "UPDATE product SET qr_code = '$qrFilename' WHERE id = '$product_id'";
+            if (mysqli_query($conn, $updateQuery)) {
+                // Check if files were uploaded
+                // header("Location: ../TruckInventory/");
+                
+            } else {
+                echo "Error updating QR code image: " . mysqli_error($conn);
+            }
+        }
+    }
     // Retrieve other form data
     $original_price = $_POST["original_price"];
     $price = $_POST["price"];
     $discount = $_POST["discount"];
+    $wholesale = $_POST['wholesale'];
     $total_qty = $_POST["total_qty"];
     $total = $price * $total_qty;
     if(isset($_POST['expiration_date'])){
@@ -155,7 +186,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $srp = $pl_row['dealer'];
         if($srp<=$original_price){
             // Update pricelist if original price is greater
-            $update_pricelist = "UPDATE price_list SET dealer = '$original_price', srp = '$original_price' WHERE id = '$pricelist_id'";
+            $update_pricelist = "UPDATE price_list SET dealer = '$original_price', srp = '$original_price', wholesale = '$wholesale' WHERE id = '$pricelist_id'";
             if($conn->query($update_pricelist)=== TRUE){
 
             } else {
@@ -164,7 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } 
     } else {
         // Insert new pricelist entry
-        $insert_to_pricelist_sql = "INSERT INTO price_list SET product_id = '$product_id', dealer = '$original_price', srp='$original_price', publish_by = '$user_id'";
+        $insert_to_pricelist_sql = "INSERT INTO price_list SET product_id = '$product_id', dealer = '$original_price', srp='$original_price', wholesale = '$wholesale', publish_by = '$user_id'";
         if($conn->query($insert_to_pricelist_sql) === TRUE){
 
         } else {
