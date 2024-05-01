@@ -3,7 +3,7 @@
 include '../../config/config.php';
 
 // SQL query to fetch data
-$sql = "SELECT * FROM purchase_transactions ";
+$sql = "SELECT * FROM purchase_transactions";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
