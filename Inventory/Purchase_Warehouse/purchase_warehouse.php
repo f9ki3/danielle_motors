@@ -22,13 +22,13 @@ $query = 'SELECT
         s.pending_order
         FROM 
         price_list pl
-        JOIN 
+        LEFT JOIN 
         product p ON pl.product_id = p.id
-        JOIN 
+        LEFT JOIN 
         brand b ON p.brand_id = b.id
-        JOIN 
+        LEFT JOIN 
         category c ON p.category_id = c.id
-        JOIN 
+        LEFT JOIN 
         unit u ON p.unit_id = u.id
         LEFT JOIN 
         stocks s ON p.id = s.product_id
