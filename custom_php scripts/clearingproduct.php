@@ -39,9 +39,11 @@ if($result->num_rows>0){
             echo "product name do consist of the brand name and category name<br>";
              // Remove brand name and/or category name from product name
              $product_name_without_brand = str_replace($brand_name, '', $product_name);
+             $new = $product_name_without_brand;
               // Remove brand name and/or category name from product name
-            $product_name_without_brand_category = str_replace($category_name, '', $product_name_without_brand);
-             echo $product_name_without_brand_category . "<br>";
+            $product_name_without_brand_category = str_replace($category_name, '', $new);
+            
+            echo $product_name_without_brand_category . "<br>";
             echo "<br>***************************************************************************************************<br>";
         } elseif(strpos($product_name, $brand_name) !== false){
             echo "product name do consist of the brand name but do not consist of category name<br>";
