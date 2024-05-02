@@ -68,14 +68,9 @@
                                             $model = $row['model'];
                                             $category_name = $row['category_name'];
 
-                                            $check_product_id = "SELECT product_id FROM delivery_receipt_content WHERE product_id = '$product_id' AND delivery_receipt_id = '$delivery_receipt_id'";
-                                            $check_product_id_res = $conn->query($check_product_id);
-                                            if($check_product_id_res -> num_rows > 0){
-
-                                            } else {
-                                                echo '<option value="' . $product_id . '">' . $category_name . ' ' . $brand_name . ' ' . $product_name . ' ' . $unit_name . ' ' . $model .  '</option>';
-                                            }
-                                    
+                                            
+                                            echo '<option value="' . $product_id . '">' . $category_name . ' ' . $brand_name . ' ' . $product_name . ' ' . $unit_name . ' ' . $model .  '</option>';
+                                            
                                             
                                         }
                                     }
