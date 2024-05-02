@@ -18,7 +18,7 @@ if($result->num_rows>0){
     while($row=$result->fetch_assoc()){
         // Storing values from the current row into variables
         $product_id = $row['id'];
-        $product_name = $row['name'] ;
+        $product_name = strtoupper($row['name']);
         $product_models = $row['models'];
         $unit_name = $row['unit_name'];
         $brand_name = strtoupper($row['brand_name']);
