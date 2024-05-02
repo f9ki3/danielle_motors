@@ -35,19 +35,28 @@ if($result->num_rows>0){
         echo "------------------------------------------------------------------------------------------------------------------------<br>";
 
         // Checking if product name contains brand name and/or category name
-        if(strpos($product_name, $brand_name) !== false && strpos($product_name, $category_name) !== false ) {
-            echo "product name do consist of the brand name and category name<br>";
-            echo "<br>***************************************************************************************************<br>";
-        } elseif(strpos($product_name, $brand_name) !== false){
-            echo "product name do consist of the brand name but do not consist of category name<br>";
-            echo "<br>***************************************************************************************************<br>";
-        } elseif(strpos($product_name, $category_name) !== false ){
-            echo "product name do consist of the category name but do not consist of the brand name<br>";
-            echo "<br>***************************************************************************************************<br>";
+        if(strpos($product_name, $brand_name) !== false || strpos($product_name, $category_name) !== false ) {
+            // If either brand name or category name is present
+            if(strpos($product_name, $brand_name) !== false && strpos($product_name, $category_name) !== false ) {
+                // If both brand name and category name are present
+                echo "product name consists of both the brand name and category name<br>";
+            } elseif(strpos($product_name, $brand_name) !== false){
+                // If only brand name is present
+                echo "product name consists of the brand name but does not consist of the category name<br>";
+            } elseif(strpos($product_name, $category_name) !== false ){
+                // If only category name is present
+                echo "product name consists of the category name but does not consist of the brand name<br>";
+            }
+            // Remove brand name and/or category name from product name
+            $product_name_without_brand_category = str_replace([$brand_name, $category_name], '', $product_name);
+            echo $product_name_without_brand_category . "<br>";
         } else {
-            echo "product name do not consist of the brand name and category name<br>";
-            echo "***************************************************************************************************<br>  <br>";
+            // If neither brand name nor category name is present
+            echo "product name does not consist of the brand name and category name<br>";
+            echo $product_name . "<br>";
         }
+        echo "<br>***************************************************************************************************<br>";
+
 
     }
 }
