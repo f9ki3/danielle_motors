@@ -14,10 +14,10 @@
                     user.user_fname,
                     user.user_lname
                 FROM product
-                INNER JOIN category ON category.id = product.category_id
-                INNER JOIN brand ON brand.id = product.brand_id
-                INNER JOIN unit ON unit.id = product.unit_id
-                LEFT JOIN user ON user.id = product.publish_by
+                JOIN category ON category.id = product.category_id
+                JOIN brand ON brand.id = product.brand_id
+                JOIN unit ON unit.id = product.unit_id
+                JOIN user ON user.id = product.publish_by
                 ORDER BY product.id DESC';
     $stmt = $conn->prepare($query);
     $stmt->execute();
