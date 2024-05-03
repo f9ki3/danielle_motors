@@ -35,7 +35,7 @@
             </a>
         </div>
         <div class="col-lg-3">
-            <a class="text-decoration-none" href="..//">
+            <a class="text-decoration-none" href="../Sales_Warehouse/">
                 <div class="card mb-2">
                     <div class="card-body">
                         <div class="text-center">
@@ -100,7 +100,7 @@
         </div>
 
         <div class="col-lg-3">
-        <a class="text-decoration-none" href="../Delivery_Reciept/">
+        <a class="text-decoration-none" href="../Warehouse_Reports/">
                 <div class="card mb-2">
                     <div class="card-body">
                         <div class="text-center">
@@ -113,7 +113,7 @@
         </div>
 
         <div class="col-lg-3">
-            <a class="text-decoration-none" href="../Delivery_Reciept/">
+            <a class="text-decoration-none" href="../User_Maintenance/">
                 <div class="card mb-2">
                     <div class="card-body">
                         <div class="text-center">
