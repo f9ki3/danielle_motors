@@ -25,8 +25,8 @@ if($category_ko == 0 ){
                         $update_product = "UPDATE product SET category_id = '$category_id' WHERE id = '$product_id'";
                         if ($conn->query($update_product) === TRUE) {
                             $response .= "Response: Product '" . $product_name . "' was successfully updated. Its category is now " . $category_id . "\n";
-                            $break = 1;
-                            break; // Exit the inner loop once a product is updated
+                            // $break = 1;
+                            // break; // Exit the inner loop once a product is updated
                         } else {
                             $response .= "Error updating product: " . $conn->error . "\n";
                         }
@@ -38,9 +38,9 @@ if($category_ko == 0 ){
                 // echo $respone . $_SESSION['category'];
             }
 
-            if($break == 1){
-                break;
-            }
+            // if($break == 1){
+            //     break;
+            // }
 
         }
     }
