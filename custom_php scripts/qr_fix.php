@@ -28,10 +28,10 @@ if($qr_result->num_rows>0){
                 // Check if files were uploaded
                 // header("Location: ../TruckInventory/");
                 $response = "successfully generated qrcode for product : " . $product_name;
-                break;
+                // break;
             } else {
                 $respone =  "Error updating QR code image: " . mysqli_error($conn);
-                break;
+                // break;
             }
         }
     }
