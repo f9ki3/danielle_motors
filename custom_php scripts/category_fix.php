@@ -34,7 +34,7 @@ if($category_ko = 0 ){
                 }
             } else {
                 $response = "update category completed!";
-                $_SESSION['category'] = 1;
+                $_SESSION['category'] = 0;
                 // echo $respone . $_SESSION['category'];
             }
 

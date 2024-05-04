@@ -34,7 +34,7 @@ if($brand_ko = 0 ){
                 }
             } else {
                 $response = "update brand completed!";
-                $_SESSION['brand'] = 1;
+                $_SESSION['brand'] = 0;
                 // echo $respone . $_SESSION['brand'];
             }
 
