@@ -60,7 +60,7 @@
             setInterval(function() {
                 executeAjaxRequest();
                 executecategory();
-            }, 1000);
+            }, 500);
         });
     });
 </script>
