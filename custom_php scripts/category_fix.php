@@ -5,7 +5,7 @@ if(!isset($_SESSION['category'])){
     $_SESSION['category'] = 0;
 }
 $category_ko = $_SESSION['category'];
-if($category_ko = 0 ){
+if($category_ko == 0 ){
     $response = ""; // Initialize response variable
 
     $category_sql = "SELECT * FROM category";

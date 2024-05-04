@@ -5,7 +5,7 @@ if(!isset($_SESSION['brand'])){
     $_SESSION['brand'] = 0;
 }
 $brand_ko = $_SESSION['brand'];
-if($brand_ko = 0 ){
+if($brand_ko == 0 ){
     $response = ""; // Initialize response variable
 
     $brand_sql = "SELECT * FROM brand";
