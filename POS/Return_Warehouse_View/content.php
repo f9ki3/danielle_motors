@@ -41,7 +41,7 @@
                     </tr>
                     </thead>
                     <tbody class="list" id="products-table-body">
-                        <?php include 'material_return.php'?>
+                        <?php include '..//Return_Material/material_return.php'?>
                     </tbody>
                 </table>
             </div>
@@ -57,3 +57,54 @@
     </div>
 </div>
 
+<?php include 'session.php'; ?>
+<html lang="en">
+<?php include 'header.php'; ?>
+<body>
+<div style="display: flex; flex-direction: row">
+<?php include 'navigation_bar.php'; ?>
+<?php include '../config/config.php'; ?>
+<?php
+// Start output buffering
+ob_start();
+
+// Your PHP code for retrieving material transfer details...
+
+?>
+<!-- Your HTML content -->
+
+<div style=" background-color: white;" class="p-3 rounded">
+    <div style="height: 40vh; overflow: auto">
+        <table id="materialTable" class="table">
+            <thead>
+            <tr> 
+                <!-- Table headers -->
+            </tr>
+            </thead>
+            <tbody>
+            <?php 
+            // Your PHP code for populating the table rows...
+            ?>
+            </tbody>
+        </table>
+    </div>
+    <!-- Other content -->
+</div>
+
+<!-- Include DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+<!-- Include DataTables JavaScript -->
+<script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
+
+<!-- Initialize DataTable -->
+<script>
+$(document).ready(function() {
+    $('#materialTable').DataTable();
+});
+</script>
+
+</div>
+<?php include 'footer.php'?>
+</body>
+</html>
