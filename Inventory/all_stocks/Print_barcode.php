@@ -54,7 +54,7 @@ $qrcode = $_SESSION['qrcode'];
                 <p class="m-0" style="font-size: 8;"><b>Model: <?php  echo $model; ?></b></p>
             </div>
             <div class="col-lg-12 text-center">
-                <img src="../../uploads/<?php echo $qrcode;?>" class="img-fluid m-0" style="width:25mm; height: 25mm;" alt="">
+                <img src="../../uploads/<?php echo basename($qrcode);?>" class="img-fluid m-0" style="width:25mm; height: 25mm;" alt="">
                 <p class="m-0" style="font-size: 8;"><?php echo $barcode;?></p>
             </div>
             <!-- <div class="col-lg-6 ps-4 text-center pt-2 mb-2">
