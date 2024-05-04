@@ -26,7 +26,7 @@ if($brand_ko = 0 ){
                         if ($conn->query($update_product) === TRUE) {
                             $response .= "Response: Product '" . $product_name . "' was successfully updated. Its brand is now " . $brand_id . "\n";
                             $break = 1;
-                            // break; // Exit the inner loop once a product is updated
+                            break; // Exit the inner loop once a product is updated
                         } else {
                             $response .= "Error updating product: " . $conn->error . "\n";
                         }
@@ -38,9 +38,9 @@ if($brand_ko = 0 ){
                 // echo $respone . $_SESSION['brand'];
             }
 
-            // if($break == 1){
-            //     break;
-            // }
+            if($break == 1){
+                break;
+            }
 
         }
     }
