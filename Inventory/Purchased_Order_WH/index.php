@@ -21,6 +21,7 @@ if(isset($_GET['id'])){
     $po_row = $purchased_order_res->fetch_assoc();
     if($po_row){
       // Assign retrieved values to session variables
+      $_SESSION['supplier_id'] = $po_row['supplier_id'];
       $_SESSION['po_id'] = $po_row['po_id'];
       $_SESSION['po_status'] = $po_row['status'];
       $_SESSION['po_requested_by'] = $po_row['requested_by'];
@@ -61,7 +62,11 @@ $po_id = $_SESSION['po_id'];
       <!-- /navigation -->
       <div class="content">
         <?php 
-        include "content.php";
+        if(isset($_GET['DR'])){
+          include "preview.php";
+        } else {
+          include "content.php";
+        }
         ?>
         <!-- <div class="d-flex flex-center content-min-h">
           <div class="text-center py-9"><img class="img-fluid mb-7 d-dark-none" src="../../assets/img/spot-illustrations/2.png" width="470" alt="" /><img class="img-fluid mb-7 d-light-none" src="../../assets/img/spot-illustrations/dark_2.png" width="470" alt="" />
