@@ -1,10 +1,43 @@
+
+<?php include 'session.php'?>
+<html lang="en">
+<?php include 'header.php'?>
+<body>
+<div style="display: flex; flex-direction: row">
+<?php include 'navigation_bar.php'?>
 <?php
+include '../config/config.php';
 
-// Include necessary files and set timezone
-include "../../admin/session.php";
-include "../../database/database.php";
-date_default_timezone_set('Asia/Manila');
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-// Include the material_return.php content
-include '../Return_Material/material_return.php';
+// Get the transaction code from the URL parameter and decode it
+$transactionID = $_GET['transaction_code'];
+
+// SQL query to retrieve transaction details
+$sql = "SELECT * FROM purchase_transactions WHERE material_invoice_id = '$transactionID'";
+$result = $conn->query($sql);
+
+// Check if any rows were returned
+if ($result->num_rows > 0) {
+    // Fetch the first row (assuming there's only one row for a given transaction ID)
+    $transactionDetails = $result->fetch_assoc();
+} else {
+    echo "0 results";
+}
+
 ?>
+
+
+<?php include 'footer.php'?>
+<script>
+    function printDocument() {
+    window.print();
+}
+
+</script>
+
+</body>
+</html>
