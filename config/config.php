@@ -16,6 +16,11 @@ $username = "u680032315_dmp";    // Bale live development na kasi alam ko hindi 
 $password = "Dmpoffice2023";     // Yung DB ng hostinger
 $dbname = "u680032315_dmp_db";   // We will be using FTP and GitAccess
 
+// $servername = "localhost";       // Localhost kasi dun na tayo sa files sa hostinger mag eedit
+// $username = "root";    // Bale live development na kasi alam ko hindi pwede ma access outside
+// $password = "";     // Yung DB ng hostinger
+// $dbname = "u680032315_dmp_db";   // We will be using FTP and GitAccess
+
 //ginawa ko muna yun kanina nung nag aayus ako sa pag migrate bali nag push ako tas discrad yung changes sa connections
 //okay pre oks na to wait..
 

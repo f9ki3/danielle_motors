@@ -357,6 +357,17 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           
                 ?>
                 <li class="nav-item">
+                  <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="../../Inventory/Personnel">
+                    <div class="d-flex align-items-center">
+                      <div class="dropdown-indicator-icon"></div>
+                      <span class="nav-link-text">Personnel</span>
+                    </div>
+                  </a>
+                </li>
+                <?php 
+          
+                ?>
+                <li class="nav-item">
                   <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="#">
                     <div class="d-flex align-items-center">
                       <div class="dropdown-indicator-icon"></div>
