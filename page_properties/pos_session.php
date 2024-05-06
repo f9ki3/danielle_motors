@@ -3,8 +3,8 @@
 session_start();
 
 // Check if the user is logged in
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-    // Retrieve session variables
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && $_SESSION['user_account_type'] == 1) {
+    // User is logged in, display the landing page content
     $username = $_SESSION['username'];
     $id = $_SESSION['id'];
     $fname = $_SESSION['user_fname'];
@@ -28,8 +28,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     $branch_email_insession = $_SESSION['branch_email'];
     $user_account_type = $_SESSION['user_account_type'];
 } else {
-    // User is not logged in, redirect to the login page
-    header("Location: ../"); // Assuming your login page is located at the root
+    // User is not logged in or user type is not 0, redirect to the login page
+    header("Location: ../../");
     exit;
 }
 ?>

@@ -1,3 +1,4 @@
+<?php include 'session.php'?>
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 
