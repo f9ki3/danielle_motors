@@ -38,11 +38,7 @@ if ($product_res) {
         $category_name = $product_row['category_name'];
         $unit_name = $product_row['unit_name'];
         $stocks = $product_row['total_stocks'];
-        if(empty($product_row['image']) || !isset($product_row['image'])){
-            $product_image = "defaultproduct.png";
-        } else {
-            $product_image = $product_row['image'];
-        }
+        $product_image = $product_row['image'];
         if ($stocks < $critical_stocks) {
             $bg = '<span class="badge badge-phoenix badge-phoenix-danger">' . $stocks . '</span>';
         } elseif ($stocks <= $warning_stocks) {
@@ -61,13 +57,16 @@ if ($product_res) {
                 </div>
             </td>
             <td><img src="../../uploads/<?php echo basename($product_image); ?>" class="img img-fluid" width="53" alt=""></td>
-            <td class="text-start name"><?php echo $product_name; ?></td>
+            <td class="text-start name"><a  data-bs-toggle="collapse" href="#collapseExample_<?php echo $product_id;?>" role="button" aria-expanded="false" aria-controls="collapseExample"><?php echo $product_name; ?></a></td>
             <td class="text-start category"><?php echo $category_name; ?></td>
             <td class="text-start brand"><?php echo $brand_name; ?></td>
             <td class="text-start unit"><?php echo $unit_name; ?></td>
             <td class="text-start models"><?php echo $product_models; ?></td>
             <td class="text-center stock"><?php echo $bg; ?></td>
             
+        </tr>
+        <tr class="collapse" id="collapseExample_<?php echo $product_id;?>">
+            <td colspan="8"></td>
         </tr>
         
 <?php

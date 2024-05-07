@@ -19,23 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $insert_sql = "INSERT INTO delivery_receipt (supplier_id, delivered_to, status, checked_by, approved_by, delivered_by, received_date, publish_by, branch_code) VALUES ('$supplier_id', '$delivered_to', '$status', '$checked_by', '$approved_by', '$delivered_by', '$received_date', '$user_id', '$branch_code')";
     if($conn -> query($insert_sql) === TRUE ){
         $_SESSION['dr_id'] = $conn->insert_id;
-        $dr_id = $_SESSION['dr_id'];
-        // Retrieve the values of product_id, qty, and amount arrays
-        $product_ids = $_POST['product_id'];
-        $qtys = $_POST['qty'];
-        $amounts = $_POST['amount'];
-
-        // Loop through each submitted item
-        for ($i = 0; $i < count($product_ids); $i++) {
-            // Process each item as needed
-            $product_id = $product_ids[$i];
-            $qty = $qtys[$i];
-            $amount = $amounts[$i];
-
-            // Perform any processing here, such as saving to a database, etc.
-            $insert_dr_content = "INSERT INTO delivery_receipt_content SET delivery_receipt_id = '$dr_id', product_id = '$product_id', quantity = '$qty', orig_price = '$amount', price = '$amount'";
-            $conn->query($insert_dr_content);
-        }
         $conn->close();
         header("Location: ../Inventory/Delivery_Receipt_infos/");
         exit();

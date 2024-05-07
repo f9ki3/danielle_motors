@@ -26,6 +26,7 @@ $result = $stmt->get_result();
 // Initialize variables
 $total_expenses_this_month = 0;
 $current_expenses = 0;
+$response = "ok"; // Default response
 
 if($result && $result->num_rows > 0){
     $row = $result->fetch_assoc();
@@ -57,6 +58,7 @@ if($current_expenses >= $limit){
 } else {
     $response = "ok";
 }
+
 // Send response as JSON
 echo json_encode($response);
 
