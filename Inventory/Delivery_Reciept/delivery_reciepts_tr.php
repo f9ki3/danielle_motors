@@ -24,11 +24,11 @@ if($delivery_reciept_res -> num_rows > 0){
         $days_passed = floor($hours_passed / 24);
         // Display the result
         if ($days_passed > 0) {
-            $published_date =  "$days_passed d";
+            $published_date =  "$days_passed d ago";
         } elseif ($hours_passed > 0) {
-            $published_date = "$hours_passed hr";
+            $published_date = "$hours_passed hr ago";
         } else {
-            $published_date = "$minutes_passed min";
+            $published_date = "$minutes_passed min ago";
         }
         if($row['status'] === '1'){
             $status = '';
@@ -44,11 +44,11 @@ if($delivery_reciept_res -> num_rows > 0){
         }
 ?>
     <tr class="position-static">
-        <td class="align-middle">
+        <!-- <td class="align-middle">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="dr_id[]" name="dr_id[]" value="<?php echo $dr_id; ?>"/>
+                <input class="form-check-input" type="checkbox" id="dr_id[]" name="dr_id[]" value="<?php //echo $dr_id; ?>"/>
             </div>
-        </td>
+        </td> -->
         <td class="align-middle white-space-nowrap py-0 text-success">#<?php echo $dr_id; ?></td>
         <td class="tags align-middle text-center review pb-2 ps-3"><?php echo $status;?></td>
         <td class="product align-middle ps-4"><a class="fw-semi-bold line-clamp-3 mb-0" href="redirect.php?id=<?php echo $dr_id; ?>"><?php echo $supplier_name; ?></a></td>

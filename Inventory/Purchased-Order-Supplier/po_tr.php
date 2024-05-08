@@ -19,11 +19,11 @@ if ($purchased_orders_res->num_rows > 0) {
     $requested_by = $row['user_fname'] . " " . $row['user_lname'];
 
     if($status== 1){
-        $styled_status = 'Pending';
+        $styled_status = '<span class="badge badge-phoenix badge-phoenix-warning">Pending</span>';
     } elseif($status==2){
-        $styled_status = 'Received';
+        $styled_status = '<span class="badge badge-phoenix badge-phoenix-success">Received</span>';
     } else {
-        $styled_status = 'Not Received';
+        $styled_status = '<span class="badge badge-phoenix badge-phoenix-danger">Not Received</span>';
     }
     echo '<tr class="position-static">
     <td class="fs--1 align-middle">

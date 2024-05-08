@@ -30,9 +30,9 @@
             <table class="table mb-0">
                 <thead>
                 <tr>
-                    <th class="white-space-nowrap align-middle ps-0">
+                    <!-- <th class="white-space-nowrap align-middle ps-0">
                     <div class="form-check"><input class="form-check-input" id="checkbox-bulk-products-select" type="checkbox"/></div>
-                    </th>
+                    </th> -->
                     <th class="sort white-space-nowrap align-middle" scope="col">D.R #</th>
                     <th class="sort align-middle text-center" scope="col" data-sort="tags">STATUS</th>
                     <th class="sort white-space-nowrap align-middle" scope="col" data-sort="product">SUPPLIER</th>
