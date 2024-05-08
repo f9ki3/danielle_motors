@@ -7,7 +7,7 @@
 <div id="content" style="display: none">
     <div class="row g-3 mb-4">
         <div class="col-auto">
-            <h2 class="mb-0">Purchase Warehouse</h2>
+            <h2 class="mb-0">Purchase Store</h2>
         </div>
     </div>
     <div id="products" data-list="{&quot;valueNames&quot;:[&quot;product&quot;,&quot;price&quot;,&quot;category&quot;,&quot;tags&quot;,&quot;vendor&quot;,&quot;unit&quot;, &quot;model&quot;, &quot;status&quot;],&quot;page&quot;:10,&quot;pagination&quot;:true}">
@@ -74,27 +74,21 @@
                                 </div>
                                 
                                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
-                                    <div class="form-floating" style="width: 32%;">
-                                        <select id="transaction_verified" class="form-select" aria-label="Default select example">
-                                            <option selected value="Fyke Lleva">Fyke Lleva</option>
-                                            <option value="Alexander Inciong">Alexander Inciong</option>
-                                            <option value="Lois Rivera">Lois Rivera</option>
+                                <div class="form-floating" style="width: 32%;">
+                                        <select class="form-select mb-2" aria-label="Default select example" style="width: 100%" id="transaction_verified">
+
                                         </select>
                                         <label for="transaction_verified">Verified by</label>
                                     </div>
                                     <div class="form-floating" style="width: 32%;">
-                                        <select id="transaction_inspected" class="form-select" aria-label="Default select example">
-                                            <option selected value="Fyke Lleva">Fyke Lleva</option>
-                                            <option value="Alexander Inciong">Alexander Inciong</option>
-                                            <option value="Lois Rivera">Lois Rivera</option>
+                                        <select class="form-select mb-2" aria-label="Default select example" style="width: 100%" id="transaction_inspected">
+
                                         </select>
                                         <label for="transaction_inspected">Inspected by</label>
                                     </div>
                                     <div class="form-floating" style="width: 32%;">
-                                        <select id="transaction_received" class="form-select" aria-label="Default select example">
-                                            <option selected value="Fyke Lleva">Fyke Lleva</option>
-                                            <option value="Alexander Inciong">Alexander Inciong</option>
-                                            <option value="Lois Rivera">Lois Rivera</option>
+                                    <select class="form-select mb-2" aria-label="Default select example" style="width: 100%" id="transaction_received">
+                                        
                                         </select>
                                         <label for="transaction_received">Recieved by</label>
                                     </div>
