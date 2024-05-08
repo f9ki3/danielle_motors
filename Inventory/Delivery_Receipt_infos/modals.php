@@ -62,8 +62,8 @@ if($dr_content_res->num_rows > 0){
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <input type="text" name="product_id" value="<?php echo $product_id;?>" hidden>
-                                    <input type="text" name="drc_id" value="<?php echo $drc_dr_id;?>" hidden>
+                                    <input type="text" name="product_id" value="<?php echo $product_id;?>" hidden> 
+                                    <input type="text" name="drc_id" value="<?php echo $drc_id;?>" hidden>
                                     <div class="form-floating mb-2">
                                         <input type="text" class="form-control" name="product_name" value="<?php echo $product_name;?>">
                                         <label for="floatingInput">Product Name</label>
