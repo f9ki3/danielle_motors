@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $checked_by = $_POST['checked_by'];
     $approved_by = $_POST['approved_by'];
     $delivered_by = $_POST['delivered_by'];
-    $received_date = $_POST['received_date'];
+    $received_date = $_POST['received_date']; //dd/mm/yyyy
     $status = "2"; //incomplete process
 
 
