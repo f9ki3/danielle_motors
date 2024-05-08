@@ -99,16 +99,15 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
             <p class="navbar-vertical-label">Return and Request</p>
             <hr class="navbar-vertical-line" />
             <div class="nav-item-wrapper">
+            <a class="nav-link <?php if($current_folder === "Material_Transfer" || $current_folder === "Material_Request" || $current_folder === "Material_Transaction"){ echo "active"; } else { echo "";}?>  label-1" href="../Material_Transfer" role="button" data-bs-toggle="" aria-expanded="false">
+                <span class="nav-link-icon"><span data-feather="truck"></span></span>
+                <span class="nav-link-text-wrapper"><span class="nav-link-text">Material Transfer</span></span>
+                </div>
+              </a>
               <a class="nav-link <?php if($current_folder === "Return_Material" || $current_folder === "Return_Material"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Return_Material" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
                   <span class="nav-link-icon"><span data-feather="corner-right-up"></span></span>
                   <span class="nav-link-text-wrapper"><span class="nav-link-text">Return Product</span></span>
-                </div>
-              </a>
-              <a class="nav-link <?php if($current_folder === "Material_Transfer" || $current_folder === "Material_Request" || $current_folder === "Material_Transaction"){ echo "active"; } else { echo "";}?>  label-1" href="../Material_Transfer" role="button" data-bs-toggle="" aria-expanded="false">
-                <div class="d-flex align-items-center">
-                  <span class="nav-link-icon"><span data-feather="truck"></span></span>
-                  <span class="nav-link-text-wrapper"><span class="nav-link-text">Material Transfer</span></span>
                 </div>
               </a>
             </div>
