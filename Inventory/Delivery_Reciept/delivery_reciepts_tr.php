@@ -10,26 +10,9 @@ if($delivery_reciept_res -> num_rows > 0){
         $published_by = $row['publish_by'];
         $published_date = $row['publish_date'];
         $supplier_id = $row['supplier_id'];
-        // Convert publish date to a Unix timestamp
-        $publish_timestamp = strtotime($row['publish_date']);
-        // Current timestamp
-        $current_timestamp = time();
-        // Calculate the difference in seconds
-        $time_difference = $current_timestamp - $publish_timestamp;
-        // Calculate time passed in minutes
-        $minutes_passed = floor($time_difference / 60);
-        // Calculate time passed in hours
-        $hours_passed = floor($minutes_passed / 60);
-        // Calculate time passed in days
-        $days_passed = floor($hours_passed / 24);
-        // Display the result
-        if ($days_passed > 0) {
-            $published_date =  "$days_passed d ago";
-        } elseif ($hours_passed > 0) {
-            $published_date = "$hours_passed hr ago";
-        } else {
-            $published_date = "$minutes_passed min ago";
-        }
+        // Convert the date format
+        $timestamp = strtotime($published_date);
+        $formatted_date = date('M j, Y', $timestamp);
         if($row['status'] === '1'){
             $status = '';
         } else {
@@ -56,7 +39,7 @@ if($delivery_reciept_res -> num_rows > 0){
         <td class="category align-middle white-space-nowrap text-600 ps-4 fw-semi-bold"><?php echo $approved_by; ?></td>
         <td class="tags align-middle text-center review pb-2 ps-3"><?php echo $delivered_by; ?></td>
         <td class="vendor align-middle text-start fw-semi-bold ps-4"><?php echo $published_by; ?></td>
-        <td class="vendor align-middle text-start fw-semi-bold ps-4"><?php echo $published_date; ?></td>
+        <td class="vendor align-middle text-start fw-semi-bold ps-4"><?php echo $formatted_date; ?></td>
         <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
             <div class="font-sans-serif btn-reveal-trigger position-static">
                 <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs--2"></span></button>
