@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['product_name']) && isset($_POST['brand_id']) && isset($_POST['brand_name']) && isset($_POST['category_id']) && isset($_POST['category_name']) && isset($_POST['unit']) && isset($_POST['product_model']) && isset($_POST['qty']) && isset($_POST['original_price']) && isset($_POST['price']) && isset($_POST['discount'])) {
         
         // Retrieve the form data
-        $product_id = $_POST['drc_id'];
+        $drc_id = $_POST['drc_id'];
         $product_id = $_POST['product_id'];
         $product_name = $_POST['product_name'];
         $brand_id = $_POST['brand_id'];
@@ -124,8 +124,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
+        $update_drc = "UPDATE delivery_receipt_content SET orig_price = '$original_price', price = '$price', discount = '$discount', quantity = '$qty' WHERE id = '$drc_id'";
+        if($conn->query($update_drc) === TRUE ){
+            echo "update drc successful!";
+        } else {
+            echo "error updating drc!";
+        }
 
-        
+
+        header("Location: ../Inventory/Delivery_Receipt_infos/?update=successful!");
         
         
         // Close the database connection
