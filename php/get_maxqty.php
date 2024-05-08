@@ -12,7 +12,7 @@ if(isset($_POST['product_id'])) {
     FROM (
         SELECT SUM(stocks) AS total_stocks
         FROM stocks
-        WHERE product_id = ? AND branch_code = 'WAREHOUSE'
+        WHERE product_id = ? AND branch_code = 'DMP 000'
         GROUP BY product_id, branch_code
     ) AS max_stocks_query";
     $stmt = mysqli_prepare($conn, $query);

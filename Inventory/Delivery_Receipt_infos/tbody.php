@@ -4,6 +4,24 @@
         event.preventDefault(); // Prevent the default behavior of the link (page reload)
         console.log("Link clicked:", endpoint);
 
+        // Display confirmation dialog with "Yes" and "No" buttons
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this record!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes",
+            cancelButtonText: "No",
+            reverseButtons: true // To keep "Yes" on the left and "No" on the right
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // User confirmed deletion, send AJAX request
+                sendDeleteRequest(endpoint);
+            }
+        });
+    }
+
+    function sendDeleteRequest(endpoint) {
         // Make an AJAX request
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
@@ -43,6 +61,18 @@
         });
     }
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var dropdownToggle = document.querySelector('.dropdown-toggle');
+        var label = document.querySelector('label[for="supplier_code"]');
+
+        dropdownToggle.addEventListener('click', function() {
+            label.style.display = 'none';
+        });
+    });
+</script>
+
 
 <table class="table table-sm">
     <thead>

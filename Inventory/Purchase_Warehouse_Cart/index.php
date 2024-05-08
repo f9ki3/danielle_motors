@@ -48,3 +48,45 @@ date_default_timezone_set('Asia/Manila');
 
 <!-- Mirrored from prium.github.io/phoenix/v1.13.0/pages/starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Aug 2023 05:15:14 GMT -->
 </html>
+
+<script>
+      $(document).ready(function () {
+  
+        function fetchAdminData(selectElementId, role) {
+            $.ajax({
+                url: '../../php/fetch_admin_data.php', // Your server-side script to fetch admin data
+                method: 'GET',
+                data: { role: role }, // Optional: send role if needed
+                dataType: 'json',
+                success: function (data) {
+                    // Populate the dropdown options
+                    var selectElement = $('#' + selectElementId);
+                    selectElement.empty();
+                    selectElement.append('<option selected>Select ' + role + '</option>');
+                    $.each(data, function (index, admin) {
+                        selectElement.append('<option value="' + admin.id + '">' + admin.user_fname + ' ' + admin.user_lname + ' ' + admin.user_position +'</option>');
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error fetching admin data:', error);
+                }
+            });
+        }
+
+      // Fetch data for receivedBy dropdown
+        fetchAdminData('transaction_received', 'Recieved By');
+        
+      // Fetch data for inspectedBy dropdown
+        fetchAdminData('transaction_inspected', 'Inspected by');
+
+      // Fetch data for verifiedBy dropdown
+        fetchAdminData('transaction_verified', 'Verified By');
+      });
+
+      function fetchAdminData(adminId, adminData) {
+          var admin = adminData.find(function (admin) {
+              return admin.id == adminId;
+          });
+          return admin ? admin.user_fname + ' ' + admin.user_lname + ' ' + admin.user_position: '';
+      }
+    </script>
