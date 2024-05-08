@@ -10,10 +10,8 @@ if($delivery_reciept_res -> num_rows > 0){
         $published_by = $row['publish_by'];
         $published_date = $row['publish_date'];
         $supplier_id = $row['supplier_id'];
-       // Convert the date format
-        list($day, $month, $year) = explode('/', $published_date);
-        $timestamp = mktime(0, 0, 0, $month, $day, $year);
-        $formatted_date = date('M j, Y', $timestamp);
+        // $receive_date = $row['received_date'];
+        $receive_date = date("F j, Y", strtotime(str_replace('/', '-', $row['received_date'])));
         if($row['status'] === '1'){
             $status = '';
         } else {
@@ -40,7 +38,7 @@ if($delivery_reciept_res -> num_rows > 0){
         <td class="category align-middle white-space-nowrap text-600 ps-4 fw-semi-bold"><?php echo $approved_by; ?></td>
         <td class="tags align-middle text-center review pb-2 ps-3"><?php echo $delivered_by; ?></td>
         <td class="vendor align-middle text-start fw-semi-bold ps-4"><?php echo $published_by; ?></td>
-        <td class="vendor align-middle text-start fw-semi-bold ps-4"><?php echo $formatted_date; ?></td>
+        <td class="vendor align-middle text-start fw-semi-bold ps-4"><?php echo $receive_date; ?></td>
         <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
             <div class="font-sans-serif btn-reveal-trigger position-static">
                 <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs--2"></span></button>
