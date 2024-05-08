@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($conn -> query($insert_sql) === TRUE ){
         $_SESSION['dr_id'] = $conn->insert_id;
         $dr_id = $_SESSION['dr_id'];
+
         if(isset($_POST['po_id'])){
             $po_id = $_POST['po_id'];
             $update_po = "UPDATE purchased_order SET `status` = 2 WHERE po_id = '$po_id'";
@@ -44,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
         
+
         $conn->close();
         header("Location: ../Inventory/Delivery_Receipt_infos/");
         exit();
