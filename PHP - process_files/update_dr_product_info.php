@@ -1,6 +1,8 @@
 <?php
+    session_start();
     require_once '../admin/session.php';
     require_once '../database/database.php';
+    $supplier_id = $_SESSION['supplier_id'];
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -131,6 +133,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "error updating drc!";
         }
 
+        $update_pricelist = "UPDATE price_list SET dealer = '$original_price', srp = '$original_price' WHERE product_id = '$product_id'";
+        if($conn->query($update_pricelist)===TRUE){
+            echo "update pricelist successful!";
+        } else {
+            echo "error updating pricelist";
+        }
+
+        $update_supplier_product_list = "UPDATE supplier_product SET orig_price ='$original_price', price = '$price', discount = '$discount' WHERE supplier_id = '$supplier_id' AND product_id = '$product_id'";
+        if($conn->query($update_supplier_product_list) === TRUE){
+            echo "supplier product updated successfully!";
+        } else {
+            echo "error updating supplier_product";
+        }
+
+        
 
         header("Location: ../Inventory/Delivery_Receipt_infos/?update=successful!");
         

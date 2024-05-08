@@ -10,6 +10,7 @@
  if($select_dr_res->num_rows>0){
     $row = $select_dr_res->fetch_assoc();
     $supplier_id = $row['supplier_id'];
+    $_SESSION['supplier_id'] = $supplier_id;
     $delivered_to = $row['delivered_to'];
     $status = $row['status'];
     $note = $row['note'];
