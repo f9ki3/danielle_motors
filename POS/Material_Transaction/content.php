@@ -387,7 +387,7 @@ console.log('Total Selling Price:', totalSellingPrice);
                             if (status === 'Approved' || status === 'Returned') {
                                 // Only update product stocks if status is 'Accepted'
                                 $.ajax({
-                                    url: '../../php/add_product_stocks.php',
+                                    url: '../php/add_product_stocks.php',
                                     method: 'POST',
                                     data: {
                                         productId: productId,
@@ -469,7 +469,7 @@ console.log('Total Selling Price:', totalSellingPrice);
                     if (status === 'Approved') {
                         // Only update product stocks if status is 'Approved'
                         $.ajax({
-                            url: '../../php/store_stocks_recompute_product.php',
+                            url: '../php/store_stocks_recompute.php',
                             method: 'POST',
                             data: {
                                 materialInvoiceID: materialInvoiceNo,
@@ -484,7 +484,7 @@ console.log('Total Selling Price:', totalSellingPrice);
                         });
 
                         $.ajax({
-                            url: '../../php/return_product_stocks_status.php',
+                            url: '../php/return_product_stocks_status.php',
                             method: 'POST',
                             data: {
                                 productId: productId,

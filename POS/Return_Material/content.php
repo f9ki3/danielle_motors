@@ -22,7 +22,7 @@
             </div>
             
             <div class="ms-xxl-auto">
-                <a href="../Return_Warehouse" class="btn text-primary border border-primary" ><span class="fas fa-plus me-2"></span> Return Material</a>
+                <a href="../Return_Material" class="btn text-primary border border-primary" ><span class="fas fa-plus me-2"></span> Return Material</a>
                 <a href="../Return_Product" class="btn btn-primary " ><span class="fas fa-plus me-2"></span> Return Products</a>
             </div>
             </div>
