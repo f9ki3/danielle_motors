@@ -7,7 +7,7 @@
 <div class="mb-9" id="actualContent" style="display: none;">
     <div class="row">
         <div class="col-auto">
-            <a class="btn btn-primary mb-3" href="../Create_D.R/?DR=POakOnBGHtgqgXJRpLmFQzEiWNLzmK<?php echo $po_id;?>NKnlHAiBkaqI&s=gKbtYiPa<?php echo $_SESSION['supplier_id'];?>IVghTyUdnflsaQPzmPdFQeiGdRtgWJkLoJmNeDqRbGcHsYtXzVbNmOoRkTlJqGwRtAqOpWqZsXcDvFbJkLoImNePqRsTnYmUnYqUbIuYhOgBgCgAsErTyUqIeRhIgNfYhUiYtRqUwEtRtYhYtJrEwQrGyThWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWqNnAqObPgRqEsTyUnIeYhWnReYqAuBtTlQsAyRqOnBgIhNjMhBnDcVbFnHmGnBkHnBmJnBmKlOpWq&name=<?php echo $_SESSION['po_supplier_name'];?>&add=<?php echo $_SESSION['po_supplier_address'];?>"><span class="icon" data-feather="file-text"></span> Receive P.O as D.R</a>
+            <a class="btn btn-primary mb-3" href="../Purchased_Order_WH/?DR=POakOnBGHtgqg<?php echo $po_id;?>NKnlHAiBkaqI"><span class="icon" data-feather="file-text"></span> Receive P.O as D.R</a>
             <button class="btn btn-outline-secondary mb-3"><span class="icon" data-feather="printer"></span> Print</button>
         </div>
     </div>
@@ -16,6 +16,47 @@
             <div class="card p-3">
                 <div class="card-body">
                     <div class="row">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    
                         <div class="col-xl-12 col-lg-12 text-center">
                             <img src="../../uploads/header.png" class="img img-fluid" alt="">
                         </div>
