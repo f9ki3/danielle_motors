@@ -205,6 +205,7 @@ date_default_timezone_set('Asia/Manila');
                         if (xhr.responseText.trim() === "changes were made") {
                             tbody(); // Call tbody() function if changes were made
                             dr_footer();
+                            modals();
                         }
                         console.log(xhr.responseText);
                     } else {
@@ -237,6 +238,18 @@ date_default_timezone_set('Asia/Manila');
             });
         }
 
+        function modals() {
+            $.ajax({
+                url : 'modals.php?id=<?php echo $_SESSION['dr_id'];?>',
+                type: 'GET',
+                success: function(response){
+                    $('#modals_container').html(response);
+                },
+                error: function(xhr, status, error){
+                    console.error(xhr.responseText);
+                }
+            })
+        }
         // Function to reload the preview
         function dr_footer() {
             $.ajax({
@@ -254,6 +267,7 @@ date_default_timezone_set('Asia/Manila');
         // Call the function initially
         tbody();
         dr_footer();
+        modals();
     </script>
 
 

@@ -1,0 +1,35 @@
+$default_category = 0;
+        $check_category_duplication = "SELECT * FROM category";
+        $check_category_res = $conn->query($check_category_duplication);
+        if($check_category_res -> num_rows>0){
+            while($category = $check_category_res -> fetch_assoc()){
+                $category__id = $category['id'];
+                $category__name = $category['category_name'];
+                $category__name = strtoupper(preg_replace('/[^A-Za-z0-9]/', '', $category__name));
+                $converted_category_name = strtoupper(preg_replace('/[^A-Za-z0-9]/', '', $category_name));
+                if($converted_category_name === $category__name){
+                    $default_category += 1;
+                }
+                if($default_category == 2){
+                    break;
+                    $last_category_id = $category__id;
+                }
+
+                
+            }
+        }
+
+        $updated_category_sum = $default_category;
+        if($default_category>1){
+            $update_product_category = "UPDATE product SET category_id = '$last_category_id' WHERE id = '$product_id'";
+            $conn->query($update_product_category);
+        } else {
+            $check_category_change = "SELECT id, category_name FROM category WHERE id = '$category__id' AND category_name = '$category_name'";
+            $check_category_change_res = $conn->query($check_category_change);
+            if($check_category_change_res->num_rows>0){
+
+            } else {
+                $update_category = "UPDATE category SET category_name = '$category_name' WHERE id = '$category_id'";
+                $conn->query($update_category);
+            }
+        }

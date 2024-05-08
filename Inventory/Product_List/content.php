@@ -35,11 +35,11 @@
                 <table class="table mb-0">
                     <thead>
                     <tr>
-                        <th class="white-space-nowrap align-middle ps-0" style="max-width:20px; width:18px;">
+                        <!-- <th class="white-space-nowrap align-middle ps-0" style="max-width:20px; width:18px;">
                         <div class="form-check mb-0 fs-0">
                             <input class="form-check-input" id="checkbox-bulk-products-select" type="checkbox"/>
                         </div>
-                        </th>
+                        </th> -->
                         <th class="sort white-space-nowrap align-middle" scope="col"></th>
                         <th class="sort white-space-nowrap align-middle ps-4" scope="col" data-sort="product">PRODUCT NAME</th>
                         <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">ITEM CODE</th>

@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <ul class="nav nav-links mb-3 mb-lg-2 mx-n3">
+    <!-- <ul class="nav nav-links mb-3 mb-lg-2 mx-n3">
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">
                 <span>All </span>
@@ -24,7 +24,7 @@
                 <span class="text-700 fw-semi-bold">(70348)</span>
             </a>
         </li>
-    </ul>
+    </ul> -->
 
     <div id="products" data-list='{"valueNames":["product","itemcode", "location", "category", "brand", "unit", "model", "qty", "status", "publishby", "branch"],"page":10,"pagination":true}'>
         <div class="mb-4">

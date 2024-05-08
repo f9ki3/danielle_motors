@@ -60,6 +60,8 @@
     </div>
 </div>
 
+
+
 <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11">
     <div id="successToast" class="toast hide bg-warning text-white" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header bg-warning text-white">
@@ -82,6 +84,35 @@
     </div>
 </div>
 
+
+<div class="modal fade" id="limit" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger" id="exampleModalLabel">Expense limit reached!</h5><button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs--1"></span></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-700 lh-lg mb-0 text-danger">Expense limit has been reached! are you sure you want to create another purchased order? </p>
+      </div>
+      <div class="modal-footer"><a href="../Create_Purchased_Order/" class="btn btn-primary" type="button">Yes</a><button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Cancel</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="warning" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-warning" id="exampleModalLabel">Expense limit is near to its limit!</h5><button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs--1"></span></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-700 lh-lg mb-0">Approaching the expense limit! Are you certain you wish to create another purchase order? </p>
+      </div>
+      <div class="modal-footer"><a href="../Create_Purchased_Order/" class="btn btn-primary" type="button">Yes</a><button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Cancel</button></div>
+    </div>
+  </div>
+</div>
+
 <script>
     // Function to make AJAX request every 5 seconds
     function checkExpenses() {
@@ -99,7 +130,9 @@
 
                     // Handle different responses
                     if (response === 'limit') {
-                        console.log('Expense limit reached!');
+                        // console.log('Expense limit reached!');
+                        // Replace the button with the warning message
+                        document.getElementById('addBtn').outerHTML = '<a class="btn btn-danger" id="addBtn" type="button" data-bs-toggle="modal" data-bs-target="#limit"><span class="fas fa-plus me-2"></span>Create Purchased Order</a>';
                         // Add code to handle limit condition
                         var toast = document.getElementById('errorToast');
                         toast.classList.toggle('show');
@@ -107,13 +140,18 @@
                         var toast = document.getElementById('successToast');
                         toast.classList.toggle('hide');
                     } else if (response === 'warning') {
-                        console.log('Approaching expense limit!');
+                        // console.log('Approaching expense limit!');
+                        // Replace the button with the warning message
+                        document.getElementById('addBtn').outerHTML = '<a class="btn btn-warning" id="addBtn" type="button" data-bs-toggle="modal" data-bs-target="#warning"><span class="fas fa-plus me-2"></span>Create Purchased Order</a>';
                         // Add code to handle warning condition
                         var toast = document.getElementById('successToast');
                         toast.classList.toggle('show');
+                        
                     } else {
-                        console.log('Expenses within limits.');
+                        console.log('ok.');
                         // Add code to handle other conditions
+                        // Restore the original button if the response is 'ok'
+                        document.getElementById('addBtn').outerHTML = '<a class="btn btn-primary" id="addBtn" href="../Create_Purchased_Order/"><span class="fas fa-plus me-2"></span>Create Purchased Order</a>';
                     }
                 } else {
                     console.error('Error: ' + xhr.status);
@@ -124,10 +162,10 @@
     }
 
     // Call the function initially
-    // checkExpenses();
+    checkExpenses();
 
     // Set interval to call the function every 5 seconds
-    setInterval(checkExpenses, 10000);
+    setInterval(checkExpenses, 5000);
 </script>
 
 
