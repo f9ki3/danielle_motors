@@ -80,4 +80,3 @@ $stmt->close();
         </tbody>
     </table>
 </div>
-
