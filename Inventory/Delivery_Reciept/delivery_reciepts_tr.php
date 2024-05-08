@@ -10,8 +10,9 @@ if($delivery_reciept_res -> num_rows > 0){
         $published_by = $row['publish_by'];
         $published_date = $row['publish_date'];
         $supplier_id = $row['supplier_id'];
-        // Convert the date format
-        $timestamp = strtotime($published_date);
+       // Convert the date format
+        list($day, $month, $year) = explode('/', $published_date);
+        $timestamp = mktime(0, 0, 0, $month, $day, $year);
         $formatted_date = date('M j, Y', $timestamp);
         if($row['status'] === '1'){
             $status = '';
