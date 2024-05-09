@@ -68,6 +68,31 @@ date_default_timezone_set('Asia/Manila');
           reloadSpinner();
 
     </script>
+
+<script>
+    // Function to check if date and received by are valid
+    function validateInputs() {
+        var materialDate = document.getElementById('materialDate').value;
+        var receivedBy = document.getElementById('receivedBy').value;
+        var saveButton = document.getElementById('saveMaterialTransfer');
+
+        if (!materialDate || !receivedBy) {
+            saveButton.disabled = true; // Disable save button if date or received by is empty
+        } else {
+            saveButton.disabled = false; // Enable save button if both fields are filled
+        }
+    }
+
+    // Event listener for date input
+    document.getElementById('materialDate').addEventListener('change', validateInputs);
+
+    // Event listener for received by select
+    document.getElementById('receivedBy').addEventListener('change', validateInputs);
+
+    // Initial validation
+    validateInputs();
+</script>
+
   </body>
 
 
