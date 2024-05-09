@@ -3,7 +3,7 @@
 // $servername = "localhost";
 // $username = "root";
 // $password = "";
-// $dbname = "dms_db";
+// $dbname = "u680032315_dmp_db";
 
 
 // $servername = "sql.freedb.tech";

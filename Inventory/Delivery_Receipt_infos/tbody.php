@@ -108,7 +108,13 @@ $dr_id = $_GET['id'];
 // Create a new MySQLi instance
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$dr_content_sql = "SELECT * FROM delivery_receipt_content WHERE delivery_receipt_id ='$dr_id'";
+$dr_content_sql = "SELECT dc.*, p.name AS product_name, p.models AS product_model, p.unit_id, p.brand_id, p.category_id, p.image AS product_image, b.brand_name, c.category_name, u.name AS unit_name
+                    FROM delivery_receipt_content AS dc
+                    LEFT JOIN product AS p ON dc.product_id = p.id
+                    LEFT JOIN brand AS b ON b.id = p.brand_id
+                    LEFT JOIN category AS c ON c.id = p.category_id
+                    LEFT JOIN unit AS u ON u.id = p.unit_id
+                    WHERE dc.delivery_receipt_id = '$dr_id'";
 $dr_content_res = $conn->query($dr_content_sql);
 
 if($dr_content_res->num_rows > 0){
@@ -123,20 +129,15 @@ if($dr_content_res->num_rows > 0){
         $discount = $row['discount'];
         $qty = $row['quantity'];
         $total = $price * $qty;
-        
-        $product_sql = "SELECT * FROM product WHERE id = '$product_id'";
-        $product_res = $conn->query($product_sql);
-        if($product_res->num_rows>0){
-            $row_product=$product_res->fetch_assoc();
-            $product_name = $row_product['name'];
-            $product_model = $row_product['models'];
-            $unit_id = $row_product['unit_id'];
-            $brand_id = $row_product['brand_id'];
-            $category_id = $row_product['category_id'];
-            $product_image= $row_product['image'];
+        $product_name = $row['product_name'];
+        $product_model = $row['product_model'];
+        $unit_id = $row['unit_name'];
+        $brand_id = $row['brand_name'];
+        $category_id = $row['category_name'];
+        $product_image= $row['product_image'];
             ?>
             <tr>
-                <td class="ps-3"><a class="me-1 mb-1" onclick="handleLinkClick(event, 'delete.php?id=<?php echo $drc_id?>')"><span class="text-danger fas fa-trash-alt"></span></a></td>
+                <td class="ps-3"><a class="btn btn-outline-danger me-1 mb-1" onclick="handleLinkClick(event, 'delete.php?id=<?php echo $drc_id?>')"><span class="text-danger fas fa-trash-alt"></span></a><button class="btn btn-outline-primary me-1 mb-1" type="button" data-bs-toggle="modal" data-bs-target="#product_<?php echo $product_id;?>"><span class="far fa-edit"></span></button></td>
                 <td><?php echo $qty; ?></td>
                 <td><!--<img src="../../uploads/<?php // echo basename($product_image);?>" class="img img-fluid" height="43" alt="">--><?php echo $product_name . ' ' . $product_model . ' ' . $brand_id . ' ' . $category_id . ' ' . $unit_id;?></td>
                 <td class="text-end"><?php echo number_format((float)$orig_price, 2);?></td>
@@ -145,9 +146,6 @@ if($dr_content_res->num_rows > 0){
                 <td class="text-end"><?php echo number_format((float)$total, 2);?></td>
             </tr>
             <?php
-        } else {
-            
-        }
 
     }
 

@@ -8,12 +8,17 @@ if($supplier_res -> num_rows > 0){
         } else {
             $status = '<span class="badge badge-phoenix fs--2 badge-phoenix-danger"><span class="badge-label">DISABLED</span><span class="ms-1" data-feather="x " style="height:12.8px;width:12.8px;"></span></span>';
         }
+        if(!isset($row['supplier_logo']) || empty($row['supplier_logo'])){
+            $supplier_logo = "defaultproduct.png";
+        } else {
+            $supplier_logo = $row['supplier_logo'];
+        }
         echo '
         <tr class="position-static">
-            <td class="align-middle">
+            <!--<td class="align-middle">
                 <div class="form-check"><input class="form-check-input" type="checkbox" id="' . $row['id'] . '" /></div>
-            </td>
-            <td class="align-middle white-space-nowrap py-0"><a class="d-block border rounded-2" href="../../uploads/' . $row['supplier_logo'] . '"><img src="../../uploads/' . $row['supplier_logo'] . '" alt="" width="53" /></a></td>
+            </td>-->
+            <td class="align-middle white-space-nowrap py-0"><a class="d-block border rounded-2" href="../../uploads/' . basename($supplier_logo) . '"><img src="../../uploads/' . basename($supplier_logo) . '" alt="" width="53" /></a></td>
             <td class="product align-middle ps-4"><a class="fw-semi-bold line-clamp-3 mb-0" href="#">' . $row['supplier_name'] . '</a></td>
             <td class="price white-space-nowrap text-start fw-bold text-700 ps-4">' . $row['supplier_email'] . '</td>
             <td class="category align-middle white-space-nowrap text-600 ps-4 fw-semi-bold">' . $row['supplier_address']  . '</td>

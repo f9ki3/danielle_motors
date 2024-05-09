@@ -37,9 +37,9 @@
             <table class="table mb-0">
                 <thead>
                 <tr>
-                    <th class="white-space-nowrap align-middle ps-0">
+                    <!-- <th class="white-space-nowrap align-middle ps-0">
                     <div class="form-check"><input class="form-check-input" id="checkbox-bulk-products-select" type="checkbox"/></div>
-                    </th>
+                    </th> -->
                     <th class="sort white-space-nowrap align-middle" scope="col"></th>
                     <th class="sort white-space-nowrap align-middle" scope="col" data-sort="product">SUPPLIER NAME</th>
                     <th class="sort align-middle text-start ps-4" scope="col" data-sort="price" >EMAIL</th>
