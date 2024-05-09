@@ -7,6 +7,8 @@ date_default_timezone_set('Asia/Manila');
 <html lang="en-US" dir="ltr">
 <?php include "../../admin/header.php" ?>
 <?php include "../../page_properties/header.php" ?>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/select2-bootstrap5-theme@1.0.2/dist/select2-bootstrap5.min.css" rel="stylesheet" />
 <!-- <link rel="stylesheet" href="DRstyle.css"> -->
 
     <!-- <script>
@@ -259,10 +261,9 @@ date_default_timezone_set('Asia/Manila');
 
 
 
-
-
-
     
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
   </body>
 
