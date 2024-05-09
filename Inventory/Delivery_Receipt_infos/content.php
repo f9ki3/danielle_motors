@@ -126,45 +126,7 @@
                                 </div>
                                 <div class="col-lg-12 mb-2">
                                     <input class="form-control datetimepicker" id="expiration_date" name="expiration_date"  placeholder="Expiration date(if applicable)" data-options='{"disableMobile":true,"dateFormat":"Y-m-d"}' />
-                                </div>
-
-                                <div class="col-lg-12 mb-2">
-                                    <select class="form-select" id="product_id" name="product_id" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}' required>
-                                        <option value="">Select product</option>
-                                        <?php
-                                        $delivery_receipt_id = $_SESSION['dr_id'];
-                                        $product_option_sql = "SELECT 
-                                        p.id AS product_id, 
-                                        p.name AS product_name, 
-                                        u.name AS unit_name, 
-                                        b.brand_name AS brand_name, 
-                                        p.models AS model, 
-                                        c.category_name AS category_name
-                                    FROM product p
-                                    JOIN unit u ON p.unit_id = u.id
-                                    JOIN brand b ON p.brand_id = b.id
-                                    JOIN category c ON p.category_id = c.id";
-                                    
-                                    $product_option_res = $conn->query($product_option_sql);
-                                    
-                                    if($product_option_res->num_rows > 0){
-                                        while($row = $product_option_res->fetch_assoc()){
-                                            $product_id = $row['product_id'];
-                                            $product_name = $row['product_name'];
-                                            $unit_name = $row['unit_name'];
-                                            $brand_name = $row['brand_name'];
-                                            $model = $row['model'];
-                                            $category_name = $row['category_name'];
-
-                                            
-                                            echo '<option value="' . $product_id . '">' . $category_name . ' ' . $brand_name . ' ' . $product_name . ' ' . $unit_name . ' ' . $model .  '</option>';
-                                            
-                                            
-                                        }
-                                    }
-                                    
-                                        ?>
-                                    </select>
+                                
                                 </div>
 
                             </div>
