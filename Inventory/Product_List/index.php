@@ -7,6 +7,7 @@ date_default_timezone_set('Asia/Manila');
 <html lang="en-US" dir="ltr">
 
  <?php include "../../page_properties/header.php" ?>
+ 
 
   <body>
     <!-- ===============================================-->
@@ -42,6 +43,8 @@ date_default_timezone_set('Asia/Manila');
 
     <?php include "../../page_properties/footer_main.php"; ?>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Select2 JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script>
     $(document).ready(function(){
         // Variable to store the last known hash
@@ -106,6 +109,42 @@ date_default_timezone_set('Asia/Manila');
 
         // Call the function every 5 seconds (adjust the interval as needed)
         setInterval(fetchTableContent, 1000); // 5000 milliseconds = 5 seconds
+
+        $('#brand').select2({
+            dropdownParent: $('#add_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+            placeholder: 'Select Brand',
+        });
+
+        $('#category').select2({
+            dropdownParent: $('#add_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+            placeholder: 'Select Category',
+        });
+
+        $('#unit').select2({
+            dropdownParent: $('#add_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+            placeholder: 'Select Unit',
+        });
+
+        $('#model').select2({
+            placeholder: 'Select model/s',
+            dropdownParent: $('#add_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+        });
     });
     </script>
 

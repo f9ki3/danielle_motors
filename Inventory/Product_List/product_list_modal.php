@@ -15,8 +15,8 @@
                         <input class="form-control" type="file" id="image" name="image" accept="image/*">
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <select class="form-select" id="category" id="category" name="category" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
-                            <option select-disabled>Select a category</option>
+                        <select name="category" id="category">
+                            <option value="" disabled selected>Select Category</option>
                             <?php
                                 $query = 'SELECT id, category_name, status FROM category';
                                 $stmt = $conn->prepare($query);
@@ -54,8 +54,8 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
-                        <select  id="brand" name="brand" class="form-select mb-3" id="organizerSingle" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
-                            <option select-disabled>Select a brand</option>
+                        <select  id="brand" name="brand">
+                            <option value="" disabled selected>Select Brand</option>
                             <?php
                                 $query = 'SELECT id, brand_name, status FROM brand';
                                 $stmt = $conn->prepare($query);
@@ -74,8 +74,8 @@
                         </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
-                        <select class="form-select" id="unit" name="unit" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
-                           <option value="">Select unit</option>
+                        <select id="unit" name="unit">
+                            <option value="" disabled selected>Select Unit</option>
                            <?php
                                 $query = 'SELECT id, name, active FROM unit';
                                 $stmt = $conn->prepare($query);
@@ -94,8 +94,7 @@
                         </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
-                        <select class="form-select" id="model" name="models[]" data-choices="data-choices" multiple="multiple" data-options='{"removeItemButton":true,"placeholder":true}'>
-                            <option value="">Select model/s</option>
+                        <select id="model" name="models[]" multiple="multiple">
                             <?php
                                 $query = 'SELECT id, model_name, status FROM model';
                                 $stmt = $conn->prepare($query);
@@ -112,6 +111,24 @@
                                 $stmt->close();
                             ?>
                         </select>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
+                        <div class="form-floating mb-3">
+                            <input type="number" id="product_name" name="dealer" class="form-control" >
+                            <label for="product_name">Dealer</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
+                        <div class="form-floating mb-3">
+                            <input type="number" id="product_name" name="wholesale" class="form-control" >
+                            <label for="product_name">Wholesale</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
+                        <div class="form-floating mb-3">
+                            <input type="number" id="product_name" name="srp" class="form-control" >
+                            <label for="product_name">SRP</label>
+                        </div>
                     </div>
                 </div>
                 <!-- ------------------- -->

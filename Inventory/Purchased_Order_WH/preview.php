@@ -8,55 +8,14 @@
     <div class="row">
         <div class="col-auto">
             <a class="btn btn-primary mb-3" href="../Purchased_Order_WH/?DR=POakOnBGHtgqg<?php echo $po_id;?>NKnlHAiBkaqI"><span class="icon" data-feather="file-text"></span> Receive P.O as D.R</a>
-            <button class="btn btn-outline-secondary mb-3"><span class="icon" data-feather="printer"></span> Print</button>
+            <button class="btn btn-outline-secondary mb-3" onclick="printDiv('printContent')"><span class="icon" data-feather="printer"></span> Print</button>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
             <div class="card p-3">
-                <div class="card-body">
+                <div class="card-body" id="printContent">
                     <div class="row">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    
                         <div class="col-xl-12 col-lg-12 text-center">
                             <img src="../../uploads/header.png" class="img img-fluid" alt="">
                         </div>
@@ -145,3 +104,5 @@
         </div>
     </div>
 </div>
+
+
