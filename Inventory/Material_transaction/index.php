@@ -127,6 +127,24 @@ if(isset($_GET['transaction'])){
           return admin ? admin.user_fname + ' ' + admin.user_lname + ' ' + admin.user_position: '';
       }
     </script>
+
+    
+      <script>
+          document.addEventListener('DOMContentLoaded', function() {
+              var button = document.getElementById('material_transaction_form_button');
+              if(button) {
+                  button.addEventListener('click', function(event) {
+                      var selectValue = document.getElementById('inspectedBy').value;
+                      var checkboxChecked = document.getElementById('flexCheckDefault').checked;
+                      
+                      if (selectValue === '' || selectValue === 'Select Inspected By' || !checkboxChecked) {
+                          event.preventDefault(); // Prevent form submission
+                          alert('Please select inspector and confirm inspection.');
+                      }
+                  });
+              }
+          });
+      </script>
   </body>
 
 
