@@ -85,13 +85,14 @@ if($material_transfer_res -> num_rows > 0){
                                             <td>
                                                 <?php 
                                                 if(empty($material_inspected_by)){
-                                                    echo '<select class="form-select mb-2" aria-label="Default select example" style="width: 33%" name="inspected_by" id="inspectedBy">
-                                                    </select>';
+                                                    echo '<select class="form-select mb-2" aria-label="Default select example" style="width: 33%" name="inspected_by" id="inspectedBy" onchange="enableCheckbox()" required>
+                                                            <option value="">Select Inspected By</option>
+                                                            <!-- Add other options here -->
+                                                        </select>';
                                                 } else {
                                                     echo $material_inspected_by;
                                                 }
                                                 ?>
-                                                
                                             </td>
                                             <td>
                                                 <?php 
@@ -188,9 +189,9 @@ if($material_transfer_res -> num_rows > 0){
                         ?>
                         <div class="col-lg-3 text-start <?php echo $class;?>">
                             <div class="row">
-                                <div class="form-check">
-                                <input class="form-check-input" id="flexCheckDefault" type="checkbox" value="" required/>
-                                <label class="form-check-label" for="flexCheckDefault">As I approve this transaction, I hereby confirm that I inspected the items before they left the warehouse.</label>
+                            <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
+                                    <label class="form-check-label" for="flexCheckDefault">As I approve this transaction, I hereby confirm that I inspected the items before they left the warehouse.</label>
                                 </div>
                                 <button type="submit" id="material_transaction_form_button" class="btn btn-primary col-12 mb-2">Verify</button>
                                 <!-- <button class="btn btn-secondary col-12">Decline</button> -->
@@ -217,3 +218,10 @@ if($material_transfer_res -> num_rows > 0){
     </div>
   </div>
 </div>
+
+<script>
+    // Function to enable the checkbox
+    function enableCheckbox() {
+        document.getElementById('flexCheckDefault').disabled = false;
+    }
+</script>
