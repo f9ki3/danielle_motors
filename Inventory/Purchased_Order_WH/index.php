@@ -52,6 +52,8 @@ $po_id = $_SESSION['po_id'];
 
  <?php include "../../page_properties/header.php" ?>
 
+</style>
+
   <body>
     <!-- ===============================================-->
     <!--    Main Content-->
@@ -90,6 +92,7 @@ $po_id = $_SESSION['po_id'];
 
     <?php include "../../page_properties/footer_main.php"; ?>
   </body>
+
 
 
 <!-- Mirrored from prium.github.io/phoenix/v1.13.0/pages/starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Aug 2023 05:15:14 GMT -->

@@ -44,6 +44,9 @@
     <link href="../../vendors/choices/choices.min.css" rel="stylesheet" />
     <!-- <link href="../../vendors/swiper/swiper-bundle.min.css" rel="stylesheet"> -->
     <link href="../../vendors/glightbox/glightbox.min.css" rel="stylesheet">
+    <!-- Select2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     <script>
       var phoenixIsRTL = window.config.config.phoenixIsRTL;
       if (phoenixIsRTL) {

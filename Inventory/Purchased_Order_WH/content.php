@@ -8,16 +8,16 @@
     <div class="row">
         <div class="col-auto">
 
-            <button class="btn btn-outline-secondary mb-3"><span class="icon" data-feather="printer"></span> Print</button>
+            <button class="btn btn-outline-secondary mb-3" id="printButton"><span class="icon" data-feather="printer"></span> Print</button>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
             <div class="card p-3">
                 <div class="card-body">
-                    <div class="row">
+                    <div class="row" id="printContent">
                         <div class="col-xl-12 col-lg-12 text-center">
-                            <img src="../../uploads/header.png" class="img img-fluid" alt="">
+                            <img src="../../uploads/header_cropped.png" class="img img-fluid" alt="">
                         </div>
                         <div class="col-xl-12 col-lg-12">
                             <h3 class="text-center mb-5">PURCHASED ORDER</h3>
@@ -104,3 +104,21 @@
         </div>
     </div>
 </div>
+
+<script>
+$(document).ready(function() {
+    $('#printButton').click(function() {
+        var content = $('#printContent').html();
+        var originalContent = $('body').html();
+
+        $('body').html(content);
+
+        window.print();
+        $('body').html(originalContent);
+    });
+});
+</script>
+
+
+
+
