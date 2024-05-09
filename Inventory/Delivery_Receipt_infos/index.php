@@ -277,14 +277,14 @@ date_default_timezone_set('Asia/Manila');
                 tags: 'true',
                 width: '100%',
                 placeholder: 'Select product',
-                theme: 'classic'
+                theme: 'bootstrap-5'
             });
                         
             
             $('.js-example-responsive').select2({
                 tags: 'true',
                 width: '100%',
-                theme: 'classic'
+                theme: 'bootstrap-5'
             });
         });
     </script>
