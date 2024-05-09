@@ -76,19 +76,15 @@
                         <div style="width: 49%" class="py-2 mb-2">
                             <div class="border rounded p-4 pb-5">
                             <h3 class="fw-bolder">Material Transfer</h3>
-                                <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
+                            <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
                                 <input type="text" class="form-control" placeholder="Material Invoice" style="width: 49%" id="materialInvoiceNo" value="" readonly>
-                                    <input type="date" class="form-control" placeholder="Date" style="width: 49%" id="materialDate">
-                                </div>
-
-                                
-                                <div style="display: flex; flex-direction: row; justify-content: space-between" >
+                                <input type="date" class="form-control" placeholder="Date" style="width: 49%" id="materialDate">
+                            </div>
+                            <div style="display: flex; flex-direction: row; justify-content: space-between">
                                 <input type="text" class="form-control mb-2" aria-label="Default select example" placeholder="Cashier Name" style="width: 49%" id="cashierName" readonly required value="<?php echo $fname . ' ' . $lname; ?>">
                                 <input type="hidden" id="sessionID" value="<?php echo $id; ?>">
                                 <input type="hidden" id="user_brn_code" value="<?php echo $branch_code; ?>">
-                                <select class="form-select mb-2" aria-label="Default select example" style="width: 49%" id="receivedBy">
-   
-                                    </select>
+                                <select class="form-select mb-2" aria-label="Default select example" style="width: 49%" id="receivedBy"></select>
                                 <!-- <select class="form-select mb-2" aria-label="Default select example" style="width: 33%" id="inspectedBy">
    
                                     </select>
