@@ -79,7 +79,7 @@
                     <div class="card-body">
                         <div class="text-center">
                             <h3>5</h3>
-                            <h5>Delivery In/Out</h5>
+                            <h5>Delivery In</h5>
                         </div>
                     </div>
                 </div>

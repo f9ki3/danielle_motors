@@ -115,7 +115,7 @@
                         <div class="col-lg-4">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" name="srp">
-                                <label for="">Serial Rate Price</label>
+                                <label for="">Suggested Retail Price</label>
                             </div>
                         </div>
 
