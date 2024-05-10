@@ -12,10 +12,10 @@ if($delivery_reciept_res -> num_rows > 0){
         $supplier_id = $row['supplier_id'];
         // $receive_date = $row['received_date'];
         $receive_date = date("F j, Y", strtotime(str_replace('/', '-', $row['received_date'])));
-        if($row['status'] === '1'){
-            $status = '';
+        if($row['status'] == '1'){
+            $status = '<span class="badge badge-phoenix fs--2 badge-phoenix-success"><span class="badge-label">Success</span><span class="ms-1" data-feather="check" style="height:12.8px;width:12.8px;"></span></span>';
         } else {
-            $status = '';
+            $status = '<span class="badge badge-phoenix fs--2 badge-phoenix-warning"><span class="badge-label">Pending</span> <div class="spinner-border" role="status" style="height: 10px; width: 10px;"><span class="visually-hidden">Loading...</span></div></span>';
         }
         // $note = $row['note'];
         $supplier_sql = "SELECT * FROM supplier WHERE id = '$supplier_id'";

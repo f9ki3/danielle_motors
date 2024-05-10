@@ -65,27 +65,27 @@ if($dr_content_res->num_rows > 0){
                                     <input type="text" name="product_id" value="<?php echo $product_id;?>" hidden> 
                                     <input type="text" name="drc_id" value="<?php echo $drc_id;?>" hidden>
                                     <div class="form-floating mb-2">
-                                        <input type="text" class="form-control" name="product_name" value="<?php echo $product_name;?>">
+                                        <input type="text" class="form-control" name="product_name" value="<?php echo $product_name;?>" required>
                                         <label for="floatingInput">Product Name</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <input type="text" name="brand_id" value="<?php echo $brand_id;?>" hidden>
                                     <div class="form-floating mb-2">
-                                        <input type="text" class="form-control" name="brand_name" value="<?php echo $brand_name?>">
+                                        <input type="text" class="form-control" name="brand_name" value="<?php echo $brand_name?>" required>
                                         <label for="floatingInput">Product brand</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                 <input type="text" name="category_id" value="<?php echo $category_id;?>" hidden>
                                     <div class="form-floating mb-2">
-                                        <input type="text" class="form-control" name="category_name" value="<?php echo $category_name;?>">
+                                        <input type="text" class="form-control" name="category_name" value="<?php echo $category_name;?>" required>
                                         <label for="floatingInput">Category Name</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
-                                    <select name="unit" class="form-select mb-2">
-                                        <option value="">Select organizer...</option>
+                                    <select name="unit" class="form-select mb-2" required>
+                                        <option value="">Select unit</option>
                                         <?php 
                                         $unit_sql = "SELECT * FROM unit";
                                         $unit_result = $conn->query($unit_sql);
@@ -103,31 +103,31 @@ if($dr_content_res->num_rows > 0){
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-floating mb-2">
-                                        <input type="text" class="form-control" name="product_model" value="<?php echo $product_model;?>">
+                                        <input type="text" class="form-control" name="product_model" value="<?php echo $product_model;?>" required>
                                         <label for="floatingInput">Model</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-floating mb-2">
-                                        <input class="form-control" type="number" name="qty" value="<?php echo $qty;?>">
+                                        <input class="form-control" type="number" name="qty" value="<?php echo $qty;?>" required>
                                         <label for="floatingInput">qty</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-floating mb-2">
-                                        <input class="form-control" type="text" name="original_price" value="<?php echo $orig_price;?>">
+                                        <input class="form-control" type="text" name="original_price" value="<?php echo $orig_price;?>" required>
                                         <label for="floatingInput">Original Price</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-floating mb-2">
-                                        <input class="form-control" type="text" name="price" value="<?php echo $price;?>">
+                                        <input class="form-control" type="text" name="price" value="<?php echo $price;?>" required>
                                         <label for="floatingInput">Price</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-floating mb-2">
-                                        <input class="form-control" type="number" name="discount" value="<?php echo $discount;?>">
+                                        <input class="form-control" type="number" name="discount" value="<?php echo $discount;?>" required>
                                         <label for="floatingInput">discount</label>
                                     </div>
                                 </div>

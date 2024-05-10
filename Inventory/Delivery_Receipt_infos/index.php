@@ -305,6 +305,84 @@ if($select_dr_res->num_rows>0){
     
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<?php 
+if($dr_status !=1){
+?>
+<script>
+    // Function to send an AJAX request to check_dr_status.php
+    function checkEach() {
+        // Make an AJAX request
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'check_each.php', true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) { // Request is complete
+                if (xhr.status === 200) { // Request was successful
+                    // Parse JSON response
+                    var response = JSON.parse(xhr.responseText);
+                    // Do something with the response
+                    if (response === 'completed') {
+                        console.log('completed');
+                        // Hide the anchor tag
+                        $('#save_receipt').removeClass('d-none');
+                        // $('#submitForm').hide();
+                        // $('#submitForm_2').hide();
+                    } else if (response === 'incomplete') {
+                        console.log('incomplete');
+                        $('#save_receipt').addClass('d-none');
+                    } else {
+                        console.log('Unknown status');
+                    }
+                } else {
+                    console.error('Request failed');
+                }
+            }
+        };
+        xhr.send();
+    }
+
+    // Check the delivery receipt status every 3 seconds
+    setInterval(checkEach, 3000);
+
+
+    // Function to send an AJAX request to check_dr_status.php
+    function checkDRStatus() {
+        // Make an AJAX request
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'check_dr_status.php', true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) { // Request is complete
+                if (xhr.status === 200) { // Request was successful
+                    // Parse JSON response
+                    var response = JSON.parse(xhr.responseText);
+                    // Do something with the response
+                    if (response === 'complete') {
+                        console.log('Delivery receipt status: complete');
+                        // Reload the webpage
+                        $('#submitForm').hide();
+                        $('#submitForm_2').hide();
+                        location.reload();
+                    } else if (response === 'pending') {
+                        console.log('Delivery receipt status: pending');
+                    } else {
+                        console.log('Unknown status');
+                    }
+                } else {
+                    console.error('Request failed');
+                }
+            }
+        };
+        xhr.send();
+    }
+
+    // Check the delivery receipt status every 3 seconds
+    setInterval(checkDRStatus, 3000);
+    checkEach();
+    checkDRStatus();
+
+</script>
+<?php 
+}
+?>
 
   </body>
 
