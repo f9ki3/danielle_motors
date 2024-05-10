@@ -61,7 +61,7 @@ if(isset($_GET['DR'])){
         if(isset($_GET['DR'])){
             $po_id = preg_replace('/[^0-9]/', '', $_GET['DR']);
         ?>
-        <div class="col-lg-12" hidden>
+        <div class="col-lg-12">
 
             <?php 
             $po_sql = "SELECT * FROM purchased_order_content_wh WHERE po_id = '$po_id'";
