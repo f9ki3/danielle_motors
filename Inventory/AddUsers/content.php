@@ -112,7 +112,7 @@
                 
                 <div class="col-12 gy-6">
                 <div class="row g-3 justify-content-end">
-                    <div class="col-auto"><a href="../Users/" class="btn btn-phoenix-primary px-5">Cancel</a></div>
+                    <div class="col-auto"><a href="../User_Maintenance/" class="btn btn-phoenix-primary px-5">Cancel</a></div>
                     <div class="col-auto"><button name="submit" type="submit" class="btn btn-primary px-5 px-sm-15" id="submitBtn">Add User</button></div>
                 </div>
                 </div>
