@@ -53,22 +53,17 @@ while (!$found_brand) {
                 echo "Error executing query: " . $conn->error;
             } else {
                 if ($result->num_rows > 0) {
-                    // Display swiper label with dynamic brand name
-                    echo '<div class="d-flex flex-between-center mb-3">';
-                    echo '<div class="d-flex">';
-                    echo '<span class="fas fa-bolt text-warning fs-2"></span>';
-                    echo '<h3 class="mx-2">' . $brand_name . '</h3>';
-                    echo '<span class="fas fa-bolt text-warning fs-2"></span>';
-                    echo '</div>';
-                    echo '<a 'product.name,
-                    product.code,
-                    product.supplier_code,
-                    product.barcode,
-                    product.image,
-                    product.models,
-                    price_list.srp,
-                    product.category_id' id="product" product.code class="btn btn-link btn-lg p-0 d-none d-md-block" href="#!">Explore more<span class="fas fa-chevron-right fs--1 ms-1"></span></a>';
-                    echo '</div>';
+                    // Display swiper label with dynamic brand name and link to explore more
+                        echo '<div class="d-flex flex-between-center mb-3">';
+                        echo '<div class="d-flex">';
+                        echo '<span class="fas fa-bolt text-warning fs-2"></span>';
+                        echo '<h3 class="mx-2">' . $brand_name . '</h3>';
+                        echo '<span class="fas fa-bolt text-warning fs-2"></span>';
+                        echo '</div>';
+                        echo '<a id="product_code" class="btn btn-link btn-lg p-0 d-none d-md-block" href="explore.php?brand=' . urlencode($brand_name) . '">Explore more<span class="fas fa-chevron-right fs--1 ms-1"></span></a>';
+                        echo '</div>';
+
+
 
                     // Display products
                     echo '<div class="swiper-theme-container products-slider">';
@@ -140,13 +135,12 @@ while (!$found_brand) {
 
 <script>
     // JavaScript to handle "Add to Cart" button click
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.btn-add-to-cart').forEach(function(button) {
         button.addEventListener('click', function() {
             var productId = this.getAttribute('data-product-id');
             var xhr = new XMLHttpRequest();
             xhr.open('POST', '/danielle_motors/home/cart/add_to_cart.php', true);
- // Adjust the URL as needed
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -158,9 +152,25 @@ while (!$found_brand) {
                 }
             };
             xhr.send('product_id=' + productId);
+
+            // Simulate adding product to session cart
+            var productData = {
+                id: productId,
+                name: button.closest('.product-card').querySelector('.product-name').innerText,
+                price: button.closest('.product-card').querySelector('.text-1100').innerText,
+                image: button.closest('.product-card').querySelector('img').getAttribute('src')
+            };
+            addToCartSession(productData);
         });
     });
 });
 
-</script>
+// Function to add product to session cart
+function addToCartSession(productData) {
+    var cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+    cart.push(productData);
+    sessionStorage.setItem('cart', JSON.stringify(cart));
+}
 
+
+</script>
