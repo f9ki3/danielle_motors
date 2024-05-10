@@ -46,7 +46,7 @@ if($material_transfer_res -> num_rows > 0){
 
 <div class="row fs--1 mb">
     <div class="col-lg-12">
-        <div class="card">
+        <div class="card" id="printContent">
             <div class="card-body" id="to_refresh">
                 <form id="material_transaction_form" action="../../PHP - process_files/material_transfer_verification.php" method="POST">
                     <div class="row">
@@ -60,7 +60,7 @@ if($material_transfer_res -> num_rows > 0){
                             </div>
                         </div>
                         <div class="col-lg-3 text-end">
-                            <button class="btn btn-outline-secondary">Print</button>
+                            <a class="btn btn-outline-secondary" id="print">Print</a>
                         </div>
                         <div class="col-lg-12">
                             <h6>Date: <b><?php echo $material_date; ?></b></h6>

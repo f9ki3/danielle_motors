@@ -151,6 +151,21 @@ if(isset($_GET['transaction'])){
         });
     </script>
 
+    <script>
+      $(document).ready(function(){
+        $('#print').on('click', function(){
+          console.log('print clicked')
+          var content = $('#printContent').html();
+          var originalContent = $('body').html();
+
+          $('body').html(content);
+
+          window.print();
+          $('body').html(originalContent);
+        })
+      });
+    </script>
+
   </body>
 
 

@@ -110,6 +110,43 @@ date_default_timezone_set('Asia/Manila');
         // Call the function every 5 seconds (adjust the interval as needed)
         setInterval(fetchTableContent, 1000); // 5000 milliseconds = 5 seconds
 
+        function getProduct (product_id) {
+            $.ajax({
+                url: '../../PHP - process_files/get-product.php',
+                method: 'POST',
+                data: {
+                    product_id : product_id
+                },
+                dataType: 'json',
+                success: function(json) {
+                    console.log(json);
+                    $('#edit_product_name').text(json.name);
+                    $('#new_product_name').val(json.name);
+                    $('#edit_product_id').val(json.id);
+                    $('#new_item_code').val(json.code);
+                    $('#new_supplier_code').val(json.supplier_code);
+                    $('#new_barcode').val(json.barcode);
+                    $('#old_image').val(json.image);
+
+                    var models = json.models.split(', ');
+                    $('#edit_model').val(models);
+
+                    $('#edit_unit').val(json.unit);
+                    $('#edit_category').val(json.category);
+                    $('#edit_brand').val(json.brand);
+
+                    $('#edit_dealer').val(json.dealer);
+                    $('#edit_wholesale').val(json.wholesale);
+                    $('#edit_srp').val(json.srp);
+
+                    $('#edit_product').modal('show');
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
         $('#brand').select2({
             dropdownParent: $('#add_product'),
             tags: true,
@@ -144,6 +181,54 @@ date_default_timezone_set('Asia/Manila');
             height: '100%',
             width: '100%',
             theme: 'bootstrap-5',
+        });
+
+        $('#edit_model').select2({
+            placeholder: 'Select model/s',
+            dropdownParent: $('#edit_product'),
+            tags: true,
+            width: '100%',
+            theme: 'bootstrap-5',
+        });
+
+        $('.edit_product').on('click', function(){
+            var product_id = $(this).data('product-id');
+            console.log(product_id);
+            getProduct(product_id);
+        });
+
+        $('#edit_unit').select2({
+            dropdownParent: $('#edit_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+            placeholder: 'Select Unit',
+        });
+
+        $('#edit_category').select2({
+            dropdownParent: $('#edit_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+            placeholder: 'Select Category',
+        });
+
+        $('#edit_brand').select2({
+            dropdownParent: $('#edit_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+            placeholder: 'Select Brand',
+        });
+
+        $('#edit_product').on('shown.bs.modal', function () {
+            $("#edit_model").trigger('change');
+            $('#edit_unit').trigger('change');
+            $('#edit_category').trigger('change');
+            $('#edit_brand').trigger('change');
         });
     });
     </script>
