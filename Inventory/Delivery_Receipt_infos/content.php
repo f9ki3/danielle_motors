@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-                <a class="btn btn-success text-end mt-2" href="../../PHP - process_files/save_dr.php">Save Receipt</a>
+                <a class="btn btn-success text-end mt-2 d-none" href="../../PHP - process_files/save_dr.php" id="save_receipt">Save Receipt</a>
             </div>
   
   
