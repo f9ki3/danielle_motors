@@ -53,7 +53,7 @@
                 <td class="publish align-middle white-space-nowrap text-600 ps-4">' . $user_fname . ' ' . $user_lname . '</td>
                 <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
                     <div class="font-sans-serif btn-reveal-trigger position-static"><button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs--2"></span></button>
-                        <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="print_barcode.php?barcode=' . $barcode . '">Export</a>
+                        <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item edit_product" data-product-id="'.$product_id.'">Edit</a><a class="dropdown-item" href="print_barcode.php?barcode=' . $barcode . '">Export</a>
                         <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="#!">Remove</a>
                         </div>
                     </div>
