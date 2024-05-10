@@ -264,7 +264,6 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                   <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div>
                   <span class="nav-link-icon"><span data-feather="phone"></span></span>
                   <span class="nav-link-text">Delivery Receipt</span>
-                  <span class="fa-solid fa-circle text-info ms-1 new-page-indicator" style="font-size: 6px"></span>
                 </div>
               </a>
               <!-- Delivery Receipt Submenu -->
@@ -286,7 +285,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                       <div class="d-flex align-items-center"><span class="nav-link-text">Create Delivery Receipt</span></div>
                     </a>
                   </li>
-                  
+                  <!--Sub Menu-->
                   <div class="nav-item-wrapper">
                     <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../Suppliers/" role="button" data-bs-toggle="" aria-expanded="false">
                       <div class="d-flex align-items-center">
