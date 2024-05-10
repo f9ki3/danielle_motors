@@ -7,7 +7,8 @@ date_default_timezone_set('Asia/Manila');
 <html lang="en-US" dir="ltr">
 
  <?php include "../../page_properties/header.php" ?>
- 
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/select2-bootstrap5-theme@1.0.2/dist/select2-bootstrap5.min.css" rel="stylesheet" />
 
   <body>
     <!-- ===============================================-->
@@ -137,21 +138,21 @@ date_default_timezone_set('Asia/Manila');
             placeholder: 'Select Unit',
         });
 
-        $('#model').select2({
-            placeholder: 'Select model/s',
-            dropdownParent: $('#add_product'),
-            tags: true,
-            height: '100%',
-            width: '100%',
-            theme: 'bootstrap-5',
-        });
+        $('.js-models-responsive').select2({
+                tags: 'true',
+                width: '100%',
+                placeholder: 'Select models',
+                theme: 'bootstrap-5'
+            });
+
     });
     </script>
 
 
     </script>
-
-
+    
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   </body>
 
 

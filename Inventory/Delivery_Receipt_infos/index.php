@@ -15,6 +15,8 @@ if($select_dr_res->num_rows>0){
 <html lang="en-US" dir="ltr">
 <?php include "../../admin/header.php" ?>
 <?php include "../../page_properties/header.php" ?>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/select2-bootstrap5-theme@1.0.2/dist/select2-bootstrap5.min.css" rel="stylesheet" />
 <!-- <link rel="stylesheet" href="DRstyle.css"> -->
 
     <!-- <script>
@@ -298,6 +300,13 @@ if($select_dr_res->num_rows>0){
                 width: '100%',
                 theme: 'bootstrap-5'
             });
+
+            $('.js-models-responsive').select2({
+                tags: 'true',
+                width: '100%',
+                placeholder: 'Select models',
+                theme: 'bootstrap-5'
+            });
         });
     </script>
 
@@ -305,8 +314,7 @@ if($select_dr_res->num_rows>0){
     
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-  </body>
+</body>
 
 
 <!-- Mirrored from prium.github.io/phoenix/v1.13.0/pages/starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Aug 2023 05:15:14 GMT -->
