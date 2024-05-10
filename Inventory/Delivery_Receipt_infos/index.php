@@ -2,6 +2,14 @@
 include "../../admin/session.php";
 include "../../database/database.php";
 date_default_timezone_set('Asia/Manila');
+
+$dr_id = $_SESSION['dr_id'];
+$select_dr_Status = "SELECT `status` FROM delivery_receipt WHERE id = '$dr_id'";
+$select_dr_res = $conn->query($select_dr_Status);
+if($select_dr_res->num_rows>0){
+    $row=$select_dr_res->fetch_assoc();
+    $dr_status = $row['status'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
@@ -174,7 +182,11 @@ date_default_timezone_set('Asia/Manila');
       <!-- /navigation -->
       <div class="content">
         <?php 
-        include "content.php";
+        if($dr_status != 1){
+            include "content.php";
+        } else {
+            include "save_content.php";
+        }
         ?>
         <!-- <div class="d-flex flex-center content-min-h">
           <div class="text-center py-9"><img class="img-fluid mb-7 d-dark-none" src="../../assets/img/spot-illustrations/2.png" width="470" alt="" /><img class="img-fluid mb-7 d-light-none" src="../../assets/img/spot-illustrations/dark_2.png" width="470" alt="" />

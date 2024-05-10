@@ -73,10 +73,29 @@
     });
 </script>
 
+<?php 
+// session_start();
+include_once "../../database/database.php";
+// $dr_id = $_SESSION['dr_id'];
+$dr_id = $_GET['id'];
+$select_dr_Status_1 = "SELECT `status` FROM delivery_receipt WHERE id = '$dr_id'";
+$select_dr_res_1 = $conn->query($select_dr_Status_1);
+if($select_dr_res_1->num_rows>0){
+    $row=$select_dr_res_1->fetch_assoc();
+    $status_of_dr = $row['status'];
+}
+?>
+
 
 <table class="table table-sm">
     <thead>
+        <?php 
+        if($status_of_dr !=1){
+        ?>
         <th></th>
+        <?php 
+        }
+        ?>
         <th>QTY</th>
         <th>PRODUCT NAME</th>
         <th class="text-end">ORIG PRICE</th>
@@ -86,10 +105,8 @@
     </thead>
     <tbody>
 <?php
-// session_start();
-include_once "../../database/database.php";
-// $dr_id = $_SESSION['dr_id'];
-$dr_id = $_GET['id'];
+
+
 // $servername = "sql.freedb.tech";
 // $username = "freedb_dmp_master";
 //  $password = "8@YASU8ypbA2uA%";
@@ -135,9 +152,20 @@ if($dr_content_res->num_rows > 0){
         $brand_id = $row['brand_name'];
         $category_id = $row['category_name'];
         $product_image= $row['product_image'];
+        // $status_of_dr = $row['status'];
             ?>
             <tr>
-                <td class="ps-3"><a class="btn btn-outline-danger me-1 mb-1" onclick="handleLinkClick(event, 'delete.php?id=<?php echo $drc_id?>')"><span class="text-danger fas fa-trash-alt"></span></a><button class="btn btn-outline-primary me-1 mb-1" type="button" data-bs-toggle="modal" data-bs-target="#product_<?php echo $product_id;?>"><span class="far fa-edit"></span></button></td>
+                <?php 
+                if($status_of_dr !=1){
+                ?>
+                <td class="ps-3">
+                    
+                    <a class="btn btn-outline-danger me-1 mb-1" onclick="handleLinkClick(event, 'delete.php?id=<?php echo $drc_id?>')"><span class="text-danger fas fa-trash-alt"></span></a><button class="btn btn-outline-primary me-1 mb-1" type="button" data-bs-toggle="modal" data-bs-target="#product_<?php echo $product_id;?>"><span class="far fa-edit"></span></button>
+                    
+                </td>
+                <?php 
+                }
+                ?>
                 <td><?php echo $qty; ?></td>
                 <td><!--<img src="../../uploads/<?php // echo basename($product_image);?>" class="img img-fluid" height="43" alt="">--><?php echo $product_name . ' ' . $product_model . ' ' . $brand_id . ' ' . $category_id . ' ' . $unit_id;?></td>
                 <td class="text-end"><?php echo number_format((float)$orig_price, 2);?></td>
