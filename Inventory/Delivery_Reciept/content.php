@@ -40,7 +40,7 @@
                     <th class="sort align-middle" scope="col" data-sort="category" >APPROVED BY</th>
                     <th class="sort align-middle text-center" scope="col" data-sort="tags">DELIVERED BY</th>
                     <th class="sort align-middle" scope="col" data-sort="vendor">PUBLISHED BY</th>
-                    <th class="sort align-middle" scope="col" data-sort="vendor">PUBLISHED DATE</th>
+                    <th class="sort align-middle" scope="col" data-sort="vendor">RECEIVED DATE</th>
                     <th class="sort text-end align-middle pe-0 ps-4" scope="col"></th>
                 </tr>
                 </thead>
