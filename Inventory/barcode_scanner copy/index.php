@@ -141,7 +141,7 @@ date_default_timezone_set('Asia/Manila');
             setInterval(checkStocksDraft, 5000); // 5000 milliseconds = 5 seconds
         });
     </script>
-    
+
 
 
     
@@ -149,6 +149,42 @@ date_default_timezone_set('Asia/Manila');
 
   </body>
 
-
+  
 <!-- Mirrored from prium.github.io/phoenix/v1.13.0/pages/starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Aug 2023 05:15:14 GMT -->
 </html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the form and save button elements
+        var form = document.getElementById('barcodeForm');
+        var saveBtn = document.getElementById('submitBtn');
+
+        // Function to check if the required fields are filled out
+        function checkForm() {
+            // Get the values of the required fields
+            var productName = form.querySelector('input[name="product_name"]').value.trim();
+            var dealerPrice = form.querySelector('input[name="dealer"]').value.trim();
+            var wholesalePrice = form.querySelector('input[name="whole_sale"]').value.trim();
+            var srp = form.querySelector('input[name="srp"]').value.trim();
+            var qty = form.querySelector('input[name="qty"]').value.trim();
+
+            // Check if any of the required fields are empty
+            if (!productName || !dealerPrice || !wholesalePrice || !srp || !qty) {
+                return false; // Return false if any field is empty
+            }
+            return true; // Return true if all fields have values
+        }
+
+        // Function to enable/disable the save button
+        function toggleSaveButton() {
+            saveBtn.disabled = !checkForm();
+        }
+
+        // Initial state of the save button
+        toggleSaveButton();
+
+        // Event listeners to toggle the save button when input values change
+        form.addEventListener('input', toggleSaveButton);
+        form.addEventListener('change', toggleSaveButton);
+    });
+</script>
