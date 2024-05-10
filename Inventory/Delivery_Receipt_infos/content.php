@@ -14,7 +14,7 @@
     <div class="mb-5">
         <div class="row">
             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-6 col-xxs-6 mb-3">
-                <div class="btn-group dropend mt-2 text-start"><button class="btn btn-primary" type="button">Mode</button>
+                <div class="btn-group dropend mt-2"><button class="btn btn-primary" type="button">Mode</button>
                     <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
                     <div class="dropdown-menu" role="tablist">
                         <a class="dropdown-item active" id="home-tab" data-bs-toggle="tab" href="#tab-home" role="tab" aria-controls="tab-home" aria-selected="true">Enter Product</a>
@@ -22,7 +22,7 @@
                     </div>
                 </div>
 
-                <div class="dropdown font-sans-serif d-inline-block  text-end">
+                <div class="dropdown font-sans-serif d-inline-block">
                     <button class="btn btn-phoenix-secondary dropdown-toggle mt-2" id="dropdownMenuButton" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Print</button><span class="caret"> </span>
                     <div class="dropdown-menu dropdown-menu-end py-0" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">Print Delivery Receipt</a>
