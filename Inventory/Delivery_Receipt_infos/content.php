@@ -29,6 +29,8 @@
                         <a class="dropdown-item" href="#">Print Barcodes</a>
                     </div>
                 </div>
+
+                <a class="btn btn-success text-end mt-2" href="../../PHP - process_files/save_dr.php">Save Receipt</a>
             </div>
   
   
