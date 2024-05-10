@@ -50,9 +50,9 @@ if ($material_transfer_res->num_rows > 0) {
         $final_status = $badge_status ; 
             echo '
                 <tr class="position-static">
-                    <td class="align-middle">
+                    <!--<td class="align-middle">
                         <div class="form-check"><input class="form-check-input" type="checkbox" /></div>
-                    </td>
+                    </td>-->
                     <td class="align-middle white-space-nowrap py-0"></td>
                     <td class="invoice text-start"><a class="fw-semi-bold line-clamp-3 mb-0" href="../Material_transaction/?transaction=' . $mt_invoice . '">' . $mt_invoice . '</a></td>
                     <td class="status text-start">' . $final_status . '</td>
