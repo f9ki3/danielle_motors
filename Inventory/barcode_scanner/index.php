@@ -174,6 +174,47 @@ date_default_timezone_set('Asia/Manila');
         });
     </script>
 
+<script>
+$(document).ready(function() {
+    // Initialize Select2
+    $('.js-example-responsive').select2();
+
+    // Function to check if all form fields are filled
+    function checkFormValidity() {
+        var isValid = true;
+        $('#barcodeForm input, #barcodeForm select').each(function() {
+            if ($(this).prop('required') && !$(this).val()) {
+                isValid = false;
+                return false; // Exit loop early if any field is empty
+            }
+        });
+        return isValid;
+    }
+
+    // Function to enable/disable the Save button based on form validity
+    function toggleSaveButton() {
+        if (checkFormValidity()) {
+            $('#submitBtn').prop('disabled', false);
+        } else {
+            $('#submitBtn').prop('disabled', true);
+        }
+    }
+
+    // Check form validity when inputs/selects change
+    $('#barcodeForm input, #barcodeForm select').on('input change', function() {
+        toggleSaveButton();
+    });
+
+    // Check form validity when Select2 dropdown changes
+    $('.js-example-responsive').on('select2:select', function () {
+        toggleSaveButton();
+    });
+
+    // Initial check when document is ready
+    toggleSaveButton();
+});
+</script>
+
 
 
 
