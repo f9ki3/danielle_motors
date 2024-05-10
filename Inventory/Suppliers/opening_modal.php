@@ -10,13 +10,13 @@
         <h5 class="modal-title" id="staticBackdropLabel">Tutorial</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <!-- <div class="modal-body">
         <h1>SOoooon</h1>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Understood</button>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
