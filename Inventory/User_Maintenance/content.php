@@ -106,7 +106,7 @@ if ($result->num_rows > 0) {
               <td class="status"><?php echo $user_status_final;?></td>
               <td class="align-middle text-end white-space-nowrap pe-0 action">
                 <div class="font-sans-serif btn-reveal-trigger position-static"><button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs--2"></span></button>
-                  <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item" href="../process/deactivateuser.php?user_id=<?php echo $user_id;?>">Deactivate</a><a class="dropdown-item" href="#!">Activate</a>
+                  <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item" href="../../PHP - process_files/deactivateuser.php?user_id=<?php echo $user_id;?>">Deactivate</a><a class="dropdown-item" href="../../PHP - process_files/activateuser.php?user_id=<?php echo $user_id;?>">Activate</a>
                     <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="../process/archiveuser.php?user_id=<?php echo $user_id;?>">Remove</a>
                   </div>
                 </div>
