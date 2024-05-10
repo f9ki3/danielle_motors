@@ -53,10 +53,10 @@
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <div class="form-floating mb-3">                           
-                            <select class="js-example-responsive" style="width: 100%; height: 200%;" id="product_id" name="product_id" required>
-                                <option value="">Select product</option>
-                                <?php
+                        <div class="form-floating mb-3">                           
+                        <select class="js-example-responsive" style="width: 100%; height: 200%;" id="product_id" name="product_id" required>
+                               <option value="">Select product</option>
+                               <?php
                                 $product_id_query = 'SELECT 
                                                         product.id, 
                                                         product.name AS product_name, 
@@ -84,7 +84,7 @@
                                 }
                                 ?>
                             </select>
-                            </div>
+                        </div>
                         </div>
 
                         <div class="col-lg-6">

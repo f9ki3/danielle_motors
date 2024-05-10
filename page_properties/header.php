@@ -41,6 +41,7 @@
     <link href="../../vendors/flatpickr/flatpickr.min.css" rel="stylesheet" />
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../assets/js/email-validation.js"></script> 
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css"> -->
     <link href="../../vendors/choices/choices.min.css" rel="stylesheet" />

@@ -94,23 +94,22 @@
                         </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
-                        <select id="model" name="models[]" multiple="multiple">
-                            <?php
-                                $query = 'SELECT id, model_name, status FROM model';
-                                $stmt = $conn->prepare($query);
-                                $stmt->execute();
-                                $stmt->bind_result($id, $model_name, $status);
-                                while ($stmt->fetch()) {
-                                    if ($status == 0) {
-                                        continue;
-                                    }
-
-                                    echo '<option value="'.$model_name.'">'.$model_name.'</option>';
-                                }
-
-                                $stmt->close();
-                            ?>
-                        </select>
+                    <select class="js-models-responsive" multiple="multiple"  name="models[]">
+                    <option value="">Select Models</option>
+                        <?php
+                        $query = 'SELECT id, model_name, status FROM model';
+                        $stmt = $conn->prepare($query);
+                        $stmt->execute();
+                        $stmt->bind_result($id, $model_name, $status);
+                        while ($stmt->fetch()) {
+                            if ($status == 0) {
+                                continue;
+                            }
+                            echo '<option value="'.$model_name.'">'.$model_name.'</option>';
+                        }
+                        $stmt->close();
+                        ?>
+                    </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
                         <div class="form-floating mb-3">

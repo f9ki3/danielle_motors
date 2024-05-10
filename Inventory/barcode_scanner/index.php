@@ -7,6 +7,8 @@ date_default_timezone_set('Asia/Manila');
 <html lang="en-US" dir="ltr">
 
  <?php include "../../page_properties/header.php" ?>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/select2-bootstrap5-theme@1.0.2/dist/select2-bootstrap5.min.css" rel="stylesheet" />
 
   <body>
     <!-- ===============================================-->
@@ -176,9 +178,6 @@ date_default_timezone_set('Asia/Manila');
 
 <script>
 $(document).ready(function() {
-    // Initialize Select2
-    $('.js-example-responsive').select2();
-
     // Function to check if all form fields are filled
     function checkFormValidity() {
         var isValid = true;
@@ -205,19 +204,20 @@ $(document).ready(function() {
         toggleSaveButton();
     });
 
-    // Check form validity when Select2 dropdown changes
-    $('.js-example-responsive').on('select2:select', function () {
-        toggleSaveButton();
-    });
-
     // Initial check when document is ready
     toggleSaveButton();
 });
+
+        $(document).ready(function() {
+            $('#product_id').select2({
+                tags: 'true',
+                width: '100%',
+                // placeholder: 'Select product',
+                // disabled: true,
+                theme: 'bootstrap-5'
+            });
+        });
 </script>
-
-
-
-
 
     
     <script>
@@ -303,6 +303,8 @@ $(document).ready(function() {
     });
     </script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   </body>
 
 

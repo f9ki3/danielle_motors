@@ -215,12 +215,12 @@
                                                 while($row=$units_res->fetch_assoc()){
                                                     echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
                                                 }
-                                            }
+                                            }           
                                             ?>
                                         </select>
                                 </div>
                                 <div class="col-lg-6 mb-2">
-                                <select class="js-example-responsive" multiple="multiple" style="width: 100%; height: 200%;"  name="models[]" id="models[]">
+                                <select class="js-models-responsive" multiple="multiple" style="width: 100%; height: 200%;"  name="models[]" id="models[]">
                                         <option value="">Select Models</option>
                                         <?php
                                             $models_sql = "SELECT model_name FROM model WHERE status='1'";

@@ -41,12 +41,6 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
-    <script>
-      // Simulate button click event when the page loads
-      document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("opening_modal_button").click();
-      });
-    </script>
   </body>
 
 
