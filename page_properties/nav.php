@@ -74,7 +74,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                   <a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="../../Inventory/Purchased-Order-Supplier/">
                     <div class="d-flex align-items-center">
                       <div class="dropdown-indicator-icon"></div>
-                      <span class="nav-link-text">View</span>
+                      <span class="nav-link-text">View Purchased Order</span>
                     </div>
                   </a>
                 </li>
@@ -86,7 +86,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                   <a class="nav-link <?php if($current_folder === "Create_Purchased_Order"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="../../Inventory/Create_Purchased_Order/">
                     <div class="d-flex align-items-center">
                       <div class="dropdown-indicator-icon"></div>
-                      <span class="nav-link-text">Create</span>
+                      <span class="nav-link-text">Create Purchased Order</span>
                     </div>
                   </a>
                 </li>
@@ -98,45 +98,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           </div>
           <?php 
           }
-          if(strpos($session_permission, 'VIEW DR') !== false || strpos($session_permission, 'ADD DR') !== false) {
-          ?>
-          <!-- Delivery Receipt -->
-          <div class="nav-item-wrapper">
-            <a class="nav-link <?php if($current_folder === "Delivery_Reciept" || $current_folder === "Create_D.R"){ echo "active"; } else { echo "";}?> dropdown-indicator label-1" href="#nv-CRM" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-CRM">
-              <div class="d-flex align-items-center">
-                <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div>
-                <span class="nav-link-icon"><span data-feather="phone"></span></span>
-                <span class="nav-link-text">Delivery Receipt</span>
-                <span class="fa-solid fa-circle text-info ms-1 new-page-indicator" style="font-size: 6px"></span>
-              </div>
-            </a>
-            <!-- Delivery Receipt Submenu -->
-            <div class="parent-wrapper label-1">
-              <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-CRM">
-                <li class="collapsed-nav-item-title d-none">Delivery Receipt</li>
-                <?php  if(strpos($session_permission, 'VIEW DR') !== false) { ?>
-                <li class="nav-item">
-                  <a class="nav-link" href="../../Inventory/Delivery_Reciept/" data-bs-toggle="" aria-expanded="false">
-                    <div class="d-flex align-items-center"><span class="nav-link-text">View</span></div>
-                  </a>
-                </li>
-                <?php
-                }
-                if(strpos($session_permission, 'ADD DR') !== false) {
-                ?>
-                <li class="nav-item">
-                  <a class="nav-link" href="../../Inventory/Create_D.R/" data-bs-toggle="" aria-expanded="false">
-                    <div class="d-flex align-items-center"><span class="nav-link-text">Create</span></div>
-                  </a>
-                </li>
-                <?php 
-                }
-                ?>
-              </ul>
-            </div>
-          </div>
-          <?php 
-          }
+          
           if(strpos($session_permission, 'MATERIAL TRANSFER') !== false) {
           ?>
           <!-- Material Transfer -->
@@ -291,6 +253,49 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
         <li class="nav-item">
           <p class="navbar-vertical-label">Supplier</p>
           <hr class="navbar-vertical-line" />
+
+          <?php
+          if(strpos($session_permission, 'VIEW DR') !== false || strpos($session_permission, 'ADD DR') !== false) {
+            ?>
+            <!-- Delivery Receipt -->
+            <div class="nav-item-wrapper">
+              <a class="nav-link <?php if($current_folder === "Delivery_Reciept" || $current_folder === "Create_D.R"){ echo "active"; } else { echo "";}?> dropdown-indicator label-1" href="#nv-CRM" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-CRM">
+                <div class="d-flex align-items-center">
+                  <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div>
+                  <span class="nav-link-icon"><span data-feather="phone"></span></span>
+                  <span class="nav-link-text">Delivery Receipt</span>
+                  <span class="fa-solid fa-circle text-info ms-1 new-page-indicator" style="font-size: 6px"></span>
+                </div>
+              </a>
+              <!-- Delivery Receipt Submenu -->
+              <div class="parent-wrapper label-1">
+                <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-CRM">
+                  <li class="collapsed-nav-item-title d-none">Delivery Receipt</li>
+                  <?php  if(strpos($session_permission, 'VIEW DR') !== false) { ?>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../Inventory/Delivery_Reciept/" data-bs-toggle="" aria-expanded="false">
+                      <div class="d-flex align-items-center"><span class="nav-link-text">View Delivery</span></div>
+                    </a>
+                  </li>
+                  <?php
+                  }
+                  if(strpos($session_permission, 'ADD DR') !== false) {
+                  ?>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../Inventory/Create_D.R/" data-bs-toggle="" aria-expanded="false">
+                      <div class="d-flex align-items-center"><span class="nav-link-text">Create Delivery</span></div>
+                    </a>
+                  </li>
+                  <?php 
+                  }
+                  ?>
+                </ul>
+              </div>
+            </div>
+            <?php 
+            }
+          ?>
+
           <div class="nav-item-wrapper">
             <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../Suppliers/" role="button" data-bs-toggle="" aria-expanded="false">
               <div class="d-flex align-items-center">
