@@ -110,6 +110,6 @@
         $stmt->execute();
         $stmt->close();
 
-        header('Location: /danielle_motors/Inventory/Product_List');
+        header('Location: ../Inventory/Product_List');
     }
 ?>
