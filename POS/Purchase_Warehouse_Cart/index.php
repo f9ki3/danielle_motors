@@ -61,8 +61,8 @@ date_default_timezone_set('Asia/Manila');
                 success: function (data) {
                     // Populate the dropdown options
                     var selectElement = $('#' + selectElementId);
-                    selectElement.empty();
-                    selectElement.append('<option selected>Select ' + role + '</option>');
+                    // selectElement.empty();
+                    // selectElement.append('<option selected>Select ' + role + '</option>');
                     $.each(data, function (index, admin) {
                         selectElement.append('<option value="' + admin.id + '">' + admin.user_fname + ' ' + admin.user_lname + ' ' + admin.user_position +'</option>');
                     });

@@ -80,26 +80,51 @@ if($material_transfer_res -> num_rows > 0){
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><?php echo $material_cashier;?></td>
-                                            <td><?php echo $material_received_by;?></td>
+                                            <td class="ps-2 pt-3">
+                                                <?php 
+                                                echo 
+                                                '<div class="form-floating" style="width: 75%;">
+                                                <input class="form-control" value="' . $material_cashier . '" readonly>
+                                                <label for="transaction_receive">Cashier Name</label></div>
+                                                ';?>
+                                            </td>
+                                            <td>
+                                                <?php 
+                                                echo '<div class="form-floating" style="width: 75%;">
+                                                <input class="form-control" value="' . $material_received_by . '" readonly>
+                                                <label for="transaction_receive">Receive By</label></div>
+                                                ';?>
+                                            </td>
                                             <td>
                                                 <?php 
                                                 if(empty($material_inspected_by)){
-                                                    echo '<select class="form-select mb-2" aria-label="Default select example" style="width: 33%" name="inspected_by" id="inspectedBy" onchange="enableCheckbox()" required>
-                                                            <option value="">Select Inspected By</option>
-                                                            <!-- Add other options here -->
-                                                        </select>';
+                                                    echo '<div class="form-floating" style="width: 75%;">
+                                                    <select class="form-select mb-2" aria-label="Default select example" style="width: 100%" name="inspected_by" id="inspectedBy" onchange="enableCheckbox()" required>
+            
+                                                    </select>
+                                                    <label for="transaction_inspected">Inspected by</label>
+                                                </div>';
                                                 } else {
-                                                    echo $material_inspected_by;
+                                                    echo '<div class="form-floating" style="width: 75%;">
+                                                    <input class="form-control" value="' . $material_inspected_by . '" readonly>
+                                                    <label for="transaction_receive">Receive By</label></div>
+                                                    ';
                                                 }
                                                 ?>
                                             </td>
                                             <td>
                                                 <?php 
                                                 if(empty($material_verified_by)){
-                                                    echo '<input name="verified_by" type="text" class="form-control" value="' . $id . '" hidden><input name="full_name" type="text" class="form-control" value="' . $fname . ' ' . $lname . '" readonly>';
-                                                } else {
-                                                   echo $material_verified_by;
+                                                    echo '
+                                                    <div class="form-floating" style="width: 75%;">
+                                                        <input name="verified_by" type="text" class="form-control" value="' . $id . '" hidden><input name="full_name" type="text" class="form-control" value="' . $fname . ' ' . $lname . '" readonly>
+                                                        <label for="transaction_inspected">Verified by</label>
+                                                        </div>';
+                                                    } else {
+                                                        echo '<div class="form-floating" style="width: 75%;">
+                                                    <input class="form-control" value="' . $material_verified_by . '" readonly>
+                                                    <label for="transaction_receive">Receive By</label></div>
+                                                    ';
                                                 }
                                                 ?>
                                             </td>
