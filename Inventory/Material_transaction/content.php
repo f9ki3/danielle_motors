@@ -107,7 +107,7 @@ if($material_transfer_res -> num_rows > 0){
                                                 } else {
                                                     echo '<div class="form-floating" style="width: 75%;">
                                                     <input class="form-control" value="' . $material_inspected_by . '" readonly>
-                                                    <label for="transaction_receive">Receive By</label></div>
+                                                    <label for="transaction_receive">Inspected By</label></div>
                                                     ';
                                                 }
                                                 ?>
@@ -123,7 +123,7 @@ if($material_transfer_res -> num_rows > 0){
                                                     } else {
                                                         echo '<div class="form-floating" style="width: 75%;">
                                                     <input class="form-control" value="' . $material_verified_by . '" readonly>
-                                                    <label for="transaction_receive">Receive By</label></div>
+                                                    <label for="transaction_receive">Verified By</label></div>
                                                     ';
                                                 }
                                                 ?>
