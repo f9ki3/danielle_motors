@@ -50,6 +50,7 @@
                         $product_key = array_search($selectedProductId, $_POST['product_id']);
                         $product_id = $_POST['product_id'][$product_key];
                         $productName = $_POST['product_name'][$product_key];
+                        $productImage = $_POST['product_image'][$product_key];
                         $category = $_POST['category'][$product_key];
                         $brand = $_POST['brand'][$product_key];
                         $unit = $_POST['unit'][$product_key];
@@ -64,9 +65,7 @@
                         <input type="text" name="models[]" value="<?php echo $models;?>" hidden >
                         <tr class="position-static">
                           <td class="align-middle white-space-nowrap py-0">
-                            <a class="d-block border rounded-2" href="../landing/product-details.html">
-                              <img src="../../assets/img/products/1.png" alt="" width="53" />
-                            </a>
+                              <img src="../../uploads/<?php echo basename($productImage);?>"  class="img img-fluid" width="53" alt="" />
                           </td>
                           <td class="product"><?php echo $productName ?></td>
                           <td class="price"><?php echo $category ?></td>
