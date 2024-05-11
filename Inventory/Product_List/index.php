@@ -230,6 +230,10 @@ date_default_timezone_set('Asia/Manila');
             $('#edit_category').trigger('change');
             $('#edit_brand').trigger('change');
         });
+
+        $('#add_product').on('shown.bs.modal', function () {
+            $("#model").trigger('change');
+        });
     });
     </script>
 
