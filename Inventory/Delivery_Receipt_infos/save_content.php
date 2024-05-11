@@ -15,17 +15,13 @@
         <div class="row">
             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-6 col-xxs-6 mb-3 text-end">
                 <div class="dropdown font-sans-serif d-inline-block">
-                    <button class="btn btn-phoenix-secondary dropdown-toggle mt-2" id="dropdownMenuButton" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Print</button><span class="caret"> </span>
-                    <div class="dropdown-menu dropdown-menu-end py-0" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Print Delivery Receipt</a>
-                        <a class="dropdown-item" href="#">Print Barcodes</a>
-                    </div>
+                    <button class="btn btn-phoenix-secondary mt-2" id="printButton">Print</button>
                 </div>
             </div>
   
   
             
-            <div class="col-lg-12 bg-white  mt-5 fs--1">
+            <div class="col-lg-12 bg-white mt-5 m-2 fs--1" id="printContent">
                 <?php include "delivery_receipt_preview.php"; ?>
             </div>
         </div>
@@ -122,6 +118,21 @@
 
         dynamicLocations.appendChild(locationDiv);
         dynamicLocations.appendChild(quantityDiv);
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#printButton').click(function() {
+            var content = $('#printContent').html();
+            var originalContent = $('body').html();
+
+            $('body').html(content);
+
+            window.print();
+            $('body').html(originalContent);
+        });
     });
 </script>
 
