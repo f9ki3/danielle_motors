@@ -24,8 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
 
             // Calculate the time one minute ago
-            $oneMinuteAgo = date('Y-m-d H:i:s', strtotime('-3 minute'));
-
+            $oneMinuteAgo = date('Y-m-d H:i:s', strtotime('-1 minute'));
+            echo $supplier_id . "/////////<br>";
+            echo $oneMinuteAgo;
             // Prepare SQL query to check if there are any rows with publish_on within the last minute
             $check_saved_sql = "SELECT COUNT(*) AS count FROM purchased_order WHERE publish_on >= '$oneMinuteAgo' AND supplier_id = '$supplier_id'";
 
@@ -36,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($check_saved_result->num_rows > 0) {
                 $row = $check_saved_result->fetch_assoc();
                 $count = $row["count"];
-                
+                echo $count;
                 if ($count > 0) {
                     echo "There is data saved within the last minute.<br>";
                     // Prepare SQL query to check if there are any rows with publish_on within the last minute
@@ -59,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $po_id = $row['max_po_id'] + 1;
                     }
                     
-                    $insert_to_purchased_order = "INSERT INTO purchased_order SET po_id = '$po_id', supplier_id = '$supplier_id', `status` = 1, requested_by = '$user_id', branch_code = '$branch_code'";
+                    $insert_to_purchased_order = "INSERT INTO purchased_order SET po_id = '$po_id', supplier_id = '$supplier_id', `status` = 1, requested_by = '$user_id', branch_code = '$branch_code', publish_on = '$currentDateTime'";
                     if($conn->query($insert_to_purchased_order)=== TRUE){
                         echo "successfully inserted";
                         $last_purchased_order = $po_id;
@@ -70,7 +71,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo '<br>' . $last_purchased_order . '<br>';
             if($last_supplier_id === $supplier_id){
                 echo $last_supplier_id . " is equal to " . $supplier_id;
-                $insert_content = "INSERT INTO purchased_order_content_wh (po_id, product_id, order_qty, est_amount) VALUES ('$last_purchased_order', '$product_id', '$quantity', '$product_amount')";
+                $subtotal = $quantity * $product_amount;
+                $insert_content = "INSERT INTO purchased_order_content_wh (po_id, product_id, order_qty, est_amount) VALUES ('$last_purchased_order', '$product_id', '$quantity', '$subtotal')";
                 if($conn->query($insert_content)===TRUE){
                     echo "successfully inserted to purchased order content wh";
                 } else {
@@ -94,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Form not submitted.";
 }
 
-// header("Location: ../Inventory/Purchased-Order-Supplier/?error=success");
+header("Location: ../Inventory/Purchased-Order-Supplier/?error=success");
 $conn->close();
 exit();
 ?>
