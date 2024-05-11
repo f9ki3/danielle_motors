@@ -72,15 +72,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Send email with default password to the user
         $mail = new PHPMailer;
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
+        // $mail->Host = 'smtp.gmail.com';
+        // $mail->SMTPAuth = true;
+        // $mail->Username = 'pdm.azulchristian@gmail.com'; // Update with your email address
+        // $mail->Password = 'inzgajfxruvxqwbm'; // Update with your email password
+        $mail->Host = 'smtp.hostinger.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'pdm.azulchristian@gmail.com'; // Update with your email address
-        $mail->Password = 'inzgajfxruvxqwbm'; // Update with your email password
+        $mail->Username = 'no_reply@dmp-motors.com'; // Update with your email address
+        $mail->Password = '4koSiDMP123*';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
-        $mail->setFrom('gtecnicacorporation@gmail.com', 'G-tecnica'); // Update with your name and email address
+        $mail->setFrom('no_reply@dmp-motors.com', 'Danielle Motors'); // Update with your name and email address
         $mail->addAddress($email); // Set the recipient email address
-        $mail->Subject = 'G-tecnica Equipment Corporation Password';
+        $mail->Subject = 'DMP';
         $mail->Body = 'Your default password is: ' . $password . '.';
 
         if ($mail->send()) {

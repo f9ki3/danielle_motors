@@ -22,7 +22,7 @@
         </div>
       </div>
     </div> -->
-  <form action="../Create_Purchased_Order3/index.php" method="post">
+  <form action="../../PHP - process_files/purchased-order-submit.php" method="post">
     <div class="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-white border-top border-bottom border-200 position-relative top-1">
       <div class="table-responsive scrollbar mx-n1 px-1">
         <table class="table fs--1 mb-0">
@@ -35,6 +35,7 @@
               <th class="sort" scope="col" data-sort="tags">UNIT</th>
               <th class="sort" scope="col">MODEL</th>
               <th class="sort" scope="col" data-sort="vendor">STOCKS</th>
+              <th class="sort" scope="col" data-sort="vendor">COMPARE PRICE</th>
               <th class="sort" scope="col" data-sort="time">QTY ORDER</th>
             </tr>
           </thead>
@@ -73,6 +74,26 @@
                           <td class="tags"><?php echo $unit ?></td>
                           <td class=""><?php echo $models ?></td>
                           <td class="vendor"><?php echo $current_stock ?></td>
+                          <td class="vendor">
+                          
+                          <select class="form-select" name="supp[]" id="supplier_product">
+                            <?php 
+                                $supplier_sql = "SELECT s.id AS supplier_id, s.supplier_name, sp.orig_price 
+                                                FROM supplier AS s 
+                                                LEFT JOIN supplier_product AS sp ON s.id = sp.supplier_id AND sp.product_id = '$product_id'
+                                                ORDER BY sp.orig_price DESC"; // or DESC for descending order
+                                $supplier_res = $conn->query($supplier_sql);
+                                while($supplier = $supplier_res->fetch_assoc()){
+                                    $supplier_id = $supplier['supplier_id'];
+                                    $supplier_name = $supplier['supplier_name'];
+                                    $product_amount = isset($supplier['orig_price']) ? $supplier['orig_price'] : 0;
+                                    echo '<option value="' . $supplier_id . ', ' . $product_amount . '">' . $supplier_name . ' - Php ' . $product_amount . '</option>';
+                                }
+                            ?>
+
+                          </select>
+
+                          </td>
                           <td class="time"><input type="number" name="qty[]" class="form-control" min="0" max="9999" required></td>
                         </tr>
                     <?php
