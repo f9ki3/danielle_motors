@@ -28,43 +28,35 @@
     $prepared_by = $row['prepared_by'];
  }
  ?>
- <div class="row ">
+ <div class="row">
     <!-- <div class="col-lg-2"><img src="../../uploads/<?php//echo $supplier_logo; ?>" class="img-fluid" style="height=150" alt=""></div> -->
-    <div class="col-lg-8 p-5">
+    <div class="col-lg-8">
         <h5><?php echo $supplier_name; ?></h5>
         <p><?php echo $supplier_address; ?></p>
     </div>
-    <div class="col-lg-4 p-5 text-end">
+    <div class="col-lg-4 text-end">
         <p class="mb-0">Deliver Receipt</p>
         <p class="mb-0 mt-0"><?php echo str_pad($dr_id, 6, '0', STR_PAD_LEFT);?></p>
-        <div class="row">
-            <div class="col-lg-4 text-start">
-                <p><b>Date: </b></p>
-            </div>
-            <div class="col-lg-8 text-end">
-                <p><?php echo $received_date; ?></p>
-            </div>
-        </div>
+        <p><b>Date: </b><?php echo $received_date; ?></p>
     </div>
     <div class="col-lg-12 table-responsive" id="live_product_data" style="min-height: 300px;">
         
     </div>
-    <hr class="mt-5 mb-5">
     <div class="col-lg-12 mb-5">
         <div id="dr_footer"></div>
     </div>
 
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4 mt-9 text-center fs--1">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4 mt-2 text-center fs--1">
         <p class="mb-0 mt-0"><u><?php echo $prepared_by;?></u></p>
         <p class="mb-0 mt-0">Prepared by</p>
     </div>
 
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4 mt-9 text-center fs--1">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4 mt-2 text-center fs--1">
         <p class="mb-0 mt-0"><u><?php echo $checked_by;?></u></p>
         <p class="mb-0 mt-0">Checked by</p>
     </div>
     
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4 mt-9 text-center fs--1">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4 mt-2 text-center fs--1">
         <p class="mb-0 mt-0"><u><?php echo $approved_by;?></u></p>
         <p class="mb-0 mt-0">Approved by</p>
     </div>
