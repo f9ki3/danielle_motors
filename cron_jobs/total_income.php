@@ -49,8 +49,8 @@ if ($timecheck) {
 
                 // SQL query to retrieve purchase transactions for yesterday
                 $cx_receipt_sql = "SELECT pt.*, pc.* 
-                                    FROM purchase_transactions AS pt
-                                    LEFT JOIN purchase_cart AS pc ON pc.TransactionID = pt.TransactionID
+                                    FROM purchase_cart AS pc
+                                    LEFT JOIN purchase_transactions AS pt ON pt.TransactionID = pc.TransactionID
                                     WHERE DATE(pt.TransactionDate) = '$dateYesterdayFormat'
                                     ORDER BY pt.TransactionDate ASC";
                 $cx_receipt_res = $conn -> query($cx_receipt_sql);
@@ -64,14 +64,19 @@ if ($timecheck) {
                         $receipt_discount_type = $resibo['DiscountType'];
                         $receipt_computation_status = $resibo['computation_status'];
                         $receipt_computed_qty = $resibo['computed_qty'];
+                        $receipt_transaction_id = $resibo['TransactionID'];
+                        $per_product_computation = $receipt_total_amount / $receipt_qty;
+                        echo "<br> transaction_id = " . $receipt_transaction_id . "<br> product_id = " . $receipt_product_id . "<br>" . $receipt_qty . "<br>" . $receipt_total_amount . "<br>";
+                        echo "--------" . $per_product_computation . "---<br>";
                         
                         // Calculate final amount per product considering discounts
                         if($receipt_discount_type == "%"){
-                            $per_product_computation = $receipt_total_amount / $receipt_qty;
+                            
                             $final_per_product_computation = ($receipt_discount / 100) * $per_product_computation;
+                            echo "sold price per product: " . $final_per_product_computation . "<br>";
                         } else {
-                            $per_product_computation = $receipt_total_amount / $receipt_qty;
                             $final_per_product_computation = $per_product_computation - $receipt_discount;
+                            echo "sold price per product: " . $final_per_product_computation . "<br>";
                         }
                         $amount_per_product = $final_per_product_computation;
                         
@@ -82,8 +87,8 @@ if ($timecheck) {
                             for ( $i = $receipt_computed_qty; $i <= $receipt_qty; $i++) {
                                 // Retrieve data from delivery receipt for further computation
                                 $dr_sql = "SELECT dr.*, drc.*
-                                FROM delivery_receipt AS dr
-                                JOIN delivery_receipt_content AS drc ON drc.delivery_receipt_id = dr.id
+                                FROM delivery_receipt_content AS drc
+                                JOIN delivery_receipt AS dr ON dr.id = drc.delivery_receipt_id
                                 WHERE drc.product_id = '$receipt_product_id' AND drc.computation_status != 'OK'
                                 ORDER BY dr.received_date ASC
                                 LIMIT 1";
@@ -94,12 +99,14 @@ if ($timecheck) {
                                     $drc_id = $drc['delivery_receipt_id'];
                                     $drc_product_id = $drc['product_id'];
                                     $drc_qty = $drc['quantity'];
-                                    $drc_puhunan = $drc['orig_price'];
+                                    $drc_puhunan = $drc['price'];
 
                                     // Calculate profit per product
                                     $puhunan_per_product = $amount_per_product - $drc_puhunan;
+                                    echo "<br> amount per product: " . $amount_per_product . "<br>puhunan: " . $puhunan_per_product . "<br>";
                                 } else {
                                     // Handle scenario when there's no delivery receipt for the product
+                                    echo "<br>no product on delivery_receipt<br>";
                                 }
 
                                 if($i == $receipt_qty){
