@@ -59,9 +59,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Destination path for the default image
     $destination = 'avatar-placeholder.webp';
-
+    // Generate a random 6-digit code
+    $random_code = rand(100000, 999999);
     // Generate default password
-    $password = "123";
+    $password = $random_code;
     $hashedPassword = hash('sha256', $password);
 
     // Prepare and execute the INSERT query to add user to the database

@@ -29,13 +29,13 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" id="supplier_email" name="supplier_email" type="email" placeholder="name@example.com" required/>
+                                    <input class="form-control" id="supplier_email" name="supplier_email" type="email" placeholder="name@example.com"/>
                                     <label for="supplier_email">Email address</label>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" id="phone" name="phone" type="number" placeholder="Phone" required/>
+                                    <input class="form-control" id="phone" name="phone" type="number" placeholder="Phone"/>
                                     <label for="phone">Phone</label>
                                 </div>
                             </div>
