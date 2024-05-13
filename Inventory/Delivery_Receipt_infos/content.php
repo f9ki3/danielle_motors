@@ -105,7 +105,7 @@
                                 <div class="col-lg-12 mb-2">
                                     <div class="form-floating">
                                         <input class="form-control" id="price" name="price"  placeholder="" required/>
-                                        <label for="floatingInput">Price</label>
+                                        <label for="floatingInput">Discounted Price</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-2">
@@ -251,7 +251,7 @@
                                 <div class="col-lg-12 mb-2">
                                     <div class="form-floating">
                                         <input class="form-control" id="price" name="price"  placeholder="" required/>
-                                        <label for="floatingInput">Price</label>
+                                        <label for="floatingInput">Discounted Price</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-2">
