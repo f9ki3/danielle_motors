@@ -162,6 +162,22 @@ function updateValues() {
     var amountPaymentInput = document.getElementById('amount_payment');
     var amountPayment = parseFloat(amountPaymentInput.value);
 
+    amountPaymentInput.addEventListener('input', function(event) {
+        // Retrieve the input value
+        var inputValue = event.target.value;
+    
+        // Split the input by decimal point
+        var parts = inputValue.split('.');
+        
+        // If there are more than one decimal points, remove the extra ones
+        if (parts.length > 2) {
+            // Join everything before the last item in parts array with the last item
+            inputValue = parts.slice(0, -1).join('') + '.' + parts[parts.length - 1];
+            // Update the input field value
+            event.target.value = inputValue;
+        }
+    });
+
     // Check if the input is null or exceeds 100, set it to 0 or 100 accordingly
     if (discountPercentage === null || isNaN(discountPercentage) || discountPercentage < 0) {
         discountPercentage = 0;

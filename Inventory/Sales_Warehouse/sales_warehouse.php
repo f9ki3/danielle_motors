@@ -29,12 +29,12 @@ while ($row = $result->fetch_assoc()) {
     <td class="sort transaction-date white-space-nowrap align-middle" style="width: 15%;">' . $TransactionDate . '</td>
     <td class="sort customer-name align-middle text-start" style="width: 10%;">' . $CustomerName . '</td>
     <td class="sort payment-method align-middle text-start" style="width: 10%;">' . $TransactionPaymentMethod . '</td>
-    <td class="sort subtotal align-middle text-start" style="width: 10%;">' . number_format($Subtotal, 2) . '</td>
-    <td class="sort tax align-middle text-start" style="width: 5%;">' . number_format($Tax, 2) . '</td>
-    <td class="sort discount align-middle text-start" style="width: 15%;">' . number_format($Discount, 2) . '</td>
-    <td class="sort total align-middle text-start" style="width: 10%;">' . number_format($Total, 2) . '</td>
-    <td class="sort payment align-middle text-start" style="width: 10%;">' . number_format($Payment, 2) . '</td>
-    <td class="sort change align-middle text-start" style="width: 10%;">' . number_format($ChangeAmount, 2) . '</td>
+    <td class="sort subtotal align-middle text-start" style="width: 10%;"> ₱ ' . number_format($Subtotal, 2) . '</td>
+    <td class="sort tax align-middle text-start" style="width: 5%;"> ₱ ' . number_format($Tax, 2) . '</td>
+    <td class="sort discount align-middle text-start" style="width: 15%;"> ₱ ' . number_format($Discount, 2) . '</td>
+    <td class="sort total align-middle text-start" style="width: 10%;"> ₱ ' . number_format($Total, 2) . '</td>
+    <td class="sort payment align-middle text-start" style="width: 10%;"> ₱ ' . number_format($Payment, 2) . '</td>
+    <td class="sort change align-middle text-start" style="width: 10%;"> ₱ ' . number_format($ChangeAmount, 2) . '</td>
 </tr>';
 }
 ?>
