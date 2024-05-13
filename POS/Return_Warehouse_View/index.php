@@ -40,246 +40,279 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
+    
+    <!-- Include jQuery and DataTables -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
+
+    <script type="text/javascript">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+<script>
+$(document).ready(function () {
+    // Return Material Transfer
+    $('#returnMaterialTransfer').click(function () {
+        // Check if the button is enabled
+        if ($(this).prop('disabled')) {
+            return; // Do nothing if the button is disabled
+        }
+        
+        var user_brn_code = $('#user_brn_code').val();
+        var materialInvoiceNo = $('#material_invoice').val();
+        var sessionID = $('#sessionID').val();
+        var cashierName = $('#cashierName').val();
+        var reason = $('#Reason').val(); // Get the value of the "Reason" input field
+        
+        // Calculate total return amount and total selling price
+        var totalReturnAmount = 0;
+        var totalSellingPrice = 0;
+        $('input.quantity-return').each(function() {
+            var closestRow = $(this).closest('tr');
+            var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
+            var qtyReceive = parseFloat(closestRow.find('td:eq(7)').text()); // Get quantity receive
+            
+            var quantityReturn = parseFloat($(this).val()); // Get quantity return value
+            
+            if (!isNaN(inputSrp) && !isNaN(quantityReturn)) {
+                totalSellingPrice += inputSrp * (qtyReceive - quantityReturn);
+                totalReturnAmount += inputSrp * quantityReturn; // Calculate total return amount
+            }
+        });
+
+        // Update total selling price display
+        $('#totalSellingPrice').text('Total Selling Amount: ₱' + totalSellingPrice.toFixed(2));
+
+        console.log('Total return Price:', totalReturnAmount);
+        console.log('Total Selling Price:', totalSellingPrice); // Log the total selling price
+        // Save Material Transfer with total values
+        $.ajax({
+            url: '../../php/store_stocks_recompute_return.php',
+            method: 'POST',
+            data: {
+
+                materialInvoiceID: materialInvoiceNo,
+                totalReturnAmount: totalReturnAmount, // Pass totalReturnAmount to the AJAX request
+                totalSellingPrice: totalSellingPrice // Pass totalReturnAmount to the AJAX request
+            },
+            success: function (response) {
+                console.log(response);
+                // Send notification
+                $.ajax({
+                    url: '../../php/update_notification.php',
+                    method: 'POST',
+                    data: {
+                        sessionID: sessionID,
+                        type_id: materialInvoiceNo,
+                        type: 'Material Transaction',
+                        sender: cashierName,
+                        message: reason
+                    },
+                    success: function (response) {
+                        console.log('Notification sent successfully');
+                        
+                        // Loop through checked checkboxes and update product stocks
+                        $('input[name="product_checkbox[]"]:checked').each(function() {
+                            var closestRow = $(this).closest('tr');
+                            var productId = closestRow.find('input[name="product_id[]"]').val();
+                            var qtytotal = closestRow.find('td:eq(7)').data('quantity-added'); // Retrieve data attribute value
+                            var inputId = 'quantityInput_' + closestRow.attr('data-row-index');
+                            var qtySent = $('#' + inputId).val(); // Retrieve input value
+                            var qtyWarehouse = qtytotal - qtySent; // Calculate qtyWarehouse
+                            var status = closestRow.find('td:eq(9)').text().trim(); // Assuming status is in the 9th column
+                            
+                            console.log('Status:', status); // Log the status value
+                            console.log('Branch_code:', user_brn_code); // Log the branch code value
+                            console.log('productId:', productId); // Log the product ID value
+                            console.log('Qtytotal:', qtytotal); // Log qtytotal
+                            console.log('QtySent:', qtySent); // Log qtySent
+                            console.log('QtyWarehouse:', qtyWarehouse); // Log qtyWarehouse
+                            
+                            if (status === 'Request Return') {
+                                // Only update product stocks if status is 'Request Return'
+                                $.ajax({
+                                    url: '../../php/return_product_stocks.php',
+                                    method: 'POST',
+                                    data: {
+                                        productId: productId,
+                                        qty_total: qtytotal,
+                                        qty_warehouse: qtyWarehouse,
+                                        user_brn_code: user_brn_code,
+                                        qty_sent: qtySent,
+                                        input_id: inputId,
+                                        materialInvoiceID: materialInvoiceNo,
+                                        sessionID: sessionID,
+                                        sender: cashierName,
+                                        status: status,
+                                        message: reason
+                                    },
+                                    success: function (response) {
+                                        console.log('Product stocks updated successfully for product ID ' + productId);
+                                    },
+                                    error: function (xhr, status, error) {
+                                        console.error('Error updating product stocks for product ID ' + productId + ':', error);
+                                    }
+                                });
+                            } else {
+                                console.log('Status is not "Request Return", skipping product ID ' + productId);
+                                console.log('Status is:', status);
+                                // Handle other statuses here
+                                // You can add any desired behavior for statuses other than "Request Return"
+                            }
+                        });
+                        
+                        swal("Material Returned", "Products have been returned", "success").then((value) => {
+                            if (value) {
+                                // Reload the page after the AJAX request completes
+                                window.location.reload();
+                            }
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error sending notification:', error);
+                    }
+                });
+            },
+            error: function (xhr, status, error) {
+                console.error('Error saving material transfer:', error);
+            }
+        });
+    });
+
+    // Update input field when checkbox is clicked
+    $('input[name="product_checkbox[]"]').click(function () {
+        var closestRow = $(this).closest('tr');
+        var qtyRequested = parseInt(closestRow.find('td:eq(6)').text());
+
+        if ($(this).prop('checked')) {
+            var inputField = $('<input type="number" class="form-control quantity-return" min="0">');
+            var inputId = 'quantityInput_' + closestRow.attr('data-row-index');
+            inputField.attr('id', inputId);
+            inputField.attr('max', qtyRequested);
+            inputField.val(qtyRequested);
+            closestRow.find('td:eq(8)').html(inputField);
+        } else {
+            closestRow.find('td:eq(6)').text(closestRow.find('td:eq(8)').attr('data-quantity-requested'));
+            closestRow.find('td:eq(8)').empty(); // Clear the input field
+        }
+
+        updateButtonStatus();
+    });
+
+    // Recompute total return amount when quantity return is changed
+    $(document).on('change', '.quantity-return', function() {
+        var totalReturnAmount = 0;
+        $('.quantity-return').each(function() {
+            var closestRow = $(this).closest('tr');
+            var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
+            var quantityReturn = parseFloat($(this).val()); // Get quantity return value
+
+            if (!isNaN(inputSrp) && !isNaN(quantityReturn)) {
+                totalReturnAmount += inputSrp * quantityReturn; // Calculate total return amount
+            }
+        });
+        $('#totalReturnAmount').text('Total Return Amount: ₱' + totalReturnAmount.toFixed(2)); // Update total return amount display
+    });
+
+    // Recompute total selling price when quantity return is changed
+    $(document).on('change', '.quantity-return', function () {
+        var totalSellingPrice = 0;
+
+        $('input[name="product_checkbox[]"]:checked').each(function () {
+            var closestRow = $(this).closest('tr');
+            var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
+            var qtyAdded = parseFloat(closestRow.find('td:eq(7)').data('quantity-added')); // Get quantity added
+            var quantityReturn = parseFloat($(this).val()); // Get quantity return value
+            var quantityRetain = qtyAdded - quantityReturn; // Calculate quantity retained
+
+            if (!isNaN(inputSrp) && !isNaN(quantityRetain)) {
+                totalSellingPrice == inputSrp * quantityRetain; // Calculate total selling price
+            }
+        });
+
+        // Update total selling price display
+        $('#totalSellingPrice').text('Total Selling Amount: ₱' + totalSellingPrice.toFixed(2));
+    });
+    // Recompute total selling price when checkbox state changes
+$('input[name="product_checkbox[]"]').click(function () {
+    var totalSellingPrice = 0;
+
+    $('input[name="product_checkbox[]"]:checked').each(function () {
+        var closestRow = $(this).closest('tr');
+        var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
+        var quantityRequested = parseFloat(closestRow.find('td:eq(6)').text()); // Get quantity requested
+        var quantityReturned = parseFloat(closestRow.find('td:eq(7)').text()); // Get quantity returned
+
+        if (!isNaN(inputSrp) && !isNaN(quantityRequested) && !isNaN(quantityReturned)) {
+            totalSellingPrice += inputSrp * (quantityRequested - quantityReturned); // Calculate total selling price
+        }
+    });
+
+    // Update total selling price display
+    $('#totalSellingPrice').text('Total Selling Amount: ₱' + totalSellingPrice.toFixed(2));
+});
+
+// Recompute total selling price when quantity return is changed
+$(document).on('change', '.quantity-return', function () {
+    var totalSellingPrice = 0;
+
+    $('input[name="product_checkbox[]"]:checked').each(function () {
+        var closestRow = $(this).closest('tr');
+        var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
+        var quantityRequested = parseFloat(closestRow.find('td:eq(6)').text()); // Get quantity requested
+        var quantityReturned = parseFloat(closestRow.find('.quantity-return').val()); // Get quantity returned
+
+        if (!isNaN(inputSrp) && !isNaN(quantityRequested) && !isNaN(quantityReturned)) {
+            totalSellingPrice += inputSrp * (quantityRequested - quantityReturned); // Calculate total selling price
+        }
+    });
+
+    // Update total selling price display
+    $('#totalSellingPrice').text('Total Selling Price: ₱' + totalSellingPrice.toFixed(2));
+});
+
+
+    // Initial update of button status
+    updateButtonStatus();
+
+    // Function to update button status based on status value
+    function updateButtonStatus() {
+        console.log('Function updateButtonStatus() is running.');
+
+        var allReturn = true;
+        var anyChecked = false;
+
+        $('input[name="product_checkbox[]"]').each(function () {
+            var closestRow = $(this).closest('tr');
+            var status = closestRow.find('td:eq(9)').text().trim();
+            console.log('Status:', status);
+
+            if ($(this).prop('checked')) {
+                anyChecked = true;
+
+                if (status !== 'Request Return') {
+                    allReturn = false;
+                }
+            } else {
+                closestRow.find('td:eq(6)').text(closestRow.find('td:eq(8)').attr('data-quantity-requested'));
+            }
+        });
+
+        console.log('Any checkbox checked:', anyChecked);
+        console.log('All return:', allReturn);
+
+        if (allReturn && anyChecked) {
+            $('#acceptMaterialTransfer').prop('disabled', false);
+            $('#returnMaterialTransfer').prop('disabled', false);
+        } else {
+            $('#acceptMaterialTransfer').prop('disabled', true);
+            $('#returnMaterialTransfer').prop('disabled', true);
+        }
+    }
+});
+</script>
   </body>
 
 
 <!-- Mirrored from prium.github.io/phoenix/v1.13.0/pages/starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Aug 2023 05:15:14 GMT -->
 </html>
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdn.datatables.net/v/dt/dt-2.0.2/datatables.min.js"></script>
-
-<script type="text/javascript">
-$(document).ready(function () {
-    // Initialize DataTable
-    var table = $('#tabledataMaterial').DataTable({
-        "fnCreatedRow": function (nRow, aData, iDataIndex) {
-            $(nRow).attr('id', aData[0]);
-        },
-        'serverSide': 'true',
-        'processing': 'true',
-        'paging': 'true',
-        'order': [],
-        'ajax': {
-            'url': '../php/warehouse_stocks_return.php',
-            'type': 'post',
-        },
-        "aoColumnDefs": [{
-            "bSortable": false,
-            "aTargets": [6] // Adjust the index to match the actual number of columns
-        }]
-    });
-
-    // Define click event handler for view button
-    $('#tabledataMaterial tbody').on('click', '.view', function () {
-        // Handle button click event here
-        var rowData = table.row($(this).closest('tr')).data();
-        window.location.href = "warehouse_return_remove";
-        console.log('View button clicked for row:', rowData);
-    });
-
-$('#tabledataMaterial tbody').on('click', '.delete', function () {
-    // Get the data associated with the clicked row
-    var rowData = table.row($(this).closest('tr')).data();
-        // Perform any action you want based on the row data
-        // For example, you can open a modal with the row data for viewing
-        console.log('View button clicked for row:', rowData);
-    
-    // Populate modal with row data
-    // $('#id').val(rowData[0]); // Assuming date is in the firsts column
-    $('#materialInvoiceNo').val(rowData[0]); // Assuming material invoice number is in the second column
-    $('#materialDate').val(rowData[1]); // Assuming date is in the third column
-    $('#cashierName').val(rowData[2]); // Assuming cashier name is in the fourth column
-
-    // Set selected options for dropdowns
-    $('#receivedBy').val(rowData[3]); // Assuming received by is in the fifth column
-    $('#inspectedBy').val(rowData[4]); // Assuming inspected by is in the sixth column
-    $('#verifiedBy').val(rowData[5]); // Assuming verified by is in the seventh column
-
-});
-
-$('#tabledataMaterial tbody').on('click', '.delete', function () {
-    var rowData = table.row($(this).closest('tr')).data();
-    console.log('Delete button clicked for row:', rowData);
-
-    // Get other updated values from the modal inputs
-    var materialDate = $('#materialDate').val();
-    var materialInvoiceNo = $('#materialInvoiceNo').val();
-    var cashierName = $('#cashierName').val();
-    var receivedById = $('#receivedBy').val();
-    var inspectedById = $('#inspectedBy').val();
-    var verifiedById = $('#verifiedBy').val();
-
-    // Fetch first name and last name based on the selected IDs
-    $.ajax({
-        url: '../php/fetch_admin_data.php', // Your server-side script to fetch admin data
-        method: 'GET',
-        dataType: 'json',
-        success: function (data) {    
-            var receivedBy = fetchAdminData(receivedById, data);
-            var inspectedBy = fetchAdminData(inspectedById, data);
-            var verifiedBy = fetchAdminData(verifiedById, data);    
-            swal({
-  title: "Are you sure?",
-  text: "Once deleted, you will not be able to see the record",
-  icon: "warning",
-  buttons: true,
-  dangerMode: true,
-})
-.then((willDelete) => {
-  if (willDelete) {
-
-    // Perform AJAX request to update the active column
-    $.ajax({
-        url: '../php/store_stocks_archive.php', // Change the URL to your PHP script that updates the active column
-        method: 'POST',
-        data: {     materialDate: materialDate,
-                    materialInvoiceNo: materialInvoiceNo,
-                    cashierName: cashierName,
-                    receivedBy: receivedBy,
-                    inspectedBy: inspectedBy,
-                    verifiedBy: verifiedBy
-        
-        },
-        success: function (response) {
-            // Handle the response from the server
-            console.log(response);
-            // Reload or update the DataTable if needed
-            table.ajax.reload();
-        },
-        error: function (xhr, status, error) {
-            // Handle errors
-            console.error(error);
-        }
-    });
-    swal("Record has been deleted!", {
-      icon: "success",
-    });
-  } else {
-    swal("Your Record file is safe!");
-  }
-});
-        },
-        error: function (xhr, status, error) {
-            console.error('Error fetching admin data:', error);
-        }
-    });
-    });
-});
-
-
-function fetchAdminData(adminId, adminData) {
-    var admin = adminData.find(function (admin) {
-        return admin.id == adminId;
-    });
-    return admin ? admin.user_fname + ' ' + admin.user_lname : '';
-}
-
-
- $(document).ready(function () {
-  
-     function fetchAdminData(selectElementId, role) {
-         $.ajax({
-             url: '../php/fetch_admin_data.php', // Your server-side script to fetch admin data
-             method: 'GET',
-             data: { role: role }, // Optional: send role if needed
-             dataType: 'json',
-             success: function (data) {
-                 // Populate the dropdown options
-                 var selectElement = $('#' + selectElementId);
-                //  selectElement.empty();
-                //  selectElement.append('<option selected>Select ' + role + '</option>');
-                 $.each(data, function (index, admin) {
-                     selectElement.append('<option value="' + admin.id + '">' + admin.user_fname + ' ' + admin.user_lname + '</option>');
-                 });
-             },
-             error: function (xhr, status, error) {
-                 console.error('Error fetching admin data:', error);
-             }
-         });
-     }
-
-     // Fetch data for receivedBy dropdown
-     
-     fetchAdminData('receivedBy', 'Recieved By');
-     
-     // Fetch data for inspectedBy dropdown
-     fetchAdminData('inspectedBy', 'Inspected by');
-
-     // Fetch data for verifiedBy dropdown
-     fetchAdminData('verifiedBy', 'Verified By');
- });
-
-document.getElementById('addStocksBtn').addEventListener('click', function() {
-    window.location.href = 'store_stocks_return.php';
-});
-
-// datatables
-
-<?php
-include '../config/config.php';
-
-$output = array();
-$columns = array(
-    0 => 'id',
-    1 => 'material_invoice',
-    2 => 'material_date',
-    3 => 'material_cashier',
-    4 => 'material_recieved_by',
-    5 => 'material_inspected_by',
-    6 => 'material_verified_by'
-);
-
-
-$sql = "SELECT `id`, `material_invoice`, `material_date`, `material_cashier`, `material_recieved_by`, `material_inspected_by`, `material_verified_by`, `active` FROM `material_transfer` WHERE `active` = 1 AND `declined` = 2" ;
-
-// Filter by search value
-if (isset($_POST['search']['value'])) {
-    $search_value = $_POST['search']['value'];
-    $sql .= " AND (";
-    foreach ($columns as $index => $column) {
-        $sql .= "`$column` LIKE '%$search_value%' OR ";
-    }
-    $sql = rtrim($sql, "OR "); // Remove the last 'OR'
-    $sql .= ")";
-}
-
-// Order by specific column
-if (isset($_POST['order'])) {
-    $column_index = $_POST['order'][0]['column'];
-    $column_name = $columns[$column_index];
-    $order = $_POST['order'][0]['dir'];
-    $sql .= " ORDER BY `$column_name` $order";
-} else {
-    // Default ordering by id in descending order
-    $sql .= " ORDER BY `id` DESC";
-}
-
-$query = mysqli_query($conn, $sql);
-$total_all_rows = mysqli_num_rows($query);
-
-$data = array();
-
-while ($row = mysqli_fetch_assoc($query)) {
-    $sub_array = array();
-    $sub_array[] = $row['material_invoice'];
-    $sub_array[] = $row['material_date'];
-    $sub_array[] = $row['material_cashier'];
-    $sub_array[] = !empty($row['material_recieved_by']) ? $row['material_recieved_by'] : 'Pending';
-    $sub_array[] = !empty($row['material_inspected_by']) ? $row['material_inspected_by'] : 'Pending';
-    $sub_array[] = !empty($row['material_verified_by']) ? $row['material_verified_by'] : 'Pending';
-    $sub_array[] = '<a class="btn btn-sm border view" href="warehouse_return_remove.php?material_transaction=' . $row['material_invoice'] . '"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/></svg></a>
-                    <button class="btn btn-sm border delete" id="' . $row['id'] . '"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16"><path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/></svg></button>';
-
-    $data[] = $sub_array;
-}
-$output = array(
-    "draw"              => intval($_POST["draw"]),
-    "recordsTotal"      => $total_all_rows,
-    "recordsFiltered"   => $total_all_rows,
-    "data"              => $data
-);
-
-echo json_encode($output);
-?>
-</script>

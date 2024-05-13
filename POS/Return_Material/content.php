@@ -8,7 +8,7 @@
 <div id="content" style="display: none">
     <div class="row g-3 mb-4">
         <div class="col-auto">
-            <h2 class="mb-0">Return Material</h2>
+            <h2 class="mb-0">Return Warehouse</h2>
         </div>
     </div>
     <div id="products" data-list="{&quot;valueNames&quot;:[&quot;invoice&quot;,&quot;material_date&quot;,&quot;material_cashier&quot;,&quot;material_received_by&quot;,&quot;material_inspected_by&quot;,&quot;material_verified_by&quot;],&quot;page&quot;:10,&quot;pagination&quot;:true}">

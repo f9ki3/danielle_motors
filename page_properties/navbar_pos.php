@@ -104,14 +104,38 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 <span class="nav-link-text-wrapper"><span class="nav-link-text">Material Transfer</span></span>
                 <!-- </div>   -->
               </a>
+            </div>
+            <div class="nav-item-wrapper">
+            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator label-1" href="#nv-events" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-events">
+              <div class="d-flex align-items-center">
+                <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div>
+                <span class="nav-link-icon"><span data-feather="bookmark"></span></span>
+                <span class="nav-link-text">Returns</span>
+              </div>
+            </a>
+            <!-- Returns Submenu -->
+            <div class="parent-wrapper label-1">
+              <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-events">
+                <li class="collapsed-nav-item-title d-none">Returns</li>
+                <li class="nav-item">
               <a class="nav-link <?php if($current_folder === "Return_Material" || $current_folder === "Return_Material"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Return_Material" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
                   <span class="nav-link-icon"><span data-feather="corner-right-up"></span></span>
-                  <span class="nav-link-text-wrapper"><span class="nav-link-text">Return Product</span></span>
+                  <span class="nav-link-text-wrapper"><span class="nav-link-text">Return Warehouse</span></span>
                 </div>
               </a>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../apps/events/event-detail.html" data-bs-toggle="" aria-expanded="false">
+                 <div class="d-flex align-items-center">
+                  <span class="nav-link-icon"><span data-feather="shopping-bag"></span></span>
+                  <span class="nav-link-text-wrapper"><span class="nav-link-text">Return Store</span></span>
+                </div>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
+          <!-- </div> -->
           </li>
           <!-- Maintenance -->
           <li class="nav-item">

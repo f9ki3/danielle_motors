@@ -515,7 +515,7 @@ console.log('Total Selling Price:', totalSellingPrice);
                 .then((value) => {
                     if (value) {
                         // Redirect to the specified URL
-                        window.location.href = 'warehouse_return_remove.php?material_transaction=<?php echo $invoice_id; ?>';
+                        window.location.href = '../Return_Warehouse_View/?material_transaction=<?php echo $invoice_id; ?>';
                     }
                     else {
                         // If the user cancels, reload the page
