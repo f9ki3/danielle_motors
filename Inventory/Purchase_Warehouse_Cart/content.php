@@ -67,7 +67,7 @@
                                         <label for="transaction_address">Address</label>
                                     </div>
                                     <div class="form-floating" style="width: 32%;">
-                                        <input type="date" id="transaction_date" class="form-control" placeholder="Date" readonly>
+                                        <input type="date" id="transaction_date" class="form-control" placeholder="Date" >
                                         <label for="transaction_date">Date</label>
                                     </div>
                                     
@@ -117,7 +117,7 @@
                                         <label for="subtotal_discount_percentage">Subtotal Discount (%)</label>
                                     </div>
                                     <div class="form-floating" style="width: 49%;">
-                                        <input type="text" id="amount_payment" class="form-control" placeholder="Enter Payment"  oninput="this.value = this.value.replace(/[^0-9.]/g, ''); if(parseFloat(this.value) < 0) this.value = 0;" maxlength="7">
+                                        <input type="text" id="amount_payment" class="form-control" placeholder="Enter Payment" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/^(\d*\.\d{2}).*$/, '$1'); if(parseFloat(this.value) < 0) this.value = 0;" maxlength="10">
                                         <label for="amount_payment">Payment</label>
                                     </div>
                                     

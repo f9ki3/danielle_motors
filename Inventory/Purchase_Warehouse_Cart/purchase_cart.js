@@ -154,7 +154,6 @@ function updateSubtotal() {
 }
 
 // Function to calculate and update subtotal discount, total, payment, and change
-// Function to calculate and update subtotal discount, total, payment, and change
 function updateValues() {
     // Get input values
     var subtotal = parseFloat(document.getElementById('subtotal').textContent.replace('₱ ', '').replace(/,/g, ''));
@@ -177,7 +176,7 @@ function updateValues() {
 
     // Update the input values
     discountPercentageInput.value = discountPercentage;
-    amountPaymentInput.value = amountPayment;
+   
 
     // Calculate subtotal discount
     var subtotalDiscount = subtotal * (discountPercentage / 100);
@@ -339,7 +338,7 @@ function updateCounter(count) {
                     <td>${item.brandName}</td>
                     <td>${item.unitName}</td>
                     <td>${item.totalStocks}</td>
-                    <td>₱ ${item.srp}</td>
+                    <td>₱ ${Intl.NumberFormat().format(item.srp)}</td>
                     <td>
                         
 
