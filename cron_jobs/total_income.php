@@ -79,6 +79,9 @@ if ($timecheck) {
                             echo "sold price per product: " . $final_per_product_computation . "<br>";
                         }
                         $amount_per_product = $final_per_product_computation;
+                        $total_puhunan_per_product = 0;
+                        $total_tubo_per_product = 0;
+                        
                         
                         // Check if computation status is not OK
                         if($receipt_computation_status !== "OK"){
@@ -100,10 +103,34 @@ if ($timecheck) {
                                     $drc_product_id = $drc['product_id'];
                                     $drc_qty = $drc['quantity'];
                                     $drc_puhunan = $drc['price'];
+                                    $drc_computed_qty = $drc['computed_qty'];
+                                    $drc_computed_status = $drc['computation_status'];
+                                    $drc_new_computed_qty = $drc_computed_qty + 1;
+                                    echo "drc new computed qty :" . $drc_new_computed_qty . "<br>";
+                                    if($drc_new_computed_qty == $drc_qty){
+                                        $update_drc = "UPDATE delivery_receipt_content SET computation_status = 'OK' WHERE delivery_receipt_id = '$drc_id' AND product_id = '$drc_product_id'";
+                                        if($conn->query($update_drc) === TRUE ){
+                                            echo "product :" . $drc_id . " successfuly updated! <br>";
+                                        } else {
+                                            echo $conn->error;
+                                        }
+                                    }
+                                    if($drc_computed_qty !== $drc_new_computed_qty){
+                                        $update_dr_qty = "UPDATE delivery_receipt_content SET computed_qty = '$drc_new_computed_qty' WHERE delivery_receipt_id = '$drc_id' AND product_id = '$drc_product_id'";
+                                        if($conn->query($update_dr_qty) === TRUE ){
+                                            echo "computed qty successfully updated! product_id : " . $drc_product_id . " <br>";
+                                        } else {
+                                            echo "no more dr for this product id <br>";
+                                        }
+                                    } 
 
                                     // Calculate profit per product
                                     $puhunan_per_product = $amount_per_product - $drc_puhunan;
-                                    echo "<br> amount per product: " . $amount_per_product . "<br>puhunan: " . $puhunan_per_product . "<br>";
+                
+                                    $total_puhunan_per_product += $puhunan_per_product;
+                                    $total_tubo_per_product += $puhunan_per_product;
+
+                                    echo "<br>amount per product: " . $amount_per_product . "<br>tubo per piece: " . $puhunan_per_product . "<br>";
                                 } else {
                                     // Handle scenario when there's no delivery receipt for the product
                                     echo "<br>no product on delivery_receipt<br>";
@@ -119,6 +146,8 @@ if ($timecheck) {
                         } else {
                             // Handle scenario when computation status is OK
                         }
+
+                        echo "<br> total_tubo per product = " . $total_tubo_per_product . "<br> ----------------------------";
                     }
                 } else {    
                     // Handle error when there are no purchase transactions
