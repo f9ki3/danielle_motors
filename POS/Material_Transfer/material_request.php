@@ -10,7 +10,9 @@ $query = 'SELECT
             mt.material_inspected_by,
             mt.material_verified_by
           FROM 
-            material_transfer mt';
+            material_transfer mt
+            ORDER BY
+            mt.material_date DESC';
 
 $stmt = $conn->prepare($query);
 
