@@ -125,7 +125,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 </div>
               </a>
                 <li class="nav-item">
-                  <a class="nav-link" href="../../apps/events/event-detail.html" data-bs-toggle="" aria-expanded="false">
+                  <a class="nav-link" <?php if($current_folder === "Return_Store" || $current_folder === "Return_Store"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Return_Store" role="button" data-bs-toggle="" aria-expanded="false">
                  <div class="d-flex align-items-center">
                   <span class="nav-link-icon"><span data-feather="shopping-bag"></span></span>
                   <span class="nav-link-text-wrapper"><span class="nav-link-text">Return Store</span></span>
