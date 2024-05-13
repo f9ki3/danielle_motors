@@ -128,7 +128,9 @@ date_default_timezone_set('Asia/Manila');
                     $('#new_barcode').val(json.barcode);
                     $('#old_image').val(json.image);
 
-                    var models = json.models.split(', ');
+                    if (json.models !== null) {
+                        var models = json.models.split(', ');
+                    }
                     $('#edit_model').val(models);
 
                     $('#edit_unit').val(json.unit);
