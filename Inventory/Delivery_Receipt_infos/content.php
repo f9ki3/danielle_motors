@@ -45,7 +45,7 @@
                                 <div class="col-lg-12 mb-2">
                                 <select class="js-example-responsive" style="width: 100%; height: 200%;" id="product_id" name="product_id" required>
                                    <option value="">Select product</option>
-                                   <label for="id_label_single">
+                                   
                                         <?php
                                         $delivery_receipt_id = $_SESSION['dr_id'];
                                         $product_option_sql = "SELECT 
@@ -79,7 +79,7 @@
                                     }
                                     
                                         ?>
-                                            </label>
+                                           
                                         </select>
                                         <script>
                                             $(document).ready(function() {
