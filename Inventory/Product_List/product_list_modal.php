@@ -15,7 +15,7 @@
                         <input class="form-control" type="file" id="image" name="image" accept="image/*">
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <select name="category" id="category">
+                        <select name="category" id="category" required>
                             <option value="" disabled selected>Select Category</option>
                             <?php
                                 $query = 'SELECT id, category_name, status FROM category';
@@ -37,24 +37,24 @@
                     </div>
                     <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-1">
                         <div class="form-floating mb-3">
-                            <input class="form-control" type="text" id="product_name" name="product_name">
+                            <input class="form-control" type="text" id="product_name" name="product_name" required>
                             <label for="floatingInput">Product Name</label>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 mb-1">
                         <div class="form-floating mb-3">
-                            <input type="text" id="product_name" name="code" class="form-control" >
+                            <input type="text" id="product_name" name="code" class="form-control" required>
                             <label for="product_name">Item Code</label>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 mb-1">
                         <div class="form-floating mb-3">
-                            <input type="text" id="product_name" name="supplier_code" class="form-control" >
+                            <input type="text" id="product_name" name="supplier_code" class="form-control" required>
                             <label for="product_name">Supplier Code</label>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
-                        <select  id="brand" name="brand">
+                        <select  id="brand" name="brand" required>
                             <option value="" disabled selected>Select Brand</option>
                             <?php
                                 $query = 'SELECT id, brand_name, status FROM brand';
@@ -74,7 +74,7 @@
                         </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
-                        <select id="unit" name="unit">
+                        <select id="unit" name="unit" required>
                             <option value="" disabled selected>Select Unit</option>
                            <?php
                                 $query = 'SELECT id, name, active FROM unit';
@@ -94,7 +94,7 @@
                         </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
-                        <select id="model" name="models[]" multiple="multiple">
+                        <select id="model" name="models[]" multiple="multiple" required>
                             <?php
                                 $query = 'SELECT id, model_name, status FROM model';
                                 $stmt = $conn->prepare($query);
@@ -114,19 +114,19 @@
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
                         <div class="form-floating mb-3">
-                            <input type="number" id="product_name" name="dealer" class="form-control" >
+                            <input type="number" id="product_name" name="dealer" class="form-control" required>
                             <label for="product_name">Dealer</label>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
                         <div class="form-floating mb-3">
-                            <input type="number" id="product_name" name="wholesale" class="form-control" >
+                            <input type="number" id="product_name" name="wholesale" class="form-control" required>
                             <label for="product_name">Wholesale</label>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
                         <div class="form-floating mb-3">
-                            <input type="number" id="product_name" name="srp" class="form-control" >
+                            <input type="number" id="product_name" name="srp" class="form-control" required>
                             <label for="product_name">SRP</label>
                         </div>
                     </div>
@@ -155,7 +155,7 @@
             <div class="modal-body">
                 <input class="form-control mb-2" type="file" id="image" name="image" accept="image/*">
                 <div class="form-floating mb-2">
-                    <input class="form-control" type="text" id="new_product_name" name="product_name">
+                    <input class="form-control" type="text" id="new_product_name" name="product_name" required>
                     <label for="floatingInput">Product Name</label>
                 </div>
                 <div class="form-floating mb-2">
@@ -172,7 +172,7 @@
                 </div>
                 <div class="mb-2">
                     <label for="">Category</label>
-                    <select name="category" id="edit_category">
+                    <select name="category" id="edit_category" required>
                         <option value="" selected disabled>Select Category</option>
                         <?php
                             $query = 'SELECT id, category_name, status FROM category';
@@ -193,7 +193,7 @@
                 </div>
                 <div class="mb-2">
                     <label for="">Unit</label>
-                    <select id="edit_unit" name="unit">
+                    <select id="edit_unit" name="unit" required>
                         <option value="" selected disabled>Select Category</option>
                         <?php
                             $query = 'SELECT id, name, active FROM unit';
@@ -214,7 +214,7 @@
                 </div>
                 <div class="mb-2">
                     <label for="">Brand</label>
-                    <select id="edit_brand" name="brand">
+                    <select id="edit_brand" name="brand" required>
                         <option value="" disabled selected>Select Brand</option>
                         <?php
                             $query = 'SELECT id, brand_name, status FROM brand';
@@ -235,7 +235,7 @@
                 </div>
                 <div class="mb-2">
                     <label for="">Models</label>
-                    <select id="edit_model" name="models[]" multiple="multiple">
+                    <select id="edit_model" name="models[]" multiple="multiple" required>
                         <?php
                             $query = 'SELECT id, model_name, status FROM model';
                             $stmt = $conn->prepare($query);
@@ -256,19 +256,19 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-floating mb-2">
-                            <input class="form-control" type="number" id="edit_dealer" name="dealer">
+                            <input class="form-control" type="number" id="edit_dealer" name="dealer" required>
                             <label for="floatingInput">Dealer Price</label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-2">
-                            <input class="form-control" type="number" id="edit_wholesale" name="wholesale">
+                            <input class="form-control" type="number" id="edit_wholesale" name="wholesale" required>
                             <label for="floatingInput">Wholesale Price</label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-2">
-                            <input class="form-control" type="number" id="edit_srp" name="srp">
+                            <input class="form-control" type="number" id="edit_srp" name="srp" required>
                             <label for="floatingInput">Suggested Retail Price</label>
                         </div>
                     </div>
