@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
 
    // Output data of each row
    while ($row = $result->fetch_assoc()) {
-    echo "<tr onclick=\"window.location='../Return_receipt/?transaction_code=" . $row["TransactionID"] . "';\" style=\"cursor: pointer;\">";
+    echo "<tr onclick=\"window.location='../Return_Receipt/?transaction_code=" . $row["TransactionID"] . "';\" style=\"cursor: pointer;\">";
     echo '<td>' . htmlspecialchars($row["TransactionID"]) . '</td>';
     echo '<td>' . htmlspecialchars($row["TransactionDate"]) . '</td>';
     echo '<td>' . htmlspecialchars($row["CustomerName"]) . '</td>';
