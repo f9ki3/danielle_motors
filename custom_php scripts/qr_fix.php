@@ -4,7 +4,7 @@ include "../database/database.php";
 require_once "../assets/phpqrcode/qrlib.php";
 $response = ""; // Initialize response variable
 
-$qr_sql = "SELECT * FROM product WHERE qr_code =''";
+$qr_sql = "SELECT * FROM product WHERE barcode !=''";
 $qr_result = $conn->query($qr_sql);
 if($qr_result->num_rows>0){
     while($qr = $qr_result->fetch_assoc()){
