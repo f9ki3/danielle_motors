@@ -1,13 +1,55 @@
-<div style="width: 100%;" class="content print_hide p-3" >
+<?php
+include '../../config/config.php';
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Get the transaction code from the URL parameter and decode it
+$transactionID = $_GET['transaction_code'];
+
+// Prepare and bind SQL statement
+$stmt = $conn->prepare("SELECT * FROM purchase_transactions WHERE TransactionID = ?");
+$stmt->bind_param("s", $transactionID);
+
+// Execute the statement
+$stmt->execute();
+
+// Get result
+$result = $stmt->get_result();
+
+// Check if any rows were returned
+if ($result->num_rows > 0) {
+    // Fetch the first row (assuming there's only one row for a given transaction ID)
+    $transactionDetails = $result->fetch_assoc();
+} else {
+    echo "0 results";
+}
+
+// Close statement
+$stmt->close();
+
+?>
+
+<!-- HTML code for displaying the transaction details -->
+<div style="width: 100%;" class="print_hide">
+    <!-- Your HTML structure displaying transaction details -->
+</div>
+
+
+
+
+<div style="width: 100%;" class="print_hide" >
     <div>
 
-        <div style="background-color: white; height: 82vh" class=" rounded border p-3 mb-3 w-100 transact">
-            <h5 class="fw-bolder my-3">Purchase Receipt</h5>
+        <div style=" height: auto" class=" w-100 transact">
+            <h2 class="mb-3">Return Items</h2>
             <div class="row">
                 <div>
                 <div class="w-100 border rounded p-3 mb-3">
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <div class=" w-50 p-1">
+                            <div class="w-50 p-1">
                                 <h6 class="fw-bolder">Customer Name: <?php echo $transactionDetails["CustomerName"]; ?></h6>
                                 <p>Address: <?php echo $transactionDetails["TransactionAddress"]; ?></p>
                             </div>
@@ -16,7 +58,7 @@
                                     <h6 class="fw-bolder">Receipt No: <?php echo $transactionID?></h6>
                                     <div>
                                     <button id="originalBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="printDocument()">Print</button>
-                                    <a href="sales" class="btn btn-primary btn-sm back">Back</a>
+                                    <a href="../Sales_Warehouse" class="btn btn-primary btn-sm back">Back</a>
                                     </div>
                                 </div>
                                 <p>Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
@@ -30,9 +72,9 @@
                             <div style="width: 35%">Verified by: <?php echo $transactionDetails["TransactionVerifiedBy"]; ?></div>
                         </div>
                 </div>
-                <div class="w-100 border rounded p-3 mb-3 cart" style="overflow: auto; height: 300px">
+                <div class="w-100 border rounded p-3 mb-3 cart table-responsive" style=" height: 300px">
                         
-                            <table class="table table-striped">
+                            <table class="table ">
                                 <tr>
                                     <th width="10%">Product name</th>
                                     <th width="5%">Brand</th>
@@ -56,16 +98,16 @@
             
                                     // Output data of each row
                                     while($row = $result->fetch_assoc()) {
-                                        echo "<tr onclick=\"window.location='purchase_receipt.php?transaction_code=" . $row["TransactionID"] . "';\" style=\"cursor: pointer;\">";
+                                        echo "<tr>";
                                         echo "<td>" . $row["ProductName"] . "</td>";
                                         echo "<td>" . $row["Brand"] . "</td>";
                                         echo "<td>" . $row["Model"] . "</td>";
                                         echo "<td>" . $row["Quantity"] . "</td>";
                                         echo "<td>" . $row["Unit"] . "</td>";
-                                        echo "<td>₱" . number_format($row["SRP"], 2) . "</td>";
+                                        echo "<td>" . $row["SRP"] . "</td>";
                                         echo "<td>" . $row["DiscountType"] . "</td>";
                                         echo "<td>" . $row["Discount"] . "</td>";
-                                        echo "<td>₱" . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
+                                        echo "<td>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
                                         echo "</tr>";
                                     }
                                 } else {
@@ -74,7 +116,6 @@
                                 ?>
                                 <!-- end loop -->
                             </table>
-                            
                         
                     </div>
 
@@ -292,14 +333,3 @@
     </div>
 </div>
 
-
-<?php include 'footer.php'?>
-<script>
-    function printDocument() {
-    window.print();
-}
-
-</script>
-
-</body>
-</html>

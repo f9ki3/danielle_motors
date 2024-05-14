@@ -64,7 +64,7 @@ date_default_timezone_set('Asia/Manila');
                     // selectElement.empty();
                     // selectElement.append('<option selected>Select ' + role + '</option>');
                     $.each(data, function (index, admin) {
-                        selectElement.append('<option value="' + admin.id + '">' + admin.user_fname + ' ' + admin.user_lname + ' ' + admin.user_position +'</option>');
+                        selectElement.append('<option value="' + admin.user_fname + ' ' + admin.user_lname +  '">' + admin.user_fname + ' ' + admin.user_lname + ' ' + admin.user_position +'</option>');
                     });
                 },
                 error: function (xhr, status, error) {
