@@ -193,11 +193,17 @@ date_default_timezone_set('Asia/Manila');
             theme: 'bootstrap-5',
         });
 
-        $('.edit_product').on('click', function(){
+        // $('.edit_product').on('click', function(){
+        //     var product_id = $(this).data('product-id');
+        //     console.log(product_id);
+        //     getProduct(product_id);
+        // });
+
+        $(document).on('click', '.edit_product', function(){
             var product_id = $(this).data('product-id');
             console.log(product_id);
             getProduct(product_id);
-        });
+        })
 
         $('#edit_unit').select2({
             dropdownParent: $('#edit_product'),

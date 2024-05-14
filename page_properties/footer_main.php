@@ -22,6 +22,7 @@
 <script src="../../vendors/dropzone/dropzone.min.js"></script>
 <script src="../../vendors/swiper/swiper-bundle.min.js"></script>
 <script src="../../vendors/glightbox/glightbox.min.js"> </script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
     // Function to load content from notification.php into the specified div
     function loadNotification() {
