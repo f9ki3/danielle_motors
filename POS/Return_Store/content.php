@@ -28,7 +28,7 @@
         <div class="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-white border-top border-bottom border-200 position-relative top-1">
             <input type="hidden" class="form-control mb-2" placeholder="Material Invoice No." id="materialInvoiceNo">
             <table class="table table-hover">
-                <thead>
+                <!-- <thead>
                     <tr>
                         <th scope="col" width="10%" >Transaction Code</th>
                         <th scope="col" width="10%" >Transaction Date</th>
@@ -41,7 +41,7 @@
                         <th scope="col" width="5%">Payment</th>
                         <th scope="col" width="5%">Change</th>
                     </tr>
-                </thead>
+                </thead> -->
                 <tbody class="list" id="products-table-body">
                     <?php
                     // Include the PHP code from store_return.php
