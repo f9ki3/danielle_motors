@@ -26,34 +26,34 @@
             </div>
         </div>
         <div class="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-white border-top border-bottom border-200 position-relative top-1">
-            <input type="hidden" class="form-control mb-2" placeholder="Material Invoice No." id="materialInvoiceNo">
-            <table class="table table-hover">
-                <!-- <thead>
-                    <tr>
-                        <th scope="col" width="10%" >Transaction Code</th>
-                        <th scope="col" width="10%" >Transaction Date</th>
-                        <th scope="col" width="10%">Customer Name</th>
-                        <th scope="col" width="10%">Payment Method </th>
-                        <th scope="col" width="5%">Subtotal</th>
-                        <th scope="col" width="5%">Tax</th>
-                        <th scope="col" width="5%">Discount</th>
-                        <th scope="col" width="5%">Total</th>
-                        <th scope="col" width="5%">Payment</th>
-                        <th scope="col" width="5%">Change</th>
-                    </tr>
-                </thead> -->
-                <tbody class="list" id="products-table-body">
-                    <?php
-                    // Include the PHP code from store_return.php
-                    include 'store_return.php';
-                    ?>
-                </tbody>
-            </table>
-        </div>
+            <div class="table-responsive scrollbar mx-n1 px-1">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th class="sort white-space-nowrap align-middle" style="width: 5%;" scope="col" data-sort="transaction-code">TRANSACTION CODE</th>
+                            <th class="sort white-space-nowrap align-middle" style="width: 15%;" scope="col" data-sort="transaction-date">TRANSACTION DATE</th>
+                            <th class="sort align-middle text-start" style="width: 10%;" scope="col" data-sort="customer-name">CUSTOMER NAME</th>
+                            <th class="sort align-middle text-start" style="width: 10%;" scope="col" data-sort="payment-method">PAYMENT METHOD</th>
+                            <th class="sort align-middle text-start" style="width: 10%;" scope="col" data-sort="subtotal">SUBTOTAL</th>
+                            <th class="sort align-middle text-start" style="width: 5%;" scope="col" data-sort="tax">TAX</th>
+                            <th class="sort align-middle text-start" style="width: 15%;" scope="col" data-sort="discount">DISCOUNT</th>
+                            <th class="sort align-middle text-start" style="width: 10%;" scope="col" data-sort="total">TOTAL</th>
+                            <th class="sort align-middle text-start" style="width: 10%;" scope="col" data-sort="payment">PAYMENT</th>
+                            <th class="sort align-middle text-start" style="width: 10%;" scope="col" data-sort="change">CHANGE</th>
+                            <th class="sort text-end align-middle" style="width: 10%;" scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="list" id="products-table-body">
+                        <?php include 'store_return.php'; ?>
+                    </tbody>
+                </table>
+                </div>
         <div class="row align-items-center justify-content-between py-2 pe-0 fs--1">
-            <div class="col-auto d-flex">
-                <p class="mb-0 d-none d-sm-block me-3 fw-semi-bold text-900" data-list-info="data-list-info">1 to 10 <span class="text-600"> Items of </span>1825</p><a class="fw-semi-bold" href="#!" data-list-view="*">View all<svg class="svg-inline--fa fa-angle-right ms-1" data-fa-transform="down-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="" style="transform-origin: 0.25em 0.5625em;"><g transform="translate(128 256)"><g transform="translate(0, 32)  scale(1, 1)  rotate(0 0 0)"><path fill="currentColor" d="M64 448c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l169.4 169.4c12.5 12.5 12.5 32.75 0 45.25C240.4 476.9 232.2 480 224 480z"></path></g></g></svg><!-- <span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span> Font Awesome fontawesome.com --></a><a class="fw-semi-bold d-none" href="#!" data-list-view="less">View Less<svg class="svg-inline--fa fa-angle-right ms-1" data-fa-transform="down-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="" style="transform-origin: 0.25em 0.5625em;"><g transform="translate(128 256)"><g transform="translate(0, 32)  scale(1, 1)  rotate(0 0 0)"><path fill="currentColor" d="M64 448c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l169.4 169.4c12.5 12.5 12.5 32.75 0 45.25C240.4 476.9 232.2 480 224 480z"></path></g></g></svg><!-- <span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span> Font Awesome fontawesome.com --></a>
-            </div>
+        <div class="col-auto d-flex">
+                    <p class="mb-0 d-none d-sm-block me-3 fw-semi-bold text-900" data-list-info="data-list-info">1 to 10 <span class="text-600">Items of</span> 1825</p>
+                    <a class="fw-semi-bold" href="#!" data-list-view="*">View all<svg class="svg-inline--fa fa-angle-right ms-1" data-fa-transform="down-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="" style="transform-origin: 0.25em 0.5625em;"><g transform="translate(128 256)"><g transform="translate(0, 32) scale(1, 1) rotate(0 0 0)"><path fill="currentColor" d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z" transform="translate(-128 -256)"></path></g></g></svg></a>
+                    <a class="fw-semi-bold d-none" href="#!" data-list-view="less">View Less<svg class="svg-inline--fa fa-angle-right ms-1" data-fa-transform="down-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="" style="transform-origin: 0.25em 0.5625em;"><g transform="translate(128 256)"><g transform="translate(0, 32) scale(1, 1) rotate(0 0 0)"><path fill="currentColor" d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z" transform="translate(-128 -256)"></path></g></g></svg></a>
+                </div>
             <div class="col-auto d-flex">
                 <button class="page-link disabled" data-list-pagination="prev" disabled=""><svg class="svg-inline--fa fa-chevron-left" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M224 480c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l169.4 169.4c12.5 12.5 12.5 32.75 0 45.25C240.4 476.9 232.2 480 224 480z"></path></svg><!-- <span class="fas fa-chevron-left"></span> Font Awesome fontawesome.com --></button>
                 <ul class="mb-0 pagination">
