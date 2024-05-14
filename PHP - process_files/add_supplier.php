@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $insert_supplier_sql = "INSERT INTO supplier (supplier_name, supplier_logo, supplier_email, supplier_address, phone, status) VALUES ('$supplier_name', '$filename', '$email', '$address', '$phone', '1')";
         if($conn->query($insert_supplier_sql) === TRUE){
             $conn->close();
-            header("Location: ../Inventory/Supplier_Maintenance/?successful=TRUE");
+            header("Location: ../Inventory/Suppliers/?successful=TRUE");
             exit();
         } else {
             echo "Error inserting data: " . $conn->error;
