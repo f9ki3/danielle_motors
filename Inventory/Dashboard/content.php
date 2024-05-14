@@ -61,7 +61,7 @@
         </div>
 
         <div class="col-lg-3">
-        <a class="text-decoration-none" href="../Delivery_Reciept/">
+            <a class="text-decoration-none" href="../Delivery_Reciept/">
                 <div class="card mb-2">
                     <div class="card-body">
                         <div class="text-center">
@@ -74,7 +74,7 @@
         </div>
 
         <div class="col-lg-3">
-        <a class="text-decoration-none" href="../Delivery_Reciept/">
+            <a class="text-decoration-none" href="../Delivery_Reciept/">
                 <div class="card mb-2">
                     <div class="card-body">
                         <div class="text-center">
@@ -87,7 +87,7 @@
         </div>
 
         <div class="col-lg-3">
-        <a class="text-decoration-none" href="../Delivery_Reciept/">
+            <a class="text-decoration-none" href="../Delivery_Reciept/">
                 <div class="card mb-2">
                     <div class="card-body">
                         <div class="text-center">
@@ -125,7 +125,7 @@
             </a>    
         </div>
 
-        <div class="col-lg-6">
+        <!-- <div class="col-lg-6">
             <a class="text-decoration-none">
                 <div class="card mb-6">
                     <div class="card-body">
@@ -169,16 +169,15 @@
                                         <td>Swing Arm</td>
                                         <td>311</td>
                                     </tr>
-                                 <!-- Add more rows as needed -->
                                 </tbody>
                             </table>
                          </div>
                     </div>
                 </div>
             </a>
-        </div>
+        </div> -->
 
-        <div class="col-lg-6">
+        <!-- <div class="col-lg-6">
             <a class="text-decoration-none">
                 <div class="card mb-6">
                     <div class="card-body">
@@ -222,15 +221,27 @@
                                         <td>Swing Arm</td>
                                         <td>311</td>
                                     </tr>
-                                 <!-- Add more rows as needed -->
                                 </tbody>
                             </table>
                          </div>
                     </div>
                 </div>
             </a>
+        </div> -->
+
+        <div class="col-lg-6">
+            <a class="text-decoration-none">
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <div class="text-center">
+                                <h3>Daily Sales Report</h3>
+                            </div>
+                        </div>
+                        <div id="chart"></div>
+                    </div>
+                </div>
+            </a>
         </div>
-        <div class="echart-basic-bar-chart-example" style="min-height:300px"></div>
     </div>
 </div>
 

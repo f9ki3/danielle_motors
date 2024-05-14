@@ -43,6 +43,51 @@ date_default_timezone_set('Asia/Manila');
     <?php include "../../page_properties/footer_main.php"; ?>
   </body>
 
+  <script>
+    $(document).ready(function() {
+      function getDailyReport() {
+        $.ajax({
+          url: '../../PHP - process_files/daily-report.php',
+          method: 'POST',
+          dataType: 'json',
+          success: function(json) {
+            console.log(json);
+
+            var expenses = json.expenses + json.delivery;
+            var profit = json.sales - expenses;
+
+            var options = {
+                chart: {
+                    type: 'donut'
+                },
+                series: [json.sales, expenses, profit],
+                labels: ['Sales', 'Expense', 'Profit'],
+                colors: ['#008FFB', '#FF0000', '#00E396'],
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            width: 200
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }]
+            };
+            
+            var chart = new ApexCharts($("#chart")[0], options);
+            chart.render();
+          },
+          error: function(xhr, status, error) {
+              // Handle errors if any
+              console.error("Error fetching data:", error);
+          }
+        });
+      }
+      getDailyReport();
+    });
+  </script>
 
 <!-- Mirrored from prium.github.io/phoenix/v1.13.0/pages/starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Aug 2023 05:15:14 GMT -->
 </html>
