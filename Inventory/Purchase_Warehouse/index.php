@@ -6,7 +6,7 @@ date_default_timezone_set('Asia/Manila');
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 
- <?php include "../../page_properties/header_pos.php" ?>
+ <?php include "../../page_properties/header.php" ?>
 
   <body>
     <!-- ===============================================-->
@@ -41,6 +41,200 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Select2 JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        // Variable to store the last known hash
+        var lastHash = '';
+
+        // Function to fetch PHP-generated content
+        function fetchTableContent() {
+            $.ajax({
+                url: 'total_products.php',
+                success: function(response) {
+                    // Calculate hash of the response
+                    var currentHash = hash(response);
+                    
+                    // If hash has changed, update content
+                    if (currentHash !== lastHash) {
+                        // Update lastHash
+                        lastHash = currentHash;
+
+                        // Extract the number from the response
+                        var match = response.match(/\((\d+)\)/);
+                        if (match) {
+                            var newNumber = parseInt(match[1]);
+                            
+                            // Get the current number inside the span
+                            var currentNumber = parseInt($('#total_product').text());
+                            
+                            // Animate the change
+                            $('#total_product').prop('Counter', currentNumber).animate({
+                                Counter: newNumber
+                            }, {
+                                duration: 1000, // Animation duration in milliseconds
+                                step: function (now) {
+                                    // Update the displayed number with the animation
+                                    $(this).text('(' + Math.ceil(now) + ')');
+                                }
+                            });
+                        } else {
+                            console.error("Number not found in response:", response);
+                        }
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
+        // Function to calculate hash
+        function hash(str) {
+            var hash = 0, i, chr;
+            if (str.length === 0) return hash;
+            for (i = 0; i < str.length; i++) {
+                chr = str.charCodeAt(i);
+                hash = ((hash << 5) - hash) + chr;
+                hash |= 0; // Convert to 32bit integer
+            }
+            return hash;
+        }
+
+        // Call the function initially
+        fetchTableContent();
+
+        // Call the function every 5 seconds (adjust the interval as needed)
+        setInterval(fetchTableContent, 1000); // 5000 milliseconds = 5 seconds
+
+        function getProduct (product_id) {
+            $.ajax({
+                url: '../../PHP - process_files/get-product.php',
+                method: 'POST',
+                data: {
+                    product_id : product_id
+                },
+                dataType: 'json',
+                success: function(json) {
+                    console.log(json);
+                    $('#edit_product_name').text(json.name);
+                    $('#new_product_name').val(json.name);
+                    $('#edit_product_id').val(json.id);
+                    $('#new_item_code').val(json.code);
+                    $('#new_supplier_code').val(json.supplier_code);
+                    $('#new_barcode').val(json.barcode);
+                    $('#old_image').val(json.image);
+
+                    var models = json.models.split(', ');
+                    $('#edit_model').val(models);
+
+                    $('#edit_unit').val(json.unit);
+                    $('#edit_category').val(json.category);
+                    $('#edit_brand').val(json.brand);
+
+                    $('#edit_dealer').val(json.dealer);
+                    $('#edit_wholesale').val(json.wholesale);
+                    $('#edit_srp').val(json.srp);
+
+                    $('#edit_product').modal('show');
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
+        $('#brand').select2({
+            dropdownParent: $('#add_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+            placeholder: 'Select Brand',
+        });
+
+        $('#category').select2({
+            dropdownParent: $('#add_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+            placeholder: 'Select Category',
+        });
+
+        $('#unit').select2({
+            dropdownParent: $('#add_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+            placeholder: 'Select Unit',
+        });
+
+        $('#model').select2({
+            placeholder: 'Select model/s',
+            dropdownParent: $('#add_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+        });
+
+        $('#edit_model').select2({
+            placeholder: 'Select model/s',
+            dropdownParent: $('#edit_product'),
+            tags: true,
+            width: '100%',
+            theme: 'bootstrap-5',
+        });
+
+        $('.edit_product').on('click', function(){
+            var product_id = $(this).data('product-id');
+            console.log(product_id);
+            getProduct(product_id);
+        });
+
+        $('#edit_unit').select2({
+            dropdownParent: $('#edit_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+            placeholder: 'Select Unit',
+        });
+
+        $('#edit_category').select2({
+            dropdownParent: $('#edit_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+            placeholder: 'Select Category',
+        });
+        
+        $('#edit_brand').select2({
+            dropdownParent: $('#edit_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+            placeholder: 'Select Brand',
+        });
+
+        $('#edit_product').on('shown.bs.modal', function () {
+            $("#edit_model").trigger('change');
+            $('#edit_unit').trigger('change');
+            $('#edit_category').trigger('change');
+            $('#edit_brand').trigger('change');
+        });
+
+        $('#add_product').on('shown.bs.modal', function () {
+            $("#model").trigger('change');
+        });
+    });
+    </script>
     <script>
           // Function to reload spinner for 3 seconds and play audio
           function reloadSpinner() {
