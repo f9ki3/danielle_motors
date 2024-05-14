@@ -22,7 +22,7 @@
             
             <div class="ms-xxl-auto">
                 <a href="../Purchase_Warehouse" class="btn border text-primary border-primary" ><span class="fas fa-plus me-2"></span> Purchase</a>
-                <a href="../Purchase_Warehouse_Cart" class="btn btn-primary position-relative">
+                <a href="../Purchase_Warehouse_Cart" class="btn text-primary border-primary border boder-primary position-relative">
                     <span class="fas fa-shopping-cart me-2"></span> Cart
                     <span class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-circle" id="counter"></span>
                 </a>
