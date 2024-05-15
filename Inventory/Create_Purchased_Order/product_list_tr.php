@@ -47,9 +47,11 @@ if ($product_res) {
             $bg = '<span class="badge badge-phoenix badge-phoenix-danger">' . $stocks . '</span>';
         } elseif ($stocks <= $warning_stocks) {
             $bg = '<span class="badge badge-phoenix badge-phoenix-warning">' . $stocks . '</span>';
-        } elseif ($stocks >= $max_stocks) {
-            $bg = '<span class="badge badge-phoenix badge-phoenix-danger">' . $stocks . '</span>';
-        } else {
+        }
+        //  elseif ($stocks >= $max_stocks) {
+        //     $bg = '<span class="badge badge-phoenix badge-phoenix-danger">' . $stocks . '</span>';
+        // } 
+        else {
             $bg = '<span class="badge badge-phoenix badge-phoenix-success">' . $stocks . '</span>';
         }
 ?>
