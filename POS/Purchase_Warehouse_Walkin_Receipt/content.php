@@ -66,7 +66,7 @@ $stmt->close();
                             <div style="width: 35%">Verified by: <?php echo $transactionDetails["TransactionVerifiedBy"]; ?></div>
                         </div>
                 </div>
-                <div class="w-100 border rounded p-3 mb-3 cart" style="overflow: auto; height: 300px">
+                <div class="container" style="max-height: 400px; overflow-y: auto;">
                         
                             <table class="table">
                                 <tr>
@@ -114,7 +114,7 @@ $stmt->close();
                     </div>
 
                     
-                    <div class="w-100 border rounded p-4 mb-3">
+                    <div class="w-100 border rounded p-4">
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Subtotal</h6>
                             <h6 class="fw-bolder"><?php echo $transactionDetails["Subtotal"]; ?></h6>

@@ -170,7 +170,7 @@ if($dr_content_res->num_rows > 0){
                 <td><!--<img src="../../uploads/<?php // echo basename($product_image);?>" class="img img-fluid" height="43" alt="">--><?php echo $product_name . ' ' . $product_model . ' ' . $brand_id . ' ' . $category_id . ' ' . $unit_id;?></td>
                 <td class="text-end"><?php echo number_format((float)$orig_price, 2);?></td>
                 <td class="text-end"><?php echo number_format((float)$price, 2);?></td>
-                <td class="text-end"> % <?php echo $discount; ?></td>
+                <td class="text-end"><?php echo $discount; ?> %</td>
                 <td class="text-end"><?php echo number_format((float)$total, 2);?></td>
             </tr>
             <?php
