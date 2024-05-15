@@ -51,12 +51,10 @@ date_default_timezone_set('Asia/Manila');
           method: 'POST',
           dataType: 'json',
           success: function(json) {
-            console.log(json);
-
             var expenses = json.expenses + json.delivery;
             var profit = json.sales - expenses;
 
-            if (json.sales == 0 && expenses == 0 && profit == 0) {
+            if (json.sales == 0) {
               var options = {
                   chart: {
                       type: 'donut'
@@ -116,15 +114,17 @@ date_default_timezone_set('Asia/Manila');
           dataType: 'json',
           success: function(json) {
             console.log(json);
-            console.log(json.expenses);
-
-            var expenses = json.expenses + json.delivery;
-            var profit = json.sales - expenses;
+            
+            var weekly_expenses = [];
+            for (var i = 0; i < json.expenses.length; i++) {
+                var result = json.expenses[i] + json.delivery[i];
+                weekly_expenses.push(result);
+            }
 
             var profit = [];
             for (var i = 0; i < json.sales.length; i++) {
-                var subtractionResult = json.sales[i] - json.expenses[i];
-                profit.push(subtractionResult);
+                var result = json.sales[i] - weekly_expenses[i];
+                profit.push(result);
             }
 
             var options = {
@@ -150,7 +150,7 @@ date_default_timezone_set('Asia/Manila');
                     data: json.sales
                 }, {
                     name: 'Expenses',
-                    data: json.expenses
+                    data: weekly_expenses
                 }, {
                     name: 'Profit',
                     data: profit
