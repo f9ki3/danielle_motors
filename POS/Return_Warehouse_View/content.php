@@ -235,8 +235,8 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
     <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-3 mt-3">
         <div>
             <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-                <h4 id="totalSellingPrice" class="">Total Selling Amount: ₱<?php echo number_format($totalSellingPrice, 2); ?></h4>
-                <h4 id="totalReturnAmount" class="">Total Return Amount ₱<?php echo number_format($totalReturnAmount, 2); ?></h4>
+                <h4 id="totalSellingPrice" class="ms-2 me-4">Total Selling Amount: ₱<?php echo number_format($totalSellingPrice, 2); ?></h4>
+                <h4 id="totalReturnAmount" class="ms-2">Total Return Amount ₱<?php echo number_format($totalReturnAmount, 2); ?></h4>
                 <input type="text" id="Reason" class="form-control" placeholder="Enter Reason to return">
             </div>
         </div>
