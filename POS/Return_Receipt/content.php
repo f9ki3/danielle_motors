@@ -56,10 +56,10 @@ $stmt->close();
                             <div class=" w-50 p-1">
                                 <div style="display: flex; flex-direction: row; justify-content: space-between">
                                     <h6 class="fw-bolder">Receipt No: <?php echo $transactionID?></h6>
-                                    <div>
+                                    <!-- <div>
                                     <button id="originalBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="printDocument()">Print</button>
                                     <a href="../Sales_Warehouse" class="btn btn-primary btn-sm back">Back</a>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <p>Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
                             </div>
@@ -70,20 +70,25 @@ $stmt->close();
                             <div style="width: 35%">Recieved by: <?php echo $transactionDetails["TransactionReceivedBy"]; ?></div>
                             <div style="width: 35%">Inspected by: <?php echo $transactionDetails["TransactionInspectedBy"]; ?></div>
                             <div style="width: 35%">Verified by: <?php echo $transactionDetails["TransactionVerifiedBy"]; ?></div>
+                            <div style="width: 35%">Refunded by: <?php echo $transactionDetails["TransactionVerifiedBy"]; ?></div>
                         </div>
                 </div>
-                <div class="w-100 border rounded p-3 mb-3 cart table-responsive" style=" height: 300px">
-                        
-                            <table class="table ">
+                <div class="container" style="height: 500px; overflow-y: auto;"> <!-- Adjusted height and added overflow-y: auto; -->
+                  <!-- <div class="w-100 border rounded p-3 mb-1 cart table-responsive">
+                      <table class="table table-bordered table-striped"> -->
+
+                
+                <table class="table">
                                 <tr>
+                                    <th width="5%">Checkbox</th>
                                     <th width="10%">Product name</th>
                                     <th width="5%">Brand</th>
                                     <th width="10%">Model</th>
                                     <th width="5%">Qty</th>
                                     <th width="5%">Unit</th>
                                     <th width="5%">SRP</th>
-                                    <th width="5%">Discount Type</th>
-                                    <th width="5%">Discount</th>
+                                    <th width="5%">Refund Amount</th>
+                                    <th width="5%">Total Refund</th>
                                     <th width="5%">Total Amount</th>
                                 </tr>
                                 <!-- make a loop data here from data set -->
@@ -99,14 +104,16 @@ $stmt->close();
                                     // Output data of each row
                                     while($row = $result->fetch_assoc()) {
                                         echo "<tr>";
+                                        echo "<td><input type='checkbox' name='product_checkbox[]' style='max-width: 50px; height: 50px'></td>";
                                         echo "<td>" . $row["ProductName"] . "</td>";
                                         echo "<td>" . $row["Brand"] . "</td>";
                                         echo "<td>" . $row["Model"] . "</td>";
                                         echo "<td>" . $row["Quantity"] . "</td>";
                                         echo "<td>" . $row["Unit"] . "</td>";
                                         echo "<td>" . $row["SRP"] . "</td>";
-                                        echo "<td>" . $row["DiscountType"] . "</td>";
-                                        echo "<td>" . $row["Discount"] . "</td>";
+                                        // echo "<td>₱ " . number_format($row["RefundAmount"], 2) . "</td>"; // Format TotalAmount as currency
+                                        echo "<td>" . $row["ProductName"] . "</td>";
+                                        echo "<td>" . $row["ProductName"] . "</td>";
                                         echo "<td>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
                                         echo "</tr>";
                                     }
@@ -120,24 +127,28 @@ $stmt->close();
                     </div>
 
                     
-                    <div class="w-100 border rounded p-4 mb-3">
+                    <div class="w-100 border rounded p-4">
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Subtotal</h6>
                             <h6 class="fw-bolder"><?php echo $transactionDetails["Subtotal"]; ?></h6>
                         </div>
-                        <div style="display: flex; flex-direction: row; justify-content: space-between">
+                        <!-- <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">VAT(12%)</h6>
                             <h6 class="fw-bolder"><?php echo $transactionDetails["Tax"]; ?></h6>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Discount</h6>
                             <h6 class="fw-bolder"><?php echo $transactionDetails["Discount"]; ?></h6>
-                        </div>
+                        </div> -->
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h6 class="fw-bolder">Total Amount</h>
+                            <h6 class="fw-bolder">Refund Amount</h>
                             <h6 class="fw-bolder"><?php echo $transactionDetails["Total"]; ?></h6>
                         </div>
-                        <hr>
+                        <div style="display: flex; flex-direction: row; justify-content: space-between">
+                            <h6 class="fw-bolder">Total Reflected</h>
+                            <h6 class="fw-bolder"><?php echo $transactionDetails["Total"]; ?></h6>
+                        </div>
+                        <!-- <hr>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Payment</h6>
                             <h6 class="fw-bolder"><?php echo $transactionDetails["Payment"]; ?></h6>
@@ -145,7 +156,7 @@ $stmt->close();
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Change</h6>
                             <h6 class="fw-bolder"><?php echo $transactionDetails["ChangeAmount"]; ?></h6>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -248,7 +259,7 @@ $stmt->close();
                         
         </div>
         
-        <div class="border rounded p-3">
+        <div class="border rounded p-3 mt-9">
             <div>
                 <h4 class="fw-bolder">Summary</h4>
             </div>

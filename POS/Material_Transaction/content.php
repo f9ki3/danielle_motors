@@ -224,10 +224,11 @@ if($material_transfer_res -> num_rows > 0){
     </tbody>
 </table>
 
-    </div>
+</div>
 
-        <div>
-                <div style="display: flex; flex-direction: row; justify-content: space-between" >
+    <div>
+        <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-2 mt-2">      
+                
                     <div>
                         <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                         <h4 id="totalSellingPrice" class="">Total Product Amount ₱<?php echo number_format($totalSellingPrice, 2); ?></h4>
@@ -237,10 +238,11 @@ if($material_transfer_res -> num_rows > 0){
                         <button type="button" id="acceptMaterialTransfer" class="btn w-100 btn-primary mb-2">Accept</button>
                         <button type="button" id="returnMaterialTransfer" class="btn w-100 btn-outline-primary mb-2">Request Return</button>
                     </div>
-                </div> 
-            </div>
+                
         </div>
+    </div>
 </div>
+
 
 </div>
 <?php include 'footer.php'?>

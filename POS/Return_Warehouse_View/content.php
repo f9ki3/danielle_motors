@@ -31,7 +31,7 @@ if ($result->num_rows > 0) {
 $stmt->close();
 
 ?>
- <input type="hidden" class="form-control mb-2" placeholder="Material Invoice No." id="materialInvoiceNo">
+ <input type="hidden" class="form-control" placeholder="Material Invoice No." id="materialInvoiceNo">
 
  <?php
 
@@ -80,7 +80,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
 
     
 
-<div style="width: 100%" class="content p-3">
+<!-- <div style="width: 100%" class="content p-3"> -->
     <div>
         <!-- <div style="background-color: white;" class="rounded border p-3 mb-3 w-100">
         <h5 class="fw-bolder">Return</h5>
@@ -88,9 +88,9 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
             <a href="store_return.php" class="btn btn-sm border rounded mb-2">Return Store</a>
             
         </div> -->
-        <div style="background-color: white; height: auto;" class="rounded border p-3 mb-3 w-100">
-                <div class=" rounded mt-2 ">
-                    <div class="mb-2" style="display: flex; flex-direction: row; justify-content: space-between">
+        <div style="background-color: white; height: auto;" class="rounded border p-3 mb-2 w-100">
+                <div class=" rounded mt-1 ">
+                    <div class="mb-1" style="display: flex; flex-direction: row; justify-content: space-between">
                         <div class="p-2">
                             <?php
                             // Output the Material Invoice, Date, and Cashier using PHP
@@ -126,15 +126,15 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                     </div>
                     </div>
 
-                    <div>
+                    <!-- <div> -->
                         <!-- <input type="text" class="form-control mb-2 form-control-sm w-25" placeholder="Search"> -->
-                    </div>
+                    <!-- </div> -->
              </div>
         </div>
-    </div>
+    <!-- </div> -->
              
-<div style=" background-color: white;" class="p-3 rounded">
-    <div style="height: 40vh; overflow: auto">
+<div style=" background-color: white;" class="p-3">
+    <div class="container" style="height: 450px; overflow-y: auto;">
         <table class="table">
             <thead>
             <tr> 
@@ -229,10 +229,10 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
             </tbody>
         </table>
     </div>
-    <!--</div> Closing tag for the content div -->
-<!-- </div>  -->
+    </div>
+</div> 
 
-    <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-3 mb-4">
+    <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-3 mt-3">
         <div>
             <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                 <h4 id="totalSellingPrice" class="">Total Selling Amount: ₱<?php echo number_format($totalSellingPrice, 2); ?></h4>
@@ -248,6 +248,6 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
 
 
 </div> <!-- Closing tag for the main container div -->
-<?php include 'footer.php'?>
+
 </body>
 </html>
