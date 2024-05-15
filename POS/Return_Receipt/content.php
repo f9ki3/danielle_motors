@@ -73,57 +73,24 @@ $stmt->close();
                             <div style="width: 35%">Refunded by: <?php echo $transactionDetails["TransactionVerifiedBy"]; ?></div>
                         </div>
                 </div>
-                <div class="container" style="height: 500px; overflow-y: auto;"> <!-- Adjusted height and added overflow-y: auto; -->
-                  <!-- <div class="w-100 border rounded p-3 mb-1 cart table-responsive">
-                      <table class="table table-bordered table-striped"> -->
-
-                
-                <table class="table">
-                                <tr>
-                                    <th width="5%">Checkbox</th>
-                                    <th width="10%">Product name</th>
-                                    <th width="5%">Brand</th>
-                                    <th width="10%">Model</th>
-                                    <th width="5%">Qty</th>
-                                    <th width="5%">Unit</th>
-                                    <th width="5%">SRP</th>
-                                    <th width="5%">Refund Amount</th>
-                                    <th width="5%">Total Refund</th>
-                                    <th width="5%">Total Amount</th>
-                                </tr>
-                                <!-- make a loop data here from data set -->
-                                
-                                <?php 
-                                // SQL query to retrieve cart items for the given transaction ID
-                                $sql = "SELECT * FROM purchase_cart WHERE TransactionID = '$transactionID'";
-                                $result = $conn->query($sql);
-
-                                // Check if any rows were returned
-                                if ($result->num_rows > 0) {
-            
-                                    // Output data of each row
-                                    while($row = $result->fetch_assoc()) {
-                                        echo "<tr>";
-                                        echo "<td><input type='checkbox' name='product_checkbox[]' style='max-width: 50px; height: 50px'></td>";
-                                        echo "<td>" . $row["ProductName"] . "</td>";
-                                        echo "<td>" . $row["Brand"] . "</td>";
-                                        echo "<td>" . $row["Model"] . "</td>";
-                                        echo "<td>" . $row["Quantity"] . "</td>";
-                                        echo "<td>" . $row["Unit"] . "</td>";
-                                        echo "<td>" . $row["SRP"] . "</td>";
-                                        // echo "<td>₱ " . number_format($row["RefundAmount"], 2) . "</td>"; // Format TotalAmount as currency
-                                        echo "<td>" . $row["ProductName"] . "</td>";
-                                        echo "<td>" . $row["ProductName"] . "</td>";
-                                        echo "<td>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
-                                        echo "</tr>";
-                                    }
-                                } else {
-                                    echo "0 results";
-                                }
-                                ?>
-                                <!-- end loop -->
-                            </table>
-                        
+                <div class="container" style="height: 500px; overflow-y: auto;">
+    <table class="table">
+        <tr>
+            <th width="5%">Checkbox</th>
+            <th width="10%">Product name</th>
+            <th width="5%">Brand</th>
+            <th width="10%">Model</th>
+            <th width="5%">Qty</th>
+            <th width="5%">Unit</th>
+            <th width="5%">SRP</th>
+            <th width="5%">Refund Amount</th>
+            <th width="5%">Total Refund</th>
+            <th width="5%">Total Amount</th>
+        </tr>
+                    <tbody class="list" id="products-table-body">
+                        <?php include 'return_receipt.php'?>
+                    </tbody>
+                </table>
                     </div>
 
                     

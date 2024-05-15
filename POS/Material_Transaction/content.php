@@ -231,7 +231,7 @@ if($material_transfer_res -> num_rows > 0){
                 
                     <div>
                         <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-                        <h4 id="totalSellingPrice" class="">Total Product Amount ₱<?php echo number_format($totalSellingPrice, 2); ?></h4>
+                        <h4 id="totalSellingPrice" class="p-2 mt-5">Total Product Amount ₱<?php echo number_format($totalSellingPrice, 2); ?></h4>
                         </div>
                     </div>
                     <div style="width: 30%">
