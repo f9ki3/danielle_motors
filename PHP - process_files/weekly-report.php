@@ -10,9 +10,17 @@
         $current_date = date('Y-m-d');
         $current_date_2 = date('d/m/Y');
 
-        $query = 'SELECT DATE(TransactionDate) AS Date, SUM(Total) AS TotalSales FROM purchase_transactions WHERE TransactionDate >= DATE_SUB(?, INTERVAL 1 WEEK) GROUP BY DATE(TransactionDate)';
+        $query = 'SELECT DATE(date_range.Date) AS Date, COALESCE(SUM(Total), 0) AS TotalSales 
+          FROM (
+              SELECT CURDATE() - INTERVAL a.a DAY AS Date
+              FROM (
+                  SELECT 0 AS a UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL SELECT 6
+              ) AS a
+          ) AS date_range
+          LEFT JOIN purchase_transactions ON DATE(purchase_transactions.TransactionDate) = DATE(date_range.Date)
+          WHERE date_range.Date >= DATE_SUB(CURDATE(), INTERVAL 1 WEEK)
+          GROUP BY DATE(date_range.Date)';
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('s', $current_date);
         $stmt->execute();
         $stmt->bind_result($date, $sales);
         $json['sales'] = array();
@@ -21,10 +29,15 @@
         }
         $stmt->close();
 
-        $query = 'SELECT DATE(date) AS Date, SUM(amount) AS TotalSales FROM expenses WHERE date >= DATE_SUB(?, INTERVAL 1 WEEK) AND type = ? GROUP BY DATE(date)';
+        $query = 'SELECT DATE(date) AS Date, SUM(amount) AS TotalSales 
+          FROM expenses 
+          WHERE date >= DATE_SUB(CURDATE(), INTERVAL 1 WEEK) 
+          AND date < CURDATE() 
+          AND type = ? 
+          GROUP BY DATE(date)';
         $stmt = $conn->prepare($query);
         $type = 'Daily';
-        $stmt->bind_param('ss', $current_date, $type);
+        $stmt->bind_param('s', $type);
         $stmt->execute();
         $stmt->bind_result($date, $expense);
         $json['expenses'] = array();
@@ -35,26 +48,21 @@
         }
         $stmt->close();
 
-        // $json['expenses'] = $daily_expense; // Daily Total Expense
+        $query = 'SELECT DATE_FORMAT(STR_TO_DATE(received_date, "%d/%m/%Y"), "%Y-%m-%d") AS date,
+                 SUM(delivery_receipt_content.price * delivery_receipt_content.quantity) AS total_delivery 
+          FROM delivery_receipt 
+          INNER JOIN delivery_receipt_content ON delivery_receipt_content.delivery_receipt_id = delivery_receipt.id 
+          WHERE STR_TO_DATE(received_date, "%d/%m/%Y") >= DATE_SUB(CURDATE(), INTERVAL 1 WEEK)
+          GROUP BY DATE_FORMAT(STR_TO_DATE(received_date, "%d/%m/%Y"), "%Y-%m-%d")';
 
-        // $query = 'SELECT delivery_receipt.id,
-        //                 delivery_receipt_content.price, 
-        //                 delivery_receipt_content.quantity 
-        //         FROM delivery_receipt
-        //         INNER JOIN delivery_receipt_content ON delivery_receipt_content.delivery_receipt_id = delivery_receipt.id
-        //         WHERE received_date = ?';
-        // $stmt = $conn->prepare($query);
-        // $stmt->bind_param('s', $current_date_2);
-        // $stmt->execute();
-        // $stmt->bind_result($id, $price, $qty);
-        // $daily_delivery = 0;
-        // while ($stmt->fetch()) {
-        //     $delivery = $price * $qty;
-        //     $daily_delivery += $delivery;
-        // }
-        // $stmt->close();
-
-        // $json['delivery'] = $daily_delivery;
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $stmt->bind_result($date, $delivery);
+        $json['delivery'] = array();
+        while ($stmt->fetch()) {
+            $json['delivery'][] = $delivery;
+        }
+        $stmt->close();
 
         $conn->close();
         echo json_encode($json);
