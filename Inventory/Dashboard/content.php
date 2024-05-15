@@ -20,9 +20,9 @@
         </div>
     </div>
 
-<Hr class="mt-3 mb-3"></Hr>
+    <Hr class="mt-3 mb-3"></Hr>
     <div class="row">
-        <div class="col-lg-3">
+        <!-- <div class="col-lg-3">
             <a class="text-decoration-none" href="../Product_List/">
                 <div class="card mb-2">
                     <div class="card-body">
@@ -100,7 +100,7 @@
         </div>
 
         <div class="col-lg-3">
-        <a class="text-decoration-none" href="../Warehouse_Reports/">
+            <a class="text-decoration-none" href="../Warehouse_Reports/">
                 <div class="card mb-2">
                     <div class="card-body">
                         <div class="text-center">
@@ -123,7 +123,7 @@
                     </div>
                 </div>
             </a>    
-        </div>
+        </div> -->
 
         <!-- <div class="col-lg-6">
             <a class="text-decoration-none">
@@ -230,17 +230,27 @@
         </div> -->
 
         <div class="col-lg-6">
-            <a class="text-decoration-none">
-                <div class="card mb-2">
-                    <div class="card-body">
-                        <div class="text-center">
-                                <h3>Daily Sales Report</h3>
-                            </div>
-                        </div>
-                        <div id="chart"></div>
+            <div class="card h-100 mb-2">
+                <div class="card-body">
+                    <div class="text-center mb-2">
+                        <h3>Daily Sales Report</h3>
                     </div>
+
+                    <div id="daily-chart"></div>
                 </div>
-            </a>
+            </div>
+        </div>
+        
+        <div class="col-lg-6">
+            <div class="card h-100 mb-2">
+                <div class="card-body">
+                    <div class="text-center mb-2">
+                        <h3>Weekly Sales Report</h3>
+                    </div>
+                    
+                    <div id="weekly-chart"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
