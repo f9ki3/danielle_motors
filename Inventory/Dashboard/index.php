@@ -56,27 +56,50 @@ date_default_timezone_set('Asia/Manila');
             var expenses = json.expenses + json.delivery;
             var profit = json.sales - expenses;
 
-            var options = {
-                chart: {
-                    type: 'donut'
-                },
-                series: [json.sales, expenses, profit],
-                labels: ['Sales', 'Expense', 'Profit'],
-                colors: ['#008FFB', '#FF0000', '#00E396'],
-                responsive: [{
-                    breakpoint: 480,
-                    options: {
-                        chart: {
-                            width: 200
-                        },
-                        legend: {
-                            position: 'bottom'
-                        }
-                    }
-                }]
-            };
+            if (json.sales == 0 && expenses == 0 && profit == 0) {
+              var options = {
+                  chart: {
+                      type: 'donut'
+                  },
+                  series: [1],
+                  labels: ['No Data'],
+                  colors: ['#F0F0F0'],
+                  responsive: [{
+                      breakpoint: 480,
+                      options: {
+                          chart: {
+                              width: 200
+                          },
+                          legend: {
+                              position: 'bottom'
+                          }
+                      }
+                  }]
+              };
+            } else {
+              var options = {
+                  chart: {
+                      type: 'donut'
+                  },
+                  series: [json.sales, expenses, profit],
+                  labels: ['Sales', 'Expense', 'Profit'],
+                  colors: ['#008FFB', '#FF0000', '#00E396'],
+                  responsive: [{
+                      breakpoint: 480,
+                      options: {
+                          chart: {
+                              width: 200
+                          },
+                          legend: {
+                              position: 'bottom'
+                          }
+                      }
+                  }]
+              };
+            }
             
-            var chart = new ApexCharts($("#chart")[0], options);
+            var chart = new ApexCharts($("#daily-chart")[0], options);
+
             chart.render();
           },
           error: function(xhr, status, error) {
@@ -85,7 +108,92 @@ date_default_timezone_set('Asia/Manila');
           }
         });
       }
+
+      function getWeeklyReport() {
+        $.ajax({
+          url: '../../PHP - process_files/weekly-report.php',
+          method: 'POST',
+          dataType: 'json',
+          success: function(json) {
+            console.log(json);
+            console.log(json.expenses);
+
+            var expenses = json.expenses + json.delivery;
+            var profit = json.sales - expenses;
+
+            var profit = [];
+            for (var i = 0; i < json.sales.length; i++) {
+                var subtractionResult = json.sales[i] - json.expenses[i];
+                profit.push(subtractionResult);
+            }
+
+            var options = {
+                chart: {
+                    type: 'bar',
+                    height: 400,
+                    stacked: true,
+                    toolbar: {
+                        show: true
+                    },
+                    zoom: {
+                        enabled: true
+                    }
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        borderRadius: 10
+                    },
+                },
+                series: [{
+                    name: 'Sales',
+                    data: json.sales
+                }, {
+                    name: 'Expenses',
+                    data: json.expenses
+                }, {
+                    name: 'Profit',
+                    data: profit
+                }],
+                xaxis: {
+                    categories: json.date,
+                },
+                yaxis: {
+                  decimalsInFloat: 2
+                },
+                legend: {
+                    position: 'top',
+                    horizontalAlign: 'left',
+                    offsetX: 40
+                },
+                fill: {
+                    opacity: 1
+                },
+                tooltip: {
+                    y: {
+                        formatter: function (val) {
+                            return "₱" + val.toLocaleString();
+                        }
+                    }
+                },
+                colors: ['#008FFB', '#FF0000', '#00E396'],
+                dataLabels: {
+                    enabled: false
+                }
+            };
+            
+            var chart = new ApexCharts($("#weekly-chart")[0], options);
+            chart.render();
+          },
+          error: function(xhr, status, error) {
+              // Handle errors if any
+              console.error("Error fetching data:", error);
+          }
+        });
+      }
+
       getDailyReport();
+      getWeeklyReport();
     });
   </script>
 
