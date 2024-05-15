@@ -17,6 +17,7 @@
                 <span class="fas fa-search search-box-icon"></span>
             </form>
         </div>
+        
     </div>
     <div class="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-white border-top border-bottom border-200 position-relative top-1">
         <!-- <form action="action.php" Method="POST"> -->
@@ -48,6 +49,26 @@
                 <div class="table-responsive mx-n1 px-1">
                     <table class="table table-sm border-top border-200 mb-0">
                         <thead>
+                            <tr>
+                                <th colspan="8" class="text-center">
+                                    <!-- <div class="avatar avatar-s ">
+                                        <div class="avatar-name rounded-circle bg-dark"><span></span></div> 
+                                    </div>
+                                    Over -  -->
+                                    <div class="avatar avatar-s ">
+                                        <div class="avatar-name rounded-circle bg-success"><span></span></div> 
+                                    </div>
+                                    Safety - 
+                                    <div class="avatar avatar-s ">
+                                        <div class="avatar-name rounded-circle bg-warning"><span></span></div> 
+                                    </div>
+                                    Warning -     
+                                    <div class="avatar avatar-s ">
+                                        <div class="avatar-name rounded-circle bg-danger"><span></span></div> 
+                                    </div>
+                                    Critical     
+                                </th>
+                            </tr>
                             <tr>
                                 <th class="white-space-nowrap fs--1 align-middle ps-0" style="max-width:20px; width:18px;">
                                     <div class="form-check mb-0 fs-0">
