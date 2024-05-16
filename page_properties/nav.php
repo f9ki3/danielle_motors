@@ -288,37 +288,12 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
         </li>
         <?php 
         }
-        if(strpos($session_permission, 'VIEW SUPPLIER AND PRODUCTS') !== false) {
-        ?>
-        <li class="nav-item">
-          <p class="navbar-vertical-label">Supplier</p>
-          <hr class="navbar-vertical-line" />
-          <div class="nav-item-wrapper">
-            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../Suppliers/" role="button" data-bs-toggle="" aria-expanded="false">
-              <div class="d-flex align-items-center">
-              <span class="nav-link-icon"><span data-feather="truck"></span></span>
-              <span class="nav-link-text-wrapper"><span class="nav-link-text">Supplier List</span></span>
-              </div>
-            </a>
-          </div>
-          <div class="nav-item-wrapper">
-            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../Supplier_Products/" role="button" data-bs-toggle="" aria-expanded="false">
-              <div class="d-flex align-items-center">
-                <span class="nav-link-icon"><span data-feather="truck"></span></span>
-                <span class="nav-link-text-wrapper"><span class="nav-link-text">Supplier products</span></span>
-              </div>
-            </a>
-          </div>
-        </li>
-          
-
-        <?php
-        }
+        
         if(strpos($session_permission, 'MANAGE EMPLOYEES') !== false || strpos($session_permission, 'CREATES EMPLOYEE LIST') !== false ||  strpos($session_permission, 'MANAGE CUSTOMERS') !== false || strpos($session_permission, 'MANAGE USER PERMISSIONS') !== false || strpos($session_permission, 'MANAGE USER POSITIONS') !== false) {
         ?>
         <!-- Settings -->
         <li class="nav-item">
-          <p class="navbar-vertical-label">Settings</p>
+          <p class="navbar-vertical-label">Inventory Maintenance</p>
           <hr class="navbar-vertical-line" />
           <?php 
           
@@ -512,6 +487,30 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           </div>
         </li>
         <?php 
+          }
+          if(strpos($session_permission, 'VIEW SUPPLIER AND PRODUCTS') !== false) {
+          ?>
+          <li class="nav-item">
+            <div class="nav-item-wrapper">
+              <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../Suppliers/" role="button" data-bs-toggle="" aria-expanded="false">
+                <div class="d-flex align-items-center">
+                <span class="nav-link-icon"><span data-feather="truck"></span></span>
+                <span class="nav-link-text-wrapper"><span class="nav-link-text">Supplier List</span></span>
+                </div>
+              </a>
+            </div>
+            <div class="nav-item-wrapper">
+              <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../Supplier_Products/" role="button" data-bs-toggle="" aria-expanded="false">
+                <div class="d-flex align-items-center">
+                  <span class="nav-link-icon"><span data-feather="truck"></span></span>
+                  <span class="nav-link-text-wrapper"><span class="nav-link-text">Supplier products</span></span>
+                </div>
+              </a>
+            </div>
+          </li>
+            
+  
+          <?php
           }
         }
         ?>
