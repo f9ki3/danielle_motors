@@ -1,6 +1,6 @@
 <div class="modal mt-5 fade" id="add_product" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-fullscreen-md-down">
-    <form id="add_brand_form" action="../../PHP - process_files/addproduct.php" method="POST" enctype="multipart/form-data">
+    <form id="add_brand_form" action="../../PHP - process_files/addproduct copy(FYKE).php" method="POST" enctype="multipart/form-data">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Add New Product</h5>
@@ -138,7 +138,7 @@
   </div>
 </div>
 
-<form action="../../PHP - process_files/update-product.php" method="POST" enctype="multipart/form-data">
+<form action="../../PHP - process_files/update-product_pos.php" method="POST" enctype="multipart/form-data">
 <div class="modal fade" id="edit_product" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
