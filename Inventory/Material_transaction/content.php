@@ -45,6 +45,9 @@ if($material_transfer_res -> num_rows > 0){
 </ul>
 
 <div class="row fs--1 mb">
+    <div class="col-lg-12 text-end mb-2">
+        <a class="btn btn-secondary" id="print">Print</a>
+    </div>
     <div class="col-lg-12">
         <div class="card" id="printContent">
             <div class="card-body" id="to_refresh">
@@ -58,9 +61,6 @@ if($material_transfer_res -> num_rows > 0){
                             <div class="row">
                                 <?php echo $status;?>
                             </div>
-                        </div>
-                        <div class="col-lg-3 text-end">
-                            <a class="btn btn-outline-secondary" id="print">Print</a>
                         </div>
                         <div class="col-lg-12">
                             <h6>Date: <b><?php echo $material_date; ?></b></h6>
