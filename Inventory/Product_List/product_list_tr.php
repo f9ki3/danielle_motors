@@ -1,4 +1,8 @@
 <?php
+    $page = $_GET['page'];
+    $limit = 10; // Number of items to fetch per page
+    $offset = ($page - 1) * $limit;
+    
     $query = 'SELECT 
                     product.id, 
                     product.name, 

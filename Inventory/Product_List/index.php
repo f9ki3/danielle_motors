@@ -50,6 +50,60 @@ date_default_timezone_set('Asia/Manila');
         // Variable to store the last known hash
         var lastHash = '';
 
+        function getPageCount() {
+        fetch('check_page_count.php')
+            .then(response => response.json())
+            .then(data => {
+            if (data.pageCount) {
+                console.log('Total number of pages:', data.pageCount);
+            } else {
+                console.error('Error fetching page count:', data.error);
+            }
+            })
+            .catch(error => {
+            console.error('Error fetching page count:', error);
+            });
+        }
+
+        // Call the function to fetch and display the page count
+        getPageCount();
+
+
+        let loading = false;
+        let currentPage = 1;
+
+        function fetchContent(page) {
+        loading = true;
+        document.getElementById("loading").style.display = "block";
+
+        fetch(`product_list_tr.php?page=${page}`)
+            .then(response => response.json())
+            .then(data => {
+            loading = false;
+            document.getElementById("loading").style.display = "none";
+            
+            const contentDiv = document.getElementById("content");
+            data.forEach(item => {
+                const postDiv = document.createElement("div");
+                postDiv.classList.add("post");
+                postDiv.innerHTML = `<p>${item.title}</p><p>${item.content}</p>`;
+                contentDiv.appendChild(postDiv);
+            });
+            });
+        }
+
+        window.addEventListener("scroll", () => {
+        const contentHeight = document.getElementById("content").clientHeight;
+        const scrollPosition = window.innerHeight + window.scrollY;
+
+        if (!loading && scrollPosition >= contentHeight - 200) {
+            currentPage++;
+            fetchContent(currentPage);
+        }
+        });
+
+        fetchContent(currentPage);
+
         // Function to fetch PHP-generated content
         // function fetchTableContent() {
         //     $.ajax({
@@ -103,6 +157,8 @@ date_default_timezone_set('Asia/Manila');
             }
             return hash;
         }
+
+
 
         // Call the function initially
         // fetchTableContent();
