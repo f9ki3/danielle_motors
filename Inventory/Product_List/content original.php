@@ -14,7 +14,7 @@
         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"><span>All </span><span class="text-700 fw-semi-bold" id="total_product">(68817)</span></a></li>
         <li class="nav-item"><a class="nav-link" href="#"><span>Archived </span><span class="text-700 fw-semi-bold">(70348)</span></a></li>
     </ul> -->
-    <div id="products" data-list='{"valueNames":["product","price","category","tags","vendor","time","publish"],"pagination":false}'>
+    <div id="products" data-list='{"valueNames":["product","price","category","tags","vendor","time","publish"],"page":5,"pagination":true}'>
         <div class="mb-4">
             <div class="d-flex flex-wrap gap-3">
             <div class="search-box">
@@ -42,8 +42,6 @@
                         </th> -->
                         <th class="sort white-space-nowrap align-middle" scope="col"></th>
                         <th class="sort white-space-nowrap align-middle ps-4" scope="col" data-sort="product">PRODUCT NAME</th>
-                        <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">WHOLESALE</th>
-                        <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">SRP</th>
                         <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">ITEM CODE</th>
                         <th class="sort align-middle text-start ps-4" scope="col" data-sort="category">SUPPLIER CODE</th>
                         <th class="sort align-middle text-start ps-3" scope="col" data-sort="tags">CATEGORY</th>
