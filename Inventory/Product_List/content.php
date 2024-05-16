@@ -42,6 +42,8 @@
                         </th> -->
                         <th class="sort white-space-nowrap align-middle" scope="col"></th>
                         <th class="sort white-space-nowrap align-middle ps-4" scope="col" data-sort="product">PRODUCT NAME</th>
+                        <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">WHOLESALE</th>
+                        <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">SRP</th>
                         <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">ITEM CODE</th>
                         <th class="sort align-middle text-start ps-4" scope="col" data-sort="category">SUPPLIER CODE</th>
                         <th class="sort align-middle text-start ps-3" scope="col" data-sort="tags">CATEGORY</th>
