@@ -28,7 +28,7 @@
     $prepared_by = $row['prepared_by'];
  }
  ?>
- <div class="row">
+ <div class="row pt-3">
     <!-- <div class="col-lg-2"><img src="../../uploads/<?php//echo $supplier_logo; ?>" class="img-fluid" style="height=150" alt=""></div> -->
     <div class="col-lg-8">
         <h5><?php echo $supplier_name; ?></h5>

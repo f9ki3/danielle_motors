@@ -84,7 +84,7 @@
                 </div>
                 <div class="col-sm-6 col-md-3">
                 <div class="form-floating"><select class="form-select" id="floatingSelectAdmin" name="user_position" required>
-                    <option selected="selected">Select position</option>
+                    <option value="" selected="selected">Select position</option>
                     <?php 
                     $user_position_sql = "SELECT position_name FROM `groups` ORDER BY position_name ASC";
                     $user_position_res = $conn->query($user_position_sql);
