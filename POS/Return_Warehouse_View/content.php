@@ -232,7 +232,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
     </div>
 </div> 
 
-    <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-3 mt-3">
+    <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-3 mt-2">
         <div>
             <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                 <h4 id="totalSellingPrice" class="ms-2 me-4">Total Selling Amount: ₱<?php echo number_format($totalSellingPrice, 2); ?></h4>
