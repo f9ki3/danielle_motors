@@ -1,39 +1,37 @@
 <?php
-// Establish database connection (replace these variables with your actual database credentials)
-
+include "../../admin/session.php";
 include '../../config/config.php';
 
-// Function to generate a unique TransactionID
 function generateTransactionID() {
     return "DMP" . mt_rand(1000000, 9999999); // Generate DMP+7 random digits
 }
 
-// Prepare data received from AJAX request
-$transaction_customer_name = $_POST['transaction_customer_name'];
-$transaction_date = $_POST['transaction_date'];
-$transaction_address = $_POST['transaction_address'];
-$transaction_verified = $_POST['transaction_verified'];
-$transaction_inspected = $_POST['transaction_inspected'];
-$transaction_received = $_POST['transaction_received'];
-$transaction_payment = $_POST['transaction_payment'];
-$transaction_type = $_POST['transaction_type'];
-$subtotal = $_POST['subtotal'];
-$tax = $_POST['tax'];
-$discount = $_POST['discount'];
-$total = $_POST['total'];
-$amountPayment = $_POST['amountPayment'];
-$change = $_POST['change'];
-$cartItems = $_POST['cartItems'];
+$user_brn_code = $branch_code;
+$transaction_customer_name = isset($_POST['transaction_customer_name']) ? $_POST['transaction_customer_name'] : '';
+$transaction_date = isset($_POST['transaction_date']) ? $_POST['transaction_date'] : '';
+$transaction_address = isset($_POST['transaction_address']) ? $_POST['transaction_address'] : '';
+$transaction_verified = isset($_POST['transaction_verified']) ? $_POST['transaction_verified'] : '';
+$transaction_inspected = isset($_POST['transaction_inspected']) ? $_POST['transaction_inspected'] : '';
+$transaction_received = isset($_POST['transaction_received']) ? $_POST['transaction_received'] : '';
+$transaction_payment = isset($_POST['transaction_payment']) ? $_POST['transaction_payment'] : '';
+$transaction_type = isset($_POST['transaction_type']) ? $_POST['transaction_type'] : '';
+$subtotal = isset($_POST['subtotal']) ? $_POST['subtotal'] : 0;
+$tax = isset($_POST['tax']) ? $_POST['tax'] : 0;
+$discount = isset($_POST['discount']) ? $_POST['discount'] : 0;
+$total = isset($_POST['total']) ? $_POST['total'] : 0;
+$amountPayment = isset($_POST['amountPayment']) ? $_POST['amountPayment'] : 0;
+$change = isset($_POST['change']) ? $_POST['change'] : 0;
+$cartItems = isset($_POST['cartItems']) ? $_POST['cartItems'] : [];
 
-// Generate TransactionID
 $transaction_id = generateTransactionID();
 
-// Insert data into purchase_transactions table
-$sql = "INSERT INTO purchase_transactions (TransactionID, CustomerName, TransactionDate, TransactionAddress, TransactionVerifiedBy, TransactionInspectedBy, TransactionReceivedBy, TransactionPaymentMethod, TransactionType, Subtotal, Tax, Discount, Total, Payment, ChangeAmount) 
-        VALUES ('$transaction_id', '$transaction_customer_name', '$transaction_date', '$transaction_address', '$transaction_verified', '$transaction_inspected', '$transaction_received', '$transaction_payment', '$transaction_type', '$subtotal', '$tax', '$discount', '$total', '$amountPayment', '$change')";
+$sql = "INSERT INTO purchase_transactions (TransactionID, branch_code, CustomerName, TransactionDate, TransactionAddress, TransactionVerifiedBy, TransactionInspectedBy, TransactionReceivedBy, TransactionPaymentMethod, TransactionType, Subtotal, Tax, Discount, Total, Payment, ChangeAmount, status) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
 
-if ($conn->query($sql) === TRUE) {
-    // Insert data into purchase_cart table
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("ssssssssssdddddd", $transaction_id, $user_brn_code, $transaction_customer_name, $transaction_date, $transaction_address, $transaction_verified, $transaction_inspected, $transaction_received, $transaction_payment, $transaction_type, $subtotal, $tax, $discount, $total, $amountPayment, $change);
+
+if ($stmt->execute()) {
     foreach ($cartItems as $item) {
         $product_id = $item['productId'];
         $product_name = $item['productName'];
@@ -45,10 +43,14 @@ if ($conn->query($sql) === TRUE) {
         $discount = $item['discount'];
         $discount_type = isset($item['discountType']) && !empty($item['discountType']) ? $item['discountType'] : '₱';
         $total_amount = $item['totalAmount'];
+        
         $sql_cart = "INSERT INTO purchase_cart (ProductID, TransactionID, ProductName, Brand, Model, Quantity, Unit, SRP, Discount, DiscountType, TotalAmount) 
-                     VALUES ('$product_id', '$transaction_id', '$product_name', '$brand', '$model', '$quantity', '$unit', '$srp', '$discount', '$discount_type', '$total_amount')";
-        $conn->query($sql_cart);
+                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt_cart = $conn->prepare($sql_cart);
+        $stmt_cart->bind_param("sssssdssdds", $product_id, $transaction_id, $product_name, $brand, $model, $quantity, $unit, $srp, $discount, $discount_type, $total_amount);
+        $stmt_cart->execute();
     }
+
     echo $transaction_id; // Echoing the transaction ID as response
 
 

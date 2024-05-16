@@ -2,7 +2,7 @@
 include '../../config/config.php'; // Make sure to include your configuration file
 
 // Updated SQL query to fetch data from the table and sort by TransactionDate in descending order
-$sql = "SELECT * FROM purchase_transactions WHERE TransactionType = 'Walk-in' ORDER BY TransactionDate DESC";
+$sql = "SELECT * FROM purchase_transactions WHERE TransactionType = 'Walk-in' AND status = 3 ORDER BY TransactionDate DESC";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {

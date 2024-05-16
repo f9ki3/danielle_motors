@@ -94,7 +94,7 @@ $stmt->close();
                     </div>
 
                     
-                    <div class="w-100 border rounded p-4">
+                    <div class="w-100 border rounded p-4 mb-3">
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Subtotal</h6>
                             <h6 class="fw-bolder"><?php echo $transactionDetails["Subtotal"]; ?></h6>
