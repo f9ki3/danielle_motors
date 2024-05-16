@@ -154,7 +154,7 @@
                                 </div>
                                 <div class="col-lg-12 mb-2">
                                     <div class="form-floating">
-                                        <input class="form-control" name="product_name" id="product_name" >
+                                        <input class="form-control" name="product_name" id="product_name" required>
                                         <label for="">Product Name</label>
                                     </div>
                                 </div>
@@ -172,13 +172,13 @@
                                 </div>
                                 <div class="col-lg-4 mb-2">
                                     <div class="form-floating">
-                                        <input class="form-control" name="barcode" id="barcode" >
+                                        <input class="form-control" name="barcode" id="barcode">
                                         <label for="">Barcode</label>
                                     </div>
                                 </div>
                                 
                                 <div class="col-lg-6 mb-2">
-                                 <select class="js-example-responsive" style="width: 100%; height: 200%;" name="category" id="category">
+                                 <select class="js-example-responsive" style="width: 100%; height: 200%;" name="category" id="category" required>
                                             <option value="">Select category</option>
                                             <?php
                                             $category_sql = "SELECT id, category_name FROM category WHERE status = '1'";
@@ -192,7 +192,7 @@
                                         </select>
                                 </div>
                                 <div class="col-lg-6 mb-2">
-                                <select class="js-example-responsive" style="width: 100%; height: 200%;" name="brand" id="brand">
+                                <select class="js-example-responsive" style="width: 100%; height: 200%;" name="brand" id="brand" required>
                                             <option value="">Select brand</option>
                                             <?php
                                             $brand_sql = "SELECT id, brand_name FROM brand WHERE status='1'";
@@ -206,7 +206,7 @@
                                         </select>
                                 </div>
                                 <div class="col-lg-6 mb-2">
-                                <select class="js-example-responsive" style="width: 100%; height: 200%;"  name="unit" id="unit">
+                                <select class="js-example-responsive" style="width: 100%; height: 200%;"  name="unit" id="unit" required>
                                             <option value="">Select Unit</option>
                                             <?php
                                             $units_sql = "SELECT id, name FROM unit WHERE active='1'";
@@ -220,7 +220,7 @@
                                         </select>
                                 </div>
                                 <div class="col-lg-6 mb-2">
-                                <select class="js-models-responsive" multiple="multiple" style="width: 100%; height: 200%;"  name="models[]" id="models[]">
+                                <select class="js-models-responsive" multiple="multiple" style="width: 100%; height: 200%;"  name="models[]" id="models[]"  required>
                                         <option value="">Select Models</option>
                                         <?php
                                             $models_sql = "SELECT model_name FROM model WHERE status='1'";
