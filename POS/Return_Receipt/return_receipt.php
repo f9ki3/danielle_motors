@@ -1,6 +1,6 @@
         <?php 
         // SQL query to retrieve cart items for the given transaction ID
-        $sql = "SELECT * FROM purchase_cart WHERE TransactionID = '$transactionID'";
+        $sql = "SELECT * FROM purchase_cart WHERE TransactionID = '$transactionID' AND status != '1' ";
         $result = $conn->query($sql);
 
         // Check if any rows were returned
