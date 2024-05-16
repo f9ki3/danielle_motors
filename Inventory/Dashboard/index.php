@@ -192,8 +192,54 @@ date_default_timezone_set('Asia/Manila');
         });
       }
 
+      function getGeneralReport() {
+        $.ajax({
+          url: '../../PHP - process_files/general-report.php',
+          method: 'POST',
+          dataType: 'json',
+          success: function(json){
+            console.log(json);
+
+            var options = {
+                series: [json.transactions, json.materials, json.delivery, json.users, json.suppliers],
+                chart: {
+                type: 'polarArea',
+                height: 700,
+                width: 700
+              },
+              labels: ['Transactions', 'Material Transfers', 'Deliveries', 'Users', 'Suppliers'],
+              stroke: {
+                colors: ['#fff']
+              },
+              fill: {
+                opacity: 0.8
+              },
+              responsive: [{
+                breakpoint: 480,
+                options: {
+                  chart: {
+                    width: 200
+                  },
+                  legend: {
+                    position: 'bottom'
+                  }
+                }
+              }]
+            };
+
+            var chart = new ApexCharts($("#general-chart")[0], options);
+            chart.render();
+          },
+          error: function(xhr, status, error) {
+              // Handle errors if any
+              console.error("Error fetching data:", error);
+          }
+        });
+      }
+
       getDailyReport();
       getWeeklyReport();
+      getGeneralReport();
     });
   </script>
 
