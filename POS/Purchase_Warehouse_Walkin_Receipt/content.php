@@ -152,7 +152,9 @@ $stmt->close();
 <!-- //print by fyke -->
 <div id="printable" style="margin-top: -90px">
    <div>
+
    <!-- <div class="d-flex flex-row justify-content-between">
+
         <div>
             <h4 class="m-0 fw-bolder">Danielle Motors Parts</h4>
             <p class="m-0" style="font-size: 9px">Prenza 2, 3019 Marilao, Bulacan, Philippines</p>
@@ -162,6 +164,7 @@ $stmt->close();
     </div> -->
     <div>
     <!-- <hr style="margin: 0px; margin-top: 5px; margin-bottom: 5px"> -->
+
         
             <div>
                 <p class="fw-bolder" style="font-size: 12px; margin: 0px">Purchase Receipt</p>
@@ -344,4 +347,3 @@ $stmt->close();
 
     </div>
 </div>
-

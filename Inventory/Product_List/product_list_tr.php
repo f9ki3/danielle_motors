@@ -1,7 +1,7 @@
 <?php
-    $page = $_GET['page'];
-    $limit = 10; // Number of items to fetch per page
-    $offset = ($page - 1) * $limit;
+    // $page = $_GET['page'];
+    // $limit = 10; // Number of items to fetch per page
+    // $offset = ($page - 1) * $limit;
     
     $query = 'SELECT 
                     product.id, 
@@ -16,16 +16,19 @@
                     unit.name,
                     product.active,
                     user.user_fname,
-                    user.user_lname
+                    user.user_lname,
+                    price_list.wholesale,
+                    price_list.srp
                 FROM product
                 LEFT JOIN category ON category.id = product.category_id
                 LEFT JOIN brand ON brand.id = product.brand_id
                 LEFT JOIN unit ON unit.id = product.unit_id
                 LEFT JOIN user ON user.id = product.publish_by
+                LEFT JOIN price_list ON price_list.product_id = product.id
                 ORDER BY product.id DESC';
     $stmt = $conn->prepare($query);
     $stmt->execute();
-    $stmt->bind_result($product_id, $product_name, $product_sku, $product_upc, $product_image, $models, $barcode, $category, $brand, $unit, $active, $user_fname, $user_lname);
+    $stmt->bind_result($product_id, $product_name, $product_sku, $product_upc, $product_image, $models, $barcode, $category, $brand, $unit, $active, $user_fname, $user_lname, $wholesale, $srp);
     while ($stmt->fetch()) {
         if ($active == 1) {
             $status = 'active';
@@ -47,6 +50,8 @@
                 </td>-->
                 <td class="align-middle white-space-nowrap py-0"><img src="../../uploads/'.basename($producT_photo).'" alt="" width="53" ></td>
                 <td class="product align-middle ps-4">'.$product_name.'</td>
+                <td class="product align-middle ps-4">₱'.number_format($wholesale, 2).'</td>
+                <td class="product align-middle ps-4">₱'.number_format($srp, 2).'</td>
                 <td class="price align-middle white-space-nowrap text-start ps-4"><span class="badge badge-phoenix badge-phoenix-primary">'.$product_sku.'</span></td>
                 <td class="category align-middle white-space-nowrap ps-4 text-start"><span class="badge badge-phoenix badge-phoenix-secondary">'.$product_upc.'</span></td>
                 <td class="tags align-middle review pb-2 ps-3" style="min-width:225px;">'.$category.'</td>

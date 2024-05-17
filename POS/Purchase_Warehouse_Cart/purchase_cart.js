@@ -6,6 +6,9 @@ function purchase() {
     // Get cart items from session storage
     var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
 
+    // Get branch code from hidden input
+    // var user_brn_code = document.getElementById('user_brn_code').value;
+
     // Get transaction details from form inputs
     var transaction_customer_name = document.getElementById('transaction_customer_name').value || '';
     var transaction_date = new Date().toISOString();
@@ -40,11 +43,9 @@ function purchase() {
         discount: subtotalDiscount,
         total: total,
         amountPayment: payment,
-        change: change
+        change: change,
+        // user_brn_code: user_brn_code // Include branch code here
     };
-
-    // console.log("Cart Items:", cartItems);
-    // console.log("Data to be sent:", data);
 
     // Send AJAX request to purchase_transaction.php
     $.ajax({
@@ -55,7 +56,7 @@ function purchase() {
             alertify.set('notifier', 'position', 'bottom-left');
             alertify.success('Successfully Purchased');
             let click = new Audio('success.mp3');
-            click.play()
+            click.play();
 
             console.log(transaction_code);
 
@@ -72,15 +73,14 @@ function purchase() {
 
             // Redirect to receipt page
             window.location.href = redirectURL;
-            
         },
         error: function(xhr, status, error) {
             console.error("Error:", error);
         }
     });
 
-    displayCartItems()
-    resetCart()
+    displayCartItems();
+    resetCart();
 }
 
 

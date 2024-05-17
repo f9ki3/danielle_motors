@@ -10,7 +10,7 @@ if ($conn->connect_error) {
 $transactionID = $_GET['transaction_code'];
 
 // Prepare and bind SQL statement
-$stmt = $conn->prepare("SELECT * FROM purchase_transactions WHERE TransactionID = ?");
+$stmt = $conn->prepare("SELECT * FROM purchase_transactions WHERE TransactionID = ? AND status != 1");
 $stmt->bind_param("s", $transactionID);
 
 // Execute the statement
@@ -94,7 +94,7 @@ $stmt->close();
                     </div>
 
                     
-                    <div class="w-100 border rounded p-4">
+                    <div class="w-100 border rounded p-4 mb-3">
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Subtotal</h6>
                             <h6 class="fw-bolder"><?php echo $transactionDetails["Subtotal"]; ?></h6>

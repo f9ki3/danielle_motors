@@ -135,7 +135,7 @@ if($material_transfer_res -> num_rows > 0){
     </div>
              
 <div style=" background-color: white;" class="p-3 rounded">
-    <div style="height: 50vh; overflow: auto">
+    <div style="height: 450px; overflow: auto">
     <table class="table">
     <thead>
         <tr> 
@@ -227,7 +227,7 @@ if($material_transfer_res -> num_rows > 0){
 </div>
 
     <div>
-        <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-2 mt-2">      
+        <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-2 mt-3">      
                 
                     <div>
                         <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
