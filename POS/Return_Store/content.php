@@ -10,7 +10,7 @@
             <h2 class="mb-0">Return Store</h2>
         </div>
     </div>
-    <div id="products" data-list="{&quot;valueNames&quot;:[&quot;invoice&quot;,&quot;material_date&quot;,&quot;material_cashier&quot;,&quot;material_received_by&quot;,&quot;material_inspected_by&quot;,&quot;material_verified_by&quot;],&quot;page&quot;:10,&quot;pagination&quot;:true}">
+    <div id="products" data-list='{"valueNames":["transaction-code","price","category","tags","vendor","time","publish"],"page":5,"pagination":true}'>
         <div class="mb-4">
             <div class="d-flex flex-wrap gap-3">
                 <div class="search-box">

@@ -3,7 +3,9 @@
 // Assuming $conn is your database connection object
 
 // Fetch data from the database
-$query = 'SELECT 
+$branch_code;
+
+$query = "SELECT 
             mt.material_invoice,
             mt.material_date,
             mt.material_cashier,
@@ -14,8 +16,9 @@ $query = 'SELECT
             material_transfer mt
           WHERE
             mt.declined = 2
+            AND mt.branch_code = '$branch_code'
           ORDER BY
-            mt.material_date DESC';
+            mt.material_date DESC";
 
 $result = $conn->query($query);
 

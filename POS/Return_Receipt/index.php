@@ -40,6 +40,23 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
+
+    <script>
+function toggleQuantityInput(checkbox) {
+    // Get the parent row of the checkbox
+    var row = checkbox.parentNode.parentNode;
+    // Get the input field for quantity return in the same row
+    var quantityInput = row.querySelector('input[name="quantity_return[]"]');
+    
+    // If the checkbox is checked, show the quantity input field, otherwise hide it
+    if (checkbox.checked) {
+        quantityInput.style.display = 'inline-block';
+    } else {
+        quantityInput.style.display = 'none';
+    }
+}
+
+</script>
   </body>
 
 

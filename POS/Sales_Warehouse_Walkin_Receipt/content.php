@@ -351,3 +351,45 @@ $stmt->close();
 
 </div>
 
+<script>
+function ReturnStatus() {
+    // Get the transaction code from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const transactionID = urlParams.get('transaction_code');
+
+    // Display confirmation dialog
+    Swal.fire({
+        title: 'Are you sure?',
+        text: 'This action will mark the return status as pending. Do you want to proceed?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, mark as pending',
+        cancelButtonText: 'No, cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // If user confirms, execute the update_status.php script
+            $.ajax({
+                url: 'update_status.php',
+                type: 'POST',
+                data: { transaction_code: transactionID },
+                success: function(response) {
+                    // Handle the response from update_status.php
+                    if (response.success) { // Check if response exists and contains success property
+                        Swal.fire('Success!', 'Return status marked as pending.', 'success');
+                        // Refresh the page after showing the success message
+                        window.location.reload();
+                    } else {
+                        Swal.fire('Success!', 'Return status marked as pending.', 'success');
+                        // Swal.fire('Error!', 'Failed to mark return status as pending.', 'error');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Handle any errors that occurred during the request
+                    console.error('AJAX Error:', status, error);
+                    Swal.fire('Error!', 'Failed to mark return status as pending.', 'error');
+                }
+            });
+        }
+    });
+}
+</script>
