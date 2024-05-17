@@ -18,7 +18,7 @@ if ($result->num_rows > 0) {
         $product_brand_id = $row['brand_id'];
         $product_category_id = $row['category_id'];
         $product_publisher_id = $row['publish_by'];
-        if(!isset($row['image'])){
+        if(!isset($row['image']) || empty($row['image'])){
             $product_image = "defaultproduct.png";
         } else {
             $product_image = $row['image'];
