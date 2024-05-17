@@ -58,40 +58,29 @@
             </div>
             <div class="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-white border-top border-bottom border-200 position-relative top-1">
               <div class="table-responsive scrollbar mx-n1 px-1">
-              <div class="container mt-5">
-    <!-- <div id="content"></div> -->
-    <table class="table fs--1 mb-0">
-      <thead>
-        <tr>
-            <th></th>
-          <th class="sort white-space-nowrap align-middle ps-4" scope="col" style="width:350px;" data-sort="product">Name</th>
-          <th>Model</th>
-        </tr>
-      </thead>
-      <tbody id="content_here"></tbody>
-    </table>
-    <div id="loading" class="text-center">
-      <img src="loading.gif" alt="Loading...">
-    </div>
-  </div>
-                <!-- <table class="table fs--1 mb-0">
+              
+                <table class="table fs--1 mb-0">
                   <thead>
                     <tr>
-                      <th class="white-space-nowrap fs--1 align-middle ps-0" style="max-width:20px; width:18px;">
+                      <!-- <th class="white-space-nowrap fs--1 align-middle ps-0" style="max-width:20px; width:18px;">
                         <div class="form-check mb-0 fs-0"><input class="form-check-input" id="checkbox-bulk-products-select" type="checkbox" data-bulk-select='{"body":"products-table-body"}' /></div>
-                      </th>
+                      </th> -->
                       <th class="sort white-space-nowrap align-middle fs--2" scope="col" style="width:70px;"></th>
                       <th class="sort white-space-nowrap align-middle ps-4" scope="col" style="width:350px;" data-sort="product">PRODUCT NAME</th>
-                      <th class="sort align-middle text-end ps-4" scope="col" data-sort="price" style="width:150px;">PRICE</th>
-                      <th class="sort align-middle ps-4" scope="col" data-sort="category" style="width:150px;">CATEGORY</th>
-                      <th class="sort align-middle ps-3" scope="col" data-sort="tags" style="width:250px;">TAGS</th>
-                      <th class="sort align-middle fs-0 text-center ps-4" scope="col" style="width:125px;"></th>
-                      <th class="sort align-middle ps-4" scope="col" data-sort="vendor" style="width:200px;">VENDOR</th>
-                      <th class="sort align-middle ps-4" scope="col" data-sort="time" style="width:50px;">PUBLISHED ON</th>
+                      <th class="sort align-middle text-end ps-4" scope="col" data-sort="price" style="width:150px;">WHOLESALE</th>
+                      <th class="sort align-middle text-end ps-4" scope="col" data-sort="price" style="width:150px;">SRP</th>
+                      <th class="sort align-middle ps-4" scope="col" data-sort="category" style="width:150px;">BRAND</th>
+                      <th class="sort align-middle ps-3" scope="col" data-sort="tags" style="width:250px;">CATEGORY</th>
+                      <th class="sort align-middle fs-0 text-center ps-4" scope="col" style="width:125px;">UNIT</th>
+                      <th class="sort align-middle ps-4" scope="col" data-sort="vendor" style="width:200px;">MODELS</th>
+                      <th class="sort align-middle ps-4" scope="col" data-sort="time" style="width:50px;">PUBLISHED BY</th>
                       <th class="sort text-end align-middle pe-0 ps-4" scope="col"></th>
                     </tr>
                   </thead>
-                  <tbody class="list" id="products-table-body">
+                  <tbody class="list" id="content_here">
+                    <div id="loading" class="text-center">
+                        <img src="loading.gif" alt="Loading...">
+                    </div>
                     <!-- <tr class="position-static">
                       <td class="fs--1 align-middle">
                         <div class="form-check mb-0 fs-0"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"product":"Fitbit Sense Advanced Smartwatch with Tools for Heart Health, Stress Management & Skin Temperature Trends, Carbon/Graphite, One Size (S & L Bands...","productImage":"/products/1.png","price":"$39","category":"Plants","tags":["Health","Exercise","Discipline","Lifestyle","Fitness"],"star":false,"vendor":"Blue Olive Plant sellers. Inc","publishedOn":"Nov 12, 10:45 PM"}' /></div>
@@ -117,8 +106,8 @@
                         </div>
                       </td>
                     </tr> -->
-                  <!-- </tbody>
-                </table> -->
+                  </tbody>
+                </table>
               </div>
               <div class="row align-items-center justify-content-between py-2 pe-0 fs--1">
                 <div class="col-auto d-flex">
