@@ -55,8 +55,8 @@ if ($result->num_rows > 0) {
         $price_res = $conn-> query($price_sql);
         if($price_res->num_rows> 0){
             $row = $price_res -> fetch_assoc();
-            $wholesale = $row['wholesale'];
-            $srp = $row['srp'];
+            $wholesale = number_format($row['wholesale'], 2, '.', ',');
+            $srp = number_format($row['srp'], 2, '.', ',');
         } else {
             $wholesale = "unset";
             $srp = "unset";
