@@ -71,7 +71,7 @@ if ($result->num_rows > 0) {
 
         if(isset($_POST['search'])){
             $search = strtoupper(preg_replace('/[^A-Z]/', '',$_POST['search']));
-            if(strpos($product_name_2, $search) || strpos($models, $search) || strpos($brand_name_2, $search) || strpos($category_name_2, $search) || strpos($publisher_name_2, $search) || $wholesale == "UNSET" || $srp == "UNSET"){
+            if(strpos($product_name_2, $search) || strpos($models, $search) || $brand_name_2 === $search || $category_name_2 === $search || $publisher_name_2 ===  $search || $wholesale == "UNSET" || $srp == "UNSET"){
                 $data[] = array(
                     'title' => '
                     <tr class="position-static">
@@ -105,6 +105,8 @@ if ($result->num_rows > 0) {
                         </td>
                     </tr>'
                 );
+            } else {
+                
             }
         } else {
             $data[] = array(
