@@ -71,7 +71,7 @@ if ($result->num_rows > 0) {
                         <img src="../../uploads/' . basename($product_image) . '" alt="" width="53" />
                     </a>
                 </td>
-                <td class="product align-middle ps-4 fw-semi-bold line-clamp-3">
+                <td class="product align-middle ps-4 white-space-nowrap">
                     ' . $product_name . '
                 </td>
                 <td class="price align-middle white-space-nowrap text-end fw-bold text-700 ps-4">' . $wholesale . '</td>
