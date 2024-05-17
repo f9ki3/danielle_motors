@@ -104,47 +104,47 @@ date_default_timezone_set('Asia/Manila');
 
         fetchContent(currentPage);
 
-        // Function to fetch PHP-generated content
-        // function fetchTableContent() {
-        //     $.ajax({
-        //         url: 'total_products.php',
-        //         success: function(response) {
-        //             // Calculate hash of the response
-        //             var currentHash = hash(response);
+        Function to fetch PHP-generated content
+        function fetchTableContent() {
+            $.ajax({
+                url: 'total_products.php',
+                success: function(response) {
+                    // Calculate hash of the response
+                    var currentHash = hash(response);
                     
-        //             // If hash has changed, update content
-        //             if (currentHash !== lastHash) {
-        //                 // Update lastHash
-        //                 lastHash = currentHash;
+                    // If hash has changed, update content
+                    if (currentHash !== lastHash) {
+                        // Update lastHash
+                        lastHash = currentHash;
 
-        //                 // Extract the number from the response
-        //                 var match = response.match(/\((\d+)\)/);
-        //                 if (match) {
-        //                     var newNumber = parseInt(match[1]);
+                        // Extract the number from the response
+                        var match = response.match(/\((\d+)\)/);
+                        if (match) {
+                            var newNumber = parseInt(match[1]);
                             
-        //                     // Get the current number inside the span
-        //                     var currentNumber = parseInt($('#total_product').text());
+                            // Get the current number inside the span
+                            var currentNumber = parseInt($('#total_product').text());
                             
-        //                     // Animate the change
-        //                     $('#total_product').prop('Counter', currentNumber).animate({
-        //                         Counter: newNumber
-        //                     }, {
-        //                         duration: 1000, // Animation duration in milliseconds
-        //                         step: function (now) {
-        //                             // Update the displayed number with the animation
-        //                             $(this).text('(' + Math.ceil(now) + ')');
-        //                         }
-        //                     });
-        //                 } else {
-        //                     console.error("Number not found in response:", response);
-        //                 }
-        //             }
-        //         },
-        //         error: function(xhr, status, error) {
-        //             console.error(xhr.responseText);
-        //         }
-        //     });
-        // }
+                            // Animate the change
+                            $('#total_product').prop('Counter', currentNumber).animate({
+                                Counter: newNumber
+                            }, {
+                                duration: 1000, // Animation duration in milliseconds
+                                step: function (now) {
+                                    // Update the displayed number with the animation
+                                    $(this).text('(' + Math.ceil(now) + ')');
+                                }
+                            });
+                        } else {
+                            console.error("Number not found in response:", response);
+                        }
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }
 
         // Function to calculate hash
         function hash(str) {
@@ -161,7 +161,7 @@ date_default_timezone_set('Asia/Manila');
 
 
         // Call the function initially
-        // fetchTableContent();
+        fetchTableContent();
 
         // Call the function every 5 seconds (adjust the interval as needed)
         setInterval(fetchTableContent, 1000); // 5000 milliseconds = 5 seconds
