@@ -23,7 +23,18 @@
             <div class="mb-4">
               <div class="d-flex flex-wrap gap-3">
                 <div class="search-box">
-                  <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input search" type="search" placeholder="Search products" aria-label="Search" />
+                  <form class="position-relative" action="../Product_Listz/index.php" method="POST">
+                    <?php 
+                    if(isset($_POST['search'])){
+                    ?>
+                    <input class="form-control search-input search" name="search" type="search" placeholder="Search products" aria-label="Search" value="<?php echo $_POST['search'];?>"/>
+                    <?php
+                    } else {
+                    ?>
+                    <input class="form-control search-input search" name="search" type="search" placeholder="Search products" aria-label="Search" />
+                    <?php 
+                    }
+                    ?>
                     <span class="fas fa-search search-box-icon"></span>
                   </form>
                 </div>
