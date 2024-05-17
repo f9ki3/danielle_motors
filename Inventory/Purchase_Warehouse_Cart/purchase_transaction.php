@@ -44,11 +44,12 @@ if ($stmt->execute()) {
         $discount_type = isset($item['discountType']) && !empty($item['discountType']) ? $item['discountType'] : '₱';
         $total_amount = $item['totalAmount'];
         
-        $sql_cart = "INSERT INTO purchase_cart (ProductID, TransactionID, ProductName, Brand, Model, Quantity, Unit, SRP, Discount, DiscountType, TotalAmount) 
-                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql_cart = "INSERT INTO purchase_cart (ProductID, TransactionID, ProductName, Brand, Model, Quantity, Unit, SRP, Discount, DiscountType, TotalAmount, status) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
         $stmt_cart = $conn->prepare($sql_cart);
         $stmt_cart->bind_param("sssssdssdds", $product_id, $transaction_id, $product_name, $brand, $model, $quantity, $unit, $srp, $discount, $discount_type, $total_amount);
         $stmt_cart->execute();
+
     }
 
     echo $transaction_id; // Echoing the transaction ID as response

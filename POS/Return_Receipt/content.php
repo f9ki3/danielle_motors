@@ -74,23 +74,23 @@ $stmt->close();
                         </div>
                 </div>
                 <div class="container" style="height: 500px; overflow-y: auto;">
-    <table class="table">
-        <tr>
-            <th width="5%">Checkbox</th>
-            <th width="10%">Product name</th>
-            <th width="5%">Brand</th>
-            <th width="10%">Model</th>
-            <th width="5%">Qty</th>
-            <th width="5%">Unit</th>
-            <th width="5%">SRP</th>
-            <th width="5%">Refund Amount</th>
-            <th width="5%">Total Refund</th>
-            <th width="5%">Total Amount</th>
-        </tr>
-                    <tbody class="list" id="products-table-body">
-                        <?php include 'return_receipt.php'?>
-                    </tbody>
-                </table>
+                    <table class="table">
+                        <tr>
+                            <th width="5%">Checkbox</th>
+                            <th width="15%">Product name</th>
+                            <th width="10%">Brand</th>
+                            <th width="15%">Model</th>
+                            <th width="5%">Qty</th>
+                            <th width="10%">Return Qty</th>
+                            <th width="10%">SRP</th>
+                            <th width="10%">Refund Amount</th>
+                            <th width="10%">Total Refund</th>
+                            <th width="10%">Status</th>
+                        </tr>
+                        <tbody class="list" id="products-table-body">
+                            <?php include 'return_receipt.php'?>
+                        </tbody>
+                    </table>
                     </div>
 
                     
@@ -310,4 +310,5 @@ $stmt->close();
         </div>
     </div>
 </div>
+
 

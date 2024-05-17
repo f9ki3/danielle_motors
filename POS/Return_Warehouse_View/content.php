@@ -133,104 +133,86 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
         </div>
     <!-- </div> -->
              
-<div style=" background-color: white;" class="p-3">
+    <div style="background-color: white;" class="p-3">
     <div class="container" style="height: 450px; overflow-y: auto;">
         <table class="table">
             <thead>
-            <tr> 
-                <th>Checkbox</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Models</th>
-                <th>Code</th>
-                <th>SRP</th>
-                <th>Quantity Request</th>
-                <th>Quantity Store</th>
-                <th>Quantity Return</th>
-                <th>Status</th>
-            </tr>
+                <tr>
+                    <th>Checkbox</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Models</th>
+                    <th>Code</th>
+                    <th>SRP</th>
+                    <th>Quantity Request</th>
+                    <th>Quantity Store</th>
+                    <th>Quantity Return</th>
+                    <th>Status</th>
+                </tr>
             </thead>
             <tbody>
-            <?php 
-            $totalReturnAmount = 0;
-            $totalSellingPrice = 0;
-                    $material_invoice_id = $material_transaction; // replace with your material_invoice_id
-                    
-                    $sql = "SELECT mt.product_id, mt.input_srp, mt.qty_added, mt.qty_receive,mt.qty_warehouse, mt.created_at, mt.status, p.name, p.models, p.code, p.image
-                                FROM material_transaction mt
-                                JOIN product p ON mt.product_id = p.id
-                                WHERE material_invoice_id = ? AND (status = 5 OR status = 6)";
-                    
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bind_param("s", $material_invoice_id);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    
-                    if ($result->num_rows > 0) {
-                        // output data of each row
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<tr>";
-                            if ($row['status'] == 5) {
-                                echo "<td><input type='checkbox' name='product_checkbox[]' value='{$row['product_id']}' style='max-width: 50px; height: 50px'></td>";
-                            } else {
-                                echo "<td></td>"; // Empty cell if status is 4, 5, or 6
-                            }
-                            echo "<input type='hidden' name='product_id[]' value='{$row['product_id']}'>";
-                            echo "<td><img src='{$row['image']}' alt='Product Image' style='max-width: 50px; height: 50px'></td>";
-                            echo "<td>{$row['name']}</td>";
-                            echo "<td>{$row['models']}</td>";
-                            echo "<td>{$row['code']}</td>";
-                            echo "<td>{$row['input_srp']}</td>";
-                            echo "<td>{$row['qty_added']}</td>";
-                            echo "<td data-quantity-added='{$row['qty_receive']}'>{$row['qty_receive']}</td>";
-                            echo "<td>{$row['qty_warehouse']}</td>";
-                            $status_text = '';
-                            switch ($row['status']) {
-                                case 1:
-                                    $status_text = 'Pending';
-                                    break;
-                                case 2:
-                                    $status_text = 'Reviewed';
-                                    break;
-                                case 3:
-                                    $status_text = 'Approved';
-                                    break;
-                                case 4:
-                                    $status_text = 'Received';
-                                    break;
-                                case 5:
-                                    $status_text = 'Request Return';
-                                    break;
-                                case 6:
-                                    $status_text = 'Returned';
-                                    break;
-                                default:
-                                    $status_text = 'Unknown';
-                                    break;
-                            }
-                            echo "<td>{$status_text}</td>";
-                            echo "</tr>";
-                            
-                            // Only include rows with status 5 or 6 in the calculation
-                            if ($row['status'] == 5 || $row['status'] == 6) {
-                                // Calculate total return price
-                                $totalReturnAmount += $row['input_srp'] * $row['qty_warehouse'];
-                                $totalSellingPrice += $row['input_srp'] * $row['qty_receive'];
-                            }                            
+                <?php 
+                $totalReturnAmount = 0;
+                $totalSellingPrice = 0;
+                $material_invoice_id = $material_transaction; // replace with your material_invoice_id
+
+                $sql = "SELECT mt.product_id, mt.input_srp, mt.qty_added, mt.qty_receive, mt.qty_warehouse, mt.created_at, mt.status, p.name, p.models, p.code, p.image
+                        FROM material_transaction mt
+                        JOIN product p ON mt.product_id = p.id
+                        WHERE material_invoice_id = ? AND (mt.status = 5 OR mt.status = 6)";
+
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("s", $material_invoice_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        if ($row['status'] == 5) {
+                            echo "<td><input type='checkbox' name='product_checkbox[]' value='{$row['product_id']}' style='max-width: 50px; height: 50px'></td>";
+                        } else {
+                            echo "<td></td>";
                         }
-                    } else {
-                        echo "0 results";
+                        echo "<input type='hidden' name='product_id[]' value='{$row['product_id']}'>";
+                        echo "<td><img src='{$row['image']}' alt='Product Image' style='max-width: 50px; height: 50px'></td>";
+                        echo "<td>{$row['name']}</td>";
+                        echo "<td>{$row['models']}</td>";
+                        echo "<td>{$row['code']}</td>";
+                        echo "<td>{$row['input_srp']}</td>";
+                        echo "<td>{$row['qty_added']}</td>";
+                        echo "<td>{$row['qty_receive']}</td>";
+                        echo "<td>{$row['qty_warehouse']}</td>";
+
+                        $status_text = '';
+                        switch ($row['status']) {
+                            case 1: $status_text = 'Pending'; break;
+                            case 2: $status_text = 'Reviewed'; break;
+                            case 3: $status_text = 'Approved'; break;
+                            case 4: $status_text = 'Received'; break;
+                            case 5: $status_text = 'Request Return'; break;
+                            case 6: $status_text = 'Returned'; break;
+                            default: $status_text = 'Unknown'; break;
+                        }
+                        echo "<td>{$status_text}</td>";
+                        echo "</tr>";
+
+                        if ($row['status'] == 5 || $row['status'] == 6) {
+                            $totalReturnAmount += $row['input_srp'] * $row['qty_warehouse'];
+                            $totalSellingPrice += $row['input_srp'] * $row['qty_receive'];
+                        }                            
                     }
+                } else {
+                    echo "<tr><td colspan='10'>No results</td></tr>";
+                }
 
-
-                // Calculate total gross profit
-           
+                // Calculate total gross profit (if needed)
                 ?>
             </tbody>
         </table>
     </div>
-    </div>
-</div> 
+</div>
+
 
     <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-3 mt-2">
         <div>

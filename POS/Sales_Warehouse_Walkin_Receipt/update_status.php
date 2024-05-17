@@ -1,37 +1,41 @@
 <?php
-// Include your database configuration file
 include '../../config/config.php';
 
-// Check if the request method is POST
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve transactionID and itemID from the POST data
-    $data = json_decode(file_get_contents("php://input"), true);
-    $transactionID = $data['transactionID'];
-    $itemID = $data['itemID'];
+// Check if the necessary POST data is set
+if (isset($_POST['transaction_code'])) {
+    $transactionID = mysqli_real_escape_string($conn, $_POST['transaction_code']);
 
-    // Prepare and bind SQL statement to update status
-    $stmt = $conn->prepare("UPDATE purchase_cart SET status = '2' WHERE id = ?");
-    $stmt->bind_param("i", $itemID);
+    // Prepare and bind SQL statement to update the status in purchase_transactions table
+    $stmt_purchase_transactions = $conn->prepare("UPDATE purchase_transactions SET status = 2 WHERE TransactionID = ?");
+    $stmt_purchase_transactions->bind_param("s", $transactionID);
 
-    // Execute the statement
-    if ($stmt->execute()) {
-        // Status updated successfully
-        $response = array('success' => true, 'message' => 'Status updated successfully');
-        echo json_encode($response);
+    // Execute the statement for purchase_transactions
+    if ($stmt_purchase_transactions->execute()) {
+        echo "Status updated successfully in purchase_transactions";
+
+        // Prepare and bind SQL statement to update the status in purchase_cart table
+        $stmt_purchase_cart = $conn->prepare("UPDATE purchase_cart SET status = 2 WHERE TransactionID = ?");
+        $stmt_purchase_cart->bind_param("s", $transactionID);
+
+        // Execute the statement for purchase_cart
+        if ($stmt_purchase_cart->execute()) {
+            echo "Status updated successfully in purchase_cart";
+        } else {
+            echo "Error updating status in purchase_cart: " . $conn->error;
+        }
+
+        // Close the statement for purchase_cart
+        $stmt_purchase_cart->close();
     } else {
-        // Error updating status
-        $response = array('success' => false, 'message' => 'Error updating status');
-        echo json_encode($response);
+        echo "Error updating status in purchase_transactions: " . $conn->error;
     }
 
-    // Close statement
-    $stmt->close();
+    // Close the statement for purchase_transactions
+    $stmt_purchase_transactions->close();
 } else {
-    // Invalid request method
-    $response = array('success' => false, 'message' => 'Invalid request method');
-    echo json_encode($response);
+    echo "Error: Transaction code not provided";
 }
 
-// Close database connection
+// Close the database connection
 $conn->close();
 ?>

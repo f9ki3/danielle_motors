@@ -38,6 +38,8 @@ if ($result->num_rows > 0) {
     function printDocument() {
     window.print();
 }
+    function ReturnStatus() {
+}
 
 </script>
 
