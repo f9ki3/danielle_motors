@@ -100,4 +100,5 @@ echo json_encode($data);
 
 // Close the database connection
 $conn->close();
+exit;
 ?>
