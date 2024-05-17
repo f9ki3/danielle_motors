@@ -16,9 +16,13 @@ if ($result->num_rows > 0) {
         $product_name = $row['name'];
         $product_models = $row['models'];
         $product_brand_id = $row['brand_id'];
-        $product_image = $row['image'];
         $product_category_id = $row['category_id'];
         $product_publisher_id = $row['publish_by'];
+        if(!isset($row['image'])){
+            $product_image = "defaultproduct.png";
+        } else {
+            $product_image = $row['image'];
+        }
 
         $brand_sql = "SELECT brand_name FROM brand WHERE id = '$product_brand_id' LIMIT 1";
         $brand_res = $conn->Query($brand_sql);
