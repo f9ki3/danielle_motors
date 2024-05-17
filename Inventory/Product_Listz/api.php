@@ -15,7 +15,7 @@ $query = "SELECT
                     product.barcode,
                     category.category_name,
                     brand.brand_name,
-                    unit.name,
+                    unit.name AS unit_name,
                     product.active,
                     user.user_fname,
                     user.user_lname,
