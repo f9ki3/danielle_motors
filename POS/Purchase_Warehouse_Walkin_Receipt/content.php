@@ -150,14 +150,14 @@ $stmt->close();
 </div>
 
 <div id="printable" class="p-3 w-100">
-    <!-- <div class="d-flex flex-row justify-content-between rounded border p-3">
+    <div class="d-flex flex-row justify-content-between rounded border p-3">
         <div>
             <h4 class="m-0 fw-bolder">Danielle Motors Parts</h4>
             <p class="m-0">Prenza 2, 3019 Marilao, Bulacan, Philippines</p>
             <p class="m-0">dmp@gmail.com | 09120987768</p>
         </div>
         <img src="../static/img/dmp_logo.png" alt="">
-    </div> -->
+    </div>
     <div>
         <div class="border rounded p-3 mt-3">
             <div>
