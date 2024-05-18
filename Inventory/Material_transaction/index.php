@@ -5,6 +5,13 @@ date_default_timezone_set('Asia/Manila');
 if(isset($_GET['transaction'])){
   $mat_id = $_GET['transaction'];
   $_SESSION['invoice'] = $mat_id;
+  $mat_sql = "SELECT status FROM material_transaction where `status` = 1 AND material_invoice_id = '$mat_id'";
+  $mat_res = $conn->query($mat_sql);
+  if($mat_res -> num_rows > 0){
+    $update_mat = "UPDATE material_transaction SET  `status` = 2 WHERE material_invoice_id = '$mat_id'";
+    $conn->query($update_mat);
+  }
+  $conn->close();
   header("Location: ../Material_transaction/");
   exit();
 } else {

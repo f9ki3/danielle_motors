@@ -15,15 +15,15 @@ $dr_id = isset($_GET['id']) ? intval($_GET['id']) : null; // Ensure it's an inte
 // Retrieve supplier ID from delivery receipt
 $supplier_id_Sql = "SELECT supplier_id FROM delivery_receipt WHERE id = '$dr_id' LIMIT 1";
 $supplier_id_res = $conn -> query($supplier_id_Sql);
-if($supplier_id_res->num_rows>0){
-    $row=$supplier_id_res->fetch_assoc();
+if($supplier_id_res->num_rows > 0){
+    $row = $supplier_id_res->fetch_assoc();
     $supplier_id = $row['supplier_id'];
 
     // Retrieve supplier name
     $supplier_name_sql = "SELECT supplier_name FROM supplier WHERE id = '$supplier_id' LIMIT 1";
     $supplier_name_res = $conn->query($supplier_name_sql);
-    if($supplier_name_res->num_rows>0){
-        $row=$supplier_name_res->fetch_assoc();
+    if($supplier_name_res->num_rows > 0){
+        $row = $supplier_name_res->fetch_assoc();
         $supplier_name = $row['supplier_name'];
         // Remove vowels and spaces from supplier name
         $supplier_name_code = str_replace([' ', 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'], '', $supplier_name);
@@ -51,22 +51,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['product_name'])){
             // Check if an image file is uploaded
             if (isset($_FILES["product_image"]) && $_FILES["product_image"]["error"] == 0) {
-                // Upload the image file
+                // Generate a unique filename
                 $targetDir = "../uploads/";
-                $fileName = basename($_FILES["product_image"]["name"]);
-                $targetPath = $targetDir . $fileName;
-                $fileType = pathinfo($targetPath, PATHINFO_EXTENSION);
+                $fileExtension = pathinfo($_FILES["product_image"]["name"], PATHINFO_EXTENSION);
+                $uniqueFileName = uniqid() . '_' . time() . '.' . $fileExtension;
+                $targetPath = $targetDir . $uniqueFileName;
+
                 if (!file_exists($targetPath)) {
                     if (move_uploaded_file($_FILES["product_image"]["tmp_name"], $targetPath)) {
+                        $fileName = $uniqueFileName;
                     } else {
                         echo "Sorry, there was an error uploading your file.";
+                        $fileName = "";
                     }
                 } else {
                     echo "File already exists. Please rename your file and try again.";
+                    $fileName = "";
                 }
             } else {
                 $fileName = "";
             }
+
             // Retrieve other product details
             $product_name = $_POST['product_name'];
             $product_code = $_POST['product_code'];
@@ -82,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Check for duplicate product entry
             $check_product_Table_duplicate_sql = "SELECT id FROM product WHERE name = '$product_name' AND brand_id = '$brand'  AND category_id = '$category' AND unit_id = '$unit'  AND models = '$models' LIMIT 1";
             $check_product_Table_duplicate_res = $conn -> query($check_product_Table_duplicate_sql);
-            if($check_product_Table_duplicate_res->num_rows>0){
+            if($check_product_Table_duplicate_res->num_rows > 0){
                 $product_table_row = $check_product_Table_duplicate_res->fetch_assoc();
                 $product_table_id = $product_table_row['id'];
             } else {
@@ -95,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $randomized = substr($randomized, 0, 16);
                     $check_barcode_duplicate = "SELECT barcode FROM product WHERE barcode = '$randomized'";
                     $check_barcode_duplicate_res = $conn->query($check_barcode_duplicate);
-                    if($check_barcode_duplicate_res->num_rows>0){
+                    if($check_barcode_duplicate_res->num_rows > 0){
                         $randomizedagain = str_shuffle($characters);
                         $randomizedagain = substr($randomizedagain, 0, 15);
                         $barcode = $randomizedagain;
@@ -107,9 +112,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $insert_to_product = "INSERT INTO product (name, code, supplier_code, barcode, `image`, models, unit_id, brand_id, category_id, active, publish_by) VALUES ('$product_name', '$product_code', '$supplier_code', '$barcode', '$fileName', '$models', '$unit', '$brand', '$category', '1', '$user_id')";
                 if($conn->query($insert_to_product) === TRUE){
                     $product_table_id = $conn->insert_id;
-                    
                 } else {
-                    $response = array("error" => "Product cant be inserted" . $conn-> error());
+                    $response = array("error" => "Product can't be inserted" . $conn->error);
                 }
             }
         }
@@ -117,11 +121,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $product_id = $product_table_id;
     }
     //check qrcode
-    $check_qrcode = "SELECT id FROM product WHERE id = '$product_id' LIMIT 1";
+    $check_qrcode = "SELECT id, qr_code, barcode FROM product WHERE id = '$product_id' LIMIT 1";
     $check_qrcode_result = $conn->query($check_qrcode);
-    if($check_qrcode_result->num_rows>0){
+    if($check_qrcode_result->num_rows > 0){
         $qrcode = $check_qrcode_result ->fetch_assoc();
         $qrcode_product = $qrcode['qr_code'];
+        $barcode = $qrcode['barcode'];
         if(empty($qrcode_product) || !isset($qrcode_product)){
             // Generate unique QR code filename
             $qrFilename = $barcode . "_" . uniqid() . ".png";
@@ -160,7 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check for duplicate product entry in delivery receipt content
     $check_product_duplicate_sql = "SELECT product_id FROM delivery_receipt_content WHERE product_id = '$product_id' AND delivery_receipt_id = '$dr_id'";
     $check_product_duplicate_res = $conn->query($check_product_duplicate_sql);
-    if($check_product_duplicate_res->num_rows>0){
+    if($check_product_duplicate_res->num_rows > 0){
         $response = array("error" => "Duplicate Entry");
         $conn->close();
         exit;
@@ -180,11 +185,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check for existing pricelist entry
     $check_pricelist_sql = "SELECT id, dealer FROM price_list WHERE product_id = '$product_id' LIMIT 1";
     $check_pricelist_res = $conn->query($check_pricelist_sql);
-    if($check_pricelist_res->num_rows>0){
+    if($check_pricelist_res->num_rows > 0){
         $pl_row = $check_pricelist_res->fetch_assoc();
         $pricelist_id = $pl_row['id'];
         $srp = $pl_row['dealer'];
-        if($srp<=$original_price){
+        if($srp <= $original_price){
             // Update pricelist if original price is greater
             $update_pricelist = "UPDATE price_list SET dealer = '$original_price', srp = '$original_price', wholesale = '$wholesale' WHERE id = '$pricelist_id'";
             if($conn->query($update_pricelist)=== TRUE){
@@ -203,12 +208,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    
-
     // Check for duplicate entry in supplier product table
     $check_supplier_product_duplicate_sql = "SELECT id FROM supplier_product WHERE product_id = '$product_id' AND supplier_id = '$supplier_id' LIMIT 1";
     $check_supplier_product_duplicate_res = $conn->query($check_supplier_product_duplicate_sql);
-    if($check_supplier_product_duplicate_res->num_rows>0){
+    if($check_supplier_product_duplicate_res->num_rows > 0){
         
     } else {
         // Insert data into supplier product table
