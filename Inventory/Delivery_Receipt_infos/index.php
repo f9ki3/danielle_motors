@@ -47,7 +47,7 @@ if($select_dr_res->num_rows>0){
             });
         });
     </script> -->
-    <script>
+    <!-- <script>
         $(document).ready(function(){
             $('#submitForm').click(function(e){
                 e.preventDefault(); // Prevent form submission and page reload
@@ -73,7 +73,7 @@ if($select_dr_res->num_rows>0){
                 // Send AJAX request
                 $.ajax({
                     type: 'POST',
-                    url: '../../PHP - process_files/add_dr_info.php?id=<?php echo $_SESSION['dr_id']; ?>',
+                    url: '../../PHP - process_files/add_dr_info.php?id=<?php //echo $_SESSION['dr_id']; ?>',
                     data: formData,
                     dataType: 'json', // Expect JSON response from server
                     success: function(response){
@@ -130,7 +130,7 @@ if($select_dr_res->num_rows>0){
                 // Send AJAX request
                 $.ajax({
                     type: 'POST',
-                    url: '../../PHP - process_files/add_dr_info.php?id=<?php echo $_SESSION['dr_id']; ?>',
+                    url: '../../PHP - process_files/add_dr_info.php?id=<?php //echo $_SESSION['dr_id']; ?>',
                     data: formData_2,
                     dataType: 'json', // Expect JSON response from server
                     processData: false, // Prevent jQuery from processing the data
@@ -168,7 +168,7 @@ if($select_dr_res->num_rows>0){
 
         });
 
-    </script>
+    </script> -->
     
 
 
@@ -279,10 +279,24 @@ if($select_dr_res->num_rows>0){
             });
         }
 
+        function formz() {
+            $.ajax({
+                url : 'form.php?id=<?php echo $_SESSION['dr_id'];?>',
+                type: 'GET',
+                success: function(response){
+                    $('#formz').html(response);
+                },
+                error: function(xhr, status, error){
+                    console.error(xhr.responseText);
+                }
+            })
+        }
+
         // Call the function initially
         tbody();
         dr_footer();
         modals();
+        formz();
     </script>
 
  <script>
@@ -312,8 +326,9 @@ if($select_dr_res->num_rows>0){
 
 
     
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 <?php 
 if($dr_status !=1){
 ?>
