@@ -113,6 +113,7 @@ date_default_timezone_set('Asia/Manila');
           method: 'POST',
           dataType: 'json',
           success: function(json) {
+            console.log(json);
             var weekly_expenses = [];
             for (var i = 0; i < json.expenses.length; i++) {
                 var result = json.expenses[i] + json.delivery[i];
