@@ -9,20 +9,25 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo "<tr>";
         // Checkbox with onchange event to toggle quantity input field
-        echo "<td><input type='checkbox' name='product_checkbox[]' onchange='toggleQuantityInput(this)' style='max-width: 50px; height: 50px'></td>";
+        if ($row['status'] == 2) {
+            echo "<td><input type='checkbox' name='product_checkbox[]' value='{$row['ProductID']}' style='max-width: 50px; height: 50px'></td>";
+        } else {
+            echo "<td></td>";
+        }
+        echo "<input type='hidden' name='product_id[]' value='{$row['ProductID']}'>";
         echo "<td>" . $row["ProductName"] . "</td>";
         echo "<td>" . $row["Brand"] . "</td>";
         echo "<td>" . $row["Model"] . "</td>";
         echo "<td>" . $row["Quantity"] . "</td>";
-        // Input field for quantity return with max and min attributes to limit input
-        echo "<td><input type='number' name='quantity_return[]' min='0' max='" . $row["Quantity"] . "' onchange='computeTotalRefund(this)'></td>";
+        // Styled input field for quantity return with max and min attributes to limit input
+        echo "<td><input type='number' name='quantity_return[]' class='form-control quantity-return' min='0' max='" . $row["Quantity"] . "' value='0' onchange='computeTotalRefund(this)'></td>";
         echo "<td>" . $row["SRP"] . "</td>";
-        // Input field for refund amount, initially disabled
-        echo "<td><input type='text' name='refund_amount[]' min='0' value='" . $row["SRP"] . "' disabled></td>";
+        // Styled input field for refund amount
+        echo "<td><input type='number' name='refund_amount[]' class='form-control refund-amount' min='0' max='" . $row["SRP"] . "' value='" . $row["SRP"] . "' onchange='computeTotalRefund(this)'></td>";
         // Span to display the computed total refund amount
-        echo "<td><span class='total-refund'></span></td>";
+        echo "<td><span class='total-refund'>₱0.00</span></td>";
         // Hidden input field to store the total refund amount
-        echo "<input type='hidden' name='total_refund_amount[]'>";
+        echo "<input type='hidden' name='total_refund_amount[]' value='0'>";
         // Displaying the status column with interpretation
         $status_text = '';
         switch ($row['status']) {

@@ -26,7 +26,7 @@ date_default_timezone_set('Asia/Manila');
           </div>
         </div> -->
         <!-- footer -->
-        <?php include "../../page_properties/footer.php"; ?>
+        <!-- ?php include "../../page_properties/footer.php"; ?> -->
         <!-- /footer -->
       </div>
       <!-- chat-container -->
