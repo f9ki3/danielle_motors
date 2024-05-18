@@ -90,7 +90,6 @@ $(document).ready(function () {
             url: '../../php/store_stocks_recompute_return.php',
             method: 'POST',
             data: {
-
                 materialInvoiceID: materialInvoiceNo,
                 totalReturnAmount: totalReturnAmount, // Pass totalReturnAmount to the AJAX request
                 totalSellingPrice: totalSellingPrice // Pass totalReturnAmount to the AJAX request
@@ -115,9 +114,8 @@ $(document).ready(function () {
                         $('input[name="product_checkbox[]"]:checked').each(function() {
                             var closestRow = $(this).closest('tr');
                             var productId = closestRow.find('input[name="product_id[]"]').val();
-                            var qtytotal = closestRow.find('td:eq(7)').data('quantity-added'); // Retrieve data attribute value
-                            var inputId = 'quantityInput_' + closestRow.attr('data-row-index');
-                            var qtySent = $('#' + inputId).val(); // Retrieve input value
+                            var qtytotal = parseFloat(closestRow.find('td:eq(7)').text()); // Retrieve quantity from the correct cell
+                            var qtySent = parseFloat(closestRow.find('input.quantity-return').val()); // Retrieve input value
                             var qtyWarehouse = qtytotal - qtySent; // Calculate qtyWarehouse
                             var status = closestRow.find('td:eq(9)').text().trim(); // Assuming status is in the 9th column
                             
@@ -139,7 +137,6 @@ $(document).ready(function () {
                                         qty_warehouse: qtyWarehouse,
                                         user_brn_code: user_brn_code,
                                         qty_sent: qtySent,
-                                        input_id: inputId,
                                         materialInvoiceID: materialInvoiceNo,
                                         sessionID: sessionID,
                                         sender: cashierName,
@@ -221,56 +218,56 @@ $(document).ready(function () {
         $('input[name="product_checkbox[]"]:checked').each(function () {
             var closestRow = $(this).closest('tr');
             var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
-            var qtyAdded = parseFloat(closestRow.find('td:eq(7)').data('quantity-added')); // Get quantity added
+            var qtyAdded = parseFloat(closestRow.find('td:eq(7)').text()); // Get quantity added
             var quantityReturn = parseFloat($(this).val()); // Get quantity return value
             var quantityRetain = qtyAdded - quantityReturn; // Calculate quantity retained
 
             if (!isNaN(inputSrp) && !isNaN(quantityRetain)) {
-                totalSellingPrice == inputSrp * quantityRetain; // Calculate total selling price
+                totalSellingPrice += inputSrp * quantityRetain; // Calculate total selling price
             }
         });
 
         // Update total selling price display
         $('#totalSellingPrice').text('Total Selling Amount: ₱' + totalSellingPrice.toFixed(2));
     });
+
     // Recompute total selling price when checkbox state changes
-$('input[name="product_checkbox[]"]').click(function () {
-    var totalSellingPrice = 0;
+    $('input[name="product_checkbox[]"]').click(function () {
+        var totalSellingPrice = 0;
 
-    $('input[name="product_checkbox[]"]:checked').each(function () {
-        var closestRow = $(this).closest('tr');
-        var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
-        var quantityRequested = parseFloat(closestRow.find('td:eq(6)').text()); // Get quantity requested
-        var quantityReturned = parseFloat(closestRow.find('td:eq(7)').text()); // Get quantity returned
+        $('input[name="product_checkbox[]"]:checked').each(function () {
+            var closestRow = $(this).closest('tr');
+            var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
+            var quantityRequested = parseFloat(closestRow.find('td:eq(6)').text()); // Get quantity requested
+            var quantityReturned = parseFloat(closestRow.find('td:eq(7)').text()); // Get quantity returned
 
-        if (!isNaN(inputSrp) && !isNaN(quantityRequested) && !isNaN(quantityReturned)) {
-            totalSellingPrice += inputSrp * (quantityRequested - quantityReturned); // Calculate total selling price
-        }
+            if (!isNaN(inputSrp) && !isNaN(quantityRequested) && !isNaN(quantityReturned)) {
+                totalSellingPrice += inputSrp * (quantityRequested - quantityReturned); // Calculate total selling price
+            }
+        });
+
+        // Update total selling price display
+        $('#totalSellingPrice').text('Total Selling Amount: ₱' + totalSellingPrice.toFixed(2));
     });
 
-    // Update total selling price display
-    $('#totalSellingPrice').text('Total Selling Amount: ₱' + totalSellingPrice.toFixed(2));
-});
+    // Recompute total selling price when quantity return is changed
+    $(document).on('change', '.quantity-return', function () {
+        var totalSellingPrice = 0;
 
-// Recompute total selling price when quantity return is changed
-$(document).on('change', '.quantity-return', function () {
-    var totalSellingPrice = 0;
+        $('input[name="product_checkbox[]"]:checked').each(function () {
+            var closestRow = $(this).closest('tr');
+            var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
+            var quantityRequested = parseFloat(closestRow.find('td:eq(6)').text()); // Get quantity requested
+            var quantityReturned = parseFloat(closestRow.find('.quantity-return').val()); // Get quantity returned
 
-    $('input[name="product_checkbox[]"]:checked').each(function () {
-        var closestRow = $(this).closest('tr');
-        var inputSrp = parseFloat(closestRow.find('td:eq(5)').text()); // Get input SRP
-        var quantityRequested = parseFloat(closestRow.find('td:eq(6)').text()); // Get quantity requested
-        var quantityReturned = parseFloat(closestRow.find('.quantity-return').val()); // Get quantity returned
+            if (!isNaN(inputSrp) && !isNaN(quantityRequested) && !isNaN(quantityReturned)) {
+                totalSellingPrice += inputSrp * (quantityRequested - quantityReturned); // Calculate total selling price
+            }
+        });
 
-        if (!isNaN(inputSrp) && !isNaN(quantityRequested) && !isNaN(quantityReturned)) {
-            totalSellingPrice += inputSrp * (quantityRequested - quantityReturned); // Calculate total selling price
-        }
+        // Update total selling price display
+        $('#totalSellingPrice').text('Total Selling Price: ₱' + totalSellingPrice.toFixed(2));
     });
-
-    // Update total selling price display
-    $('#totalSellingPrice').text('Total Selling Price: ₱' + totalSellingPrice.toFixed(2));
-});
-
 
     // Initial update of button status
     updateButtonStatus();
@@ -311,6 +308,7 @@ $(document).on('change', '.quantity-return', function () {
     }
 });
 </script>
+
   </body>
 
 

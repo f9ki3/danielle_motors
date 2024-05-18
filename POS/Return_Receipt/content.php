@@ -25,41 +25,45 @@ if ($result->num_rows > 0) {
     $transactionDetails = $result->fetch_assoc();
 } else {
     echo "0 results";
+    exit;
 }
 
 // Close statement
 $stmt->close();
-
 ?>
+
+<form id="refundForm" method="POST" action="customer_refund.php">
+    <input type="hidden" name="productIDs[]" id="productIDs">
+    <input type="hidden" name="reason" id="reason">
+    <input type="hidden" name="user_brn_code" id="user_brn_code">
+    <!-- Add more hidden inputs if needed -->
+</form>
 
 <!-- HTML code for displaying the transaction details -->
 <div style="width: 100%;" class="print_hide">
     <!-- Your HTML structure displaying transaction details -->
 </div>
 
-
-
-
 <div style="width: 100%;" class="print_hide" >
     <div>
-
-        <div style=" height: auto" class=" w-100 transact">
+        <div style="height: auto" class="w-100 transact">
             <h2 class="mb-3">Return Items</h2>
             <div class="row">
                 <div>
-                <div class="w-100 border rounded p-3 mb-3">
+                    <div class="w-100 border rounded p-3 mb-3">
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <div class="w-50 p-1">
                                 <h6 class="fw-bolder">Customer Name: <?php echo $transactionDetails["CustomerName"]; ?></h6>
                                 <p>Address: <?php echo $transactionDetails["TransactionAddress"]; ?></p>
                             </div>
-                            <div class=" w-50 p-1">
+                            <div class="w-50 p-1">
                                 <div style="display: flex; flex-direction: row; justify-content: space-between">
                                     <h6 class="fw-bolder">Receipt No: <?php echo $transactionID?></h6>
-                                    <!-- <div>
-                                    <button id="originalBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="printDocument()">Print</button>
-                                    <a href="../Sales_Warehouse" class="btn btn-primary btn-sm back">Back</a>
-                                    </div> -->
+                                    <div>
+                                        <button id="refundBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="submitRefundForm()">Refund</button>
+                                        <button id="originalBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="replaceItems()">Replacement</button>
+                                        <a href="../Return_Store" class="btn btn-primary btn-sm back">Back</a>
+                                    </div>
                                 </div>
                                 <p>Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
                             </div>
@@ -67,70 +71,51 @@ $stmt->close();
                         <div style="display: flex; justify-content: space-between;" class="border-top pt-2">
                             <div style="width: 35%">Payment Type: <?php echo $transactionDetails["TransactionPaymentMethod"]; ?></div>
                             <div style="width: 35%">Transaction Type: <?php echo $transactionDetails["TransactionType"]; ?></div>
-                            <div style="width: 35%">Recieved by: <?php echo $transactionDetails["TransactionReceivedBy"]; ?></div>
+                            <div style="width: 35%">Received by: <?php echo $transactionDetails["TransactionReceivedBy"]; ?></div>
                             <div style="width: 35%">Inspected by: <?php echo $transactionDetails["TransactionInspectedBy"]; ?></div>
                             <div style="width: 35%">Verified by: <?php echo $transactionDetails["TransactionVerifiedBy"]; ?></div>
                             <div style="width: 35%">Refunded by: <?php echo $transactionDetails["TransactionVerifiedBy"]; ?></div>
                         </div>
-                </div>
-                <div class="container" style="height: 500px; overflow-y: auto;">
-                    <table class="table">
-                        <tr>
-                            <th width="5%">Checkbox</th>
-                            <th width="15%">Product name</th>
-                            <th width="10%">Brand</th>
-                            <th width="15%">Model</th>
-                            <th width="5%">Qty</th>
-                            <th width="10%">Return Qty</th>
-                            <th width="10%">SRP</th>
-                            <th width="10%">Refund Amount</th>
-                            <th width="10%">Total Refund</th>
-                            <th width="10%">Status</th>
-                        </tr>
-                        <tbody class="list" id="products-table-body">
-                            <?php include 'return_receipt.php'?>
-                        </tbody>
-                    </table>
                     </div>
-
-                    
+                    <div class="container" style="height: 500px; overflow-y: auto;">
+                        <table class="table">
+                            <tr>
+                                <th width="5%">Checkbox</th>
+                                <th width="15%">Product name</th>
+                                <th width="10%">Brand</th>
+                                <th width="15%">Model</th>
+                                <th width="5%">Qty</th>
+                                <th width="10%">Return Qty</th>
+                                <th width="10%">SRP</th>
+                                <th width="10%">Refund Amount</th>
+                                <th width="10%">Total Refund</th>
+                                <th width="10%">Status</th>
+                            </tr>
+                            <tbody class="list" id="products-table-body">
+                                <?php include 'return_receipt.php'?>
+                            </tbody>
+                        </table>
+                    </div>
                     <div class="w-100 border rounded p-4 mb-3">
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h6 class="fw-bolder">Subtotal</h6>
-                            <h6 class="fw-bolder"><?php echo $transactionDetails["Subtotal"]; ?></h6>
-                        </div>
-                        <!-- <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h6 class="fw-bolder">VAT(12%)</h6>
-                            <h6 class="fw-bolder"><?php echo $transactionDetails["Tax"]; ?></h6>
+                            <h5 class="fw-bolder">Subtotal</h5>
+                            <h5 class="fw-bolder" id="subtotal"><?php echo $transactionDetails["Subtotal"]; ?></h5>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h6 class="fw-bolder">Discount</h6>
-                            <h6 class="fw-bolder"><?php echo $transactionDetails["Discount"]; ?></h6>
-                        </div> -->
-                        <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h6 class="fw-bolder">Refund Amount</h>
-                            <h6 class="fw-bolder"><?php echo $transactionDetails["Total"]; ?></h6>
+                            <h5 class="fw-bolder">Refund Amount</h5>
+                            <h5 class="fw-bolder" id="refund-amount">0.00</h5>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h6 class="fw-bolder">Total Reflected</h>
-                            <h6 class="fw-bolder"><?php echo $transactionDetails["Total"]; ?></h6>
+                            <h5 class="fw-bolder">Total Reflected</h5>
+                            <h5 class="fw-bolder" id="total-reflected"><?php echo $transactionDetails["Total"]; ?></h5>
                         </div>
-                        <!-- <hr>
-                        <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h6 class="fw-bolder">Payment</h6>
-                            <h6 class="fw-bolder"><?php echo $transactionDetails["Payment"]; ?></h6>
-                        </div>
-                        <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h6 class="fw-bolder">Change</h6>
-                            <h6 class="fw-bolder"><?php echo $transactionDetails["ChangeAmount"]; ?></h6>
-                        </div> -->
+                        <hr>
+                        <input type="text" id="Reason" class="form-control" placeholder="Enter Reason to return">     
                     </div>
                 </div>
             </div>
-
         </div>
-        </div>                           
-
+    </div>                           
 </div>
 
 <div id="printable" class="p-3 w-100">
@@ -175,17 +160,15 @@ $stmt->close();
         
         <!-- Cart details -->
         <div class="w-100 p-2 mb-3 rounded border mt-3 cart">
-                        
             <table class="table">
                 <tr>
-                    <th width=35%" style="font-size: 12px">Product name</th>
+                    <th width="35%" style="font-size: 12px">Product name</th>
                     <th width="5%" style="font-size: 12px">Qty</th>
                     <th width="5%" style="font-size: 12px">SRP</th>
                     <th width="5%" style="font-size: 12px">Discount</th>
                     <th width="10%" style="font-size: 12px">Amount</th>
                 </tr>
                 <!-- make a loop data here from data set -->
-                
                 <?php 
                 // SQL query to retrieve cart items for the given transaction ID
                 $sql = "SELECT * FROM purchase_cart WHERE TransactionID = '$transactionID'";
@@ -193,7 +176,6 @@ $stmt->close();
 
                 // Check if any rows were returned
                 if ($result->num_rows > 0) {
-
                     // Output data of each row
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
@@ -213,7 +195,6 @@ $stmt->close();
                             echo " " . $row["DiscountType"];
                         }
                         echo "</td>";
-
                         echo "<td style='font-size: 12px'>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
                         echo "</tr>";
                     }
@@ -223,7 +204,6 @@ $stmt->close();
                 ?>
                 <!-- end loop -->
             </table>
-                        
         </div>
         
         <div class="border rounded p-3 mt-9">
@@ -287,16 +267,13 @@ $stmt->close();
             </div>
         </div>
 
-        
         <!-- Signatures -->
-        
         <div class="d-flex flex-row justify-content-between p-3 mt-5">
             <div class="w-25">
                 <p style="font-size: 12px; text-align: center; margin-bottom: 0px"><?php echo $transactionDetails["TransactionReceivedBy"]; ?></p>
                 <hr class="m-0">
                 <p style="font-size: 12px; text-align: center">Received By</p>
             </div>
-            <!-- Other signature details -->
             <div class="w-25">
                 <p style="font-size: 12px; text-align: center; margin-bottom: 0px"><?php echo $transactionDetails["TransactionInspectedBy"]; ?></p>
                 <hr class="m-0">
@@ -311,4 +288,12 @@ $stmt->close();
     </div>
 </div>
 
+<script>
+function refundItems() {
+    // JavaScript logic for refund items
+}
 
+function replaceItems() {
+    // JavaScript logic for replace items
+}
+</script>

@@ -103,6 +103,7 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
                         <input type="hidden" id="user_brn_code" value="<?php echo $branch_code; ?>">
                      <div>
                             <!-- <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#add_stocks">+ Add Stocks</button> -->
+                            <button class="btn btn-primary border btn-sm rounded" id="returnMaterialTransfer" class="btn w-100 btn-outline-primary mb-2">Return</button> 
                             <button class="btn border btn-sm rounded me-1" data-bs-toggle="modal" data-bs-target="#print">Print</button>
                         </div>
                     </div>
@@ -213,19 +214,17 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
     </div>
 </div>
 
+<div class="w-100 border rounded p-4 mb-3">
+                        <div style="display: flex; flex-direction: row; justify-content: space-between">
+                            <h4 id="totalSellingPrice" class="ms-2 me-4">Total Selling Amount: ₱<?php echo number_format($totalSellingPrice, 2); ?></h4>
+                        </div>
+                        <div style="display: flex; flex-direction: row; justify-content: space-between">
+                            <h4 id="totalReturnAmount" class="ms-2">Total Return Amount ₱<?php echo number_format($totalReturnAmount, 2); ?></h4>
+                        </div>
+                        <hr>
+                        <input type="text" id="Reason" class="form-control" placeholder="Enter Reason to return">                     
+                    </div>
 
-    <div style="display: flex; flex-direction: row; justify-content: space-between" class="border rounded p-3 mt-2">
-        <div>
-            <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-                <h4 id="totalSellingPrice" class="ms-2 me-4">Total Selling Amount: ₱<?php echo number_format($totalSellingPrice, 2); ?></h4>
-                <h4 id="totalReturnAmount" class="ms-2">Total Return Amount ₱<?php echo number_format($totalReturnAmount, 2); ?></h4>
-                <input type="text" id="Reason" class="form-control" placeholder="Enter Reason to return">
-            </div>
-        </div>
-        <div style="width: 30%">
-            <button type="button" id="returnMaterialTransfer" class="btn w-100 btn-outline-primary mb-2">Return</button>
-        </div>
-    </div> 
 <!-- End of Footer -->
 
 
