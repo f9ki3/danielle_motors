@@ -114,19 +114,19 @@
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
                         <div class="form-floating mb-3">
-                            <input type="number" id="product_name" name="dealer" class="form-control" required>
+                            <input type="number" id="product_name" name="dealer" class="form-control" min="0" step="0.01" required>
                             <label for="product_name">Dealer</label>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
                         <div class="form-floating mb-3">
-                            <input type="number" id="product_name" name="wholesale" class="form-control" required>
+                            <input type="number" id="product_name" name="wholesale" class="form-control" min="0" step="0.01" required>
                             <label for="product_name">Wholesale</label>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">
                         <div class="form-floating mb-3">
-                            <input type="number" id="product_name" name="srp" class="form-control" required>
+                            <input type="number" id="product_name" name="srp" class="form-control" min="0" step="0.01" required>
                             <label for="product_name">SRP</label>
                         </div>
                     </div>
@@ -256,19 +256,19 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-floating mb-2">
-                            <input class="form-control" type="number" id="edit_dealer" name="dealer" required>
+                            <input class="form-control" type="number" id="edit_dealer" name="dealer" min="0" step="0.01" required>
                             <label for="floatingInput">Dealer Price</label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-2">
-                            <input class="form-control" type="number" id="edit_wholesale" name="wholesale" required>
+                            <input class="form-control" type="number" id="edit_wholesale" name="wholesale" min="0" step="0.01" required>
                             <label for="floatingInput">Wholesale Price</label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-2">
-                            <input class="form-control" type="number" id="edit_srp" name="srp" required>
+                            <input class="form-control" type="number" id="edit_srp" name="srp" min="0" step="0.01" required>
                             <label for="floatingInput">Suggested Retail Price</label>
                         </div>
                     </div>
