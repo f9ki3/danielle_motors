@@ -22,6 +22,35 @@
                 <div class="ms-xxl-auto">
                     <button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button>
                     <a class="btn btn-primary" id="addBtn" href="../Create_Purchased_Order/"><span class="fas fa-plus me-2"></span>Create Purchased Order</a>
+                    <button class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#expenseLimit">Set Expense Limit</button>
+                    <div class="modal fade" id="expenseLimit" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <form action="update_expense.php" method="POST">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Expense Limit</h5><button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs--1"></span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="warning_level">
+                                        <label for="">Warning Label</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="danger_level">
+                                        <label for="">Limit</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer"><button class="btn btn-primary" type="button">Okay</button><button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Cancel</button></div>
+                        </div>
+                        </form>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>
