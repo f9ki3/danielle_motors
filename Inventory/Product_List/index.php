@@ -42,7 +42,6 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <!-- Select2 JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script>
@@ -72,39 +71,39 @@ date_default_timezone_set('Asia/Manila');
         let loading = false;
         let currentPage = 1;
 
-        function fetchContent(page) {
-        loading = true;
-        document.getElementById("loading").style.display = "block";
+        // function fetchContent(page) {
+        // loading = true;
+        // document.getElementById("loading").style.display = "block";
 
-        fetch(`product_list_tr.php?page=${page}`)
-            .then(response => response.json())
-            .then(data => {
-            loading = false;
-            document.getElementById("loading").style.display = "none";
+        // fetch(`product_list_tr.php?page=${page}`)
+        //     .then(response => response.json())
+        //     .then(data => {
+        //     loading = false;
+        //     document.getElementById("loading").style.display = "none";
             
-            const contentDiv = document.getElementById("content");
-            data.forEach(item => {
-                const postDiv = document.createElement("div");
-                postDiv.classList.add("post");
-                postDiv.innerHTML = `<p>${item.title}</p><p>${item.content}</p>`;
-                contentDiv.appendChild(postDiv);
-            });
-            });
-        }
+        //     const contentDiv = document.getElementById("content");
+        //     data.forEach(item => {
+        //         const postDiv = document.createElement("div");
+        //         postDiv.classList.add("post");
+        //         postDiv.innerHTML = `<p>${item.title}</p><p>${item.content}</p>`;
+        //         contentDiv.appendChild(postDiv);
+        //     });
+        //     });
+        // }
 
-        window.addEventListener("scroll", () => {
-        const contentHeight = document.getElementById("content").clientHeight;
-        const scrollPosition = window.innerHeight + window.scrollY;
+        // window.addEventListener("scroll", () => {
+        // const contentHeight = document.getElementById("content").clientHeight;
+        // const scrollPosition = window.innerHeight + window.scrollY;
 
-        if (!loading && scrollPosition >= contentHeight - 200) {
-            currentPage++;
-            fetchContent(currentPage);
-        }
-        });
+        // if (!loading && scrollPosition >= contentHeight - 200) {
+        //     currentPage++;
+        //     fetchContent(currentPage);
+        // }
+        // });
 
-        fetchContent(currentPage);
+        // fetchContent(currentPage);
 
-        Function to fetch PHP-generated content
+        // Function to fetch PHP-generated content
         function fetchTableContent() {
             $.ajax({
                 url: 'total_products.php',
