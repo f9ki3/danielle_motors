@@ -24,7 +24,9 @@
         $stmt->execute();
         $stmt->bind_result($date, $sales);
         $json['sales'] = array();
+        $json['date'] = array();
         while ($stmt->fetch()) {
+            $json['date'][] = date('F j, Y', strtotime($date));
             $json['sales'][] = $sales;
         }
         $stmt->close();
@@ -41,9 +43,7 @@
         $stmt->execute();
         $stmt->bind_result($date, $expense);
         $json['expenses'] = array();
-        $json['date'] = array();
         while ($stmt->fetch()) {
-            $json['date'][] = date('F j, Y', strtotime($date));
             $json['expenses'][] = $expense;
         }
         $stmt->close();

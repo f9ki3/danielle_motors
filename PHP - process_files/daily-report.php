@@ -14,7 +14,7 @@
 
         $query = 'SELECT Total FROM purchase_transactions WHERE DATE(TransactionDate) = ?';
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('s', $yesterday_date);
+        $stmt->bind_param('s', $current_date);
         $stmt->execute();
         $stmt->bind_result($sales);
         while ($stmt->fetch()) {
