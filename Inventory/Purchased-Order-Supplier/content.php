@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer"><button class="btn btn-primary" type="button">Okay</button><button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Cancel</button></div>
+                        <div class="modal-footer"><button class="btn btn-primary" type="submit">Submit</button><button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Cancel</button></div>
                         </div>
                         </form>
                     </div>
