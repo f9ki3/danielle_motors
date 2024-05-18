@@ -253,15 +253,24 @@
             </div>
         </div>
 
-        <div class="col-lg-12 mb-2">
+        <div class="col-lg-6 mb-2">
+            <div class="card h-100 mb-2">
+                <div class="card-body">
+                    <div class="text-center mb-2">
+                        <h3>Best Selling Products</h3>
+                    </div>
+                    <div id="top-chart"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-2">
             <div class="card mb-2">
                 <div class="card-body">
                     <div class="text-center mb-2">
                         <h3>General Report</h3>
                     </div>
-                    <div class="d-flex justify-content-center">
-                        <div id="general-chart"></div>
-                    </div>
+                    <div id="general-chart"></div>
                 </div>
             </div>
         </div>

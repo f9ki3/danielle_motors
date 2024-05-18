@@ -113,8 +113,6 @@ date_default_timezone_set('Asia/Manila');
           method: 'POST',
           dataType: 'json',
           success: function(json) {
-            console.log(json);
-            
             var weekly_expenses = [];
             for (var i = 0; i < json.expenses.length; i++) {
                 var result = json.expenses[i] + json.delivery[i];
@@ -198,14 +196,10 @@ date_default_timezone_set('Asia/Manila');
           method: 'POST',
           dataType: 'json',
           success: function(json){
-            console.log(json);
-
             var options = {
                 series: [json.transactions, json.materials, json.delivery, json.users, json.suppliers],
                 chart: {
                 type: 'polarArea',
-                height: 700,
-                width: 700
               },
               labels: ['Transactions', 'Material Transfers', 'Deliveries', 'Users', 'Suppliers'],
               stroke: {
@@ -237,9 +231,47 @@ date_default_timezone_set('Asia/Manila');
         });
       }
 
+      function getTopProducts() {
+        $.ajax({
+          url: '../../PHP - process_files/get-top-products.php',
+          method: 'POST',
+          dataType: 'json',
+          success: function(json){
+            console.log(json);
+
+            var options = {
+              series: [{
+              name: 'Total Sold',
+              data: json.count
+            }],
+              chart: {
+              type: 'bar',
+              height: 350
+            },
+            plotOptions: {
+              bar: {
+                borderRadius: 4,
+                borderRadiusApplication: 'end',
+                horizontal: true
+              }
+            },
+            dataLabels: {
+              enabled: true
+            },
+            xaxis: {
+              categories: json.product,
+            }};
+
+            var chart = new ApexCharts($("#top-chart")[0], options);
+            chart.render();
+          }
+        })
+      }
+
       getDailyReport();
       getWeeklyReport();
       getGeneralReport();
+      getTopProducts();
     });
   </script>
 
