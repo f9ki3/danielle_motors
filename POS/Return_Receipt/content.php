@@ -32,17 +32,10 @@ if ($result->num_rows > 0) {
 $stmt->close();
 ?>
 
-<form id="refundForm" method="POST" action="customer_refund.php">
-    <input type="hidden" name="productIDs[]" id="productIDs">
-    <input type="hidden" name="reason" id="reason">
-    <input type="hidden" name="user_brn_code" id="user_brn_code">
-    <!-- Add more hidden inputs if needed -->
-</form>
 
-<!-- HTML code for displaying the transaction details -->
-<div style="width: 100%;" class="print_hide">
-    <!-- Your HTML structure displaying transaction details -->
-</div>
+<input type="hidden" name="productIDs[]" id="productIDs">
+<input type="hidden" name="user_brn_code" id="user_brn_code">
+    <!-- Add more hidden inputs if needed -->
 
 <div style="width: 100%;" class="print_hide" >
     <div>
@@ -60,8 +53,6 @@ $stmt->close();
                                 <div style="display: flex; flex-direction: row; justify-content: space-between">
                                     <h6 class="fw-bolder">Receipt No: <?php echo $transactionID?></h6>
                                     <div>
-                                        <button id="refundBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="submitRefundForm()">Refund</button>
-                                        <button id="originalBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="replaceItems()">Replacement</button>
                                         <a href="../Return_Store" class="btn btn-primary btn-sm back">Back</a>
                                     </div>
                                 </div>
@@ -96,21 +87,27 @@ $stmt->close();
                             </tbody>
                         </table>
                     </div>
-                    <div class="w-100 border rounded p-4 mb-3">
-                        <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h5 class="fw-bolder">Subtotal</h5>
-                            <h5 class="fw-bolder" id="subtotal"><?php echo $transactionDetails["Subtotal"]; ?></h5>
+                    <div class="w-100 d-flex justify-content-end">
+                        <div class="w-50 border rounded p-4 mb-3">
+                            <div style="display: flex; flex-direction: row; justify-content: space-between">
+                                <h5 class="fw-bolder">Subtotal</h5>
+                                <h5 class="fw-bolder" id="subtotal"><?php echo $transactionDetails["Subtotal"]; ?></h5>
+                            </div>
+                            <div style="display: flex; flex-direction: row; justify-content: space-between">
+                                <h5 class="fw-bolder">Refund Amount</h5>
+                                <h5 class="fw-bolder" id="refund-amount">0.00</h5>
+                            </div>
+                            <div style="display: flex; flex-direction: row; justify-content: space-between">
+                                <h5 class="fw-bolder">Total Reflected</h5>
+                                <h5 class="fw-bolder" id="total-reflected"><?php echo $transactionDetails["Total"]; ?></h5>
+                            </div>
+                            <!-- <hr>
+                            <input type="text" id="reason" name="reason" class="form-control" placeholder="Enter Reason to return" required> -->
+                            <div class="d-flex flex-row mt-3">
+                                <button id="refundBtn" class="w-50 me-2 btn btn-primary border border-primary btn-sm print" onclick="submitRefundForm(event)">Refund</button>
+                                <button id="originalBtn" class="w-50 ms-2 btn btn-light border border-primary text-primary btn-sm print" onclick="replaceItems()">Replacement</button>
+                            </div>   
                         </div>
-                        <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h5 class="fw-bolder">Refund Amount</h5>
-                            <h5 class="fw-bolder" id="refund-amount">0.00</h5>
-                        </div>
-                        <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h5 class="fw-bolder">Total Reflected</h5>
-                            <h5 class="fw-bolder" id="total-reflected"><?php echo $transactionDetails["Total"]; ?></h5>
-                        </div>
-                        <hr>
-                        <input type="text" id="Reason" class="form-control" placeholder="Enter Reason to return">     
                     </div>
                 </div>
             </div>
@@ -287,13 +284,3 @@ $stmt->close();
         </div>
     </div>
 </div>
-
-<script>
-function refundItems() {
-    // JavaScript logic for refund items
-}
-
-function replaceItems() {
-    // JavaScript logic for replace items
-}
-</script>
