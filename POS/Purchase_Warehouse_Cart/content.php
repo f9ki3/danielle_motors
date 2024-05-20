@@ -35,17 +35,17 @@
         </div>
         <div class="pt-3 mx-n4 px-4 mx-lg-n6 px-lg-6 bg-white border-top border-bottom border-200 position-relative top-1" style="height: 35vh;">
         <div style="height: 35vh;" class="table-responsive scrollbar mx-n1 px-1">
-            <table class="table">
+            <table class="table" style="font-size: 12px">
                 <thead class="sticky-top bg-white">
                     <tr>
                         <th scope="col" width="15%">Product Name</th>
                         <th scope="col" width="15%">Model</th>
-                        <th scope="col" width="8%">Brand</th>
-                        <th scope="col" width="8%">Unit</th>
-                        <th scope="col" width="8%">Stocks</th>
-                        <th scope="col" width="8%">Price</th>
+                        <th scope="col" width="5%">Brand</th>
+                        <th scope="col" width="5%">Unit</th>
+                        <th scope="col" width="5%">Stocks</th>
+                        <th scope="col" width="5%">Price</th>
                         <th scope="col" width="15%">QTY</th>
-                        <th scope="col" width="10%">Discount</th>
+                        <th scope="col" width="10%">Markup</th>
                         <th scope="col" width="10%">Amount</th>
                         <th scope="col" width="5%">Action</th>
                     </tr>
