@@ -28,13 +28,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $qty = $qtys[$index];
             $total_refund = $total_refunds[$index];
 
-            $sql = "INSERT INTO returns_customer (user_id, product_id, reason, branch_code, return_date, qty, total_refund, total_srp, total_refund_real, total_adjust, status, transactionID) VALUES ('$user_id', '$product_id', '$reason', '$branch_code', '$return_date', '$qty', '$total_refund', '$total_srp', '$total_refund_sum', '$total_adjust', '$status', '$transactionID')";   
+            // SQL query to insert data into returns_customer table
+            $sql = "INSERT INTO returns_customer (user_id, product_id, reason, branch_code, return_date, qty, total_refund, total_srp, total_refund_real, total_adjust, status, transactionID) VALUES ('$user_id', '$product_id', '$reason', '$branch_code', '$return_date', '$qty', '$total_refund', '$total_srp[$index]', '$total_refund_sum', '$total_adjust', '$status', '$transactionID')";
+            
             // Execute the SQL query
             if ($conn->query($sql) === TRUE) {
+                // Update the purchase_cart table
+                $sql_update_cart = "UPDATE purchase_cart SET status = 3 WHERE ProductID = ? AND TransactionID = ?";
+                $stmt_update_cart = $conn->prepare($sql_update_cart);
+                $stmt_update_cart->bind_param("is", $product_id, $transactionID);
+                $stmt_update_cart->execute();
+                $stmt_update_cart->close();
                 echo "New return record created successfully";
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
+        } else {
+            // If the product is unchecked, update status to 1
+            $sql_update_cart = "UPDATE purchase_cart SET status = 1 WHERE ProductID = ? AND TransactionID = ?";
+            $stmt_update_cart = $conn->prepare($sql_update_cart);
+            $stmt_update_cart->bind_param("is", $product_id, $transactionID);
+            $stmt_update_cart->execute();
+            $stmt_update_cart->close();
         }
     }
 }
