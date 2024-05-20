@@ -1,4 +1,5 @@
 <?php
+
 $query = 'SELECT 
         pl.id AS price_list_id,
         pl.product_id AS pl_product_id,
@@ -22,22 +23,26 @@ $query = 'SELECT
         s.pending_order
         FROM 
         price_list pl
-        LEFT JOIN 
+        JOIN 
         product p ON pl.product_id = p.id
-        LEFT JOIN 
+        JOIN 
         brand b ON p.brand_id = b.id
-        LEFT JOIN 
+        JOIN 
         category c ON p.category_id = c.id
-        LEFT JOIN 
+        JOIN 
         unit u ON p.unit_id = u.id
         LEFT JOIN 
         stocks s ON p.id = s.product_id
+        WHERE 
+        s.branch_code = ?
         GROUP BY 
         pl.product_id
         ORDER BY 
-        price_list_id DESC';
+        price_list_id DESC;
+';
 
 $stmt = $conn->prepare($query);
+$stmt->bind_param("s", $branch_code);
 $stmt->execute();
 $stmt->bind_result($price_list_id, $pl_product_id, $dealer, $wholesale, $srp, $product_id, $product_name, $product_code, $supplier_code, $barcode, $image, $models, $unit_id, $unit_name, $brand_id, $brand_name, $category_id, $category_name, $total_stocks, $pending_order);
 
@@ -59,20 +64,20 @@ while ($stmt->fetch()) {
     <td class="product align-middle ">₱ ' . number_format($srp, 2, '.', ',') . '</td>
     <td class="product align-middle ">';
 
-    // if($total_stocks == 0){
-    //     echo '<span class="badge badge-phoenix badge-phoenix-danger"> No Stocks</span>';
-    // } else {
+    if($total_stocks == 0){
+        echo '<span class="badge badge-phoenix badge-phoenix-danger"> No Stocks</span>';
+    } else {
         echo '<span class="badge badge-phoenix badge-phoenix-success">Available (' . $total_stocks . ')</span>';
-    // }
+    }
 
     echo '</td>
     <td class="text-center align-middle text-end pe-0 ps-4 btn-reveal-trigger">
         <button class="btn me-3 btn-primary rounded rounded rounded-5 m-0 p-2" ';
-        // if($total_stocks == 0){
-        //     echo 'disabled';
-        // } else {
+        if($total_stocks == 0){
+            echo 'disabled';
+        } else {
             echo 'enabled';
-        // }
+        }
         echo ' onclick="addToCart(
                 \''.$product_id.'\', 
                 \''.$image.'\', 

@@ -1,4 +1,5 @@
 <?php
+
 $query = 'SELECT 
         pl.id AS price_list_id,
         pl.product_id AS pl_product_id,
@@ -32,12 +33,16 @@ $query = 'SELECT
         unit u ON p.unit_id = u.id
         LEFT JOIN 
         stocks s ON p.id = s.product_id
+        WHERE 
+        s.branch_code = ?
         GROUP BY 
         pl.product_id
         ORDER BY 
-        price_list_id DESC';
+        price_list_id DESC;
+';
 
 $stmt = $conn->prepare($query);
+$stmt->bind_param("s", $branch_code);
 $stmt->execute();
 $stmt->bind_result($price_list_id, $pl_product_id, $dealer, $wholesale, $srp, $product_id, $product_name, $product_code, $supplier_code, $barcode, $image, $models, $unit_id, $unit_name, $brand_id, $brand_name, $category_id, $category_name, $total_stocks, $pending_order);
 

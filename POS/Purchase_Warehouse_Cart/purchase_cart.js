@@ -350,7 +350,7 @@ function updateCounter(count) {
                     </td>
                     <td>
                         <div class="input-group">
-                            <input type="text" class="form-control text-center w-50" value="${item.discount}" placeholder="" onchange="updateDiscount(${index}, this.value)" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); if(parseFloat(this.value) < 0) this.value = 0;" maxlength="7">
+                            <input type="text" class="form-control text-center w-50" value="${item.discount}" placeholder="" onchange="updateDiscount(${index}, this.value)" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); " maxlength="7">
                             <select class="form-select" style="width: auto;" aria-label="Default select example" onchange="updateDiscountType(${index}, this.value)">
                                 <option ${item.discountType === "." ? "selected" : ""}>₱</option>
                                 <option ${item.discountType === "%" ? "selected" : ""}>%</option>
@@ -394,7 +394,6 @@ function updateCounter(count) {
         updateValues();
     }
 
-
     // Function to update the discount of an item in the cart
     function updateDiscount(index, newDiscount) {
         var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
@@ -420,7 +419,7 @@ function updateCounter(count) {
 
         // Recalculate total amount for the item considering discount
         var discountAmount = (cartItems[index].discountType === "%") ? (cartItems[index].srp * cartItems[index].qty * cartItems[index].discount / 100) : cartItems[index].discount * cartItems[index].qty;
-        cartItems[index].totalAmount = (cartItems[index].srp * cartItems[index].qty) - discountAmount;
+        cartItems[index].totalAmount = (cartItems[index].srp * cartItems[index].qty) + discountAmount;
 
         // Play audio
         click.play();
@@ -445,7 +444,7 @@ function updateCounter(count) {
 
         // Recalculate total amount for the item considering discount type
         var discountAmount = (cartItems[index].discountType === "%") ? (cartItems[index].srp * cartItems[index].qty * cartItems[index].discount / 100) : cartItems[index].discount * cartItems[index].qty;
-        cartItems[index].totalAmount = (cartItems[index].srp * cartItems[index].qty) - discountAmount;
+        cartItems[index].totalAmount = (cartItems[index].srp * cartItems[index].qty) + discountAmount;
 
         sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
         displayCartItems(); // Update displayed cart items
