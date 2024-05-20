@@ -51,12 +51,12 @@ function computeTotalRefund(element) {
     var totalRefund = quantityReturn * srp;
 
     // Validate that return quantity does not exceed available quantity
-    if (quantityReturn < qty) {
-        alert('Return quantity cannot exceed the available quantity.');
-        quantityReturn = qty;
-        row.querySelector('input[name="quantity_return[]"]').value = qty;
-        totalRefund = quantityReturn * srp;
-    }
+    // if (quantityReturn < qty) {
+    //     alert('Return quantity cannot exceed the available quantity.');
+    //     quantityReturn = qty;
+    //     row.querySelector('input[name="quantity_return[]"]').value = qty;
+    //     totalRefund = quantityReturn * srp;
+    // }
 
     // Validate that total refund does not exceed SRP * quantityReturn
     if (totalRefund > srp * quantityReturn) {
@@ -84,64 +84,12 @@ function recomputeRefundAndTotal() {
     document.getElementById('refund-amount').innerText = '₱' + totalRefund.toFixed(2);
     document.getElementById('total-reflected').innerText = '₱' + totalReflected.toFixed(2);
 }
+
+
+
+
 </script>
 
-<script>
-  function refundItems() {
-    var reason = $('#Reason').val(); // Get the reason for return from the input box
-    var user_brn_code = '<?php echo $transactionDetails["BranchCode"]; ?>'; // Get the branch code
-    var transactionID = '<?php echo $transactionID; ?>'; // Get the transaction ID
-    
-    // Initialize an array to store the product IDs
-    var productIDs = [];
-    
-    // Loop through the checked checkboxes to get the product IDs
-    $('input[name="product_checkbox[]"]:checked').each(function() {
-        var closestRow = $(this).closest('tr');
-        var productID = closestRow.find('input[name="product_id[]"]').val(); // Get the product ID
-        productIDs.push(productID); // Add the product ID to the array
-    });
-    
-    // Perform AJAX request to customer_refund.php
-    $.ajax({
-        url: 'customer_refund.php',
-        method: 'POST',
-        data: {
-            productIDs: productIDs,
-            reason: reason,
-            user_brn_code: user_brn_code,
-            transactionID: transactionID
-        },
-        success: function(response) {
-            // Handle successful response
-            console.log('Refund request sent successfully');
-            // Optionally, you can add code here to handle UI updates or notifications
-        },
-        error: function(xhr, status, error) {
-            // Handle error
-            console.error('Error sending refund request:', error);
-            // Optionally, you can display an error message or handle the error in another way
-        }
-    });
-}
-</script>
-
-<script>
-function submitRefundForm() {
-    // Get the product IDs, reason, and user branch code from your application logic
-    let productIDs = [/* your array of product IDs */]; // Replace with your product IDs array
-    let reason = "your_reason"; // Replace with your reason
-    let user_brn_code = "your_user_branch_code"; // Replace with your user branch code
-    
-    // Set the form input values
-    document.getElementById('productIDs').value = JSON.stringify(productIDs); // Assuming you will handle this as an array in PHP
-    document.getElementById('reason').value = reason;
-    document.getElementById('user_brn_code').value = user_brn_code;
-    
-    // Submit the form
-    document.getElementById('refundForm').submit();
-}
-</script>
 
   </body>
 
