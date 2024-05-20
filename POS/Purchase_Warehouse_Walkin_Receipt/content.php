@@ -38,7 +38,7 @@ $stmt->close();
     <div>
 
         <div style=" height: auto" class=" w-100 transact">
-            <h2 class="mb-3">Purchase Store</h2>
+            <h2 class="mb-3">Store Purchase</h2>
             <div class="row">
                 <div>
                 <div class="w-100 border rounded p-3 mb-3">
@@ -52,23 +52,21 @@ $stmt->close();
                                     <h6 class="fw-bolder">Receipt No: <?php echo $transactionID?></h6>
                                     <div>
                                     <button id="originalBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="printDocument()">Print</button>
-                                    <a href="../Purchase_Warehouse" class="btn btn-primary btn-sm back">Back</a>
+                                    <a href="../Sales_Warehouse" class="btn btn-primary btn-sm back">Back</a>
                                     </div>
                                 </div>
                                 <p>Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
                             </div>
                         </div>
-                        <div style="display: flex; justify-content: space-between;" class="border-top pt-2">
+                        <div style="display: flex; justify-content: space-between;" class="border-top">
                             <div style="width: 35%">Payment Type: <?php echo $transactionDetails["TransactionPaymentMethod"]; ?></div>
                             <div style="width: 35%">Transaction Type: <?php echo $transactionDetails["TransactionType"]; ?></div>
                             <div style="width: 35%">Recieved by: <?php echo $transactionDetails["TransactionReceivedBy"]; ?></div>
                             <div style="width: 35%">Inspected by: <?php echo $transactionDetails["TransactionInspectedBy"]; ?></div>
                             <div style="width: 35%">Verified by: <?php echo $transactionDetails["TransactionVerifiedBy"]; ?></div>
                         </div>
-                </div>
-                <div class="container" style="max-height: 400px; overflow-y: auto;">
                         
-                            <table class="table">
+                            <table class="table ">
                                 <tr>
                                     <th width="10%">Product name</th>
                                     <th width="5%">Brand</th>
@@ -98,7 +96,7 @@ $stmt->close();
                                         echo "<td>" . $row["Model"] . "</td>";
                                         echo "<td>" . $row["Quantity"] . "</td>";
                                         echo "<td>" . $row["Unit"] . "</td>";
-                                        echo "<td>" . $row["SRP"] . "</td>";
+                                        echo "<td>₱ " . $row["SRP"] . "</td>";
                                         echo "<td>" . $row["DiscountType"] . "</td>";
                                         echo "<td>" . $row["Discount"] . "</td>";
                                         echo "<td>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
@@ -114,31 +112,31 @@ $stmt->close();
                     </div>
 
                     
-                    <div class="w-100 border rounded p-4">
+                    <div class="w-100 border rounded p-4 mb-3">
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Subtotal</h6>
-                            <h6 class="fw-bolder"><?php echo $transactionDetails["Subtotal"]; ?></h6>
+                            <h6 class="fw-bolder">₱ <?php echo $transactionDetails["Subtotal"]; ?></h6>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">VAT(12%)</h6>
-                            <h6 class="fw-bolder"><?php echo $transactionDetails["Tax"]; ?></h6>
+                            <h6 class="fw-bolder">₱ <?php echo $transactionDetails["Tax"]; ?></h6>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Discount</h6>
-                            <h6 class="fw-bolder"><?php echo $transactionDetails["Discount"]; ?></h6>
+                            <h6 class="fw-bolder">₱ <?php echo $transactionDetails["Discount"]; ?></h6>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Total Amount</h>
-                            <h6 class="fw-bolder"><?php echo $transactionDetails["Total"]; ?></h6>
+                            <h6 class="fw-bolder">₱ <?php echo $transactionDetails["Total"]; ?></h6>
                         </div>
                         <hr>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Payment</h6>
-                            <h6 class="fw-bolder"><?php echo $transactionDetails["Payment"]; ?></h6>
+                            <h6 class="fw-bolder">₱ <?php echo $transactionDetails["Payment"]; ?></h6>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Change</h6>
-                            <h6 class="fw-bolder"><?php echo $transactionDetails["ChangeAmount"]; ?></h6>
+                            <h6 class="fw-bolder">₱ <?php echo $transactionDetails["ChangeAmount"]; ?></h6>
                         </div>
                     </div>
                 </div>
@@ -152,9 +150,7 @@ $stmt->close();
 <!-- //print by fyke -->
 <div id="printable" style="margin-top: -90px">
    <div>
-
    <!-- <div class="d-flex flex-row justify-content-between">
-
         <div>
             <h4 class="m-0 fw-bolder">Danielle Motors Parts</h4>
             <p class="m-0" style="font-size: 9px">Prenza 2, 3019 Marilao, Bulacan, Philippines</p>
@@ -164,7 +160,6 @@ $stmt->close();
     </div> -->
     <div>
     <!-- <hr style="margin: 0px; margin-top: 5px; margin-bottom: 5px"> -->
-
         
             <div>
                 <p class="fw-bolder" style="font-size: 12px; margin: 0px">Purchase Receipt</p>

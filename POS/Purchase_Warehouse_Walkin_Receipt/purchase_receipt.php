@@ -43,3 +43,16 @@ if ($result->num_rows > 0) {
 
 </body>
 </html>
+
+
+
+<?php include 'footer.php'?>
+<script>
+    function printDocument() {
+    window.print();
+}
+
+</script>
+
+</body>
+</html>
