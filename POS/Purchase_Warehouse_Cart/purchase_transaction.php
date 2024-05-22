@@ -19,6 +19,7 @@ $subtotal = isset($_POST['subtotal']) ? $_POST['subtotal'] : 0;
 $tax = isset($_POST['tax']) ? $_POST['tax'] : 0;
 $discount = isset($_POST['discount']) ? $_POST['discount'] : 0;
 $total = isset($_POST['total']) ? $_POST['total'] : 0;
+$itemDisc = isset($_POST['itemDisc']) ? $_POST['itemDisc'] : 0;
 $amountPayment = isset($_POST['amountPayment']) ? $_POST['amountPayment'] : 0;
 $change = isset($_POST['change']) ? $_POST['change'] : 0;
 $cartItems = isset($_POST['cartItems']) ? $_POST['cartItems'] : [];
@@ -44,10 +45,10 @@ if ($stmt->execute()) {
         $discount_type = isset($item['discountType']) && !empty($item['discountType']) ? $item['discountType'] : '₱';
         $total_amount = $item['totalAmount'];
         
-        $sql_cart = "INSERT INTO purchase_cart (ProductID, TransactionID, ProductName, Brand, Model, Quantity, Unit, SRP, Discount, DiscountType, TotalAmount, status) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
+        $sql_cart = "INSERT INTO purchase_cart (ProductID, TransactionID, ProductName, Brand, Model, Quantity, Unit, SRP, Discount, DiscountType, TotalAmount,itemDisc, status) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, 1)";
         $stmt_cart = $conn->prepare($sql_cart);
-        $stmt_cart->bind_param("sssssdssdds", $product_id, $transaction_id, $product_name, $brand, $model, $quantity, $unit, $srp, $discount, $discount_type, $total_amount);
+        $stmt_cart->bind_param("sssssdssddsd", $product_id, $transaction_id, $product_name, $brand, $model, $quantity, $unit, $srp, $discount, $discount_type, $total_amount,$itemDisc);
         $stmt_cart->execute();
     }
 

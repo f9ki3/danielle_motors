@@ -21,10 +21,10 @@
                 </form>
             </div>
             
-            <div class="ms-xxl-auto">
+            <!-- <div class="ms-xxl-auto">
             <a href="../Return_Warehouse" class="btn text-primary border border-primary" ><span class="fas fa-plus me-2"></span> Return Material</a>
                 <a href="../Return_Product" class="btn btn-primary " ><span class="fas fa-plus me-2"></span> Return Products</a>
-            </div>
+            </div> -->
             </div>
         </div>
         <div class="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-white border-top border-bottom border-200 position-relative top-1">
