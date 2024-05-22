@@ -10,22 +10,22 @@ echo '<form id="refundForm" action="process_return.php" method="post">';
 // Add the transactionID input field inside the form
 echo '<input type="hidden" name="transactionID" value="' . $transactionID . '">'; // Add this line
 echo '<input type="hidden" name="total_srp" value="' . $transactionDetails["Total"] . '">'; // Insert the hidden input field here
-echo '<table class="table">';
-echo '<thead>
-        <tr>
-            <th>Select</th>
-            <th>Product Name</th>
-            <th>Brand</th>
-            <th>Model</th>
-            <th>Quantity</th>
-            <th>Return Quantity</th>
-            <th>SRP</th>
-            <th>Refund Amount</th>
-            <th>Total Refund</th>
-            <th>Status</th>
-        </tr>
-      </thead>';
-echo '<tbody>';
+// echo '<table class="table">';
+// echo '<thead>
+//         <tr>
+//             <th>Select</th>
+//             <th>Product Name</th>
+//             <th>Brand</th>
+//             <th>Model</th>
+//             <th>Quantity</th>
+//             <th>Return Quantity</th>
+//             <th>SRP</th>
+//             <th>Refund Amount</th>
+//             <th>Total Refund</th>
+//             <th>Status</th>
+//         </tr>
+//       </thead>';
+// echo '<tbody>';
 
 // Check if any rows were returned
 if ($result->num_rows > 0) {
