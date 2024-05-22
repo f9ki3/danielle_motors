@@ -205,11 +205,11 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 }
                 if(strpos($session_permission, 'VIEW WAREHOUSE STOCKS') !== false) {
                 ?>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="../../Inventory/Warehouse/" data-bs-toggle="" aria-expanded="false">
                     <div class="d-flex align-items-center"><span class="nav-link-text">Warehouse</span></div>
                   </a>
-                </li>
+                </li> -->
                 <?php 
                 }
                 if(strpos($session_permission, 'MANAGE PRODUCT LIST') !== false) {
@@ -221,15 +221,15 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 </li>
                 <?php 
                 }
-                if(strpos($session_permission, 'MANAGE PRICELIST') !== false) {
-                ?>
-                <li class="nav-item">
-                  <a class="nav-link" href="../../Inventory/Price_List/" data-bs-toggle="" aria-expanded="false">
-                    <div class="d-flex align-items-center"><span class="nav-link-text">Price List</span></div>
-                  </a>
-                </li>
-                <?php 
-                }
+                // if(strpos($session_permission, 'MANAGE PRICELIST') !== false) {
+                // ?>
+                 <!-- <li class="nav-item">
+                //   <a class="nav-link" href="../../Inventory/Price_List/" data-bs-toggle="" aria-expanded="false">
+                //     <div class="d-flex align-items-center"><span class="nav-link-text">Price List</span></div>
+                //   </a>
+                // </li> -->
+                 <?php 
+                // }
                 ?>
               </ul>
             </div>

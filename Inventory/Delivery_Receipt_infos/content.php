@@ -61,7 +61,7 @@
 
     <div id="errorToast" class="toast hide bg-danger text-white" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header bg-danger text-white">
-            <strong class="me-auto">Success</strong>
+            <strong class="me-auto">Unsuccessful</strong>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
         <div class="toast-body bg-danger text-white">
