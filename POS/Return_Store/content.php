@@ -7,7 +7,7 @@
 <div id="content" style="display: none">
     <div class="row g-3 mb-4">
         <div class="col-auto">
-            <h2 class="mb-0">Return Store</h2>
+            <h2 class="mb-0"> Store</h2>
         </div>
     </div>
     <div id="products" data-list='{"valueNames":["transaction-code","price","category","tags","vendor","time","publish"],"page":5,"pagination":true}'>

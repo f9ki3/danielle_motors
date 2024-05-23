@@ -66,7 +66,7 @@ echo '</tbody>';
 echo '</table>';
 
 // Include the reason input and additional hidden fields
-echo '<input type="text" id="reason_input" name="reason" class="form-control" placeholder="Enter reason to return" required>';
+echo '<input type="text" id="reason_input" name="reason" class="form-control mb-2 w-50" placeholder="Enter reason to return" required>';
 echo '<input type="hidden" name="user_id" value="' . $user_id . '">';
 echo '<input type="hidden" name="branch_code" value="' . $branch_code . '">';
 echo '<input type="hidden" name="return_date" value="' . date('Y-m-d H:i:s') . '">';
@@ -81,9 +81,9 @@ function submitRefundForm(event) {
     
     // Retrieve values of input fields using JavaScript
     var reason = document.getElementById('reason_input').value;
-    var subtotal = document.getElementById('subtotal').innerText;
-    var refundAmount = document.getElementById('refund-amount').innerText;
-    var totalReflected = document.getElementById('total-reflected').innerText;
+    // var subtotal = document.getElementById('subtotal').innerText;
+    // var refundAmount = document.getElementById('refund-amount').innerText;
+    // var totalReflected = document.getElementById('total-reflected').innerText;
     
     // Now you can proceed to use these values as needed, such as displaying, validating, or submitting them
     
@@ -97,7 +97,7 @@ function submitRefundForm(event) {
 }
 </script>
 
-<script>
+<!-- <script>
 // JavaScript to compute the total refund
 function computeTotalRefund(element) {
     var row = element.closest('tr');
@@ -122,4 +122,4 @@ function updateRefundAmount() {
 }
 
 
-</script>
+</script> -->

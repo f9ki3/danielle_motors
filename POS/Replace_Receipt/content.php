@@ -85,25 +85,11 @@ $stmt->close();
                         </table>
                     </div>
                     <div class="w-100 d-flex justify-content-end">
-                        <div class="w-50 border rounded p-4 mb-3">
-                            <div style="display: flex; flex-direction: row; justify-content: space-between">
-                                <h5 class="fw-bolder">Subtotal</h5>
-                                <h5 class="fw-bolder" id="subtotal"><?php echo $transactionDetails["Subtotal"]; ?></h5>
-                            </div>
-                            <div style="display: flex; flex-direction: row; justify-content: space-between">
-                                <h5 class="fw-bolder">Refund Amount</h5>
-                                <h5 class="fw-bolder" id="refund-amount">0.00</h5>
-                            </div>
-                            <div style="display: flex; flex-direction: row; justify-content: space-between">
-                                <h5 class="fw-bolder">Total Reflected</h5>
-                                <h5 class="fw-bolder" id="total-reflected"><?php echo $transactionDetails["Total"]; ?></h5>
-                            </div>
-                            <!-- <hr>
-                            <input type="text" id="reason" name="reason" class="form-control" placeholder="Enter Reason to return" required> -->
-                            <div class="d-flex flex-row mt-3">
-                            <button id="refundBtn" class="w-100 me-2 btn btn-primary border border-primary btn-sm print" onclick="submitRefundForm(event)">Replacement</button>
+                            <hr>
+                            <div class="d-flex flex-row mt-3 w-30">
+                            <button id="refundBtn" class="w-100 me-2 mt-2 mb-3 btn btn-primary border border-primary btn-sm print" onclick="submitRefundForm(event)">Replacement</button>
                             </div>   
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>
