@@ -75,7 +75,7 @@ echo '</form>';
 ?>
 
 <script>
-    // JavaScript function to handle form submission
+ // JavaScript function to handle form submission
     function submitRefundForm(event) {
         event.preventDefault();
         
@@ -110,4 +110,4 @@ echo '</form>';
             }
         });
     }
-</script>
+    </script>

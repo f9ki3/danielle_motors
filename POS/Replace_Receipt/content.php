@@ -76,7 +76,7 @@ $stmt->close();
                                 <th width="10%">Brand</th>
                                 <th width="15%">Model</th>
                                 <th width="5%">Qty</th>
-                                <th width="10%">Replace Qty</th>
+                                <th width="10%">Return Qty</th>
                                 <th width="10%">Status</th>
                             </tr>
                             <tbody class="list" id="products-table-body">

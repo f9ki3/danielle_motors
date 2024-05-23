@@ -12,6 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $status = $_POST['status'];
     $transactionID = $_POST['transactionID']; // Fetch transactionID from the form
 
+    $all_success = true; // Flag to track the overall success of the operation
+    $error_message = ''; // Variable to store error messages
 
     // Loop through the product_ids and process only the checked products
     foreach($product_ids as $index => $product_id) {
@@ -31,11 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt_update_cart->bind_param("is", $product_id, $transactionID);
                 $stmt_update_cart->execute();
                 $stmt_update_cart->close();
-                echo "New return record created successfully";
-                header("Location: ");
-                exit(); // Ensure no further execution of PHP script after redirection
             } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
+                $all_success = false;
+                $error_message = "Error: " . $sql . "<br>" . $conn->error;
+                break; // Stop the loop if there's an error
             }
         } else {
             // If the product is unchecked, update status to 1
@@ -45,6 +46,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt_update_cart->execute();
             $stmt_update_cart->close();
         }
+    }
+
+    if ($all_success) {
+        echo "<script>
+                swal({
+                    title: 'Success!',
+                    text: 'New return record created successfully.',
+                    icon: 'success'
+                }).then(() => {
+                    window.location.href = '../Replace_Receipt/?transaction_code=$transactionID';
+                });
+              </script>";
+    } else {
+        echo "<script>
+                swal({
+                    title: 'Error!',
+                    text: '$error_message',
+                    icon: 'error'
+                });
+              </script>";
     }
 }
 $conn->close();
