@@ -114,71 +114,59 @@ date_default_timezone_set('Asia/Manila');
           dataType: 'json',
           success: function(json) {
             console.log(json);
-            var weekly_expenses = [];
-            for (var i = 0; i < json.expenses.length; i++) {
-                var result = json.expenses[i] + json.delivery[i];
-                weekly_expenses.push(result);
-            }
-
             var profit = [];
             for (var i = 0; i < json.sales.length; i++) {
-                var result = json.sales[i] - weekly_expenses[i];
+                var result = json.sales[i] - json.delivery[i];
                 profit.push(result);
             }
 
             var options = {
-                chart: {
-                    type: 'bar',
-                    height: 400,
-                    stacked: true,
-                    toolbar: {
-                        show: true
-                    },
-                    zoom: {
-                        enabled: true
-                    }
-                },
-                plotOptions: {
-                    bar: {
-                        horizontal: false,
-                        borderRadius: 10
-                    },
-                },
-                series: [{
-                    name: 'Sales',
-                    data: json.sales
-                }, {
-                    name: 'Expenses',
-                    data: weekly_expenses
-                }, {
-                    name: 'Profit',
-                    data: profit
-                }],
-                xaxis: {
-                    categories: json.date,
-                },
-                yaxis: {
-                  decimalsInFloat: 2
-                },
-                legend: {
-                    position: 'top',
-                    horizontalAlign: 'left',
-                    offsetX: 40
-                },
-                fill: {
-                    opacity: 1
-                },
-                tooltip: {
-                    y: {
-                        formatter: function (val) {
-                            return "₱" + val.toLocaleString();
-                        }
-                    }
-                },
-                colors: ['#008FFB', '#FF0000', '#00E396'],
-                dataLabels: {
-                    enabled: false
+              series: [{
+              name: 'Sales',
+              data: json.sales
+            }, {
+              name: 'Capital',
+              data: json.delivery
+            }, {
+              name: 'Profit',
+              data: profit
+            }],
+              chart: {
+              type: 'bar',
+              height: 350
+            },
+            plotOptions: {
+              bar: {
+                horizontal: false,
+                columnWidth: '55%',
+                endingShape: 'rounded'
+              },
+            },
+            colors: ['#0000FF', '#FF0000', '#00FF00'],
+            dataLabels: {
+              enabled: false
+            },
+            dataLabels: {
+              enabled: false
+            },
+            stroke: {
+              show: true,
+              width: 2,
+              colors: ['transparent']
+            },
+            xaxis: {
+              categories: json.date,
+            },
+            fill: {
+              opacity: 1
+            },
+            tooltip: {
+              y: {
+                formatter: function (val) {
+                  return "₱ " + val.toLocaleString();
                 }
+              }
+            }
             };
             
             var chart = new ApexCharts($("#weekly-chart")[0], options);
@@ -200,7 +188,7 @@ date_default_timezone_set('Asia/Manila');
             var options = {
                 series: [json.transactions, json.materials, json.delivery, json.users, json.suppliers],
                 chart: {
-                type: 'polarArea',
+                type: 'pie',
               },
               labels: ['Transactions', 'Material Transfers', 'Deliveries', 'Users', 'Suppliers'],
               stroke: {
