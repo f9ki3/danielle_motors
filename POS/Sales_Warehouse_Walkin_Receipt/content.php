@@ -79,6 +79,7 @@ $stmt->close();
                                     <th width="5%">Qty</th>
                                     <th width="5%">Unit</th>
                                     <th width="5%">SRP</th>
+                                    <th width="5%">Item Amount</th>
                                     <th width="5%">Discount Type</th>
                                     <th width="5%">Discount</th>
                                     <th width="5%">Total Amount</th>
@@ -95,6 +96,7 @@ $stmt->close();
             
                                     // Output data of each row
                                     while($row = $result->fetch_assoc()) {
+                                        $paidAmount = $row["TotalAmount"] / $row["Quantity"]; // Calculate PaidAmount
                                         echo "<tr>";
                                         echo "<td>" . $row["ProductName"] . "</td>";
                                         echo "<td>" . $row["Brand"] . "</td>";
@@ -102,6 +104,7 @@ $stmt->close();
                                         echo "<td>" . $row["Quantity"] . "</td>";
                                         echo "<td>" . $row["Unit"] . "</td>";
                                         echo "<td>" . $row["SRP"] . "</td>";
+                                        echo "<td>₱ " . number_format($paidAmount, 2) . "</td>"; // Display PaidAmount
                                         echo "<td>" . $row["DiscountType"] . "</td>";
                                         echo "<td>" . $row["Discount"] . "</td>";
                                         echo "<td>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency

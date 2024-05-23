@@ -66,7 +66,7 @@ echo '</tbody>';
 echo '</table>';
 
 // Include the reason input and additional hidden fields
-echo '<input type="text" id="reason_input" name="reason" class="form-control mb-2 w-50" placeholder="Enter reason to return" required>';
+echo '<input type="text" id="reason_input" name="reason" class="form-control mb-2 w-100" placeholder="Enter reason to return" required>';
 echo '<input type="hidden" name="user_id" value="' . $user_id . '">';
 echo '<input type="hidden" name="branch_code" value="' . $branch_code . '">';
 echo '<input type="hidden" name="return_date" value="' . date('Y-m-d H:i:s') . '">';

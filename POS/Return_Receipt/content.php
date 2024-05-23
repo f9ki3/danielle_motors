@@ -70,7 +70,7 @@ $stmt->close();
                     </div>
                     <div class="container" style="height: 500px; overflow-y: auto;">
                         <table class="table">
-                            <tr>
+                            <!-- <tr>
                                 <th width="5%">Checkbox</th>
                                 <th width="15%">Product name</th>
                                 <th width="10%">Brand</th>
@@ -81,7 +81,7 @@ $stmt->close();
                                 <th width="10%">Refund Amount</th>
                                 <th width="10%">Total Refund</th>
                                 <th width="10%">Status</th>
-                            </tr>
+                            </tr> -->
                             <tbody class="list" id="products-table-body">
                                 <?php include 'return_receipt.php'?>
                             </tbody>
