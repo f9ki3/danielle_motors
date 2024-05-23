@@ -27,21 +27,27 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 
+// Fetch the status
+$status = $transactionDetails["status"];
+
 // Close statement
 $stmt->close();
-
 ?>
+
+<script>
+// Pass the status to JavaScript
+var purchaseStatus = <?php echo $status; ?>;
+</script>
 
 
 
 <div style="width: 100%;" class="print_hide" >
     <div>
-
         <div style=" height: auto" class=" w-100 transact">
             <h2 class="mb-3">Purchase Store</h2>
             <div class="row">
                 <div>
-                <div class="w-100 border rounded p-3 mb-3">
+                    <div class="w-100 border rounded p-3 mb-3">
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <div class="w-50 p-1">
                                 <h6 class="fw-bolder">Customer Name: <?php echo $transactionDetails["CustomerName"]; ?></h6>
@@ -51,10 +57,10 @@ $stmt->close();
                                 <div style="display: flex; flex-direction: row; justify-content: space-between">
                                     <h6 class="fw-bolder">Receipt No: <?php  echo preg_replace('/[^0-9]/', '', $transactionID)?></h6>
                                     <div>
-                                    <button id="originalBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="ReturnStatus()">Return</button>
-                                    <button id="originalBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="ReplaceStatus()">Replace</button>
-                                    <button id="originalBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="printDocument()">Print</button>
-                                    <a href="../Sales_Warehouse" class="btn btn-primary btn-sm back">Back</a>
+                                        <button id="returnBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="ReturnStatus()">Return</button>
+                                        <button id="replaceBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="ReplaceStatus()">Replace</button>
+                                        <button id="originalBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="printDocument()">Print</button>
+                                        <a href="../Sales_Warehouse" class="btn btn-primary btn-sm back">Back</a>
                                     </div>
                                 </div>
                                 <p>Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
@@ -67,7 +73,7 @@ $stmt->close();
                             <div style="width: 35%">Inspected by: <?php echo $transactionDetails["TransactionInspectedBy"]; ?></div>
                             <div style="width: 35%">Verified by: <?php echo $transactionDetails["TransactionVerifiedBy"]; ?></div>
                         </div>
-                </div>
+                    </div>
                 <div class="container" style="height: 350px; overflow-y: auto;"> <!-- Adjusted height and added overflow-y: auto; -->
                     <!-- <div class="w-100 border rounded p-3 mb-1 cart table-responsive">
                         <table class="table table-bordered table-striped"> -->
@@ -356,89 +362,93 @@ $stmt->close();
 </div>
 
 <script>
-function ReturnStatus() {
-    // Get the transaction code from the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const transactionID = urlParams.get('transaction_code');
+    // Disable the buttons if the status is not 1
+    if (purchaseStatus != 1) {
+        document.getElementById("returnBtn").disabled = true;
+        document.getElementById("replaceBtn").disabled = true;
+    }
 
-    // Display confirmation dialog
-    Swal.fire({
-        title: 'Are you sure?',
-        text: 'This action will mark the return status as pending. Do you want to proceed?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, mark as pending',
-        cancelButtonText: 'No, cancel',
-        reverseButtons: true 
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // If user confirms, execute the update_status.php script
-            $.ajax({
-                url: 'update_status.php',
-                type: 'POST',
-                data: { transaction_code: transactionID },
-                success: function(response) {
-                    // Handle the response from update_status.php
-                    if (response.success) { // Check if response exists and contains success property
-                        Swal.fire('Success!', 'Return status marked as pending.', 'success');
-                        // Refresh the page after showing the success message
-                        window.location.reload();
-                    } else {
-                        Swal.fire('Success!', 'Return status marked as pending.', 'success');
-                        // Swal.fire('Error!', 'Failed to mark return status as pending.', 'error');
+    function ReturnStatus() {
+        // Get the transaction code from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const transactionID = urlParams.get('transaction_code');
+
+        // Display confirmation dialog
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'This action will mark the return status as pending. Do you want to proceed?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, mark as pending',
+            cancelButtonText: 'No, cancel',
+            reverseButtons: true 
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If user confirms, execute the update_status.php script
+                $.ajax({
+                    url: 'update_status.php',
+                    type: 'POST',
+                    data: { transaction_code: transactionID },
+                    success: function(response) {
+                        // Handle the response from update_status.php
+                        if (response.success) { // Check if response exists and contains success property
+                            Swal.fire('Success!', 'Return status marked as pending.', 'success');
+                            // Refresh the page after showing the success message
+                            window.location.reload();
+                        } else {
+                            Swal.fire('Success!', 'Return status marked as pending.', 'success');
+                            // Swal.fire('Error!', 'Failed to mark return status as pending.', 'error');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle any errors that occurred during the request
+                        console.error('AJAX Error:', status, error);
+                        Swal.fire('Error!', 'Failed to mark return status as pending.', 'error');
                     }
-                },
-                error: function(xhr, status, error) {
-                    // Handle any errors that occurred during the request
-                    console.error('AJAX Error:', status, error);
-                    Swal.fire('Error!', 'Failed to mark return status as pending.', 'error');
-                }
-            });
-        }
-    });
-}
-</script>
+                });
+            }
+        });
+    }
 
-<script>
-function ReplaceStatus() {
-    // Get the transaction code from the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const transactionID = urlParams.get('transaction_code');
+    function ReplaceStatus() {
+        // Get the transaction code from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const transactionID = urlParams.get('transaction_code');
 
-    // Display confirmation dialog
-    Swal.fire({
-        title: 'Are you sure?',
-        text: 'This action will mark the replace status as pending. Do you want to proceed?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, mark as pending',
-        cancelButtonText: 'No, cancel',
-        reverseButtons: true 
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // If user confirms, execute the update_status_replace.php script
-            $.ajax({
-                url: 'update_status_replace.php', // Change the URL to your PHP script for updating status to "Replace"
-                type: 'POST',
-                data: { transaction_code: transactionID },
-                success: function(response) {
-                    // Handle the response from update_status_replace.php
-                    if (response.success) { // Check if response exists and contains success property
-                        Swal.fire('Success!', 'Replace status marked as pending.', 'success');
-                        // Refresh the page after showing the success message
-                        window.location.reload();
-                    } else {
-                        Swal.fire('Success!', 'Replace status marked as pending.', 'success');
-                        // Swal.fire('Error!', 'Failed to mark replace status as pending.', 'error');
+        // Display confirmation dialog
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'This action will mark the replace status as pending. Do you want to proceed?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, mark as pending',
+            cancelButtonText: 'No, cancel',
+            reverseButtons: true 
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If user confirms, execute the update_status_replace.php script
+                $.ajax({
+                    url: 'update_status_replace.php', // Change the URL to your PHP script for updating status to "Replace"
+                    type: 'POST',
+                    data: { transaction_code: transactionID },
+                    success: function(response) {
+                        // Handle the response from update_status_replace.php
+                        if (response.success) { // Check if response exists and contains success property
+                            Swal.fire('Success!', 'Replace status marked as pending.', 'success');
+                            // Refresh the page after showing the success message
+                            window.location.reload();
+                        } else {
+                            Swal.fire('Success!', 'Replace status marked as pending.', 'success');
+                            // Swal.fire('Error!', 'Failed to mark replace status as pending.', 'error');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle any errors that occurred during the request
+                        console.error('AJAX Error:', status, error);
+                        Swal.fire('Error!', 'Failed to mark replace status as pending.', 'error');
                     }
-                },
-                error: function(xhr, status, error) {
-                    // Handle any errors that occurred during the request
-                    console.error('AJAX Error:', status, error);
-                    Swal.fire('Error!', 'Failed to mark replace status as pending.', 'error');
-                }
-            });
-        }
-    });
-}
+                });
+            }
+        });
+    }
 </script>
