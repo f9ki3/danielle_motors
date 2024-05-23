@@ -365,7 +365,8 @@ function ReturnStatus() {
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes, mark as pending',
-        cancelButtonText: 'No, cancel'
+        cancelButtonText: 'No, cancel',
+        reverseButtons: true 
     }).then((result) => {
         if (result.isConfirmed) {
             // If user confirms, execute the update_status.php script
@@ -408,7 +409,8 @@ function ReplaceStatus() {
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes, mark as pending',
-        cancelButtonText: 'No, cancel'
+        cancelButtonText: 'No, cancel',
+        reverseButtons: true 
     }).then((result) => {
         if (result.isConfirmed) {
             // If user confirms, execute the update_status_replace.php script

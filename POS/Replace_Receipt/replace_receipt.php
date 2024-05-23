@@ -75,51 +75,39 @@ echo '</form>';
 ?>
 
 <script>
-// JavaScript function to handle form submission
-function submitRefundForm(event) {
-    event.preventDefault();
-    
-    // Retrieve values of input fields using JavaScript
-    var reason = document.getElementById('reason_input').value;
-    // var subtotal = document.getElementById('subtotal').innerText;
-    // var refundAmount = document.getElementById('refund-amount').innerText;
-    // var totalReflected = document.getElementById('total-reflected').innerText;
-    
-    // Now you can proceed to use these values as needed, such as displaying, validating, or submitting them
-    
-    // For demonstration purposes, you can alert the values
-    // alert("reason: " + reason + "\nSubtotal: " + subtotal + "\nRefund Amount: " + refundAmount + "\nTotal Reflected: " + totalReflected);
-    if (reason === '') {
-        alert('Please enter a reason for the return.');
-        return;
+ // JavaScript function to handle form submission
+    function submitRefundForm(event) {
+        event.preventDefault();
+        
+        // Retrieve values of input fields using JavaScript
+        var reason = document.getElementById('reason_input').value;
+        // var subtotal = document.getElementById('subtotal').innerText;
+        // var refundAmount = document.getElementById('refund-amount').innerText;
+        // var totalReflected = document.getElementById('total-reflected').innerText;
+        
+        // Now you can proceed to use these values as needed, such as displaying, validating, or submitting them
+        
+        // For demonstration purposes, you can alert the values
+        // alert("reason: " + reason + "\nSubtotal: " + subtotal + "\nRefund Amount: " + refundAmount + "\nTotal Reflected: " + totalReflected);
+        
+        if (reason === '') {
+            // Display SweetAlert warning for empty reason
+            swal("Warning!", "Please enter a reason for the return.", "warning");
+            return;
+        }
+        
+        // Display SweetAlert confirmation before form submission
+        swal({
+            title: "Are you sure?",
+            text: "Do you want to proceed with the return?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willSubmit) => {
+            if (willSubmit) {
+                // If user confirms, submit refund form
+                document.getElementById('refundForm').submit();
+            }
+        });
     }
-    document.getElementById('refundForm').submit();
-}
-</script>
-
-<!-- <script>
-// JavaScript to compute the total refund
-function computeTotalRefund(element) {
-    var row = element.closest('tr');
-    var quantityReturn = row.querySelector('.quantity-return').value;
-    var refundAmount = row.querySelector('.refund-amount').value;
-    var totalRefund = quantityReturn * refundAmount;
-    row.querySelector('.total-refund').innerText = '₱' + totalRefund.toFixed(2);
-    row.querySelector('input[name="total_refund_amount[]"]').value = totalRefund;
-
-    // Update refund amount display
-    updateRefundAmount();
-}
-
-// Function to update the refund amount display
-function updateRefundAmount() {
-    var refundAmounts = document.querySelectorAll('.total-refund');
-    var totalRefund = 0;
-    refundAmounts.forEach(function(amount) {
-        totalRefund += parseFloat(amount.innerText.replace('₱', '')) || 0;
-    });
-    document.getElementById('refund-amount').innerText = '₱' + totalRefund.toFixed(2);
-}
-
-
-</script> -->
+    </script>
