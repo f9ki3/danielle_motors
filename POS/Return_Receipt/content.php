@@ -91,7 +91,7 @@ $stmt->close();
                         <div class="w-50 border rounded p-4 mb-3">
                             <div style="display: flex; flex-direction: row; justify-content: space-between">
                                 <h5 class="fw-bolder">Subtotal</h5>
-                                <h5 class="fw-bolder" id="subtotal"><?php echo $transactionDetails["Subtotal"]; ?></h5>
+                                <h5 class="fw-bolder" id="subtotal">₱<?php echo $transactionDetails["Subtotal"]; ?></h5>
                             </div>
                             <div style="display: flex; flex-direction: row; justify-content: space-between">
                                 <h5 class="fw-bolder">Refund Amount</h5>
