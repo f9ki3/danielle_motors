@@ -116,8 +116,9 @@ date_default_timezone_set('Asia/Manila');
             console.log(json);
             var profit = [];
             for (var i = 0; i < json.sales.length; i++) {
-                var result = json.sales[i] - json.delivery[i];
-                profit.push(result);
+              var capital = json.delivery[i] || 0;
+              var result = json.sales[i] - capital;
+              profit.push(result);
             }
 
             var options = {
