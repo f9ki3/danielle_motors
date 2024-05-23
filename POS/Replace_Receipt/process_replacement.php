@@ -32,8 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt_update_cart->execute();
                 $stmt_update_cart->close();
                 echo "New return record created successfully";
-                header("Location: ");
-                exit(); // Ensure no further execution of PHP script after redirection
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
