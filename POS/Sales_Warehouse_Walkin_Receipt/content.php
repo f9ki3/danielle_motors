@@ -49,7 +49,7 @@ $stmt->close();
                             </div>
                             <div class=" w-50 p-1">
                                 <div style="display: flex; flex-direction: row; justify-content: space-between">
-                                    <h6 class="fw-bolder">Receipt No: <?php echo $transactionID?></h6>
+                                    <h6 class="fw-bolder">Receipt No: <?php  echo preg_replace('/[^0-9]/', '', $transactionID)?></h6>
                                     <div>
                                     <button id="originalBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="ReturnStatus()">Pending return</button>
                                     <button id="originalBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="printDocument()">Print</button>
@@ -155,7 +155,7 @@ $stmt->close();
 <div id="printable" style="margin-top: -90px">
    <div>
 
-   <!-- <div class="d-flex flex-row justify-content-between">
+   <div class="d-flex flex-row justify-content-between">
 
         <div>
             <h4 class="m-0 fw-bolder">Danielle Motors Parts</h4>
@@ -163,9 +163,9 @@ $stmt->close();
             <p class="m-0" style="font-size: 9px">dmp@gmail.com | 09120987768</p>
         </div>
         <img src="../../static/img/dmp_logo.png" style="width: 150px; margin-right: 60px;" alt="">
-    </div> -->
+    </div>
     <div>
-    <!-- <hr style="margin: 0px; margin-top: 5px; margin-bottom: 5px"> -->
+    <hr style="margin: 0px; margin-top: 5px; margin-bottom: 5px">
 
         
             <div>
@@ -176,7 +176,7 @@ $stmt->close();
                     <p class="m-0" style="font-size: 9px">Customer: <?php echo $transactionDetails["CustomerName"]; ?></p>
                 </div>
                 <div style="width: 30%">
-                    <p class="m-0" style="font-size: 9px">Invoice No: <?php echo $transactionID; ?></p>
+                    <p class="m-0" style="font-size: 9px">Invoice No: <?php  echo preg_replace('/[^0-9]/', '', $transactionID) ?></p>
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-between">
