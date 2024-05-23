@@ -48,13 +48,6 @@
         setInterval(loadNotification, 5000); // Refresh every 5 seconds (adjust the interval as needed)
     });
 </script>
-<script>
-    // Simulating content loading delay
-    setTimeout(function() {
-        // Replace spinner with actual content
-        document.getElementById('initialContent').style.display = 'none';
-        document.getElementById('actualContent').style.display = 'block';
-    }, 1500); // Change 3000 to the actual loading time in milliseconds
-</script>
+
 
 
