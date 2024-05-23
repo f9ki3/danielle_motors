@@ -10,7 +10,7 @@ if ($conn->connect_error) {
 $transactionID = $_GET['transaction_code'];
 
 // Prepare and bind SQL statement
-$stmt = $conn->prepare("SELECT * FROM purchase_transactions WHERE TransactionID = ? AND status != 1");
+$stmt = $conn->prepare("SELECT * FROM purchase_transactions WHERE TransactionID = ? AND status = 5");
 $stmt->bind_param("s", $transactionID);
 
 // Execute the statement
@@ -40,7 +40,7 @@ $stmt->close();
 <div style="width: 100%;" class="print_hide" >
     <div>
         <div style="height: auto" class="w-100 transact">
-            <h2 class="mb-3">Return Items</h2>
+            <h2 class="mb-3">Replace Items</h2>
             <div class="row">
                 <div>
                     <div class="w-100 border rounded p-3 mb-3">
@@ -77,13 +77,10 @@ $stmt->close();
                                 <th width="15%">Model</th>
                                 <th width="5%">Qty</th>
                                 <th width="10%">Return Qty</th>
-                                <th width="10%">SRP</th>
-                                <th width="10%">Refund Amount</th>
-                                <th width="10%">Total Refund</th>
                                 <th width="10%">Status</th>
                             </tr>
                             <tbody class="list" id="products-table-body">
-                                <?php include 'return_receipt.php'?>
+                                <?php include 'replace_receipt.php'?>
                             </tbody>
                         </table>
                     </div>
@@ -104,7 +101,7 @@ $stmt->close();
                             <!-- <hr>
                             <input type="text" id="reason" name="reason" class="form-control" placeholder="Enter Reason to return" required> -->
                             <div class="d-flex flex-row mt-3">
-                            <button id="refundBtn" class="w-100 me-2 btn btn-primary border border-primary btn-sm print" onclick="submitRefundForm(event)">Refund</button>
+                            <button id="refundBtn" class="w-100 me-2 btn btn-primary border border-primary btn-sm print" onclick="submitRefundForm(event)">Replacement</button>
                             </div>   
                         </div>
                     </div>
