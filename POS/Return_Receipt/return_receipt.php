@@ -116,10 +116,10 @@ function submitRefundForm(event) {
 function computeTotalRefund(element) {
     var row = element.closest('tr');
     var quantityReturn = row.querySelector('.quantity-return').value;
-    var refundAmount = row.querySelector('.refund-amount').value;
-    var totalRefund = quantityReturn * refundAmount;
-    row.querySelector('.total-refund').innerText = '₱' + totalRefund.toFixed(2);
-    row.querySelector('input[name="total_refund_amount[]"]').value = totalRefund;
+    var srp = row.querySelector('td:nth-child(7)').innerText; // Get SRP from the table cell
+    var refundAmount = (quantityReturn * (srp / row.querySelector('td:nth-child(5)').innerText)).toFixed(2); // Calculate refund amount based on SRP and quantity
+    row.querySelector('.total-refund').innerText = '₱' + refundAmount;
+    row.querySelector('input[name="total_refund_amount[]"]').value = refundAmount;
 
     // Update refund amount display
     updateRefundAmount();
@@ -135,5 +135,4 @@ function updateRefundAmount() {
     document.getElementById('refund-amount').innerText = '₱' + totalRefund.toFixed(2);
 }
 
-
-</script>
+    </script>

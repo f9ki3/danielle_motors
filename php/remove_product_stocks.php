@@ -10,7 +10,7 @@ if (isset($_POST['productId'], $_POST['qty_sent'])) {
     // Initialize variables to keep track of remaining quantity
     $remaining_quantity = $quantity;
 
-    $stocks_sql = "SELECT * FROM stocks WHERE product_id = '$product_id' AND branch_code='WAREHOUSE' ORDER BY rack_loc_id ASC";
+    $stocks_sql = "SELECT * FROM stocks WHERE product_id = '$product_id' AND branch_code='DMP 000' ORDER BY rack_loc_id ASC";
     $stocks_res = $conn->query($stocks_sql);
 
     if ($stocks_res->num_rows > 0) {
@@ -33,7 +33,7 @@ if (isset($_POST['productId'], $_POST['qty_sent'])) {
             $new_pending_order = $pending_order + $deducted_quantity;
 
             // Update the pending order for this rack
-            $update_pending_order = "UPDATE stocks SET pending_order = '$new_pending_order' WHERE product_id = '$product_id' AND rack_loc_id = '$rack_loc' AND branch_code='WAREHOUSE'";
+            $update_pending_order = "UPDATE stocks SET pending_order = '$new_pending_order' WHERE product_id = '$product_id' AND rack_loc_id = '$rack_loc' AND branch_code='DMP 000'";
             $conn->query($update_pending_order);
 
             // Update remaining quantity

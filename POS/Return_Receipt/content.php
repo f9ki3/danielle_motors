@@ -77,7 +77,7 @@ $stmt->close();
                                 <th width="15%">Model</th>
                                 <th width="5%">Qty</th>
                                 <th width="10%">Return Qty</th>
-                                <th width="10%">SRP</th>
+                                <th width="10%">Paid Amount</th>
                                 <th width="10%">Refund Amount</th>
                                 <th width="10%">Total Refund</th>
                                 <th width="10%">Status</th>
@@ -152,54 +152,6 @@ $stmt->close();
                     <p class="m-0" style="font-size: 12px">Transaction Type: <?php echo $transactionDetails["TransactionType"]; ?></p>
                 </div>
             </div>
-        </div>
-        
-        <!-- Cart details -->
-        <div class="w-100 p-2 mb-3 rounded border mt-3 cart">
-            <table class="table">
-                <tr>
-                    <th width="35%" style="font-size: 12px">Product name</th>
-                    <th width="5%" style="font-size: 12px">Qty</th>
-                    <th width="5%" style="font-size: 12px">SRP</th>
-                    <th width="5%" style="font-size: 12px">Discount</th>
-                    <th width="10%" style="font-size: 12px">Amount</th>
-                </tr>
-                <!-- make a loop data here from data set -->
-                <?php 
-                // SQL query to retrieve cart items for the given transaction ID
-                $sql = "SELECT * FROM purchase_cart WHERE TransactionID = '$transactionID'";
-                $result = $conn->query($sql);
-
-                // Check if any rows were returned
-                if ($result->num_rows > 0) {
-                    // Output data of each row
-                    while($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td style='font-size: 12px'>" . $row["ProductName"] .", ". $row["Brand"] .", ". $row["Model"] .", ".$row["Unit"] . "</td>";
-                        echo "<td style='font-size: 12px'>" . $row["Quantity"] . "</td>";
-                        echo "<td style='font-size: 12px'>₱ " . number_format($row["SRP"], 2) . "</td>";
-                        echo "<td style='font-size: 12px'>";
-                        if ($row["Discount"] == 0.00) {
-                            echo "-";
-                        } else {
-                            $discount = $row["Discount"];
-                            if (is_int($discount) || floor($discount) == $discount) {
-                                echo (int)$discount;
-                            } else {
-                                echo number_format($discount, 2);
-                            }
-                            echo " " . $row["DiscountType"];
-                        }
-                        echo "</td>";
-                        echo "<td style='font-size: 12px'>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "0 results";
-                }
-                ?>
-                <!-- end loop -->
-            </table>
         </div>
         
         <div class="border rounded p-3 mt-9">
