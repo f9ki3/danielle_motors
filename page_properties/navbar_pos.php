@@ -85,12 +85,12 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                   <span class="nav-link-text-wrapper"><span class="nav-link-text">Store Sales</span></span>
                 </div>
               </a>
-              <a class="nav-link <?php if($current_folder === "Store_Reports" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Sales_Report" role="button" data-bs-toggle="" aria-expanded="false">
+              <!-- <a class="nav-link <?php if($current_folder === "Store_Reports" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Sales_Report" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
                   <span class="nav-link-icon"><span data-feather="trending-up"></span></span>
                   <span class="nav-link-text-wrapper"><span class="nav-link-text">Store Reports</span></span>
                 </div>
-              </a>
+              </a> -->
               
             </div>
           </li>

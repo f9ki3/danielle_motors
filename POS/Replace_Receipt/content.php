@@ -143,7 +143,7 @@ $stmt->close();
                 <tr>
                     <th width="35%" style="font-size: 12px">Product name</th>
                     <th width="5%" style="font-size: 12px">Qty</th>
-                    <th width="5%" style="font-size: 12px">SRP</th>
+                    <th width="5%" style="font-size: 12px">Paid Amount</th>
                     <th width="5%" style="font-size: 12px">Discount</th>
                     <th width="10%" style="font-size: 12px">Amount</th>
                 </tr>
@@ -157,10 +157,11 @@ $stmt->close();
                 if ($result->num_rows > 0) {
                     // Output data of each row
                     while($row = $result->fetch_assoc()) {
+                        $paidAmount = $row["TotalAmount"] / $row["Quantity"]; // Calculate PaidAmount
                         echo "<tr>";
                         echo "<td style='font-size: 12px'>" . $row["ProductName"] .", ". $row["Brand"] .", ". $row["Model"] .", ".$row["Unit"] . "</td>";
                         echo "<td style='font-size: 12px'>" . $row["Quantity"] . "</td>";
-                        echo "<td style='font-size: 12px'>₱ " . number_format($row["SRP"], 2) . "</td>";
+                        echo "<td>₱ " . number_format($paidAmount, 2) . "</td>"; // Display PaidAmount
                         echo "<td style='font-size: 12px'>";
                         if ($row["Discount"] == 0.00) {
                             echo "-";
