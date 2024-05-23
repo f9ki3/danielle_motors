@@ -2,11 +2,11 @@
 include "../../database/database.php";
 
 // Fetch cart items for the given transaction ID
-$sql = "SELECT * FROM purchase_cart WHERE TransactionID = '$transactionID' AND status NOT IN ('1', '5', '4')";
+$sql = "SELECT * FROM purchase_cart WHERE TransactionID = '$transactionID' AND status NOT IN ('1', '2', '3')";
 $result = $conn->query($sql);
 
 // Display the form with table
-echo '<form id="refundForm" action="process_return.php" method="post">';
+echo '<form id="refundForm" action="process_replacement.php" method="post">';
 // Add the transactionID input field inside the form
 echo '<input type="hidden" name="transactionID" value="' . $transactionID . '">'; // Add this line
 echo '<input type="hidden" name="total_srp" value="' . $transactionDetails["Total"] . '">'; // Insert the hidden input field here
@@ -33,7 +33,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo "<tr>";
         // Checkbox with onchange event to toggle quantity input field
-        if ($row['status'] == 2) {
+        if ($row['status'] == 5) {
             echo "<td><input type='checkbox' name='product_checkbox[]' value='{$row['ProductID']}' style='max-width: 50px; height: 50px'></td>";
         } else {
             echo "<td></td>";
@@ -45,13 +45,6 @@ if ($result->num_rows > 0) {
         echo "<td>{$row['Quantity']}</td>";
         // Styled input field for quantity return with max and min attributes to limit input
         echo "<td><input type='number' name='quantity_return[]' class='form-control quantity-return' min='0' max='{$row['Quantity']}' value='0' onchange='computeTotalRefund(this)'></td>";
-        echo "<td>{$row['SRP']}</td>";
-        // Styled input field for refund amount
-        echo "<td><input type='number' name='refund_amount[]' class='form-control refund-amount' min='0' max='{$row['SRP']}' value='{$row['SRP']}' onchange='computeTotalRefund(this)'></td>";
-        // Span to display the computed total refund amount
-        echo "<td><span class='total-refund'>₱0.00</span></td>";
-        // Hidden input field to store the total refund amount
-        echo "<input type='hidden' name='total_refund_amount[]' value='0'>";
 
         // Displaying the status column with interpretation
         $status_text = '';
@@ -59,8 +52,8 @@ if ($result->num_rows > 0) {
             case 1: $status_text = 'Complete'; break;
             case 2: $status_text = 'Pending'; break;
             case 3: $status_text = 'Refund'; break;
-            case 4: $status_text = 'Replace'; break;
-            case 5: $status_text = 'Void'; break;
+            case 4: $status_text = 'Replaced'; break;
+            case 5: $status_text = 'For Replacement'; break;
             default: $status_text = 'Unknown'; break;
         }
         echo "<td>{$status_text}</td>";
