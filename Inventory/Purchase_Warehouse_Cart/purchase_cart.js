@@ -6,6 +6,9 @@ function purchase() {
     // Get cart items from session storage
     var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
 
+    // Get branch code from hidden input
+    // var user_brn_code = document.getElementById('user_brn_code').value;
+
     // Get transaction details from form inputs
     var transaction_customer_name = document.getElementById('transaction_customer_name').value || '';
     var transaction_date = new Date().toISOString();
@@ -40,11 +43,9 @@ function purchase() {
         discount: subtotalDiscount,
         total: total,
         amountPayment: payment,
-        change: change
+        change: change,
+        // user_brn_code: user_brn_code // Include branch code here
     };
-
-    // console.log("Cart Items:", cartItems);
-    // console.log("Data to be sent:", data);
 
     // Send AJAX request to purchase_transaction.php
     $.ajax({
@@ -55,7 +56,7 @@ function purchase() {
             alertify.set('notifier', 'position', 'bottom-left');
             alertify.success('Successfully Purchased');
             let click = new Audio('success.mp3');
-            click.play()
+            click.play();
 
             console.log(transaction_code);
 
@@ -72,15 +73,14 @@ function purchase() {
 
             // Redirect to receipt page
             window.location.href = redirectURL;
-            
         },
         error: function(xhr, status, error) {
             console.error("Error:", error);
         }
     });
 
-    displayCartItems()
-    resetCart()
+    displayCartItems();
+    resetCart();
 }
 
 
@@ -154,6 +154,7 @@ function updateSubtotal() {
 }
 
 // Function to calculate and update subtotal discount, total, payment, and change
+// Function to calculate and update subtotal discount, total, payment, and change
 function updateValues() {
     // Get input values
     var subtotal = parseFloat(document.getElementById('subtotal').textContent.replace('₱ ', '').replace(/,/g, ''));
@@ -161,22 +162,6 @@ function updateValues() {
     var discountPercentage = parseFloat(discountPercentageInput.value);
     var amountPaymentInput = document.getElementById('amount_payment');
     var amountPayment = parseFloat(amountPaymentInput.value);
-
-    amountPaymentInput.addEventListener('input', function(event) {
-        // Retrieve the input value
-        var inputValue = event.target.value;
-    
-        // Split the input by decimal point
-        var parts = inputValue.split('.');
-        
-        // If there are more than one decimal points, remove the extra ones
-        if (parts.length > 2) {
-            // Join everything before the last item in parts array with the last item
-            inputValue = parts.slice(0, -1).join('') + '.' + parts[parts.length - 1];
-            // Update the input field value
-            event.target.value = inputValue;
-        }
-    });
 
     // Check if the input is null or exceeds 100, set it to 0 or 100 accordingly
     if (discountPercentage === null || isNaN(discountPercentage) || discountPercentage < 0) {
@@ -192,7 +177,7 @@ function updateValues() {
 
     // Update the input values
     discountPercentageInput.value = discountPercentage;
-   
+    amountPaymentInput.value = amountPayment;
 
     // Calculate subtotal discount
     var subtotalDiscount = subtotal * (discountPercentage / 100);
@@ -354,17 +339,13 @@ function updateCounter(count) {
                     <td>${item.brandName}</td>
                     <td>${item.unitName}</td>
                     <td>${item.totalStocks}</td>
-                    <td>₱ ${Intl.NumberFormat().format(item.srp)}</td>
+                    <td>₱ ${item.srp}</td>
                     <td>
-                        
-
-
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty - 1})">-</button>
-                            <input type="number" class="form-control w-75 text-center" value="${item.qty}" onchange="updateQuantity(${index}, this.value)" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(parseFloat(this.value) < 0) this.value = 1;" maxlength="7">
-                            <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty + 1})">+</button>
+                            <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty - 1}, ${item.totalStocks})">-</button>
+                            <input type="number" class="form-control w-75 text-center" value="${item.qty}" onchange="updateQuantity(${index}, this.value, ${item.totalStocks})" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(parseFloat(this.value) < 0) this.value = 1; if(parseFloat(this.value) > ${item.totalStocks}) this.value = ${item.totalStocks};" maxlength="7">
+                            <button type="button" class="btn btn-light" onclick="updateQuantity(${index}, ${item.qty + 1}, ${item.totalStocks})">+</button>
                         </div>
-
                 
                     </td>
                     <td>
@@ -475,40 +456,9 @@ function updateCounter(count) {
     }
 
 
-//prevent to exceed to totalStocks    
-//    // Function to update the quantity of an item in the cart
-//    function updateQuantity(index, newQuantity, totalStocks) {
-//     var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-//     // Create an audio element
-//     let click = new Audio('click_button.mp3'); // Replace 'click_button.mp3' with the actual path to your audio file
-
-//     if (!newQuantity || newQuantity <= 0) {
-//         // If the quantity is empty or zero, set it to one
-//         newQuantity = 1;
-//     }
-
-//     // Ensure that the quantity does not exceed the totalStocks limit
-//     newQuantity = Math.min(newQuantity, totalStocks);
-
-//     // Update the quantity of the specified item
-//     cartItems[index].qty = parseInt(newQuantity); // Update quantity
-
-//     // Recalculate total amount for the item considering the discount
-//     var discountAmount = (cartItems[index].discountType === "%") ? (cartItems[index].srp * cartItems[index].discount / 100) : cartItems[index].discount;
-//     cartItems[index].totalAmount = (cartItems[index].srp - discountAmount) * newQuantity;
-
-//     // Play audio
-//     click.play();
-//     sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update session storage
-//     displayCartItems(); // Update displayed cart items
-//     updateCounter(cartItems.length); // Update counter
-
-//     // Update subtotal
-//     updateSubtotal();
-// }
-
-//new without qty validation
-function updateQuantity(index, newQuantity) {
+    
+   // Function to update the quantity of an item in the cart
+   function updateQuantity(index, newQuantity, totalStocks) {
     var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
     // Create an audio element
     let click = new Audio('click_button.mp3'); // Replace 'click_button.mp3' with the actual path to your audio file
@@ -517,6 +467,9 @@ function updateQuantity(index, newQuantity) {
         // If the quantity is empty or zero, set it to one
         newQuantity = 1;
     }
+
+    // Ensure that the quantity does not exceed the totalStocks limit
+    newQuantity = Math.min(newQuantity, totalStocks);
 
     // Update the quantity of the specified item
     cartItems[index].qty = parseInt(newQuantity); // Update quantity
@@ -534,7 +487,6 @@ function updateQuantity(index, newQuantity) {
     // Update subtotal
     updateSubtotal();
 }
-
 
 // Get today's date
 var today = new Date();

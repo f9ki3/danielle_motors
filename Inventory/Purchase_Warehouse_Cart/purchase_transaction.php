@@ -59,7 +59,6 @@ if ($stmt->execute()) {
     foreach ($cartItems as $item) {
         $product_id = $item['productId'];
         $quantity = $item['qty'];
-        $branch_code = "WAREHOUSE";
 
         // Update stocks in FIFO order
         $sql_stocks = "SELECT id, stocks FROM stocks 
