@@ -88,6 +88,6 @@ if (isset($branch_code)) {
 }
 
 // Redirect with response
-header("Location: ../Inventory/barcode_scanner%20copy/?successful=$response");
+header("Location: ../Inventory/all_stocks/?successful=$response");
 exit;
 ?>
