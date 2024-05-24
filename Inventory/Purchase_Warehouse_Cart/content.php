@@ -133,8 +133,8 @@
                                     <h5 class="fw-bolder" id="subtotal">PHP 100.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-                                    <h5 class="fw-bolder">Tax (12%)</h5>
-                                    <h5 class="fw-bolder" id="tax">PHP 100.00</h5>
+                                    <h5 class="fw-bolder d-none">Tax (12%)</h5>
+                                    <h5 class="fw-bolder d-none" id="tax">PHP 100.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Discount</h5>
@@ -154,7 +154,7 @@
                                     <h5 class="fw-bolder">Change</h5>
                                     <h5 class="fw-bolder" id="change">PHP 100.00</h5>
                                 </div>
-                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between;" class="mt-3">
+                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between;" class="mt-5 pb-2">
                                     <button style="flex: 0 0 49%;" id="resetBtn" class="btn btn-lg mt-3 border border-primary text-primary" onclick="resetCart()">Reset</button>
                                     <button style="flex: 0 0 49%;" id="purchase_btn" class="btn btn-lg mt-3 btn-primary" onclick="purchase()">Purchase</button>
                                     <button style="flex: 0 0 49%; display: none;" id="loading" disabled class="btn btn-lg mt-3 btn-primary">
