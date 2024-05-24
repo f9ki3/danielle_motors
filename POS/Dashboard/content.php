@@ -110,88 +110,15 @@
                     <h6 class="fw-bolder">Sales Transactions</h6>
                     <div class="border rounded p-2">
                         <table class="table mt-3">
-                            <thead>
+                            <!-- <thead>
                                 <tr>
                                 <th scope="col" width="25%" class="product_id">Purchase ID</th>
                                 <th scope="col" width="50%">Customer Name</th>
                                 <th scope="col" width="25%">Total</th>
                                 </tr>
-                            </thead>
+                            </thead> -->
                             <tbody>
-                            <tr>
-                                    <td scope="row" class="product_id">PROD001</td>
-                                    <td >Fyke Lleva</td>
-                                    <td>php 100.00</td>
-                                
-                                </tr>
-                                <tr>
-                                    <td scope="row" class="product_id">PROD001</td>
-                                    <td >Fyke Lleva</td>
-                                    <td>php 100.00</td>
-                                
-                                </tr>
-                                <tr>
-                                    <td scope="row" class="product_id">PROD001</td>
-                                    <td >Fyke Lleva</td>
-                                    <td>php 100.00</td>
-                                
-                                </tr>
-                                <tr>
-                                    <td scope="row" class="product_id">PROD001</td>
-                                    <td >Fyke Lleva</td>
-                                    <td>php 100.00</td>
-                                
-                                </tr>
-                                <tr>
-                                    <td scope="row" class="product_id">PROD001</td>
-                                    <td >Fyke Lleva</td>
-                                    <td>php 100.00</td>
-                                
-                                </tr>
-                                <tr>
-                                    <td scope="row" class="product_id">PROD001</td>
-                                    <td >Fyke Lleva</td>
-                                    <td>php 100.00</td>
-                                
-                                </tr>
-                                <tr>
-                                    <td scope="row" class="product_id">PROD001</td>
-                                    <td >Fyke Lleva</td>
-                                    <td>php 100.00</td>
-                                
-                                </tr>
-                                <tr>
-                                    <td scope="row" class="product_id">PROD001</td>
-                                    <td >Fyke Lleva</td>
-                                    <td>php 100.00</td>
-                                
-                                </tr>
-                                <tr>
-                                    <td scope="row" class="product_id">PROD001</td>
-                                    <td >Fyke Lleva</td>
-                                    <td>php 100.00</td>
-                                
-                                </tr>
-                                <tr>
-                                    <td scope="row" class="product_id">PROD001</td>
-                                    <td >Fyke Lleva</td>
-                                    <td>php 100.00</td>
-                                
-                                </tr>
-                                <tr>
-                                    <td scope="row" class="product_id">PROD001</td>
-                                    <td >Fyke Lleva</td>
-                                    <td>php 100.00</td>
-                                
-                                </tr>
-                                <tr>
-                                    <td scope="row" class="product_id">PROD001</td>
-                                    <td >Fyke Lleva</td>
-                                    <td>php 100.00</td>
-                                
-                                </tr>
-                                
-                                
+                            <?php include 'walkin_transaction.php'?>
                             </tbody>
                         </table>
                     </div>
@@ -200,86 +127,15 @@
                 <h6 class="fw-bolder">Delivery Transactions</h6>
                 <div class="border rounded p-2">
                     <table class="table mt-3">
-                                <thead>
+                                <!-- <thead>
                                     <tr>
                                     <th scope="col" width="25%" class="product_id">Delivery ID</th>
                                     <th scope="col" width="50%">Customer Name</th>
                                     <th scope="col" width="25%">Total</th>
                                     </tr>
-                                </thead>
+                                </thead> -->
                                 <tbody>
-                                <tr>
-                                        <td scope="row" class="product_id">PROD001</td>
-                                        <td >Fyke Lleva</td>
-                                        <td>php 100.00</td>
-                                    
-                                    </tr>
-                                    <tr>
-                                        <td scope="row" class="product_id">PROD001</td>
-                                        <td >Fyke Lleva</td>
-                                        <td>php 100.00</td>
-                                    
-                                    </tr>
-                                    <tr>
-                                        <td scope="row" class="product_id">PROD001</td>
-                                        <td >Fyke Lleva</td>
-                                        <td>php 100.00</td>
-                                    
-                                    </tr>
-                                    <tr>
-                                        <td scope="row" class="product_id">PROD001</td>
-                                        <td >Fyke Lleva</td>
-                                        <td>php 100.00</td>
-                                    
-                                    </tr>
-                                    <tr>
-                                        <td scope="row" class="product_id">PROD001</td>
-                                        <td >Fyke Lleva</td>
-                                        <td>php 100.00</td>
-                                    
-                                    </tr>
-                                    <tr>
-                                        <td scope="row" class="product_id">PROD001</td>
-                                        <td >Fyke Lleva</td>
-                                        <td>php 100.00</td>
-                                    
-                                    </tr>
-                                    <tr>
-                                        <td scope="row" class="product_id">PROD001</td>
-                                        <td >Fyke Lleva</td>
-                                        <td>php 100.00</td>
-                                    
-                                    </tr>
-                                    <tr>
-                                        <td scope="row" class="product_id">PROD001</td>
-                                        <td >Fyke Lleva</td>
-                                        <td>php 100.00</td>
-                                    
-                                    </tr>
-                                    <tr>
-                                        <td scope="row" class="product_id">PROD001</td>
-                                        <td >Fyke Lleva</td>
-                                        <td>php 100.00</td>
-                                    
-                                    </tr>
-                                    <tr>
-                                        <td scope="row" class="product_id">PROD001</td>
-                                        <td >Fyke Lleva</td>
-                                        <td>php 100.00</td>
-                                    
-                                    </tr>
-                                    <tr>
-                                        <td scope="row" class="product_id">PROD001</td>
-                                        <td >Fyke Lleva</td>
-                                        <td>php 100.00</td>
-                                    
-                                    </tr>
-                                    <tr>
-                                        <td scope="row" class="product_id">PROD001</td>
-                                        <td >Fyke Lleva</td>
-                                        <td>php 100.00</td>
-                                    
-                                    </tr>
+                                <?php include 'delivery_transaction.php'?>
                                     
                                 </tbody>
                     </table>
