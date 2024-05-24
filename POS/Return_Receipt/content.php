@@ -10,7 +10,7 @@ if ($conn->connect_error) {
 $transactionID = $_GET['transaction_code'];
 
 // Prepare and bind SQL statement
-$stmt = $conn->prepare("SELECT * FROM purchase_transactions WHERE TransactionID = ? AND status != 1");
+$stmt = $conn->prepare("SELECT * FROM purchase_transactions WHERE TransactionID = ? AND status NOT IN ('1', '4', '5')");
 $stmt->bind_param("s", $transactionID);
 
 // Execute the statement
