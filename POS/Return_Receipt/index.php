@@ -85,6 +85,13 @@ function recomputeRefundAndTotal() {
     document.getElementById('total-reflected').innerText = '₱' + totalReflected.toFixed(2);
 }
 
+// Disable the replacement button if status is not equal to 3
+document.addEventListener('DOMContentLoaded', function() {
+    var isStatusFive = <?php echo $isStatusFive; ?>;
+    if (isStatusFive) {
+        document.getElementById('refundBtn').disabled = true;
+    }
+});
 
 
 </script>

@@ -57,25 +57,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    if ($all_success) {
-        echo "<script>
-                swal({
-                    title: 'Success!',
-                    text: 'New return record created successfully.',
-                    icon: 'success'
-                }).then(() => {
-                    window.location.href = '../Return_Receipt/?transaction_code=$transactionID';
-                });
-              </script>";
-    } else {
-        echo "<script>
-                swal({
-                    title: 'Error!',
-                    text: '$error_message',
-                    icon: 'error'
-                });
-              </script>";
-    }
+// If all insertions and updates were successful, update the status of the transaction
+if ($all_success) {
+    // Update the status of the transaction to 4
+    $sql_update_transaction = "UPDATE purchase_transactions SET status = 3 WHERE TransactionID = ?";
+    $stmt_update_transaction = $conn->prepare($sql_update_transaction);
+    $stmt_update_transaction->bind_param("s", $transactionID);
+    $stmt_update_transaction->execute();
+    $stmt_update_transaction->close();
+
+    // Redirect to the same page
+    header("Location: ../Return_Receipt/?transaction_code=$transactionID");
+    exit();
+}
 }
 $conn->close();
 ?>
