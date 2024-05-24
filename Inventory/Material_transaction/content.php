@@ -216,9 +216,9 @@ if($material_transfer_res -> num_rows > 0){
                                                 <?php
                                                 // echo $return_status;
                                                         } elseif($return_status === "Accepted"){
-                                                            echo '<span class="text-success">' . $return_status . ' </span>';
+                                                            echo '<span class="text-success">' . $return_status . ' - ' . $returned_qty . ' </span>';
                                                         } else {
-                                                            echo '<span class="text-danger">' . $return_status . ' </span>';
+                                                            echo '<span class="text-danger">' . $return_status . '- ' . $returned_qty . ' </span>';
 
                                                         }
                                                     } elseif($item_status == 4){
