@@ -331,28 +331,37 @@ if($modal_mt_res->num_rows > 0){
                     <h5 class="modal-title" id="exampleModalLabel">Accept Return</h5><button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs--1"></span></button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" name="product_id" value="<?php echo $modal_product_id; ?>" readonly hidden>
-                    <input type="text" name="qty" value="<?php echo $modal_returned_qty;?>" readonly hidden>
-                    <div class="form-floating mb-3">
-                        <select name="rack_id" class="form-select" id="">
-                            <option value=""></option>
-                            <?php 
-                            $rack_zql = "SELECT * FROM ware_location WHERE branch_code = '$branch_code'";
-                            $rack_res = $conn->query($rack_zql);
-                            if($rack_res->num_rows>0){
-                                while($row=$rack_res -> fetch_assoc()){
-                                    $rack_id = $row['id'];
-                                    $rack_name = $row['location_name'];
-                                    echo '<option value="' . $rack_name . '">' . $rack_name . '</option>';
-                                }
-                            } else {
-                            ?>
-                            <option value="">No Location Data</option>
-                            <?php
-                            }
-                            ?>
-                        </select>
-                        <label for="">Select Where to Store</label>
+                    <div class="row">
+                        <input type="text" name="product_id" value="<?php echo $modal_product_id; ?>" readonly hidden>
+                        <div class="col-lg-6">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="qty" value="<?php echo $modal_returned_qty;?>" readonly >
+                                <label for="">Returned Qty</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-floating mb-3">
+                                <select name="rack_id" class="form-select" id="">
+                                    <option value=""></option>
+                                    <?php 
+                                    $rack_zql = "SELECT * FROM ware_location WHERE branch_code = '$branch_code'";
+                                    $rack_res = $conn->query($rack_zql);
+                                    if($rack_res->num_rows>0){
+                                        while($row=$rack_res -> fetch_assoc()){
+                                            $rack_id = $row['id'];
+                                            $rack_name = $row['location_name'];
+                                            echo '<option value="' . $rack_name . '">' . $rack_name . '</option>';
+                                        }
+                                    } else {
+                                    ?>
+                                    <option value="">No Location Data</option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                                <label for="">Select Where to Store</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
