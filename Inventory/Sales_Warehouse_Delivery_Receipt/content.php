@@ -274,10 +274,10 @@ $stmt->close();
                     </div>
                     <div class="d-flex flex-row justify-content-between">
                         <div style="width: 70%">
-                            <p class="m-0" style="font-size: 9px d-none">Tax </p>
+                            <p class="m-0 d-none" style="font-size: 9px">Tax </p>
                         </div>
                         <div style="width: 30%">
-                            <p class="m-0" style="font-size: 9px d-none"><?php echo formatCurrency($transactionDetails["Tax"]); ?></p>
+                            <p class="m-0 d-none" style="font-size: 9px"><?php echo formatCurrency($transactionDetails["Tax"]); ?></p>
                         </div>
                     </div>
                     <div class="d-flex flex-row justify-content-between">
