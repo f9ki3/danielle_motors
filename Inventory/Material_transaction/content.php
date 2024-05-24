@@ -145,12 +145,13 @@ if($material_transfer_res -> num_rows > 0){
                                             <th>Code</th>
                                             <th>SRP</th>
                                             <th>Requested QTY</th>
-                                            <th>Status</th></th>
+                                            <th>Status</th>
+                                            <th>Return Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php 
-                                            $mt_sql = "SELECT mt.id, mt.rack_loc_id, mt.product_id, mt.input_srp, mt.qty_added, mt.status, p.name AS product_name, p.image AS product_image, p.code AS product_code, p.brand_id, p.category_id, p.unit_id, p.models, c.category_name, b.brand_name
+                                            $mt_sql = "SELECT mt.id, mt.rack_loc_id, mt.product_id, mt.input_srp, mt.qty_added, mt.status, p.name AS product_name, p.image AS product_image, p.code AS product_code, p.brand_id, p.category_id, p.unit_id, p.models, c.category_name, b.brand_name, mt.return_status, mt.qty_warehouse
                                                     FROM material_transaction AS mt
                                                     INNER JOIN product AS p ON mt.product_id = p.id
                                                     LEFT JOIN category AS c ON p.category_id = c.id
@@ -184,6 +185,16 @@ if($material_transfer_res -> num_rows > 0){
                                                     } else {
                                                         $product_status = '<span class="text-danger">Declined</span>';
                                                     }
+
+                                                    if($mt_row['return_status'] == 0){
+                                                        $return_status = "Pending Return";
+                                                    } elseif($mt_row['return_status'] == 1) {
+                                                        $return_status = "Accepted";
+                                                    } else {
+                                                        $return_status = "Failed to accept";
+                                                    }
+                                                    $returned_qty = $mt_row['qty_warehouse'];
+
                                         ?>
                                         <tr>
                                             <td class="text-center p-0"><img src="../../uploads/<?php echo basename($product_image);?>" class="img-fluid" style="height: 50px;"></td>
@@ -193,6 +204,28 @@ if($material_transfer_res -> num_rows > 0){
                                             <td class="text-end"><?php echo number_format($input_srp, 2);?></td>
                                             <td class="text-end"><?php echo $qty_added;?></td>
                                             <td class="text-start ps-2 status_refresh"><?php echo $product_status;?></td>
+                                            <td class="text-start ps-2">
+                                                <?php 
+                                                    if($item_status == 6){
+                                                        if($return_status === "Pending Return"){
+                                                ?>
+                                                <a class="btn btn-sm btn-success m-1" type="button" data-bs-toggle="modal" data-bs-target="#acceptreturn_<?php echo $transaction_id;?>"><i class="fa fa-check"></i> Accept</a>
+                                                
+                                                <a href="../../PHP - process_files/material_return.php?angtabanidanegrabe=<?php echo  $transaction_id;?>" class="btn btn-sm btn-danger m-1"><i class="fas fa-skull-crossbones"></i> Failed to accept</a>
+                                                
+                                                <?php
+                                                // echo $return_status;
+                                                        } elseif($return_status === "Accepted"){
+                                                            echo '<span class="text-success">' . $return_status . ' </span>';
+                                                        } else {
+                                                            echo '<span class="text-danger">' . $return_status . ' </span>';
+
+                                                        }
+                                                    } elseif($item_status == 4){
+                                                        echo '<span class="text-success">No action needed</span>';
+                                                    }
+                                                ?>
+                                            </td>
                                             <input type="text" name="qty_sent[]" value="<?php echo $qty_added; ?>" hidden>
                                             <input type="text" name="transaction_id[]" value="<?php echo $transaction_id;?>" hidden>
                                         </tr>
@@ -243,6 +276,98 @@ if($material_transfer_res -> num_rows > 0){
     </div>
   </div>
 </div>
+
+<?php 
+$modal_mt_sql = "SELECT mt.id, mt.rack_loc_id, mt.product_id, mt.input_srp, mt.qty_added, mt.status, p.name AS product_name, p.image AS product_image, p.code AS product_code, p.brand_id, p.category_id, p.unit_id, p.models, c.category_name, b.brand_name, mt.return_status, mt.qty_warehouse
+                FROM material_transaction AS mt
+                INNER JOIN product AS p ON mt.product_id = p.id
+                LEFT JOIN category AS c ON p.category_id = c.id
+                LEFT JOIN brand AS b ON p.brand_id = b.id
+                WHERE mt.material_invoice_id = '$invoice_id'";
+$modal_mt_res = $conn->query($modal_mt_sql);
+
+if($modal_mt_res->num_rows > 0){
+    while($mt_row = $modal_mt_res->fetch_assoc()){
+        $modal_transaction_id = $mt_row['id'];
+        $modal_product_id = $mt_row['product_id'];
+        $modal_input_srp = $mt_row['input_srp'];
+        $modal_qty_added = $mt_row['qty_added'];
+        $modal_item_status = $mt_row['status'];
+        $modal_product_name = $mt_row['product_name'];
+        $modal_product_image = $mt_row['product_image'];
+        $modal_product_code = $mt_row['product_code'];
+        $modal_brand_id = $mt_row['brand_id'];
+        $modal_category_id = $mt_row['category_id'];
+        $modal_unit_id = $mt_row['unit_id'];
+        $modal_models = $mt_row['models'];
+        $modal_category_name = $mt_row['category_name'];
+        $modal_brand_name = $mt_row['brand_name'];
+        $modal_wh_location = $mt_row['rack_loc_id'];
+
+        if($modal_item_status == 1 || $modal_item_status == 2){
+            $modal_product_status = '<span class="text-warning">Pending</span>';
+        } elseif($modal_item_status == 3){
+            $modal_product_status = '<span class="text-success">Verified</span>';
+        } elseif($modal_item_status == 4){
+            $modal_product_status = '<span class="text-success">Accepted</span>';
+        } else {
+            $modal_product_status = '<span class="text-danger">Declined</span>';
+        }
+
+        if($mt_row['return_status'] == 0){
+            $modal_return_status = "Pending Return";
+        } elseif($mt_row['return_status'] == 1) {
+            $modal_return_status = "Accepted";
+        } else {
+            $modal_return_status = "Failed to accept";
+        }
+        $modal_returned_qty = $mt_row['qty_warehouse'];
+?>
+<div class="modal fade" id="acceptreturn_<?php echo $modal_transaction_id;?>" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="../../PHP - process_files/material_return.php?angtabanidane=<?php echo  $modal_transaction_id;?>" method="POST">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Accept Return</h5><button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs--1"></span></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="product_id" value="<?php echo $modal_product_id; ?>" readonly hidden>
+                    <input type="text" name="qty" value="<?php echo $modal_returned_qty;?>" readonly hidden>
+                    <div class="form-floating mb-3">
+                        <select name="rack_id" class="form-select" id="">
+                            <option value=""></option>
+                            <?php 
+                            $rack_zql = "SELECT * FROM ware_location WHERE branch_code = '$branch_code'";
+                            $rack_res = $conn->query($rack_zql);
+                            if($rack_res->num_rows>0){
+                                while($row=$rack_res -> fetch_assoc()){
+                                    $rack_id = $row['id'];
+                                    $rack_name = $row['location_name'];
+                                    echo '<option value="' . $rack_name . '">' . $rack_name . '</option>';
+                                }
+                            } else {
+                            ?>
+                            <option value="">No Location Data</option>
+                            <?php
+                            }
+                            ?>
+                        </select>
+                        <label for="">Select Where to Store</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit">Okay</button>
+                    <button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<?php
+    }
+}
+?>
+
 
 <script>
     // Function to enable the checkbox
