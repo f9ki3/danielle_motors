@@ -30,6 +30,23 @@ if ($result->num_rows > 0) {
 
 // Close statement
 $stmt->close();
+
+// Fetch the total refund amount from returns_customer table
+$sql_total_refund_amount = "SELECT total_refund_real FROM returns_customer WHERE TransactionID = ? AND status = 3";
+$stmt_total_refund_amount = $conn->prepare($sql_total_refund_amount);
+$stmt_total_refund_amount->bind_param("s", $transactionID);
+$stmt_total_refund_amount->execute();
+$total_refund_amount_result = $stmt_total_refund_amount->get_result();
+
+// Fetch the total refund amount
+$total_refund_amount = 0; // Default value
+if ($total_refund_amount_result->num_rows > 0) {
+    $row = $total_refund_amount_result->fetch_assoc();
+    $total_refund_amount = $row['total_refund_real'];
+}
+
+// Close statement
+$stmt_total_refund_amount->close();
 ?>
 
 
@@ -95,7 +112,7 @@ $stmt->close();
                             </div>
                             <div style="display: flex; flex-direction: row; justify-content: space-between">
                                 <h5 class="fw-bolder">Refund Amount</h5>
-                                <h5 class="fw-bolder" id="refund-amount">0.00</h5>
+                                <h5 class="fw-bolder" id="refund-amount"><?php echo number_format($total_refund_amount, 2); ?></h5>
                             </div>
                             <div style="display: flex; flex-direction: row; justify-content: space-between">
                                 <h5 class="fw-bolder">Total Reflected</h5>

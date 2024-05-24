@@ -46,12 +46,18 @@ echo '<thead>
             <th>Quantity</th>
             <th>Return Quantity</th>
             <th>Paid Amount</th>
-            <th>Refund Amount</th>
-            <th>Total Refund</th>
-            <th>Status</th>
+            <th>Refund Amount</th>';
+if ($disabled) {
+    // If $disabled is true, render this
+} else {
+    // If $disabled is false, render this
+    echo '<th>Total Refund</th>';
+}
+echo '<th>Status</th>
         </tr>
       </thead>';
 echo '<tbody>';
+
 
 // Check if any rows were returned
 if ($result->num_rows > 0) {
@@ -73,18 +79,24 @@ if ($result->num_rows > 0) {
         // Styled input field for quantity return with max and min attributes to limit input
         echo "<td><input type='number' name='quantity_return[]' class='form-control quantity-return' min='0' max='{$row['Quantity']}' value='{$qty}' onchange='computeTotalRefund(this)' $disabled></td>";
         echo "<td>₱ " . number_format($paidAmount, 2) . "</td>"; // Display PaidAmount
-        // Styled input field for refund amount
+        echo "<td><input type='number' name='refund_amount[]' class='form-control refund-amount' min='0' value='{$paidAmount}' onchange='computeTotalRefund(this)' disabled></td>";  
         if ($disabled) {
-            // If disabled, populate the input field with the reason and disable it
-            echo "<td><input type='number' name='refund_amount[]' class='form-control refund-amount' min='0' max='{$row['SRP']}' value='{$paidAmount}' onchange='computeTotalRefund(this)' disabled></td>";  
+            // If disabled, hide
         } else {
             // If not disabled, just generate the input field without populating it
-            echo "<td><input type='number' name='refund_amount[]' class='form-control refund-amount' min='0' max='{$row['SRP']}' value='{$paidAmount}' onchange='computeTotalRefund(this)'></td>";
+            echo "<td><span class='total-refund'>₱0.00</span></td>";
         }
+        echo "<input type='hidden' name='total_refund_amount[]' value='0'>";
+        // Styled input field for refund amount
+        // if ($disabled) {
+        //     // If disabled, populate the input field with the reason and disable it
+        //     echo "<td><input type='number' name='refund_amount[]' class='form-control refund-amount' min='0' value='{$paidAmount}' onchange='computeTotalRefund(this)' disabled></td>";  
+        // } else {
+        //     // If not disabled, just generate the input field without populating it
+        //     echo "<td><input type='number' name='refund_amount[]' class='form-control refund-amount' min='0' max='{$row['SRP']}' value='{$paidAmount}' onchange='computeTotalRefund(this)' disabled></td>";
+        // }
         // Span to display the computed total refund amount
-        echo "<td><span class='total-refund'>₱0.00</span></td>";
-        // Hidden input field to store the total refund amount
-       echo "<input type='hidden' name='total_refund_amount[]' value='0'>";
+   
 
         // Displaying the status column with interpretation
         $status_text = '';
@@ -156,7 +168,20 @@ function submitRefundForm(event) {
     });
 }
 
-// JavaScript to compute the total refund
+// function computeTotalRefund(element) {
+//     var row = element.closest('tr');
+//     var quantityReturn = row.querySelector('.quantity-return').value;
+//     var paidAmount = parseFloat(row.querySelector('td:nth-child(8)').innerText.replace('₱', '').trim()); // Get Paid Amount from the table cell
+//     var totalRefund = quantityReturn * paidAmount;
+//     row.querySelector('.total-refund').innerText = '₱' + totalRefund.toFixed(2);
+//     row.querySelector('input[name="total_refund_amount[]"]').value = totalRefund;
+   
+//     // Update refund amount display
+//     updateRefundAmount();
+// }
+
+
+// JavaScript to compute the total refund nung partial pa
 function computeTotalRefund(element) {
     var row = element.closest('tr');
     var quantityReturn = row.querySelector('.quantity-return').value;
