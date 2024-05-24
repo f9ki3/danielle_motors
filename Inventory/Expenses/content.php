@@ -6,33 +6,88 @@
 
 <div class="mb-9" id="actualContent" style="display: none;">
     <h3>Expenses</h3>
-    <div id="barChartContainer" style="height: 500px;"></div>
+    <div id="weekly-chart"></div> 
     
 </div>
-<script type="text/javascript">
-    // Initialize the ECharts instance based on the prepared DOM
-    var myChart = echarts.init(document.getElementById('barChartContainer'));
+<script>
+    $(document).ready(function() {
+      
 
-    // Specify the configuration items and data for the chart
-    var option = {
-        title: {
-            text: 'Basic Bar Chart'
-        },
-        tooltip: {},
-        legend: {
-            data: ['Sales']
-        },
-        xAxis: {
-            data: ['Shirts', 'Cardigans', 'Chiffons', 'Pants', 'Heels', 'Socks']
-        },
-        yAxis: {},
-        series: [{
-            name: 'Sales',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
-        }]
-    };
+      function getWeeklyReport() {
+        $.ajax({
+          url: '../../PHP - process_files/weekly-report.php',
+          method: 'POST',
+          dataType: 'json',
+          success: function(json) {
+            console.log(json);
+            var profit = [];
+            for (var i = 0; i < json.sales.length; i++) {
+              var capital = json.delivery[i] || 0;
+              var result = json.sales[i] - capital;
+              profit.push(result);
+            }
 
-    // Use the specified chart configuration item and data to show the chart
-    myChart.setOption(option);
-</script>
+            var options = {
+              series: [{
+              name: 'Sales',
+              data: json.sales
+            }, {
+              name: 'Capital',
+              data: json.delivery
+            }, {
+              name: 'Profit',
+              data: profit
+            }],
+              chart: {
+              type: 'bar',
+              height: 350
+            },
+            plotOptions: {
+              bar: {
+                horizontal: false,
+                columnWidth: '55%',
+                endingShape: 'rounded'
+              },
+            },
+            colors: ['#0000FF', '#FF0000', '#00FF00'],
+            dataLabels: {
+              enabled: false
+            },
+            dataLabels: {
+              enabled: false
+            },
+            stroke: {
+              show: true,
+              width: 2,
+              colors: ['transparent']
+            },
+            xaxis: {
+              categories: json.date,
+            },
+            fill: {
+              opacity: 1
+            },
+            tooltip: {
+              y: {
+                formatter: function (val) {
+                  return "₱ " + val.toLocaleString();
+                }
+              }
+            }
+            };
+            
+            var chart = new ApexCharts($("#weekly-chart")[0], options);
+            chart.render();
+          },
+          error: function(xhr, status, error) {
+              // Handle errors if any
+              console.error("Error fetching data:", error);
+          }
+        });
+      }
+
+      
+
+      getWeeklyReport();
+    });
+  </script>
