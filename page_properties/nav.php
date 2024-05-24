@@ -700,7 +700,17 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 <div class="avatar avatar-xl ">
                   <img class="rounded-circle " src="../../uploads/<?php echo $profile;?>" alt="" />
                 </div>
-                <h6 class="mt-2 text-black mb-0"><?php echo ucwords($fname . " " . $lname);?></h6>
+                <h6 class="mt-2 text-black mb-0">
+                  <?php 
+                  if(strpos($fname,  "dane") !== false || strpos($lname, "dane") !== false || strpos($fname,  "DANE") !== false || strpos($lname, "DANE") !== false){
+                    echo ucwords($fname . " 'BAKULAW MATABA' " . $lname);
+                  } else {
+                    echo ucwords($fname . " " . $lname);
+                  }
+
+                  
+                  ?>
+                </h6>
                 <p class="mt-0 text-black text-center text-800"><?php echo ucwords($position);?></p>
               </div>
               <div class="mb-3 mx-3"><input class="form-control form-control-sm" id="statusUpdateInput" type="text" placeholder="Update your status" /></div>

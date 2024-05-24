@@ -106,7 +106,19 @@ if ($result->num_rows > 0) {
               <td class="status"><?php echo $user_status_final;?></td>
               <td class="align-middle text-end white-space-nowrap pe-0 action">
                 <div class="font-sans-serif btn-reveal-trigger position-static"><button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs--2"></span></button>
-                  <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item" href="../../PHP - process_files/deactivateuser.php?user_id=<?php echo $user_id;?>">Deactivate</a><a class="dropdown-item" href="../../PHP - process_files/activateuser.php?user_id=<?php echo $user_id;?>">Activate</a>
+                  <div class="dropdown-menu dropdown-menu-end py-2">
+                    <?php 
+                    if($user_status == 0){
+                    ?>
+                    <a class="dropdown-item" href="../../PHP - process_files/deactivateuser.php?user_id=<?php echo $user_id;?>">Deactivate</a>
+                    <?php 
+                    } else {
+                    ?>
+                    <a class="dropdown-item" href="../../PHP - process_files/activateuser.php?user_id=<?php echo $user_id;?>">Activate</a>
+                    <?php 
+                    }
+                    ?>
+                    <a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#promote_<?php echo $user_id;?>">Change User Position</a>
                     <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="../process/archiveuser.php?user_id=<?php echo $user_id;?>">Remove</a>
                   </div>
                 </div>
@@ -133,3 +145,80 @@ if ($result->num_rows > 0) {
     </div>
   </div>
 </div>
+
+<?php 
+$modal_sql = "SELECT user.*, branch.brn_name 
+        FROM user 
+        LEFT JOIN branch ON user.user_brn_code = branch.brn_code 
+        ORDER BY user.id DESC";
+
+$modal_result = $conn->query($modal_sql);
+if ($modal_result->num_rows > 0) {
+    while ($row = $modal_result->fetch_assoc()) {
+        $modal_user_id = $row['id'];
+        $modal_user_profileImg = $row['user_img'];
+        $modal_user_fname = ucwords(strtolower($row['user_fname']));
+        $modal_user_mname = ucwords(strtolower($row['user_mname']));
+        $modal_user_lname = ucwords(strtolower($row['user_lname']));
+        $modal_username = $row['username'];
+        $modal_full_name = ucwords(strtolower($user_fname . " " . $user_lname));
+        $modal_user_password = $row['user_password'];
+        $modal_user_position = ucwords(strtolower($row['user_position']));
+        $modal_user_email = $row['user_email'];
+        $modal_user_contact = $row['user_contact'];
+        $modal_user_status = $row['user_status'];
+        $modal_user_otp = $row['user_otp'];
+        $modal_user_address1 = ucwords(strtolower($row['user_address']));
+        $modal_user_brgy = ucwords(strtolower($row['user_brgy']));
+        $modal_user_municipality = ucwords(strtolower($row['user_municipality']));
+        $modal_user_province = ucwords(strtolower($row['user_province']));
+        $modal_brn_code = $row['user_brn_code'];
+        $modal_branch_name = $row['brn_name'];
+                  if($user_status == 0) {
+                  $user_status_final = "<span class='badge badge-phoenix fs--2 badge-phoenix-success'>Activated</span>";
+                  }
+                  if($user_status == 1) {
+                  $user_status_final = "<span class='badge badge-phoenix fs--2 badge-phoenix-danger'>Deactivated</span>";
+                  }
+?>
+<div class="modal fade" id="promote_<?php echo $modal_user_id;?>" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <form action="../../PHP - process_files/change_position.php?user_id=<?php echo $modal_user_id;?>" method="POST">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Change position of <?php echo $modal_user_fname . " " . $modal_user_lname;?></h5><button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs--1"></span></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="form-floating mb-3">
+              <select name="user_position" class="form-select" id="">
+                <option value="<?php echo $modal_user_position;?>"><?php echo $modal_user_position;?></option>
+                <?php 
+                $position_Sql = "SELECT * FROM groups WHERE position_name != '$modal_user_position'";
+                $position_Res = $conn->query($position_Sql);
+                if($position_Res->num_rows > 0){
+                    while($row = $position_Res->fetch_assoc()){
+                        echo '<option value="' . $row['position_name'] . '">' . $row['position_name'] . '</option>';
+                    }
+                } else {
+                    echo '<option value="">No data</option>';
+                }
+                ?>
+
+
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"><button class="btn btn-primary" type="submit">Okay</button><button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Cancel</button></div>
+    </div>
+    </form>
+  </div>
+</div>
+<?php
+  }
+}
+?>
