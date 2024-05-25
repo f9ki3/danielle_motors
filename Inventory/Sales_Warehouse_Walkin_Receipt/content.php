@@ -27,21 +27,27 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 
+// Fetch the status
+$status = $transactionDetails["status"];
+
 // Close statement
 $stmt->close();
-
 ?>
+
+<script>
+// Pass the status to JavaScript
+var purchaseStatus = <?php echo $status; ?>;
+</script>
 
 
 
 <div style="width: 100%;" class="print_hide" >
     <div>
-
         <div style=" height: auto" class=" w-100 transact">
             <h2 class="mb-3">Purchase Warehouse</h2>
             <div class="row">
                 <div>
-                <div class="w-100 border rounded p-3 mb-3">
+                    <div class="w-100 border rounded p-3 mb-3">
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <div class="w-50 p-1">
                                 <h6 class="fw-bolder">Customer Name: <?php echo $transactionDetails["CustomerName"]; ?></h6>
@@ -51,21 +57,26 @@ $stmt->close();
                                 <div style="display: flex; flex-direction: row; justify-content: space-between">
                                     <h6 class="fw-bolder">Receipt No: <?php  echo preg_replace('/[^0-9]/', '', $transactionID)?></h6>
                                     <div>
-                                    <button id="originalBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="printDocument()">Print</button>
-                                    <a href="../Sales_Warehouse" class="btn btn-primary btn-sm back">Back</a>
+                                        <button id="returnBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="ReturnStatus()">Return</button>
+                                        <button id="replaceBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="ReplaceStatus()">Replace</button>
+                                        <button id="originalBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="printDocument()">Print</button>
+                                        <a href="../Sales_Warehouse" class="btn btn-primary btn-sm back">Back</a>
                                     </div>
                                 </div>
                                 <p>Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
                             </div>
                         </div>
-                        <div style="display: flex; justify-content: space-between;" class="border-top">
+                        <div style="display: flex; justify-content: space-between;" class="border-top pt-2">
                             <div style="width: 35%">Payment Type: <?php echo $transactionDetails["TransactionPaymentMethod"]; ?></div>
                             <div style="width: 35%">Transaction Type: <?php echo $transactionDetails["TransactionType"]; ?></div>
                             <div style="width: 35%">Recieved by: <?php echo $transactionDetails["TransactionReceivedBy"]; ?></div>
                             <div style="width: 35%">Inspected by: <?php echo $transactionDetails["TransactionInspectedBy"]; ?></div>
                             <div style="width: 35%">Verified by: <?php echo $transactionDetails["TransactionVerifiedBy"]; ?></div>
                         </div>
-                        
+                    </div>
+                <div class="container" style="height: 350px; overflow-y: auto;"> <!-- Adjusted height and added overflow-y: auto; -->
+                    <!-- <div class="w-100 border rounded p-3 mb-1 cart table-responsive">
+                        <table class="table table-bordered table-striped"> -->
                             <table class="table ">
                                 <tr>
                                     <th width="10%">Product name</th>
@@ -74,6 +85,7 @@ $stmt->close();
                                     <th width="5%">Qty</th>
                                     <th width="5%">Unit</th>
                                     <th width="5%">SRP</th>
+                                    <th width="5%">Item Amount</th>
                                     <th width="5%">Discount Type</th>
                                     <th width="5%">Discount</th>
                                     <th width="5%">Total Amount</th>
@@ -90,13 +102,15 @@ $stmt->close();
             
                                     // Output data of each row
                                     while($row = $result->fetch_assoc()) {
+                                        $paidAmount = $row["TotalAmount"] / $row["Quantity"]; // Calculate PaidAmount
                                         echo "<tr>";
                                         echo "<td>" . $row["ProductName"] . "</td>";
                                         echo "<td>" . $row["Brand"] . "</td>";
                                         echo "<td>" . $row["Model"] . "</td>";
                                         echo "<td>" . $row["Quantity"] . "</td>";
                                         echo "<td>" . $row["Unit"] . "</td>";
-                                        echo "<td>₱ " . $row["SRP"] . "</td>";
+                                        echo "<td>" . $row["SRP"] . "</td>";
+                                        echo "<td>₱ " . number_format($paidAmount, 2) . "</td>"; // Display PaidAmount
                                         echo "<td>" . $row["DiscountType"] . "</td>";
                                         echo "<td>" . $row["Discount"] . "</td>";
                                         echo "<td>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
@@ -115,28 +129,28 @@ $stmt->close();
                     <div class="w-100 border rounded p-4 mb-3">
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Subtotal</h6>
-                            <h6 class="fw-bolder">₱ <?php echo $transactionDetails["Subtotal"]; ?></h6>
+                            <h6 class="fw-bolder"><?php echo $transactionDetails["Subtotal"]; ?></h6>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">VAT(12%)</h6>
-                            <h6 class="fw-bolder">₱ <?php echo $transactionDetails["Tax"]; ?></h6>
+                            <h6 class="fw-bolder"><?php echo $transactionDetails["Tax"]; ?></h6>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Discount</h6>
-                            <h6 class="fw-bolder">₱ <?php echo $transactionDetails["Discount"]; ?></h6>
+                            <h6 class="fw-bolder"><?php echo $transactionDetails["Discount"]; ?></h6>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Total Amount</h>
-                            <h6 class="fw-bolder">₱ <?php echo $transactionDetails["Total"]; ?></h6>
+                            <h6 class="fw-bolder"><?php echo $transactionDetails["Total"]; ?></h6>
                         </div>
                         <hr>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Payment</h6>
-                            <h6 class="fw-bolder">₱ <?php echo $transactionDetails["Payment"]; ?></h6>
+                            <h6 class="fw-bolder"><?php echo $transactionDetails["Payment"]; ?></h6>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Change</h6>
-                            <h6 class="fw-bolder">₱ <?php echo $transactionDetails["ChangeAmount"]; ?></h6>
+                            <h6 class="fw-bolder"><?php echo $transactionDetails["ChangeAmount"]; ?></h6>
                         </div>
                     </div>
                 </div>
@@ -150,16 +164,19 @@ $stmt->close();
 <!-- //print by fyke -->
 <div id="printable" style="margin-top: -90px">
    <div>
-   <!-- <div class="d-flex flex-row justify-content-between">
+
+   <div class="d-flex flex-row justify-content-between">
+
         <div>
             <h4 class="m-0 fw-bolder">Danielle Motors Parts</h4>
             <p class="m-0" style="font-size: 9px">Prenza 2, 3019 Marilao, Bulacan, Philippines</p>
             <p class="m-0" style="font-size: 9px">dmp@gmail.com | 09120987768</p>
         </div>
         <img src="../../static/img/dmp_logo.png" style="width: 150px; margin-right: 60px;" alt="">
-    </div> -->
+    </div>
     <div>
-    <!-- <hr style="margin: 0px; margin-top: 5px; margin-bottom: 5px"> -->
+    <hr style="margin: 0px; margin-top: 5px; margin-bottom: 5px">
+
         
             <div>
                 <p class="fw-bolder" style="font-size: 12px; margin: 0px">Purchase Receipt</p>
@@ -175,7 +192,6 @@ $stmt->close();
                     echo preg_replace('/[^0-9]/', '', $transactionID); 
                     ?>
                 </p>
-
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-between">
@@ -219,16 +235,15 @@ $stmt->close();
                 // Check if any rows were returned
                 if ($result->num_rows > 0) {
 
-                    $count = 1; // Initialize the counter outside the loop
                     // Output data of each row
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>". $count .". ". $row["ProductName"] .", ". $row["Brand"] .", ". $row["Model"] .", ".$row["Unit"] . "</td>";
+                        echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>" . $row["ProductName"] .", ". $row["Brand"] .", ". $row["Model"] .", ".$row["Unit"] . "</td>";
                         echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>" . $row["Quantity"] . "</td>";
                         echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>₱ " . number_format($row["SRP"], 2) . "</td>";
                         echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>";
                         if ($row["Discount"] == 0.00) {
-                            echo "-"; 
+                            echo "-";
                         } else {
                             $discount = $row["Discount"];
                             if (is_int($discount) || floor($discount) == $discount) {
@@ -242,7 +257,6 @@ $stmt->close();
 
                         echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
                         echo "</tr>";
-                        $count++;
                     }
                 } else {
                     echo "0 results";
@@ -349,5 +363,97 @@ $stmt->close();
         </div>
 
     </div>
+
 </div>
 
+<script>
+    // Disable the buttons if the status is not 1
+    if (purchaseStatus != 1) {
+        document.getElementById("returnBtn").disabled = true;
+        document.getElementById("replaceBtn").disabled = true;
+    }
+
+    function ReturnStatus() {
+        // Get the transaction code from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const transactionID = urlParams.get('transaction_code');
+
+        // Display confirmation dialog
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'This action will mark the return status as pending. Do you want to proceed?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, mark as pending',
+            cancelButtonText: 'No, cancel',
+            reverseButtons: true 
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If user confirms, execute the update_status.php script
+                $.ajax({
+                    url: 'update_status.php',
+                    type: 'POST',
+                    data: { transaction_code: transactionID },
+                    success: function(response) {
+                        // Handle the response from update_status.php
+                        if (response.success) { // Check if response exists and contains success property
+                            Swal.fire('Success!', 'Return status marked as pending.', 'success');
+                            // Refresh the page after showing the success message
+                            window.location.reload();
+                        } else {
+                            Swal.fire('Success!', 'Return status marked as pending.', 'success');
+                            // Swal.fire('Error!', 'Failed to mark return status as pending.', 'error');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle any errors that occurred during the request
+                        console.error('AJAX Error:', status, error);
+                        Swal.fire('Error!', 'Failed to mark return status as pending.', 'error');
+                    }
+                });
+            }
+        });
+    }
+
+    function ReplaceStatus() {
+        // Get the transaction code from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const transactionID = urlParams.get('transaction_code');
+
+        // Display confirmation dialog
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'This action will mark the replace status as pending. Do you want to proceed?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, mark as pending',
+            cancelButtonText: 'No, cancel',
+            reverseButtons: true 
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If user confirms, execute the update_status_replace.php script
+                $.ajax({
+                    url: 'update_status_replace.php', // Change the URL to your PHP script for updating status to "Replace"
+                    type: 'POST',
+                    data: { transaction_code: transactionID },
+                    success: function(response) {
+                        // Handle the response from update_status_replace.php
+                        if (response.success) { // Check if response exists and contains success property
+                            Swal.fire('Success!', 'Replace status marked as pending.', 'success');
+                            // Refresh the page after showing the success message
+                            window.location.reload();
+                        } else {
+                            Swal.fire('Success!', 'Replace status marked as pending.', 'success');
+                            // Swal.fire('Error!', 'Failed to mark replace status as pending.', 'error');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle any errors that occurred during the request
+                        console.error('AJAX Error:', status, error);
+                        Swal.fire('Error!', 'Failed to mark replace status as pending.', 'error');
+                    }
+                });
+            }
+        });
+    }
+</script>
