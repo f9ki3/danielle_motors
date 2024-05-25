@@ -252,13 +252,19 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
               <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-events">
                 <li class="collapsed-nav-item-title d-none">Returns</li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../../apps/events/create-an-event.html" data-bs-toggle="" aria-expanded="false">
-                    <div class="d-flex align-items-center"><span class="nav-link-text">Returns</span></div>
-                  </a>
+                <a class="nav-link" <?php if($current_folder === "Return_Warehouse" || $current_folder === "Return_Warehouse"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Return_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+                 <div class="d-flex align-items-center">
+                  <span class="nav-link-icon"><span data-feather="shopping-bag"></span></span>
+                  <span class="nav-link-text">Return Warehouse</span>
+                </div>
+                </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../../apps/events/event-detail.html" data-bs-toggle="" aria-expanded="false">
-                    <div class="d-flex align-items-center"><span class="nav-link-text">Replacement</span></div>
+                <a class="nav-link" <?php if($current_folder === "Replace_Warehouse" || $current_folder === "Replace_Warehouse"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Replace_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+                <div class="d-flex align-items-center">
+                  <span class="nav-link-icon"><span data-feather="shopping-bag"></span></span>
+                  <span class="nav-link-text">Replace Warehouse</span>
+                </div>
                   </a>
                 </li>
               </ul>

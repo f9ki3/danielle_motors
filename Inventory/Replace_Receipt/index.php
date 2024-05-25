@@ -1,6 +1,7 @@
 <?php
 include "../../admin/session.php";
 include "../../database/database.php";
+include "inputstyle.css";
 date_default_timezone_set('Asia/Manila');
 ?>
 <!DOCTYPE html>
@@ -40,6 +41,27 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
+
+<script>
+
+function processReplacement() {
+    // Make an AJAX request to process_replacement.php
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "process_replacement.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Handle the response if needed
+            console.log(xhr.responseText);
+        }
+    };
+    xhr.send();
+}
+
+</script>
+
+
+
   </body>
 
 

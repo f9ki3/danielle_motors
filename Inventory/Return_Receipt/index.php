@@ -1,6 +1,7 @@
 <?php
 include "../../admin/session.php";
 include "../../database/database.php";
+include "inputstyle.css";
 date_default_timezone_set('Asia/Manila');
 ?>
 <!DOCTYPE html>
@@ -40,6 +41,55 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
+
+<script>
+function computeTotalRefund(element) {
+    var row = element.closest('tr');
+    var quantityReturn = parseFloat(row.querySelector('input[name="quantity_return[]"]').value) || 0;
+    var srp = parseFloat(row.querySelector('input[name="refund_amount[]"]').value) || 0;
+    var qty = parseFloat(row.querySelector('td:nth-child(6)').innerText) || 0; // Assuming the 6th cell contains the quantity
+    var totalRefund = quantityReturn * srp;
+
+    // Validate that return quantity does not exceed available quantity
+    // if (quantityReturn < qty) {
+    //     alert('Return quantity cannot exceed the available quantity.');
+    //     quantityReturn = qty;
+    //     row.querySelector('input[name="quantity_return[]"]').value = qty;
+    //     totalRefund = quantityReturn * srp;
+    // }
+
+    // Validate that total refund does not exceed SRP * quantityReturn
+    if (totalRefund > srp * quantityReturn) {
+        alert('Total refund cannot exceed the SRP.');
+        totalRefund = srp * quantityReturn;
+        row.querySelector('input[name="refund_amount[]"]').value = srp;
+    }
+
+    row.querySelector('.total-refund').innerText = '₱' + totalRefund.toFixed(2);
+    row.querySelector('input[name="total_refund_amount[]"]').value = totalRefund;
+
+    // Recompute the overall Refund Amount and Total Reflected
+    recomputeRefundAndTotal();
+}
+
+function recomputeRefundAndTotal() {
+    var totalRefund = 0;
+    document.querySelectorAll('input[name="total_refund_amount[]"]').forEach(function(element) {
+        totalRefund += parseFloat(element.value) || 0;
+    });
+
+    var subtotal = parseFloat(document.getElementById('subtotal').innerText) || 0;
+    var totalReflected = subtotal - totalRefund;
+
+    document.getElementById('refund-amount').innerText = '₱' + totalRefund.toFixed(2);
+    document.getElementById('total-reflected').innerText = '₱' + totalReflected.toFixed(2);
+}
+
+
+
+</script>
+
+
   </body>
 
 
