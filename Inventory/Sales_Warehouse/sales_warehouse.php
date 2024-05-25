@@ -2,7 +2,7 @@
 
 $user_brn_code = $branch_code;
 
-$query = "SELECT * FROM purchase_transactions WHERE TransactionType = 'Walk-in' AND branch_code = '$branch_code' ORDER BY TransactionDate DESC";
+$query = "SELECT * FROM purchase_transactions WHERE TransactionType = 'Delivery' AND branch_code = '$branch_code' ORDER BY TransactionDate DESC";
 
 $stmt = $conn->prepare($query);
 $stmt->execute();
