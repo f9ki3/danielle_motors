@@ -149,8 +149,9 @@ var purchaseStatus = <?php echo $status; ?>;
                             <h6 class="fw-bolder">₱ <?php echo $transactionDetails["Subtotal"]; ?></h6>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h6 class="fw-bolder">VAT(12%)</h6>
-                            <h6 class="fw-bolder">₱ <?php echo $transactionDetails["Tax"]; ?></h6>
+
+                            <h6 class="fw-bolder d-none">VAT(12%)</h6>
+                            <h6 class="fw-bolder d-none"><?php echo $transactionDetails["Tax"]; ?></h6>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Discount</h6>
@@ -185,18 +186,6 @@ var purchaseStatus = <?php echo $status; ?>;
 <!-- //print by fyke -->
 <div id="printable" style="margin-top: -90px">
    <div>
-
-   <!-- <div class="d-flex flex-row justify-content-between">
-
-        <div>
-            <h4 class="m-0 fw-bolder">Danielle Motors Parts</h4>
-            <p class="m-0" style="font-size: 9px">Prenza 2, 3019 Marilao, Bulacan, Philippines</p>
-            <p class="m-0" style="font-size: 9px">dmp@gmail.com | 09120987768</p>
-        </div>
-        <img src="../../static/img/dmp_logo.png" style="width: 150px; margin-right: 60px;" alt="">
-    </div> -->
-    <div>
-    <!-- <hr style="margin: 0px; margin-top: 5px; margin-bottom: 5px"> -->
 
         
             <div>
@@ -318,10 +307,10 @@ var purchaseStatus = <?php echo $status; ?>;
                     </div>
                     <div class="d-flex flex-row justify-content-between">
                         <div style="width: 70%">
-                            <p class="m-0" style="font-size: 9px">Tax </p>
+                            <p class="m-0" style="font-size: 9px d-none">Tax </p>
                         </div>
                         <div style="width: 30%">
-                            <p class="m-0" style="font-size: 9px"><?php echo formatCurrency($transactionDetails["Tax"]); ?></p>
+                            <p class="m-0" style="font-size: 9px d-none"><?php echo formatCurrency($transactionDetails["Tax"]); ?></p>
                         </div>
                     </div>
                     <div class="d-flex flex-row justify-content-between">
