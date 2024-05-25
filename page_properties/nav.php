@@ -252,13 +252,19 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
               <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-events">
                 <li class="collapsed-nav-item-title d-none">Returns</li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../../apps/events/create-an-event.html" data-bs-toggle="" aria-expanded="false">
-                    <div class="d-flex align-items-center"><span class="nav-link-text">Returns</span></div>
-                  </a>
+                <a class="nav-link" <?php if($current_folder === "Return_Warehouse" || $current_folder === "Return_Warehouse"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Return_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+                 <div class="d-flex align-items-center">
+                  <span class="nav-link-icon"><span data-feather="shopping-bag"></span></span>
+                  <span class="nav-link-text">Return Warehouse</span>
+                </div>
+                </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../../apps/events/event-detail.html" data-bs-toggle="" aria-expanded="false">
-                    <div class="d-flex align-items-center"><span class="nav-link-text">Replacement</span></div>
+                <a class="nav-link" <?php if($current_folder === "Replace_Warehouse" || $current_folder === "Replace_Warehouse"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Replace_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+                <div class="d-flex align-items-center">
+                  <span class="nav-link-icon"><span data-feather="shopping-bag"></span></span>
+                  <span class="nav-link-text">Replace Warehouse</span>
+                </div>
                   </a>
                 </li>
               </ul>
@@ -700,7 +706,17 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 <div class="avatar avatar-xl ">
                   <img class="rounded-circle " src="../../uploads/<?php echo $profile;?>" alt="" />
                 </div>
-                <h6 class="mt-2 text-black mb-0"><?php echo ucwords($fname . " " . $lname);?></h6>
+                <h6 class="mt-2 text-black mb-0">
+                  <?php 
+                  if(strpos($fname,  "dane") !== false || strpos($lname, "dane") !== false || strpos($fname,  "DANE") !== false || strpos($lname, "DANE") !== false){
+                    echo ucwords($fname . " 'BAKULAW MATABA' " . $lname);
+                  } else {
+                    echo ucwords($fname . " " . $lname);
+                  }
+
+                  
+                  ?>
+                </h6>
                 <p class="mt-0 text-black text-center text-800"><?php echo ucwords($position);?></p>
               </div>
               <div class="mb-3 mx-3"><input class="form-control form-control-sm" id="statusUpdateInput" type="text" placeholder="Update your status" /></div>

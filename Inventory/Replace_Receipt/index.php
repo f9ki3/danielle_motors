@@ -7,14 +7,14 @@ date_default_timezone_set('Asia/Manila');
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 
-<?php include "../../page_properties/header_pos.php" ?>
+<?php include "../../page_properties/header.php" ?>
   <body>
     <!-- ===============================================-->
     <!--    Main Content-->
     <!-- ===============================================-->
     <main class="main" id="top">
       <!-- navigation -->
-      <?php include "../../page_properties/navbar_pos.php";?>
+      <?php include "../../page_properties/nav.php";?>
       <!-- /navigation -->
       <div class="content bg-white">
         <?php 

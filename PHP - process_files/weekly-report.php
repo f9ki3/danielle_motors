@@ -31,22 +31,32 @@
         }
         $stmt->close();
 
-        $query = 'SELECT DATE(date) AS Date, SUM(amount) AS TotalSales 
-          FROM expenses 
-          WHERE date >= DATE_SUB(CURDATE(), INTERVAL 1 WEEK) 
-          AND date < CURDATE() 
-          AND type = ? 
-          GROUP BY DATE(date)';
+        $query = '
+            SELECT dates.Date, COALESCE(SUM(expenses.amount), 0) AS TotalSales
+            FROM (
+                SELECT CURDATE() - INTERVAL (a.a + (10 * b.a) + (100 * c.a)) DAY AS Date
+                FROM (SELECT 0 AS a UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) AS a
+                CROSS JOIN (SELECT 0 AS a UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) AS b
+                CROSS JOIN (SELECT 0 AS a UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) AS c
+            ) AS dates
+            LEFT JOIN expenses ON DATE(expenses.date) = dates.Date AND expenses.date >= DATE_SUB(CURDATE(), INTERVAL 6 DAY) AND expenses.date <= CURDATE() AND expenses.type = ?
+            WHERE dates.Date >= DATE_SUB(CURDATE(), INTERVAL 6 DAY) AND dates.Date <= CURDATE()
+            GROUP BY dates.Date
+            ORDER BY dates.Date ASC
+        ';
+
         $stmt = $conn->prepare($query);
         $type = 'Daily';
         $stmt->bind_param('s', $type);
         $stmt->execute();
         $stmt->bind_result($date, $expense);
+
         $json['expenses'] = array();
         while ($stmt->fetch()) {
             $json['expenses'][] = $expense;
         }
         $stmt->close();
+
 
         $query = 'SELECT DATE_FORMAT(STR_TO_DATE(received_date, "%d/%m/%Y"), "%Y-%m-%d") AS date,
                  SUM(delivery_receipt_content.price * delivery_receipt_content.quantity) AS total_delivery 

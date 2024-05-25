@@ -2,7 +2,7 @@
 include '../../config/config.php'; // Make sure to include your configuration file
 
 // Updated SQL query to fetch data from the table and sort by TransactionDate in descending order
-$sql = "SELECT * FROM purchase_transactions WHERE TransactionType = 'Walk-in' AND branch_code = '$branch_code' AND (status = 5 OR status = 4) ORDER BY TransactionDate DESC";
+$sql = "SELECT * FROM purchase_transactions WHERE TransactionType = 'Walk-in' AND branch_code = '$branch_code' AND status != 1 ORDER BY TransactionDate DESC";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
 
    // Output data of each row
    while ($row = $result->fetch_assoc()) {
-    echo "<tr onclick=\"window.location='../Replace_Receipt/?transaction_code=" . $row["TransactionID"] . "';\" style=\"cursor: pointer;\">";
+    echo "<tr onclick=\"window.location='../Return_Receipt/?transaction_code=" . $row["TransactionID"] . "';\" style=\"cursor: pointer;\">";
     echo '<td class="transaction-code">' . htmlspecialchars($row["TransactionID"]) . '</td>';
     echo '<td>' . htmlspecialchars($row["TransactionDate"]) . '</td>';
     echo '<td>' . htmlspecialchars($row["CustomerName"]) . '</td>';

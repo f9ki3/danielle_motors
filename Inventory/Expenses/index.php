@@ -1,22 +1,23 @@
 <?php
 include "../../admin/session.php";
 include "../../database/database.php";
-include "inputstyle.css";
 date_default_timezone_set('Asia/Manila');
 ?>
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 
-<?php include "../../page_properties/header_pos.php" ?>
+ <?php include "../../page_properties/header.php" ?>
+ <script src="../../assets/js/echarts-example.js"></script>
+
   <body>
     <!-- ===============================================-->
     <!--    Main Content-->
     <!-- ===============================================-->
     <main class="main" id="top">
       <!-- navigation -->
-      <?php include "../../page_properties/navbar_pos.php";?>
+      <?php include "../../page_properties/nav.php";?>
       <!-- /navigation -->
-      <div class="content bg-white">
+      <div class="content">
         <?php 
         include "content.php";
         ?>
@@ -30,7 +31,7 @@ date_default_timezone_set('Asia/Manila');
         <!-- /footer -->
       </div>
       <!-- chat-container -->
-      <!-- <?php include "../../page_properties/chat-container.php"; ?> -->
+      <?php include "../../page_properties/chat-container.php"; ?>
       <!-- /chat container -->
     </main><!-- ===============================================-->
     <!--    End of Main Content-->
@@ -41,35 +42,6 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
-
-<script>
-
-function processReplacement() {
-    // Make an AJAX request to process_replacement.php
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "process_replacement.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            // Handle the response if needed
-            console.log(xhr.responseText);
-        }
-    };
-    xhr.send();
-}
-
-// Disable the replacement button if status is not equal to 5
-document.addEventListener('DOMContentLoaded', function() {
-    var isStatusFive = <?php echo $isStatusFive; ?>;
-    if (isStatusFive) {
-        document.getElementById('refundBtn').disabled = true;
-    }
-});
-
-</script>
-
-
-
   </body>
 
 

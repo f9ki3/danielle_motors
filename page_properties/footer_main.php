@@ -15,6 +15,7 @@
 <script src="../../assets/js/flatpickr.js"></script>
 <script src="../../vendors/choices/choices.min.js"></script>
 <script src="../../vendors/echarts/echarts.min.js"></script>
+<script src="../../assets/js/echarts-example.js"></script>
 <script src="../../assets/js/regions.js"></script>
 <script src="../../vendors/sortablejs/sortable.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

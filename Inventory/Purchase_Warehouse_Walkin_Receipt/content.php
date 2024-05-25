@@ -38,7 +38,7 @@ $stmt->close();
     <div>
 
         <div style=" height: auto" class=" w-100 transact">
-            <h2 class="mb-3">Purchase Warehouse</h2>
+        <h2 class="mb-3">Purchase Warehouse</h2>
             <div class="row">
                 <div>
                 <div class="w-100 border rounded p-3 mb-3">
@@ -58,14 +58,17 @@ $stmt->close();
                                 <p>Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
                             </div>
                         </div>
-                        <div style="display: flex; justify-content: space-between;" class="border-top">
+                        <div style="display: flex; justify-content: space-between;" class="border-top pt-2">
                             <div style="width: 35%">Payment Type: <?php echo $transactionDetails["TransactionPaymentMethod"]; ?></div>
                             <div style="width: 35%">Transaction Type: <?php echo $transactionDetails["TransactionType"]; ?></div>
                             <div style="width: 35%">Recieved by: <?php echo $transactionDetails["TransactionReceivedBy"]; ?></div>
                             <div style="width: 35%">Inspected by: <?php echo $transactionDetails["TransactionInspectedBy"]; ?></div>
                             <div style="width: 35%">Verified by: <?php echo $transactionDetails["TransactionVerifiedBy"]; ?></div>
                         </div>
-                        
+                </div>
+                <div class="container" style="height: 350px; overflow-y: auto;"> <!-- Adjusted height and added overflow-y: auto; -->
+                    <!-- <div class="w-100 border rounded p-3 mb-1 cart table-responsive">
+                        <table class="table table-bordered table-striped"> -->
                             <table class="table ">
                                 <tr>
                                     <th width="10%">Product name</th>
@@ -74,6 +77,7 @@ $stmt->close();
                                     <th width="5%">Qty</th>
                                     <th width="5%">Unit</th>
                                     <th width="5%">SRP</th>
+                                    <th width="5%">Item Amount</th>
                                     <th width="5%">Discount Type</th>
                                     <th width="5%">Discount</th>
                                     <th width="5%">Total Amount</th>
@@ -90,13 +94,15 @@ $stmt->close();
             
                                     // Output data of each row
                                     while($row = $result->fetch_assoc()) {
+                                        $paidAmount = $row["TotalAmount"] / $row["Quantity"]; // Calculate PaidAmount
                                         echo "<tr>";
                                         echo "<td>" . $row["ProductName"] . "</td>";
                                         echo "<td>" . $row["Brand"] . "</td>";
                                         echo "<td>" . $row["Model"] . "</td>";
                                         echo "<td>" . $row["Quantity"] . "</td>";
                                         echo "<td>" . $row["Unit"] . "</td>";
-                                        echo "<td>₱ " . $row["SRP"] . "</td>";
+                                        echo "<td>" . $row["SRP"] . "</td>";
+                                        echo "<td>₱ " . number_format($paidAmount, 2) . "</td>"; // Display PaidAmount
                                         echo "<td>" . $row["DiscountType"] . "</td>";
                                         echo "<td>" . $row["Discount"] . "</td>";
                                         echo "<td>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
@@ -150,7 +156,9 @@ $stmt->close();
 <!-- //print by fyke -->
 <div id="printable" style="margin-top: -90px">
    <div>
+
    <!-- <div class="d-flex flex-row justify-content-between">
+
         <div>
             <h4 class="m-0 fw-bolder">Danielle Motors Parts</h4>
             <p class="m-0" style="font-size: 9px">Prenza 2, 3019 Marilao, Bulacan, Philippines</p>
@@ -160,6 +168,7 @@ $stmt->close();
     </div> -->
     <div>
     <!-- <hr style="margin: 0px; margin-top: 5px; margin-bottom: 5px"> -->
+
         
             <div>
                 <p class="fw-bolder" style="font-size: 12px; margin: 0px">Purchase Receipt</p>
@@ -169,7 +178,7 @@ $stmt->close();
                     <p class="m-0" style="font-size: 9px">Customer: <?php echo $transactionDetails["CustomerName"]; ?></p>
                 </div>
                 <div style="width: 30%">
-                    <p class="m-0" style="font-size: 9px">Invoice No: <?php  echo preg_replace('/[^0-9]/', '', $transactionID)?></p>
+                <p class="m-0" style="font-size: 9px">Invoice No: <?php  echo preg_replace('/[^0-9]/', '', $transactionID)?></p>
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-between">
@@ -274,10 +283,10 @@ $stmt->close();
                     </div>
                     <div class="d-flex flex-row justify-content-between">
                         <div style="width: 70%">
-                            <p class="m-0 d-none" style="font-size: 9px">Tax </p>
+                        <p class="m-0 d-none" style="font-size: 9px">Tax </p>  
                         </div>
                         <div style="width: 30%">
-                            <p class="m-0 d-none" style="font-size: 9px"><?php echo formatCurrency($transactionDetails["Tax"]); ?></p>
+                        <p class="m-0 d-none" style="font-size: 9px"><?php echo formatCurrency($transactionDetails["Tax"]); ?></p>
                         </div>
                     </div>
                     <div class="d-flex flex-row justify-content-between">
@@ -342,4 +351,3 @@ $stmt->close();
 
     </div>
 </div>
-

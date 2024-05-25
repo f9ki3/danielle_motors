@@ -49,10 +49,10 @@ $stmt->close();
                             </div>
                             <div class=" w-50 p-1">
                                 <div style="display: flex; flex-direction: row; justify-content: space-between">
-                                    <h6 class="fw-bolder">Receipt No: <?php echo $transactionID?></h6>
+                                    <h6 class="fw-bolder">Receipt No: <?php  echo preg_replace('/[^0-9]/', '', $transactionID)?></h6>
                                     <div>
                                     <button id="originalBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="printDocument()">Print</button>
-                                    <a href="../Purchase_Warehouse" class="btn btn-primary btn-sm back">Back</a>
+                                    <a href="../Sales_Warehouse" class="btn btn-primary btn-sm back">Back</a>
                                     </div>
                                 </div>
                                 <p>Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
@@ -66,9 +66,10 @@ $stmt->close();
                             <div style="width: 35%">Verified by: <?php echo $transactionDetails["TransactionVerifiedBy"]; ?></div>
                         </div>
                 </div>
-                <div class="container" style="max-height: 400px; overflow-y: auto;">
-                        
-                            <table class="table">
+                <div class="container" style="height: 350px; overflow-y: auto;"> <!-- Adjusted height and added overflow-y: auto; -->
+                    <!-- <div class="w-100 border rounded p-3 mb-1 cart table-responsive">
+                        <table class="table table-bordered table-striped"> -->
+                            <table class="table ">
                                 <tr>
                                     <th width="10%">Product name</th>
                                     <th width="5%">Brand</th>
@@ -76,6 +77,7 @@ $stmt->close();
                                     <th width="5%">Qty</th>
                                     <th width="5%">Unit</th>
                                     <th width="5%">SRP</th>
+                                    <th width="5%">Item Amount</th>
                                     <th width="5%">Discount Type</th>
                                     <th width="5%">Discount</th>
                                     <th width="5%">Total Amount</th>
@@ -92,6 +94,7 @@ $stmt->close();
             
                                     // Output data of each row
                                     while($row = $result->fetch_assoc()) {
+                                        $paidAmount = $row["TotalAmount"] / $row["Quantity"]; // Calculate PaidAmount
                                         echo "<tr>";
                                         echo "<td>" . $row["ProductName"] . "</td>";
                                         echo "<td>" . $row["Brand"] . "</td>";
@@ -99,6 +102,7 @@ $stmt->close();
                                         echo "<td>" . $row["Quantity"] . "</td>";
                                         echo "<td>" . $row["Unit"] . "</td>";
                                         echo "<td>" . $row["SRP"] . "</td>";
+                                        echo "<td>₱ " . number_format($paidAmount, 2) . "</td>"; // Display PaidAmount
                                         echo "<td>" . $row["DiscountType"] . "</td>";
                                         echo "<td>" . $row["Discount"] . "</td>";
                                         echo "<td>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
@@ -114,7 +118,7 @@ $stmt->close();
                     </div>
 
                     
-                    <div class="w-100 border rounded p-4">
+                    <div class="w-100 border rounded p-4 mb-3">
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Subtotal</h6>
                             <h6 class="fw-bolder"><?php echo $transactionDetails["Subtotal"]; ?></h6>
@@ -174,7 +178,7 @@ $stmt->close();
                     <p class="m-0" style="font-size: 9px">Customer: <?php echo $transactionDetails["CustomerName"]; ?></p>
                 </div>
                 <div style="width: 30%">
-                    <p class="m-0" style="font-size: 9px">Invoice No: <?php echo $transactionID; ?></p>
+                    <p class="m-0" style="font-size: 9px">Invoice No: <?php  echo preg_replace('/[^0-9]/', '', $transactionID) ?></p>
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-between">

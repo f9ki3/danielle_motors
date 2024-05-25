@@ -51,10 +51,11 @@ date_default_timezone_set('Asia/Manila');
           method: 'POST',
           dataType: 'json',
           success: function(json) {
-            var expenses = json.expenses + json.delivery;
-            var profit = json.sales - expenses;
+            console.log(json);
 
             if (json.sales == 0) {
+              var profit = json.sales - (json.delivery + json.expenses);
+
               var options = {
                   chart: {
                       type: 'donut'
@@ -75,25 +76,51 @@ date_default_timezone_set('Asia/Manila');
                   }]
               };
             } else {
-              var options = {
-                  chart: {
-                      type: 'donut'
-                  },
-                  series: [json.sales, expenses, profit],
-                  labels: ['Sales', 'Expense', 'Profit'],
-                  colors: ['#008FFB', '#FF0000', '#00E396'],
-                  responsive: [{
-                      breakpoint: 480,
-                      options: {
-                          chart: {
-                              width: 200
-                          },
-                          legend: {
-                              position: 'bottom'
-                          }
-                      }
-                  }]
-              };
+              var profit = json.sales - (json.delivery + json.expenses);
+              console.log(profit);
+              if (profit < 0) {
+                var options = {
+                    chart: {
+                        type: 'donut'
+                    },
+                    series: [json.sales, json.delivery, json.expenses, Math.abs(profit)],
+                    labels: ['Sales', 'Capital','Expense', 'Loss'],
+                    colors: ['#008FFB', '#FF0000', '#808080', '#000000'],
+                    yaxis: {min: -100},
+                    responsive: [{
+                        breakpoint: 480,
+                        options: {
+                            chart: {
+                                width: 200
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }]
+                };
+              } else {
+                var options = {
+                    chart: {
+                        type: 'donut'
+                    },
+                    series: [json.sales, json.delivery, json.expenses, profit],
+                    labels: ['Sales', 'Capital','Expense', 'Profit'],
+                    colors: ['#008FFB', '#FF0000', '#808080', '#00E396'],
+                    yaxis: {min: -100},
+                    responsive: [{
+                        breakpoint: 480,
+                        options: {
+                            chart: {
+                                width: 200
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }]
+                };
+              }
             }
             
             var chart = new ApexCharts($("#daily-chart")[0], options);
@@ -113,11 +140,11 @@ date_default_timezone_set('Asia/Manila');
           method: 'POST',
           dataType: 'json',
           success: function(json) {
-            console.log(json);
             var profit = [];
             for (var i = 0; i < json.sales.length; i++) {
               var capital = json.delivery[i] || 0;
-              var result = json.sales[i] - capital;
+              var daily_expenses = json.expenses[i] || 0;
+              var result = json.sales[i] - (capital + daily_expenses);
               profit.push(result);
             }
 
@@ -128,6 +155,9 @@ date_default_timezone_set('Asia/Manila');
             }, {
               name: 'Capital',
               data: json.delivery
+            }, {
+              name: 'Expenses',
+              data: json.expenses
             }, {
               name: 'Profit',
               data: profit
@@ -143,7 +173,7 @@ date_default_timezone_set('Asia/Manila');
                 endingShape: 'rounded'
               },
             },
-            colors: ['#0000FF', '#FF0000', '#00FF00'],
+            colors: ['#0000FF', '#FF0000', '#808080', '#00FF00'],
             dataLabels: {
               enabled: false
             },
@@ -227,8 +257,6 @@ date_default_timezone_set('Asia/Manila');
           method: 'POST',
           dataType: 'json',
           success: function(json){
-            console.log(json);
-
             var options = {
               series: [{
               name: 'Total Sold',

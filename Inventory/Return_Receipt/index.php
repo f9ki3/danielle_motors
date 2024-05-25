@@ -7,14 +7,14 @@ date_default_timezone_set('Asia/Manila');
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 
-<?php include "../../page_properties/header_pos.php" ?>
+<?php include "../../page_properties/header.php" ?>
   <body>
     <!-- ===============================================-->
     <!--    Main Content-->
     <!-- ===============================================-->
     <main class="main" id="top">
       <!-- navigation -->
-      <?php include "../../page_properties/navbar_pos.php";?>
+      <?php include "../../page_properties/nav.php";?>
       <!-- /navigation -->
       <div class="content bg-white">
         <?php 
@@ -43,22 +43,49 @@ date_default_timezone_set('Asia/Manila');
     <?php include "../../page_properties/footer_main.php"; ?>
 
 <script>
+function computeTotalRefund(element) {
+    var row = element.closest('tr');
+    var quantityReturn = parseFloat(row.querySelector('input[name="quantity_return[]"]').value) || 0;
+    var srp = parseFloat(row.querySelector('input[name="refund_amount[]"]').value) || 0;
+    var qty = parseFloat(row.querySelector('td:nth-child(6)').innerText) || 0; // Assuming the 6th cell contains the quantity
+    var totalRefund = quantityReturn * srp;
 
-function processReplacement() {
-    // Make an AJAX request to process_replacement.php
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "process_replacement.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            // Handle the response if needed
-            console.log(xhr.responseText);
-        }
-    };
-    xhr.send();
+    // Validate that return quantity does not exceed available quantity
+    // if (quantityReturn < qty) {
+    //     alert('Return quantity cannot exceed the available quantity.');
+    //     quantityReturn = qty;
+    //     row.querySelector('input[name="quantity_return[]"]').value = qty;
+    //     totalRefund = quantityReturn * srp;
+    // }
+
+    // Validate that total refund does not exceed SRP * quantityReturn
+    if (totalRefund > srp * quantityReturn) {
+        alert('Total refund cannot exceed the SRP.');
+        totalRefund = srp * quantityReturn;
+        row.querySelector('input[name="refund_amount[]"]').value = srp;
+    }
+
+    row.querySelector('.total-refund').innerText = '₱' + totalRefund.toFixed(2);
+    row.querySelector('input[name="total_refund_amount[]"]').value = totalRefund;
+
+    // Recompute the overall Refund Amount and Total Reflected
+    recomputeRefundAndTotal();
 }
 
-// Disable the replacement button if status is not equal to 5
+function recomputeRefundAndTotal() {
+    var totalRefund = 0;
+    document.querySelectorAll('input[name="total_refund_amount[]"]').forEach(function(element) {
+        totalRefund += parseFloat(element.value) || 0;
+    });
+
+    var subtotal = parseFloat(document.getElementById('subtotal').innerText) || 0;
+    var totalReflected = subtotal - totalRefund;
+
+    document.getElementById('refund-amount').innerText = '₱' + totalRefund.toFixed(2);
+    document.getElementById('total-reflected').innerText = '₱' + totalReflected.toFixed(2);
+}
+
+// Disable the replacement button if status is not equal to 3
 document.addEventListener('DOMContentLoaded', function() {
     var isStatusFive = <?php echo $isStatusFive; ?>;
     if (isStatusFive) {
@@ -66,8 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-</script>
 
+</script>
 
 
   </body>
