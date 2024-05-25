@@ -46,26 +46,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt_update_cart->execute();
             $stmt_update_cart->close();
         }
-    }
-
+    }   
+    
+    // If all insertions and updates were successful, update the status of the transaction
     if ($all_success) {
-        echo "<script>
-                swal({
-                    title: 'Success!',
-                    text: 'New return record created successfully.',
-                    icon: 'success'
-                }).then(() => {
-                    window.location.href = '../Replace_Receipt/?transaction_code=$transactionID';
-                });
-              </script>";
-    } else {
-        echo "<script>
-                swal({
-                    title: 'Error!',
-                    text: '$error_message',
-                    icon: 'error'
-                });
-              </script>";
+        // Update the status of the transaction to 4
+        $sql_update_transaction = "UPDATE purchase_transactions SET status = 4 WHERE TransactionID = ?";
+        $stmt_update_transaction = $conn->prepare($sql_update_transaction);
+        $stmt_update_transaction->bind_param("s", $transactionID);
+        $stmt_update_transaction->execute();
+        $stmt_update_transaction->close();
+
+        // Redirect to the same page
+        header("Location: ../Replace_Receipt/?transaction_code=$transactionID");
+        exit();
     }
 }
 $conn->close();

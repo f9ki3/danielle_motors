@@ -58,6 +58,14 @@ function processReplacement() {
     xhr.send();
 }
 
+// Disable the replacement button if status is not equal to 5
+document.addEventListener('DOMContentLoaded', function() {
+    var isStatusFive = <?php echo $isStatusFive; ?>;
+    if (isStatusFive) {
+        document.getElementById('refundBtn').disabled = true;
+    }
+});
+
 </script>
 
 
