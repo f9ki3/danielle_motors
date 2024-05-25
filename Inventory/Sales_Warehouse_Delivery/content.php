@@ -5,7 +5,7 @@
     </div>
 </div>
 
-<div id="content" class="display: none">
+<div id="content" style="display: none">
     <div class="row g-3 mb-4">
         <div class="col-auto">
             <h2 class="mb-0">Sales Warehouse</h2>
