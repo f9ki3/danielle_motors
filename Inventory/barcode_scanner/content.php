@@ -52,7 +52,7 @@
                                 <label for="">Barcode</label>
                             </div>
                         </div>
-                        <div class="col-lg-12">
+                        <div class="col-lg-12" hidden>
                         <div class="form-floating mb-3">                           
                         <select class="js-example-responsive" style="width: 100%; height: 200%;" id="product_id" name="product_id" required>
                                <option value="">Select product</option>

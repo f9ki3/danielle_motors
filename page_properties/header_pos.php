@@ -73,6 +73,8 @@
     <link rel="stylesheet" href="../../static/css/print.css">
     <!-- Include sweetalert js -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
     <script>
       var phoenixIsRTL = window.config.config.phoenixIsRTL;

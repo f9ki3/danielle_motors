@@ -32,15 +32,33 @@
                         </div>
                         <div class="modal-body">
                             <div class="row">
+                                <div class="col-lg-12 mb-3">
+                                    <?php
+                                    $expense_sql = "SELECT * FROM expense_limit LIMIT 1";
+                                    $expense_res = $conn->query($expense_sql);
+                                    if($expense_res->num_rows>0){
+                                        $row=$expense_res->fetch_assoc();
+                                        $warning_expense = $row['warning_expense'];
+                                        $limit_expense = $row['limit_expense'];
+                                    } else {
+                                        $warning_expense = 0;
+                                        $limit_expense = 0;
+                                    }
+                                    ?>
+                                    <h5>Warning Expense Limit: <?php echo $warning_expense;?></h5>
+                                    <h5>Limit Expense: <?php echo $limit_expense;?></h5>
+
+
+                                </div>
                                 <div class="col-lg-6">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" name="warning_level">
+                                        <input type="text" class="form-control" name="warning_level" value="<?php echo $warning_expense;?>">
                                         <label for="">Warning Label</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" name="danger_level">
+                                        <input type="text" class="form-control" name="danger_level" value="<?php echo $limit_expense;?>">
                                         <label for="">Limit</label>
                                     </div>
                                 </div>

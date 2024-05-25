@@ -118,8 +118,8 @@ $stmt->close();
                             <h6 class="fw-bolder"><?php echo $transactionDetails["Subtotal"]; ?></h6>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h6 class="fw-bolder">VAT(12%)</h6>
-                            <h6 class="fw-bolder"><?php echo $transactionDetails["Tax"]; ?></h6>
+                            <h6 class="fw-bolder d-none">VAT(12%)</h6>
+                            <h6 class="fw-bolder d-none"><?php echo $transactionDetails["Tax"]; ?></h6>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
                             <h6 class="fw-bolder">Discount</h6>
@@ -274,10 +274,10 @@ $stmt->close();
                     </div>
                     <div class="d-flex flex-row justify-content-between">
                         <div style="width: 70%">
-                            <p class="m-0" style="font-size: 9px">Tax </p>
+                            <p class="m-0 d-none" style="font-size: 9px">Tax </p>
                         </div>
                         <div style="width: 30%">
-                            <p class="m-0" style="font-size: 9px"><?php echo formatCurrency($transactionDetails["Tax"]); ?></p>
+                            <p class="m-0 d-none" style="font-size: 9px"><?php echo formatCurrency($transactionDetails["Tax"]); ?></p>
                         </div>
                     </div>
                     <div class="d-flex flex-row justify-content-between">
