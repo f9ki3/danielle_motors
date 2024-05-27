@@ -395,16 +395,31 @@ var purchaseStatus = <?php echo $status; ?>;
                     type: 'POST',
                     data: { transaction_code: transactionID },
                     success: function(response) {
-                        // Handle the response from update_status.php
-                        if (response.success) { // Check if response exists and contains success property
-                            Swal.fire('Success!', 'Return status marked as pending.', 'success');
-                            // Refresh the page after showing the success message
-                            window.location.reload();
-                        } else {
-                            Swal.fire('Success!', 'Return status marked as pending.', 'success');
-                            // Swal.fire('Error!', 'Failed to mark return status as pending.', 'error');
-                        }
-                    },
+                            // Handle the response from update_status.php
+                            if (response.success) { // Check if response exists and contains success property
+                                Swal.fire({
+                                    title: 'Success!',
+                                    text: 'Return status marked as pending.',
+                                    icon: 'success',
+                                    showConfirmButton: false  // Remove the "OK" button
+                                    });
+                                // Refresh the page after showing the success message
+                                setTimeout(function() {
+                                    window.location.href = '../Return_Receipt/?transaction_code=<?php echo $transactionID; ?>';
+                                }, 2000); // 2000 milliseconds = 2 seconds delay
+                            } else {
+                                Swal.fire({
+                                    title: 'Success!',
+                                    text: 'Return status marked as pending.',
+                                    icon: 'success',
+                                    showConfirmButton: false  // Remove the "OK" button
+                                    });
+                                // Swal.fire('Error!', 'Failed to mark return status as pending.', 'error');
+                                setTimeout(function() {
+                                    window.location.href = '../Return_Receipt/?transaction_code=<?php echo $transactionID; ?>';
+                                }, 2000); // 2000 milliseconds = 2 seconds delay
+                            }
+                        },
                     error: function(xhr, status, error) {
                         // Handle any errors that occurred during the request
                         console.error('AJAX Error:', status, error);
@@ -437,23 +452,39 @@ var purchaseStatus = <?php echo $status; ?>;
                     type: 'POST',
                     data: { transaction_code: transactionID },
                     success: function(response) {
-                        // Handle the response from update_status_replace.php
-                        if (response.success) { // Check if response exists and contains success property
-                            Swal.fire('Success!', 'Replace status marked as pending.', 'success');
-                            // Refresh the page after showing the success message
-                            window.location.reload();
-                        } else {
-                            Swal.fire('Success!', 'Replace status marked as pending.', 'success');
-                            // Swal.fire('Error!', 'Failed to mark replace status as pending.', 'error');
-                        }
-                    },
+                            // Handle the response from update_status.php
+                            if (response.success) { // Check if response exists and contains success property
+                                Swal.fire({
+                                    title: 'Success!',
+                                    text: 'Return status marked as pending.',
+                                    icon: 'success',
+                                    showConfirmButton: false  // Remove the "OK" button
+                                    });
+                                // Refresh the page after showing the success message
+                                setTimeout(function() {
+                                    window.location.href = '../Replace_Receipt/?transaction_code=<?php echo $transactionID; ?>';
+                                }, 2000); // 2000 milliseconds = 2 seconds delay
+                            } else {
+                                Swal.fire({
+                                    title: 'Success!',
+                                    text: 'Return status marked as pending.',
+                                    icon: 'success',
+                                    showConfirmButton: false  // Remove the "OK" button
+                                    });
+                                // Swal.fire('Error!', 'Failed to mark return status as pending.', 'error');
+                                setTimeout(function() {
+                                    window.location.href = '../Replace_Receipt/?transaction_code=<?php echo $transactionID; ?>';
+                                }, 2000); // 2000 milliseconds = 2 seconds delay
+                            }
+                        },
                     error: function(xhr, status, error) {
                         // Handle any errors that occurred during the request
                         console.error('AJAX Error:', status, error);
-                        Swal.fire('Error!', 'Failed to mark replace status as pending.', 'error');
+                        Swal.fire('Error!', 'Failed to mark return status as pending.', 'error');
                     }
                 });
             }
         });
     }
+
 </script>
