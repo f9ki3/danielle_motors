@@ -45,12 +45,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $all_success = true; // Flag to track the overall success of the operation
     $error_message = ''; // Variable to store error messages
-
+    
     // Loop through the product_ids and process only the checked products
     foreach($product_ids as $index => $product_id) {
         // Check if the product is checked before processing
         if(isset($_POST['product_checkbox']) && in_array($product_id, $_POST['product_checkbox'])) {
-            $reason = $reasons[$index]; // Get reason for the current product
+            $reason = $reasons; // Or you can assign $reason = $reasons[$index]; if each product has a unique reason
             $qty = $qtys[$index];
             $total_refund = $total_refunds[$index];
 

@@ -120,7 +120,7 @@ echo '</table>';
 // Check if the reason input field is disabled
 if ($disabled) {
     // If disabled, populate the input field with the reason and disable it
-    echo '<input type="text" name="reason" id="reason_input" class="form-control mb-2 w-100" placeholder="Enter reason to return" value="' . htmlspecialchars($reason) . '" required disabled>';   
+    echo '<input type="text" name="reason" id="reason_input" class="form-control mb-2 w-100" placeholder="Enter reason to return" value="' . htmlspecialchars($reason) . '" disabled>';   
 } else {
     // If not disabled, just generate the input field without populating it
     echo '<input type="text" id="reason_input" name="reason" class="form-control" placeholder="Enter reason to return" required>';

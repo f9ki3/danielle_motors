@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     foreach($product_ids as $index => $product_id) {
         // Check if the product is checked before processing
         if(isset($_POST['product_checkbox']) && in_array($product_id, $_POST['product_checkbox'])) {
-            $reason = $reasons[$index]; // Get reason for the current product
+            $reason = $reasons; // Or you can assign $reason = $reasons[$index]; if each product has a unique reason
             $qty = $qtys[$index];
             $total_refund = $total_refunds[$index];
 
