@@ -131,13 +131,13 @@
                         </div>
                         <div style="width: 49%">
                             <div class="border rounded p-4 pt-5">
-                                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+                                <div class="mt-4" style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Subtotal</h5>
                                     <h5 class="fw-bolder" id="subtotal">PHP 100.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
-                                    <h5 class="fw-bolder">Tax (12%)</h5>
-                                    <h5 class="fw-bolder" id="tax">PHP 100.00</h5>
+                                    <h5 class="fw-bolder d-none">Tax (12%)</h5>
+                                    <h5 class="fw-bolder d-none" id="tax">PHP 100.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Discount</h5>
