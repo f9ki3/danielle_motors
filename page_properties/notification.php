@@ -1,15 +1,23 @@
 <?php 
 include "../database/database.php";
+include "../admin/session.php";
 
-$notification_sql = "SELECT notification.*, user.user_fname, user.user_lname, user.user_img AS profile_photo 
+// Retrieve the user_account_type from the session
+$user_account_type = $_SESSION['user_account_type'];
+
+$notification_sql = "SELECT notification.*, 
+                            user.user_fname, 
+                            user.user_lname, 
+                            user.user_img AS profile_photo
                      FROM notification 
-                     LEFT JOIN user ON notification.sessionID = user.id ORDER BY notification.id DESC";
+                     LEFT JOIN user ON notification.sessionID = user.id 
+                     ORDER BY notification.id DESC";
 $notification_res = $conn->query($notification_sql);
 
 // Array to store grouped notifications
 $grouped_notifications = array();
 
-if ($notification_res->num_rows < 0) {
+if ($notification_res->num_rows <= 0) {
     echo '<div class="text-center p-9">
         <h1><span class="far fa-angry"></span> Empty</h1>
     </div>';
@@ -21,13 +29,9 @@ if ($notification_res->num_rows < 0) {
         $sender = $row['sender'];
         $message = $row['message'];
         $notif_status = $row['status'];
-        if ($row['status'] == 0) { 
-            $status = "unread"; 
-        } else { 
-            $status = "read"; 
-        };
+        $status = $row['status'] == 0 ? "unread" : "read";
         $date = $row['date'];
-        $sender_name = $row['user_fname'] . " " . $row['user_lname'];
+        $sender_name = $row['user_fname'] . " " . $row['user_lname'];   
         $profile_photo = basename($row['profile_photo']);
 
         // Generating a unique key for grouping
@@ -53,17 +57,20 @@ if ($notification_res->num_rows < 0) {
         }
     }
 
+    // Define the controller based on user_account_type
+    $controller = $user_account_type == 1 ? "notifpos_controller.php" : "notif_controller.php";
+
     // Display grouped notifications
     foreach ($grouped_notifications as $group) {
-        // Define the href based on the count of notifications
+        // Define the href based on the count of notifications and session user_account_type
         if ($group['count'] > 1) {
-            $href = "../../PHP - process_files/notif_controller.php?status=" . $group['notif_status'] ."&&doc=" . $group['document_type'] . "";
+            $href = "../../PHP - process_files/$controller?status=" . $group['notif_status'] . "&doc=" . $group['document_type'];
         } else {
-            $href = "../../PHP - process_files/notif_controller.php?status=" . $group['notif_status'] . "&&doc=" . $group['document_type'] . "&&doc_id=" . $group['type_id'];
+            $href = "../../PHP - process_files/$controller?status=" . $group['notif_status'] . "&doc=" . $group['document_type'] . "&doc_id=" . $group['type_id'];
         }
 
         echo '<div class="px-2 px-sm-3 py-3 border-300 notification-card position-relative ' . $group['status'] . ' border-bottom">';
-        echo '<a style="text-decoration: none;" href="' . $href . '"/>';
+        echo '<a style="text-decoration: none;" href="' . $href . '">';
         echo '<div class="d-flex align-items-center justify-content-between position-relative">';
         echo '<div class="d-flex">';
         echo '<div class="avatar avatar-m status-online me-3">';
@@ -90,6 +97,7 @@ if ($notification_res->num_rows < 0) {
         echo '</div>';
         echo '</div>';
         echo '</div>';
+        echo '</a>';
         echo '</div>';
     }
 }

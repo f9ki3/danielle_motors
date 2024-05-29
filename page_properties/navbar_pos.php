@@ -310,7 +310,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           <div class="card position-relative border-0">
             <div class="card-header p-2">
               <div class="d-flex justify-content-between">
-                <h5 class="text-black mb-0">Notificatons</h5><button class="btn btn-link p-0 fs--1 fw-normal" type="button">Mark all as read</button>
+                <h5 class="text-black mb-0">Notifications</h5><button class="btn btn-link p-0 fs--1 fw-normal" type="button">Mark all as read</button>
               </div>
             </div>
             <div class="card-body p-0">
@@ -487,7 +487,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           <div class="card position-relative border-0">
             <div class="card-header p-2">
               <div class="d-flex justify-content-between">
-                <h5 class="text-black mb-0">Notificatons</h5><button class="btn btn-link p-0 fs--1 fw-normal" type="button">Mark all as read</button>
+                <h5 class="text-black mb-0">Notifications</h5><button class="btn btn-link p-0 fs--1 fw-normal" type="button">Mark all as read</button>
               </div>
             </div>
             <div class="card-body p-0">
@@ -1209,7 +1209,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
         <div class="card position-relative border-0">
           <div class="card-header p-2">
             <div class="d-flex justify-content-between">
-              <h5 class="text-black mb-0">Notificatons</h5><button class="btn btn-link p-0 fs--1 fw-normal" type="button">Mark all as read</button>
+              <h5 class="text-black mb-0">Notifications</h5><button class="btn btn-link p-0 fs--1 fw-normal" type="button">Mark all as read</button>
             </div>
           </div>
           <div class="card-body p-0">
@@ -1928,7 +1928,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
         <div class="card position-relative border-0">
           <div class="card-header p-2">
             <div class="d-flex justify-content-between">
-              <h5 class="text-black mb-0">Notificatons</h5><button class="btn btn-link p-0 fs--1 fw-normal" type="button">Mark all as read</button>
+              <h5 class="text-black mb-0">Notifications</h5><button class="btn btn-link p-0 fs--1 fw-normal" type="button">Mark all as read</button>
             </div>
           </div>
           <div class="card-body p-0">
@@ -2649,7 +2649,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
         <div class="card position-relative border-0">
           <div class="card-header p-2">
             <div class="d-flex justify-content-between">
-              <h5 class="text-black mb-0">Notificatons</h5><button class="btn btn-link p-0 fs--1 fw-normal" type="button">Mark all as read</button>
+              <h5 class="text-black mb-0">Notifications</h5><button class="btn btn-link p-0 fs--1 fw-normal" type="button">Mark all as read</button>
             </div>
           </div>
           <div class="card-body p-0">
@@ -3368,7 +3368,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
         <div class="card position-relative border-0">
           <div class="card-header p-2">
             <div class="d-flex justify-content-between">
-              <h5 class="text-black mb-0">Notificatons</h5><button class="btn btn-link p-0 fs--1 fw-normal" type="button">Mark all as read</button>
+              <h5 class="text-black mb-0">Notifications</h5><button class="btn btn-link p-0 fs--1 fw-normal" type="button">Mark all as read</button>
             </div>
           </div>
           <div class="card-body p-0">
@@ -3709,7 +3709,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
             <div class="card position-relative border-0">
               <div class="card-header p-2">
                 <div class="d-flex justify-content-between">
-                  <h5 class="text-black mb-0">Notificatons</h5><button class="btn btn-link p-0 fs--1 fw-normal" type="button">Mark all as read</button>
+                  <h5 class="text-black mb-0">Notifications</h5><button class="btn btn-link p-0 fs--1 fw-normal" type="button">Mark all as read</button>
                 </div>
               </div>
               <div class="card-body p-0">
