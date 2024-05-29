@@ -1,4 +1,3 @@
-
 <?php
 include "../../admin/session.php";
 include "../../database/database.php";
@@ -42,9 +41,9 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
-    <script src="pos_bar.js"></script>
+    
+    <!-- ApexCharts CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="pos_bar.php"></script>
   </body>
-
-
-<!-- Mirrored from prium.github.io/phoenix/v1.13.0/pages/starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Aug 2023 05:15:14 GMT -->
 </html>
