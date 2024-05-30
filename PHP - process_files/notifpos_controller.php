@@ -16,13 +16,13 @@ if(isset($_GET['doc'])){
                 if($conn->query($updatestatus_sql) === TRUE){
                     $conn->close();
                     // echo "tangina";
-                    header("Location: ../POS/Material_transaction/?transaction=$document_id");
+                    header("Location: ../POS/Material_Transaction/?material_transaction=$document_id");
                     exit();
                 } else {
                     echo "error updating data";
                 }
             } else {
-                header("Location: ../POS/Material_transaction/?transaction=$document_id");
+                header("Location: ../POS/Material_Transaction/?material_transaction=$document_id");
                 exit();
             }
         }
@@ -33,13 +33,13 @@ if(isset($_GET['doc'])){
                 $updatestatus_sql = "UPDATE notification SET status = 1 WHERE type='$document_type' AND status=0";
                 if($conn->query($updatestatus_sql)===TRUE){
                     $conn->close();
-                    header("Location: ../POS/Material_transfer/");
+                    header("Location: ../POS/Material_Transfer/");
                     exit();
                 } else {
                     echo "error updating data";
                 }
             } else {
-                header("Location: ../POS/Material_transfer/");
+                header("Location: ../POS/Material_Transfer/");
                 exit();
             }
         }
