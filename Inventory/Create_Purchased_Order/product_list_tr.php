@@ -54,6 +54,7 @@ if ($product_res) {
         else {
             $bg = '<span class="badge badge-phoenix badge-phoenix-success">' . $stocks . '</span>';
         }
+        $resiboSQL  =  "S";
 ?>
         
         <tr>
