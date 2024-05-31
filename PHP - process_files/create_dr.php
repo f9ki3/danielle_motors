@@ -4,7 +4,7 @@ include "../database/database.php";
 date_default_timezone_set('Asia/Manila');
 
 $delivered_to = "Danielle Motorparts";  //for the meantime
-$user_id = "admin";
+$user_id = $fname ." " . $lname;
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
@@ -14,6 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $delivered_by = $_POST['delivered_by'];
     $received_date = $_POST['received_date']; //dd/mm/yyyy
     $status = "2"; //incomplete process
+
+    $log_description = "Created Delivery Receipt.";
+    $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$id', audit_description = '$log_description'";
+    $conn->query($log_description);
 
 
     $insert_sql = "INSERT INTO delivery_receipt (supplier_id, delivered_to, status, checked_by, approved_by, delivered_by, received_date, publish_by, branch_code) VALUES ('$supplier_id', '$delivered_to', '$status', '$checked_by', '$approved_by', '$delivered_by', '$received_date', '$user_id', '$branch_code')";

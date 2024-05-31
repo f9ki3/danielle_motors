@@ -1,4 +1,5 @@
 <?php
+include "../admin/session.php";
 include "../database/database.php";
 date_default_timezone_set('Asia/Manila');
 $currentDate = date('Y-m-d H:i:s');
@@ -30,6 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO `groups` (position_name, permission_name, `status`, date_added) VALUES ('$position_name', '$permissions', 1, '$currentDate')";
 
     if(mysqli_query($conn, $sql)){
+        $log_description = "Created position: " . $position_name . ".";
+        $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$id', audit_description = '$log_description'";
+        $conn->query($log_description);
         header("Location: ../Inventory/User_Position_Maintenance/?duplicate_entry=false");
         // Close connection
         mysqli_close($conn);
