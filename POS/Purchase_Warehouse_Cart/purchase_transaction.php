@@ -26,11 +26,11 @@ $cartItems = isset($_POST['cartItems']) ? $_POST['cartItems'] : [];
 
 $transaction_id = generateTransactionID();
 
-$sql = "INSERT INTO purchase_transactions (TransactionID, branch_code, CustomerName, TransactionDate, TransactionAddress, TransactionVerifiedBy, TransactionInspectedBy, TransactionReceivedBy, TransactionPaymentMethod, TransactionType, Subtotal, Tax, Discount, Total, Payment, ChangeAmount, status, cashier_id) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?)";
+$sql = "INSERT INTO purchase_transactions (TransactionID, branch_code, CustomerName, TransactionDate, TransactionAddress, TransactionVerifiedBy, TransactionInspectedBy, TransactionReceivedBy, TransactionPaymentMethod, TransactionType, Subtotal, Tax, Discount, Total, Payment, ChangeAmount, status) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssssssssssddddddi", $transaction_id, $user_brn_code, $transaction_customer_name, $transaction_date, $transaction_address, $transaction_verified, $transaction_inspected, $transaction_received, $transaction_payment, $transaction_type, $subtotal, $tax, $discount, $total, $amountPayment, $change, $user_account_id);
+$stmt->bind_param("ssssssssssdddddd", $transaction_id, $user_brn_code, $transaction_customer_name, $transaction_date, $transaction_address, $transaction_verified, $transaction_inspected, $transaction_received, $transaction_payment, $transaction_type, $subtotal, $tax, $discount, $total, $amountPayment, $change);
 
 if ($stmt->execute()) {
     foreach ($cartItems as $item) {
