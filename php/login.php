@@ -2,6 +2,9 @@
 // Start a session
 session_start();
 
+// Set timezone to Manila (GMT+8)
+date_default_timezone_set('Asia/Manila');
+
 // Include the database configuration file
 include("../config/config.php");
 
