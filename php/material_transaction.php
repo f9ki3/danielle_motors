@@ -25,7 +25,6 @@ if (isset($_POST['productId'], $_POST['input_srp'], $_POST['qty_added'], $_POST[
     } else {
         echo "Error saving material transaction: " . mysqli_error($conn);
     }
-
     // Close the statement
     mysqli_stmt_close($stmt);
 } else {

@@ -1,5 +1,6 @@
 <?php
 include '../config/config.php';
+include '../admin/session.php';
 
 if(isset($_POST['productId'], $_POST['sessionID'], $_POST['sender'], $_POST['qty_sent'], $_POST['qty_warehouse'], $_POST['user_brn_code'], $_POST['qty_total'], $_POST['materialInvoiceID'], $_POST['message'])) {
     $product_id = intval($_POST['productId']);
@@ -61,6 +62,12 @@ if(isset($_POST['productId'], $_POST['sessionID'], $_POST['sender'], $_POST['qty
 
         // Close the status update statement
         mysqli_stmt_close($stmt2);
+
+                    // Insert log
+                    $stmt_log = $conn->prepare("INSERT INTO audit (audit_user_id, audit_date, audit_action, audit_description, user_brn_code) VALUES (?, NOW(), 'Material Transaction', 'Material Transfer Stocks has rejected', ?)");
+                    $stmt_log->bind_param("is", $user_id, $branch_code);
+                    $stmt_log->execute();
+                    mysqli_stmt_close($stmt_log);
 
         // Insert into returns table
       // Insert into returns table
