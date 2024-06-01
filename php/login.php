@@ -107,8 +107,20 @@ if(isset($_POST['uname'], $_POST['pass'])) {
         // Echo '1' if user_account_type is 0, '2' if it's 1
         if ($_SESSION['user_account_type'] == 0) {
             echo '1';
+            // Insert user login log
+            $user = $_SESSION['id'] = $row['id']; 
+
+            $stmt_log = $conn->prepare("INSERT INTO `audit` (`id`, `audit_user_id`, `audit_date`, `audit_acition`, `audit_description`) VALUES (NULL, ?, NOW(), 'login', 'login inventory')");
+            $stmt_log->bind_param("i", $user); 
+            $stmt_log->execute();
         } elseif ($_SESSION['user_account_type'] == 1) {
             echo '2';
+
+            $user = $_SESSION['id'] = $row['id']; 
+
+            $stmt_log = $conn->prepare("INSERT INTO `audit` (`id`, `audit_user_id`, `audit_date`, `audit_acition`, `audit_description`) VALUES (NULL, ?, NOW(), 'login', 'login store')");
+            $stmt_log->bind_param("i", $user); 
+            $stmt_log->execute();
         }
     } else {
         // Respond with '0' to indicate failed login

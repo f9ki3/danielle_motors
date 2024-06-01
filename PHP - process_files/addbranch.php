@@ -1,4 +1,5 @@
 <?php
+include "../admin/session.php";
 include_once "../database/database.php";
 
 // Retrieve form data
@@ -62,6 +63,9 @@ if ($stmt) {
 
     // Execute the statement
     if ($stmt->execute()) {
+        $log_description = "Added branch: " . $branchname . ".";
+        $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$id', audit_description = '$log_description', user_brn_code = '$branch_code'";
+        $conn->query($insert_into_logs);
         // Data inserted successfully
         header("location: ../Inventory/Branch_Maintenance/");
     } else {

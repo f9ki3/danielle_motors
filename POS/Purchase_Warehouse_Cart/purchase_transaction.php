@@ -6,6 +6,7 @@ function generateTransactionID() {
     return "DMP" . mt_rand(1000000, 9999999); // Generate DMP+7 random digits
 }
 
+$user_account_id = $id;
 $user_brn_code = $branch_code;
 $transaction_customer_name = isset($_POST['transaction_customer_name']) ? $_POST['transaction_customer_name'] : '';
 $transaction_date = isset($_POST['transaction_date']) ? $_POST['transaction_date'] : '';
@@ -96,7 +97,6 @@ if ($stmt->execute()) {
             $conn->query($sql_insert);
         }
     }
-
     $stmt_log = $conn->prepare("INSERT INTO `audit` (`id`, `audit_user_id`, `audit_date`, `audit_action`, `audit_description`) VALUES (NULL, ?, NOW(), 'purchase', 'purchase store')");
     $stmt_log->bind_param("i", $user_account_id); 
     $stmt_log->execute();
