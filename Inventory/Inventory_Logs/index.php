@@ -8,7 +8,7 @@ if(isset($_SESSION['user_brn_code']) && !empty($_SESSION['user_brn_code'])) {
     $user_brn_code = $_SESSION['user_brn_code'];
 
     // Prepare SQL query with a placeholder for user_brn_code
-    $sql_logs = "SELECT `id`, `audit_date`, `audit_user_id`, `audit_description` FROM `pos_user_logs` WHERE `user_brn_code` = ?";
+    $sql_logs = "SELECT `id`, `audit_date`, `audit_user_id`, `audit_description` FROM `audit` WHERE `user_brn_code` = ?";
     
     // Prepare statement
     $stmt = $conn->prepare($sql_logs);
