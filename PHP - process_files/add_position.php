@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if(mysqli_query($conn, $sql)){
         $log_description = "Created position: " . $position_name . ".";
-        $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$id', audit_description = '$log_description', user_brn_code = '$branch_code'";
+        $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$id', audit_description = '$log_description', user_brn_code = '$branch_code', audit_date = '$currentDate'";
         $conn->query($insert_into_logs);
         header("Location: ../Inventory/User_Position_Maintenance/?duplicate_entry=false");
         // Close connection
