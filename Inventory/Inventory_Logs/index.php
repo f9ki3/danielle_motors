@@ -8,7 +8,7 @@ if(isset($_SESSION['user_brn_code']) && !empty($_SESSION['user_brn_code'])) {
     $user_brn_code = $_SESSION['user_brn_code'];
 
     // Prepare SQL query with a placeholder for user_brn_code
-    $sql_logs = "SELECT `id`, `audit_date`, `audit_user_id`, `audit_description` FROM `audit` WHERE `user_brn_code` = ?";
+    $sql_logs = "SELECT `id`, `audit_date`, `audit_user_id`, `audit_description` FROM `audit` WHERE `user_brn_code` = ? ORDER BY audit_date DESC";
     
     // Prepare statement
     $stmt = $conn->prepare($sql_logs);
@@ -59,8 +59,8 @@ if ($result_admin->num_rows > 0) {
         <div class="col-lg-12 mb-5">
           <h1>Activity Logs</h1>
         </div>
-        <!-- Display DataTable -->
-        <div class="table-responsive">
+   <!-- Display DataTable -->
+   <div class="table-responsive" style="max-height: 700px; overflow-y: auto;">
           <table id="userLogsTable" class="table table-striped" style="width:100%">
             <thead>
               <tr>

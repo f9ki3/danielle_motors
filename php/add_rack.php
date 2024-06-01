@@ -1,16 +1,7 @@
 <?php
-// Start a session
-session_start();
-
-// Establish database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "danielle_motors";
+include '../admin/session.php';
+include '../config/config.php';
 $status = 0;
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check if the POST data is set
 if(isset($_POST['uname']) && isset($_POST['pass'])) {
@@ -28,8 +19,19 @@ if(isset($_POST['uname']) && isset($_POST['pass'])) {
     // Get the result
     $result = $stmt->get_result();
 
-    
+    // Check if a row was returned
+    if ($result->num_rows > 0) {
+        // Insert log
+        $stmt_log = $conn->prepare("INSERT INTO audit (audit_user_id, audit_date, audit_action, audit_description, user_brn_code) VALUES (?, NOW(), 'update', 'New row inserted into stocks table', ?)");
+        $stmt_log->bind_param("is", $user_id, $branch_code); // Assuming $user_id and $branch_code are defined elsewhere
+        $stmt_log->execute();
+        mysqli_stmt_close($stmt_log);
 
+        // Additional code for successful login
+    } else {
+        // Respond with '0' to indicate failed login
+        echo '0';
+    }
 } else {
     // Respond with '0' to indicate failed login
     echo '0';
