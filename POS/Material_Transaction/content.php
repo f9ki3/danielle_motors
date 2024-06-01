@@ -82,7 +82,12 @@ if($material_transfer_res -> num_rows > 0){
 ?>
     
 
-<div style="width: 100%" >
+<div style="width: 100%"  id="printContent">
+    <div class="row">
+        <div class="col text-end mb-3">
+            <button class="btn border btn-lg rounded" id="printButton">Print</button>
+        </div>
+    </div>
     <div>
         <div style="background-color: white; height: auto;" class="rounded border p-3 mb-3 w-100">
                 <div class="mt-2">
@@ -104,7 +109,6 @@ if($material_transfer_res -> num_rows > 0){
                         <input type="hidden" id="user_brn_code" value="<?php echo $branch_code; ?>">
                      <div>
                             <!-- <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#add_stocks">+ Add Stocks</button> -->
-                            <button class="btn border btn-sm rounded" data-bs-toggle="modal" data-bs-target="#print">Print</button>
                         </div>
                     </div>
 

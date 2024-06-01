@@ -7,6 +7,19 @@ date_default_timezone_set('Asia/Manila');
 <html lang="en-US" dir="ltr">
 
  <?php include "../../page_properties/header_pos.php" ?>
+ <style>
+        @media print {
+            #printButton {
+                display: none;
+            }
+            #acceptMaterialTransfer {
+              display: none;
+            }
+            #returnMaterialTransfer {
+              display: none;
+            }
+        }
+    </style>
 
   <body>
     <!-- ===============================================-->
@@ -67,6 +80,21 @@ date_default_timezone_set('Asia/Manila');
           // Call the function to reload spinner
           reloadSpinner();
 
+    </script>
+
+  <script>
+      $(document).ready(function(){
+        $('#printButton').on('click', function(){
+          console.log('print clicked')
+          var content = $('#printContent').html();
+          var originalContent = $('body').html();
+
+          $('body').html(content);
+
+          window.print();
+          $('body').html(originalContent);
+        })
+      });
     </script>
   </body>
 
