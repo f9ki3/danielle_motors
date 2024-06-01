@@ -110,7 +110,7 @@ if(isset($_POST['uname'], $_POST['pass'])) {
             // Insert user login log
             $user = $_SESSION['id'] = $row['id']; 
 
-            $stmt_log = $conn->prepare("INSERT INTO `audit` (`id`, `audit_user_id`, `audit_date`, `audit_acition`, `audit_description`) VALUES (NULL, ?, NOW(), 'login', 'login inventory')");
+            $stmt_log = $conn->prepare("INSERT INTO `audit` (`id`, `audit_user_id`, `audit_date`, `audit_action`, `audit_description`) VALUES (NULL, ?, NOW(), 'login', 'login inventory')");
             $stmt_log->bind_param("i", $user); 
             $stmt_log->execute();
         } elseif ($_SESSION['user_account_type'] == 1) {
@@ -118,7 +118,7 @@ if(isset($_POST['uname'], $_POST['pass'])) {
 
             $user = $_SESSION['id'] = $row['id']; 
 
-            $stmt_log = $conn->prepare("INSERT INTO `audit` (`id`, `audit_user_id`, `audit_date`, `audit_acition`, `audit_description`) VALUES (NULL, ?, NOW(), 'login', 'login store')");
+            $stmt_log = $conn->prepare("INSERT INTO `audit` (`id`, `audit_user_id`, `audit_date`, `audit_action`, `audit_description`) VALUES (NULL, ?, NOW(), 'login', 'login store')");
             $stmt_log->bind_param("i", $user); 
             $stmt_log->execute();
         }
