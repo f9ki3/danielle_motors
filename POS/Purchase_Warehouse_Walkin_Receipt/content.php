@@ -38,7 +38,7 @@ $stmt->close();
     <div>
 
         <div style=" height: auto" class=" w-100 transact">
-            <h2 class="mb-3">Purchase Store <?php echo $id?></h2>
+            <h2 class="mb-3">Purchase Store</h2>
             <div class="row">
                 <div>
                 <div class="w-100 border rounded p-3 mb-3">
