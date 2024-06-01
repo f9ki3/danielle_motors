@@ -1,4 +1,5 @@
 <?php
+include "../admin/session.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require '../database/database.php';
@@ -89,6 +90,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mail->Body = 'Your default password is: ' . $password . '.';
 
         if ($mail->send()) {
+            $log_description = "Created tje account for " . $fname . " " . $lname . ".";
+            $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$id', audit_description = '$log_description'";
+            $conn->query($log_description);
+
             // Redirect user with success message
             header("Location: ../Inventory/User_Maintenance/?error=false");
             $conn->close();
