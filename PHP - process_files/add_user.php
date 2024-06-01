@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($mail->send()) {
             $log_description = "Created tje account for " . $fname . " " . $lname . ".";
             $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$id', audit_description = '$log_description', user_brn_code = '$branch_code'";
-            $conn->query($log_description);
+            $conn->query($insert_into_logs);
 
             // Redirect user with success message
             header("Location: ../Inventory/User_Maintenance/?error=false");
