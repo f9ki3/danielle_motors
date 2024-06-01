@@ -8,7 +8,7 @@ if(isset($_SESSION['user_brn_code']) && !empty($_SESSION['user_brn_code'])) {
     $user_brn_code = $_SESSION['user_brn_code'];
 
     // Prepare SQL query with a placeholder for user_brn_code
-    $sql_logs = "SELECT `id`, `log_date`, `log_user_id`, `logs` FROM `pos_user_logs` WHERE `user_brn_code` = ?";
+    $sql_logs = "SELECT `id`, `audit_date`, `audit_user_id`, `audit_description` FROM `pos_user_logs` WHERE `user_brn_code` = ?";
     
     // Prepare statement
     $stmt = $conn->prepare($sql_logs);
@@ -74,15 +74,15 @@ if ($result_admin->num_rows > 0) {
               // Populate table with data
               if ($result_logs !== null && $result_logs->num_rows > 0) {
                   while($row = $result_logs->fetch_assoc()) {
-                      $adminName = isset($adminData[$row["log_user_id"]]) ? $adminData[$row["log_user_id"]]['user_fname'] . ' ' . $adminData[$row["log_user_id"]]['user_lname'] : 'Unknown';
+                      $adminName = isset($adminData[$row["audit_user_id"]]) ? $adminData[$row["audit_user_id"]]['user_fname'] . ' ' . $adminData[$row["audit_user_id"]]['user_lname'] : 'Unknown';
                       echo "<tr>";
                       echo "<td style='padding-left: 10px;'>" . $adminName . "</td>";
-                      echo "<td style='padding-left: 10px;'>" . $row["logs"] . "</td>";
-                      echo "<td style='padding-left: 10px;'>" . $row["log_date"] . "</td>";
+                      echo "<td style='padding-left: 10px;'>" . $row["audit_description"] . "</td>";
+                      echo "<td style='padding-left: 10px;'>" . $row["audit_date"] . "</td>";
                       echo "</tr>";
                   }
               } else {
-                  echo "<tr><td colspan='4'>No data found</td></tr>";
+                  echo "<tr><td colspan='3'>No data found</td></tr>";
               }
               ?>
             </tbody>
