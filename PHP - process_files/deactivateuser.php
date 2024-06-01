@@ -12,7 +12,7 @@ if(isset($_GET['user_id'])){
     }
 
     $log_description = "Deactivated the account of " . $employee_info . ".";
-    $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$id', audit_description = '$log_description'";
+    $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$id', audit_description = '$log_description', user_brn_code = '$branch_code'";
     $conn->query($log_description);
 
     $deactivate_user = "UPDATE user SET user_status = 1 WHERE id = '$user_id'";

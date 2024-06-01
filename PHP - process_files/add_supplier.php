@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $insert_supplier_sql = "INSERT INTO supplier (supplier_name, supplier_logo, supplier_email, supplier_address, phone, status) VALUES ('$supplier_name', '$filename', '$email', '$address', '$phone', '1')";
         if($conn->query($insert_supplier_sql) === TRUE){
             $log_description = "Added a supplier :" . $supplier_name . ".";
-            $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$id', audit_description = '$log_description'";
+            $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$id', audit_description = '$log_description', user_brn_code = '$branch_code'";
             $conn->query($log_description);
 
 
