@@ -163,6 +163,14 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
               </a>
               
             </div>
+            <div class="nav-item-wrapper">
+              <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../Store_Logs/" role="button" data-bs-toggle="" aria-expanded="false">
+                <div class="d-flex align-items-center">
+                  <span class="nav-link-icon"><span data-feather="list"></span></span>
+                  <span class="nav-link-text-wrapper"><span class="nav-link-text">Activity Logs</span></span>
+                </div>
+              </a>
+            </div>
           </li>
       </ul>
     </div>
