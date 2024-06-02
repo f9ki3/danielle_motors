@@ -6,7 +6,6 @@ function generateTransactionID() {
     return "DMP" . mt_rand(1000000, 9999999); // Generate DMP+7 random digits
 }
 
-$user_account_id = $id;
 $user_brn_code = $branch_code;
 $transaction_customer_name = isset($_POST['transaction_customer_name']) ? $_POST['transaction_customer_name'] : '';
 $transaction_date = isset($_POST['transaction_date']) ? $_POST['transaction_date'] : '';
@@ -26,11 +25,11 @@ $cartItems = isset($_POST['cartItems']) ? $_POST['cartItems'] : [];
 
 $transaction_id = generateTransactionID();
 
-$sql = "INSERT INTO purchase_transactions (TransactionID, branch_code, CustomerName, TransactionDate, TransactionAddress, TransactionVerifiedBy, TransactionInspectedBy, TransactionReceivedBy, TransactionPaymentMethod, TransactionType, Subtotal, Tax, Discount, Total, Payment, ChangeAmount, status, cashier_id) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?)";
+$sql = "INSERT INTO purchase_transactions (TransactionID, branch_code, CustomerName, TransactionDate, TransactionAddress, TransactionVerifiedBy, TransactionInspectedBy, TransactionReceivedBy, TransactionPaymentMethod, TransactionType, Subtotal, Tax, Discount, Total, Payment, ChangeAmount, status) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssssssssssddddddi", $transaction_id, $user_brn_code, $transaction_customer_name, $transaction_date, $transaction_address, $transaction_verified, $transaction_inspected, $transaction_received, $transaction_payment, $transaction_type, $subtotal, $tax, $discount, $total, $amountPayment, $change, $user_account_id);
+$stmt->bind_param("ssssssssssdddddd", $transaction_id, $user_brn_code, $transaction_customer_name, $transaction_date, $transaction_address, $transaction_verified, $transaction_inspected, $transaction_received, $transaction_payment, $transaction_type, $subtotal, $tax, $discount, $total, $amountPayment, $change);
 
 if ($stmt->execute()) {
     foreach ($cartItems as $item) {
@@ -50,6 +49,7 @@ if ($stmt->execute()) {
         $stmt_cart = $conn->prepare($sql_cart);
         $stmt_cart->bind_param("sssssdssdds", $product_id, $transaction_id, $product_name, $brand, $model, $quantity, $unit, $srp, $discount, $discount_type, $total_amount);
         $stmt_cart->execute();
+
     }
 
     echo $transaction_id; // Echoing the transaction ID as response
@@ -97,10 +97,10 @@ if ($stmt->execute()) {
             $conn->query($sql_insert);
         }
     }
-    $stmt_log = $conn->prepare("INSERT INTO `audit` (`id`, `audit_user_id`, `audit_date`, `audit_action`, `audit_description`, `user_brn_code`)  VALUES (NULL, ?, current_timestamp(), 'purchase', 'purchase warehouse', ?);");
-    $stmt_log->bind_param("is", $user_account_id, $user_brn_code); 
+
+    $stmt_log = $conn->prepare("INSERT INTO `audit` (`id`, `audit_user_id`, `audit_date`, `audit_action`, `audit_description`, `user_brn_code`) VALUES (NULL, ?, NOW(), 'Purchase', 'Purchase Warehouse', ?)");
+    $stmt_log->bind_param("is", $user_id, $user_brn_code);
     $stmt_log->execute();
-    
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
