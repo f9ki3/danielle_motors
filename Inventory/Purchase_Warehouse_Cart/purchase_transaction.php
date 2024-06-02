@@ -98,7 +98,7 @@ if ($stmt->execute()) {
         }
     }
 
-    $stmt_log = $conn->prepare("INSERT INTO `audit` (`id`, `audit_user_id`, `audit_date`, `audit_action`, `audit_description`, `user_brn_code`)  VALUES (NULL, ?, current_timestamp(), 'purchase', 'purchase store', ?);");
+    $stmt_log = $conn->prepare("INSERT INTO `audit` (`id`, `audit_user_id`, `audit_date`, `audit_action`, `audit_description`, `user_brn_code`)  VALUES (NULL, ?, current_timestamp(), 'purchase', 'purchase warehouse', ?);");
     $stmt_log->bind_param("is", $user_account_id, $user_brn_code); 
     $stmt_log->execute();
 } else {
