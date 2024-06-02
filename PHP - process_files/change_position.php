@@ -13,6 +13,9 @@ if(isset($_GET['user_id'])){
             // Prepare and execute the update query
             $update_position = "UPDATE user SET user_position = '$user_position' WHERE id = '$his_user_id'";
             if($conn->query($update_position) === TRUE ){
+                $log_description = "Updated User Position to " . $user_position . ".";
+                $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$user_id', audit_description = '$log_description', user_brn_code = '$branch_code', audit_date = '$currentTimestamp'";
+                $conn->query($insert_into_logs);
                 header("Location: ../Inventory/User_Maintenance/");
                 $conn->close();
                 exit;
