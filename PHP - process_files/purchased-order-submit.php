@@ -74,6 +74,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $subtotal = $quantity * $product_amount;
                 $insert_content = "INSERT INTO purchased_order_content_wh (po_id, product_id, order_qty, est_amount) VALUES ('$last_purchased_order', '$product_id', '$quantity', '$subtotal')";
                 if($conn->query($insert_content)===TRUE){
+                    $log_description = "Created Purchased Order #" . $po_id . ".";
+                    $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$user_id', audit_description = '$log_description', user_brn_code = '$branch_code', audit_date = '$currentTimestamp'";
+                    $conn->query($insert_into_logs);
                     echo "successfully inserted to purchased order content wh";
                 } else {
                     echo "error";
@@ -95,6 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Form not submitted
     echo "Form not submitted.";
 }
+
 
 header("Location: ../Inventory/Purchased-Order-Supplier/?error=success");
 $conn->close();

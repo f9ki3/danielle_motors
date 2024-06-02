@@ -37,6 +37,10 @@ if(isset($_GET['angtabanidane'])){
 
     $update = "UPDATE material_transaction SET return_status = 1 WHERE id = '$mt_Id'";
     if($conn->query($update) === TRUE ){
+        $log_description = "Accepted the return product from a Material Transfer.";
+        $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$user_id', audit_description = '$log_description', user_brn_code = '$branch_code', audit_date = '$currentTimestamp'";
+        $conn->query($insert_into_logs);
+
         header("Location: ../Inventory/Material_transaction/");
         $conn->close();
         exit;

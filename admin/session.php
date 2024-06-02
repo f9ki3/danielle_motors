@@ -4,7 +4,7 @@ session_start();
 
 // Set timezone to Manila (GMT+8)
 date_default_timezone_set('Asia/Manila');
-
+$currentTimestamp = date('Y-m-d H:i:s');  //date in timestamp format mga papi
 // Check if the user is logged in
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     // Retrieve session variables
