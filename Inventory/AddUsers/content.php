@@ -56,8 +56,8 @@
                 <div class="col-sm-6 col-md-3">
                     <div class="form-floating">
                         <select class="form-select" name="account_type" id="">
-                            <option value="0">Inventory</option>
-                            <option value="1">Sales</option>
+                            <option value="0">Warehouse</option>
+                            <option value="1">Store</option>
                         </select>
                         <label for="">Account Type</label>
                     </div>
