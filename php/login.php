@@ -103,12 +103,12 @@ if (isset($_POST['uname'], $_POST['pass'])) {
         // Respond based on user account type and log login action
         if ($_SESSION['user_account_type'] == 0) {
             echo '1';
-            $stmt_log = $conn->prepare("INSERT INTO `audit` (`id`, `audit_user_id`, `audit_date`, `audit_action`, `audit_description`, `user_brn_code`) VALUES (NULL, ?, NOW(), 'login', 'login inventory', ?)");
+            $stmt_log = $conn->prepare("INSERT INTO `audit` (`id`, `audit_user_id`, `audit_date`, `audit_action`, `audit_description`, `user_brn_code`) VALUES (NULL, ?, NOW(), 'Login', 'Login Warehouse', ?)");
             $stmt_log->bind_param("is", $user_id, $brn_code);
             $stmt_log->execute();
         } elseif ($_SESSION['user_account_type'] == 1) {
             echo '2';
-            $stmt_log = $conn->prepare("INSERT INTO `audit` (`id`, `audit_user_id`, `audit_date`, `audit_action`, `audit_description`, `user_brn_code`) VALUES (NULL, ?, NOW(), 'login', 'login store', ?)");
+            $stmt_log = $conn->prepare("INSERT INTO `audit` (`id`, `audit_user_id`, `audit_date`, `audit_action`, `audit_description`, `user_brn_code`) VALUES (NULL, ?, NOW(), 'Login', 'Login Store', ?)");
             $stmt_log->bind_param("is", $user_id, $brn_code);
             $stmt_log->execute();
         }
