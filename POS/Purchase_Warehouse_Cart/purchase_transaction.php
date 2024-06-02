@@ -26,11 +26,11 @@ $cartItems = isset($_POST['cartItems']) ? $_POST['cartItems'] : [];
 
 $transaction_id = generateTransactionID();
 
-$sql = "INSERT INTO purchase_transactions (TransactionID, branch_code, CustomerName, TransactionDate, TransactionAddress, TransactionVerifiedBy, TransactionInspectedBy, TransactionReceivedBy, TransactionPaymentMethod, TransactionType, Subtotal, Tax, Discount, Total, Payment, ChangeAmount, status) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
+$sql = "INSERT INTO purchase_transactions (TransactionID, branch_code, CustomerName, TransactionDate, TransactionAddress, TransactionVerifiedBy, TransactionInspectedBy, TransactionReceivedBy, TransactionPaymentMethod, TransactionType, Subtotal, Tax, Discount, Total, Payment, ChangeAmount, status, cashier_id) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?)";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssssssssssdddddd", $transaction_id, $user_brn_code, $transaction_customer_name, $transaction_date, $transaction_address, $transaction_verified, $transaction_inspected, $transaction_received, $transaction_payment, $transaction_type, $subtotal, $tax, $discount, $total, $amountPayment, $change);
+$stmt->bind_param("ssssssssssddddddi", $transaction_id, $user_brn_code, $transaction_customer_name, $transaction_date, $transaction_address, $transaction_verified, $transaction_inspected, $transaction_received, $transaction_payment, $transaction_type, $subtotal, $tax, $discount, $total, $amountPayment, $change, $user_account_id);
 
 if ($stmt->execute()) {
     foreach ($cartItems as $item) {
@@ -97,8 +97,8 @@ if ($stmt->execute()) {
             $conn->query($sql_insert);
         }
     }
-    $stmt_log = $conn->prepare("INSERT INTO `audit` (`id`, `audit_user_id`, `audit_date`, `audit_action`, `audit_description`) VALUES (NULL, ?, NOW(), 'purchase', 'purchase store')");
-    $stmt_log->bind_param("i", $user_account_id); 
+    $stmt_log = $conn->prepare("INSERT INTO `audit` (`id`, `audit_user_id`, `audit_date`, `audit_action`, `audit_description`, `user_brn_code`)  VALUES (NULL, ?, current_timestamp(), 'purchase', 'purchase store', ?);");
+    $stmt_log->bind_param("is", $user_account_id, $user_brn_code); 
     $stmt_log->execute();
     
 } else {
