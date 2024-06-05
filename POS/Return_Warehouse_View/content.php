@@ -23,27 +23,48 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     // Fetch the first row (assuming there's only one row for a given transaction ID)
     $transactionDetails = $result->fetch_assoc();
+
+    // Check if the status is 6, if so, disable the input fields
+    $returnButtonDisabled = ($transactionDetails['status'] == 6) ? 'disabled' : '';
+
+    // Fetch the reason from the returns table if the status is 6
+    $reason = '';
+    if ($transactionDetails['status'] == 6) {
+        // Prepare and execute SQL query to fetch the reason
+        $returnsQuery = "SELECT `reason` FROM `returns` WHERE `status` = 6 AND `material_invoice_id` = ?";
+        $returnsStmt = $conn->prepare($returnsQuery);
+        $returnsStmt->bind_param("s", $transactionID);
+        $returnsStmt->execute();
+        $returnsResult = $returnsStmt->get_result();
+
+        // Check if a reason is found
+        if ($returnsResult->num_rows > 0) {
+            // Fetch the reason
+            $returnsRow = $returnsResult->fetch_assoc();
+            $reason = $returnsRow['reason'];
+        }
+        $returnsStmt->close();
+    }
 } else {
     echo "0 results";
 }
 
 // Close statement
 $stmt->close();
-
 ?>
- <input type="hidden" class="form-control" placeholder="Material Invoice No." id="materialInvoiceNo">
 
- <?php
+<input type="hidden" class="form-control" placeholder="Material Invoice No." id="materialInvoiceNo">
 
+<?php
 // Check if the material_transaction parameter is set and not empty
 if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])) {
     // Retrieve the value of material_transaction
     $material_transaction = $_GET['material_transaction'];
-    
+
     // Prepare and execute SQL query (using prepared statement to prevent SQL injection)
     $sql = "SELECT id, material_invoice, material_date, material_cashier, material_recieved_by, 
     material_inspected_by, material_verified_by, active, totalSellingPrice FROM material_transfer WHERE material_invoice = ?";
-    
+
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $material_transaction);
     $stmt->execute();
@@ -69,13 +90,13 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
     } else {
         echo "No records found";
     }
-    
+
+    $stmt->close();
 } else {
     // If material_transaction parameter is not set or empty, redirect
     header("Location: /store_stocks"); // Redirect to error page
     exit(); // Stop further execution
 }
-
 ?>
 
     
@@ -214,16 +235,29 @@ if(isset($_GET['material_transaction']) && !empty($_GET['material_transaction'])
     </div>
 </div>
 
+
 <div class="w-100 border rounded p-4 mb-3">
-                        <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h4 id="totalSellingPrice" class="ms-2 me-4">Total Selling Amount: ₱<?php echo number_format($totalSellingPrice, 2); ?></h4>
-                        </div>
-                        <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h4 id="totalReturnAmount" class="ms-2">Total Return Amount ₱<?php echo number_format($totalReturnAmount, 2); ?></h4>
-                        </div>
-                        <hr>
-                        <input type="text" id="Reason" class="form-control" placeholder="Enter Reason to return">                     
-                    </div>
+    <!-- Total Selling Amount and Total Return Amount -->
+    <div style="display: flex; flex-direction: row; justify-content: space-between">
+        <h4 id="totalSellingPrice" class="ms-2 me-4">Total Selling Amount: ₱<?php echo number_format($totalSellingPrice, 2); ?></h4>
+    </div>
+    <div style="display: flex; flex-direction: row; justify-content: space-between">
+        <h4 id="totalReturnAmount" class="ms-2">Total Return Amount ₱<?php echo number_format($totalReturnAmount, 2); ?></h4>
+    </div>
+    <hr>
+    
+    <!-- Reason input field -->
+    <?php
+    // Check if the return button is disabled
+    if ($returnButtonDisabled) {
+        // If disabled, populate the input field with the reason and disable it
+        echo '<input type="text" id="Reason" class="form-control" placeholder="Enter Reason to return" value="' . htmlspecialchars($reason) . '" disabled>';   
+    } else {
+        // If not disabled, generate the input field without populating it
+        echo '<input type="text" id="Reason" class="form-control" placeholder="Enter Reason to return">';
+    }
+    ?>
+</div>
 
 <!-- End of Footer -->
 
