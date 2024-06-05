@@ -67,6 +67,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+    $log_description = "Verified MT #" . $invoice_id . ".";
+    $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$user_id', audit_action = 'Verified Material Transfer', audit_description = '$log_description', user_brn_code = '$branch_code', audit_date = '$currentTimestamp'";
+    $conn->query($insert_into_logs);
+
     echo "success";
     $conn->close();
     exit();

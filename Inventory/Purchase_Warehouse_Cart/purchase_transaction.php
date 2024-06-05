@@ -98,9 +98,10 @@ if ($stmt->execute()) {
         }
     }
 
-    $stmt_log = $conn->prepare("INSERT INTO `audit` (`id`, `audit_user_id`, `audit_date`, `audit_acition`, `audit_description`) VALUES (NULL, ?, NOW(), 'purchase', 'purchase store')");
-    $stmt_log->bind_param("i", $user_account_id); 
-    $stmt_log->execute();
+    $currentTimestamp = date('Y-m-d H:i:s'); 
+            // Insert log
+            $stmt_log = $conn->prepare("INSERT INTO audit (audit_user_id, audit_date, audit_action, audit_description, user_brn_code) VALUES (?, ?, 'Purchase', 'Purchase Warehouse', ?)");
+            $stmt_log->bind_param("iss", $user_id, $currentTimestamp,$branch_code);
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
