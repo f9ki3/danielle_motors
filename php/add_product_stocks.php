@@ -67,10 +67,10 @@ if (isset($_POST['productId'], $_POST['qty_sent'], $_POST['qty_receive'], $_POST
             }
 
             mysqli_stmt_close($stmt2);
-
+            $currentTimestamp = date('Y-m-d H:i:s'); 
             // Insert log
-            $stmt_log = $conn->prepare("INSERT INTO audit (audit_user_id, audit_date, audit_action, audit_description, user_brn_code) VALUES (?, NOW(), 'Material Transaction', 'Material Transfer Stocks has accepted', ?)");
-            $stmt_log->bind_param("is", $user_id, $branch_code);
+            $stmt_log = $conn->prepare("INSERT INTO audit (audit_user_id, audit_date, audit_action, audit_description, user_brn_code) VALUES (?, ?, 'Material Transaction', 'Material Transfer Stocks has accepted', ?)");
+            $stmt_log->bind_param("iss", $user_id, $currentTimestamp,$branch_code);
             $stmt_log->execute();
             mysqli_stmt_close($stmt_log);
         }

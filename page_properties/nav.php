@@ -163,19 +163,12 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           ?>
           <!-- Material Transfer -->
           <div class="nav-item-wrapper">
-            <a class="nav-link <?php if($current_folder === "Material_transfer"){ echo "active"; } else { echo "";}?> dropdown-indicator label-1" href="../../Inventory/Material_transfer/">
-              <div class="d-flex align-items-center">
-                <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div>
-                <span class="nav-link-icon"><span data-feather="clipboard"></span></span>
-                <span class="nav-link-text">Material Transfer</span>
-              </div>
-            </a>
-            <div class="parent-wrapper label-1">
-              <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-project-management">
-                <li class="collapsed-nav-item-title d-none"><a href="../../Inventory/Material_transfer/" style="text-decoration: none;">Material Transfer</a></li>
-              </ul>
+            <a class="nav-link <?php if($current_folder === "Material_Transfer" || $current_folder === "Material_Request" || $current_folder === "Material_Transaction"){ echo "active"; } else { echo "";}?>  label-1" href="../../Inventory/Material_transfer" role="button" data-bs-toggle="" aria-expanded="false">
+                <span class="nav-link-icon"><span data-feather="truck"></span></span>
+                <span class="nav-link-text-wrapper"><span class="nav-link-text">Material Transfer</span></span>
+                <!-- </div>   -->
+              </a>
             </div>
-          </div>
           <?php 
           }
           if(strpos($session_permission, 'VIEW ALL STOCKS') !== false || strpos($session_permission, 'VIEW WAREHOUSE STOCKS') !== false || strpos($session_permission, 'MANAGE PRODUCT LIST') !== false || strpos($session_permission, 'MANAGE PRICELIST') !== false) {
