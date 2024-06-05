@@ -133,7 +133,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           <li class="nav-item">
             <p class="navbar-vertical-label">Maintenance</p>
             <hr class="navbar-vertical-line" />
-            <div class="nav-item-wrapper">
+            <!-- <div class="nav-item-wrapper">
               <a class="nav-link <?php if($current_folder === "Manage_Product" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Purchase_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
                   <span class="nav-link-icon"><span data-feather="box"></span></span>
@@ -147,7 +147,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 </div>
               </a>
               
-            </div>
+            </div> -->
             <div class="nav-item-wrapper">
               <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../Store_Logs/" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
