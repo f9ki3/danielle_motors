@@ -5,6 +5,7 @@ session_start();
 // Set timezone to Manila (GMT+8)
 date_default_timezone_set('Asia/Manila');
 $currentTimestamp = date('Y-m-d H:i:s');
+
 // Include the database configuration file
 include("../config/config.php");
 
@@ -100,19 +101,19 @@ if (isset($_POST['uname'], $_POST['pass'])) {
             $_SESSION['branch_email'] = $branch['brn_email'];
         }
 
-// Respond based on user account type and log login action
-if ($_SESSION['user_account_type'] == 0) {
-    echo '1';
-    $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$user_id', audit_action = 'login inventory' ,audit_description = 'login inventory', user_brn_code = '$brn_code', audit_date = '$currentTimestamp'";
-} elseif ($_SESSION['user_account_type'] == 1) {
-    echo '2';
-    $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$user_id',audit_action = 'login store' , audit_description = 'login store', user_brn_code = '$brn_code', audit_date = '$currentTimestamp'";
-}
+        // Respond based on user account type and log login action
+        if ($_SESSION['user_account_type'] == 0) {
+            echo '1';
+            $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$user_id', audit_action = 'login inventory' ,audit_description = 'login inventory', user_brn_code = '$brn_code', audit_date = '$currentTimestamp'";
+        } elseif ($_SESSION['user_account_type'] == 1) {
+            echo '2';
+            $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$user_id',audit_action = 'login store' , audit_description = 'login store', user_brn_code = '$brn_code', audit_date = '$currentTimestamp'";
+        }
 
-// Execute the query
-if ($conn->query($insert_into_logs) === false) {
-    die('Error: ' . htmlspecialchars($conn->error));
-}
+        // Execute the query
+        if ($conn->query($insert_into_logs) === false) {
+            die('Error: ' . htmlspecialchars($conn->error));
+        }
     } else {
         echo '0';
     }

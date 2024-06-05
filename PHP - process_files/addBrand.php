@@ -18,6 +18,9 @@
                 exit;
             }
 
+            $log_description = "Created new brand: " . $category_name . ".";
+            $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$user_id', audit_description = '$log_description', user_brn_code = '$branch_code', audit_date = '$currentTimestamp'";
+            $conn->query($insert_into_logs);
 
             $query = 'INSERT INTO brand
                         (brand_name, publish_by, status)

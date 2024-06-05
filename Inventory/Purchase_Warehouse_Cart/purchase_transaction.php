@@ -97,7 +97,6 @@ if ($stmt->execute()) {
             $conn->query($sql_insert);
         }
     }
-
     $currentTimestamp = date('Y-m-d H:i:s'); 
             // Insert log
             $stmt_log = $conn->prepare("INSERT INTO audit (audit_user_id, audit_date, audit_action, audit_description, user_brn_code) VALUES (?, ?, 'Purchase', 'Purchase Warehouse', ?)");

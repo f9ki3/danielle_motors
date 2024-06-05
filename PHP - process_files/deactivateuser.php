@@ -1,7 +1,7 @@
 <?php 
 include "../admin/session.php";
 include "../database/database.php";
-
+$currentTimestamp = date('Y-m-d H:i:s');
 if(isset($_GET['user_id'])){
     $user_id =  $_GET['user_id'];
     $employee_info_sql = "SELECT user_fname, user_lname FROM user WHERE id = '$user_id'";
@@ -12,7 +12,7 @@ if(isset($_GET['user_id'])){
     }
 
     $log_description = "Deactivated the account of " . $employee_info . ".";
-    $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$id', audit_description = '$log_description', user_brn_code = '$branch_code'";
+    $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$id', audit_description = '$log_description', user_brn_code = '$branch_code', audit_date = '$currentTimestamp'";
     $conn->query($insert_into_logs);
 
     $deactivate_user = "UPDATE user SET user_status = 1 WHERE id = '$user_id'";

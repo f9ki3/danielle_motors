@@ -10,9 +10,9 @@ if(isset($_GET['user_id'])){
         $row = $employee_info_sql_res->fetch_assoc();
         $employee_info = $row['user_fname'] . " " . $row['user_lname'];
     }
-
+    $currentTimestamp = date('Y-m-d H:i:s');
     $log_description = "Activated the account of " . $employee_info . ".";
-    $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$id', audit_description = '$log_description', user_brn_code = '$branch_code'";
+    $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$id', audit_description = '$log_description', user_brn_code = '$branch_code', audit_date = '$currentTimestamp'";
     $conn->query($insert_into_logs);
 
     $deactivate_user = "UPDATE user SET user_status = 0 WHERE id = '$user_id'";

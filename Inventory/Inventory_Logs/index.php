@@ -75,10 +75,14 @@ if ($result_admin->num_rows > 0) {
               if ($result_logs !== null && $result_logs->num_rows > 0) {
                   while($row = $result_logs->fetch_assoc()) {
                       $adminName = isset($adminData[$row["audit_user_id"]]) ? $adminData[$row["audit_user_id"]]['user_fname'] . ' ' . $adminData[$row["audit_user_id"]]['user_lname'] : 'Unknown';
+                      // convert lang tito, change mo na lang pag pangit
+                      $auditDate = $row["audit_date"];
+                      $convertAudit_date = strtotime($auditDate);
+                      $formatted_audit_date = date('M j, Y g:i A', $convertAudit_date);
                       echo "<tr>";
                       echo "<td style='padding-left: 10px;'>" . $adminName . "</td>";
                       echo "<td style='padding-left: 10px;'>" . $row["audit_description"] . "</td>";
-                      echo "<td style='padding-left: 10px;'>" . $row["audit_date"] . "</td>";
+                      echo "<td style='padding-left: 10px;'>" . $formatted_audit_date . "</td>";
                       echo "</tr>";
                   }
               } else {

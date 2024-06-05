@@ -323,14 +323,14 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 <?php 
           
                 ?>
-                <li class="nav-item">
-                  <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="#">
+                <!-- <li class="nav-item">
+                  <a class="nav-link <?php // if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="#">
                     <div class="d-flex align-items-center">
                       <div class="dropdown-indicator-icon"></div>
                       <span class="nav-link-text">Employees List</span>
                     </div>
                   </a>
-                </li>
+                </li> -->
                 <?php 
           
                 ?>
@@ -487,9 +487,11 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
         </li>
         <?php 
           }
-          if(strpos($session_permission, 'VIEW SUPPLIER AND PRODUCTS') !== false) {
           ?>
           <li class="nav-item">
+            <?php 
+            if(strpos($session_permission, 'VIEW SUPPLIER AND PRODUCTS') !== false) {
+            ?>
             <div class="nav-item-wrapper">
               <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../Suppliers/" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
@@ -506,6 +508,11 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 </div>
               </a>
             </div>
+            <?php 
+            }
+            if(strpos($session_permission, 'ACTIVITY LOGS') !== false) {
+            ?>
+
             <div class="nav-item-wrapper">
               <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../Inventory_Logs/" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
@@ -514,11 +521,13 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 </div>
               </a>
             </div>
+            <?php
+            }
+            ?>
           </li>
             
   
           <?php
-          }
         }
         ?>
         
