@@ -124,7 +124,7 @@
                         <div class="alert p-2 alert-secondary text-center success" id="loading" role="alert" style="display: none">
                         
                         </div>
-                      <div class="text-center"><a class="fs--1 fw-bold" href="sign-up.html">Create an account</a></div>
+                      <!-- <div class="text-center"><a class="fs--1 fw-bold" href="sign-up.html">Create an account</a></div> -->
                     </div>
                   </div>
                 </div>

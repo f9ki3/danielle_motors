@@ -41,7 +41,6 @@ if ($result_admin->num_rows > 0) {
         $adminData[$row['id']] = $row;
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -59,8 +58,8 @@ if ($result_admin->num_rows > 0) {
         <div class="col-lg-12 mb-5">
           <h1>Activity Logs</h1>
         </div>
-   <!-- Display DataTable -->
-   <div class="table-responsive" style="max-height: 700px; overflow-y: auto;">
+        <!-- Display DataTable -->
+        <div class="table-responsive" style="max-height: 700px; overflow-y: auto;">
           <table id="userLogsTable" class="table table-striped" style="width:100%">
             <thead>
               <tr>
@@ -136,6 +135,5 @@ if ($result_admin->num_rows > 0) {
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
-  </body>
   </body>
 </html>
