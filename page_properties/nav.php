@@ -735,7 +735,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="user"></span><span>Profile</span></a></li>
                 <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"><span class="me-2 text-900" data-feather="pie-chart"></span>Dashboard</a></li>
                 <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="lock"></span>Posts &amp; Activity</a></li>
-                <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="settings"></span>Settings &amp; Privacy </a></li>
+                <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../../Profile-Settings/Profile/"> <span class="me-2 text-900" data-feather="settings"></span>Settings &amp; Privacy </a></li>
                 <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="help-circle"></span>Help Center</a></li>
                 <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="globe"></span>Language</a></li>
               </ul>
