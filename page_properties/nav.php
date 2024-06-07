@@ -26,7 +26,6 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
   $logo = $_SESSION['logo'];
   $logo_text = $_SESSION['logo_text'];
 }
-
 ?>
 <!-- vertical navbar -->
 <nav class="navbar navbar-vertical navbar-expand-lg" style="display:none;">

@@ -1,4 +1,4 @@
-<div class="support-chat-container">
+<!-- <div class="support-chat-container">
 <div class="container-fluid support-chat">
     <div class="card bg-white">
     <div class="card-header d-flex flex-between-center px-4 py-3 border-bottom">
@@ -30,4 +30,4 @@
     </div>
     </div>
 </div><button class="btn p-0 border border-200 btn-support-chat"><span class="fs-0 btn-text text-primary text-nowrap">Chat demo</span><span class="fa-solid fa-circle text-success fs--1 ms-2"></span><span class="fa-solid fa-chevron-down text-primary fs-1"></span></button>
-</div>
+</div> -->
