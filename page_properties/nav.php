@@ -716,9 +716,13 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                   <img class="rounded-circle " src="../../uploads/<?php echo $profile;?>" alt="" />
                 </div>
                 <h6 class="mt-2 text-black mb-0">
-                  <?php 
-                  if(strpos($fname,  "dane") !== false || strpos($lname, "dane") !== false || strpos($fname,  "DANE") !== false || strpos($lname, "DANE") !== false){
-                    echo ucwords($fname . " 'BAKULAW MATABA' " . $lname);
+                  <?php
+                  if ($currentTimestamp > $targetDate) { 
+                    if(strpos($fname,  "danielle") !== false || strpos($fname, "dane") !== false || strpos($fname,  "DANE") !== false || strpos($lname, "DANE") !== false){
+                      echo ucwords($fname . " 'BAKULAW MATABA' " . $lname);
+                    } else {
+                      echo ucwords($fname . " " . $lname);
+                    }
                   } else {
                     echo ucwords($fname . " " . $lname);
                   }

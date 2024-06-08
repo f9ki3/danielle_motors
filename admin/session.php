@@ -5,6 +5,11 @@ session_start();
 // Set timezone to Manila (GMT+8)
 date_default_timezone_set('Asia/Manila');
 $currentTimestamp = date('Y-m-d H:i:s');  //date in timestamp format mga papi
+
+// Define the target date
+$targetDate = '2025-03-05 00:00:00';
+$targetDate = strtotime($targetDate);
+
 // Check if the user is logged in
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     // Retrieve session variables
