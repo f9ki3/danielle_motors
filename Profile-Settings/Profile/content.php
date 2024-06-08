@@ -28,20 +28,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12 text-center mb-4">
-                            <div class="card-header  d-flex justify-content-center align-items-end position-relative mb-7 mb-xxl-0" style="min-height: 214px; ">
-                            <div class="bg-holder rounded-top" style="background-image:url(../../assets/img/generic/cover-photo.png);"></div></label>
-                            <div class="hover-actions end-0 bottom-0 pe-1 pb-2 text-white"><span class="fa-solid fa-camera me-2 overlay-icon"></span></div>
-                            <!--/.bg-holder-->
-                            <a type="button" data-bs-toggle="modal" data-bs-target="#cropImage" >
-                            <div class="hoverbox feed-profile" style="width: 150px; height: 150px">
-                                <div class="hoverbox-content bg-black rounded-circle d-flex flex-center z-index-1" style="--phoenix-bg-opacity: .56;"><span class="fa-solid fa-camera fs-7 text-300 light"></span></div>
-                                <div class="position-relative bg-400 rounded-circle cursor-pointer d-flex flex-center mb-xxl-7">
-                                <div class="avatar avatar-5xl"><img class="rounded-circle rounded-circle bg-white img-thumbnail shadow-sm" src="../../uploads/<?php echo $profile;?>" alt="" /></div><label class="w-100 h-100 position-absolute z-index-1" for="upload-porfile-picture"></label>
-                                </div>
-                            </div>
-                            </a>
-                            </div>
-                            <p class="mt-9"><?php echo ucwords($fname . " " . $lname); ?></p>
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#cropImage" ><img id="dp_lang" src="../../uploads/<?php echo $profile;?>" class="img-fluid rounded-circle mb-3" alt="pfp" style="height: 150px;"></a>
+                            <p><?php echo ucwords($fname . " " . $lname); ?></p>
                         </div>
 
                         <div class="col-lg-12 text-center">
@@ -201,7 +189,7 @@
     <div class="modal fade" id="update_pw" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
-                <form id="updatePasswordForm" action="../../PHP - process_files/update_user_pw.php" method="POST">
+                <form action="../../PHP - process_files/update_user_pw.php" method="POST">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Update Password</h5>
                         <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close">
@@ -210,42 +198,23 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-lg-9 mb-2">
-                                <div class="form-floating">
+                            <div class="col-lg-12">
+                                <div class="form-floating mb-2">
                                     <input type="password" name="old_pw" id="old_pw" class="form-control">
-                                    <label for="fname">Current Password</label>
+                                    <label for="fname">Old Password</label>
                                 </div>
-                                <small id="old_pw_error" class="text-danger mb-3 mt-0"></small> <!-- Error message -->
-
                             </div>
-                            <div class="col-lg-3 mb-2">
-                                <button type="button" id="toggleOldPassword" class="btn btn-outline-secondary mt-2">
-                                    <span class="far fa-eye"></span>
-                                </button>
-                            </div>
-                            <div class="col-lg-9 mb-2">
-                                <div class="form-floating">
+                            <div class="col-lg-12">
+                                <div class="form-floating mb-2">
                                     <input type="password" name="new_pw" id="new_pw" class="form-control">
                                     <label for="lname">New Password</label>
                                 </div>
-                                <small id="new_pw_requirement" class="text-danger"></small> <!-- Error message -->
                             </div>
-                            <div class="col-lg-3 mb-2">
-                                <button type="button" id="toggleNewPassword" class="btn btn-outline-secondary mt-2">
-                                    <span class="far fa-eye"></span>
-                                </button>
-                            </div>
-                            <div class="col-lg-9 mb-2">
-                                <div class="form-floating">
-                                    <input type="password" name="confirm_pw" id="confirm_pw" class="form-control">
+                            <div class="col-lg-12">
+                                <div class="form-floating mb-2">
+                                    <input type="password" name="confirm_pw" class="form-control">
                                     <label for="lname">Confirm Password</label>
                                 </div>
-                                <small id="confirm_pw_error" class="text-danger"></small> <!-- Error message -->
-                            </div>
-                            <div class="col-lg-3 mb-2">
-                                <button type="button" id="toggleConfirmPassword" class="btn btn-outline-secondary mt-2">
-                                    <span class="far fa-eye"></span>
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -298,86 +267,3 @@ document.getElementById("changeProfileButtonagain").addEventListener("click", fu
   inputImage.click();
 });
 </script>
-<script>
-    $(document).ready(function() {
-        // Function to validate new password
-        function validateNewPassword() {
-            var newPassword = $('#new_pw').val();
-            var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{10,}$/;
-
-            if (passwordRegex.test(newPassword)) {
-                $('#new_pw_requirement').text(''); // Clear error message
-                return true;
-            } else {
-                $('#new_pw_requirement').text('Password must be at least 10 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.').addClass('text-danger');
-                return false;
-            }
-        }
-
-        // Function to check if passwords match and old password is correct
-        function checkPasswords() {
-            var newPassword = $('#new_pw').val();
-            var confirmPassword = $('#confirm_pw').val();
-            var oldPassword = $('#old_pw').val();
-            var passwordsMatch = newPassword === confirmPassword && newPassword !== '';
-            var oldPasswordMatch = false;
-
-            // Check old password only if new and confirm passwords match
-            if (passwordsMatch) {
-                $.ajax({
-                    type: 'POST',
-                    url: 'check_password.php', // PHP script to check password
-                    async: false, // Ensure synchronous request
-                    data: { oldPassword: oldPassword },
-                    success: function(response) {
-                        if (response === 'matched') {
-                            oldPasswordMatch = true;
-                            $('#old_pw_error').text(''); // Clear old error message
-                        } else {
-                            oldPasswordMatch = false;
-                            $('#old_pw_error').text('Incorrect Password').addClass('text-danger');
-                        }
-                    }
-                });
-            }
-
-            // Check if new password and confirm password match
-            if (newPassword !== confirmPassword && confirmPassword !== '') {
-                $('#confirm_pw_error').text('Passwords do not match').addClass('text-danger');
-            } else {
-                $('#confirm_pw_error').text(''); // Clear error message
-            }
-
-            // Enable or disable submit button based on old password match, passwords match, and new password requirement
-            $('#updatePasswordForm button[type="submit"]').prop('disabled', !(passwordsMatch && oldPasswordMatch && validateNewPassword()));
-        }
-
-        // Toggle password visibility
-        function togglePasswordVisibility(buttonId, passwordFieldId) {
-            var button = $(buttonId);
-            var passwordField = $(passwordFieldId);
-            button.click(function() {
-                var type = passwordField.attr('type') === 'password' ? 'text' : 'password';
-                passwordField.attr('type', type);
-                button.html(type === 'password' ? '<span class="far fa-eye"></span>' : '<span class="far fa-eye-slash"></span>');
-            });
-        }
-
-        // Check old password on blur
-        $('#old_pw').blur(function() {
-            checkPasswords();
-        });
-
-        // Check new and confirm password on keyup
-        $('#new_pw, #confirm_pw').keyup(function() {
-            checkPasswords();
-        });
-
-        // Toggle password visibility for each password field
-        togglePasswordVisibility('#toggleOldPassword', '#old_pw');
-        togglePasswordVisibility('#toggleNewPassword', '#new_pw');
-        togglePasswordVisibility('#toggleConfirmPassword', '#confirm_pw');
-    });
-</script>
-
-
