@@ -45,8 +45,14 @@
                         </div>
 
                         <div class="col-lg-12 text-center">
-                            <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#update_info">Edit Profile Info</button>
-                            <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#update_pw">Update Password</button>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-end">
+                                    <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#update_info">Edit Profile Info</button>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-start">
+                                    <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#update_pw">Update Password</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -199,7 +205,7 @@
 
     <!-- update password -->
     <div class="modal fade" id="update_pw" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
+        <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <form id="updatePasswordForm" action="../../PHP - process_files/update_user_pw.php" method="POST">
                     <div class="modal-header">
