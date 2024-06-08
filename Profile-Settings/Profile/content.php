@@ -46,11 +46,11 @@
 
                         <div class="col-lg-12 text-center">
                             <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-end">
-                                    <button class="btn btn-outline-secondary p-2" type="button" data-bs-toggle="modal" data-bs-target="#update_info">Edit Profile Info</button>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <button class="btn btn-outline-secondary p-2 fs--1" type="button" data-bs-toggle="modal" data-bs-target="#update_info">Edit Profile Info</button>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-start">
-                                    <button class="btn btn-outline-primary p-2" type="button" data-bs-toggle="modal" data-bs-target="#update_pw">Update Password</button>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <button class="btn btn-outline-primary p-2 fs--1" type="button" data-bs-toggle="modal" data-bs-target="#update_pw">Update Password</button>
                                 </div>
                             </div>
                         </div>
