@@ -140,7 +140,7 @@
     <!-- ----- below is gawa ko para sa pag crop ng picture. ref ko si fb -->
     <!-- <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#cropImage" >Launch basic modal</button> -->
     <div class="modal fade" id="cropImage" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-md">
+        <div class="modal-dialog modal-md modal-fullscreen-sm-down">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Profile Picture</h5>
@@ -167,7 +167,7 @@
 
     <!-- update_info -->
     <div class="modal fade" id="update_info" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
+        <div class="modal-dialog modal-sm modal-fullscreen-sm-down">
             <div class="modal-content">
                 <form action="../../PHP - process_files/update_user_info.php" method="POST">
                     <div class="modal-header">
@@ -203,7 +203,7 @@
 
     <!-- update password -->
     <div class="modal fade" id="update_pw" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-md">
+        <div class="modal-dialog modal-md modal-fullscreen-sm-down">
             <div class="modal-content">
                 <form id="updatePasswordForm" action="../../PHP - process_files/update_user_pw.php" method="POST">
                     <div class="modal-header">
