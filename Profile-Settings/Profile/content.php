@@ -46,7 +46,7 @@
 
                         <div class="col-lg-12 text-center">
                             <div class="d-flex justify-content-center">
-                                    <button class="btn btn-outline-secondary p-2 fs--1" type="button" data-bs-toggle="modal" data-bs-target="#update_info">Edit Profile Info</button>
+                                    <button class="btn btn-outline-secondary p-2 fs--1 me-1" type="button" data-bs-toggle="modal" data-bs-target="#update_info">Edit Profile Info</button>
                                 
                                     <button class="btn btn-outline-primary p-2 fs--1" type="button" data-bs-toggle="modal" data-bs-target="#update_pw">Update Password</button>
                                 
