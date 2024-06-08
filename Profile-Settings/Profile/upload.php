@@ -38,12 +38,6 @@ if (isset($_POST['imageData']) && !empty($_POST['imageData'])) {
         $update_pfp = "UPDATE user SET user_img = '$filename' WHERE id = '$user_id'";
         $conn->query($update_pfp);
 
-        $log_description = "Updated his/her profile photo.";
-        $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$id', audit_description = '$log_description', user_brn_code = '$branch_code', audit_date = '$currentTimestamp'";
-        
-        // Execute the insert query
-        $conn->query($insert_into_logs);
-
         
 
         // Send a success response
