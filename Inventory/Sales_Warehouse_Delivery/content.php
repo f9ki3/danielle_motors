@@ -8,7 +8,7 @@
 <div id="content" style="display: none">
     <div class="row g-3 mb-4">
         <div class="col-auto">
-            <h2 class="mb-0">Sales Warehouse</h2>
+            <h2 class="mb-0">Sales Warehouse Delivery</h2>
         </div>
     </div>
     <div id="transactions" class="transaction-table" data-list='{"valueNames":["transaction-code","transaction-date","customer-name","payment-method","subtotal","tax","discount","total","payment","change"],"page":10,"pagination":true}'>
@@ -22,7 +22,7 @@
                 </div>
             
                 <div class="ms-xxl-auto">
-                    <a href="../Sales_Warehouse" class="btn btn-primary"><span class="fas fa-plus me-2"></span> Walkin</a>
+                    <a href="../Sales_Warehouse" class="btn border text-primary border-primary"><span class="fas fa-plus me-2"></span> Walkin</a>
                     <a href="../Sales_Warehouse_Delivery" class="btn border text-primary border-primary position-relative"><span class="fas fa-car-side me-2"></span> Delivery</a>
                 </div>
             </div>
