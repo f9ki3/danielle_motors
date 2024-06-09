@@ -18,9 +18,9 @@ date_default_timezone_set('Asia/Manila');
       <!-- navigation -->
       <?php
       if($user_account_type == 0){
-       include "../../page_properties/nav.php";
+       include "../../page_properties/profile-nav.php";
       } else {
-        include "../../page_properties/navbar_pos.php";
+        include "../../page_properties/profile-posnav.php";
       }
       ?>
       <!-- /navigation -->

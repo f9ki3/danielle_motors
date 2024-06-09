@@ -26,7 +26,6 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
   $logo = $_SESSION['logo'];
   $logo_text = $_SESSION['logo_text'];
 }
-
 ?>
 <!-- vertical navbar -->
 <nav class="navbar navbar-vertical navbar-expand-lg" style="display:none;">
@@ -40,57 +39,199 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
   <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
     <div class="navbar-vertical-content">
       <ul class="navbar-nav flex-column" id="navbarVerticalNav">
-        
+        <!-- Dashboard -->
+        <li class="nav-item">
+          <div class="nav-item-wrapper"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator label-1" href="../../Inventory/Dashboard/">
+              <div class="d-flex align-items-center">
+                <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div>
+                <span class="nav-link-icon"><span data-feather="grid"></span></span>
+                <span class="nav-link-text">Dashboard</span>
+              </div>
+            </a>
+          </div>
+        </li>
         <!-- Sales and Transactions -->
         <li class="nav-item">
-            <p class="navbar-vertical-label">Purchase and Sales </p>
-            <hr class="navbar-vertical-line" />
+          <p class="navbar-vertical-label">Sales and Transactions</p>
+          <hr class="navbar-vertical-line" />
+          <div class="nav-item-wrapper">
+            <a class="nav-link <?php if($current_folder === "Purchase_Warehouse" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../../Inventory/Purchase_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon"><span data-feather="shopping-cart"></span></span>
+                <span class="nav-link-text-wrapper"><span class="nav-link-text">Purchase Warehouse</span></span>
+              </div>
+            </a>
+            <a class="nav-link <?php if($current_folder === "Sales_Warehouse" || $current_folder === "Sales_Warehouse_Walkin_Receipt" || $current_folder === "Sales_Warehouse_Delivery" || $current_folder === "Sales_Warehouse_Walkin_Receipt"){ echo "active"; } else { echo "";}?>  label-1" href="../../Inventory/Sales_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon"><span data-feather="activity"></span></span>
+                <span class="nav-link-text-wrapper"><span class="nav-link-text">Purchase Sales</span></span>
+              </div>
+            </a>
+          </div>
+        </li>
+        <!-- Inventory -->
+        <li class="nav-item">
+          <p class="navbar-vertical-label">Inventory</p>
+          <hr class="navbar-vertical-line" />
+          <?php if(strpos($session_permission, 'VIEW PO') !== false || strpos($session_permission, 'ADD PO') !== false) { ?>
+          <div class="nav-item-wrapper">
+            <!-- Purchased Order -->
+            <a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier" || $current_folder === "Create_Purchased_Order"){ echo "active"; } else { echo "";}?> dropdown-indicator label-1" href="#nv-e-commerce" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-e-commerce">
+              <div class="d-flex align-items-center">
+                <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div>
+                <span class="nav-link-icon"><span data-feather="shopping-cart"></span></span>
+                <span class="nav-link-text">Purchased Order</span>
+              </div>
+            </a>
+            <!-- Purchased Order Submenu -->
+            <div class="parent-wrapper label-1">
+              <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-e-commerce">
+                <li class="collapsed-nav-item-title d-none">Purchased Order</li>
+                <?php if(strpos($session_permission, 'VIEW PO') !== false){?>
+                <li class="nav-item">
+                  <a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="../../Inventory/Purchased-Order-Supplier/">
+                    <div class="d-flex align-items-center">
+                      <div class="dropdown-indicator-icon"></div>
+                      <span class="nav-link-text">View Purchased Order</span>
+                    </div>
+                  </a>
+                </li>
+                <?php 
+                }
+                if(strpos($session_permission, 'ADD PO') !== false) {
+                ?>
+                <li class="nav-item">
+                  <a class="nav-link <?php if($current_folder === "Create_Purchased_Order"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="../../Inventory/Create_Purchased_Order/">
+                    <div class="d-flex align-items-center">
+                      <div class="dropdown-indicator-icon"></div>
+                      <span class="nav-link-text">Create Purchased Order</span>
+                    </div>
+                  </a>
+                </li>
+                <?php 
+                }
+                ?>
+              </ul>
+            </div>
+          </div>
+          <?php 
+          }
+          if(strpos($session_permission, 'VIEW DR') !== false || strpos($session_permission, 'ADD DR') !== false) {
+            ?>
+            <!-- Delivery Receipt -->
             <div class="nav-item-wrapper">
-            <a class="nav-link label-1 <?php echo ($current_folder === "Dashboard") ? 'active' : ''; ?>" href="../Dashboard" role="button" aria-expanded="false">
+              <a class="nav-link <?php if($current_folder === "Delivery_Reciept" || $current_folder === "Create_D.R"){ echo "active"; } else { echo "";}?> dropdown-indicator label-1" href="#nv-CRM" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-CRM">
                 <div class="d-flex align-items-center">
-                    <span class="nav-link-icon"><span data-feather="bar-chart-2"></span></span>
-                    <span class="nav-link-text-wrapper"><span class="nav-link-text">Dashboard</span></span>
+                  <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div>
+                  <span class="nav-link-icon"><span data-feather="phone"></span></span>
+                  <span class="nav-link-text">Delivery Receipt</span>
                 </div>
-            </a>
-            <a class="nav-link label-1 <?php echo ($current_folder === "Purchase_Warehouse" || $current_folder === "Purchase_Warehouse_Walkin_Receipt") ? 'active' : ''; ?>" href="../Purchase_Warehouse" role="button" aria-expanded="false">
-                <div class="d-flex align-items-center">
-                    <span class="nav-link-icon"><span data-feather="shopping-cart"></span></span>
-                    <span class="nav-link-text-wrapper"><span class="nav-link-text">Store Purchase</span></span>
-                </div>
-            </a>
-            <!-- <a class="nav-link label-1 <?php echo ($current_folder === "Online_Purchase") ? 'active' : ''; ?>" href="../Online_Purchase" role="button" aria-expanded="false">
-                <div class="d-flex align-items-center">
-                    <span class="nav-link-icon"><span data-feather="globe"></span></span>
-                    <span class="nav-link-text-wrapper"><span class="nav-link-text">Online Purchase</span></span>
-                </div>
-            </a>
-            <a class="nav-link label-1 <?php echo ($current_folder === "Purchase_with_Terms") ? 'active' : ''; ?>" href="../Sales_Warehouse" role="button" aria-expanded="false">
-                <div class="d-flex align-items-center">
-                    <span class="nav-link-icon"><span data-feather="file"></span></span>
-                    <span class="nav-link-text-wrapper"><span class="nav-link-text">Purchase with Terms</span></span>
-                </div>
-            </a> -->
-            <a class="nav-link <?php if($current_folder === "Sales_Warehouse" || $current_folder === "Sales_Warehouse_Delivery"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Sales_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
-                <div class="d-flex align-items-center">
-                  <span class="nav-link-icon"><span data-feather="dollar-sign"></span></span>
-                  <span class="nav-link-text-wrapper"><span class="nav-link-text">Store Sales</span></span>
-                </div>
-            </a>
-        </div>
-
-          </li>
-
-          <li class="nav-item">
-            <p class="navbar-vertical-label">Return and Request</p>
-            <hr class="navbar-vertical-line" />
-            <div class="nav-item-wrapper">
-            <a class="nav-link <?php if($current_folder === "Material_Transfer" || $current_folder === "Material_Request" || $current_folder === "Material_Transaction"){ echo "active"; } else { echo "";}?>  label-1" href="../Material_Transfer" role="button" data-bs-toggle="" aria-expanded="false">
+              </a>
+              <!-- Delivery Receipt Submenu -->
+              <div class="parent-wrapper label-1">
+                <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-CRM">
+                  <li class="collapsed-nav-item-title d-none">Delivery Receipt</li>
+                  <?php  if(strpos($session_permission, 'VIEW DR') !== false) { ?>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../Inventory/Delivery_Reciept/" data-bs-toggle="" aria-expanded="false">
+                      <div class="d-flex align-items-center"><span class="nav-link-text">View Delivery Receipt</span></div>
+                    </a>
+                  </li>
+                  <?php
+                  }
+                  if(strpos($session_permission, 'ADD DR') !== false) {
+                  ?>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../Inventory/Create_D.R/" data-bs-toggle="" aria-expanded="false">
+                      <div class="d-flex align-items-center"><span class="nav-link-text">Create Delivery Receipt</span></div>
+                    </a>
+                  </li>
+                  <!--Sub Menu-->
+                  
+                  </li>    
+                  <?php 
+                  }
+                  ?>
+                </ul>
+              </div>
+            </div>
+          <?php 
+          }
+          
+          if(strpos($session_permission, 'MATERIAL TRANSFER') !== false) {
+          ?>
+          <!-- Material Transfer -->
+          <div class="nav-item-wrapper">
+            <a class="nav-link <?php if($current_folder === "Material_Transfer" || $current_folder === "Material_Request" || $current_folder === "Material_Transaction"){ echo "active"; } else { echo "";}?>  label-1" href="../../Inventory/Material_transfer" role="button" data-bs-toggle="" aria-expanded="false">
                 <span class="nav-link-icon"><span data-feather="truck"></span></span>
                 <span class="nav-link-text-wrapper"><span class="nav-link-text">Material Transfer</span></span>
                 <!-- </div>   -->
               </a>
             </div>
-            <div class="nav-item-wrapper">
+          <?php 
+          }
+          if(strpos($session_permission, 'VIEW ALL STOCKS') !== false || strpos($session_permission, 'VIEW WAREHOUSE STOCKS') !== false || strpos($session_permission, 'MANAGE PRODUCT LIST') !== false || strpos($session_permission, 'MANAGE PRICELIST') !== false) {
+          ?>
+          <!-- Stocks -->
+          <div class="nav-item-wrapper">
+            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator label-1" href="#nv-email" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-email">
+              <div class="d-flex align-items-center">
+                <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div>
+                <span class="nav-link-icon"><span data-feather="mail"></span></span>
+                <span class="nav-link-text">Stocks</span>
+              </div>
+            </a>
+            <!-- Stocks Submenu -->
+            <div class="parent-wrapper label-1">
+              <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-email">
+                <li class="collapsed-nav-item-title d-none">Stocks</li>
+                <?php 
+                if(strpos($session_permission, 'VIEW ALL STOCKS') !== false) {
+                ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../Inventory/all_stocks/" data-bs-toggle="" aria-expanded="false">
+                    <div class="d-flex align-items-center"><span class="nav-link-text">All stocks</span></div>
+                  </a>
+                </li>
+                <?php 
+                }
+                if(strpos($session_permission, 'VIEW WAREHOUSE STOCKS') !== false) {
+                ?>
+                <!-- <li class="nav-item">
+                  <a class="nav-link" href="../../Inventory/Warehouse/" data-bs-toggle="" aria-expanded="false">
+                    <div class="d-flex align-items-center"><span class="nav-link-text">Warehouse</span></div>
+                  </a>
+                </li> -->
+                <?php 
+                }
+                if(strpos($session_permission, 'MANAGE PRODUCT LIST') !== false) {
+                ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../Inventory/Product_List/" data-bs-toggle="" aria-expanded="false">
+                    <div class="d-flex align-items-center"><span class="nav-link-text">Product List</span></div>
+                  </a>
+                </li>
+                <?php 
+                }
+                // if(strpos($session_permission, 'MANAGE PRICELIST') !== false) {
+                // ?>
+                 <!-- <li class="nav-item">
+                //   <a class="nav-link" href="../../Inventory/Price_List/" data-bs-toggle="" aria-expanded="false">
+                //     <div class="d-flex align-items-center"><span class="nav-link-text">Price List</span></div>
+                //   </a>
+                // </li> -->
+                 <?php 
+                // }
+                ?>
+              </ul>
+            </div>
+          </div>
+          <?php 
+          }
+          if(strpos($session_permission, 'RETURNS') !== false || strpos($session_permission, 'REPLACEMENT') !== false) {
+          ?>
+          <!-- Returns -->
+          <div class="nav-item-wrapper">
             <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator label-1" href="#nv-events" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-events">
               <div class="d-flex align-items-center">
                 <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div>
@@ -103,60 +244,292 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
               <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-events">
                 <li class="collapsed-nav-item-title d-none">Returns</li>
                 <li class="nav-item">
-              <a class="nav-link" <?php if($current_folder === "Return_Material" || $current_folder === "Return_Material"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Return_Material" role="button" data-bs-toggle="" aria-expanded="false">
-                <div class="d-flex align-items-center">
-                  <span class="nav-link-icon"><span data-feather="corner-right-up"></span></span>
-                  <span class="nav-link-text">Return Warehouse</span>
-                </div>
-              </a>
-                <li class="nav-item">
-                  <a class="nav-link" <?php if($current_folder === "Return_Store" || $current_folder === "Return_Store"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Return_Store" role="button" data-bs-toggle="" aria-expanded="false">
+                <a class="nav-link" <?php if($current_folder === "Return_Warehouse" || $current_folder === "Return_Warehouse"  ){ echo "active"; } else { echo "";}?>  label-1" href="../../Inventory/Return_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
                  <div class="d-flex align-items-center">
                   <span class="nav-link-icon"><span data-feather="shopping-bag"></span></span>
-                  <span class="nav-link-text">Return Store</span>
+                  <span class="nav-link-text">Return Warehouse</span>
                 </div>
                 </a>
+                </li>
                 <li class="nav-item">
-                  <a class="nav-link" <?php if($current_folder === "Replace_Store" || $current_folder === "Replace_Store"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Replace_Store" role="button" data-bs-toggle="" aria-expanded="false">
+                <a class="nav-link" <?php if($current_folder === "Replace_Warehouse" || $current_folder === "Replace_Warehouse"  ){ echo "active"; } else { echo "";}?>  label-1" href="../../Inventory/Replace_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
                   <span class="nav-link-icon"><span data-feather="shopping-bag"></span></span>
-                  <span class="nav-link-text">Replace Store</span>
+                  <span class="nav-link-text">Replace Warehouse</span>
                 </div>
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-          <!-- </div> -->
-          </li>
-          <!-- Maintenance -->
+          <?php 
+          }
+          ?>
+        </li>
+        
+
+        <?php 
+        if(strpos($session_permission, 'VIEW REPORTS') !== false) {
+        ?>
+        <!-- Reports -->
+        <li class="nav-item">
+          <p class="navbar-vertical-label">Inventory Reports</p>
+          <hr class="navbar-vertical-line" />
+          <div class="nav-item-wrapper">
+            <a class="nav-link <?php if($current_folder === "Warehouse_Reports"){ echo "active"; } else { echo "";}?> label-1" href="../../Inventory/Warehouse_Reports" role="button" data-bs-toggle="" aria-expanded="false">
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon"><span data-feather="truck"></span></span>
+                <span class="nav-link-text-wrapper"><span class="nav-link-text">Warehouse Reports</span></span>
+              </div>
+            </a>
+          </div>
+        </li>
+        <?php 
+        }
+        
+        if(strpos($session_permission, 'MANAGE EMPLOYEES') !== false || strpos($session_permission, 'CREATES EMPLOYEE LIST') !== false ||  strpos($session_permission, 'MANAGE CUSTOMERS') !== false || strpos($session_permission, 'MANAGE USER PERMISSIONS') !== false || strpos($session_permission, 'MANAGE USER POSITIONS') !== false) {
+        ?>
+        <!-- Settings -->
+        <li class="nav-item">
+          <p class="navbar-vertical-label">Inventory Maintenance</p>
+          <hr class="navbar-vertical-line" />
+          <?php 
+          
+          ?>
+          <div class="nav-item-wrapper">
+            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator label-1" href="#nv-forms" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-forms">
+              <div class="d-flex align-items-center">
+                <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div>
+                <span class="nav-link-icon"><span data-feather="user"></span></span>
+                <span class="nav-link-text">Users</span>
+              </div>
+            </a>
+            <!-- Users Submenu -->
+            <div class="parent-wrapper label-1">
+              <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-forms">
+                <li class="collapsed-nav-item-title d-none">Users</li>
+                <?php 
+          
+                ?>
+                <li class="nav-item">
+                  <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="../../Inventory/User_Maintenance/">
+                    <div class="d-flex align-items-center">
+                      <div class="dropdown-indicator-icon"></div>
+                      <span class="nav-link-text">Employees Accounts</span>
+                    </div>
+                  </a>
+                </li>
+                <?php 
+          
+                ?>
+                <!-- <li class="nav-item">
+                  <a class="nav-link <?php // if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="#">
+                    <div class="d-flex align-items-center">
+                      <div class="dropdown-indicator-icon"></div>
+                      <span class="nav-link-text">Employees List</span>
+                    </div>
+                  </a>
+                </li> -->
+                <?php 
+          
+                ?>
+                <!-- <li class="nav-item">
+                  <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="../../Inventory/Personnel">
+                    <div class="d-flex align-items-center">
+                      <div class="dropdown-indicator-icon"></div>
+                      <span class="nav-link-text">Personnel</span>
+                    </div>
+                  </a>
+                </li> -->
+                <?php 
+          
+                ?>
+                <!-- <li class="nav-item">
+                  <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="#">
+                    <div class="d-flex align-items-center">
+                      <div class="dropdown-indicator-icon"></div>
+                      <span class="nav-link-text">Customers</span>
+                    </div>
+                  </a>
+                </li> -->
+                <?php 
+          
+                ?>
+                <li class="nav-item">
+                  <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="../../Inventory/User_Position_Maintenance/">
+                    <div class="d-flex align-items-center">
+                      <div class="dropdown-indicator-icon"></div>
+                      <span class="nav-link-text">Positions</span>
+                    </div>
+                  </a>
+                </li>
+                <?php 
+          
+                ?>
+                <li class="nav-item">
+                  <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="../../Inventory/User_Permission_Maintenance/">
+                    <div class="d-flex align-items-center">
+                      <div class="dropdown-indicator-icon"></div>
+                      <span class="nav-link-text">Permissions</span>
+                    </div>
+                  </a>
+                </li>
+                <?php 
+          
+                ?>
+              </ul>
+            </div>
+          </div>
+          <?php 
+          if(strpos($session_permission, 'VIEW BRANCHES') !== false || strpos($session_permission, 'ADD BRANCHES') !== false) {
+          ?>
+          <!-- Branches -->
+          <div class="nav-item-wrapper">
+            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-indicator label-1" href="#nv-utilities" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-utilities">
+              <div class="d-flex align-items-center">
+                <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div>
+                <span class="nav-link-icon"><span data-feather="tool"></span></span>
+                <span class="nav-link-text">Branches</span>
+              </div>
+            </a>
+            <!-- Branches Submenu -->
+            <div class="parent-wrapper label-1">
+              <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-utilities">
+                <li class="collapsed-nav-item-title d-none">Branches</li>
+                <?php 
+                
+                ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../Inventory/Branch_Maintenance/" data-bs-toggle="" aria-expanded="false">
+                    <div class="d-flex align-items-center"><span class="nav-link-text">View branches</span></div>
+                  </a>
+                </li>
+                <?php 
+                
+                ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../Inventory/Add_branch/" data-bs-toggle="" aria-expanded="false">
+                    <div class="d-flex align-items-center"><span class="nav-link-text">Create branch</span></div>
+                  </a>
+                </li>
+                <?php 
+                
+                ?>
+              </ul>
+            </div>
+          </div>
+          <?php 
+          }
+          if(strpos($session_permission, 'BRAND MAINTENANCE') !== false) {
+          ?>
+          <!-- Brands -->
+          <div class="nav-item-wrapper">
+            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../../Inventory/Brand_Maintenance/" role="button" data-bs-toggle="" aria-expanded="false">
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon"><span data-feather="trello"></span></span>
+                <span class="nav-link-text-wrapper"><span class="nav-link-text">Brands</span></span>
+              </div>
+            </a>
+          </div>
+          <?php 
+          }
+          if(strpos($session_permission, 'CATEGORY MAINTENANCE') !== false) {
+          ?>
+          <!-- Category -->
+          <div class="nav-item-wrapper">
+            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../../Inventory/Category_Maintenance/" role="button" data-bs-toggle="" aria-expanded="false">
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon"><span data-feather="life-buoy"></span></span>
+                <span class="nav-link-text-wrapper"><span class="nav-link-text">Category</span></span>
+              </div>
+            </a>
+          </div>
+          <?php 
+          }
+          if(strpos($session_permission, 'MODEL MAINTENANCE') !== false) {
+          ?>
+          <!-- Models -->
+          <div class="nav-item-wrapper">
+            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../../Inventory/Model_Maintenance/" role="button" data-bs-toggle="" aria-expanded="false">
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon"><span data-feather="package"></span></span>
+                <span class="nav-link-text-wrapper"><span class="nav-link-text">Models</span></span>
+              </div>
+            </a>
+          </div>
+          <?php
+          }
+          if(strpos($session_permission, 'UNIT MAINTENANCE') !== false) {
+          ?>
+          <!-- Units -->
+          <div class="nav-item-wrapper">
+            <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../../Inventory/Unit_Maintenance/" role="button" data-bs-toggle="" aria-expanded="false">
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon"><span data-feather="tag"></span></span>
+                <span class="nav-link-text-wrapper"><span class="nav-link-text">Units</span></span>
+              </div>
+            </a>
+          </div>
+          <?php 
+          }
+          if(strpos($session_permission, 'RACK MAINTENANCE') !== false) {
+          ?>
+          <!-- Category -->
+          <div class="nav-item-wrapper">
+            <a class="nav-link <?php if($current_folder === "Rack_Maintenance"){ echo "active"; } else { echo "";}?> label-1" href="../../Inventory/Rack_Maintenance/" role="button" data-bs-toggle="" aria-expanded="false">
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon"><span data-feather="life-buoy"></span></span>
+                <span class="nav-link-text-wrapper"><span class="nav-link-text">Rack</span></span>
+              </div>
+            </a>
+          </div>
+        </li>
+        <?php 
+          }
+          ?>
           <li class="nav-item">
-            <p class="navbar-vertical-label">Maintenance</p>
-            <hr class="navbar-vertical-line" />
-            <!-- <div class="nav-item-wrapper">
-              <a class="nav-link <?php if($current_folder === "Manage_Product" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Purchase_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
-                <div class="d-flex align-items-center">
-                  <span class="nav-link-icon"><span data-feather="box"></span></span>
-                  <span class="nav-link-text-wrapper"><span class="nav-link-text">Manage Product</span></span>
-                </div>
-              </a>
-              <a class="nav-link <?php if($current_folder === "Manage_Branch" || $current_folder === "Delivery_Reciept"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Purchase_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
-                <div class="d-flex align-items-center">
-                  <span class="nav-link-icon"><span data-feather="archive"></span></span>
-                  <span class="nav-link-text-wrapper"><span class="nav-link-text">Manage Branch</span></span>
-                </div>
-              </a>
-              
-            </div> -->
+            <?php 
+            if(strpos($session_permission, 'VIEW SUPPLIER AND PRODUCTS') !== false) {
+            ?>
             <div class="nav-item-wrapper">
-              <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../Store_Logs/" role="button" data-bs-toggle="" aria-expanded="false">
+              <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../../Inventory/Suppliers/" role="button" data-bs-toggle="" aria-expanded="false">
+                <div class="d-flex align-items-center">
+                <span class="nav-link-icon"><span data-feather="truck"></span></span>
+                <span class="nav-link-text-wrapper"><span class="nav-link-text">Supplier List</span></span>
+                </div>
+              </a>
+            </div>
+            <div class="nav-item-wrapper">
+              <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../../Inventory/Supplier_Products/" role="button" data-bs-toggle="" aria-expanded="false">
+                <div class="d-flex align-items-center">
+                  <span class="nav-link-icon"><span data-feather="truck"></span></span>
+                  <span class="nav-link-text-wrapper"><span class="nav-link-text">Supplier products</span></span>
+                </div>
+              </a>
+            </div>
+            <?php 
+            }
+            if(strpos($session_permission, 'ACTIVITY LOGS') !== false) {
+            ?>
+
+            <div class="nav-item-wrapper">
+              <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../../Inventory/Inventory_Logs/" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
                   <span class="nav-link-icon"><span data-feather="list"></span></span>
                   <span class="nav-link-text-wrapper"><span class="nav-link-text">Activity Logs</span></span>
                 </div>
               </a>
             </div>
+            <?php
+            }
+            ?>
           </li>
+            
+  
+          <?php
+        }
+        ?>
+        
       </ul>
     </div>
   </div>
@@ -170,6 +543,12 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
   </div>
 </nav>
 
+
+
+
+
+
+<!-- <div class="print_hide"> -->
 <nav class="navbar navbar-top fixed-top navbar-expand print_hide" id="navbarDefault" style="display:none;">
   <div class="collapse navbar-collapse justify-content-between">
     <div class="navbar-logo">
@@ -336,14 +715,29 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 <div class="avatar avatar-xl ">
                   <img class="rounded-circle " src="../../uploads/<?php echo $profile;?>" alt="" />
                 </div>
-                <h6 class="mt-2 text-black"><?php echo ucwords($fname . " " . $lname);?></h6>
+                <h6 class="mt-2 text-black mb-0">
+                  <?php
+                  if ($currentTimestamp > $targetDate) { 
+                    if(strpos($fname,  "danielle") !== false || strpos($fname, "dane") !== false || strpos($fname,  "DANE") !== false || strpos($lname, "DANE") !== false){
+                      echo ucwords($fname . " 'BAKULAW MATABA' " . $lname);
+                    } else {
+                      echo ucwords($fname . " " . $lname);
+                    }
+                  } else {
+                    echo ucwords($fname . " " . $lname);
+                  }
+
+                  
+                  ?>
+                </h6>
+                <p class="mt-0 text-black text-center text-800"><?php echo ucwords($position);?></p>
               </div>
               <div class="mb-3 mx-3"><input class="form-control form-control-sm" id="statusUpdateInput" type="text" placeholder="Update your status" /></div>
             </div>
             <div class="overflow-auto scrollbar" style="height: 10rem;">
               <ul class="nav d-flex flex-column mb-2 pb-1">
                 <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="user"></span><span>Profile</span></a></li>
-                <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../Dashboard"><span class="me-2 text-900" data-feather="pie-chart"></span>Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../../Inventory/Dashboard/"><span class="me-2 text-900" data-feather="pie-chart"></span>Dashboard</a></li>
                 <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../../Profile-Settings/Profile/"> <span class="me-2 text-900" data-feather="lock"></span>Posts &amp; Activity</a></li>
                 <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../../Profile-Settings/Profile/"> <span class="me-2 text-900" data-feather="settings"></span>Settings &amp; Privacy </a></li>
                 <!-- <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="help-circle"></span>Help Center</a></li>
@@ -364,6 +758,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
     </ul>
   </div>
 </nav>
+<!-- </div> -->
 <!-- vertical navbar -->
 
 
@@ -1391,23 +1786,23 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
             <div class="mb-3 mx-3"><input class="form-control form-control-sm" id="statusUpdateInput" type="text" placeholder="Update your status" /></div>
           </div>
           <div class="overflow-auto scrollbar" style="height: 10rem;">
-            <ul class="nav d-flex flex-column mb-2 pb-1">
-              <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="user"></span><span>Profile</span></a></li>
-              <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"><span class="me-2 text-900" data-feather="pie-chart"></span>Dashboard</a></li>
-              <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="lock"></span>Posts &amp; Activity</a></li>
-              <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="settings"></span>Settings &amp; Privacy </a></li>
-              <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="help-circle"></span>Help Center</a></li>
-              <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="globe"></span>Language</a></li>
-            </ul>
-          </div>
-          <div class="card-footer p-0 border-top">
-            <ul class="nav d-flex flex-column my-3">
-              <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="user-plus"></span>Add another account</a></li>
-            </ul>
-            <hr />
-            <div class="px-3"> <a class="btn btn-phoenix-secondary d-flex flex-center w-100" href="#!"> <span class="me-2" data-feather="log-out"> </span>Sign out</a></div>
-            <div class="my-2 text-center fw-bold fs--2 text-600"><a class="text-600 me-1" href="#!">Privacy policy</a>&bull;<a class="text-600 mx-1" href="#!">Terms</a>&bull;<a class="text-600 ms-1" href="#!">Cookies</a></div>
-          </div>
+              <ul class="nav d-flex flex-column mb-2 pb-1">
+                <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="user"></span><span>Profile</span></a></li>
+                <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../Inventory/Dashboard"><span class="me-2 text-900" data-feather="pie-chart"></span>Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../../Profile-Settings/Profile/"> <span class="me-2 text-900" data-feather="lock"></span>Posts &amp; Activity</a></li>
+                <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../../Profile-Settings/Profile/"> <span class="me-2 text-900" data-feather="settings"></span>Settings &amp; Privacy </a></li>
+                <!-- <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="help-circle"></span>Help Center</a></li>
+                <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="globe"></span>Language</a></li> -->
+              </ul>
+            </div>
+            <div class="card-footer p-0 border-top">
+              <!-- <ul class="nav d-flex flex-column my-3">
+                <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="user-plus"></span>Add another account</a></li>
+              </ul> -->
+              <!-- <hr /> -->
+              <div class="px-3 mt-2"> <a class="btn btn-phoenix-secondary d-flex flex-center w-100" href="../../PHP%20-%20process_files/signout.php"> <span class="me-2" data-feather="log-out"> </span>Sign out</a></div>
+              <div class="my-2 text-center fw-bold fs--2 text-600"><a class="text-600 me-1" href="#!">Privacy policy</a>&bull;<a class="text-600 mx-1" href="#!">Terms</a>&bull;<a class="text-600 ms-1" href="#!">Cookies</a></div>
+            </div>
         </div>
       </div>
     </li>
