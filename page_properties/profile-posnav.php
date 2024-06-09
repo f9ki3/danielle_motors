@@ -46,31 +46,31 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
             <p class="navbar-vertical-label">Purchase and Sales </p>
             <hr class="navbar-vertical-line" />
             <div class="nav-item-wrapper">
-            <a class="nav-link label-1 <?php echo ($current_folder === "Dashboard") ? 'active' : ''; ?>" href="../Dashboard" role="button" aria-expanded="false">
+            <a class="nav-link label-1 <?php echo ($current_folder === "Dashboard") ? 'active' : ''; ?>" href="../../POS/Dashboard" role="button" aria-expanded="false">
                 <div class="d-flex align-items-center">
                     <span class="nav-link-icon"><span data-feather="bar-chart-2"></span></span>
                     <span class="nav-link-text-wrapper"><span class="nav-link-text">Dashboard</span></span>
                 </div>
             </a>
-            <a class="nav-link label-1 <?php echo ($current_folder === "Purchase_Warehouse" || $current_folder === "Purchase_Warehouse_Walkin_Receipt") ? 'active' : ''; ?>" href="../Purchase_Warehouse" role="button" aria-expanded="false">
+            <a class="nav-link label-1 <?php echo ($current_folder === "Purchase_Warehouse" || $current_folder === "Purchase_Warehouse_Walkin_Receipt") ? 'active' : ''; ?>" href="../../POS/Purchase_Warehouse" role="button" aria-expanded="false">
                 <div class="d-flex align-items-center">
                     <span class="nav-link-icon"><span data-feather="shopping-cart"></span></span>
                     <span class="nav-link-text-wrapper"><span class="nav-link-text">Store Purchase</span></span>
                 </div>
             </a>
-            <!-- <a class="nav-link label-1 <?php echo ($current_folder === "Online_Purchase") ? 'active' : ''; ?>" href="../Online_Purchase" role="button" aria-expanded="false">
+            <!-- <a class="nav-link label-1 <?php echo ($current_folder === "Online_Purchase") ? 'active' : ''; ?>" href="../../POS/Online_Purchase" role="button" aria-expanded="false">
                 <div class="d-flex align-items-center">
                     <span class="nav-link-icon"><span data-feather="globe"></span></span>
                     <span class="nav-link-text-wrapper"><span class="nav-link-text">Online Purchase</span></span>
                 </div>
             </a>
-            <a class="nav-link label-1 <?php echo ($current_folder === "Purchase_with_Terms") ? 'active' : ''; ?>" href="../Sales_Warehouse" role="button" aria-expanded="false">
+            <a class="nav-link label-1 <?php echo ($current_folder === "Purchase_with_Terms") ? 'active' : ''; ?>" href="../../POS/Sales_Warehouse" role="button" aria-expanded="false">
                 <div class="d-flex align-items-center">
                     <span class="nav-link-icon"><span data-feather="file"></span></span>
                     <span class="nav-link-text-wrapper"><span class="nav-link-text">Purchase with Terms</span></span>
                 </div>
             </a> -->
-            <a class="nav-link <?php if($current_folder === "Sales_Warehouse" || $current_folder === "Sales_Warehouse_Delivery"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Sales_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
+            <a class="nav-link <?php if($current_folder === "Sales_Warehouse" || $current_folder === "Sales_Warehouse_Delivery"  ){ echo "active"; } else { echo "";}?>  label-1" href="../../POS/Sales_Warehouse" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
                   <span class="nav-link-icon"><span data-feather="dollar-sign"></span></span>
                   <span class="nav-link-text-wrapper"><span class="nav-link-text">Store Sales</span></span>
@@ -84,7 +84,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
             <p class="navbar-vertical-label">Return and Request</p>
             <hr class="navbar-vertical-line" />
             <div class="nav-item-wrapper">
-            <a class="nav-link <?php if($current_folder === "Material_Transfer" || $current_folder === "Material_Request" || $current_folder === "Material_Transaction"){ echo "active"; } else { echo "";}?>  label-1" href="../Material_Transfer" role="button" data-bs-toggle="" aria-expanded="false">
+            <a class="nav-link <?php if($current_folder === "Material_Transfer" || $current_folder === "Material_Request" || $current_folder === "Material_Transaction"){ echo "active"; } else { echo "";}?>  label-1" href="../../POS/Material_Transfer" role="button" data-bs-toggle="" aria-expanded="false">
                 <span class="nav-link-icon"><span data-feather="truck"></span></span>
                 <span class="nav-link-text-wrapper"><span class="nav-link-text">Material Transfer</span></span>
                 <!-- </div>   -->
@@ -103,21 +103,21 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
               <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-events">
                 <li class="collapsed-nav-item-title d-none">Returns</li>
                 <li class="nav-item">
-              <a class="nav-link" <?php if($current_folder === "Return_Material" || $current_folder === "Return_Material"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Return_Material" role="button" data-bs-toggle="" aria-expanded="false">
+              <a class="nav-link" <?php if($current_folder === "Return_Material" || $current_folder === "Return_Material"  ){ echo "active"; } else { echo "";}?>  label-1" href="../../POS/Return_Material" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
                   <span class="nav-link-icon"><span data-feather="corner-right-up"></span></span>
                   <span class="nav-link-text">Return Warehouse</span>
                 </div>
               </a>
                 <li class="nav-item">
-                  <a class="nav-link" <?php if($current_folder === "Return_Store" || $current_folder === "Return_Store"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Return_Store" role="button" data-bs-toggle="" aria-expanded="false">
+                  <a class="nav-link" <?php if($current_folder === "Return_Store" || $current_folder === "Return_Store"  ){ echo "active"; } else { echo "";}?>  label-1" href="../../POS/Return_Store" role="button" data-bs-toggle="" aria-expanded="false">
                  <div class="d-flex align-items-center">
                   <span class="nav-link-icon"><span data-feather="shopping-bag"></span></span>
                   <span class="nav-link-text">Return Store</span>
                 </div>
                 </a>
                 <li class="nav-item">
-                  <a class="nav-link" <?php if($current_folder === "Replace_Store" || $current_folder === "Replace_Store"  ){ echo "active"; } else { echo "";}?>  label-1" href="../Replace_Store" role="button" data-bs-toggle="" aria-expanded="false">
+                  <a class="nav-link" <?php if($current_folder === "Replace_Store" || $current_folder === "Replace_Store"  ){ echo "active"; } else { echo "";}?>  label-1" href="../../POS/Replace_Store" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
                   <span class="nav-link-icon"><span data-feather="shopping-bag"></span></span>
                   <span class="nav-link-text">Replace Store</span>
@@ -149,7 +149,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
               
             </div> -->
             <div class="nav-item-wrapper">
-              <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../Store_Logs/" role="button" data-bs-toggle="" aria-expanded="false">
+              <a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> label-1" href="../../POS/Store_Logs/" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center">
                   <span class="nav-link-icon"><span data-feather="list"></span></span>
                   <span class="nav-link-text-wrapper"><span class="nav-link-text">Activity Logs</span></span>
@@ -343,7 +343,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
             <div class="overflow-auto scrollbar" style="height: 10rem;">
               <ul class="nav d-flex flex-column mb-2 pb-1">
                 <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="user"></span><span>Profile</span></a></li>
-                <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../Dashboard"><span class="me-2 text-900" data-feather="pie-chart"></span>Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../../POS/Dashboard/"><span class="me-2 text-900" data-feather="pie-chart"></span>Dashboard</a></li>
                 <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../../Profile-Settings/Profile/"> <span class="me-2 text-900" data-feather="lock"></span>Posts &amp; Activity</a></li>
                 <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../../Profile-Settings/Profile/"> <span class="me-2 text-900" data-feather="settings"></span>Settings &amp; Privacy </a></li>
                 <!-- <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="help-circle"></span>Help Center</a></li>
