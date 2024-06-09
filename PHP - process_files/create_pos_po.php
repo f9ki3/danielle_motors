@@ -14,7 +14,7 @@ if($last_invoice->num_rows>0){
 
     $insert = "INSERT INTO purchase_transactions SET TransactionID = 'DMP$new_transaction_id', branch_code = '$branch_code'";
     if($conn->query($insert) === TRUE ){
-        $_SESSION['invoice'] = $new_transaction_id;
+        $_SESSION['invoice'] = "DMP" . $new_transaction_id;
         header("Location: ../Inventory/POS/");
         $conn->close();
         exit;

@@ -14,7 +14,7 @@ if(isset($_SESSION['invoice'])){
 <div class="mb-9" id="actualContent" style="display: none;">
 <div class="row g-3 mb-4">
         <div class="col-auto">
-            <h2 class="mb-0">Purchase Warehouse</h2>
+            <h2 class="mb-0">Purchase Warehouse <?php echo $transaction_id; ?></h2>
         </div>
     </div>
     <div id="products" data-list="{&quot;valueNames&quot;:[&quot;product&quot;,&quot;price&quot;,&quot;category&quot;,&quot;tags&quot;,&quot;vendor&quot;,&quot;unit&quot;, &quot;model&quot;, &quot;status&quot;],&quot;page&quot;:10,&quot;pagination&quot;:true}">

@@ -1,25 +1,15 @@
 <?php
 include "../admin/session.php";
 include "../database/database.php";
-
+$transaction_id = $_SESSION['invoice'];
 // Check if the form has been submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve and sanitize the inputs
     $product_barOrQRcode = isset($_POST['barcode_value']) ? htmlspecialchars($_POST['barcode_value']) : '';
     $product_qty = isset($_POST['qty']) ? intval($_POST['qty']) : 0;
 
-    // Check if the transaction file exists
-    $transaction_file = "../jsons/" . $user_id . "-Transaction.json";
-    if (!file_exists($transaction_file)) {
-        // Create the transaction file if it doesn't exist
-        $transaction_data = [];
-    } else {
-        // Load existing transaction data
-        $transaction_data = json_decode(file_get_contents($transaction_file), true);
-    }
-
-    // Check if the barcode already exists in the transaction data
-    $barcode_exists = false;
+    
+    
     $product_id_query = "SELECT 
                             product.id, 
                             product.name, 
@@ -63,46 +53,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user_lname = $row['user_lname'];
         $wholesale = $row['wholesale'];
         $srp = $row['srp'];
+
+        $check_purchase_cart = "SELECT ProductID, Quantity FROM purchase_cart WHERE TransactionID = '$transaction_id' AND ProductID = '$product_id' LIMIT 1";
+        $check_purchase_cart_res = $conn->query($check_purchase_cart);
+        if($check_purchase_cart_res->num_rows > 0){
+            $row = $check_purchase_cart_res->fetch_assoc();
+            $current_qty = $row['Quantity'];
+
+            $update_qty = $current_qty + $product_qty;
+            
+            $update_cart = "UPDATE purchase_cart SET Quantity = '$update_qty' WHERE ProductID = '$product_id' AND TransactionID = '$transaction_id'";
+            if($conn->query($update_cart) === TRUE ){
+                echo "Successfully added!";
+                $conn->close();
+                exit;
+            }
+
+        } else {
+            $insert_cart = "INSERT INTO purchase_cart (ProductID, ProductName, Brand, Model, Unit, SRP, Quantity, TransactionID) VALUES ('$product_id', '$product_name', '$brand', '$models', '$unit', '$srp', '$product_qty', '$transaction_id')";
+            if($conn->query($insert_cart) === TRUE ){
+                echo "Successfully added!";
+                $conn->close();
+                exit;
+            } else {
+                echo "Error: " . $conn->error;
+            }
+        }
     } else {
         echo "Product doesn't exist in our system!";
         $conn->close();
         exit;
-    }
-
-    $existing_qty = 0; // Initialize existing quantity
-    foreach ($transaction_data as $key => $transaction) {
-        if ($transaction['barcode'] === $product_barOrQRcode) {
-            $barcode_exists = true;
-            $existing_qty = $transaction['qty']; // Get existing quantity
-            // Update product_qty by adding existing_qty
-            $product_qty += $existing_qty;
-            // Update the quantity in the transaction data
-            $transaction_data[$key]['qty'] = $product_qty;
-            break;
-        }
-    }
-
-    if ($barcode_exists) {
-        // Save the updated transaction data to the file with pretty print format
-        file_put_contents($transaction_file, json_encode($transaction_data, JSON_PRETTY_PRINT));
-        echo "Quantity updated successfully. New Quantity: $product_qty";
-    } else {
-        // Add new transaction data
-        $transaction_data[] = array(
-            "barcode" = $product_barOrQRcode,
-            "product_id" = $product_id,
-            "product_name" = $product_name,
-            "brand" = $brand,
-            "model" = $models,
-            "unit" = $unit,
-            "srp" = $srp,
-            "qty" = $product_qty,
-            "transaction_id" = $_SESSION['invoice'];
-        );
-
-        // Save the transaction data to the file with pretty print format
-        file_put_contents($transaction_file, json_encode($transaction_data, JSON_PRETTY_PRINT));
-        echo "Transaction added successfully.";
     }
 
 } else {
