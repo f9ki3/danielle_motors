@@ -79,8 +79,6 @@
 <script>
     let inputElement = document.getElementById('barcode_value');
     let qtyElement = document.getElementById('current_qty');
-    let inputData = '';
-    let inputTimer = null;
     let keydownListenerActive = true;
 
     function resetInputValues() {
@@ -105,6 +103,9 @@
         // Update the value of #barcode_value to the scanned barcode
         document.getElementById('barcode_value').value = barcode;
 
+        // You can add any additional logic here, such as submitting the form or performing other actions
+        // For example:
+        
         const formData = new FormData();
         formData.append('barcode_value', barcode);
         formData.append('qty', document.getElementById('current_qty').value);
@@ -124,60 +125,6 @@
         });
         
     }
-
-    // Function to handle keydown events
-    function handleKeydown(event) {
-        if (!keydownListenerActive) return;
-
-        const nonCharacterKeys = [
-            'Control', 'Shift', 'Alt', 'Meta', 'Tab', 'ArrowLeft',
-            'ArrowUp', 'ArrowRight', 'ArrowDown', 'Enter', 'Backspace',
-            'Escape', 'CapsLock', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6',
-            'F7', 'F8', 'F9', 'F10', 'F11', 'F12'
-        ];
-
-        if (nonCharacterKeys.includes(event.key)) {
-            return;
-        }
-
-        inputData += event.key;
-
-        if (inputTimer) {
-            clearTimeout(inputTimer);
-        }
-
-        inputTimer = setTimeout(() => {
-            if (inputData.length > 7) {
-                inputElement.value = inputData;
-
-                const formData = new FormData();
-                formData.append('barcode_value', inputData);
-                formData.append('qty', qtyElement.value);
-
-                fetch('../../PHP - process_files/barcode_pos.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.text())
-                .then(data => {
-                    showToast(data); // Display server response on the toast
-                    console.log('Form submitted successfully:', data);
-                })
-                .catch(error => {
-                    showToast('Error submitting form: ' + error); // Display error message on the toast
-                    console.error('Error submitting form:', error);
-                });
-
-                inputData = '';
-                resetInputValues();
-            } else {
-                inputData = '';
-                clearTimeout(inputTimer);
-            }
-        }, 1000);
-    }
-
-    document.addEventListener('keydown', handleKeydown);
 
     // Function to listen for barcode scanner input
     function listenForBarcodeScanner() {
@@ -206,10 +153,14 @@
 
         // Event listener for keydown events (some barcode scanners may trigger keydown events)
         document.addEventListener('keydown', function(event) {
-            const character = event.key;
-            handleBarcodeInput(character);
-        });
-    }
+            const key = event.key;
+            // Check if the key pressed is a character key (a-z or 0-9)
+            if (key.length === 1 && /^[a-zA-Z0-9]$/.test(key)) {
+                handleBarcodeInput(key);
+        }
+    });
+}
+
 
     // Call the function to start listening for barcode scanner input
     listenForBarcodeScanner();
@@ -261,6 +212,7 @@
         modal.hide();
     });
 </script>
+
 
 
 <!-- Second script: Updates current_qty based on update_qty -->
