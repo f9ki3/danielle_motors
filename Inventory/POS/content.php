@@ -38,7 +38,7 @@
 <div class="modal fade" id="manual_modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="test_2.php" method="POST" id="manual_form">
+            <form action="../../PHP - process_files/barcode_pos.php" method="POST" id="manual_form">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Enter Custom Quantity</h5>
                     <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close">
@@ -46,8 +46,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" id="manual_barcode_input" name="manual_barcode">
-                    <input type="number" name="manual_qty" id="manual_qty">
+                    <input type="text" id="manual_barcode_input" name="barcode_value">
+                    <input type="number" name="qty" min="0" max="10000" id="manual_qty">
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-primary" type="submit">Okay</button>
@@ -59,7 +59,7 @@
 </div>
 
 <!-- Form for barcode submission -->
-<form action="test.php" method="POST" id="barcode_form">
+<form action="../../PHP - process_files/barcode_pos.php" method="POST" id="barcode_form">
     <input type="text" name="barcode_value" id="barcode_value" hidden>
     <input type="number" name="qty" id="current_qty" value="1" hidden>
 </form>
@@ -100,6 +100,32 @@
         toast.show();
     }
 
+    // Function to handle barcode scanner input
+    function handleBarcodeScan(barcode) {
+        // Update the value of #barcode_value to the scanned barcode
+        document.getElementById('barcode_value').value = barcode;
+
+        const formData = new FormData();
+        formData.append('barcode_value', barcode);
+        formData.append('qty', document.getElementById('current_qty').value);
+
+        fetch('../../PHP - process_files/barcode_pos.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            showToast(data); // Display server response on the toast
+            console.log('Form submitted successfully:', data);
+        })
+        .catch(error => {
+            showToast('Error submitting form: ' + error); // Display error message on the toast
+            console.error('Error submitting form:', error);
+        });
+        
+    }
+
+    // Function to handle keydown events
     function handleKeydown(event) {
         if (!keydownListenerActive) return;
 
@@ -128,7 +154,7 @@
                 formData.append('barcode_value', inputData);
                 formData.append('qty', qtyElement.value);
 
-                fetch('test.php', {
+                fetch('../../PHP - process_files/barcode_pos.php', {
                     method: 'POST',
                     body: formData
                 })
@@ -153,14 +179,47 @@
 
     document.addEventListener('keydown', handleKeydown);
 
+    // Function to listen for barcode scanner input
+    function listenForBarcodeScanner() {
+        let barcodeData = '';
+        let barcodeTimer = null;
+
+        // Function to handle barcode scanner input
+        function handleBarcodeInput(data) {
+            barcodeData += data;
+
+            if (barcodeTimer) {
+                clearTimeout(barcodeTimer);
+            }
+
+            barcodeTimer = setTimeout(() => {
+                handleBarcodeScan(barcodeData);
+                barcodeData = '';
+            }, 100); // Adjust this delay as per your barcode scanner's input speed
+        }
+
+        // Event listener for keypress events
+        document.addEventListener('keypress', function(event) {
+            const character = String.fromCharCode(event.which);
+            handleBarcodeInput(character);
+        });
+
+        // Event listener for keydown events (some barcode scanners may trigger keydown events)
+        document.addEventListener('keydown', function(event) {
+            const character = event.key;
+            handleBarcodeInput(character);
+        });
+    }
+
+    // Call the function to start listening for barcode scanner input
+    listenForBarcodeScanner();
+
     let updateQtyInput = document.getElementById('update_qty');
     let currentQtyInput = document.getElementById('current_qty');
 
     updateQtyInput.addEventListener('input', function() {
         currentQtyInput.value = this.value;
     });
-
-    
 
     document.getElementById('barcode_form').addEventListener('submit', function(event) {
         if (inputElement.value === '') {
@@ -184,7 +243,7 @@
 
         const formData = new FormData(this);
 
-        fetch('test_2.php', {
+        fetch('../../PHP - process_files/barcode_pos.php', {
             method: 'POST',
             body: formData
         })
@@ -202,6 +261,7 @@
         modal.hide();
     });
 </script>
+
 
 <!-- Second script: Updates current_qty based on update_qty -->
 <script>
