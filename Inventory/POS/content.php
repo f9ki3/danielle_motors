@@ -67,9 +67,9 @@
 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
     <div class="toast fade" id="liveToast" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
-        <strong class="me-auto">Server Response</strong>
-        <small class="text-800">Just now</small>
-        <button class="btn ms-2 p-0" type="button" data-bs-dismiss="toast" aria-label="Close"><span class="fas fa-times fs-1"></span></button>
+            <strong class="me-auto">Server Response</strong>
+            <small class="text-800">Just now</small>
+            <button class="btn ms-2 p-0" type="button" data-bs-dismiss="toast" aria-label="Close"><span class="fas fa-times fs-1"></span></button>
         </div>
         <div class="toast-body"></div>
     </div>
@@ -80,10 +80,15 @@
     let inputElement = document.getElementById('barcode_value');
     let qtyElement = document.getElementById('current_qty');
     let keydownListenerActive = true;
+    let isTypingQty = false; // Flag to indicate if the user is typing in #update_qty
+    let processingBarcode = false; // Flag to indicate if barcode processing is already in progress
 
     function resetInputValues() {
         document.getElementById('update_qty').value = '1';
         document.getElementById('current_qty').value = '1';
+        document.getElementById('barcode_value').value = '';
+        document.getElementById('manual_barcode_input').value = '';
+        document.getElementById('manual_qty').value = '';
     }
 
     // Function to show toast with message
@@ -100,12 +105,11 @@
 
     // Function to handle barcode scanner input
     function handleBarcodeScan(barcode) {
+        if (!keydownListenerActive || isTypingQty || processingBarcode) return;
+        processingBarcode = true; // Set the flag to indicate processing has started
         // Update the value of #barcode_value to the scanned barcode
         document.getElementById('barcode_value').value = barcode;
 
-        // You can add any additional logic here, such as submitting the form or performing other actions
-        // For example:
-        
         const formData = new FormData();
         formData.append('barcode_value', barcode);
         formData.append('qty', document.getElementById('current_qty').value);
@@ -118,12 +122,14 @@
         .then(data => {
             showToast(data); // Display server response on the toast
             console.log('Form submitted successfully:', data);
+            resetInputValues(); // Reset input values after successful submission
+            processingBarcode = false; // Reset the flag after processing is done
         })
         .catch(error => {
             showToast('Error submitting form: ' + error); // Display error message on the toast
             console.error('Error submitting form:', error);
+            processingBarcode = false; // Reset the flag after processing is done
         });
-        
     }
 
     // Function to listen for barcode scanner input
@@ -157,10 +163,9 @@
             // Check if the key pressed is a character key (a-z or 0-9)
             if (key.length === 1 && /^[a-zA-Z0-9]$/.test(key)) {
                 handleBarcodeInput(key);
-        }
-    });
-}
-
+            }
+        });
+    }
 
     // Call the function to start listening for barcode scanner input
     listenForBarcodeScanner();
@@ -172,8 +177,16 @@
         currentQtyInput.value = this.value;
     });
 
+    updateQtyInput.addEventListener('focus', function() {
+        isTypingQty = true;
+    });
+
+    updateQtyInput.addEventListener('blur', function() {
+        isTypingQty = false;
+    });
+
     document.getElementById('barcode_form').addEventListener('submit', function(event) {
-        if (inputElement.value === '') {
+        if (inputElement.value === '' || isTypingQty) {
             event.preventDefault();
         } else {
             resetInputValues();
@@ -202,6 +215,7 @@
         .then(data => {
             showToast(data); // Display server response on the toast
             console.log('Manual form submitted successfully:', data);
+            resetInputValues(); // Reset input values after successful submission
         })
         .catch(error => {
             showToast('Error submitting form: ' + error); // Display error message on the toast
@@ -212,8 +226,6 @@
         modal.hide();
     });
 </script>
-
-
 
 <!-- Second script: Updates current_qty based on update_qty -->
 <script>
