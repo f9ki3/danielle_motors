@@ -8,9 +8,37 @@
     <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#input_qty">Enter Custom Quantity</button>
     <button class="btn btn-secondary" type="button" id="manual_button">Manual Entry</button>
     <button id="modal_for_manual" type="button" data-bs-toggle="modal" data-bs-target="#manual_modal" style="display:none;">burat</button>
-    <div class="modal fade" id="input_qty" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+</div>
+
+<!-- Modal for input quantity -->
+<div class="modal fade" id="input_qty" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Enter Custom Quantity</h5>
+                <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times fs--1"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input class="form-control" type="number" id="update_qty" min="0" max="9999" value="0">
+                <div class="form-check text-start mt-2">
+                    <input class="form-check-input" id="flexCheckDefault" type="checkbox" value="" />
+                    <label class="form-check-label" for="flexCheckDefault">Please close the modal before scanning the barcode!</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal" disabled>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for manual entry -->
+<div class="modal fade" id="manual_modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="test_2.php" method="POST" id="manual_form">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Enter Custom Quantity</h5>
                     <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close">
@@ -18,49 +46,36 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input class="form-control" type="number" id="update_qty" min="0" max="9999" value="0">
-                    <div class="form-check text-start mt-2">
-                        <input class="form-check-input" id="flexCheckDefault" type="checkbox" value="" />
-                        <label class="form-check-label" for="flexCheckDefault">Please close the modal before scanning the barcode!</label>
-                    </div>
+                    <input type="text" id="manual_barcode_input" name="manual_barcode">
+                    <input type="number" name="manual_qty" id="manual_qty">
                 </div>
                 <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit">Okay</button>
                     <button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal" disabled>Close</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-
-    <!-- modal for manual entry -->
-    <div class="modal fade" id="manual_modal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form action="test_2.php" method="POST" id="manual_form">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Enter Custom Quantity</h5>
-                        <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close">
-                            <span class="fas fa-times fs--1"></span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <input type="text" id="manual_barcode_input" name="manual_barcode">
-                        <input type="number" name="manual_qty" id="manual_qty">
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" type="submit">Okay</button>
-                        <button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal" disabled>Close</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <form action="test.php" method="POST" id="barcode_form">
-        <input type="text" name="barcode_value" id="barcode_value" hidden>
-        <input type="number" name="qty" id="current_qty" value="1" hidden>
-    </form>
 </div>
 
+<!-- Form for barcode submission -->
+<form action="test.php" method="POST" id="barcode_form">
+    <input type="text" name="barcode_value" id="barcode_value" hidden>
+    <input type="number" name="qty" id="current_qty" value="1" hidden>
+</form>
+
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
+    <div class="toast fade" id="liveToast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+        <strong class="me-auto">Server Response</strong>
+        <small class="text-800">Just now</small>
+        <button class="btn ms-2 p-0" type="button" data-bs-dismiss="toast" aria-label="Close"><span class="fas fa-times fs-1"></span></button>
+        </div>
+        <div class="toast-body"></div>
+    </div>
+</div>
+
+<!-- Script for barcode submission -->
 <script>
     let inputElement = document.getElementById('barcode_value');
     let qtyElement = document.getElementById('current_qty');
@@ -68,13 +83,23 @@
     let inputTimer = null;
     let keydownListenerActive = true;
 
-    // Function to reset values of update_qty and current_qty
     function resetInputValues() {
         document.getElementById('update_qty').value = '1';
         document.getElementById('current_qty').value = '1';
     }
 
-    // Function to handle keydown events
+    // Function to show toast with message
+    function showToast(message) {
+        // Select the toast element
+        let toastElement = document.getElementById('liveToast');
+        // Set the toast body content to the message
+        toastElement.querySelector('.toast-body').textContent = message;
+        // Create a new Bootstrap Toast instance
+        let toast = new bootstrap.Toast(toastElement);
+        // Show the toast
+        toast.show();
+    }
+
     function handleKeydown(event) {
         if (!keydownListenerActive) return;
 
@@ -109,9 +134,11 @@
                 })
                 .then(response => response.text())
                 .then(data => {
+                    showToast(data); // Display server response on the toast
                     console.log('Form submitted successfully:', data);
                 })
                 .catch(error => {
+                    showToast('Error submitting form: ' + error); // Display error message on the toast
                     console.error('Error submitting form:', error);
                 });
 
@@ -133,6 +160,8 @@
         currentQtyInput.value = this.value;
     });
 
+    
+
     document.getElementById('barcode_form').addEventListener('submit', function(event) {
         if (inputElement.value === '') {
             event.preventDefault();
@@ -146,12 +175,10 @@
         document.getElementById('modal_for_manual').click();
     });
 
-    // Re-enable keydown listener when manual_modal is closed
     document.getElementById('manual_modal').addEventListener('hidden.bs.modal', function() {
         keydownListenerActive = true;
     });
 
-    // Handle manual form submission with AJAX
     document.getElementById('manual_form').addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -163,13 +190,14 @@
         })
         .then(response => response.text())
         .then(data => {
+            showToast(data); // Display server response on the toast
             console.log('Manual form submitted successfully:', data);
         })
         .catch(error => {
+            showToast('Error submitting form: ' + error); // Display error message on the toast
             console.error('Error submitting manual form:', error);
         });
 
-        // Close the modal after submission
         const modal = bootstrap.Modal.getInstance(document.getElementById('manual_modal'));
         modal.hide();
     });
