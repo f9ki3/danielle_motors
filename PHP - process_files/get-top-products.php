@@ -7,7 +7,7 @@
                 INNER JOIN product ON product.id = purchase_cart.ProductID
                 GROUP BY purchase_cart.ProductID
                 ORDER BY count DESC
-                LIMIT 10';
+                LIMIT 100';
         $stmt = $conn->prepare($query);
         $stmt->execute();
         $stmt->bind_result($product, $count, $name);
