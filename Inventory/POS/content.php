@@ -1,3 +1,10 @@
+<?php 
+if(isset($_SESSION['invoice'])){
+    $transaction_id = $_SESSION['invoice'];
+} else {
+    header("Location: ../Purchase-Warehouse");
+}
+?>
 <div id="initialContent" class="my-9 py-9 text-center">
     <div id="spinner" class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>

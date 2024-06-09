@@ -89,14 +89,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // Add new transaction data
         $transaction_data[] = array(
-            "barcode" => $product_barOrQRcode,
-            "product_id" => $product_id,
-            "product_name" => $product_name,
-            "brand" => $brand,
-            "model" => $models,
-            "unit" => $unit,
-            "srp" => $srp,
-            "qty" => $product_qty
+            "barcode" = $product_barOrQRcode,
+            "product_id" = $product_id,
+            "product_name" = $product_name,
+            "brand" = $brand,
+            "model" = $models,
+            "unit" = $unit,
+            "srp" = $srp,
+            "qty" = $product_qty,
+            "transaction_id" = $_SESSION['invoice'];
         );
 
         // Save the transaction data to the file with pretty print format
