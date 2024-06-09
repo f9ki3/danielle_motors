@@ -26,6 +26,7 @@
             
             <div class="ms-xxl-auto">
                 <a href="../Purchase_Warehouse" class="btn border text-primary border-primary" ><span class="fas fa-plus me-2"></span> Purchase</a>
+                <a href="../../PHP - process_files/create_pos_po.php" class="btn btn-outline-primary text-primary"><span class="fas fa-plus me-2"></span> Scan Mode</a>
                 <a href="../Purchase_Warehouse_Cart" class="btn border text-primary border-primary position-relative" >
                     <span class="fas fa-shopping-cart me-2"></span> Cart
                     <span class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-circle" id="counter"></span>
