@@ -1,6 +1,22 @@
 [
     {
         "barcode": "aa",
-        "qty": 113
+        "product_id": "24",
+        "product_name": "CVT Pulley Set",
+        "brand": "HIRC",
+        "model": "KRV180",
+        "unit": "set",
+        "srp": "7250",
+        "qty": 129
+    },
+    {
+        "barcode": "bb",
+        "product_id": "25",
+        "product_name": "Pulley Set",
+        "brand": "HIRC",
+        "model": "AEROX, NMAX",
+        "unit": "set",
+        "srp": "2500",
+        "qty": 3
     }
 ]
