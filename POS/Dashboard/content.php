@@ -46,12 +46,31 @@
                         $transactionCount = 0;
                         }
 
+                        // Construct the SQL query
+                        $sql = "SELECT COUNT(*) AS TransactionDelivery
+                        FROM purchase_transactions
+                        WHERE TransactionType = 'Delivery'
+                        AND DATE(TransactionDate) = CURDATE()";
+
+                        // Execute the query
+                        $result = $conn->query($sql);
+
+                        // Check if there are any results
+                        if ($result->num_rows > 0) {
+                        // Fetch the result and store it in a variable
+                        $row = $result->fetch_assoc();
+                        $TransactionDelivery = $row["TransactionDelivery"];
+                        } else {
+                        // If no results found, set transactionCount to 0 or handle as needed
+                        $TransactionDelivery = 0;
+                        }
+
 
                         
                     ?>
 
                     
-                    <h1 class="fw-bolder text-center text-primary mt-4">PHP <?php echo $totalAmount?></h1>
+                    <h1 class="fw-bolder text-center text-primary mt-4">0<?php echo $totalAmount?></h1>
                 </div>
             </div>
             <div class="col-12 col-md-6 p-2">
@@ -73,7 +92,7 @@
             <div class="col-6 col-md-3 p-2">
                     <h6 class="fw-bolder">Today Deliveries</h6>
                     <div class="border bg-light border-primary rounded p-2" style="height: 120px;">
-                    <h1 class="fw-bolder text-center text-primary mt-4">100</h1>
+                    <h1 class="fw-bolder text-center text-primary mt-4">0<?php echo $totalAmount?></h1>
                 </div>
             </div>
             <div class="col-6 col-md-3 p-2">

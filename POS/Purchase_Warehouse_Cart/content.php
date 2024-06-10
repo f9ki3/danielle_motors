@@ -43,9 +43,10 @@
                         <th scope="col" width="5%">Brand</th>
                         <th scope="col" width="5%">Unit</th>
                         <th scope="col" width="5%">Stocks</th>
-                        <th scope="col" width="5%">Price</th>
+                        <th scope="col" width="5%">SRP</th>
                         <th scope="col" width="15%">QTY</th>
-                        <th scope="col" width="10%">Markup</th>
+                        <th scope="col" width="15%">Input</th>
+                        <th scope="col" width="10%">New Price</th>
                         <th scope="col" width="10%">Amount</th>
                         <th scope="col" width="5%">Action</th>
                     </tr>
@@ -70,7 +71,7 @@
                                         <label for="transaction_address">Address</label>
                                     </div>
                                     <div class="form-floating" style="width: 32%;">
-                                        <input type="date" id="transaction_date" class="form-control" placeholder="Date" readonly>
+                                        <input type="date" id="transaction_date" class="form-control" placeholder="Date">
                                         <label for="transaction_date">Date</label>
                                     </div>
                                     
@@ -133,29 +134,29 @@
                             <div class="border rounded p-4 pt-5">
                                 <div class="mt-4" style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Subtotal</h5>
-                                    <h5 class="fw-bolder" id="subtotal">PHP 100.00</h5>
+                                    <h5 class="fw-bolder" id="subtotal">0.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder d-none">Tax (12%)</h5>
-                                    <h5 class="fw-bolder d-none" id="tax">PHP 100.00</h5>
+                                    <h5 class="fw-bolder d-none" id="tax">0.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Discount</h5>
-                                    <h5 class="fw-bolder" id="subtotal_discount">PHP 100.00</h5>
+                                    <h5 class="fw-bolder" id="subtotal_discount">0.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Total</h5>
-                                    <h5 class="fw-bolder" id="total">PHP 100.00</h5>
+                                    <h5 class="fw-bolder" id="total">0.00</h5>
                                 </div>
                                 
                                 <hr>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Payment</h5>
-                                    <h5 class="fw-bolder" id="payment">PHP 100.00</h5>
+                                    <h5 class="fw-bolder" id="payment">0.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Change</h5>
-                                    <h5 class="fw-bolder" id="change">PHP 100.00</h5>
+                                    <h5 class="fw-bolder" id="change">0.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between;" class="mt-3">
                                     <button style="flex: 0 0 49%;" id="resetBtn" class="btn btn-lg mt-3 border border-primary text-primary" onclick="resetCart()">Reset</button>
