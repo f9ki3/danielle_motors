@@ -117,7 +117,7 @@
 
                                 <div style="display: flex; flex-direction: row; justify-content: space-between" >
                                     <div class="form-floating" style="width: 49%;">
-                                        <input type="text" id="subtotal_discount_percentage" class="form-control" placeholder="" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); if(parseFloat(this.value) < 0) this.value = 0;" maxlength="3" value="0">
+                                        <input type="text" id="subtotal_discount_percentage" class="form-control" placeholder="" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); if(parseFloat(this.value) < 0) this.value = 0;" maxlength="3" >
                                         <label for="subtotal_discount_percentage">Subtotal Discount (%)</label>
                                     </div>
                                     <div class="form-floating" style="width: 49%;">
@@ -134,29 +134,29 @@
                             <div class="border rounded p-4 pt-5">
                                 <div class="mt-4" style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Subtotal</h5>
-                                    <h5 class="fw-bolder" id="subtotal">0.00</h5>
+                                    <h5 class="fw-bolder" id="subtotal">₱ 0.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder d-none">Tax (12%)</h5>
-                                    <h5 class="fw-bolder d-none" id="tax">0.00</h5>
+                                    <h5 class="fw-bolder d-none" id="tax">₱ 0.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Discount</h5>
-                                    <h5 class="fw-bolder" id="subtotal_discount">0.00</h5>
+                                    <h5 class="fw-bolder" id="subtotal_discount">₱ 0.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Total</h5>
-                                    <h5 class="fw-bolder" id="total">0.00</h5>
+                                    <h5 class="fw-bolder" id="total">₱ 0.00</h5>
                                 </div>
                                 
                                 <hr>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Payment</h5>
-                                    <h5 class="fw-bolder" id="payment">0.00</h5>
+                                    <h5 class="fw-bolder" id="payment">₱ 0.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
                                     <h5 class="fw-bolder">Change</h5>
-                                    <h5 class="fw-bolder" id="change">0.00</h5>
+                                    <h5 class="fw-bolder" id="change">₱ 0.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between;" class="mt-3">
                                     <button style="flex: 0 0 49%;" id="resetBtn" class="btn btn-lg mt-3 border border-primary text-primary" onclick="resetCart()">Reset</button>
