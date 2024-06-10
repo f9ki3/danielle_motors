@@ -262,6 +262,13 @@ if(isset($_SESSION['invoice'])){
         document.getElementById('manual_qty').value = '';
     }
 
+    function loadContent() {
+        $('#cartTableBody').load('preview_list.php');
+    }
+
+    // Load content when the page loads
+    loadContent();
+    
     // Function to show toast with message
     function showToast(message) {
         // Select the toast element
@@ -295,6 +302,7 @@ if(isset($_SESSION['invoice'])){
             console.log('Form submitted successfully:', data);
             resetInputValues(); // Reset input values after successful submission
             processingBarcode = false; // Reset the flag after processing is done
+            loadContent();
         })
         .catch(error => {
             showToast('Error submitting form: ' + error); // Display error message on the toast
@@ -340,7 +348,7 @@ if(isset($_SESSION['invoice'])){
 
     // Call the function to start listening for barcode scanner input
     listenForBarcodeScanner();
-
+    //code para di magsubmit ng form kapag nagtatype sa #update_qty na input field
     let updateQtyInput = document.getElementById('update_qty');
     let currentQtyInput = document.getElementById('current_qty');
 
@@ -355,7 +363,7 @@ if(isset($_SESSION['invoice'])){
     updateQtyInput.addEventListener('blur', function() {
         isTypingQty = false;
     });
-
+    //end ng code para malayang makapag type sa #update_qty
     document.getElementById('barcode_form').addEventListener('submit', function(event) {
         if (inputElement.value === '' || isTypingQty) {
             event.preventDefault();
@@ -387,6 +395,7 @@ if(isset($_SESSION['invoice'])){
             showToast(data); // Display server response on the toast
             console.log('Manual form submitted successfully:', data);
             resetInputValues(); // Reset input values after successful submission
+            loadContent();
         })
         .catch(error => {
             showToast('Error submitting form: ' + error); // Display error message on the toast
@@ -406,17 +415,4 @@ if(isset($_SESSION['invoice'])){
     updateQtyInput.addEventListener('input', function() {
         currentQtyInput.value = this.value;
     });
-</script>
-
-<script>
-$(document).ready(function() {
-    function loadContent() {
-        $('#cartTableBody').load('preview_list.php');
-    }
-
-    // Load content when the page loads
-    loadContent();
-
-    
-});
 </script>

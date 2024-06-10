@@ -19,7 +19,7 @@ $file_name = "../../jsons/" . $user_id . "-Transaction.json";
                 <td><?php echo $item['Model'];?></td>
                 <td><?php echo 0;//$item['model'];?></td>
                 <td><?php echo $item['SRP'];?></td>
-                <td><input class="form-control" style="max-width: 100px;" type="number" value="<?php echo $item['Quantity'];?>"></td>
+                <td><?php echo $item['Quantity'];?></td>
                 <td>
                     <div class="d-inline-flex">
                         <input class="form-control text-end" style="max-width: 100px;" type="number" value="0">
