@@ -51,6 +51,7 @@
 $sql = "SELECT user.*, branch.brn_name 
         FROM user 
         LEFT JOIN branch ON user.user_brn_code = branch.brn_code 
+        WHERE user.user_position != 'System Developer'
         ORDER BY user.id DESC";
 
 $result = $conn->query($sql);

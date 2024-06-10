@@ -86,7 +86,7 @@
                 <div class="form-floating"><select class="form-select" id="floatingSelectAdmin" name="user_position" required>
                     <option value="" selected="selected">Select position</option>
                     <?php 
-                    $user_position_sql = "SELECT position_name FROM `groups` ORDER BY position_name ASC";
+                    $user_position_sql = "SELECT position_name FROM `groups` WHERE position_name != 'System Developer' ORDER BY position_name ASC";
                     $user_position_res = $conn->query($user_position_sql);
                     if($user_position_res->num_rows>0){
                         while($position_row = $user_position_res->fetch_assoc()){
