@@ -76,8 +76,8 @@ function purchase() {
     });
 
     displayCartItems();
-    resetCart();
-    updateCounter(0); // Reset counter to 0 after purchase
+    updateCounter(0); 
+    sessionStorage.clear()
 }
 
 // Function to update the subtotal
