@@ -131,7 +131,7 @@ $transaction_id = $_SESSION['invoice'];
                     }
                     ?>
                 </td>
-                <td><button class="btn btn-danger"><span class="far fa-trash-alt"></span></button></td>
+                <td><button class="btn btn-danger" id="delete_tite_<?php echo $item['ProductID']; ?>"><span class="far fa-trash-alt"></span></button></td>
             </tr>
             
 <?php
@@ -152,7 +152,7 @@ $transaction_id = $_SESSION['invoice'];
 <script>
     // Event delegation to handle clicks on dynamically generated elements
     document.body.addEventListener('click', function(event) {
-        // Check if the clicked element is one of the targeted anchor elements
+        // Check if the clicked element is one of the targeted anchor elements for burat_na_maliit_
         if (event.target.id.startsWith('burat_na_maliit_')) {
             // Extract the number part of the ID (if needed)
             let idNumber = event.target.id.split('_').pop();
@@ -160,7 +160,32 @@ $transaction_id = $_SESSION['invoice'];
             // Perform your desired action here
             // console.log('Anchor clicked with ID:', event.target.id);
         }
+        
+        // Check if the clicked element is one of the targeted anchor elements for delete_tite_
+        if (event.target.id.startsWith('delete_tite_')) {
+            let idNumber = event.target.id.split('_').pop();
+            // console.log('Delete ID:', event.target.id);
+
+            // Make a GET request to /example
+            fetch(`../../PHP - process_files/delete_purchase_cart.php?product_id=${encodeURIComponent(idNumber)}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    // Parse and use the response
+                    // console.log(data);
+                    showToast(data);
+                    loadContent();
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                });
+        }
     });
+
 
     // Event delegation to handle modal hidden event
     document.body.addEventListener('hidden.bs.modal', function(event) {
@@ -195,10 +220,12 @@ $transaction_id = $_SESSION['invoice'];
                 // Close the modal that is currently open
                 const modal = bootstrap.Modal.getInstance(this.closest('.modal'));
                 modal.hide();
+                keydownListenerActive = true;
             })
             .catch(error => {
                 showToast('Error submitting form: ' + error); // Display error message on the toast
                 console.error('Error submitting manual form:', error);
+                
             });
         });
     });
