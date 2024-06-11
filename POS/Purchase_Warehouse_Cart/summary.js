@@ -9,7 +9,7 @@ function purchase() {
     // Get transaction details from form inputs
     var transaction_customer_name = document.getElementById('transaction_customer_name').value || 'N/A';
     var transaction_address = document.getElementById('transaction_address').value || 'N/A';
-    var transaction_date = new Date().toISOString();
+    var transaction_date = document.getElementById('transaction_date').value || '';
     var transaction_verified = document.getElementById('transaction_verified').value || '';
     var transaction_inspected = document.getElementById('transaction_inspected').value || '';
     var transaction_received = document.getElementById('transaction_received').value || '';
@@ -42,8 +42,8 @@ function purchase() {
         amountPayment: payment,
         change: change,
     };
-
-    // Send AJAX request to purchase_transaction.php
+    console.log(data)
+    // // Send AJAX request to purchase_transaction.php
     $.ajax({
         type: "POST",
         url: "purchase_transaction.php",

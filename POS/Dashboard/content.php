@@ -7,70 +7,7 @@
             <div class="col-12 col-md-6 p-2">
                     <h6 class="fw-bolder">Today Sales</h6>
                     <div class="border bg-light border-primary rounded p-2" style="height: 120px;">
-                    <?php
-                        $sql = "SELECT SUM(Total) AS TotalAmount
-                        FROM purchase_transactions
-                        WHERE TransactionType = 'Walk-in'
-                        AND DATE(TransactionDate) = CURDATE()
-                        ";
-
-                        // Execute the query
-                        $result = $conn->query($sql);
-
-                        // Check if there are any results
-                        if ($result->num_rows > 0) {
-                        // Fetch the result and store it in a variablex 
-                        $row = $result->fetch_assoc();
-                        $totalAmount = $row["TotalAmount"];
-                        } else {
-                        // If no results found, set totalAmount to 0 or handle as needed
-                        $totalAmount = 0;
-                        }
-
-                        // Construct the SQL query
-                        $sql = "SELECT COUNT(*) AS TransactionCount
-                        FROM purchase_transactions
-                        WHERE TransactionType = 'Walk-in'
-                        AND DATE(TransactionDate) = CURDATE()";
-
-                        // Execute the query
-                        $result = $conn->query($sql);
-
-                        // Check if there are any results
-                        if ($result->num_rows > 0) {
-                        // Fetch the result and store it in a variable
-                        $row = $result->fetch_assoc();
-                        $transactionCount = $row["TransactionCount"];
-                        } else {
-                        // If no results found, set transactionCount to 0 or handle as needed
-                        $transactionCount = 0;
-                        }
-
-                        // Construct the SQL query
-                        $sql = "SELECT COUNT(*) AS TransactionDelivery
-                        FROM purchase_transactions
-                        WHERE TransactionType = 'Delivery'
-                        AND DATE(TransactionDate) = CURDATE()";
-
-                        // Execute the query
-                        $result = $conn->query($sql);
-
-                        // Check if there are any results
-                        if ($result->num_rows > 0) {
-                        // Fetch the result and store it in a variable
-                        $row = $result->fetch_assoc();
-                        $TransactionDelivery = $row["TransactionDelivery"];
-                        } else {
-                        // If no results found, set transactionCount to 0 or handle as needed
-                        $TransactionDelivery = 0;
-                        }
-
-
-                        
-                    ?>
-
-                    
-                    <h1 class="fw-bolder text-center text-primary mt-4">0<?php echo $totalAmount?></h1>
+                    <h1 class="fw-bolder text-center text-primary mt-4" id="total_sales">₱ 0</h1>
                 </div>
             </div>
             <div class="col-12 col-md-6 p-2">
@@ -86,25 +23,25 @@
             <div class="col-6 col-md-3 p-2">
                     <h6 class="fw-bolder">Today Customers</h6>
                     <div class="border bg-light border-primary rounded p-2" style="height: 120px;">
-                    <h1 class="fw-bolder text-center text-primary mt-4"><?php echo $transactionCount?></h1>
+                    <h1 class="fw-bolder text-center text-primary mt-4" id="total_customer"> 0</h1>
                     </div>
             </div>
             <div class="col-6 col-md-3 p-2">
                     <h6 class="fw-bolder">Today Deliveries</h6>
                     <div class="border bg-light border-primary rounded p-2" style="height: 120px;">
-                    <h1 class="fw-bolder text-center text-primary mt-4">0<?php echo $totalAmount?></h1>
+                    <h1 class="fw-bolder text-center text-primary mt-4" id="total_delivery"> 0</h1>
                 </div>
             </div>
             <div class="col-6 col-md-3 p-2">
                     <h6 class="fw-bolder">Total Products</h6>
                     <div class="border bg-light border-primary rounded p-2" style="height: 120px;">
-                    <h1 class="fw-bolder text-center text-primary mt-4">332</h1>
+                    <h1 class="fw-bolder text-center text-primary mt-4" id="total_product"> 0</h1>
                 </div>
             </div>
             <div class="col-6 col-md-3 p-2">
                     <h6 class="fw-bolder">Total Supplier</h6>
                     <div class="border bg-light border-primary rounded p-2" style="height: 120px;">
-                    <h1 class="fw-bolder text-center text-primary mt-4">7</h1>
+                    <h1 class="fw-bolder text-center text-primary mt-4" id="total_supplier"> 0</h1>
                 </div>
             </div>
         </div>
@@ -127,15 +64,8 @@
         <div class="row">
             <div class="col-12 col-md-6 p-2">
                     <h6 class="fw-bolder">Sales Transactions</h6>
-                    <div class="border rounded p-2">
-                        <table class="table mt-3">
-                            <!-- <thead>
-                                <tr>
-                                <th scope="col" width="25%" class="product_id">Purchase ID</th>
-                                <th scope="col" width="50%">Customer Name</th>
-                                <th scope="col" width="25%">Total</th>
-                                </tr>
-                            </thead> -->
+                    <div class="border rounded p-2 table-responsive scrollbar mx-n1 px-1" style="height: 500px">
+                        <table class="table table-hover mt-3">
                             <tbody>
                             <?php include 'walkin_transaction.php'?>
                             </tbody>
@@ -144,15 +74,8 @@
             </div>
             <div class="col-12 col-md-6 p-2">
                 <h6 class="fw-bolder">Delivery Transactions</h6>
-                <div class="border rounded p-2">
-                    <table class="table mt-3">
-                                <!-- <thead>
-                                    <tr>
-                                    <th scope="col" width="25%" class="product_id">Delivery ID</th>
-                                    <th scope="col" width="50%">Customer Name</th>
-                                    <th scope="col" width="25%">Total</th>
-                                    </tr>
-                                </thead> -->
+                <div class="border rounded p-2 table-responsive scrollbar mx-n1 px-1" style="height: 500px">
+                    <table class="table table-hover mt-3">
                                 <tbody>
                                 <?php include 'delivery_transaction.php'?>
                                     
@@ -160,10 +83,6 @@
                     </table>
                 </div>
             </div>
-
-
-
-            
         </div>
         
     </div>
