@@ -6,9 +6,7 @@ date_default_timezone_set('Asia/Manila');
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 
-  <?php include "../../page_properties/header.php" ?>
-  <link href="../../vendors/cropperJS/cropper.min.css" rel="stylesheet">
-
+ <?php include "../../page_properties/header.php" ?>
 
   <body>
     <!-- ===============================================-->
@@ -16,13 +14,7 @@ date_default_timezone_set('Asia/Manila');
     <!-- ===============================================-->
     <main class="main" id="top">
       <!-- navigation -->
-      <?php
-      if($user_account_type == 0){
-       include "../../page_properties/profile-nav.php";
-      } else {
-        include "../../page_properties/profile-posnav.php";
-      }
-      ?>
+      <?php include "../../page_properties/nav.php";?>
       <!-- /navigation -->
       <div class="content">
         <?php 
@@ -49,7 +41,6 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
-    
   </body>
 
 

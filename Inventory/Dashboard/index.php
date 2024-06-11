@@ -264,7 +264,7 @@ date_default_timezone_set('Asia/Manila');
             }],
               chart: {
               type: 'bar',
-              height: 350
+              height: 3500
             },
             plotOptions: {
               bar: {
