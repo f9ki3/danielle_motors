@@ -62,6 +62,8 @@ $fullname = $transactionDetails["user_fname"] . " " . $transactionDetails["user_
                                         <p class="p-0" style="margin-top: -15px">Transaction Type: <?php echo $transactionDetails["TransactionType"]; ?></p>
                                     </div>
                                     <div>
+                                        <button id="returnBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="ReturnStatus()">Return</button>
+                                        <button id="replaceBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="ReplaceStatus()">Replace</button>
                                         <button id="originalBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="printDocument()">Print</button>
                                         <a href="../Sales_Warehouse" class="btn btn-primary btn-sm back">Back</a>
                                     </div>

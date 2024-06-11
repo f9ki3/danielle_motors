@@ -10,7 +10,10 @@ if ($conn->connect_error) {
 $transactionID = $_GET['transaction_code'];
 
 // Prepare and bind SQL statement
-$stmt = $conn->prepare("SELECT * FROM purchase_transactions WHERE TransactionID = ?");
+$stmt = $conn->prepare("SELECT pt.*, u.*
+FROM purchase_transactions pt
+JOIN user u ON pt.cashier_id = u.id
+WHERE pt.TransactionID = ?");
 $stmt->bind_param("s", $transactionID);
 
 // Execute the statement
@@ -29,6 +32,7 @@ if ($result->num_rows > 0) {
 
 // Fetch the status
 $status = $transactionDetails["status"];
+$fullname = $transactionDetails["user_fname"] . " " . $transactionDetails["user_lname"];
 
 // Close statement
 $stmt->close();
@@ -49,30 +53,37 @@ $formattedRefundAdjustment = ' ' . number_format($refundAdjustment, 2);
 
 // Add the formatted refund adjustment to the transaction details array
 $transactionDetails["RefundAdjustment"] = $formattedRefundAdjustment;
+
 ?>
 
 <script>
 // Pass the status to JavaScript
 var purchaseStatus = <?php echo $status; ?>;
-</script>
 
+</script>
 
 
 <div style="width: 100%;" class="print_hide" >
     <div>
+
         <div style=" height: auto" class=" w-100 transact">
             <h2 class="mb-3">Purchase Store</h2>
             <div class="row">
                 <div>
-                    <div class="w-100 border rounded p-3 mb-3">
-                        <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <div class="w-50 p-1">
-                                <h6 class="fw-bolder">Customer Name: <?php echo $transactionDetails["CustomerName"]; ?></h6>
-                                <p>Address: <?php echo $transactionDetails["TransactionAddress"]; ?></p>
+                <div class="w-100 border rounded p-3 mb-3">
+                        <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-2">
+                            <div class="w-50">
+                                <p class="fw-bolder m-0 p-0">Customer Name: <?php echo $transactionDetails["CustomerName"]; ?></p>
+                                <p class="m-0 p-0">Address: <?php echo $transactionDetails["TransactionAddress"]; ?></p>
+                                <p class="m-0 p-0">Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
                             </div>
-                            <div class=" w-50 p-1">
-                                <div style="display: flex; flex-direction: row; justify-content: space-between">
-                                    <h6 class="fw-bolder">Receipt No: <?php  echo preg_replace('/[^0-9]/', '', $transactionID)?></h6>
+                            <div class=" w-50 pt-1">
+                                <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                                    <div>
+                                        <p class="fw-bolder">Receipt No: <?php  echo preg_replace('/[^0-9]/', '', $transactionID)?></p>
+                                        <p class="p-0" style="margin-top: -15px">Cashier: <?php echo $fullname?></p>
+                                        <p class="p-0" style="margin-top: -15px">Transaction Type: <?php echo $transactionDetails["TransactionType"]; ?></p>
+                                    </div>
                                     <div>
                                         <button id="returnBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="ReturnStatus()">Return</button>
                                         <button id="replaceBtn" class="btn btn-light border border-primary text-primary btn-sm print" onclick="ReplaceStatus()">Replace</button>
@@ -80,7 +91,6 @@ var purchaseStatus = <?php echo $status; ?>;
                                         <a href="../Sales_Warehouse" class="btn btn-primary btn-sm back">Back</a>
                                     </div>
                                 </div>
-                                <p>Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
                             </div>
                         </div>
                         <div style="display: flex; justify-content: space-between;" class="border-top pt-2">
@@ -90,10 +100,8 @@ var purchaseStatus = <?php echo $status; ?>;
                             <div style="width: 35%">Inspected by: <?php echo $transactionDetails["TransactionInspectedBy"]; ?></div>
                             <div style="width: 35%">Verified by: <?php echo $transactionDetails["TransactionVerifiedBy"]; ?></div>
                         </div>
-                    </div>
-                <div class="container" style="height: 350px; overflow-y: auto;"> <!-- Adjusted height and added overflow-y: auto; -->
-                    <!-- <div class="w-100 border rounded p-3 mb-1 cart table-responsive">
-                        <table class="table table-bordered table-striped"> -->
+                </div>
+                <div class="container" style="height: 350px; overflow-y: auto;"> 
                             <table class="table ">
                                 <tr>
                                     <th width="10%">Product name</th>
@@ -101,13 +109,12 @@ var purchaseStatus = <?php echo $status; ?>;
                                     <th width="10%">Model</th>
                                     <th width="5%">Qty</th>
                                     <th width="5%">Unit</th>
-                                    <th width="5%">SRP</th>
+                                    <th width="5%">Price</th>
                                     <th width="5%">Item Amount</th>
-                                    <th width="5%">Discount Type</th>
-                                    <th width="5%">Discount</th>
+                                    <th width="5%">Type</th>
+                                    <th width="5%">Amount</th>
                                     <th width="5%">Total Amount</th>
                                 </tr>
-                                <!-- make a loop data here from data set -->
                                 
                                 <?php 
                                 // SQL query to retrieve cart items for the given transaction ID
@@ -126,7 +133,7 @@ var purchaseStatus = <?php echo $status; ?>;
                                         echo "<td>" . $row["Model"] . "</td>";
                                         echo "<td>" . $row["Quantity"] . "</td>";
                                         echo "<td>" . $row["Unit"] . "</td>";
-                                        echo "<td>" . $row["SRP"] . "</td>";
+                                        echo "<td>₱ " . $row["SRP"] . "</td>";
                                         echo "<td>₱ " . number_format($paidAmount, 2) . "</td>"; // Display PaidAmount
                                         echo "<td>" . $row["DiscountType"] . "</td>";
                                         echo "<td>" . $row["Discount"] . "</td>";
@@ -137,7 +144,6 @@ var purchaseStatus = <?php echo $status; ?>;
                                     echo "0 results";
                                 }
                                 ?>
-                                <!-- end loop -->
                             </table>
                         
                     </div>
@@ -145,34 +151,29 @@ var purchaseStatus = <?php echo $status; ?>;
                     
                     <div class="w-100 border rounded p-4 mb-3">
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h6 class="fw-bolder">Subtotal</h6>
-                            <h6 class="fw-bolder">₱ <?php echo $transactionDetails["Subtotal"]; ?></h6>
+                            <p class="fw-bolder m-0 p-0">Subtotal</p>
+                            <p class="fw-bolder m-0 p-0"><?php echo formatCurrency($transactionDetails["Subtotal"]); ?></p>
+                        </div>
+                        <div style="display: none; flex-direction: row; justify-content: space-between">
+                            <p class="fw-bolder m-0 p-0">VAT(12%)</p>
+                            <p class="fw-bolder m-0 p-0"><?php echo formatCurrency($transactionDetails["Tax"]); ?></p>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
-
-                            <h6 class="fw-bolder d-none">VAT(12%)</h6>
-                            <h6 class="fw-bolder d-none"><?php echo $transactionDetails["Tax"]; ?></h6>
+                            <p class="fw-bolder m-0 p-0">Discount</p>
+                            <p class="fw-bolder m-0 p-0"><?php echo formatCurrency($transactionDetails["Discount"]); ?></p>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h6 class="fw-bolder">Discount</h6>
-                            <h6 class="fw-bolder">₱ <?php echo $transactionDetails["Discount"]; ?></h6>
-                        </div>
-                        <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h6 class="fw-bolder">Refund Adjustment</h6>
-                            <h6 class="fw-bolder"><?php echo $transactionDetails["RefundAdjustment"]; ?></h6> <!-- Add this line -->
-                        </div>
-                        <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h6 class="fw-bolder">Total Amount</h>
-                            <h6 class="fw-bolder">₱ <?php echo $transactionDetails["Total"]; ?></h6>
+                            <p class="fw-bolder m-0 p-0">Total Amount</h>
+                            <p class="fw-bolder m-0 p-0"><?php echo formatCurrency($transactionDetails["Total"]); ?></p>
                         </div>
                         <hr>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h6 class="fw-bolder">Payment</h6>
-                            <h6 class="fw-bolder">₱ <?php echo $transactionDetails["Payment"]; ?></h6>
+                            <p class="fw-bolder m-0 p-0">Payment</p>
+                            <p class="fw-bolder m-0 p-0"><?php echo formatCurrency($transactionDetails["Payment"]); ?></p>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between">
-                            <h6 class="fw-bolder">Change</h6>
-                            <h6 class="fw-bolder">₱ <?php echo $transactionDetails["ChangeAmount"]; ?></h6>
+                            <p class="fw-bolder m-0 p-0">Change</p>
+                            <p class="fw-bolder m-0 p-0"><?php echo formatCurrency($transactionDetails["ChangeAmount"]); ?></p>
                         </div>
                     </div>
                 </div>
@@ -183,25 +184,26 @@ var purchaseStatus = <?php echo $status; ?>;
 
 </div>
 
-<!-- //print by fyke -->
 <div id="printable" style="margin-top: -90px">
    <div>
 
+    <div>
+
         
-            <div>
-                <p class="fw-bolder" style="font-size: 12px; margin: 0px">Purchase Receipt</p>
+            <div class="d-flex flex-row justify-content-between">
+                <div style="width: 70%">
+                    <p class="fw-bolder" style="font-size: 12px; margin: 0px">Purchase Receipt</p>
+                </div>
+                <div style="width: 30%">
+                    <p class="fw-bolder" style="font-size: 12px; margin: 0px"><?php echo $transactionDetails["TransactionDate"]; ?></p>
+                </div>
             </div>
             <div class="d-flex flex-row justify-content-between">
                 <div style="width: 70%">
                     <p class="m-0" style="font-size: 9px">Customer: <?php echo $transactionDetails["CustomerName"]; ?></p>
                 </div>
                 <div style="width: 30%">
-                <p class="m-0" style="font-size: 9px">Invoice No: 
-                    <?php 
-                    // Remove all non-numeric characters
-                    echo preg_replace('/[^0-9]/', '', $transactionID); 
-                    ?>
-                </p>
+                    <p class="m-0" style="font-size: 9px">Invoice No: <?php  echo preg_replace('/[^0-9]/', '', $transactionID) ?></p>
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-between">
@@ -209,7 +211,7 @@ var purchaseStatus = <?php echo $status; ?>;
                     <p class="m-0" style="font-size: 9px">Address: <?php echo $transactionDetails["TransactionAddress"]; ?></p>
                 </div>
                 <div style="width: 30%">
-                    <p class="m-0" style="font-size: 9px">Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>
+                    <p class="m-0" style="font-size: 9px">Cashier: <?php echo $fullname?></p>  
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-between">
@@ -223,19 +225,14 @@ var purchaseStatus = <?php echo $status; ?>;
     </div>
    </div>
     <div>
-        
-        <!-- Cart details -->
         <div class="w-100 p-2 mb-3 rounded border mt-3 cart">
-                        
             <table class="table">
                 <tr>
                     <th width=35%" style="font-size: 9px; padding-top: 0px; padding-bottom: 0px;">Product name</th>
                     <th width="5%" style="font-size: 9px; padding-top: 0px; padding-bottom: 0px;">Qty</th>
                     <th width="5%" style="font-size: 9px; padding-top: 0px; padding-bottom: 0px;">SRP</th>
-                    <th width="5%" style="font-size: 9px; padding-top: 0px; padding-bottom: 0px;">Discount</th>
                     <th width="10%" style="font-size: 9px; padding-top: 0px; padding-bottom: 0px;">Amount</th>
                 </tr>
-                <!-- make a loop data here from data set -->
                 
                 <?php 
                 // SQL query to retrieve cart items for the given transaction ID
@@ -244,36 +241,34 @@ var purchaseStatus = <?php echo $status; ?>;
 
                 // Check if any rows were returned
                 if ($result->num_rows > 0) {
-                    $count = 1;
+
                     // Output data of each row
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>". $count .". ". $row["ProductName"] .", ". $row["Brand"] .", ". $row["Model"] .", ".$row["Unit"] . "</td>";
+                        echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>" . $row["ProductName"] .", ". $row["Brand"] .", ". $row["Model"] .", ".$row["Unit"] . "</td>";
                         echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>" . $row["Quantity"] . "</td>";
                         echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>₱ " . number_format($row["SRP"], 2) . "</td>";
-                        echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>";
-                        if ($row["Discount"] == 0.00) {
-                            echo "-";
-                        } else {
-                            $discount = $row["Discount"];
-                            if (is_int($discount) || floor($discount) == $discount) {
-                                echo (int)$discount;
-                            } else {
-                                echo number_format($discount, 2);
-                            }
-                            echo " " . $row["DiscountType"];
-                        }
-                        echo "</td>";
+                        // echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>";
+                        // if ($row["Discount"] == 0.00) {
+                        //     echo "-";
+                        // } else {
+                        //     $discount = $row["Discount"];
+                        //     if (is_int($discount) || floor($discount) == $discount) {
+                        //         echo (int)$discount;
+                        //     } else {
+                        //         echo number_format($discount, 2);
+                        //     }
+                        //     echo " " . $row["DiscountType"];
+                        // }
+                        // echo "</td>";
 
                         echo "<td style='font-size: 9px; padding: 2px; padding-left: 10px'>₱ " . number_format($row["TotalAmount"], 2) . "</td>"; // Format TotalAmount as currency
                         echo "</tr>";
-                        $count++;
                     }
                 } else {
                     echo "0 results";
                 }
                 ?>
-                <!-- end loop -->
             </table>
                         
         </div>
@@ -289,7 +284,6 @@ var purchaseStatus = <?php echo $status; ?>;
                     </div>
                 </div>
             </div>
-            <!-- Summary details -->
             <?php
             function formatCurrency($amount) {
                 return '₱ ' . number_format($amount, 2);
@@ -305,12 +299,12 @@ var purchaseStatus = <?php echo $status; ?>;
                             <p class="m-0" style="font-size: 9px"><?php echo formatCurrency($transactionDetails["Subtotal"]); ?></p>
                         </div>
                     </div>
-                    <div class="d-flex flex-row justify-content-between">
+                    <div class="d-flex flex-row justify-content-between d-none">
                         <div style="width: 70%">
-                            <p class="m-0" style="font-size: 9px d-none">Tax </p>
+                            <p class="m-0" style="font-size: 9px">Tax </p>
                         </div>
                         <div style="width: 30%">
-                            <p class="m-0" style="font-size: 9px d-none"><?php echo formatCurrency($transactionDetails["Tax"]); ?></p>
+                            <p class="m-0" style="font-size: 9px"><?php echo formatCurrency($transactionDetails["Tax"]); ?></p>
                         </div>
                     </div>
                     <div class="d-flex flex-row justify-content-between">
@@ -348,15 +342,12 @@ var purchaseStatus = <?php echo $status; ?>;
                     </div>
                 </div>
                 <div style="width: 70%; padding-left: 150px">
-                    <!-- Signatures -->
-        
-                    <div class="d-flex flex-row justify-content-between p-3 mt-5">
+                    <div class="d-flex flex-row justify-content-between p-3 mt-2">
                         <div class="">
                             <p style="font-size: 9px; text-align: center; margin-bottom: 0px"><?php echo $transactionDetails["TransactionReceivedBy"]; ?></p>
                             <hr class="m-0">
                             <p style="font-size: 9px; text-align: center">Received By</p>
                         </div>
-                        <!-- Other signature details -->
                         <div class="">
                             <p style="font-size: 9px; text-align: center; margin-bottom: 0px"><?php echo $transactionDetails["TransactionInspectedBy"]; ?></p>
                             <hr class="m-0">
@@ -374,7 +365,6 @@ var purchaseStatus = <?php echo $status; ?>;
         </div>
 
     </div>
-
 </div>
 
 <script>
