@@ -217,12 +217,25 @@ if(isset($_SESSION['invoice'])){
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" id="manual_barcode_input" name="barcode_value">
-                    <input type="number" name="qty" min="0" max="10000" id="manual_qty">
+                    <div class="row">
+                       <div class="col-lg-8">
+                        <div class="form-floating mb-3">
+                            <input class="form-control" type="text" id="manual_barcode_input" name="barcode_value">
+                            <label for="manual_barcode_input">Barcode</label>
+                        </div>
+                       </div> 
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-floating mb-3">
+                            <input class="form-control" type="number" name="qty" min="0" max="10000" id="manual_qty">
+                            <label for="qty">Quantity</label>
+                        </div>
+                    </div>
+                    
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-primary" type="submit">Okay</button>
-                    <button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal" disabled>Close</button>
+                    <button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal" >Close</button>
                 </div>
             </form>
         </div>
@@ -351,6 +364,7 @@ if(isset($_SESSION['invoice'])){
     //code para di magsubmit ng form kapag nagtatype sa #update_qty na input field
     let updateQtyInput = document.getElementById('update_qty');
     let currentQtyInput = document.getElementById('current_qty');
+    
 
     updateQtyInput.addEventListener('input', function() {
         currentQtyInput.value = this.value;
@@ -363,6 +377,11 @@ if(isset($_SESSION['invoice'])){
     updateQtyInput.addEventListener('blur', function() {
         isTypingQty = false;
     });
+
+    
+    
+
+
     //end ng code para malayang makapag type sa #update_qty
     document.getElementById('barcode_form').addEventListener('submit', function(event) {
         if (inputElement.value === '' || isTypingQty) {
