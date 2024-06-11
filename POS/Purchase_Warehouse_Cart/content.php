@@ -71,10 +71,9 @@
                                         <label for="transaction_address">Address</label>
                                     </div>
                                     <div class="form-floating" style="width: 32%;">
-                                        <input type="date" id="transaction_date" class="form-control" placeholder="Date">
+                                        <input type="date" id="transaction_date" class="form-control" placeholder="Date" value="<?php echo date('Y-m-d'); ?>">
                                         <label for="transaction_date">Date</label>
-                                    </div>
-                                    
+                                    </div>         
                                 </div>
                                 
                                 <div style="display: flex; flex-direction: row; justify-content: space-between" class="mb-3">
@@ -103,6 +102,9 @@
                                         <select id="transaction_payment" class="form-select" aria-label="Default select example" >
                                             <option selected value="Cash">Cash</option>
                                             <option value="G-Cash">G-Cash</option>
+                                            <option value="Maya">Maya</option>
+                                            <option value="Bank Transfer">Bank Transfer</option>
+                                            <option value="Others">Others</option>
                                         </select>
                                         <label for="transaction_payment">Payment Type</label>
                                     </div>
@@ -121,7 +123,9 @@
                                         <label for="subtotal_discount_percentage">Subtotal Discount (%)</label>
                                     </div>
                                     <div class="form-floating" style="width: 49%;">
-                                        <input type="text" id="amount_payment" class="form-control" placeholder="Enter Payment"  oninput="this.value = this.value.replace(/[^0-9.]/g, ''); if(parseFloat(this.value) < 0) this.value = 0;" maxlength="7">
+                                        <input type="text" id="amount_payment" class="form-control" placeholder="Enter Payment"  
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, ''); 
+                                        this.value = this.value.replace(/(\..*)\./g, '$1');" maxlength="9">
                                         <label for="amount_payment">Payment</label>
                                     </div>
                                     
@@ -159,8 +163,8 @@
                                     <h5 class="fw-bolder" id="change">₱ 0.00</h5>
                                 </div>
                                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between;" class="mt-3">
-                                    <button style="flex: 0 0 49%;" id="resetBtn" class="btn btn-lg mt-3 border border-primary text-primary" onclick="resetCart()">Reset</button>
-                                    <button style="flex: 0 0 49%;" id="purchase_btn" class="btn btn-lg mt-3 btn-primary" onclick="purchase()">Purchase</button>
+                                    <button style="flex: 0 0 49%;" id="resetBtn" class="btn btn-lg mt-3 border border-primary text-primary" onclick="resetCart()" disabled>Reset</button>
+                                    <button style="flex: 0 0 49%;" id="purchase_btn" class="btn btn-lg mt-3 btn-primary" onclick="purchase()" disabled>Purchase</button>
                                     <button style="flex: 0 0 49%; display: none;" id="loading" disabled class="btn btn-lg mt-3 btn-primary">
                                         <div class="spinner-grow spinner-grow-sm m-1" role="status">
                                             <span class="visually-hidden">Loading...</span>

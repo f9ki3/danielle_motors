@@ -76,10 +76,10 @@ $stmt->close();
                                     <th width="10%">Model</th>
                                     <th width="5%">Qty</th>
                                     <th width="5%">Unit</th>
-                                    <th width="5%">SRP</th>
+                                    <th width="5%">Price</th>
                                     <th width="5%">Item Amount</th>
-                                    <th width="5%">Discount Type</th>
-                                    <th width="5%">Discount</th>
+                                    <th width="5%">Type</th>
+                                    <th width="5%">Amount</th>
                                     <th width="5%">Total Amount</th>
                                 </tr>
                                 <!-- make a loop data here from data set -->

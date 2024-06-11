@@ -4,6 +4,12 @@
 function updateCartItemQuantity(index, increment, qtyInput) {
     let click = new Audio('click_button.mp3');
     click.play();
+
+    // Clear amount_payment input field
+    document.getElementById('amount_payment').value = '';
+    document.getElementById('payment').textContent = '₱ 0.00';
+    document.getElementById('change').textContent = '₱ 0.00';
+    
     var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
     if (cartItems[index]) {
         var newQty = cartItems[index].qty + increment;

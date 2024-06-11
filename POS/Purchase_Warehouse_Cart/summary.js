@@ -7,9 +7,9 @@ function purchase() {
     var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
 
     // Get transaction details from form inputs
-    var transaction_customer_name = document.getElementById('transaction_customer_name').value || '';
+    var transaction_customer_name = document.getElementById('transaction_customer_name').value || 'N/A';
+    var transaction_address = document.getElementById('transaction_address').value || 'N/A';
     var transaction_date = new Date().toISOString();
-    var transaction_address = document.getElementById('transaction_address').value || '';
     var transaction_verified = document.getElementById('transaction_verified').value || '';
     var transaction_inspected = document.getElementById('transaction_inspected').value || '';
     var transaction_received = document.getElementById('transaction_received').value || '';
@@ -121,7 +121,6 @@ document.getElementById('subtotal_discount_percentage').addEventListener('input'
     // Update subtotal calculations
     updateSubtotal();
 });
-
 // Function to update the payment value
 function updatePayment() {
     var paymentValue = parseFloat(document.getElementById('amount_payment').value) || 0; // Default value of 0
@@ -129,14 +128,36 @@ function updatePayment() {
     
     // Call updateChange after updating payment
     updateChange();
+
+    var totalValue = parseFloat(document.getElementById('total').textContent.replace('₱ ', '').replace(',', '')) || 0;
+    var purchaseButton = document.getElementById('purchase_btn');
+
+    // Enable/disable purchase button based on payment amount and total amount
+    if (totalValue > 0 && paymentValue >= totalValue) {
+        purchaseButton.disabled = false;
+    } else {
+        purchaseButton.disabled = true;
+    }
 }
+
+
 
 // Function to update the change value
 function updateChange() {
     var totalValue = parseFloat(document.getElementById('total').textContent.replace('₱ ', '').replace(',', '')) || 0;
     var paymentValue = parseFloat(document.getElementById('amount_payment').value) || 0;
     var change = paymentValue - totalValue;
-    document.getElementById('change').textContent = '₱ ' + change.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    var changeElement = document.getElementById('change');
+
+    // Check if change is negative
+    if (change < 0) {
+        changeElement.style.color = 'red'; // Change color to red
+    } else {
+        changeElement.style.color = ''; // Reset color to default
+    }
+
+    // Update change text content
+    changeElement.textContent = '₱ ' + change.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
 // Event listener for the amount_payment input

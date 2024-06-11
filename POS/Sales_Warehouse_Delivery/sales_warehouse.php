@@ -1,5 +1,5 @@
 <?php
-$query = "SELECT * FROM purchase_transactions WHERE TransactionType = 'Walk-in' ORDER BY TransactionDate DESC";
+$query = "SELECT * FROM purchase_transactions WHERE TransactionType = 'Delivery' ORDER BY TransactionDate DESC";
 
 $stmt = $conn->prepare($query);
 $stmt->execute();
