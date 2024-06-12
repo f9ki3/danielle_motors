@@ -45,5 +45,6 @@ date_default_timezone_set('Asia/Manila');
     <!-- ApexCharts CDN -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="pos_bar.php"></script>
+    <script src="fetch_dashboard.js"></script>
   </body>
 </html>

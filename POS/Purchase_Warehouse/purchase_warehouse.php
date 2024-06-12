@@ -106,7 +106,6 @@ function addToCart(productId, image, productName, supplierCode, brandName, unitN
         // Create an object to hold the item data
         var cartItem = {
             productId: productId,
-            image: image,
             productName: productName,
             supplierCode: supplierCode,
             brandName: brandName,
@@ -114,9 +113,10 @@ function addToCart(productId, image, productName, supplierCode, brandName, unitN
             models: models,
             srp: srp,
             totalStocks: totalStocks,
-            qty: 1, // Default quantity
-            discount: 0, // Default discount,
-            discountType: "₱",
+            qty: 1,
+            amountInput: 0,
+            type: "Markup",
+            price: srp,
             totalAmount: totalAmount // Total amount calculation
         };
 

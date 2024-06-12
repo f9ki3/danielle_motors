@@ -41,6 +41,7 @@ date_default_timezone_set('Asia/Manila');
     <!-- /theme customizer -->
 
     <?php include "../../page_properties/footer_main.php"; ?>
+    <script src='summary.js'></script>
     <script src='purchase_cart.js'></script>
     <script src='reload_spinner.js'></script>
   </body>
