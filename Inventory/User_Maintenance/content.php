@@ -4,7 +4,7 @@
     </div>
 </div>
 
-<div class="mb-9" id="actualContent">
+<div class="mb-9" id="actualContent" style="display: none;">
   <div class="row g-2 mb-4">
     <div class="col-auto">
       <h2 class="mb-0">Employee/ Users</h2>
