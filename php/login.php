@@ -104,10 +104,10 @@ if (isset($_POST['uname'], $_POST['pass'])) {
         // Respond based on user account type and log login action
         if ($_SESSION['user_account_type'] == 0) {
             echo '1';
-            $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$user_id', audit_action = 'login inventory' ,audit_description = 'login inventory', user_brn_code = '$brn_code', audit_date = '$currentTimestamp'";
+            $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$user_id', audit_action = 'Logged in from inventory' ,audit_description = 'Login inventory', user_brn_code = '$brn_code', audit_date = '$currentTimestamp'";
         } elseif ($_SESSION['user_account_type'] == 1) {
             echo '2';
-            $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$user_id',audit_action = 'login store' , audit_description = 'login store', user_brn_code = '$brn_code', audit_date = '$currentTimestamp'";
+            $insert_into_logs = "INSERT INTO `audit` SET audit_user_id = '$user_id',audit_action = 'Logged in from store' , audit_description = 'Login store', user_brn_code = '$brn_code', audit_date = '$currentTimestamp'";
         }
 
         // Execute the query
