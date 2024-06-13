@@ -101,6 +101,7 @@
                                             <option value="G-Cash">G-Cash</option>
                                             <option value="Maya">Maya</option>
                                             <option value="Bank Transfer">Bank Transfer</option>
+                                            <option value="PDC">Post-Dated Check</option>
                                             <option value="Others">Others</option>
                                         </select>
                                         <label for="transaction_payment">Payment Type</label>
