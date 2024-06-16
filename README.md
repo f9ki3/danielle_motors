@@ -11,3 +11,12 @@ The purpose of this system is to streamline the management of motor parts invent
 - **Reporting**: Generate reports on sales performance, inventory status, and other relevant metrics.
 - **User Management**: Manage user accounts and permissions for secure access.
 - **User-friendly Interface**: Intuitive design for ease of use by OJT students and staff.
+
+## Developers
+- Andrada, Joemarie
+- Azul, Christian
+- Inciong, Alexander
+- Loterena, Fyke
+- Rivera, Louis Lance
+- Rosero, Dave Shingie
+  
