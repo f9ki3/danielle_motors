@@ -299,7 +299,7 @@ $(document).ready(function() {
 
         // Call the function to check stocks draft initially and then every 5 seconds
         checkStocksDraft();
-        setInterval(checkStocksDraft, 5000); // 5000 milliseconds = 5 seconds
+        setInterval(checkStocksDraft, 500); // 5000 milliseconds = 5 seconds
     });
     </script>
 

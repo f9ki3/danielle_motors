@@ -53,7 +53,7 @@ include "../../database/database.php";
                         $date_added = $sd_row['date_added'];
                         $product_qty = $sd_row['product_qty'];
                         echo '<tr>
-                                    <td><a class="btn btn-outline-primary" href="../../PHP - process_files/delete_draft.php?id=' . $stock_draft_id . '">delete</a></td>
+                                    <td><a id="deleteBtn" class="btn btn-outline-primary" href="javascript:void(0);" data-id="' . $stock_draft_id . '">delete</a></td>
                                     <td><img src="../../uploads/' . basename($product_img) . '" class="img img-fluid"></td>
                                     <td>' . $product_name . '</td>
                                     <td>' . $brand_name . '</td>
@@ -80,3 +80,26 @@ include "../../database/database.php";
         <a class="btn btn-primary" type="submit" href="../../PHP - process_files/save_to_stocks.php">Save</a>
     </div>
     
+
+    <script>
+    document.getElementById('deleteBtn').addEventListener('click', function() {
+        var stockDraftId = this.getAttribute('data-id');
+        var url = '../../PHP - process_files/delete_draft.php?id=' + stockDraftId;
+        
+        fetch(url, {
+            method: 'GET',
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Handle success
+            // console.log('Success:', data);
+            // reloadPreview();
+            // Optionally, remove the element from the DOM
+            // this.parentNode.removeChild(this);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            // reloadPreview();
+        });
+    });
+    </script>
