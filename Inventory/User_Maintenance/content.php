@@ -22,7 +22,7 @@
         </div>
         <div class="col-auto mb-4">
           <a href="../AddUsers/" class="btn btn-primary"><span class="fas fa-plus me-2"></span>Add users</button></a>
-          <a class="btn btn-link text-900 me-4 px-0" href="../print/employees/" id="printButton" onclick="window.open(this.href, '_blank'); return false;"><span class="fa-solid fa-print fs--1 me-2"></span>Print</a>
+          <!-- <a class="btn btn-link text-900 me-4 px-0" href="../print/employees/" id="printButton" onclick="window.open(this.href, '_blank'); return false;"><span class="fa-solid fa-print fs--1 me-2"></span>Print</a> -->
       </div>
     </div>
     <div class="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-white border-top border-bottom border-200 position-relative top-1">
