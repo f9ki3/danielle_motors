@@ -213,15 +213,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 </li>
                 <?php 
                 }
-                // if(strpos($session_permission, 'MANAGE PRICELIST') !== false) {
-                // ?>
-                 <!-- <li class="nav-item">
-                //   <a class="nav-link" href="../../Inventory/Price_List/" data-bs-toggle="" aria-expanded="false">
-                //     <div class="d-flex align-items-center"><span class="nav-link-text">Price List</span></div>
-                //   </a>
-                // </li> -->
-                 <?php 
-                // }
+                
                 ?>
               </ul>
             </div>
@@ -264,6 +256,18 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           </div>
           <?php 
           }
+          if(strpos($session_permission, 'EXPENSES') !== false) {
+            ?>
+            <!-- Material Transfer -->
+            <div class="nav-item-wrapper">
+              <a class="nav-link <?php if($current_folder === "Expenses" || $current_folder === "Expenses" || $current_folder === "Expenses"){ echo "active"; } else { echo "";}?>  label-1" href="../../Inventory/Expenses/" role="button" data-bs-toggle="" aria-expanded="false">
+                  <span class="nav-link-icon"><span data-feather="truck"></span></span>
+                  <span class="nav-link-text-wrapper"><span class="nav-link-text">Expenses</span></span>
+                  <!-- </div>   -->
+                </a>
+              </div>
+            <?php 
+            }
           ?>
         </li>
         
