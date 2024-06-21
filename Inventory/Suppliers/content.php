@@ -91,7 +91,7 @@
 
         function resetTimer() {
             clearTimeout(time);
-            time = setTimeout(logout, 5000);  // 30000 milliseconds = 30 seconds
+            time = setTimeout(logout, 3000);  // 30000 milliseconds = 30 seconds
         }
     };
 
