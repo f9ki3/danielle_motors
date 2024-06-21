@@ -39,7 +39,7 @@
               <th class="sort text-start" scope="col" data-sort="username">USERNAME</th>
               <th class="sort text-start" scope="col" data-sort="position">Position</th>
               <th class="sort text-start" scope="col" data-sort="branch">BRANCH ASSIGNED</th>
-              <th class="sort text-start" scope="col" data-sort="address">Address</th><!--Address ng User mismo-->
+              <th class="sort text-start" scope="col" data-sort="address" style="min-width: 300px;">Address</th><!--Address ng User mismo-->
               <th class="sort text-start" scope="col" data-sort="contact">CONTACT NO.</th>
               <th class="sort text-start" scope="col" data-sort="status">STATUS</th>
               <th class="sort text-start" scope="col"></th>
@@ -99,7 +99,7 @@ if ($result->num_rows > 0) {
               <td class="username"><?php echo $username;?></td>
               <td class="position"><?php echo $user_position;?></td>
               <td class="branch"><?php echo $branch_name;?></td>
-              <td class="address"><?php echo $user_address1 . ", " . $user_brgy . ", " . $user_municipality . ", " . $user_province  ;?></td>
+              <td class="address" style="min-width: 300px;"><?php echo $user_address1 . ", " . $user_brgy . ", " . $user_municipality . ", " . $user_province  ;?></td>
               <td class="contact"><?php echo $user_contact;?></td>
               <td class="status"><?php echo $user_status_final;?></td>
               <td class="align-middle text-end white-space-nowrap pe-0 action">
