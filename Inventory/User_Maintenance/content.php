@@ -34,7 +34,6 @@
               <!-- <th class="white-space-nowrap fs--1 align-middle ps-0">
                 <div class="form-check mb-0 fs-0"><input class="form-check-input" id="checkbox-bulk-customers-select" type="checkbox" data-bulk-select='{"body":"customers-table-body"}' /></div>
               </th> -->
-              <th class="white-space-nowrap fs--1 align-middle ps-0"></th>
               <th class="sort text-start" scope="col" data-sort="user" colspan="2">FULLNAME</th>
               <th class="sort text-start" scope="col" data-sort="email">EMAIL</th>
               <th class="sort text-start" scope="col" data-sort="username">USERNAME</th>
@@ -88,9 +87,7 @@ if ($result->num_rows > 0) {
               <!-- <td class="fs--1 align-middle ps-0 py-3">
                 <div class="form-check mb-0 fs-0"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"customer":{"avatar":"/team/32.webp","name":"Carry Anna"},"email":"annac34@gmail.com","city":"Budapest","totalOrders":89,"totalSpent":23987,"lastSeen":"34 min ago","lastOrder":"Dec 12, 12:56 PM"}' /></div>
               </td> -->
-              <td class="white-space-nowrap fs--1 align-middle p-0" style="max-width: 10px;">
-                  <span class="far fa-dot-circle m-0 p-0 fs--1 text-success"></span>
-                </td>
+      
                 <td><div class="avatar avatar-m"><img class="rounded-circle" src="../../uploads/<?php echo $user_profileImg;?>" alt="" /></div></td>
               <td class="user align-middle white-space-nowrap pe-5">
     
