@@ -8,6 +8,7 @@ if($user_position_res->num_rows>0){
         } else {
             $status = '<span class="badge badge-phoenix badge-phoenix-danger">Disabled</span>';
         }
+        if($row['position_name'] !== 'System Developer'){
 ?>
 <tr>
     <td class="white-space-nowrap fs--1 align-middle ps-0" style="max-widtd:20px; widtd:18px;">
@@ -23,6 +24,7 @@ if($user_position_res->num_rows>0){
 </tr>
 <?php
     }
+}
 } else {
 ?>
 <tr>
