@@ -71,3 +71,30 @@
 
 <?php include "add_supplier.php"; ?>
 <?php include "opening_modal.php"; ?>
+
+<script>
+    (function() {
+    let inactivityTime = function () {
+        let time;
+        // Reset timer
+        window.onload = resetTimer;
+        document.onmousemove = resetTimer;
+        document.onkeypress = resetTimer;
+        document.ontouchstart = resetTimer; // For touch devices
+        document.onclick = resetTimer; // For click events
+        document.onscroll = resetTimer; // For scroll events
+        document.onkeydown = resetTimer; // For keydown events
+
+        function logout() {
+            window.location.href = '../../PHP - process_files/signout.php';
+        }
+
+        function resetTimer() {
+            clearTimeout(time);
+            time = setTimeout(logout, 5000);  // 30000 milliseconds = 30 seconds
+        }
+    };
+
+    inactivityTime();
+})();
+</script>
