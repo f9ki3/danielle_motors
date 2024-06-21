@@ -98,7 +98,7 @@
                         <hr class="bg-200 mt-5 mb-4" />
                         <div class="divider-content-center bg-white">or use email</div>
                       </div> -->
-                      <div class="mb-3 text-start"><label class="form-label" for="email">Email address</label>
+                      <div class="mb-3 text-start"><label class="form-label" for="email">Username</label>
                         <div class="form-icon-container"><input class="form-control form-icon-input" id="username" type="email" placeholder="name@example.com" /><span class="fas fa-user text-900 fs--1 form-icon"></span></div>
                       </div>
                       <div class="mb-3 text-start"><label class="form-label" for="password">Password</label>

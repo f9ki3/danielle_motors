@@ -25,7 +25,9 @@
                     </form>
                 </div>
             
-                <div class="ms-xxl-auto"><button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button></div>
+                <div class="ms-xxl-auto">
+                    <!-- <button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button> -->
+                </div>
                 <div class="col-3">
                     <select class="form-select form-select-sm mb-3" data-list-filter="data-list-filter" data-choices="data-choices" data-options='{"removeItemButton":true,"placeholder":true}'>
                         <option selected="" value="">Select supplier</option>
