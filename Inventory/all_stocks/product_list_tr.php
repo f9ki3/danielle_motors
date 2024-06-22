@@ -53,7 +53,7 @@
                 <td class="qty align-middle white-space-nowrap text-600 ps-4">'.$stock_qty.'</td>
                 <td class="status align-middle white-space-nowrap text-600 ps-4"></td>
                 <td class="publishby align-middle white-space-nowrap text-600 ps-4">
-                    ' . $user_fname . ' ' . $user_fname . '
+                    ' . $user_fname . ' ' . $user_lname . '
                 </td>
                 <td class="branch align-middle white-space-nowrap text-1000 ps-4"><b>' . $branch_name . '</b></td>
                 <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
