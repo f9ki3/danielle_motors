@@ -48,9 +48,9 @@ if (isset($branch_code)) {
                     $stmt_update->close();
                 } else {
                     // Product does not exist, insert new stock
-                    $insert_to_stocks = "INSERT INTO stocks (product_id, branch_code, rack_loc_id, stocks) VALUES (?, ?, ?, ?)";
+                    $insert_to_stocks = "INSERT INTO stocks (product_id, branch_code, rack_loc_id, stocks, publish_by) VALUES (?, ?, ?, ?, ?)";
                     $stmt_insert = $conn->prepare($insert_to_stocks);
-                    $stmt_insert->bind_param("sssi", $product_id, $stock_branch_code, $ware_location, $product_qty);
+                    $stmt_insert->bind_param("sssii", $product_id, $stock_branch_code, $ware_location, $product_qty, $publish_by);
                     $stmt_insert->execute();
                     $stmt_insert->close();
                 }
