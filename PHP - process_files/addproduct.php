@@ -1,7 +1,7 @@
 <?php
     require_once '../admin/session.php';
     require_once '../database/database.php';
-
+    require_once "../assets/phpqrcode/qrlib.php";
     //azul ni remove ko lng un back slash para pumasok sa uploads directory "/" 
     $uploadDir = '../uploads/';
     $uploadFile = basename($_FILES['image']['name']);
@@ -15,7 +15,7 @@
     $unit = $_POST['unit'];
     $models = implode(', ', $_POST['models']);
     $code = $_POST['code'];
-    $supplier_code = $_POST['supplier_code'];
+    $barcode = $_POST['barcode'];
     $active = 1;
     $srp = $_POST['srp'];
     $dealer = $_POST['dealer'];
@@ -99,15 +99,6 @@
 
     // Bind parameters with values
     $stmt_check->bind_param("ssiii", $product_name, $models, $unit_id, $category_id, $brand_id);
-    // Binago ko yung unit, category, and brand sa bind_param para naka align siya dun sa code ko
-    // na pwede mag-add ng brand, unit, category sa add product na
-
-    // Set parameter values
-    $product_name = $product_name;
-    $models = $models;
-    $unit = $unit;
-    $category = $category;
-    $brand = $brand;
 
     // Execute the query
     $stmt_check->execute();
@@ -122,18 +113,45 @@
         exit;
     }
 
-    if (empty($sku) && empty($upc)) {
-        $upc = random_int(100000000, 999999999);
-    } else {
-        echo "error on sku " . $conn->error;  
+    if (empty($barcode)) {
+        // Generate a random 17-character string with at least one letter
+        function generateBarcode() {
+            $chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+            $barcode = '';
+            $hasLetter = false;
+            for ($i = 0; $i < 17; $i++) {
+                $char = $chars[random_int(0, strlen($chars) - 1)];
+                if (ctype_alpha($char)) {
+                    $hasLetter = true;
+                }
+                $barcode .= $char;
+            }
+            if (!$hasLetter) {
+                // Ensure there's at least one letter
+                $barcode[random_int(0, 16)] = $chars[random_int(10, strlen($chars) - 1)];
+            }
+            return $barcode;
+        }
+
+        $barcode = generateBarcode();
         
     }
+    // Generate unique QR code filename
+    $qrFilename = $barcode . "_" . uniqid() . ".png";
+    $qrImagePath = "../uploads/" . $qrFilename;
 
+    // Define the desired size of the QR code (in pixels)
+    $qrCodeSize = 600; // Adjust this value as needed
+
+    // Generate QR code with the specified size
+    QRcode::png($barcode, $qrImagePath, QR_ECLEVEL_H, $qrCodeSize);
+
+    
     $query = 'INSERT INTO product
-                (name, code, supplier_code, image, models, unit_id, brand_id, category_id, active, publish_by)
-            VALUES (?,?,?,?,?,?,?,?,?,?)';
+                (name, code, barcode, image, models, unit_id, brand_id, category_id, active, publish_by, qr_code)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?)';
     $stmt = $conn->prepare($query);
-    $stmt->bind_param('sssssiiiii', $product_name, $code, $supplier_code, $image, $models, $unit_id, $brand_id, $category_id, $active, $user_id);
+    $stmt->bind_param('sssssiiiiis', $product_name, $code, $barcode, $image, $models, $unit_id, $brand_id, $category_id, $active, $user_id, $qrFilename);
     if ($stmt) {
         if ($stmt->execute()) {
             $product_id = $stmt->insert_id;
