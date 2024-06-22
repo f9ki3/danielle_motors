@@ -5,7 +5,7 @@
     <div class="ecommerce-topbar">
     <nav class="navbar navbar-expand-lg navbar-light px-0">
         <div class="row gx-0 gy-2 w-100 flex-between-center">
-        <div class="col-auto"><a class="text-decoration-none" href="../../index.html">
+        <div class="col-auto"><a class="text-decoration-none" href="../Dashboard/">
             <div class="d-flex align-items-center"><img src="../../assets/img/icons/logo.png" alt="phoenix" width="27" />
                 <p class="logo-text ms-2">phoenix</p>
             </div>
@@ -48,7 +48,7 @@
                     <div class="overflow-auto scrollbar" style="height: 10rem;">
                     <ul class="nav d-flex flex-column mb-2 pb-1">
                         <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="user"></span><span>Profile</span></a></li>
-                        <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../Dashboard"><span class="me-2 text-900" data-feather="pie-chart"></span>Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../Dashboard/"><span class="me-2 text-900" data-feather="pie-chart"></span>Dashboard</a></li>
                         <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../../Profile-Settings/Profile/"> <span class="me-2 text-900" data-feather="lock"></span>Posts &amp; Activity</a></li>
                         <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../../Profile-Settings/Profile/"> <span class="me-2 text-900" data-feather="settings"></span>Settings &amp; Privacy </a></li>
                         <!-- <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="help-circle"></span>Help Center</a></li>

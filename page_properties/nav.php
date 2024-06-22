@@ -557,7 +557,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
   <div class="collapse navbar-collapse justify-content-between">
     <div class="navbar-logo">
       <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-      <a class="navbar-brand me-1 me-sm-3" href="../../index.html">
+      <a class="navbar-brand me-1 me-sm-3" href="../Dashboard/">
         <div class="d-flex align-items-center">
           <div class="d-flex align-items-center"><img src="../../uploads/<?php echo $logo;?>" alt="phoenix" width="57" />
             <p class="logo-text ms-2 d-none d-sm-block"><?php echo $logo_text;?></p>
@@ -741,7 +741,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
             <div class="overflow-auto scrollbar" style="height: 10rem;">
               <ul class="nav d-flex flex-column mb-2 pb-1">
                 <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="user"></span><span>Profile</span></a></li>
-                <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../Dashboard"><span class="me-2 text-900" data-feather="pie-chart"></span>Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../Dashboard/"><span class="me-2 text-900" data-feather="pie-chart"></span>Dashboard</a></li>
                 <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../../Profile-Settings/Profile/"> <span class="me-2 text-900" data-feather="lock"></span>Posts &amp; Activity</a></li>
                 <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="../../Profile-Settings/Profile/"> <span class="me-2 text-900" data-feather="settings"></span>Settings &amp; Privacy </a></li>
                 <!-- <li class="nav-item"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> px-3" href="#!"> <span class="me-2 text-900" data-feather="help-circle"></span>Help Center</a></li>
@@ -866,7 +866,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
   <div class="collapse navbar-collapse justify-content-between">
     <div class="navbar-logo">
       <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-      <a class="navbar-brand navbar-brand" href="../../index.html">phoenix <span class="text-1000 d-none d-sm-inline">slim</span></a>
+      <a class="navbar-brand navbar-brand" href="../Dashboard/">phoenix <span class="text-1000 d-none d-sm-inline">slim</span></a>
     </div>
     <ul class="navbar-nav navbar-nav-icons flex-row">
       <li class="nav-item">
@@ -1090,7 +1090,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
 <nav class="navbar navbar-top fixed-top navbar-expand-lg" id="navbarTop" style="display:none;">
   <div class="navbar-logo">
     <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTopCollapse" aria-controls="navbarTopCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-    <a class="navbar-brand me-1 me-sm-3" href="../../index.html">
+    <a class="navbar-brand me-1 me-sm-3" href="../Dashboard/">
       <div class="d-flex align-items-center">
         <div class="d-flex align-items-center"><img src="../../assets/img/icons/logo.png" alt="phoenix" width="27" />
           <p class="logo-text ms-2 d-none d-sm-block">phoenix</p>
@@ -1102,7 +1102,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
     <ul class="navbar-nav navbar-nav-top" data-dropdown-on-hover="data-dropdown-on-hover">
       <li class="nav-item dropdown"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-toggle lh-1" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false"><span class="uil fs-0 me-2 uil-chart-pie"></span>Home</a>
         <ul class="dropdown-menu navbar-dropdown-caret">
-          <li><a class="dropdown-item" href="../../index.html">
+          <li><a class="dropdown-item" href="../Dashboard/">
               <div class="dropdown-item-wrapper"><span class="me-2 uil" data-feather="shopping-cart"></span>E commerce</div>
             </a></li>
           <li><a class="dropdown-item" href="../../dashboard/project-management.html">
@@ -1815,13 +1815,13 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
 <nav class="navbar navbar-top navbar-slim justify-content-between fixed-top navbar-expand-lg" id="navbarTopSlim" style="display:none;">
   <div class="navbar-logo">
     <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTopCollapse" aria-controls="navbarTopCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-    <a class="navbar-brand navbar-brand" href="../../index.html">phoenix <span class="text-1000 d-none d-sm-inline">slim</span></a>
+    <a class="navbar-brand navbar-brand" href="../Dashboard/">phoenix <span class="text-1000 d-none d-sm-inline">slim</span></a>
   </div>
   <div class="collapse navbar-collapse navbar-top-collapse order-1 order-lg-0 justify-content-center" id="navbarTopCollapse">
     <ul class="navbar-nav navbar-nav-top" data-dropdown-on-hover="data-dropdown-on-hover">
       <li class="nav-item dropdown"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-toggle lh-1" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false"><span class="uil fs-0 me-2 uil-chart-pie"></span>Home</a>
         <ul class="dropdown-menu navbar-dropdown-caret">
-          <li><a class="dropdown-item" href="../../index.html">
+          <li><a class="dropdown-item" href="../Dashboard/">
               <div class="dropdown-item-wrapper"><span class="me-2 uil" data-feather="shopping-cart"></span>E commerce</div>
             </a></li>
           <li><a class="dropdown-item" href="../../dashboard/project-management.html">
@@ -2530,7 +2530,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
 <nav class="navbar navbar-top fixed-top navbar-expand-lg" id="navbarCombo" data-navbar-top="combo" data-move-target="#navbarVerticalNav" style="display:none;">
   <div class="navbar-logo">
     <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-    <a class="navbar-brand me-1 me-sm-3" href="../../index.html">
+    <a class="navbar-brand me-1 me-sm-3" href="../Dashboard/">
       <div class="d-flex align-items-center">
         <div class="d-flex align-items-center"><img src="../../assets/img/icons/logo.png" alt="phoenix" width="27" />
           <p class="logo-text ms-2 d-none d-sm-block">phoenix</p>
@@ -2542,7 +2542,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
     <ul class="navbar-nav navbar-nav-top" data-dropdown-on-hover="data-dropdown-on-hover">
       <li class="nav-item dropdown"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-toggle lh-1" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false"><span class="uil fs-0 me-2 uil-chart-pie"></span>Home</a>
         <ul class="dropdown-menu navbar-dropdown-caret">
-          <li><a class="dropdown-item" href="../../index.html">
+          <li><a class="dropdown-item" href="../Dashboard/">
               <div class="dropdown-item-wrapper"><span class="me-2 uil" data-feather="shopping-cart"></span>E commerce</div>
             </a></li>
           <li><a class="dropdown-item" href="../../dashboard/project-management.html">
@@ -3255,13 +3255,13 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
 <nav class="navbar navbar-top fixed-top navbar-slim justify-content-between navbar-expand-lg" id="navbarComboSlim" data-navbar-top="combo" data-move-target="#navbarVerticalNav" style="display:none;">
   <div class="navbar-logo">
     <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-    <a class="navbar-brand navbar-brand" href="../../index.html">phoenix <span class="text-1000 d-none d-sm-inline">slim</span></a>
+    <a class="navbar-brand navbar-brand" href="../Dashboard/">phoenix <span class="text-1000 d-none d-sm-inline">slim</span></a>
   </div>
   <div class="collapse navbar-collapse navbar-top-collapse order-1 order-lg-0 justify-content-center" id="navbarTopCollapse">
     <ul class="navbar-nav navbar-nav-top" data-dropdown-on-hover="data-dropdown-on-hover">
       <li class="nav-item dropdown"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-toggle lh-1" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false"><span class="uil fs-0 me-2 uil-chart-pie"></span>Home</a>
         <ul class="dropdown-menu navbar-dropdown-caret">
-          <li><a class="dropdown-item" href="../../index.html">
+          <li><a class="dropdown-item" href="../Dashboard/">
               <div class="dropdown-item-wrapper"><span class="me-2 uil" data-feather="shopping-cart"></span>E commerce</div>
             </a></li>
           <li><a class="dropdown-item" href="../../dashboard/project-management.html">
@@ -3972,7 +3972,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
     <div class="d-flex flex-between-center dual-nav-first-layer">
       <div class="navbar-logo">
         <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTopCollapse" aria-controls="navbarTopCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-        <a class="navbar-brand me-1 me-sm-3" href="../../index.html">
+        <a class="navbar-brand me-1 me-sm-3" href="../Dashboard/">
           <div class="d-flex align-items-center">
             <div class="d-flex align-items-center"><img src="../../assets/img/icons/logo.png" alt="phoenix" width="27" />
               <p class="logo-text ms-2 d-none d-sm-block">phoenix</p>
@@ -4316,7 +4316,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
       <ul class="navbar-nav navbar-nav-top" data-dropdown-on-hover="data-dropdown-on-hover">
         <li class="nav-item dropdown"><a class="nav-link <?php if($current_folder === "#"){ echo "active"; } else { echo "";}?> dropdown-toggle lh-1" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false"><span class="uil fs-0 me-2 uil-chart-pie"></span>Home</a>
           <ul class="dropdown-menu navbar-dropdown-caret">
-            <li><a class="dropdown-item" href="../../index.html">
+            <li><a class="dropdown-item" href="../Dashboard/">
                 <div class="dropdown-item-wrapper"><span class="me-2 uil" data-feather="shopping-cart"></span>E commerce</div>
               </a></li>
             <li><a class="dropdown-item" href="../../dashboard/project-management.html">
