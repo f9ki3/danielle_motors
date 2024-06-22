@@ -53,17 +53,7 @@
                 <td class="qty align-middle white-space-nowrap text-600 ps-4">'.$stock_qty.'</td>
                 <td class="status align-middle white-space-nowrap text-600 ps-4"></td>
                 <td class="publishby align-middle white-space-nowrap text-600 ps-4">
-                    <img src="../../uploads/' . basename($pf_picture) . '" class="img img-fluid rounded-circle" width="28" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="dropdown-menu">
-                        <div class="row">
-                            <div class="col-lg-12 text-center">
-                                <img class="img img-fluid rounded-circle mb-3" src="../../uploads/' . basename($pf_picture) . '" width="58">
-                            </div>
-                            <div class="col-lg-12 text-center">
-                                <p>' . $user_fname . ' ' . $user_fname . '</p>
-                            </div>
-                        </div>
-                    </div>
+                    ' . $user_fname . ' ' . $user_fname . '
                 </td>
                 <td class="branch align-middle white-space-nowrap text-1000 ps-4"><b>' . $branch_name . '</b></td>
                 <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
