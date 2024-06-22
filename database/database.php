@@ -8,9 +8,9 @@
 
 // Hostinger Database 
 $servername = "localhost";       // Localhost kasi dun na tayo sa files sa hostinger mag eedit
-$username = "u680032315_dmp2";    // Bale live development na kasi alam ko hindi pwede ma access outside
+$username = "u680032315_dmp";    // Bale live development na kasi alam ko hindi pwede ma access outside
 $password = "Dmpoffice2023";     // Yung DB ng hostinger
-$dbname = "u680032315_dmp_db2";   // We will be using FTP and GitAccess
+$dbname = "u680032315_dmp_db";   // We will be using FTP and GitAccess
 
 // $servername = "localhost";       // Localhost kasi dun na tayo sa files sa hostinger mag eedit
 // $username = "root";    // Bale live development na kasi alam ko hindi pwede ma access outside
