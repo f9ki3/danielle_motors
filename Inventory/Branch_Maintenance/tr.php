@@ -22,7 +22,7 @@ if($branch_res->num_rows>0){
     <td class="telephone"><?php echo $row['brn_telnum'];?></td>
     <!-- <td class="phone"><?php //echo $row['brn_contact'];?></td> -->
     <td class="email"><?php echo $row['brn_email'];?></td>
-    <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
+    <!-- <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
     <div class="font-sans-serif btn-reveal-trigger position-static">
         <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent">
         <span class="fas fa-ellipsis-h fs--2"></span>
@@ -34,7 +34,7 @@ if($branch_res->num_rows>0){
         <a class="dropdown-item text-danger" href="#!">Remove</a>
         </div>
     </div>
-    </td>
+    </td> -->
 </tr>
 <?php 
     }

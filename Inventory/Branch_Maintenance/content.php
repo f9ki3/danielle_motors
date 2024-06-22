@@ -48,7 +48,7 @@
               <th class="sort" scope="col" data-sort="telephone">TELEPHONE</th>
               <!-- <th class="sort" scope="col" data-sort="phone">PHONE</th> -->
               <th class="sort" scope="col" data-sort="email">EMAIL</th>
-              <th class="sort" scope="col"></th>
+              <!-- <th class="sort" scope="col"></th> -->
             </tr>
           </thead>
 
