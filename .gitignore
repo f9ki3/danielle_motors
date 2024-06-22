@@ -7,3 +7,6 @@ config/config.php
 database/database.php
 config/config.php
 database/database.php
+vendor/endroid/qr-code/
+vendor/dasprid/enum/
+vendor/bacon/bacon-qr-code/
