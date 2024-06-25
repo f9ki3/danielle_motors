@@ -17,17 +17,17 @@
     <div id="products" data-list='{"valueNames":["product","price","category","tags","vendor","time","publish"],"page":10,"pagination":true}'>
         <div class="mb-4">
             <div class="d-flex flex-wrap gap-3">
-            <div class="search-box">
-                <form class="position-relative" data-bs-toggle="search" data-bs-display="static">
-                    <input class="form-control search-input search" type="search" placeholder="Search" aria-label="Search" />
-                <span class="fas fa-search search-box-icon"></span>
-                </form>
-            </div>
-            
-            <div class="ms-xxl-auto">
-                <button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button>
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_product"><span class="fas fa-plus me-2"></span>Add product</button>
-            </div>
+                <div class="search-box">
+                    <form class="position-relative" data-bs-toggle="search" data-bs-display="static">
+                        <input class="form-control search-input search" type="search" placeholder="Search" aria-label="Search" />
+                        <span class="fas fa-search search-box-icon"></span>
+                    </form>
+                </div>
+                
+                <div class="ms-xxl-auto">
+                    <button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_product"><span class="fas fa-plus me-2"></span>Add product</button>
+                </div>
             </div>
         </div>
         <div class="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-white border-top border-bottom border-200 position-relative top-1">
@@ -35,11 +35,6 @@
                 <table class="table mb-0">
                     <thead>
                     <tr>
-                        <!-- <th class="white-space-nowrap align-middle ps-0" style="max-width:20px; width:18px;">
-                        <div class="form-check mb-0 fs-0">
-                            <input class="form-check-input" id="checkbox-bulk-products-select" type="checkbox"/>
-                        </div>
-                        </th> -->
                         <th class="sort white-space-nowrap align-middle" scope="col"></th>
                         <th class="sort white-space-nowrap align-middle ps-4" scope="col" data-sort="product">PRODUCT NAME</th>
                         <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">WHOLESALE</th>
