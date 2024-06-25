@@ -5,289 +5,307 @@ date_default_timezone_set('Asia/Manila');
 ?>
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
-<head>
-    <?php include "../../page_properties/header.php" ?>
-</head>
-<body>
+
+ <?php include "../../page_properties/header.php" ?>
+ 
+
+  <body>
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
     <main class="main" id="top">
-        <?php include "../../page_properties/nav.php";?>
+      <!-- navigation -->
+      <?php include "../../page_properties/nav.php";?>
+      <!-- /navigation -->
+      <div class="content">
+        <?php 
+        include "content.php";
+        ?>
+        <!-- <div class="d-flex flex-center content-min-h">
+          <div class="text-center py-9"><img class="img-fluid mb-7 d-dark-none" src="../../assets/img/spot-illustrations/2.png" width="470" alt="" /><img class="img-fluid mb-7 d-light-none" src="../../assets/img/spot-illustrations/dark_2.png" width="470" alt="" />
+            <h1 class="text-800 fw-normal mb-5"><?php echo $current_folder;?></h1><a class="btn btn-lg btn-primary" href="../../documentation/getting-started.html">Getting Started</a>
+          </div>
+        </div> -->
+        <!-- footer -->
+        <?php include "../../page_properties/footer.php"; ?>
+        <!-- /footer -->
+      </div>
+      <!-- chat-container -->
+      <?php include "../../page_properties/chat-container.php"; ?>
+      <!-- /chat container -->
+    </main><!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
 
-        <div class="content">
-            <div id="initialContent" class="my-9 py-9 text-center">
-                <div id="spinner" class="spinner-border" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
-
-            <div class="mb-9" id="actualContent" style="display: none;">
-                <!-- Content will be loaded here -->
-            </div>
-
-            <?php include "../../page_properties/footer.php"; ?>
-        </div>
-
-        <?php include "../../page_properties/chat-container.php"; ?>
-    </main>
-
+    <!-- theme customizer -->
     <?php include "../../page_properties/theme-customizer.php"; ?>
-    <?php include "../../page_properties/footer_main.php"; ?>
+    <!-- /theme customizer -->
 
+    <?php include "../../page_properties/footer_main.php"; ?>
     <!-- Select2 JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
     <script>
-        $(document).ready(function() {
-            // Open IndexedDB
-            let request = indexedDB.open("cachedContentDB", 1);
+    $(document).ready(function(){
+        // Variable to store the last known hash
+        var lastHash = '';
 
-            request.onupgradeneeded = function(event) {
-                let db = event.target.result;
-                let objectStore = db.createObjectStore("contents", { keyPath: "id" });
-            };
-
-            request.onsuccess = function(event) {
-                let db = event.target.result;
-
-              // Function to add data to IndexedDB
-function addDataToIndexedDB(id, data) {
-    let transaction = db.transaction(["contents"], "readwrite");
-    let objectStore = transaction.objectStore("contents");
-    let request = objectStore.add({ id: id, data: data });
-    request.onsuccess = function(event) {
-        console.log("Data added to IndexedDB");
-    };
-    request.onerror = function(event) {
-        console.error("Error adding data to IndexedDB", event);
-    };
-}
-
-// Function to store data in localStorage with error handling
-function addDataToLocalStorage(key, data) {
-    try {
-        localStorage.setItem(key, data);
-    } catch (e) {
-        if (e.name === 'QuotaExceededError') {
-            console.error('LocalStorage quota exceeded. Clearing old data...');
-            localStorage.clear();
-            localStorage.setItem(key, data); // Retry setting the item
-        } else {
-            console.error('Error adding data to localStorage', e);
+        function getPageCount() {
+        fetch('check_page_count.php')
+            .then(response => response.json())
+            .then(data => {
+            if (data.pageCount) {
+                console.log('Total number of pages:', data.pageCount);
+            } else {
+                console.error('Error fetching page count:', data.error);
+            }
+            })
+            .catch(error => {
+            console.error('Error fetching page count:', error);
+            });
         }
-    }
-}
 
-// Function to fetch content from server
-function fetchContentFromServer() {
-    $.ajax({
-        url: 'content_loader.php',
-        method: 'GET',
-        success: function(data) {
-            // Store fetched content in localStorage and IndexedDB
-            addDataToLocalStorage('cachedContent', data);
-            addDataToIndexedDB('cachedContent', data);
+        // Call the function to fetch and display the page count
+        getPageCount();
 
-            // Load content into the page
-            $('#actualContent').html(data);
-            $('#initialContent').hide();
-            $('#actualContent').show();
-        },
-        error: function(xhr, status, error) {
-            console.error(xhr.responseText);
-        }
-    });
-}
 
-                // Initialize the lastHash variable
-                let lastHash = '';
+        let loading = false;
+        let currentPage = 1;
 
-                // Function to fetch and update product count
-                function fetchTableContent() {
-                    $.ajax({
-                        url: 'total_products.php',
-                        success: function(response) {
-                            // Calculate hash of the response
-                            var currentHash = hash(response);
+        // function fetchContent(page) {
+        // loading = true;
+        // document.getElementById("loading").style.display = "block";
 
-                            // If hash has changed, update content
-                            if (currentHash !== lastHash) {
-                                // Update lastHash
-                                lastHash = currentHash;
+        // fetch(`product_list_tr.php?page=${page}`)
+        //     .then(response => response.json())
+        //     .then(data => {
+        //     loading = false;
+        //     document.getElementById("loading").style.display = "none";
+            
+        //     const contentDiv = document.getElementById("content");
+        //     data.forEach(item => {
+        //         const postDiv = document.createElement("div");
+        //         postDiv.classList.add("post");
+        //         postDiv.innerHTML = `<p>${item.title}</p><p>${item.content}</p>`;
+        //         contentDiv.appendChild(postDiv);
+        //     });
+        //     });
+        // }
 
-                                // Extract the number from the response
-                                var match = response.match(/\((\d+)\)/);
-                                if (match) {
-                                    var newNumber = parseInt(match[1]);
+        // window.addEventListener("scroll", () => {
+        // const contentHeight = document.getElementById("content").clientHeight;
+        // const scrollPosition = window.innerHeight + window.scrollY;
 
-                                    // Get the current number inside the span
-                                    var currentNumber = parseInt($('#total_product').text());
+        // if (!loading && scrollPosition >= contentHeight - 200) {
+        //     currentPage++;
+        //     fetchContent(currentPage);
+        // }
+        // });
 
-                                    // Animate the change
-                                    $('#total_product').prop('Counter', currentNumber).animate({
-                                        Counter: newNumber
-                                    }, {
-                                        duration: 1000, // Animation duration in milliseconds
-                                        step: function (now) {
-                                            // Update the displayed number with the animation
-                                            $(this).text('(' + Math.ceil(now) + ')');
-                                        }
-                                    });
-                                } else {
-                                    console.error("Number not found in response:", response);
+        // fetchContent(currentPage);
+
+        // Function to fetch PHP-generated content
+        function fetchTableContent() {
+            $.ajax({
+                url: 'total_products.php',
+                success: function(response) {
+                    // Calculate hash of the response
+                    var currentHash = hash(response);
+                    
+                    // If hash has changed, update content
+                    if (currentHash !== lastHash) {
+                        // Update lastHash
+                        lastHash = currentHash;
+
+                        // Extract the number from the response
+                        var match = response.match(/\((\d+)\)/);
+                        if (match) {
+                            var newNumber = parseInt(match[1]);
+                            
+                            // Get the current number inside the span
+                            var currentNumber = parseInt($('#total_product').text());
+                            
+                            // Animate the change
+                            $('#total_product').prop('Counter', currentNumber).animate({
+                                Counter: newNumber
+                            }, {
+                                duration: 1000, // Animation duration in milliseconds
+                                step: function (now) {
+                                    // Update the displayed number with the animation
+                                    $(this).text('(' + Math.ceil(now) + ')');
                                 }
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(xhr.responseText);
+                            });
+                        } else {
+                            console.error("Number not found in response:", response);
                         }
-                    });
-                }
-
-                // Function to calculate hash
-                function hash(str) {
-                    var hash = 0, i, chr;
-                    if (str.length === 0) return hash;
-                    for (i = 0; i < str.length; i++) {
-                        chr = str.charCodeAt(i);
-                        hash = ((hash << 5) - hash) + chr;
-                        hash |= 0; // Convert to 32bit integer
                     }
-                    return hash;
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
                 }
+            });
+        }
 
-                // Call the function initially
-                fetchTableContent();
+        // Function to calculate hash
+        function hash(str) {
+            var hash = 0, i, chr;
+            if (str.length === 0) return hash;
+            for (i = 0; i < str.length; i++) {
+                chr = str.charCodeAt(i);
+                hash = ((hash << 5) - hash) + chr;
+                hash |= 0; // Convert to 32bit integer
+            }
+            return hash;
+        }
 
-                // Call the function every 5 seconds (adjust the interval as needed)
-                setInterval(fetchTableContent, 5000); // 5000 milliseconds = 5 seconds
 
-                function getProduct(product_id) {
-                    $.ajax({
-                        url: '../../PHP - process_files/get-product.php',
-                        method: 'POST',
-                        data: {
-                            product_id: product_id
-                        },
-                        dataType: 'json',
-                        success: function(json) {
-                            console.log(json);
-                            $('#edit_product_name').text(json.name);
-                            $('#new_product_name').val(json.name);
-                            $('#edit_product_id').val(json.id);
-                            $('#new_item_code').val(json.code);
-                            $('#new_supplier_code').val(json.supplier_code);
-                            $('#new_barcode').val(json.barcode);
-                            $('#old_image').val(json.image);
 
-                            if (json.models !== null) {
-                                var models = json.models.split(', ');
-                            }
-                            $('#edit_model').val(models);
+        // Call the function initially
+        fetchTableContent();
 
-                            $('#edit_unit').val(json.unit);
-                            $('#edit_category').val(json.category);
-                            $('#edit_brand').val(json.brand);
+        // Call the function every 5 seconds (adjust the interval as needed)
+        setInterval(fetchTableContent, 1000); // 5000 milliseconds = 5 seconds
 
-                            $('#edit_dealer').val(json.dealer);
-                            $('#edit_wholesale').val(json.wholesale);
-                            $('#edit_srp').val(json.srp);
+        function getProduct (product_id) {
+            $.ajax({
+                url: '../../PHP - process_files/get-product.php',
+                method: 'POST',
+                data: {
+                    product_id : product_id
+                },
+                dataType: 'json',
+                success: function(json) {
+                    console.log(json);
+                    $('#edit_product_name').text(json.name);
+                    $('#new_product_name').val(json.name);
+                    $('#edit_product_id').val(json.id);
+                    $('#new_item_code').val(json.code);
+                    $('#new_supplier_code').val(json.supplier_code);
+                    $('#new_barcode').val(json.barcode);
+                    $('#old_image').val(json.image);
 
-                            $('#edit_product').modal('show');
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(xhr.responseText);
-                        }
-                    });
+                    if (json.models !== null) {
+                        var models = json.models.split(', ');
+                    }
+                    $('#edit_model').val(models);
+
+                    $('#edit_unit').val(json.unit);
+                    $('#edit_category').val(json.category);
+                    $('#edit_brand').val(json.brand);
+
+                    $('#edit_dealer').val(json.dealer);
+                    $('#edit_wholesale').val(json.wholesale);
+                    $('#edit_srp').val(json.srp);
+
+                    $('#edit_product').modal('show');
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
                 }
+            });
+        }
 
-                $('#brand').select2({
-                    dropdownParent: $('#add_product'),
-                    tags: true,
-                    height: '100%',
-                    width: '100%',
-                    theme: 'bootstrap-5',
-                    placeholder: 'Select Brand',
-                });
-
-                $('#category').select2({
-                    dropdownParent: $('#add_product'),
-                    tags: true,
-                    height: '100%',
-                    width: '100%',
-                    theme: 'bootstrap-5',
-                    placeholder: 'Select Category',
-                });
-
-                $('#unit').select2({
-                    dropdownParent: $('#add_product'),
-                    tags: true,
-                    height: '100%',
-                    width: '100%',
-                    theme: 'bootstrap-5',
-                    placeholder: 'Select Unit',
-                });
-
-                $('#model').select2({
-                    placeholder: 'Select model/s',
-                    dropdownParent: $('#add_product'),
-                    tags: true,
-                    height: '100%',
-                    width: '100%',
-                    theme: 'bootstrap-5',
-                });
-
-                $('#edit_model').select2({
-                    placeholder: 'Select model/s',
-                    dropdownParent: $('#edit_product'),
-                    tags: true,
-                    width: '100%',
-                    theme: 'bootstrap-5',
-                });
-
-                $(document).on('click', '.edit_product', function() {
-                    var product_id = $(this).data('product-id');
-                    console.log(product_id);
-                    getProduct(product_id);
-                });
-
-                $('#edit_unit').select2({
-                    dropdownParent: $('#edit_product'),
-                    tags: true,
-                    height: '100%',
-                    width: '100%',
-                    theme: 'bootstrap-5',
-                    placeholder: 'Select Unit',
-                });
-
-                $('#edit_category').select2({
-                    dropdownParent: $('#edit_product'),
-                    tags: true,
-                    height: '100%',
-                    width: '100%',
-                    theme: 'bootstrap-5',
-                    placeholder: 'Select Category',
-                });
-
-                $('#edit_brand').select2({
-                    dropdownParent: $('#edit_product'),
-                    tags: true,
-                    height: '100%',
-                    width: '100%',
-                    theme: 'bootstrap-5',
-                    placeholder: 'Select Brand',
-                });
-
-                $('#edit_product').on('shown.bs.modal', function() {
-                    $("#edit_model").trigger('change');
-                    $('#edit_unit').trigger('change');
-                    $('#edit_category').trigger('change');
-                    $('#edit_brand').trigger('change');
-                });
-
-                $('#add_product').on('shown.bs.modal', function() {
-                    $("#model").trigger('change');
-                });
-            };
+        $('#brand').select2({
+            dropdownParent: $('#add_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+            placeholder: 'Select Brand',
         });
-        </script>
-    </body>
+
+        $('#category').select2({
+            dropdownParent: $('#add_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+            placeholder: 'Select Category',
+        });
+
+        $('#unit').select2({
+            dropdownParent: $('#add_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+            placeholder: 'Select Unit',
+        });
+
+        $('#model').select2({
+            placeholder: 'Select model/s',
+            dropdownParent: $('#add_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+        });
+
+        $('#edit_model').select2({
+            placeholder: 'Select model/s',
+            dropdownParent: $('#edit_product'),
+            tags: true,
+            width: '100%',
+            theme: 'bootstrap-5',
+        });
+
+        // $('.edit_product').on('click', function(){
+        //     var product_id = $(this).data('product-id');
+        //     console.log(product_id);
+        //     getProduct(product_id);
+        // });
+
+        $(document).on('click', '.edit_product', function(){
+            var product_id = $(this).data('product-id');
+            console.log(product_id);
+            getProduct(product_id);
+        })
+
+        $('#edit_unit').select2({
+            dropdownParent: $('#edit_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+            placeholder: 'Select Unit',
+        });
+
+        $('#edit_category').select2({
+            dropdownParent: $('#edit_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+            placeholder: 'Select Category',
+        });
+
+        $('#edit_brand').select2({
+            dropdownParent: $('#edit_product'),
+            tags: true,
+            height: '100%',
+            width: '100%',
+            theme: 'bootstrap-5',
+            placeholder: 'Select Brand',
+        });
+
+        $('#edit_product').on('shown.bs.modal', function () {
+            $("#edit_model").trigger('change');
+            $('#edit_unit').trigger('change');
+            $('#edit_category').trigger('change');
+            $('#edit_brand').trigger('change');
+        });
+
+        $('#add_product').on('shown.bs.modal', function () {
+            $("#model").trigger('change');
+        });
+    });
+    </script>
+
+
+    </script>
+
+
+  </body>
+
+
+<!-- Mirrored from prium.github.io/phoenix/v1.13.0/pages/starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Aug 2023 05:15:14 GMT -->
 </html>
