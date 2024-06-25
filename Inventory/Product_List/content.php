@@ -14,7 +14,7 @@
         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"><span>All </span><span class="text-700 fw-semi-bold" id="total_product">(68817)</span></a></li>
         <li class="nav-item"><a class="nav-link" href="#"><span>Archived </span><span class="text-700 fw-semi-bold">(70348)</span></a></li>
     </ul>
-    <div id="products" data-list='{"valueNames":["product","price","category","tags","vendor","time","publish"],"page":5,"pagination":true}'>
+    <div id="products" data-list='{"valueNames":["product","price","category","tags","vendor","time","publish"],"page":10,"pagination":true}'>
         <div class="mb-4">
             <div class="d-flex flex-wrap gap-3">
             <div class="search-box">
