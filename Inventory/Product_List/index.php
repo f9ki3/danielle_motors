@@ -37,6 +37,8 @@ date_default_timezone_set('Asia/Manila');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
     <script>
         $(document).ready(function() {
+            console.log("Document is ready");
+
             // Open IndexedDB
             let request = indexedDB.open("cachedContentDB", 1);
 
@@ -47,55 +49,63 @@ date_default_timezone_set('Asia/Manila');
 
             request.onsuccess = function(event) {
                 let db = event.target.result;
+                console.log("IndexedDB opened successfully");
 
-              // Function to add data to IndexedDB
-function addDataToIndexedDB(id, data) {
-    let transaction = db.transaction(["contents"], "readwrite");
-    let objectStore = transaction.objectStore("contents");
-    let request = objectStore.add({ id: id, data: data });
-    request.onsuccess = function(event) {
-        console.log("Data added to IndexedDB");
-    };
-    request.onerror = function(event) {
-        console.error("Error adding data to IndexedDB", event);
-    };
-}
+                // Function to add data to IndexedDB
+                function addDataToIndexedDB(id, data) {
+                    let transaction = db.transaction(["contents"], "readwrite");
+                    let objectStore = transaction.objectStore("contents");
+                    let request = objectStore.add({ id: id, data: data });
+                    request.onsuccess = function(event) {
+                        console.log("Data added to IndexedDB");
+                    };
+                    request.onerror = function(event) {
+                        console.error("Error adding data to IndexedDB", event);
+                    };
+                }
 
-// Function to store data in localStorage with error handling
-function addDataToLocalStorage(key, data) {
-    try {
-        localStorage.setItem(key, data);
-    } catch (e) {
-        if (e.name === 'QuotaExceededError') {
-            console.error('LocalStorage quota exceeded. Clearing old data...');
-            localStorage.clear();
-            localStorage.setItem(key, data); // Retry setting the item
-        } else {
-            console.error('Error adding data to localStorage', e);
-        }
-    }
-}
+                // Function to store metadata in localStorage with error handling
+                function addMetadataToLocalStorage(key, metadata) {
+                    try {
+                        localStorage.setItem(key, JSON.stringify(metadata));
+                    } catch (e) {
+                        if (e.name === 'QuotaExceededError') {
+                            console.error('LocalStorage quota exceeded. Clearing old metadata...');
+                            localStorage.clear();
+                            localStorage.setItem(key, JSON.stringify(metadata)); // Retry setting the item
+                        } else {
+                            console.error('Error adding metadata to localStorage', e);
+                        }
+                    }
+                }
 
-// Function to fetch content from server
-function fetchContentFromServer() {
-    $.ajax({
-        url: 'content_loader.php',
-        method: 'GET',
-        success: function(data) {
-            // Store fetched content in localStorage and IndexedDB
-            addDataToLocalStorage('cachedContent', data);
-            addDataToIndexedDB('cachedContent', data);
+                // Function to fetch content from server
+                function fetchContentFromServer() {
+                    console.log("Fetching content from server...");
+                    $.ajax({
+                        url: 'content_loader.php',
+                        method: 'GET',
+                        success: function(data) {
+                            console.log("Content fetched from server");
 
-            // Load content into the page
-            $('#actualContent').html(data);
-            $('#initialContent').hide();
-            $('#actualContent').show();
-        },
-        error: function(xhr, status, error) {
-            console.error(xhr.responseText);
-        }
-    });
-}
+                            // Compress and store full content in IndexedDB
+                            let compressedData = LZString.compress(data);
+                            addDataToIndexedDB('cachedContent', compressedData);
+
+                            // Store metadata in localStorage
+                            let metadata = { timestamp: Date.now() };
+                            addMetadataToLocalStorage('cachedContentMetadata', metadata);
+
+                            // Load content into the page
+                            $('#actualContent').html(data);
+                            $('#initialContent').hide();
+                            $('#actualContent').show();
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Error fetching content from server:", xhr.responseText);
+                        }
+                    });
+                }
 
                 // Initialize the lastHash variable
                 let lastHash = '';
@@ -105,6 +115,8 @@ function fetchContentFromServer() {
                     $.ajax({
                         url: 'total_products.php',
                         success: function(response) {
+                            console.log("Product count fetched", response);
+
                             // Calculate hash of the response
                             var currentHash = hash(response);
 
@@ -137,7 +149,7 @@ function fetchContentFromServer() {
                             }
                         },
                         error: function(xhr, status, error) {
-                            console.error(xhr.responseText);
+                            console.error("Error fetching product count:", xhr.responseText);
                         }
                     });
                 }
@@ -161,6 +173,7 @@ function fetchContentFromServer() {
                 setInterval(fetchTableContent, 5000); // 5000 milliseconds = 5 seconds
 
                 function getProduct(product_id) {
+                    console.log("Fetching product data for ID:", product_id);
                     $.ajax({
                         url: '../../PHP - process_files/get-product.php',
                         method: 'POST',
@@ -169,7 +182,7 @@ function fetchContentFromServer() {
                         },
                         dataType: 'json',
                         success: function(json) {
-                            console.log(json);
+                            console.log("Product data fetched", json);
                             $('#edit_product_name').text(json.name);
                             $('#new_product_name').val(json.name);
                             $('#edit_product_id').val(json.id);
@@ -194,7 +207,7 @@ function fetchContentFromServer() {
                             $('#edit_product').modal('show');
                         },
                         error: function(xhr, status, error) {
-                            console.error(xhr.responseText);
+                            console.error("Error fetching product data:", xhr.responseText);
                         }
                     });
                 }
@@ -245,7 +258,7 @@ function fetchContentFromServer() {
 
                 $(document).on('click', '.edit_product', function() {
                     var product_id = $(this).data('product-id');
-                    console.log(product_id);
+                    console.log("Edit product button clicked, Product ID:", product_id);
                     getProduct(product_id);
                 });
 
@@ -286,8 +299,15 @@ function fetchContentFromServer() {
                 $('#add_product').on('shown.bs.modal', function() {
                     $("#model").trigger('change');
                 });
+
+                // Fetch content from server on initial load
+                fetchContentFromServer();
+            };
+
+            request.onerror = function(event) {
+                console.error("IndexedDB error:", event);
             };
         });
-        </script>
-    </body>
+    </script>
+</body>
 </html>
