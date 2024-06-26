@@ -88,8 +88,35 @@
                       <th class="sort text-end align-middle pe-0 ps-4" scope="col"></th>
                     </tr>
                   </thead>
-                  <tbody class="list" id="productList">
-                    
+                  <tbody class="list" id="content_here">
+                    <div id="loading" class="text-center">
+                        <img src="loading.gif" alt="Loading...">
+                    </div>
+                    <!-- <tr class="position-static">
+                      <td class="fs--1 align-middle">
+                        <div class="form-check mb-0 fs-0"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"product":"Fitbit Sense Advanced Smartwatch with Tools for Heart Health, Stress Management & Skin Temperature Trends, Carbon/Graphite, One Size (S & L Bands...","productImage":"/products/1.png","price":"$39","category":"Plants","tags":["Health","Exercise","Discipline","Lifestyle","Fitness"],"star":false,"vendor":"Blue Olive Plant sellers. Inc","publishedOn":"Nov 12, 10:45 PM"}' /></div>
+                      </td>
+                      <td class="align-middle white-space-nowrap py-0"><a class="d-block border rounded-2" href="../landing/product-details.html"><img src="../assets/img/products/1.png" alt="" width="53" /></a></td>
+                      <td class="product align-middle ps-4"><a class="fw-semi-bold line-clamp-3 mb-0" href="../landing/product-details.html">Fitbit Sense Advanced Smartwatch with Tools for Heart Health, Stress Management &amp; Skin Temperature Trends, Carbon/Graphite, One Size (S &amp; ...</a></td>
+                      <td class="price align-middle white-space-nowrap text-end fw-bold text-700 ps-4">$39</td>
+                      <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold">Plants</td>
+                      <td class="tags align-middle review pb-2 ps-3" style="min-width:225px;"><a class="text-decoration-none" href="#!"><span class="badge badge-tag me-2 mb-2">Health</span></a><a class="text-decoration-none" href="#!"><span class="badge badge-tag me-2 mb-2">Exercise</span></a><a class="text-decoration-none" href="#!"><span class="badge badge-tag me-2 mb-2">Discipline</span></a><a class="text-decoration-none" href="#!"><span class="badge badge-tag me-2 mb-2">Lifestyle</span></a><a class="text-decoration-none" href="#!"><span class="badge badge-tag me-2 mb-2">Fitness</span></a></td>
+                      <td class="align-middle review fs-0 text-center ps-4">
+                        <div class="d-toggle-container">
+                          <div class="d-block-hover"><span class="fas fa-star text-warning"></span></div>
+                          <div class="d-none-hover"><span class="far fa-star text-warning"></span></div>
+                        </div>
+                      </td>
+                      <td class="vendor align-middle text-start fw-semi-bold ps-4"><a href="#!">Blue Olive Plant sellers. Inc</a></td>
+                      <td class="time align-middle white-space-nowrap text-600 ps-4">Nov 12, 10:45 PM</td>
+                      <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
+                        <div class="font-sans-serif btn-reveal-trigger position-static"><button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs--2"></span></button>
+                          <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Export</a>
+                            <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="#!">Remove</a>
+                          </div>
+                        </div>
+                      </td>
+                    </tr> -->
                   </tbody>
                 </table>
               </div>
