@@ -5,36 +5,45 @@ date_default_timezone_set('Asia/Manila');
 ?>
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
-<head>
-    <?php include "../../page_properties/header.php" ?>
-</head>
-<body>
+
+ <?php include "../../page_properties/header.php" ?>
+ 
+
+  <body>
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
     <main class="main" id="top">
-        <?php include "../../page_properties/nav.php";?>
+      <!-- navigation -->
+      <?php include "../../page_properties/nav.php";?>
+      <!-- /navigation -->
+      <div class="content">
+        <?php 
+        include "content.php";
+        ?>
+        <!-- <div class="d-flex flex-center content-min-h">
+          <div class="text-center py-9"><img class="img-fluid mb-7 d-dark-none" src="../../assets/img/spot-illustrations/2.png" width="470" alt="" /><img class="img-fluid mb-7 d-light-none" src="../../assets/img/spot-illustrations/dark_2.png" width="470" alt="" />
+            <h1 class="text-800 fw-normal mb-5"><?php echo $current_folder;?></h1><a class="btn btn-lg btn-primary" href="../../documentation/getting-started.html">Getting Started</a>
+          </div>
+        </div> -->
+        <!-- footer -->
+        <?php include "../../page_properties/footer.php"; ?>
+        <!-- /footer -->
+      </div>
+      <!-- chat-container -->
+      <?php include "../../page_properties/chat-container.php"; ?>
+      <!-- /chat container -->
+    </main><!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
 
-        <div class="content">
-            <div id="initialContent" class="my-9 py-9 text-center">
-                <div id="spinner" class="spinner-border" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
-
-            <div class="mb-9" id="actualContent" style="display: none;">
-                <!-- Content will be loaded here -->
-            </div>
-
-            <?php include "../../page_properties/footer.php"; ?>
-        </div>
-
-        <?php include "../../page_properties/chat-container.php"; ?>
-    </main>
-
+    <!-- theme customizer -->
     <?php include "../../page_properties/theme-customizer.php"; ?>
-    <?php include "../../page_properties/footer_main.php"; ?>
+    <!-- /theme customizer -->
 
+    <?php include "../../page_properties/footer_main.php"; ?>
     <!-- Select2 JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
     <script>
         $(document).ready(function() {
             console.log("Document is ready");
@@ -151,21 +160,25 @@ date_default_timezone_set('Asia/Manila');
                         error: function(xhr, status, error) {
                             console.error("Error fetching product count:", xhr.responseText);
                         }
-                    });
-                }
-
-                // Function to calculate hash
-                function hash(str) {
-                    var hash = 0, i, chr;
-                    if (str.length === 0) return hash;
-                    for (i = 0; i < str.length; i++) {
-                        chr = str.charCodeAt(i);
-                        hash = ((hash << 5) - hash) + chr;
-                        hash |= 0; // Convert to 32bit integer
                     }
-                    return hash;
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
                 }
+            });
+        }
 
+        // Function to calculate hash
+        function hash(str) {
+            var hash = 0, i, chr;
+            if (str.length === 0) return hash;
+            for (i = 0; i < str.length; i++) {
+                chr = str.charCodeAt(i);
+                hash = ((hash << 5) - hash) + chr;
+                hash |= 0; // Convert to 32bit integer
+            }
+            return hash;
+        }
                 // Call the function initially
                 fetchTableContent();
 
@@ -211,7 +224,8 @@ date_default_timezone_set('Asia/Manila');
                         }
                     });
                 }
-
+            });
+        }
                 $('#brand').select2({
                     dropdownParent: $('#add_product'),
                     tags: true,
