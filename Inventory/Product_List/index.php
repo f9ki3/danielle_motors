@@ -13,6 +13,16 @@ date_default_timezone_set('Asia/Manila');
         <?php include "../../page_properties/nav.php"; ?>
         <div class="content">
             <?php include "content.php"; ?>
+            <div id="initialContent">
+                <!-- Initial content placeholder -->
+                <p>Loading content...</p>
+            </div>
+            <div id="actualContent" style="display: none;">
+                <!-- Actual content will be populated dynamically -->
+            </div>
+            <div id="productTable">
+                <!-- Product table will be populated dynamically -->
+            </div>
             <?php include "../../page_properties/footer.php"; ?>
         </div>
         <?php include "../../page_properties/chat-container.php"; ?>
@@ -29,18 +39,15 @@ date_default_timezone_set('Asia/Manila');
             console.log("Document is ready");
 
             let request = indexedDB.open("cachedContentDB", 1);
-            let db; // Variable to hold the IndexedDB database reference
+            let db;
 
-            // Handle errors during database open
             request.onerror = function (event) {
                 console.error("IndexedDB error:", event.target.errorCode);
             };
 
-            // Setup database schema if needed
             request.onupgradeneeded = function (event) {
                 db = event.target.result;
 
-                // Create object stores if they don't exist
                 if (!db.objectStoreNames.contains("contents")) {
                     db.createObjectStore("contents", { keyPath: "id" });
                 }
@@ -49,20 +56,17 @@ date_default_timezone_set('Asia/Manila');
                 }
             };
 
-            // Handle successful database open
             request.onsuccess = function (event) {
                 db = event.target.result;
                 console.log("IndexedDB initialized successfully");
 
-                // Fetch initial data
                 fetchContent();
                 fetchProducts();
 
-                // Set interval to periodically update data
                 setInterval(function () {
                     fetchContent();
                     fetchProducts();
-                }, 60000); // Update every 60 seconds
+                }, 60000);
             };
 
             function fetchContent() {
@@ -98,7 +102,7 @@ date_default_timezone_set('Asia/Manila');
                     let products = request.result;
                     if (products && products.length > 0) {
                         console.log("Products loaded from IndexedDB:", products);
-                        displayProducts(products);
+                        fetchServerItemCount(products.length);
                     } else {
                         console.log("No products found in IndexedDB, fetching from server...");
                         fetchProductsFromServer();
@@ -207,41 +211,32 @@ date_default_timezone_set('Asia/Manila');
                 };
             }
 
-            function compareItemCounts(serverCount) {
-                fetchMetadataFromIndexedDB('cachedContentMetadata', function (metadata) {
-                    if (metadata && metadata.itemCount < serverCount) {
-                        console.log("Server has more items, updating IndexedDB...");
-                        fetchProductsFromServer();
-                    } else {
-                        console.log("Server count matches or is less, loading from IndexedDB...");
-                        fetchProducts();
-                    }
-                });
+            function fetchServerItemCount(indexedDBProductCount) {
+    $.ajax({
+        url: 'total_products.php',
+        success: function (response) {
+            console.log("Product count fetched", response);
+
+            // Try to parse the response as an integer directly
+            var serverCount = parseInt(response.trim());
+
+            if (!isNaN(serverCount)) {
+                if (serverCount !== indexedDBProductCount) {
+                    console.log("Product counts differ. Fetching and updating products from server...");
+                    fetchProductsFromServer();
+                } else {
+                    console.log("Product counts match. No update needed.");
+                }
+            } else {
+                console.error("Invalid number format in response:", response);
             }
+        },
+        error: function (xhr, status, error) {
+            console.error("Error fetching product count:", xhr.responseText);
+        }
+    });
+}
 
-            function fetchServerItemCount() {
-                $.ajax({
-                    url: 'total_products.php',
-                    success: function (response) {
-                        console.log("Product count fetched", response);
-                        var match = response.match(/\((\d+)\)/);
-
-                        if (match) {
-                            var serverCount = parseInt(match[1]);
-                            compareItemCounts(serverCount);
-                        } else {
-                            console.error("Number not found in response:", response);
-                        }
-                    },
-
-                    error: function (xhr, status, error) {
-                        console.error("Error fetching product count:", xhr.responseText);
-                    }
-                });
-            }
-
-            fetchServerItemCount();
-            setInterval(fetchServerItemCount, 5000);
 
             function getProduct(product_id) {
                 console.log("Fetching product data for ID:", product_id);
@@ -262,7 +257,7 @@ date_default_timezone_set('Asia/Manila');
                         $('#new_barcode').val(json.barcode);
                         $('#old_image').val(json.image);
 
-                        if (json.models                         !== null) {
+                        if (json.models !== null) {
                             var models = json.models.split(', ');
                         }
 
@@ -271,8 +266,18 @@ date_default_timezone_set('Asia/Manila');
                         $('#edit_category').val(json.category);
                         $('#edit_brand').val(json.brand);
                         $('#edit_dealer').val(json.dealer);
-                        $('#edit_wholesale').val(json.wholesale);
-                        $('#edit_srp').val(json.srp);
+                        $('#edit_wholesale_price').val(json.wholesale_price);
+                        $('#edit_retail_price').val(json.retail_price);
+                        $('#edit_vat_rate').val(json.vat_rate);
+                        $('#edit_critical_level').val(json.critical_level);
+                        $('#edit_active').val(json.active);
+                        $('#edit_purchased').val(json.purchased);
+                        $('#edit_vendor').val(json.vendor);
+                        $('#edit_location').val(json.location);
+                        $('#edit_stock_code').val(json.stock_code);
+                        $('#edit_quantity').val(json.quantity);
+                        $('#edit_supplier').val(json.supplier);
+
                         $('#edit_product').modal('show');
                     },
                     error: function (xhr, status, error) {
@@ -281,76 +286,85 @@ date_default_timezone_set('Asia/Manila');
                 });
             }
 
-            // Select2 initialization
-            $('#brand').select2({
-                dropdownParent: $('#add_product'),
-                tags: true,
-                height: '100%',
-                width: '100%',
-                theme: 'bootstrap-5',
-                placeholder: 'Select Brand',
-            });
-
-            $('#category').select2({
-                dropdownParent: $('#add_product'),
-                tags: true,
-                height: '100%',
-                width: '100%',
-                theme: 'bootstrap-5',
-                placeholder: 'Select Category',
-            });
-
-            $('#unit').select2({
-                dropdownParent: $('#add_product'),
-                tags: true,
-                height: '100%',
-                width: '100%',
-                theme: 'bootstrap-5',
-                placeholder: 'Select Unit',
-            });
-
-            $('#model').select2({
-                placeholder: 'Select model/s',
-                dropdownParent: $('#add_product'),
-                tags: true,
-                height: '100%',
-                width: '100%',
-                theme: 'bootstrap-5',
-            });
-
-            $('#edit_model').select2({
-                placeholder: 'Select model/s',
-                dropdownParent: $('#edit_product'),
-                tags: true,
-                width: '100%',
-                theme: 'bootstrap-5',
-            });
-
-            $(document).on('click', '.edit_product', function () {
-                var product_id = $(this).data('product_id');
+            function editProduct(product_id) {
+                console.log("Editing product with ID:", product_id);
                 getProduct(product_id);
+            }
+
+            function deleteProduct(product_id) {
+                console.log("Deleting product with ID:", product_id);
+                $.ajax({
+                    url: 'delete_product.php',
+                    method: 'POST',
+                    data: {
+                        product_id: product_id
+                    },
+                    success: function (response) {
+                        console.log("Product deleted successfully:", response);
+                        fetchProductsFromServer(); // Refresh products after deletion
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error deleting product:", xhr.responseText);
+                    }
+                });
+            }
+
+            $('#edit_product_form').submit(function (event) {
+                event.preventDefault();
+                var form = $(this).serialize();
+
+                $.ajax({
+                    url: '../../PHP - process_files/edit_product.php',
+                    method: 'POST',
+                    data: form,
+                    success: function (response) {
+                        console.log("Product edited successfully:", response);
+                        $('#edit_product').modal('hide');
+                        fetchProductsFromServer(); // Refresh products after editing
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error editing product:", xhr.responseText);
+                    }
+                });
             });
 
-            // Function to add data to IndexedDB
-            function addDataToIndexedDB(key, data) {
-                let transaction = db.transaction(["contents"], "readwrite");
-                let objectStore = transaction.objectStore("contents");
-                objectStore.put({
-                    id: key,
-                    data: data
-                });
-            }
+            $('#delete_product_form').submit(function (event) {
+                event.preventDefault();
+                var form = $(this).serialize();
 
-            // Function to add metadata to IndexedDB
-            function addMetadataToIndexedDB(key, metadata) {
-                let transaction = db.transaction(["metadata"], "readwrite");
-                let objectStore = transaction.objectStore("metadata");
-                objectStore.put({
-                    id: key,
-                    value: metadata
+                $.ajax({
+                    url: '../../PHP - process_files/delete_product.php',
+                    method: 'POST',
+                    data: form,
+                    success: function (response) {
+                        console.log("Product deleted successfully:", response);
+                        $('#delete_product').modal('hide');
+                        fetchProductsFromServer(); // Refresh products after deletion
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error deleting product:", xhr.responseText);
+                    }
                 });
-            }
+            });
 
+            $('#add_new_product_form').submit(function (event) {
+                event.preventDefault();
+                var form = $(this).serialize();
+
+                $.ajax({
+                    url: 'add_new_product.php',
+                    method: 'POST',
+                    data: form,
+                    success: function (response) {
+                        console.log("Product added successfully:", response);
+                        $('#add_new_product').modal('hide');
+                        fetchProductsFromServer(); // Refresh products after adding
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error adding product:", xhr.responseText);
+                    }
+                });
+            });
         });
     </script>
 </body>
