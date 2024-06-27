@@ -6,299 +6,353 @@ date_default_timezone_set('Asia/Manila');
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 
- <?php include "../../page_properties/header.php" ?>
- 
+<?php include "../../page_properties/header.php"; ?>
 
-  <body>
-    <!-- ===============================================-->
-    <!--    Main Content-->
-    <!-- ===============================================-->
+<body>
     <main class="main" id="top">
-      <!-- navigation -->
-      <?php include "../../page_properties/nav.php";?>
-      <!-- /navigation -->
-      <div class="content">
-        <?php 
-        include "content.php";
-        ?>
-        <!-- <div class="d-flex flex-center content-min-h">
-          <div class="text-center py-9"><img class="img-fluid mb-7 d-dark-none" src="../../assets/img/spot-illustrations/2.png" width="470" alt="" /><img class="img-fluid mb-7 d-light-none" src="../../assets/img/spot-illustrations/dark_2.png" width="470" alt="" />
-            <h1 class="text-800 fw-normal mb-5"><?php echo $current_folder;?></h1><a class="btn btn-lg btn-primary" href="../../documentation/getting-started.html">Getting Started</a>
-          </div>
-        </div> -->
-        <!-- footer -->
-        <?php include "../../page_properties/footer.php"; ?>
-        <!-- /footer -->
-      </div>
-      <!-- chat-container -->
-      <?php include "../../page_properties/chat-container.php"; ?>
-      <!-- /chat container -->
-    </main><!-- ===============================================-->
-    <!--    End of Main Content-->
-    <!-- ===============================================-->
+        <?php include "../../page_properties/nav.php"; ?>
+        <div class="content">
+            <?php include "content.php"; ?>
+            <?php include "../../page_properties/footer.php"; ?>
+        </div>
+        <?php include "../../page_properties/chat-container.php"; ?>
+    </main>
 
-    <!-- theme customizer -->
     <?php include "../../page_properties/theme-customizer.php"; ?>
-    <!-- /theme customizer -->
-
     <?php include "../../page_properties/footer_main.php"; ?>
+
     <!-- Select2 JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
     <script>
-        $(document).ready(function() {
-            // Open IndexedDB
+        $(document).ready(function () {
+            console.log("Document is ready");
+
             let request = indexedDB.open("cachedContentDB", 1);
+            let db; // Variable to hold the IndexedDB database reference
 
-            request.onupgradeneeded = function(event) {
-                let db = event.target.result;
-                let objectStore = db.createObjectStore("contents", { keyPath: "id" });
+            // Handle errors during database open
+            request.onerror = function (event) {
+                console.error("IndexedDB error:", event.target.errorCode);
             };
 
-            request.onsuccess = function(event) {
-                let db = event.target.result;
+            // Setup database schema if needed
+            request.onupgradeneeded = function (event) {
+                db = event.target.result;
 
-              // Function to add data to IndexedDB
-function addDataToIndexedDB(id, data) {
-    let transaction = db.transaction(["contents"], "readwrite");
-    let objectStore = transaction.objectStore("contents");
-    let request = objectStore.add({ id: id, data: data });
-    request.onsuccess = function(event) {
-        console.log("Data added to IndexedDB");
-    };
-    request.onerror = function(event) {
-        console.error("Error adding data to IndexedDB", event);
-    };
-}
+                // Create object stores if they don't exist
+                if (!db.objectStoreNames.contains("contents")) {
+                    db.createObjectStore("contents", { keyPath: "id" });
+                }
+                if (!db.objectStoreNames.contains("metadata")) {
+                    db.createObjectStore("metadata", { keyPath: "id" });
+                }
+            };
 
-// Function to store data in localStorage with error handling
-function addDataToLocalStorage(key, data) {
-    try {
-        localStorage.setItem(key, data);
-    } catch (e) {
-        if (e.name === 'QuotaExceededError') {
-            console.error('LocalStorage quota exceeded. Clearing old data...');
-            localStorage.clear();
-            localStorage.setItem(key, data); // Retry setting the item
-        } else {
-            console.error('Error adding data to localStorage', e);
-        }
-    }
-}
+            // Handle successful database open
+            request.onsuccess = function (event) {
+                db = event.target.result;
+                console.log("IndexedDB initialized successfully");
 
-// Function to fetch content from server
-function fetchContentFromServer() {
-    $.ajax({
-        url: 'content_loader.php',
-        method: 'GET',
-        success: function(data) {
-            // Store fetched content in localStorage and IndexedDB
-            addDataToLocalStorage('cachedContent', data);
-            addDataToIndexedDB('cachedContent', data);
+                // Fetch initial data
+                fetchContent();
+                fetchProducts();
 
-            // Load content into the page
-            $('#actualContent').html(data);
-            $('#initialContent').hide();
-            $('#actualContent').show();
-        },
-        error: function(xhr, status, error) {
-            console.error(xhr.responseText);
-        }
-    });
-}
+                // Set interval to periodically update data
+                setInterval(function () {
+                    fetchContent();
+                    fetchProducts();
+                }, 60000); // Update every 60 seconds
+            };
 
-                // Initialize the lastHash variable
-                let lastHash = '';
+            function fetchContent() {
+                let transaction = db.transaction(["contents"]);
+                let objectStore = transaction.objectStore("contents");
+                let request = objectStore.get("cachedContent");
 
-                // Function to fetch and update product count
-                function fetchTableContent() {
-                    $.ajax({
-                        url: 'total_products.php',
-                        success: function(response) {
-                            // Calculate hash of the response
-                            var currentHash = hash(response);
-
-                            // If hash has changed, update content
-                            if (currentHash !== lastHash) {
-                                // Update lastHash
-                                lastHash = currentHash;
-
-                                // Extract the number from the response
-                                var match = response.match(/\((\d+)\)/);
-                                if (match) {
-                                    var newNumber = parseInt(match[1]);
-
-                                    // Get the current number inside the span
-                                    var currentNumber = parseInt($('#total_product').text());
-
-                                    // Animate the change
-                                    $('#total_product').prop('Counter', currentNumber).animate({
-                                        Counter: newNumber
-                                    }, {
-                                        duration: 1000, // Animation duration in milliseconds
-                                        step: function (now) {
-                                            // Update the displayed number with the animation
-                                            $(this).text('(' + Math.ceil(now) + ')');
-                                        }
-                                    });
-                                } else {
-                                    console.error("Number not found in response:", response);
-                                }
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(xhr.responseText);
-                        }
+                request.onsuccess = function (event) {
+                    if (request.result) {
+                        let decompressedData = LZString.decompressFromUTF16(request.result.data);
+                        $('#actualContent').html(decompressedData);
+                        $('#initialContent').hide();
+                        $('#actualContent').show();
+                        console.log("Content loaded from IndexedDB");
+                    } else {
+                        console.log("No content found in IndexedDB, fetching from server...");
+                        fetchContentFromServer();
                     }
-                },
-                error: function(xhr, status, error) {
-                    console.error(xhr.responseText);
-                }
+                };
 
-        // Function to calculate hash
-        function hash(str) {
-            var hash = 0, i, chr;
-            if (str.length === 0) return hash;
-            for (i = 0; i < str.length; i++) {
-                chr = str.charCodeAt(i);
-                hash = ((hash << 5) - hash) + chr;
-                hash |= 0; // Convert to 32bit integer
+                request.onerror = function (event) {
+                    console.error("Error fetching content from IndexedDB", event);
+                    fetchContentFromServer();
+                };
             }
-            return hash;
-        }
-                // Call the function initially
-                fetchTableContent();
 
-                // Call the function every 5 seconds (adjust the interval as needed)
-                setInterval(fetchTableContent, 5000); // 5000 milliseconds = 5 seconds
+            function fetchProducts() {
+                let transaction = db.transaction(["contents"]);
+                let objectStore = transaction.objectStore("contents");
+                let request = objectStore.getAll();
 
-                function getProduct(product_id) {
-                    $.ajax({
-                        url: '../../PHP - process_files/get-product.php',
-                        method: 'POST',
-                        data: {
-                            product_id: product_id
-                        },
-                        dataType: 'json',
-                        success: function(json) {
-                            console.log(json);
-                            $('#edit_product_name').text(json.name);
-                            $('#new_product_name').val(json.name);
-                            $('#edit_product_id').val(json.id);
-                            $('#new_item_code').val(json.code);
-                            $('#new_supplier_code').val(json.supplier_code);
-                            $('#new_barcode').val(json.barcode);
-                            $('#old_image').val(json.image);
+                request.onsuccess = function (event) {
+                    let products = request.result;
+                    if (products && products.length > 0) {
+                        console.log("Products loaded from IndexedDB:", products);
+                        displayProducts(products);
+                    } else {
+                        console.log("No products found in IndexedDB, fetching from server...");
+                        fetchProductsFromServer();
+                    }
+                };
 
-                            if (json.models !== null) {
-                                var models = json.models.split(', ');
-                            }
-                            $('#edit_model').val(models);
+                request.onerror = function (event) {
+                    console.error("Error fetching products from IndexedDB:", event);
+                    fetchProductsFromServer();
+                };
+            }
 
-                            $('#edit_unit').val(json.unit);
-                            $('#edit_category').val(json.category);
-                            $('#edit_brand').val(json.brand);
+            function fetchContentFromServer() {
+                console.log("Fetching content from server...");
+                $.ajax({
+                    url: 'content_loader.php',
+                    method: 'GET',
+                    success: function (data) {
+                        console.log("Content fetched from server");
+                        let compressedData = LZString.compressToUTF16(JSON.stringify(data));
+                        addDataToIndexedDB('cachedContent', compressedData);
+                        let metadata = {
+                            timestamp: Date.now(),
+                            itemCount: $(data).find('.product-item').length
+                        };
+                        addMetadataToIndexedDB('cachedContentMetadata', metadata);
+                        $('#actualContent').html(data);
+                        $('#initialContent').hide();
+                        $('#actualContent').show();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error fetching content from server:", xhr.responseText);
+                    }
+                });
+            }
 
-                            $('#edit_dealer').val(json.dealer);
-                            $('#edit_wholesale').val(json.wholesale);
-                            $('#edit_srp').val(json.srp);
+            function fetchProductsFromServer() {
+                console.log("Fetching products from server...");
+                $.ajax({
+                    url: 'product_loader.php', // Adjust the URL as per your setup
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log("Products fetched from server:", data);
+                        addProductsToIndexedDB(data);
+                        displayProducts(data);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error fetching products from server:", xhr.responseText);
+                    }
+                });
+            }
 
-                            $('#edit_product').modal('show');
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(xhr.responseText);
+            function addProductsToIndexedDB(products) {
+                let transaction = db.transaction(["contents"], "readwrite");
+                let objectStore = transaction.objectStore("contents");
+
+                products.forEach(function (product) {
+                    objectStore.put(product);
+                });
+
+                console.log("Products added to IndexedDB");
+            }
+
+            function addDataToIndexedDB(key, data) {
+                let transaction = db.transaction(["contents"], "readwrite");
+                let objectStore = transaction.objectStore("contents");
+                objectStore.put({
+                    id: key,
+                    data: data
+                });
+            }
+
+            function addMetadataToIndexedDB(key, metadata) {
+                let transaction = db.transaction(["metadata"], "readwrite");
+                let objectStore = transaction.objectStore("metadata");
+                objectStore.put({
+                    id: key,
+                    value: metadata
+                });
+            }
+
+            function displayProducts(products) {
+                let html = "<table><thead><tr><th>ID</th><th>Name</th><th>Code</th><th>Supplier Code</th><th>Barcode</th><th>QR Code</th><th>Image</th><th>Models</th><th>Unit ID</th><th>Brand ID</th><th>Category ID</th><th>Active</th><th>Publish By</th></tr></thead><tbody>";
+
+                products.forEach(function (product) {
+                    html += "<tr><td>" + product.id + "</td><td>" + product.name + "</td><td>" + product.code + "</td><td>" + product.supplier_code + "</td><td>" + product.barcode + "</td><td>" + product.qr_code + "</td><td>" + product.image + "</td><td>" + product.models + "</td><td>" + product.unit_id + "</td><td>" + product.brand_id + "</td><td>" + product.category_id + "</td><td>" + product.active + "</td><td>" + product.publish_by + "</td></tr>";
+                });
+
+                html += "</tbody></table>";
+                $('#productTable').html(html);
+            }
+
+            function fetchMetadataFromIndexedDB(key, callback) {
+                let transaction = db.transaction(["metadata"]);
+                let objectStore = transaction.objectStore("metadata");
+                let request = objectStore.get(key);
+
+                request.onsuccess = function (event) {
+                    callback(request.result ? request.result.value : null);
+                };
+
+                request.onerror = function (event) {
+                    console.error("Error fetching metadata from IndexedDB", event);
+                    callback(null);
+                };
+            }
+
+            function compareItemCounts(serverCount) {
+                fetchMetadataFromIndexedDB('cachedContentMetadata', function (metadata) {
+                    if (metadata && metadata.itemCount < serverCount) {
+                        console.log("Server has more items, updating IndexedDB...");
+                        fetchProductsFromServer();
+                    } else {
+                        console.log("Server count matches or is less, loading from IndexedDB...");
+                        fetchProducts();
+                    }
+                });
+            }
+
+            function fetchServerItemCount() {
+                $.ajax({
+                    url: 'total_products.php',
+                    success: function (response) {
+                        console.log("Product count fetched", response);
+                        var match = response.match(/\((\d+)\)/);
+
+                        if (match) {
+                            var serverCount = parseInt(match[1]);
+                            compareItemCounts(serverCount);
+                        } else {
+                            console.error("Number not found in response:", response);
                         }
-                    });
-                }
-                $('#brand').select2({
-                    dropdownParent: $('#add_product'),
-                    tags: true,
-                    height: '100%',
-                    width: '100%',
-                    theme: 'bootstrap-5',
-                    placeholder: 'Select Brand',
-                });
+                    },
 
-                $('#category').select2({
-                    dropdownParent: $('#add_product'),
-                    tags: true,
-                    height: '100%',
-                    width: '100%',
-                    theme: 'bootstrap-5',
-                    placeholder: 'Select Category',
+                    error: function (xhr, status, error) {
+                        console.error("Error fetching product count:", xhr.responseText);
+                    }
                 });
+            }
 
-                $('#unit').select2({
-                    dropdownParent: $('#add_product'),
-                    tags: true,
-                    height: '100%',
-                    width: '100%',
-                    theme: 'bootstrap-5',
-                    placeholder: 'Select Unit',
-                });
+            fetchServerItemCount();
+            setInterval(fetchServerItemCount, 5000);
 
-                $('#model').select2({
-                    placeholder: 'Select model/s',
-                    dropdownParent: $('#add_product'),
-                    tags: true,
-                    height: '100%',
-                    width: '100%',
-                    theme: 'bootstrap-5',
-                });
+            function getProduct(product_id) {
+                console.log("Fetching product data for ID:", product_id);
+                $.ajax({
+                    url: '../../PHP - process_files/get-product.php',
+                    method: 'POST',
+                    data: {
+                        product_id: product_id
+                    },
+                    dataType: 'json',
+                    success: function (json) {
+                        console.log("Product data fetched", json);
+                        $('#edit_product_name').text(json.name);
+                        $('#new_product_name').val(json.name);
+                        $('#edit_product_id').val(json.id);
+                        $('#new_item_code').val(json.code);
+                        $('#new_supplier_code').val(json.supplier_code);
+                        $('#new_barcode').val(json.barcode);
+                        $('#old_image').val(json.image);
 
-                $('#edit_model').select2({
-                    placeholder: 'Select model/s',
-                    dropdownParent: $('#edit_product'),
-                    tags: true,
-                    width: '100%',
-                    theme: 'bootstrap-5',
-                });
+                        if (json.models                         !== null) {
+                            var models = json.models.split(', ');
+                        }
 
-                $(document).on('click', '.edit_product', function() {
-                    var product_id = $(this).data('product-id');
-                    console.log(product_id);
-                    getProduct(product_id);
+                        $('#edit_model').val(models);
+                        $('#edit_unit').val(json.unit);
+                        $('#edit_category').val(json.category);
+                        $('#edit_brand').val(json.brand);
+                        $('#edit_dealer').val(json.dealer);
+                        $('#edit_wholesale').val(json.wholesale);
+                        $('#edit_srp').val(json.srp);
+                        $('#edit_product').modal('show');
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error fetching product data:", xhr.responseText);
+                    }
                 });
+            }
 
-                $('#edit_unit').select2({
-                    dropdownParent: $('#edit_product'),
-                    tags: true,
-                    height: '100%',
-                    width: '100%',
-                    theme: 'bootstrap-5',
-                    placeholder: 'Select Unit',
-                });
+            // Select2 initialization
+            $('#brand').select2({
+                dropdownParent: $('#add_product'),
+                tags: true,
+                height: '100%',
+                width: '100%',
+                theme: 'bootstrap-5',
+                placeholder: 'Select Brand',
+            });
 
-                $('#edit_category').select2({
-                    dropdownParent: $('#edit_product'),
-                    tags: true,
-                    height: '100%',
-                    width: '100%',
-                    theme: 'bootstrap-5',
-                    placeholder: 'Select Category',
-                });
+            $('#category').select2({
+                dropdownParent: $('#add_product'),
+                tags: true,
+                height: '100%',
+                width: '100%',
+                theme: 'bootstrap-5',
+                placeholder: 'Select Category',
+            });
 
-                $('#edit_brand').select2({
-                    dropdownParent: $('#edit_product'),
-                    tags: true,
-                    height: '100%',
-                    width: '100%',
-                    theme: 'bootstrap-5',
-                    placeholder: 'Select Brand',
-                });
+            $('#unit').select2({
+                dropdownParent: $('#add_product'),
+                tags: true,
+                height: '100%',
+                width: '100%',
+                theme: 'bootstrap-5',
+                placeholder: 'Select Unit',
+            });
 
-                $('#edit_product').on('shown.bs.modal', function() {
-                    $("#edit_model").trigger('change');
-                    $('#edit_unit').trigger('change');
-                    $('#edit_category').trigger('change');
-                    $('#edit_brand').trigger('change');
-                });
+            $('#model').select2({
+                placeholder: 'Select model/s',
+                dropdownParent: $('#add_product'),
+                tags: true,
+                height: '100%',
+                width: '100%',
+                theme: 'bootstrap-5',
+            });
 
-                $('#add_product').on('shown.bs.modal', function() {
-                    $("#model").trigger('change');
+            $('#edit_model').select2({
+                placeholder: 'Select model/s',
+                dropdownParent: $('#edit_product'),
+                tags: true,
+                width: '100%',
+                theme: 'bootstrap-5',
+            });
+
+            $(document).on('click', '.edit_product', function () {
+                var product_id = $(this).data('product_id');
+                getProduct(product_id);
+            });
+
+            // Function to add data to IndexedDB
+            function addDataToIndexedDB(key, data) {
+                let transaction = db.transaction(["contents"], "readwrite");
+                let objectStore = transaction.objectStore("contents");
+                objectStore.put({
+                    id: key,
+                    data: data
                 });
-            };
+            }
+
+            // Function to add metadata to IndexedDB
+            function addMetadataToIndexedDB(key, metadata) {
+                let transaction = db.transaction(["metadata"], "readwrite");
+                let objectStore = transaction.objectStore("metadata");
+                objectStore.put({
+                    id: key,
+                    value: metadata
+                });
+            }
+
         });
-        
-        </script>
-    </body>
+    </script>
+</body>
+
 </html>
