@@ -15,7 +15,7 @@ date_default_timezone_set('Asia/Manila');
             <?php include "content.php"; ?>
             <div id="initialContent">
                 <!-- Initial content placeholder -->
-                <p>Loading content...</p>
+                <!-- <p>Loading content...</p> -->
             </div>
             <div id="actualContent" style="display: none;">
                 <!-- Actual content will be populated dynamically -->
@@ -66,32 +66,41 @@ date_default_timezone_set('Asia/Manila');
                 setInterval(function () {
                     fetchContent();
                     fetchProducts();
-                }, 60000);
+                }, 600000);
             };
 
             function fetchContent() {
-                let transaction = db.transaction(["contents"]);
-                let objectStore = transaction.objectStore("contents");
-                let request = objectStore.get("cachedContent");
+            let transaction = db.transaction(["contents"]);
+            let objectStore = transaction.objectStore("contents");
+            let request = objectStore.get("cachedContent");
 
-                request.onsuccess = function (event) {
-                    if (request.result) {
-                        let decompressedData = LZString.decompressFromUTF16(request.result.data);
-                        $('#actualContent').html(decompressedData);
-                        $('#initialContent').hide();
-                        $('#actualContent').show();
+            request.onsuccess = function (event) {
+                if (request.result) {
+                    let decompressedData = LZString.decompressFromUTF16(request.result.data);
+
+                    // Check if the content is in JSON format (assuming it's JSON)
+                    try {
+                        let parsedData = JSON.parse(decompressedData);
+                        
+                        // Display the data in a table format
+                        displayProducts(parsedData.products); // Assuming parsedData contains an array named products
+                        
                         console.log("Content loaded from IndexedDB");
-                    } else {
-                        console.log("No content found in IndexedDB, fetching from server...");
-                        fetchContentFromServer();
+                    } catch (error) {
+                        console.error("Error parsing JSON data:", error);
+                        fetchContentFromServer(); // Fallback to fetch from server if parsing fails
                     }
-                };
-
-                request.onerror = function (event) {
-                    console.error("Error fetching content from IndexedDB", event);
+                } else {
+                    console.log("No content found in IndexedDB, fetching from server...");
                     fetchContentFromServer();
-                };
-            }
+                }
+            };
+
+            request.onerror = function (event) {
+                console.error("Error fetching content from IndexedDB", event);
+                fetchContentFromServer();
+            };
+        }
 
             function fetchProducts() {
                 let transaction = db.transaction(["contents"]);
@@ -185,16 +194,20 @@ date_default_timezone_set('Asia/Manila');
                 });
             }
 
-            function displayProducts(products) {
-                let html = "<table><thead><tr><th>ID</th><th>Name</th><th>Code</th><th>Supplier Code</th><th>Barcode</th><th>QR Code</th><th>Image</th><th>Models</th><th>Unit ID</th><th>Brand ID</th><th>Category ID</th><th>Active</th><th>Publish By</th></tr></thead><tbody>";
+function displayProducts() {
+    $.ajax({
+        url: 'product_list_tr.php',
+        type: 'GET',
+        success: function(response) {
+            $('#products-table-body').html(response);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching products:', error);
+            // Handle error scenario
+        }
+    });
+}
 
-                products.forEach(function (product) {
-                    html += "<tr><td>" + product.id + "</td><td>" + product.name + "</td><td>" + product.code + "</td><td>" + product.supplier_code + "</td><td>" + product.barcode + "</td><td>" + product.qr_code + "</td><td>" + product.image + "</td><td>" + product.models + "</td><td>" + product.unit_id + "</td><td>" + product.brand_id + "</td><td>" + product.category_id + "</td><td>" + product.active + "</td><td>" + product.publish_by + "</td></tr>";
-                });
-
-                html += "</tbody></table>";
-                $('#productTable').html(html);
-            }
 
             function fetchMetadataFromIndexedDB(key, callback) {
                 let transaction = db.transaction(["metadata"]);
@@ -366,6 +379,97 @@ date_default_timezone_set('Asia/Manila');
                 });
             });
         });
+
+        //select2 initialization
+
+        $('#brand').select2({
+                    dropdownParent: $('#add_product'),
+                    tags: true,
+                    height: '100%',
+                    width: '100%',
+                    theme: 'bootstrap-5',
+                    placeholder: 'Select Brand',
+                });
+
+                $('#category').select2({
+                    dropdownParent: $('#add_product'),
+                    tags: true,
+                    height: '100%',
+                    width: '100%',
+                    theme: 'bootstrap-5',
+                    placeholder: 'Select Category',
+                });
+
+                $('#unit').select2({
+                    dropdownParent: $('#add_product'),
+                    tags: true,
+                    height: '100%',
+                    width: '100%',
+                    theme: 'bootstrap-5',
+                    placeholder: 'Select Unit',
+                });
+
+                $('#model').select2({
+                    placeholder: 'Select model/s',
+                    dropdownParent: $('#add_product'),
+                    tags: true,
+                    height: '100%',
+                    width: '100%',
+                    theme: 'bootstrap-5',
+                });
+
+                $('#edit_model').select2({
+                    placeholder: 'Select model/s',
+                    dropdownParent: $('#edit_product'),
+                    tags: true,
+                    width: '100%',
+                    theme: 'bootstrap-5',
+                });
+
+                $(document).on('click', '.edit_product', function() {
+                    var product_id = $(this).data('product-id');
+                    console.log(product_id);
+                    getProduct(product_id);
+                });
+
+                $('#edit_unit').select2({
+                    dropdownParent: $('#edit_product'),
+                    tags: true,
+                    height: '100%',
+                    width: '100%',
+                    theme: 'bootstrap-5',
+                    placeholder: 'Select Unit',
+                });
+
+                $('#edit_category').select2({
+                    dropdownParent: $('#edit_product'),
+                    tags: true,
+                    height: '100%',
+                    width: '100%',
+                    theme: 'bootstrap-5',
+                    placeholder: 'Select Category',
+                });
+
+                $('#edit_brand').select2({
+                    dropdownParent: $('#edit_product'),
+                    tags: true,
+                    height: '100%',
+                    width: '100%',
+                    theme: 'bootstrap-5',
+                    placeholder: 'Select Brand',
+                });
+
+                $('#edit_product').on('shown.bs.modal', function() {
+                    $("#edit_model").trigger('change');
+                    $('#edit_unit').trigger('change');
+                    $('#edit_category').trigger('change');
+                    $('#edit_brand').trigger('change');
+                });
+
+                $('#add_product').on('shown.bs.modal', function() {
+                    $("#model").trigger('change');
+                });
+        
     </script>
 </body>
 

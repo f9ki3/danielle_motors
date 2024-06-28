@@ -7,7 +7,7 @@ include "../../database/database.php";
 $productData = array();
 
 // Query to fetch product data from your database
-$sql = "SELECT `id`, `name`, `code`, `supplier_code`, `barcode`, `qr_code`, `image`, `models`, `unit_id`, `brand_id`, `category_id`, `active`, `publish_by` FROM `product`";
+$sql = "SELECT `id`, `name`, `code`, `supplier_code`, `barcode`, `qr_code`, `models`, `unit_id`, `brand_id`, `category_id`, `active`, `publish_by` FROM `product`";
 
 $result = $conn->query($sql);
 
