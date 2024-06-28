@@ -143,7 +143,7 @@ if(!isset($_GET['search'])){
     }
 
     if(isset($category_id)){
-        $has_category = "OR category_id = " . $category_id;
+        $has_category = $formatted_category_ids;
     } else {
         $has_category = "";
     }
