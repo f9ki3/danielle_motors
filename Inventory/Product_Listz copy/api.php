@@ -111,17 +111,33 @@ if(!isset($_GET['search'])){
     $brand_check = "SELECT id FROM brand WHERE brand_name = '$search' LIMIT 1";
     $brand_check_result = $conn->query($brand_check);
     if ($brand_check_result->num_rows > 0) {
-        $brand_id = $brand_check_result->fetch_assoc()['id'];
+        $brand_ids = []; // Initialize an array to store brand IDs
+    
+        while($row = $brand_check_result->fetch_assoc()) {
+            $brand_ids[] = $row['id']; // Collect all IDs into the array
+        }
+    
+        $formatted_brand_ids = implode(' OR ', $brand_ids); // Convert array to comma-separated string
+    
+        
     }
 
     $category_check = "SELECT id FROM category WHERE category_name = '$search' LIMIT 1";
     $category_check_result = $conn->query($category_check);
     if ($category_check_result->num_rows > 0) {
-        $category_id = $category_check_result->fetch_assoc()['id'];
+        $category_ids = []; // Initialize an array to store brand IDs
+    
+        while($row = $category_check_result->fetch_assoc()) {
+            $category_ids[] = $row['id']; // Collect all IDs into the array
+        }
+    
+        $formatted_category_ids = implode(' OR ', $category_ids); // Convert array to comma-separated string
+    
+        
     }
 
     if(isset($brand_id)){
-        $has_brand = "OR brand_id = " . $brand_id;
+        $has_brand = $formatted_brand_ids;
     } else {
         $has_brand = "";
     }
