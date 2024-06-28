@@ -148,7 +148,7 @@ if(!isset($_GET['search'])){
         $has_category = "";
     }
 
-    $query = "SELECT * FROM product WHERE `name` LIKE '%$search%' $has_brand $has_category ORDER BY id DESC LIMIT $limit OFFSET $offset";
+    $query = "SELECT * FROM product WHERE `name` LIKE '%$search%' OR models LIKE '%$search%' $has_brand $has_category ORDER BY id DESC LIMIT $limit OFFSET $offset";
     $result = $conn->query($query);
 
     $data = array();
@@ -237,14 +237,40 @@ if(!isset($_GET['search'])){
                                     <span class="fas fa-ellipsis-h fs--2"></span>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end py-2">
-                                    <a class="dropdown-item" href="#!">View</a>
-                                    <a class="dropdown-item" href="#!">Export</a>
+                                    <a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#product_' . $product_id . '">Edit</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" href="#!">Remove</a>
+                                    <a class="dropdown-item text-danger" type="button" data-bs-toggle="modal" data-bs-target="#del_' . $product_id . '">Remove</a>
                                 </div>
                             </div>
                         </td>
-                    </tr>'
+                    </tr>
+                    <div class="modal fade" id="product_' . $product_id . '" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5><button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs--1"></span></button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-700 lh-lg mb-0">This is a static modal example (meaning its position and display have been overridden). Included are the modal header, modal body (required for padding), and modal footer (optional). </p>
+                            </div>
+                            <div class="modal-footer"><button class="btn btn-primary" type="button">Okay</button><button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Cancel</button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="del_' . $product_id . '" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5><button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs--1"></span></button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-700 lh-lg mb-0">Are you sure to delete ' . $product_name_2 . '? </p>
+                            </div>
+                            <div class="modal-footer"><button class="btn btn-primary" type="button">Okay</button><button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Cancel</button></div>
+                            </div>
+                        </div>
+                    </div>
+                    '
                 );
         }
     }
