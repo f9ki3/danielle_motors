@@ -1,13 +1,14 @@
 <?php
 include_once "../../database/database.php";
 
-$sql = "SELECT COUNT(*) FROM product WHERE active = 1";
+$sql = "SELECT COUNT(*) as product_count FROM product WHERE active = 1";
 $result = $conn->query($sql);
+
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    echo '<span class="text-700 fw-semi-bold">(' . $row['COUNT(*)'] . ')</span>';
+    echo $row['product_count'];
 } else {
-    echo '<span class="text-700 fw-semi-bold">(05)</span>';
+    // If no products found, return a default value
+    echo 0;
 }
 ?>
-
