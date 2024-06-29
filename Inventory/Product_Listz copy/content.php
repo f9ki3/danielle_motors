@@ -35,7 +35,7 @@
                     <span class="fas fa-search search-box-icon"></span>
                   </form>
                 </div>
-                <div class="scrollbar overflow-hidden-y">
+                <!-- <div class="scrollbar overflow-hidden-y">
                   <div class="btn-group position-static" role="group">
                     <div class="btn-group position-static text-nowrap"><button class="btn btn-phoenix-secondary px-7 flex-shrink-0" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"> Category<span class="fas fa-angle-down ms-2"></span></button>
                       <ul class="dropdown-menu">
@@ -60,7 +60,7 @@
                       </ul>
                     </div><button class="btn btn-sm btn-phoenix-secondary px-7 flex-shrink-0">More filters</button>
                   </div>
-                </div>
+                </div> -->
                 <div class="ms-xxl-auto">
                   <button class="btn btn-primary" id="addBtn" type="button" data-bs-toggle="modal" data-bs-target="#add_product"><span class="fas fa-plus me-2"></span>Add product</button>
                   <?php include "product_list_modal.php";?>
