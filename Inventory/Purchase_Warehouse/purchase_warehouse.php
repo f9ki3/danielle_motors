@@ -55,6 +55,7 @@ while ($stmt->fetch()) {
         </div>
     </td>
     <td class="product align-middle ">' . $product_name . '</td>
+    <td class="barcode align-middle ">' . $barcode . '</td>
     <td class="price align-middle "><span class="badge badge-phoenix badge-phoenix-primary">' . $supplier_code . '</span></td>
     <td class="tags align-middle">'.$category_name.'</td>
     <td class="vendor align-middle text-start fw-semi-bold ">' . $brand_name . '</td>

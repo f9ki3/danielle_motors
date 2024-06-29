@@ -11,11 +11,7 @@
             <h2 class="mb-0">Purchase Warehouse</h2>
         </div>
     </div>
-<<<<<<< Updated upstream
-    <div id="products" data-list="{&quot;valueNames&quot;:[&quot;product&quot;,&quot;price&quot;,&quot;category&quot;,&quot;tags&quot;,&quot;vendor&quot;,&quot;unit&quot;, &quot;model&quot;, &quot;status&quot;],&quot;page&quot;:10,&quot;pagination&quot;:true}">
-=======
     <div id="products" data-list="{&quot;valueNames&quot;:[&quot;product&quot;,&quot;barcode&quot;,&quot;price&quot;,&quot;category&quot;,&quot;tags&quot;,&quot;vendor&quot;,&quot;unit&quot;, &quot;model&quot;, &quot;status&quot;],&quot;page&quot;:10,&quot;pagination&quot;:true}">
->>>>>>> Stashed changes
         <div class="mb-4">
             <div class="d-flex flex-wrap gap-3">
             <div class="d-flex flex-row">
@@ -46,6 +42,7 @@
                     <tr>
                         <th class="sort white-space-nowrap align-middle " style="width: 5%" scope="col">IMG</th>
                         <th class="sort white-space-nowrap align-middle " style="width: 15%" scope="col" data-sort="product">PRODUCT NAME</th>
+                        <th class="sort white-space-nowrap align-middle " style="width: 15%" scope="col" data-sort="barcode">Barcode</th>
                         <th class="sort align-middle text-start " style="width: 10%" scope="col" data-sort="price">ITEM CODE</th>
                         <th class="sort align-middle text-start " style="width: 10%" scope="col" data-sort="tags">CATEGORY</th>
                         <th class="sort align-middle text-start " style="width: 10%" scope="col" data-sort="vendor">BRAND</th>
