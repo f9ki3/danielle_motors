@@ -75,24 +75,24 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
           <hr class="navbar-vertical-line" />
           <?php if(strpos($session_permission, 'VIEW PO') !== false || strpos($session_permission, 'ADD PO') !== false) { ?>
           <div class="nav-item-wrapper">
-            <!-- Purchased Order -->
+            <!-- Purchase Order -->
             <a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier" || $current_folder === "Create_Purchased_Order"){ echo "active"; } else { echo "";}?> dropdown-indicator label-1" href="#nv-e-commerce" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-e-commerce">
               <div class="d-flex align-items-center">
                 <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div>
                 <span class="nav-link-icon"><span data-feather="shopping-cart"></span></span>
-                <span class="nav-link-text">Purchased Order</span>
+                <span class="nav-link-text">Purchase Order</span>
               </div>
             </a>
-            <!-- Purchased Order Submenu -->
+            <!-- Purchase Order Submenu -->
             <div class="parent-wrapper label-1">
               <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-e-commerce">
-                <li class="collapsed-nav-item-title d-none">Purchased Order</li>
+                <li class="collapsed-nav-item-title d-none">Purchase Order</li>
                 <?php if(strpos($session_permission, 'VIEW PO') !== false){?>
                 <li class="nav-item">
                   <a class="nav-link <?php if($current_folder === "Purchased-Order-Supplier"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="../../Inventory/Purchased-Order-Supplier/">
                     <div class="d-flex align-items-center">
                       <div class="dropdown-indicator-icon"></div>
-                      <span class="nav-link-text">View Purchased Order</span>
+                      <span class="nav-link-text">View Purchase Order</span>
                     </div>
                   </a>
                 </li>
@@ -101,10 +101,10 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 if(strpos($session_permission, 'ADD PO') !== false) {
                 ?>
                 <li class="nav-item">
-                  <a class="nav-link <?php if($current_folder === "Create_Purchased_Order"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="../../Inventory/Create_Purchased_Order/">
+                  <a class="nav-link <?php if($current_folder === "Create_Purchase_Order"){ echo "active"; } else { echo "";}?> dropdown-indicator" href="../../Inventory/Create_Purchased_Order/">
                     <div class="d-flex align-items-center">
                       <div class="dropdown-indicator-icon"></div>
-                      <span class="nav-link-text">Create Purchased Order</span>
+                      <span class="nav-link-text">Create Purchase Order</span>
                     </div>
                   </a>
                 </li>
