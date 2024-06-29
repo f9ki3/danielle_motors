@@ -14,10 +14,7 @@
             </div>
           </div>
           <ul class="nav nav-links mb-3 mb-lg-2 mx-n3">
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"><span>All </span><span class="text-700 fw-semi-bold">(68817)</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><span>Published </span><span class="text-700 fw-semi-bold">(70348)</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><span>Drafts </span><span class="text-700 fw-semi-bold">(17)</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><span>On discount </span><span class="text-700 fw-semi-bold">(810)</span></a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../Product_Listz copy/"><span>All </span><span class="text-700 fw-semi-bold" id="total_product">(68817)</span></a></li>
           </ul>
           <div id="products" data-list='{"valueNames":["product","price","category","tags","vendor","time"],"pagination":false}'>
             <div class="mb-4">

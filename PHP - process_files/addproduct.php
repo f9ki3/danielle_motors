@@ -162,7 +162,7 @@
             $stmt->bind_param('iiii', $product_id, $dealer, $wholesale, $srp);
             if ($stmt->execute()) {
                 $stmt->close();
-                header('Location: ../Inventory/Product_List/?successful=true');
+                header('Location: ../Inventory/Product_Listz copy/?successful=true');
             }
         } else {
             die("Error in executing statement: " . $stmt->error);

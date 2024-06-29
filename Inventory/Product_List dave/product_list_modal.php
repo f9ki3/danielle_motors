@@ -43,14 +43,14 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 mb-1">
                         <div class="form-floating mb-3">
-                            <input type="text" id="product_name" name="code" class="form-control">
+                            <input type="text" id="product_name" name="code" class="form-control" required>
                             <label for="product_name">Item Code</label>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 mb-1">
                         <div class="form-floating mb-3">
-                            <input type="text" id="product_name" name="barcode" class="form-control">
-                            <label for="product_name">Barcode</label>
+                            <input type="text" id="product_name" name="supplier_code" class="form-control" required>
+                            <label for="product_name">Supplier Code</label>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-1">

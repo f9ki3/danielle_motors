@@ -5,7 +5,7 @@ $page = $_GET['page'];
 $limit = 50; // Number of items to fetch per page
 $offset = ($page - 1) * $limit;
 if(!isset($_GET['search'])){
-    $query = "SELECT * FROM product ORDER BY id DESC LIMIT $limit OFFSET $offset";
+    $query = "SELECT * FROM product WHERE active = 1 ORDER BY id DESC LIMIT $limit OFFSET $offset";
     $result = $conn->query($query);
 
     $data = array();
@@ -70,39 +70,57 @@ if(!isset($_GET['search'])){
             }
 
             
-                $data[] = array(
-                    'title' => '
-                    <tr class="position-static">
-                        <td class="align-middle white-space-nowrap py-0">
-                            <a class="d-block border rounded-2" href="../landing/product-details.html">
-                                <img src="../../uploads/' . basename($product_image) . '" alt="" width="53" />
-                            </a>
-                        </td>
-                        <td class="product align-middle ps-4 white-space-nowrap">
-                            ' . $product_name . '
-                        </td>
-                        <td class="price align-middle white-space-nowrap text-end fw-bold text-700 ps-4">' . $wholesale . '</td>
-                        <td class="price align-middle white-space-nowrap text-end fw-bold text-700 ps-4">' . $srp . '</td>
-                        <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold">' . $brand_name . '</td>
-                        <td class="tags align-middle review pb-2 ps-3" style="min-width:225px;">' . $category_name . '</td>
-                        <td class="align-middle review fs-0 text-center ps-4"> piece </td>
-                        <td class="vendor align-middle text-start fw-semi-bold ps-4">' . $product_models . '</td>
-                        <td class="time align-middle white-space-nowrap text-600 ps-4">' . $publisher_name . '</td>
-                        <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
-                            <div class="font-sans-serif btn-reveal-trigger position-static">
-                                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent">
-                                    <span class="fas fa-ellipsis-h fs--2"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end py-2">
-                                    <a class="dropdown-item" href="#!">View</a>
-                                    <a class="dropdown-item" href="#!">Export</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" href="#!">Remove</a>
-                                </div>
+            $data[] = array(
+                'title' => '
+                <tr class="position-static">
+                    <td class="align-middle white-space-nowrap py-0">
+                        <a class="d-block border rounded-2" href="../landing/product-details.html">
+                            <img src="../../uploads/' . basename($product_image) . '" alt="" width="53" />
+                        </a>
+                    </td>
+                    <td class="product align-middle ps-4 white-space-nowrap">
+                        ' . $product_name . '
+                    </td>
+                    <td class="price align-middle white-space-nowrap text-end fw-bold text-700 ps-4">' . $wholesale . '</td>
+                    <td class="price align-middle white-space-nowrap text-end fw-bold text-700 ps-4">' . $srp . '</td>
+                    <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold">' . $brand_name . '</td>
+                    <td class="tags align-middle review pb-2 ps-3" style="min-width:225px;">' . $category_name . '</td>
+                    <td class="align-middle review fs-0 text-center ps-4"> piece </td>
+                    <td class="vendor align-middle text-start fw-semi-bold ps-4">' . $product_models . '</td>
+                    <td class="time align-middle white-space-nowrap text-600 ps-4">' . $publisher_name . '</td>
+                    <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
+                        <div class="font-sans-serif btn-reveal-trigger position-static">
+                            <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent">
+                                <span class="fas fa-ellipsis-h fs--2"></span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end py-2">
+                                <a class="dropdown-item" href="../Product_Listz copy/?white=' . $product_id . '" target="_blank">Edit</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-danger" type="button" data-bs-toggle="modal" data-bs-target="#del_' . $product_id . '">Remove</a>
                             </div>
-                        </td>
-                    </tr>'
-                );
+                        </div>
+                    </td>
+                </tr>
+                
+                <div class="modal fade" id="del_' . $product_id . '" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"></h5><button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs--1"></span></button>
+                        </div>
+                        <div class="modal-body">
+                            <h5 class="text-700 lh-lg mb-0">Are you sure to delete ' . $product_name_2 . '? </h5>
+                        </div>
+                        <div class="modal-footer text-center">
+                            <a class="btn btn-warning" href="../../PHP - process_files/delete_product.php?product_id='. $product_id .'">Yes</a>
+                            <button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Cancel</button>
+                            
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                '
+            );
         }
     }
 } else {
@@ -148,7 +166,7 @@ if(!isset($_GET['search'])){
         $has_category = "";
     }
 
-    $query = "SELECT * FROM product WHERE `name` LIKE '%$search%' OR models LIKE '%$search%' $has_brand $has_category ORDER BY id DESC LIMIT $limit OFFSET $offset";
+    $query = "SELECT * FROM product WHERE active = 1 AND (`name` LIKE '%$search%' OR models LIKE '%$search%' $has_brand $has_category) ORDER BY id DESC LIMIT $limit OFFSET $offset";
     $result = $conn->query($query);
 
     $data = array();
@@ -237,36 +255,28 @@ if(!isset($_GET['search'])){
                                     <span class="fas fa-ellipsis-h fs--2"></span>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end py-2">
-                                    <a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#product_' . $product_id . '">Edit</a>
+                                    <a class="dropdown-item" href="../Product_Listz copy/?white=' . $product_id . '" target="_blank">Edit</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item text-danger" type="button" data-bs-toggle="modal" data-bs-target="#del_' . $product_id . '">Remove</a>
                                 </div>
                             </div>
                         </td>
                     </tr>
-                    <div class="modal fade" id="product_' . $product_id . '" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5><button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs--1"></span></button>
-                            </div>
-                            <div class="modal-body">
-                                <p class="text-700 lh-lg mb-0">This is a static modal example (meaning its position and display have been overridden). Included are the modal header, modal body (required for padding), and modal footer (optional). </p>
-                            </div>
-                            <div class="modal-footer"><button class="btn btn-primary" type="button">Okay</button><button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Cancel</button></div>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="modal fade" id="del_' . $product_id . '" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5><button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs--1"></span></button>
+                                <h5 class="modal-title" id="exampleModalLabel"></h5><button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs--1"></span></button>
                             </div>
                             <div class="modal-body">
-                                <p class="text-700 lh-lg mb-0">Are you sure to delete ' . $product_name_2 . '? </p>
+                                <h5 class="text-700 lh-lg mb-0">Are you sure to delete ' . $product_name_2 . '? </h5>
                             </div>
-                            <div class="modal-footer"><button class="btn btn-primary" type="button">Okay</button><button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Cancel</button></div>
+                            <div class="modal-footer text-center">
+                                <a class="btn btn-warning" href="../../PHP - process_files/delete_product.php?product_id='. $product_id .'">Yes</a>
+                                <button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Cancel</button>
+                                
+                            </div>
                             </div>
                         </div>
                     </div>

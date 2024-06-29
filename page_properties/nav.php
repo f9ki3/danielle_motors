@@ -207,7 +207,7 @@ if(!isset($_SESSION['logo']) && !isset($_SESSION['logo_text'])){
                 if(strpos($session_permission, 'MANAGE PRODUCT LIST') !== false) {
                 ?>
                 <li class="nav-item">
-                  <a class="nav-link" href="../../Inventory/Product_List/" data-bs-toggle="" aria-expanded="false">
+                  <a class="nav-link" href="../../Inventory/Product_Listz copy/" data-bs-toggle="" aria-expanded="false">
                     <div class="d-flex align-items-center"><span class="nav-link-text">Product List</span></div>
                   </a>
                 </li>
