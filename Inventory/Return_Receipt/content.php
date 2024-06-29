@@ -70,7 +70,7 @@ $stmt_total_refund_amount->close();
                                 <div style="display: flex; flex-direction: row; justify-content: space-between">
                                     <h6 class="fw-bolder">Receipt No: <?php echo $transactionID?></h6>
                                     <div>
-                                        <a href="../Return_Store" class="btn btn-primary btn-sm back">Back</a>
+                                        <a href="../Return_Warehouse" class="btn btn-primary btn-sm back">Back</a>
                                     </div>
                                 </div>
                                 <p>Date: <?php echo $transactionDetails["TransactionDate"]; ?></p>

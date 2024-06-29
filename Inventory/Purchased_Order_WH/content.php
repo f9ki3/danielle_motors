@@ -26,7 +26,7 @@
                             <img src="../../uploads/header_cropped.png" class="img img-fluid" alt="">
                         </div>
                         <div class="col-xl-12 col-lg-12">
-                            <h3 class="text-center mb-5">PURCHASED ORDER</h3>
+                            <h3 class="text-center mb-5">PURCHASE ORDER</h3>
                         </div>
                         <div class="col-lg-12 text-end">
                             <span class="text-danger">PO #: <?php echo $po_id;?></span>
