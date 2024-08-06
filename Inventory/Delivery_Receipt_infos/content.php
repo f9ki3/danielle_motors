@@ -29,6 +29,7 @@
                         <a class="dropdown-item" href="#">Print Barcodes</a>
                     </div>
                 </div>
+                <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#checkcode">Check Barcode</button>
 
                 <a class="btn btn-success text-end mt-2 d-none" href="../../PHP - process_files/save_dr.php" id="save_receipt">Save Receipt</a>
             </div>
@@ -45,6 +46,8 @@
         </div>
     </div>
 </div>
+
+<?php include "checkcode.php";?>
 
 
 
