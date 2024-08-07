@@ -1,0 +1,1262 @@
+[
+    {
+        "description": "FUEL TANK CAP HD3\/BARAKO\/BC175-M",
+        "SRP": 250,
+        "discounted_price": 125
+    },
+    {
+        "description": "BRAKE LEVER DREAM-M",
+        "SRP": 74,
+        "discounted_price": 37
+    },
+    {
+        "description": "BRAKE LEVER RS100-L",
+        "SRP": 128,
+        "discounted_price": 64
+    },
+    {
+        "description": "BRAKE LEVER CT100-M",
+        "SRP": 110,
+        "discounted_price": 55
+    },
+    {
+        "description": "BRAKE LEVER BARAKO-L",
+        "SRP": 165,
+        "discounted_price": 82.5
+    },
+    {
+        "description": "BRAKE LEVER TMX155-M",
+        "SRP": 128,
+        "discounted_price": 64
+    },
+    {
+        "description": "BRAKE LEVER MIO-L",
+        "SRP": 128,
+        "discounted_price": 64
+    },
+    {
+        "description": "BRAKE LEVER RS100 BLACK OX TYPE-L",
+        "SRP": 137,
+        "discounted_price": 68.5
+    },
+    {
+        "description": "BRAKE LEVER XRMWAVE-M",
+        "SRP": 78,
+        "discounted_price": 39
+    },
+    {
+        "description": "BRAKE LEVER HD3-M",
+        "SRP": 126,
+        "discounted_price": 63
+    },
+    {
+        "description": "BRAKE LEVER TMX SUPREMO-M",
+        "SRP": 200,
+        "discounted_price": 100
+    },
+    {
+        "description": "BRAKE LEVER W100-M",
+        "SRP": 90,
+        "discounted_price": 45
+    },
+    {
+        "description": "BRAKE LEVER CLICK125",
+        "SRP": 146,
+        "discounted_price": 73
+    },
+    {
+        "description": "BRAKE LEVER STX-M",
+        "SRP": 156,
+        "discounted_price": 78
+    },
+    {
+        "description": "BRAKE LEVER CD110\/XL125-L",
+        "SRP": 136,
+        "discounted_price": 68
+    },
+    {
+        "description": "BRAKE LEVER CB125-M",
+        "SRP": 120,
+        "discounted_price": 60
+    },
+    {
+        "description": "BRAKE LEVER SMASH RIGHT HAND-M",
+        "SRP": 110,
+        "discounted_price": 55
+    },
+    {
+        "description": "BRAKE LEVER RS100 NEW SILVER-L",
+        "SRP": 133.84,
+        "discounted_price": 66.82
+    },
+    {
+        "description": "SILICONE ADAPTOR-M",
+        "SRP": 110,
+        "discounted_price": 55
+    },
+    {
+        "description": "CALIPER REPAIR KIT MIO-M",
+        "SRP": 93,
+        "discounted_price": 46.5
+    },
+    {
+        "description": "CALIPER REPAIR KIT RS100-M",
+        "SRP": 93,
+        "discounted_price": 44.5
+    },
+    {
+        "description": "CALIPER REPAIR KIT W\/SMASH\/WAVE\/SMASH\/FURY\/VRM\/XRM\/TRINX-M",
+        "SRP": 93,
+        "discounted_price": 46.5
+    },
+    {
+        "description": "CALIPER REPAIR KIT W110 SET-M",
+        "SRP": 133.84,
+        "discounted_price": 66.92
+    },
+    {
+        "description": "FUEL PUMP ASSY MIO M3\/MIO SOUL125",
+        "SRP": 1482,
+        "discounted_price": 741
+    },
+    {
+        "description": "FUEL PUMP ASSY NMAX FI",
+        "SRP": 1482,
+        "discounted_price": 741
+    },
+    {
+        "description": "STEEL BUSHING TMX-S",
+        "SRP": 116,
+        "discounted_price": 58
+    },
+    {
+        "description": "THROTTLE POSITION SENSOR (TPS) SET FUJICK125",
+        "SRP": 382,
+        "discounted_price": 191
+    },
+    {
+        "description": "THROTTLE POSITION SENSOR (TPS) MIO125\/M3",
+        "SRP": 373,
+        "discounted_price": 166.5
+    },
+    {
+        "description": "JOINT INJECTOR MSN\/NMAX\/AEROX\/MIO125",
+        "SRP": 124,
+        "discounted_price": 62
+    },
+    {
+        "description": "TAPPET CAP MIO-S",
+        "SRP": 78,
+        "discounted_price": 39
+    },
+    {
+        "description": "TAPPET CAP XRM",
+        "SRP": 53,
+        "discounted_price": 26.5
+    },
+    {
+        "description": "TAPPET CAP W125-S",
+        "SRP": 60,
+        "discounted_price": 30
+    },
+    {
+        "description": "TAPPET CAP YAMAHA-S",
+        "SRP": 80,
+        "discounted_price": 40
+    },
+    {
+        "description": "TAPPET CAP BARAKO\/BC175",
+        "SRP": 118,
+        "discounted_price": 59
+    },
+    {
+        "description": "CARBURATOR REPAIR KIT R150",
+        "SRP": 84,
+        "discounted_price": 42
+    },
+    {
+        "description": "CARBURATOR REPAIR KIT BARAKO\/BC175",
+        "SRP": 70,
+        "discounted_price": 35
+    },
+    {
+        "description": "CARBURATOR REPAIR KIT BEAT",
+        "SRP": 84,
+        "discounted_price": 42
+    },
+    {
+        "description": "CARBURATOR REPAIR KIT CB125",
+        "SRP": 84,
+        "discounted_price": 42
+    },
+    {
+        "description": "CARBURATOR REPAIR KIT XRM125",
+        "SRP": 93,
+        "discounted_price": 46.5
+    },
+    {
+        "description": "BEARING 6\/22",
+        "SRP": 80,
+        "discounted_price": 40
+    },
+    {
+        "description": "BEARING 6203",
+        "SRP": 46,
+        "discounted_price": 23
+    },
+    {
+        "description": "YK BEARING 6003RS",
+        "SRP": 32,
+        "discounted_price": 16
+    },
+    {
+        "description": "YK BEARING 6302RS",
+        "SRP": 41.2,
+        "discounted_price": 20.6
+    },
+    {
+        "description": "YK BEARING 6203RS",
+        "SRP": 30.8,
+        "discounted_price": 15.4
+    },
+    {
+        "description": "YK BEARING 6201RS",
+        "SRP": 29.2,
+        "discounted_price": 14.6
+    },
+    {
+        "description": "YK BEARING 6205RS",
+        "SRP": 55.4,
+        "discounted_price": 27.7
+    },
+    {
+        "description": "YK BEARING 6003RS",
+        "SRP": 31,
+        "discounted_price": 15.5
+    },
+    {
+        "description": "YK BEARING 6200RS",
+        "SRP": 29,
+        "discounted_price": 14.5
+    },
+    {
+        "description": "OVERHAULING GASKET SHOGUN110",
+        "SRP": 64,
+        "discounted_price": 32
+    },
+    {
+        "description": "OVERHAULING GASKET XRM110",
+        "SRP": 77,
+        "discounted_price": 38.5
+    },
+    {
+        "description": "OVERHAULING GASKET LF110",
+        "SRP": 66,
+        "discounted_price": 33
+    },
+    {
+        "description": "OVERHAULING GASKET Mio",
+        "SRP": 81,
+        "discounted_price": 40.5
+    },
+    {
+        "description": "OVERHAULING GASKET BEAT",
+        "SRP": 114,
+        "discounted_price": 57
+    },
+    {
+        "description": "OVERHAULING GASKET BARAKO",
+        "SRP": 85,
+        "discounted_price": 42.5
+    },
+    {
+        "description": "OVERHAULING GASKET HD3",
+        "SRP": 72,
+        "discounted_price": 36.5
+    },
+    {
+        "description": "OVERHAULING GASKET R150",
+        "SRP": 93,
+        "discounted_price": 46.5
+    },
+    {
+        "description": "OVERHAULING GASKET RS100",
+        "SRP": 60,
+        "discounted_price": 30
+    },
+    {
+        "description": "OVERHAULING GASKET KLX150",
+        "SRP": 90,
+        "discounted_price": 45
+    },
+    {
+        "description": "OVERHAULING GASKET",
+        "SRP": 93,
+        "discounted_price": 46.5
+    },
+    {
+        "description": "OVERHAULING GASKET SHOGUN PRO NEW",
+        "SRP": 78,
+        "discounted_price": 39
+    },
+    {
+        "description": "OVERHAULING GASKET SKYDRIVE125",
+        "SRP": 100,
+        "discounted_price": 50
+    },
+    {
+        "description": "OVERHAULING GASKET CLICK150",
+        "SRP": 100,
+        "discounted_price": 50
+    },
+    {
+        "description": "SPARK PLUG CAP CT100 DENSO",
+        "SRP": 32,
+        "discounted_price": 16
+    },
+    {
+        "description": "PLASTIC RIVET FASTENER CLIP 16MM X 26MM*20sets",
+        "SRP": 86,
+        "discounted_price": 43
+    },
+    {
+        "description": "PLASTIC RIVET FASTENER CLIP 13MM X 21MM*20sets",
+        "SRP": 72,
+        "discounted_price": 36
+    },
+    {
+        "description": "PLASTIC RIVET FASTENER CLIP 18MM X 24MM*20sets",
+        "SRP": 90,
+        "discounted_price": 45
+    },
+    {
+        "description": "YAKIMOTO DL700-16 STOCK HORN*100",
+        "SRP": 55,
+        "discounted_price": 27.5
+    },
+    {
+        "description": "BRAKE LEVER MASTER FRONT SMASH",
+        "SRP": 237,
+        "discounted_price": 118.5
+    },
+    {
+        "description": "FOOTREST FRONT TMX\/RUSI125",
+        "SRP": 32,
+        "discounted_price": 16
+    },
+    {
+        "description": "FOOTREST FRONT XRM",
+        "SRP": 30,
+        "discounted_price": 15
+    },
+    {
+        "description": "TOP GASKET LF125",
+        "SRP": 36,
+        "discounted_price": 18
+    },
+    {
+        "description": "TOP GASKET SHOGUN",
+        "SRP": 42,
+        "discounted_price": 21
+    },
+    {
+        "description": "TOP GASKET W125",
+        "SRP": 36,
+        "discounted_price": 18
+    },
+    {
+        "description": "TOP GASKET LF110",
+        "SRP": 36,
+        "discounted_price": 18
+    },
+    {
+        "description": "TOP GASKET HD3",
+        "SRP": 38,
+        "discounted_price": 19
+    },
+    {
+        "description": "TOP GASKET BARAKO\/BC175",
+        "SRP": 53,
+        "discounted_price": 26.5
+    },
+    {
+        "description": "TOP GASKET CRYPTON",
+        "SRP": 44,
+        "discounted_price": 22
+    },
+    {
+        "description": "TOP GASKET MIO",
+        "SRP": 42,
+        "discounted_price": 21
+    },
+    {
+        "description": "TOP GASKET LF150",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "TOP GASKET TMX155",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "TOP GASKET BAJAJ\/CT100",
+        "SRP": 36,
+        "discounted_price": 18
+    },
+    {
+        "description": "TOP GASKET CB125",
+        "SRP": 46,
+        "discounted_price": 23
+    },
+    {
+        "description": "TOP GASKET DREAM",
+        "SRP": 48,
+        "discounted_price": 24
+    },
+    {
+        "description": "TOP GASKET XRM110",
+        "SRP": 36,
+        "discounted_price": 18
+    },
+    {
+        "description": "TOP GASKET CB110",
+        "SRP": 46,
+        "discounted_price": 23
+    },
+    {
+        "description": "TOP GASKET R150",
+        "SRP": 46,
+        "discounted_price": 23
+    },
+    {
+        "description": "TOP GASKET WIND125",
+        "SRP": 36,
+        "discounted_price": 18
+    },
+    {
+        "description": "TOP GASKET ROUSER135",
+        "SRP": 44,
+        "discounted_price": 22
+    },
+    {
+        "description": "TOP GASKET SNIPER135",
+        "SRP": 44,
+        "discounted_price": 22
+    },
+    {
+        "description": "TOP GASKET MIO125",
+        "SRP": 46,
+        "discounted_price": 23
+    },
+    {
+        "description": "TOP GASKET RS100",
+        "SRP": 32,
+        "discounted_price": 16
+    },
+    {
+        "description": "TOP GASKET CT125",
+        "SRP": 44,
+        "discounted_price": 22
+    },
+    {
+        "description": "TOP GASKET SMASH",
+        "SRP": 42,
+        "discounted_price": 21
+    },
+    {
+        "description": "TOP GASKET LC150\/SNIPER150\/MXI",
+        "SRP": 44,
+        "discounted_price": 22
+    },
+    {
+        "description": "TOP GASKET GD110",
+        "SRP": 44,
+        "discounted_price": 22
+    },
+    {
+        "description": "TOP GASKET FURY",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "CHAIN ADJUSTER WAVE DASH\/W110 SET",
+        "SRP": 41,
+        "discounted_price": 20.5
+    },
+    {
+        "description": "CHAIN ADJUSTER CB100\/CB110 SET",
+        "SRP": 116,
+        "discounted_price": 58
+    },
+    {
+        "description": "CHAIN ADJUSTER RUSI125\/TMX",
+        "SRP": 41,
+        "discounted_price": 20.5
+    },
+    {
+        "description": "CHAIN ADJUSTER HD3 SET",
+        "SRP": 41,
+        "discounted_price": 20.5
+    },
+    {
+        "description": "REAR HUB BUSHING UNIVERSAL SET WHITE",
+        "SRP": 70,
+        "discounted_price": 35
+    },
+    {
+        "description": "SWITCH FUEL PUMP",
+        "SRP": 582,
+        "discounted_price": 291
+    },
+    {
+        "description": "FUEL TANK CAP TMX BLACK-M",
+        "SRP": 139,
+        "discounted_price": 69.5
+    },
+    {
+        "description": "FUEL TANK CAP TMX SILVER-M",
+        "SRP": 139,
+        "discounted_price": 139
+    },
+    {
+        "description": "YAKIMOTO BRAKE SHOE STANDARD TMX-R V4",
+        "SRP": 113,
+        "discounted_price": 56.5
+    },
+    {
+        "description": "YAKIMOTO BRAKE SHOE STANDARD BC175\/STX V4",
+        "SRP": 156,
+        "discounted_price": 78
+    },
+    {
+        "description": "YAKIMOTO BRAKE SHOE STANDARD RS100 FRONT V4",
+        "SRP": 104,
+        "discounted_price": 52
+    },
+    {
+        "description": "YAKIMOTO BRAKE SHOE STANDARD TMX-F V4",
+        "SRP": 150,
+        "discounted_price": 75
+    },
+    {
+        "description": "YAKIMOTO BRAKE SHOE STANDARD MIO V4",
+        "SRP": 148,
+        "discounted_price": 74
+    },
+    {
+        "description": "YAKIMOTO BRAKE SHOE STANDARD XRM V4",
+        "SRP": 90,
+        "discounted_price": 45
+    },
+    {
+        "description": "YAKIMOTO BRAKE SHOE STANDARD CT100 V4",
+        "SRP": 90,
+        "discounted_price": 45
+    },
+    {
+        "description": "YAKIMOTO BRAKE SHOE STANDARD HONDA BEAT V4",
+        "SRP": 130,
+        "discounted_price": 65
+    },
+    {
+        "description": "AIR FILTER STOCK MIO i125 \/ MIO M3",
+        "SRP": 131,
+        "discounted_price": 65.5
+    },
+    {
+        "description": "AIR FILTER STOCK AEROX155 \/ AEROX 155",
+        "SRP": 129,
+        "discounted_price": 64.5
+    },
+    {
+        "description": "AIR FILTER STOCK MIO i125, MIO M3",
+        "SRP": 131,
+        "discounted_price": 65.5
+    },
+    {
+        "description": "AIR FILTER STOCK AEROX 155 \/ AEROX155",
+        "SRP": 129,
+        "discounted_price": 64.5
+    },
+    {
+        "description": "JOINT INJECTOR BEAT FI",
+        "SRP": 119,
+        "discounted_price": 59.5
+    },
+    {
+        "description": "CAM SPROCKET CT100\/BAJAJ 28T-S",
+        "SRP": 109.8,
+        "discounted_price": 54.9
+    },
+    {
+        "description": "OIL PUMP MIO-S",
+        "SRP": 360,
+        "discounted_price": 180
+    },
+    {
+        "description": "SIDE MIRROR CLAMP XRM 6MM-M",
+        "SRP": 88,
+        "discounted_price": 44
+    },
+    {
+        "description": "SIDE MIRROR CLAMP MIO LH BIG SILVER-M",
+        "SRP": 110,
+        "discounted_price": 55
+    },
+    {
+        "description": "SIDE MIRROR CLAMP MIO SMALL SILVER-S",
+        "SRP": 50,
+        "discounted_price": 25
+    },
+    {
+        "description": "SIDE MIRROR CLAMP MIO SMALL BLACK-S",
+        "SRP": 50,
+        "discounted_price": 25
+    },
+    {
+        "description": "SIDE MIRROR CLAMP R150-M",
+        "SRP": 132,
+        "discounted_price": 66
+    },
+    {
+        "description": "SIDE MIRROR CLAMP UNIVERSAL 8MM SILVER",
+        "SRP": 64,
+        "discounted_price": 32
+    },
+    {
+        "description": "SIDE MIRROR CLAMP UNIVERSAL 10MM SILVER",
+        "SRP": 82,
+        "discounted_price": 41
+    },
+    {
+        "description": "FUEL COCK TMX155\/RUSI-M",
+        "SRP": 130,
+        "discounted_price": 65
+    },
+    {
+        "description": "PRIMARY COIL TMX-S",
+        "SRP": 162,
+        "discounted_price": 81
+    },
+    {
+        "description": "PRIMARY COIL CT100 W\/ WIRE-S",
+        "SRP": 130,
+        "discounted_price": 65
+    },
+    {
+        "description": "PRIMARY COIL C100-S",
+        "SRP": 120,
+        "discounted_price": 60
+    },
+    {
+        "description": "DUO CAP XRM\/CG125-S",
+        "SRP": 60,
+        "discounted_price": 30
+    },
+    {
+        "description": "DUO CAP XRM\/CG125-S",
+        "SRP": 60,
+        "discounted_price": 30
+    },
+    {
+        "description": "DUO CAP YAMAHA\/FZ16-S",
+        "SRP": 90,
+        "discounted_price": 45
+    },
+    {
+        "description": "VINDEX REPAIR KIT TMX\/CG125-S",
+        "SRP": 55,
+        "discounted_price": 27.5
+    },
+    {
+        "description": "VINDEX REPAIR KIT W125-S",
+        "SRP": 60,
+        "discounted_price": 30
+    },
+    {
+        "description": "VINDEX REPAIR KIT C100-S",
+        "SRP": 50,
+        "discounted_price": 25
+    },
+    {
+        "description": "VINDEX REPAIR KIT GY6\/125-S",
+        "SRP": 55,
+        "discounted_price": 27.5
+    },
+    {
+        "description": "VINDEX REPAIR KIT TMX\/CG125-S",
+        "SRP": 55,
+        "discounted_price": 27.5
+    },
+    {
+        "description": "VINDEX REPAIR KIT LF150\/LF125-S",
+        "SRP": 55,
+        "discounted_price": 27.5
+    },
+    {
+        "description": "MANIFOLD XRM W\/ RUBBER 24MM-M",
+        "SRP": 190,
+        "discounted_price": 95
+    },
+    {
+        "description": "MANIFOLD ORDINARY 28MM-S",
+        "SRP": 90,
+        "discounted_price": 45
+    },
+    {
+        "description": "MANIFOLD ORDINARY 30MM",
+        "SRP": 90,
+        "discounted_price": 45
+    },
+    {
+        "description": "MANIFOLD TMX W\/ RUBBER-M",
+        "SRP": 90,
+        "discounted_price": 45
+    },
+    {
+        "description": "MANIFOLD MIO-M",
+        "SRP": 216,
+        "discounted_price": 108
+    },
+    {
+        "description": "MANIFOLD 28MM RED-S",
+        "SRP": 100,
+        "discounted_price": 50
+    },
+    {
+        "description": "MANIFOLD 28MM BLUE-S",
+        "SRP": 100,
+        "discounted_price": 50
+    },
+    {
+        "description": "MANIFOLD 24MM ORANGE-S",
+        "SRP": 100,
+        "discounted_price": 50
+    },
+    {
+        "description": "COIL SQ SOUL\/MIO AMORE (8pin)-M",
+        "SRP": 442,
+        "discounted_price": 221
+    },
+    {
+        "description": "CDI CB125 (4pin)-S",
+        "SRP": 556,
+        "discounted_price": 278
+    },
+    {
+        "description": "MANIFOLD UNIVERSAL-M",
+        "SRP": 210,
+        "discounted_price": 105
+    },
+    {
+        "description": "STARTER RELAY GY6\/RUSI 150-S",
+        "SRP": 170,
+        "discounted_price": 85
+    },
+    {
+        "description": "BRAKE PANEL SCREW XRM-S",
+        "SRP": 46,
+        "discounted_price": 23
+    },
+    {
+        "description": "BRAKE PANEL SCREW TMX-S",
+        "SRP": 46,
+        "discounted_price": 23
+    },
+    {
+        "description": "DRAIN PLUG MIO\/BAJAJ-S",
+        "SRP": 77,
+        "discounted_price": 38.5
+    },
+    {
+        "description": "CLUTCH RELEASE XRM SMALL-S",
+        "SRP": 80,
+        "discounted_price": 40
+    },
+    {
+        "description": "CLUTCH RELEASE XRM BIG-S",
+        "SRP": 80,
+        "discounted_price": 40
+    },
+    {
+        "description": "CONTACT POINT FOR STATOR MIO-S",
+        "SRP": 130,
+        "discounted_price": 65
+    },
+    {
+        "description": "OVERHAULING GASKET W125",
+        "SRP": 63,
+        "discounted_price": 31.5
+    },
+    {
+        "description": "OVERHAULING GASKET TMX155\/TMX CDI",
+        "SRP": 88,
+        "discounted_price": 44
+    },
+    {
+        "description": "OVERHAULING GASKET TMX SUPREMO",
+        "SRP": 82,
+        "discounted_price": 41
+    },
+    {
+        "description": "OVERHAULING GASKET LF150",
+        "SRP": 88,
+        "discounted_price": 44
+    },
+    {
+        "description": "OVERHAULING GASKET LF125",
+        "SRP": 66,
+        "discounted_price": 33
+    },
+    {
+        "description": "OVERHAULING GASKET DREAM\/C100",
+        "SRP": 87,
+        "discounted_price": 43.5
+    },
+    {
+        "description": "OVERHAULING GASKET CB125",
+        "SRP": 75,
+        "discounted_price": 37.5
+    },
+    {
+        "description": "OVERHAULING GASKET CT100\/BAJAJ",
+        "SRP": 88,
+        "discounted_price": 44
+    },
+    {
+        "description": "SPROCKET BOLT SET XRM-S",
+        "SRP": 52,
+        "discounted_price": 26
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT W125",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT CT100",
+        "SRP": 51,
+        "discounted_price": 25.5
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT CB110",
+        "SRP": 51,
+        "discounted_price": 25.5
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT BEAT",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT CLICK150",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "BRAKE ARM BARAKO REAR",
+        "SRP": 39,
+        "discounted_price": 19.5
+    },
+    {
+        "description": "BRAKE ARM RS100",
+        "SRP": 42,
+        "discounted_price": 21
+    },
+    {
+        "description": "THROTTLE CABLE FURY\/FURY125",
+        "SRP": 43,
+        "discounted_price": 21.5
+    },
+    {
+        "description": "CARBURETOR ASSY W125\/XRM125",
+        "SRP": 740,
+        "discounted_price": 370
+    },
+    {
+        "description": "CARBURETOR ASSY W125\/XRM125",
+        "SRP": 740,
+        "discounted_price": 370
+    },
+    {
+        "description": "CHAIN ADJUSTER SNIPER150",
+        "SRP": 170,
+        "discounted_price": 85
+    },
+    {
+        "description": "CHAIN ADJUSTER CB125",
+        "SRP": 150,
+        "discounted_price": 75
+    },
+    {
+        "description": "CHAIN ADJUSTER C100 SMALL HOLE-S",
+        "SRP": 15,
+        "discounted_price": 7.5
+    },
+    {
+        "description": "CHAIN ADJUSTER LF125",
+        "SRP": 41,
+        "discounted_price": 20.5
+    },
+    {
+        "description": "CHAIN ADJUSTER GD110",
+        "SRP": 74,
+        "discounted_price": 37
+    },
+    {
+        "description": "CHAIN ADJUSTER RAIDER110J",
+        "SRP": 41,
+        "discounted_price": 20.5
+    },
+    {
+        "description": "CHAIN ADJUSTER R150",
+        "SRP": 126,
+        "discounted_price": 63
+    },
+    {
+        "description": "CHAIN ADJUSTER FURY125",
+        "SRP": 41,
+        "discounted_price": 20.5
+    },
+    {
+        "description": "CHAIN ADJUSTER ROUSER135",
+        "SRP": 62,
+        "discounted_price": 31
+    },
+    {
+        "description": "CHAIN ADJUSTER SHOGUN",
+        "SRP": 100,
+        "discounted_price": 50
+    },
+    {
+        "description": "CHAIN ADJUSTER SNIPER135",
+        "SRP": 112,
+        "discounted_price": 56
+    },
+    {
+        "description": "CHAIN ADJUSTER RS100 SET",
+        "SRP": 66,
+        "discounted_price": 33
+    },
+    {
+        "description": "CHAIN ADJUSTER W125\/XRM125 SET",
+        "SRP": 104,
+        "discounted_price": 52
+    },
+    {
+        "description": "CHAIN ADJUSTER XRM\/C400 SET",
+        "SRP": 30,
+        "discounted_price": 15
+    },
+    {
+        "description": "SPROCKET BOLT SET CB125-S",
+        "SRP": 80,
+        "discounted_price": 40
+    },
+    {
+        "description": "SPROCKET BOLT SET FZ16-S",
+        "SRP": 86,
+        "discounted_price": 43
+    },
+    {
+        "description": "SPROCKET BOLT SET SNIPER135-S1",
+        "SRP": 74,
+        "discounted_price": 37
+    },
+    {
+        "description": "SPROCKET BOLT SET W110\/WAVE125-S",
+        "SRP": 76,
+        "discounted_price": 38
+    },
+    {
+        "description": "SPROCKET BOLT SET DASH-S",
+        "SRP": 90,
+        "discounted_price": 45
+    },
+    {
+        "description": "YK BEARING 6304RS",
+        "SRP": 61.2,
+        "discounted_price": 30.6
+    },
+    {
+        "description": "YK BEARING 6004RS",
+        "SRP": 38.04,
+        "discounted_price": 19.02
+    },
+    {
+        "description": "YK BEARING 6305RS",
+        "SRP": 85.8,
+        "discounted_price": 42.9
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT XRM",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT RUSI125",
+        "SRP": 44,
+        "discounted_price": 22
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT XRM REAR",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT RUSI150",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT SHOGUN",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT FURY REAR",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT SONIC",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT CRYPTON",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT DASH110",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT FZ16",
+        "SRP": 51,
+        "discounted_price": 25.5
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT VEGA FORCE",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT SMASH",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT XRM TRINITY-F",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT R150-REAR",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT ROUSER135",
+        "SRP": 51,
+        "discounted_price": 25.5
+    },
+    {
+        "description": "BRAKE MASTER REPAIR KIT SKYDRIVE",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "YK BALL RACE MIO",
+        "SRP": 110,
+        "discounted_price": 55
+    },
+    {
+        "description": "YK BALL RACE TMX",
+        "SRP": 96,
+        "discounted_price": 48
+    },
+    {
+        "description": "YK BALL RACE W125",
+        "SRP": 110,
+        "discounted_price": 55
+    },
+    {
+        "description": "YK BALL RACE BARAKO\/BC175",
+        "SRP": 110,
+        "discounted_price": 55
+    },
+    {
+        "description": "YK BALL RACE C100DREAM",
+        "SRP": 110,
+        "discounted_price": 55
+    },
+    {
+        "description": "YK BALL RACE STX",
+        "SRP": 110,
+        "discounted_price": 55
+    },
+    {
+        "description": "YK BALL RACE R150",
+        "SRP": 124,
+        "discounted_price": 62
+    },
+    {
+        "description": "YK BALL RACE FURY",
+        "SRP": 110,
+        "discounted_price": 55
+    },
+    {
+        "description": "YK BALL RACE SMASH",
+        "SRP": 110,
+        "discounted_price": 55
+    },
+    {
+        "description": "YK BALL RACE NMAX\/AEROX",
+        "SRP": 124,
+        "discounted_price": 62
+    },
+    {
+        "description": "RIOS SPOKES AND NIPPLES 10x157",
+        "SRP": 98,
+        "discounted_price": 49
+    },
+    {
+        "description": "RIOS SPOKES AND NIPPLES 10x185",
+        "SRP": 109,
+        "discounted_price": 54.5
+    },
+    {
+        "description": "RIOS SPOKES AND NIPPLES 10x181",
+        "SRP": 102,
+        "discounted_price": 51
+    },
+    {
+        "description": "RIOS SPOKES AND NIPPLES 10x145",
+        "SRP": 95,
+        "discounted_price": 47.5
+    },
+    {
+        "description": "RIOS SPOKES AND NIPPLES 10x155",
+        "SRP": 98,
+        "discounted_price": 49
+    },
+    {
+        "description": "RIOS SPOKES AND NIPPLES 8x185",
+        "SRP": 148,
+        "discounted_price": 74
+    },
+    {
+        "description": "RIOS SPOKES AND NIPPLES 8x155",
+        "SRP": 134,
+        "discounted_price": 67
+    },
+    {
+        "description": "RIOS SPOKES AND NIPPLES 8x161",
+        "SRP": 138,
+        "discounted_price": 69
+    },
+    {
+        "description": "RIOS SPOKES AND NIPPLES 8x197",
+        "SRP": 157,
+        "discounted_price": 78.5
+    },
+    {
+        "description": "RIOS SPOKES AND NIPPLES 8x157",
+        "SRP": 134,
+        "discounted_price": 67
+    },
+    {
+        "description": "RIOS SPOKES AND NIPPLES 8x240",
+        "SRP": 176,
+        "discounted_price": 88
+    },
+    {
+        "description": "RIOS SPOKES AND NIPPLES 8x230",
+        "SRP": 176,
+        "discounted_price": 88
+    },
+    {
+        "description": "RIOS SPOKES AND NIPPLES 8x145",
+        "SRP": 129,
+        "discounted_price": 64.5
+    },
+    {
+        "description": "RIOS SPOKES AND NIPPLES 8x175",
+        "SRP": 143,
+        "discounted_price": 71.5
+    },
+    {
+        "description": "RIOS SPOKES AND NIPPLES 8x208",
+        "SRP": 161,
+        "discounted_price": 80.5
+    },
+    {
+        "description": "BRAKE HOSE 85CM",
+        "SRP": 130,
+        "discounted_price": 65
+    },
+    {
+        "description": "BRAKE HOSE 100CM",
+        "SRP": 140,
+        "discounted_price": 70
+    },
+    {
+        "description": "BRAKE HOSE 60CM",
+        "SRP": 120,
+        "discounted_price": 60
+    },
+    {
+        "description": "FOOTREST FRONT CT100",
+        "SRP": 40,
+        "discounted_price": 20
+    },
+    {
+        "description": "SPROCKET BOLT SET TMX-S",
+        "SRP": 53,
+        "discounted_price": 26.5
+    },
+    {
+        "description": "SPROCKET BOLT SET BAJAJ-S",
+        "SRP": 70,
+        "discounted_price": 35
+    },
+    {
+        "description": "SPROCKET BOLT SET DREAMC100",
+        "SRP": 52,
+        "discounted_price": 26
+    },
+    {
+        "description": "SPROCKET BOLT SET HD3-S",
+        "SRP": 69,
+        "discounted_price": 34.5
+    },
+    {
+        "description": "SPROCKET BOLT SET ROUSER135-S",
+        "SRP": 80,
+        "discounted_price": 40
+    },
+    {
+        "description": "SPROCKET BOLT SET RS100-S",
+        "SRP": 65,
+        "discounted_price": 32.5
+    },
+    {
+        "description": "SPROCKET BOLT SET RUSI125\/RUSI-AAA-S",
+        "SRP": 66,
+        "discounted_price": 33
+    },
+    {
+        "description": "SPROCKET BOLT SET ROUSER200-S",
+        "SRP": 92,
+        "discounted_price": 46
+    },
+    {
+        "description": "SPROCKET BOLT SET CB110-S",
+        "SRP": 74,
+        "discounted_price": 37
+    }
+]
