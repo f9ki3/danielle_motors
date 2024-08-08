@@ -29,7 +29,7 @@ foreach ($dataArray as $item) {
     
     $item_wholesale = $srp - ($srp * 0.3);
 
-    $checkdescription = "SELECT * FROM product WHERE `name` = '$partname' LIMIT 1";
+    $checkdescription = "SELECT * FROM product WHERE `name` = '$partname' AND code = '$partcode' AND barcode = '$barcode' AND models = '$models' AND brand_id = '23' LIMIT 1";
     $checkdescriptionquery = mysqli_query($conn, $checkdescription);
     if($checkdescriptionquery -> num_rows>0){
         $row = $checkdescriptionquery -> fetch_assoc();
