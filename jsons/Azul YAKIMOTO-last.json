@@ -1,0 +1,7359 @@
+[
+    {
+        "Part Number": "22OP1",
+        "Description": "OIL PUMP",
+        "Model": "W100/W110 121",
+        "Price": 240,
+        "Code": "170000000369"
+    },
+    {
+        "Part Number": "22OP2",
+        "Description": "OIL PUMP",
+        "Model": "TMX 290",
+        "Price": 240,
+        "Code": "170000000370"
+    },
+    {
+        "Part Number": "22OP3",
+        "Description": "OIL PUMP",
+        "Model": "XRM110 210",
+        "Price": 240,
+        "Code": "170000000368"
+    },
+    {
+        "Part Number": "22OP4",
+        "Description": "OIL PUMP",
+        "Model": "CT100 276",
+        "Price": 240,
+        "Code": "180000002759"
+    },
+    {
+        "Part Number": "22OP5",
+        "Description": "OIL PUMP",
+        "Model": "MIO 360",
+        "Price": 240,
+        "Code": "180000002758"
+    },
+    {
+        "Part Number": "22OP6",
+        "Description": "OIL PUMP",
+        "Model": "RUSI 125",
+        "Price": 240,
+        "Code": "180000003495"
+    },
+    {
+        "Part Number": "22OP7",
+        "Description": "OIL PUMP",
+        "Model": "CG200/LF200/LX200",
+        "Price": 240,
+        "Code": "220000007554"
+    },
+    {
+        "Part Number": "23SB1",
+        "Description": "SHOCK BUSHING",
+        "Model": "XRM (SMALL)",
+        "Price": 60,
+        "Code": "170000000364"
+    },
+    {
+        "Part Number": "23SB2",
+        "Description": "SHOCK BUSHING",
+        "Model": "TMX/RUSI (BIG)",
+        "Price": 60,
+        "Code": "230000009309"
+    },
+    {
+        "Part Number": "24IC1",
+        "Description": "IGNITION COIL",
+        "Model": "XRM/W125/W110",
+        "Price": 143,
+        "Code": "170000000865"
+    },
+    {
+        "Part Number": "24IC2",
+        "Description": "IGNITION COIL",
+        "Model": "XRM W/CAP",
+        "Price": 156,
+        "Code": "180000002558"
+    },
+    {
+        "Part Number": "24IC3",
+        "Description": "IGNITION COIL",
+        "Model": "TMX/TMX CDI/RUSI 125/BARAKO/GY6",
+        "Price": 143,
+        "Code": "170000000231"
+    },
+    {
+        "Part Number": "24IC4",
+        "Description": "IGNITION COIL",
+        "Model": "TMX CDI/TMX/RUSI125/GY6/BARAKO",
+        "Price": 143,
+        "Code": "170000000231"
+    },
+    {
+        "Part Number": "24IC5",
+        "Description": "IGNITION COIL",
+        "Model": "W125/XRM/W110",
+        "Price": 143,
+        "Code": "170000000865"
+    },
+    {
+        "Part Number": "24IC6",
+        "Description": "IGNITION COIL",
+        "Model": "MIO",
+        "Price": 154,
+        "Code": "170000000138"
+    },
+    {
+        "Part Number": "24IC7",
+        "Description": "IGNITION COIL",
+        "Model": "CT100",
+        "Price": 154,
+        "Code": "170000000136"
+    },
+    {
+        "Part Number": "24IC8",
+        "Description": "IGNITION COIL",
+        "Model": "R150",
+        "Price": 165,
+        "Code": "170000000139"
+    },
+    {
+        "Part Number": "24IC9",
+        "Description": "IGNITION COIL",
+        "Model": "GY6/TMX CDI/TMX/BARAKO/RUSI125",
+        "Price": 143,
+        "Code": "170000000231"
+    },
+    {
+        "Part Number": "24IC10",
+        "Description": "IGNITION COIL",
+        "Model": "UNIVERSAL GY6/TMX/TMX CDI",
+        "Price": 190,
+        "Code": "170000000140"
+    },
+    {
+        "Part Number": "24IC11",
+        "Description": "IGNITION COIL",
+        "Model": "BARAKO/RUSI125/GY6/TMX/TMX CDI",
+        "Price": 143,
+        "Code": "170000000231"
+    },
+    {
+        "Part Number": "24IC12",
+        "Description": "IGNITION COIL",
+        "Model": "MIO BIG",
+        "Price": 165,
+        "Code": "980000001878"
+    },
+    {
+        "Part Number": "24IC13",
+        "Description": "IGNITION COIL",
+        "Model": "W110/XRM/W125",
+        "Price": 143,
+        "Code": "170000000865"
+    },
+    {
+        "Part Number": "24IC14",
+        "Description": "IGNITION COIL",
+        "Model": "RUSI125/BARAKO/GY6/TMX/TMX CDI",
+        "Price": 143,
+        "Code": "170000000231"
+    },
+    {
+        "Part Number": "25KS1",
+        "Description": "KICK SHAFT",
+        "Model": "MIO",
+        "Price": 240,
+        "Code": "170000000872"
+    },
+    {
+        "Part Number": "25KS2",
+        "Description": "KICK SHAFT",
+        "Model": "GY6 LONG SET",
+        "Price": 540,
+        "Code": "170000000551"
+    },
+    {
+        "Part Number": "25KS3",
+        "Description": "KICK SHAFT",
+        "Model": "NOUVO",
+        "Price": 240,
+        "Code": "170000000874"
+    },
+    {
+        "Part Number": "25KS4",
+        "Description": "KICK SHAFT ASSY",
+        "Model": "TMX/RUSI125",
+        "Price": 480,
+        "Code": "180000003461"
+    },
+    {
+        "Part Number": "25KS5",
+        "Description": "KICK SHAFT",
+        "Model": "GY6 LONG",
+        "Price": 300,
+        "Code": "190000003993"
+    },
+    {
+        "Part Number": "25KS6",
+        "Description": "KICK SHAFT",
+        "Model": "MIOi 125/M3",
+        "Price": 280,
+        "Code": "190000005446"
+    },
+    {
+        "Part Number": "25KS7",
+        "Description": "KICK SHAFT",
+        "Model": "CLICK",
+        "Price": 0,
+        "Code": "910000005051"
+    },
+    {
+        "Part Number": "26BL1",
+        "Description": "BRAKE LEVER",
+        "Model": "XRM/WAVE",
+        "Price": 78,
+        "Code": "170000000789"
+    },
+    {
+        "Part Number": "26BL2",
+        "Description": "BRAKE LEVER",
+        "Model": "SET TMX155",
+        "Price": 110,
+        "Code": "170000000292"
+    },
+    {
+        "Part Number": "26BL3",
+        "Description": "BRAKE LEVER",
+        "Model": "MIO",
+        "Price": 127.6,
+        "Code": "170000000787"
+    },
+    {
+        "Part Number": "26BL4",
+        "Description": "BRAKE LEVER",
+        "Model": "SET CT100",
+        "Price": 110,
+        "Code": "170000000235"
+    },
+    {
+        "Part Number": "26BL5",
+        "Description": "BRAKE LEVER",
+        "Model": "BARAKO",
+        "Price": 165,
+        "Code": "170000000284"
+    },
+    {
+        "Part Number": "26BL6",
+        "Description": "BRAKE LEVER",
+        "Model": "R150",
+        "Price": 127.6,
+        "Code": "170000000234"
+    },
+    {
+        "Part Number": "26BL7",
+        "Description": "BRAKE LEVER",
+        "Model": "DREAM",
+        "Price": 74,
+        "Code": "170000000232"
+    },
+    {
+        "Part Number": "26BL8",
+        "Description": "BRAKE LEVER",
+        "Model": "SET HD3",
+        "Price": 125.6,
+        "Code": "170000000790"
+    },
+    {
+        "Part Number": "26BL9",
+        "Description": "BRAKE LEVER",
+        "Model": "RS100",
+        "Price": 136.4,
+        "Code": "170000000788"
+    },
+    {
+        "Part Number": "26BL10",
+        "Description": "BRAKE LEVER",
+        "Model": "TMX SUPREMO",
+        "Price": 200,
+        "Code": "180000002559"
+    },
+    {
+        "Part Number": "26BL11",
+        "Description": "BRAKE LEVER",
+        "Model": "RUSI 150",
+        "Price": 108,
+        "Code": "180000002560"
+    },
+    {
+        "Part Number": "26BL12",
+        "Description": "BRAKE LEVER",
+        "Model": "RUSI 125",
+        "Price": 120,
+        "Code": "180000002982"
+    },
+    {
+        "Part Number": "26BL13",
+        "Description": "BRAKE LEVER",
+        "Model": "STX",
+        "Price": 156,
+        "Code": "980000002930"
+    },
+    {
+        "Part Number": "26BL14",
+        "Description": "BRAKE LEVER",
+        "Model": "CB125",
+        "Price": 120,
+        "Code": "980000003171"
+    },
+    {
+        "Part Number": "26BL15",
+        "Description": "BRAKE LEVER",
+        "Model": "GD110/XL125",
+        "Price": 136,
+        "Code": "980000003170"
+    },
+    {
+        "Part Number": "26BL16",
+        "Description": "BRAKE LEVER",
+        "Model": "SMASH R/H",
+        "Price": 110,
+        "Code": "980000003172"
+    },
+    {
+        "Part Number": "26BL17",
+        "Description": "BRAKE LEVER",
+        "Model": "W100",
+        "Price": 90,
+        "Code": "220000007793"
+    },
+    {
+        "Part Number": "26BL18",
+        "Description": "BRAKE LEVER",
+        "Model": "RS100 NEW",
+        "Price": 0,
+        "Code": "990000003551"
+    },
+    {
+        "Part Number": "26BL19",
+        "Description": "BRAKE LEVER",
+        "Model": "CLICK125",
+        "Price": 145.46,
+        "Code": "230000009527"
+    },
+    {
+        "Part Number": "26BL20",
+        "Description": "BRAKE LEVER",
+        "Model": "SNIPER150",
+        "Price": 0,
+        "Code": "230000008907"
+    },
+    {
+        "Part Number": "27SP1",
+        "Description": "SPARKPLUG",
+        "Model": "XRM/A7TC 38",
+        "Price": 38,
+        "Code": "170000000502"
+    },
+    {
+        "Part Number": "27SP2",
+        "Description": "SPARKPLUG",
+        "Model": "XRM/D6HA 42",
+        "Price": 42,
+        "Code": "180000002561"
+    },
+    {
+        "Part Number": "27SP3",
+        "Description": "SPARKPLUG",
+        "Model": "TMX/D8TC 38",
+        "Price": 38,
+        "Code": "170000000834"
+    },
+    {
+        "Part Number": "27SP4",
+        "Description": "SPARKPLUG",
+        "Model": "W125/CR8E 38",
+        "Price": 38,
+        "Code": "180000001889"
+    },
+    {
+        "Part Number": "27SP5",
+        "Description": "SPARKPLUG",
+        "Model": "F6TC 42",
+        "Price": 42,
+        "Code": "170000000834"
+    },
+    {
+        "Part Number": "27SP6",
+        "Description": "SPARKPLUG",
+        "Model": "E6TC 42",
+        "Price": 42,
+        "Code": "170000000835"
+    },
+    {
+        "Part Number": "28GOC1",
+        "Description": "GLAND OIL CUP",
+        "Model": "TMX/RUSI125 164",
+        "Price": 164,
+        "Code": "170000000427"
+    },
+    {
+        "Part Number": "28GOC2",
+        "Description": "GLAND OIL CUP",
+        "Model": "CG200 164",
+        "Price": 164,
+        "Code": "180000002315"
+    },
+    {
+        "Part Number": "29SMC1",
+        "Description": "SIDE MIRROR CLAMP",
+        "Model": "XRM R/H 6mm 88",
+        "Price": 88,
+        "Code": "170000000948"
+    },
+    {
+        "Part Number": "29SMC2",
+        "Description": "SIDE MIRROR CLAMP",
+        "Model": "MIO L/H BIG",
+        "Price": 110,
+        "Code": "170000000428"
+    },
+    {
+        "Part Number": "29SMC3",
+        "Description": "SIDE MIRROR CLAMP",
+        "Model": "MIO SMALL SILVER",
+        "Price": 50,
+        "Code": "170000000946"
+    },
+    {
+        "Part Number": "29SMC4",
+        "Description": "SIDE MIRROR CLAMP",
+        "Model": "MIO SMALL BLACK",
+        "Price": 50,
+        "Code": "170000000947"
+    },
+    {
+        "Part Number": "29SMC5",
+        "Description": "SIDE MIRROR CLAMP",
+        "Model": "R150 L/H 132",
+        "Price": 132,
+        "Code": "170000000429"
+    },
+    {
+        "Part Number": "29SMC6",
+        "Description": "SIDE MIRROR CLAMP",
+        "Model": "RUSI150 LEFT",
+        "Price": 92,
+        "Code": "180000002562"
+    },
+    {
+        "Part Number": "29SMC7",
+        "Description": "SIDE MIRROR CLAMP",
+        "Model": "RUSI150 RIGHT",
+        "Price": 92,
+        "Code": "180000002563"
+    },
+    {
+        "Part Number": "29SMC8",
+        "Description": "SIDE MIRROR CLAMP",
+        "Model": "UNIVERSAL 8MM",
+        "Price": 64,
+        "Code": "180000003088"
+    },
+    {
+        "Part Number": "29SMC9",
+        "Description": "SIDE MIRROR CLAMP",
+        "Model": "UNIVERSAL 10MM",
+        "Price": 81.82,
+        "Code": "180000003130"
+    },
+    {
+        "Part Number": "29SMC10",
+        "Description": "SIDE MIRROR CLAMP",
+        "Model": "SKYDRIVE",
+        "Price": 80,
+        "Code": "980000002600"
+    },
+    {
+        "Part Number": "29SMC11",
+        "Description": "SIDE MIRROR CLAMP",
+        "Model": "MIO125",
+        "Price": 96.218,
+        "Code": "990000003552"
+    },
+    {
+        "Part Number": "30RA1",
+        "Description": "ROCKER ARM",
+        "Model": "XRM/W100",
+        "Price": 169.40,
+        "Code": "170000000237"
+    },
+    {
+        "Part Number": "30RA2",
+        "Description": "ROCKER ARM DOWN",
+        "Model": "TMX/RUSI125",
+        "Price": 220,
+        "Code": "170000000457"
+    },
+    {
+        "Part Number": "30RA3",
+        "Description": "ROCKER ARM UP",
+        "Model": "TMX ASSY 240",
+        "Price": 240,
+        "Code": "170000000458"
+    },
+    {
+        "Part Number": "30RA4",
+        "Description": "ROCKER ARM",
+        "Model": "W125 370",
+        "Price": 370,
+        "Code": "170000000454"
+    },
+    {
+        "Part Number": "30RA5",
+        "Description": "ROCKER ARM",
+        "Model": "MIO/CRYPTON/STX",
+        "Price": 176,
+        "Code": "170000000869"
+    },
+    {
+        "Part Number": "30RA6",
+        "Description": "ROCKER ARM",
+        "Model": "BAJAJ 370",
+        "Price": 370,
+        "Code": "170000000446"
+    },
+    {
+        "Part Number": "30RA7",
+        "Description": "ROCKER ARM",
+        "Model": "BARAKO 310",
+        "Price": 310,
+        "Code": "170000000554"
+    },
+    {
+        "Part Number": "30RA8",
+        "Description": "ROCKER ARM",
+        "Model": "R150 200",
+        "Price": 200,
+        "Code": "170000000450"
+    },
+    {
+        "Part Number": "30RA9",
+        "Description": "ROCKER ARM",
+        "Model": "GY6 210",
+        "Price": 210,
+        "Code": "170000000448"
+    },
+    {
+        "Part Number": "30RA10",
+        "Description": "ROCKER ARM",
+        "Model": "XR200/XL125/CB125",
+        "Price": 360,
+        "Code": "170000000443"
+    },
+    {
+        "Part Number": "30RA11",
+        "Description": "ROCKER ARM",
+        "Model": "W100/XRM 169.40",
+        "Price": 169.40,
+        "Code": "170000000237"
+    },
+    {
+        "Part Number": "30RA12",
+        "Description": "ROCKER ARM",
+        "Model": "W110 W/BEARING/BEAT 370",
+        "Price": 370,
+        "Code": "170000000240"
+    },
+    {
+        "Part Number": "30RA13",
+        "Description": "ROCKER ARM",
+        "Model": "SNIPER 620",
+        "Price": 620,
+        "Code": "170000000442"
+    },
+    {
+        "Part Number": "30RA14",
+        "Description": "ROCKER ARM",
+        "Model": "CRYPTON/STX/MIO",
+        "Price": 176,
+        "Code": "170000000869"
+    },
+    {
+        "Part Number": "30RA15",
+        "Description": "ROCKER ARM",
+        "Model": "STX/MIO/CRYPTON",
+        "Price": 176,
+        "Code": "170000000869"
+    },
+    {
+        "Part Number": "30RA16",
+        "Description": "ROCKER ARM",
+        "Model": "FURY 176",
+        "Price": 176,
+        "Code": "170000000451"
+    },
+    {
+        "Part Number": "30RA17",
+        "Description": "ROCKER ARM",
+        "Model": "SMASH 187",
+        "Price": 187,
+        "Code": "170000000868"
+    },
+    {
+        "Part Number": "30RA18",
+        "Description": "ROCKER ARM",
+        "Model": "SHOGUN 176",
+        "Price": 176,
+        "Code": "170000000456"
+    },
+    {
+        "Part Number": "30RA19",
+        "Description": "ROCKER ARM",
+        "Model": "RUSI 150/TC150 200",
+        "Price": 200,
+        "Code": "170000000886"
+    },
+    {
+        "Part Number": "30RA20",
+        "Description": "ROCKER ARM",
+        "Model": "TMX SUPREMO 398",
+        "Price": 398,
+        "Code": "180000001882"
+    },
+    {
+        "Part Number": "30RA21",
+        "Description": "ROCKER ARM",
+        "Model": "RUSI150 ASSY 410",
+        "Price": 410,
+        "Code": "180000001647"
+    },
+    {
+        "Part Number": "30RA22",
+        "Description": "ROCKER ARM",
+        "Model": "BEAT /W110 W/BEARING 370",
+        "Price": 370,
+        "Code": "170000000240"
+    },
+    {
+        "Part Number": "30RA23",
+        "Description": "ROCKER ARM",
+        "Model": "CB110/DASH/CB125 W/ BEARING 360",
+        "Price": 360,
+        "Code": "170000000864"
+    },
+    {
+        "Part Number": "30RA25",
+        "Description": "ROCKER ARM",
+        "Model": "CB125/XR200/XLR200/XL125 WITHOUT BEARING 360",
+        "Price": 360,
+        "Code": "170000000443"
+    },
+    {
+        "Part Number": "30RA26",
+        "Description": "ROCKER ARM",
+        "Model": "W110 WITH BEARING 170",
+        "Price": 170,
+        "Code": "180000002713"
+    },
+    {
+        "Part Number": "30RA27",
+        "Description": "ROCKER ARM",
+        "Model": "CT100 DOWN W/BEARING 370",
+        "Price": 370,
+        "Code": "190000004891"
+    },
+    {
+        "Part Number": "30RA28",
+        "Description": "ROCKER ARM",
+        "Model": "TMX/RUSI125/RUSI150 W/BEARING 440",
+        "Price": 440,
+        "Code": "190000005397"
+    },
+    {
+        "Part Number": "30RA29",
+        "Description": "ROCKER ARM",
+        "Model": "NMAX 1360",
+        "Price": 1360,
+        "Code": "220000007734"
+    },
+    {
+        "Part Number": "30RA30",
+        "Description": "ROCKER ARM",
+        "Model": "MIO M3 433.80",
+        "Price": 433.80,
+        "Code": "220000007906"
+    },
+    {
+        "Part Number": "30RA31",
+        "Description": "ROCKER ARM",
+        "Model": "CLICK125 461.80",
+        "Price": 461.80,
+        "Code": "220000007907"
+    },
+    {
+        "Part Number": "31LP1",
+        "Description": "LINING PLATE",
+        "Model": "TMX 84",
+        "Price": 84,
+        "Code": "170000000878"
+    },
+    {
+        "Part Number": "31LP2",
+        "Description": "LINING PLATE",
+        "Model": "W125 84",
+        "Price": 84,
+        "Code": "170000000106"
+    },
+    {
+        "Part Number": "31LP3",
+        "Description": "LINING PLATE",
+        "Model": "BAJAJ 76",
+        "Price": 76,
+        "Code": "1700000008877"
+    },
+    {
+        "Part Number": "32FC1",
+        "Description": "FUEL COCK",
+        "Model": "XRM 110",
+        "Price": 110,
+        "Code": "170000000876"
+    },
+    {
+        "Part Number": "32FC2",
+        "Description": "FUEL COCK",
+        "Model": "TMX155 130",
+        "Price": 130,
+        "Code": "170000000559"
+    },
+    {
+        "Part Number": "32FC3",
+        "Description": "FUEL COCK",
+        "Model": "W125 120",
+        "Price": 120,
+        "Code": "170000000434"
+    },
+    {
+        "Part Number": "32FC4",
+        "Description": "FUEL COCK",
+        "Model": "CRYPTON/MIO/MIO SOUL115 190",
+        "Price": 190,
+        "Code": "170000000555"
+    },
+    {
+        "Part Number": "32FC5",
+        "Description": "FUEL COCK",
+        "Model": "CT100",
+        "Price": 165,
+        "Code": "170000000188"
+    },
+    {
+        "Part Number": "32FC6",
+        "Description": "FUEL COCK",
+        "Model": "BARAKO",
+        "Price": 170,
+        "Code": "170000000435"
+    },
+    {
+        "Part Number": "32FC7",
+        "Description": "FUEL COCK",
+        "Model": "R150/SMASH/SHOGUN",
+        "Price": 170,
+        "Code": "170000000432"
+    },
+    {
+        "Part Number": "32FC8",
+        "Description": "FUEL COCK",
+        "Model": "GY6",
+        "Price": 120,
+        "Code": "170000000433"
+    },
+    {
+        "Part Number": "32FC9",
+        "Description": "FUEL COCK",
+        "Model": "CG125",
+        "Price": 77,
+        "Code": "170000000556"
+    },
+    {
+        "Part Number": "32FC10",
+        "Description": "FUEL COCK",
+        "Model": "DREAM 100",
+        "Price": 100,
+        "Code": "170000000962"
+    },
+    {
+        "Part Number": "32FC11",
+        "Description": "FUEL COCK",
+        "Model": "RUSI 125",
+        "Price": 96,
+        "Code": "170000000449"
+    },
+    {
+        "Part Number": "32FC12",
+        "Description": "FUEL COCK",
+        "Model": "UNIVERSAL",
+        "Price": 90,
+        "Code": "190000005301"
+    },
+    {
+        "Part Number": "32FC13",
+        "Description": "FUEL COCK",
+        "Model": "RS100",
+        "Price": 161.274,
+        "Code": "920000005952"
+    },
+    {
+        "Part Number": "32FC14",
+        "Description": "FUEL COCK",
+        "Model": "MIOi125/M3",
+        "Price": 104.50,
+        "Code": "210000007123"
+    },
+    {
+        "Part Number": "32FC15",
+        "Description": "FUEL COCK",
+        "Model": "BEAT",
+        "Price": 104.50,
+        "Code": "920000006112"
+    },
+    {
+        "Part Number": "32FC16",
+        "Description": "FUEL COCK",
+        "Model": "XRM125",
+        "Price": 104.50,
+        "Code": "920000006113"
+    },
+    {
+        "Part Number": "32FC17",
+        "Description": "FUEL COCK",
+        "Model": "STX",
+        "Price": 175.637,
+        "Code": "920000006114"
+    },
+    {
+        "Part Number": "32FC18",
+        "Description": "FUEL COCK",
+        "Model": "TMX NEW",
+        "Price": 138.91,
+        "Code": "230000009805"
+    },
+    {
+        "Part Number": "33PC1",
+        "Description": "PRIMARY COIL",
+        "Model": "TMX",
+        "Price": 161.2,
+        "Code": "170000000289"
+    },
+    {
+        "Part Number": "33PC2",
+        "Description": "PRIMARY COIL",
+        "Model": "CT100",
+        "Price": 130,
+        "Code": "170000000439"
+    },
+    {
+        "Part Number": "33PC3",
+        "Description": "PRIMARY COIL",
+        "Model": "CT100 W/WIRE",
+        "Price": 130,
+        "Code": "170000000093"
+    },
+    {
+        "Part Number": "33PC4",
+        "Description": "PRIMARY COIL",
+        "Model": "C100",
+        "Price": 120,
+        "Code": "170000000093"
+    },
+    {
+        "Part Number": "33PC5",
+        "Description": "LIGHT COIL V.1",
+        "Model": "C100",
+        "Price": 140,
+        "Code": "170000000187"
+    },
+    {
+        "Part Number": "33PC6",
+        "Description": "LIGHT COIL V.2",
+        "Model": "C100",
+        "Price": 180,
+        "Code": "180000002466"
+    },
+    {
+        "Part Number": "34BS1",
+        "Description": "BOLT SET TMX BIG",
+        "Model": "",
+        "Price": 166,
+        "Code": "170000000828"
+    },
+    {
+        "Part Number": "34BS2",
+        "Description": "BOLT SET TMX SMALL",
+        "Model": "",
+        "Price": 140,
+        "Code": "170000000739"
+    },
+    {
+        "Part Number": "34BS3",
+        "Description": "BOLT SET",
+        "Model": "W125",
+        "Price": 240,
+        "Code": "180000001599"
+    },
+    {
+        "Part Number": "34BS4",
+        "Description": "BOLT SET",
+        "Model": "R150",
+        "Price": 244,
+        "Code": "180000001598"
+    },
+    {
+        "Part Number": "34BS5",
+        "Description": "BOLT SET",
+        "Model": "MIO",
+        "Price": 160,
+        "Code": "180000002567"
+    },
+    {
+        "Part Number": "34BS6",
+        "Description": "BOLT SET",
+        "Model": "SNIPER135",
+        "Price": 330,
+        "Code": "180000002568"
+    },
+    {
+        "Part Number": "34BS7",
+        "Description": "BOLT SET",
+        "Model": "SNIPER 150",
+        "Price": 274,
+        "Code": "180000001952"
+    },
+    {
+        "Part Number": "34BS8",
+        "Description": "BOLT SET",
+        "Model": "W110",
+        "Price": 240,
+        "Code": "190000004631"
+    },
+    {
+        "Part Number": "34BS9",
+        "Description": "BOLT SET",
+        "Model": "MIO125",
+        "Price": 136.36,
+        "Code": "220000008838"
+    },
+    {
+        "Part Number": "35PR1",
+        "Description": "PUSH ROD",
+        "Model": "TMX 155",
+        "Price": 114,
+        "Code": "170000000875"
+    },
+    {
+        "Part Number": "35PR2",
+        "Description": "PUSH ROD",
+        "Model": "CG125/RUSI125",
+        "Price": 94,
+        "Code": "170000000957"
+    },
+    {
+        "Part Number": "36AS1",
+        "Description": "AXLE SLEEVE",
+        "Model": "XRM",
+        "Price": 55,
+        "Code": "170000000794"
+    },
+    {
+        "Part Number": "36AS2",
+        "Description": "AXLE SLEEVE",
+        "Model": "CT100",
+        "Price": 78,
+        "Code": "180000001324"
+    },
+    {
+        "Part Number": "36AS3",
+        "Description": "AXLE SLEEVE DREAM THIN 55x12",
+        "Model": "",
+        "Price": 58,
+        "Code": "170000000453"
+    },
+    {
+        "Part Number": "36AS4",
+        "Description": "AXLE SLEEVE DREAM THICK",
+        "Model": "",
+        "Price": 58,
+        "Code": "170000000397"
+    },
+    {
+        "Part Number": "36AS5",
+        "Description": "AXLE SLEEVE",
+        "Model": "RS100",
+        "Price": 76,
+        "Code": "170000000107"
+    },
+    {
+        "Part Number": "36AS6",
+        "Description": "AXLE SLEEVE XRM 62x12",
+        "Model": "",
+        "Price": 58,
+        "Code": "180000003086"
+    },
+    {
+        "Part Number": "36AS7",
+        "Description": "AXLE SLEEVE",
+        "Model": "XRM125/W110",
+        "Price": 60,
+        "Code": "190000004635"
+    },
+    {
+        "Part Number": "36AS8",
+        "Description": "AXLE SLEEVE",
+        "Model": "ROUSER135",
+        "Price": 110,
+        "Code": "190000004637"
+    },
+    {
+        "Part Number": "36AS9",
+        "Description": "AXLE SLEEVE",
+        "Model": "BARAKO",
+        "Price": 70,
+        "Code": "190000004634"
+    },
+    {
+        "Part Number": "36AS10",
+        "Description": "AXLE SLEEVE HD3 26x15",
+        "Model": "",
+        "Price": 87.27,
+        "Code": "190000004636"
+    },
+    {
+        "Part Number": "36AS11",
+        "Description": "AXLE SLEEVE",
+        "Model": "W125",
+        "Price": 60,
+        "Code": "220000008606"
+    },
+    {
+        "Part Number": "37DC1",
+        "Description": "DUO CAP",
+        "Model": "XRM/CG125",
+        "Price": 60,
+        "Code": "170000000685"
+    },
+    {
+        "Part Number": "37DC2",
+        "Description": "DUO CAP",
+        "Model": "YAMAHA",
+        "Price": 90,
+        "Code": "170000000873"
+    },
+    {
+        "Part Number": "37DC3",
+        "Description": "DUO CAP",
+        "Model": "CG125/XRM",
+        "Price": 60,
+        "Code": "170000000685"
+    },
+    {
+        "Part Number": "38CD1",
+        "Description": "CLUTCH DUMPER",
+        "Model": "XRM",
+        "Price": 58.8,
+        "Code": "170000000402"
+    },
+    {
+        "Part Number": "38CD2",
+        "Description": "CLUTCH DUMPER",
+        "Model": "TMX",
+        "Price": 58.8,
+        "Code": "170000000392"
+    },
+    {
+        "Part Number": "38CD3",
+        "Description": "CLUTCH DUMPER",
+        "Model": "CG200",
+        "Price": 58.8,
+        "Code": "170000000394"
+    },
+    {
+        "Part Number": "38CD4",
+        "Description": "CLUTCH DUMPER",
+        "Model": "CG125",
+        "Price": 58.8,
+        "Code": "170000000393"
+    },
+    {
+        "Part Number": "38CD5",
+        "Description": "CLUTCH DUMPER",
+        "Model": "GP125",
+        "Price": 58.8,
+        "Code": "170000000390"
+    },
+    {
+        "Part Number": "38CD6",
+        "Description": "CLUTCH DUMPER",
+        "Model": "RS100",
+        "Price": 58.8,
+        "Code": "170000000389"
+    },
+    {
+        "Part Number": "38CD7",
+        "Description": "CLUTCH DUMPER",
+        "Model": "HD3",
+        "Price": 58.8,
+        "Code": "170000000391"
+    },
+    {
+        "Part Number": "39SC1",
+        "Description": "STATOR COIL",
+        "Model": "XRM",
+        "Price": 326,
+        "Code": "170000000201"
+    },
+    {
+        "Part Number": "39SC2",
+        "Description": "STATOR COIL",
+        "Model": "XRM110 DENSO/W100",
+        "Price": 440,
+        "Code": "170000000131"
+    },
+    {
+        "Part Number": "39SC3",
+        "Description": "STATOR COIL",
+        "Model": "XRM125",
+        "Price": 528,
+        "Code": "170000000128"
+    },
+    {
+        "Part Number": "39SC4",
+        "Description": "STATOR COIL",
+        "Model": "TMX155 3PIN 4WIRE",
+        "Price": 530,
+        "Code": "170000000130"
+    },
+    {
+        "Part Number": "39SC5",
+        "Description": "STATOR COIL",
+        "Model": "W125",
+        "Price": 530,
+        "Code": "170000000130"
+    },
+    {
+        "Part Number": "39SC6",
+        "Description": "STATOR COIL",
+        "Model": "MIO",
+        "Price": 806,
+        "Code": "170000000124"
+    },
+    {
+        "Part Number": "39SC7",
+        "Description": "STATOR COIL",
+        "Model": "BAJAJ",
+        "Price": 826,
+        "Code": "170000000730"
+    },
+    {
+        "Part Number": "39SC8",
+        "Description": "STATOR COIL",
+        "Model": "BARAKO",
+        "Price": 462,
+        "Code": "170000000116"
+    },
+    {
+        "Part Number": "39SC9",
+        "Description": "STATOR COIL",
+        "Model": "MOTORSTAR125-1Y",
+        "Price": 474,
+        "Code": "170000000532"
+    },
+    {
+        "Part Number": "39SC10",
+        "Description": "STATOR COIL",
+        "Model": "MOTORSTAR125-2Y",
+        "Price": 474,
+        "Code": "170000000285"
+    },
+    {
+        "Part Number": "39SC11",
+        "Description": "STATOR COIL",
+        "Model": "MOTORSTAR150-1Y",
+        "Price": 474,
+        "Code": "170000000121"
+    },
+    {
+        "Part Number": "39SC12",
+        "Description": "STATOR COIL",
+        "Model": "MOTORSTAR150-2Y",
+        "Price": 474,
+        "Code": "170000000120"
+    },
+    {
+        "Part Number": "39SC13",
+        "Description": "STATOR COIL BIG HOLE",
+        "Model": "CG150-8",
+        "Price": 484,
+        "Code": "170000000117"
+    },
+    {
+        "Part Number": "39SC14",
+        "Description": "STATOR COIL SMALL HOLE",
+        "Model": "CG125-8 /CG150-8",
+        "Price": 474,
+        "Code": "170000000333"
+    },
+    {
+        "Part Number": "39SC15",
+        "Description": "STATOR COIL BIG HOLE CG150-8",
+        "Model": "RACAL150",
+        "Price": 484,
+        "Code": "170000000117"
+    },
+    {
+        "Part Number": "39SC16",
+        "Description": "STATOR COIL",
+        "Model": "LF125",
+        "Price": 484,
+        "Code": "170000000123"
+    },
+    {
+        "Part Number": "230SM1",
+        "Description": "STARTER MOTOR",
+        "Model": "MIOi125/M3",
+        "Price": "",
+        "Code": "230000009855"
+    },
+    {
+        "Part Number": "230SM2",
+        "Description": "STARTER MOTOR",
+        "Model": "MIO125",
+        "Price": "",
+        "Code": "230000009856"
+    },
+    {
+        "Part Number": "230SM3",
+        "Description": "STARTER MOTOR",
+        "Model": "MIO",
+        "Price": "",
+        "Code": "230000009857"
+    },
+    {
+        "Part Number": "230SM4",
+        "Description": "STARTER MOTOR",
+        "Model": "XRM110",
+        "Price": "",
+        "Code": "230000009858"
+    },
+    {
+        "Part Number": "231CCG1",
+        "Description": "CAM CHAIN GUIDE",
+        "Model": "TMX SUPREMO",
+        "Price": 81.820,
+        "Code": "230000009756"
+    },
+    {
+        "Part Number": "231CCG2",
+        "Description": "CAM CHAIN GUIDE",
+        "Model": "NMAX",
+        "Price": 74.546,
+        "Code": "230000009757"
+    },
+    {
+        "Part Number": "231CCG3",
+        "Description": "CAM CHAIN GUIDE",
+        "Model": "MIO",
+        "Price": 90.910,
+        "Code": "230000009758"
+    },
+    {
+        "Part Number": "231CCG4",
+        "Description": "CAM CHAIN GUIDE",
+        "Model": "CRYPTON",
+        "Price": 90.910,
+        "Code": "230000009759"
+    },
+    {
+        "Part Number": "231CCG5",
+        "Description": "CAM CHAIN GUIDE",
+        "Model": "CT100/BAJAJ",
+        "Price": 90.910,
+        "Code": "230000009760"
+    },
+    {
+        "Part Number": "231CCG6",
+        "Description": "CAM CHAIN GUIDE",
+        "Model": "W125",
+        "Price": 74.546,
+        "Code": "230000009761"
+    },
+    {
+        "Part Number": "231CCG7",
+        "Description": "CAM CHAIN GUIDE",
+        "Model": "SMASH",
+        "Price": 90.910,
+        "Code": "230000009762"
+    },
+    {
+        "Part Number": "231CCG8",
+        "Description": "CAM CHAIN GUIDE",
+        "Model": "MIO M3",
+        "Price": 72.730,
+        "Code": "230000009763"
+    },
+    {
+        "Part Number": "231CCG9",
+        "Description": "CAM CHAIN GUIDE",
+        "Model": "CLICK150i",
+        "Price": 90.910,
+        "Code": "230000009764"
+    },
+    {
+        "Part Number": "231CCG10",
+        "Description": "CAM CHAIN GUIDE",
+        "Model": "CLICK125i",
+        "Price": 90.910,
+        "Code": "230000009765"
+    },
+    {
+        "Part Number": "232OSKS1",
+        "Description": "OIL SEAL KICK STARTER",
+        "Model": "15X25X5 MIO",
+        "Price": "",
+        "Code": "230000009865"
+    },
+    {
+        "Part Number": "233OSPS1",
+        "Description": "OIL SEAL PULLEY SIDE",
+        "Model": "30X45X5 NMAX",
+        "Price": "",
+        "Code": "230000009866"
+    },
+    {
+        "Part Number": "234OSRAD1",
+        "Description": "OIL SEAL REAR AXLE DRIVE",
+        "Model": "26X48X7 MIO",
+        "Price": "",
+        "Code": "230000009867"
+    },
+    {
+        "Part Number": "1CT1",
+        "Description": "CHAIN TENSIONER",
+        "Model": "XRM 100",
+        "Price": 110,
+        "Code": "170000000533"
+    },
+    {
+        "Part Number": "1CT2",
+        "Description": "CHAIN TENSIONER",
+        "Model": "W125",
+        "Price": 110,
+        "Code": "170000000086"
+    },
+    {
+        "Part Number": "1CT3",
+        "Description": "CHAIN TENSIONER",
+        "Model": "MIO",
+        "Price": 120,
+        "Code": "170000000268"
+    },
+    {
+        "Part Number": "1CT4",
+        "Description": "CHAIN TENSIONER",
+        "Model": "CT100 BIG",
+        "Price": 110,
+        "Code": "170000000056"
+    },
+    {
+        "Part Number": "1CT5",
+        "Description": "CHAIN TENSIONER",
+        "Model": "BARAKO",
+        "Price": 140,
+        "Code": "170000000267"
+    },
+    {
+        "Part Number": "1CT6",
+        "Description": "CHAIN TENSIONER",
+        "Model": "R150/SMASH",
+        "Price": 121,
+        "Code": "170000000082"
+    },
+    {
+        "Part Number": "1CT7",
+        "Description": "CHAIN TENSIONER",
+        "Model": "FURY/CT100",
+        "Price": 110,
+        "Code": "170000000081"
+    },
+    {
+        "Part Number": "1CT8",
+        "Description": "CHAIN TENSIONER",
+        "Model": "SMASH LONG",
+        "Price": 130,
+        "Code": "170000000084"
+    },
+    {
+        "Part Number": "1CT9",
+        "Description": "CHAIN TENSIONER",
+        "Model": "BEAT",
+        "Price": 120,
+        "Code": "170000000534"
+    },
+    {
+        "Part Number": "1CT10",
+        "Description": "CHAIN TENSIONER",
+        "Model": "STX",
+        "Price": 121,
+        "Code": "170000000085"
+    },
+    {
+        "Part Number": "1CT11",
+        "Description": "CHAIN TENSIONER",
+        "Model": "CRYPTON",
+        "Price": 120,
+        "Code": "170000000080"
+    },
+    {
+        "Part Number": "1CT12",
+        "Description": "CHAIN TENSIONER",
+        "Model": "ROUSER 135",
+        "Price": 130,
+        "Code": "170000000083"
+    },
+    {
+        "Part Number": "1CT13",
+        "Description": "CHAIN TENSIONER",
+        "Model": "SHOGUN",
+        "Price": 120,
+        "Code": "170000000535"
+    },
+    {
+        "Part Number": "1CT14",
+        "Description": "CHAIN TENSIONER",
+        "Model": "ROUSER 200",
+        "Price": 150,
+        "Code": "190000004866"
+    },
+    {
+        "Part Number": "1CT15",
+        "Description": "CHAIN TENSIONER",
+        "Model": "FZ16",
+        "Price": 140,
+        "Code": "190000004867"
+    },
+    {
+        "Part Number": "1CT16",
+        "Description": "CHAIN TENSIONER",
+        "Model": "TIGER MEGA",
+        "Price": 130,
+        "Code": "190000004868"
+    },
+    {
+        "Part Number": "1CT17",
+        "Description": "CHAIN TENSIONER",
+        "Model": "NMAX/M3",
+        "Price": 190,
+        "Code": "190000005490"
+    },
+    {
+        "Part Number": "2TCH1",
+        "Description": "TIMING CHAIN",
+        "Model": "XRM 25H-90",
+        "Price": 84,
+        "Code": "170000000536"
+    },
+    {
+        "Part Number": "2TCH2",
+        "Description": "TIMING CHAIN",
+        "Model": "WAVE 25H-84",
+        "Price": 84,
+        "Code": "170000000095"
+    },
+    {
+        "Part Number": "2TCH3",
+        "Description": "TIMING CHAIN",
+        "Model": "MIO/W125-2X3X92",
+        "Price": 116,
+        "Code": "170000000100"
+    },
+    {
+        "Part Number": "2TCH4",
+        "Description": "TIMING CHAIN",
+        "Model": "BAJAJ 25N-88",
+        "Price": 105,
+        "Code": "170000000098"
+    },
+    {
+        "Part Number": "2TCH5",
+        "Description": "TIMING CHAIN",
+        "Model": "BARAKO 3X4X102",
+        "Price": 154,
+        "Code": "170000000101"
+    },
+    {
+        "Part Number": "2TCH6",
+        "Description": "TIMING CHAIN",
+        "Model": "STARTER 25H-62",
+        "Price": 88,
+        "Code": "170000000537"
+    },
+    {
+        "Part Number": "2TCH7",
+        "Description": "TIMING CHAIN",
+        "Model": "W100 25H-88",
+        "Price": 108,
+        "Code": "170000000096"
+    },
+    {
+        "Part Number": "2TCH8",
+        "Description": "TIMING CHAIN",
+        "Model": "SMASH 2X3X88",
+        "Price": 110,
+        "Code": "170000000099"
+    },
+    {
+        "Part Number": "2TCH9",
+        "Description": "TIMING CHAIN",
+        "Model": "25H-82",
+        "Price": 80,
+        "Code": "170000000094"
+    },
+    {
+        "Part Number": "2TC10",
+        "Description": "TIMING CHAIN",
+        "Model": "25H-92",
+        "Price": 110,
+        "Code": "170000000097"
+    },
+    {
+        "Part Number": "2TCH11",
+        "Description": "TIMING CHAIN",
+        "Model": "25H-94",
+        "Price": 116,
+        "Code": "170000000538"
+    },
+    {
+        "Part Number": "2TCH12",
+        "Description": "TIMING CHAIN",
+        "Model": "2X3X102",
+        "Price": 154,
+        "Code": "180000001797"
+    },
+    {
+        "Part Number": "2TCH13",
+        "Description": "TIMING CHAIN",
+        "Model": "RAIDER J 2X3X88",
+        "Price": 110,
+        "Code": "170000000099"
+    },
+    {
+        "Part Number": "2TCH14",
+        "Description": "TIMING CHAIN",
+        "Model": "TMX SUPREMO 2X3X94",
+        "Price": 165.8,
+        "Code": "980000000065"
+    },
+    {
+        "Part Number": "3GBX1",
+        "Description": "GEAR BOX",
+        "Model": "XRM",
+        "Price": 120,
+        "Code": "170000000938"
+    },
+    {
+        "Part Number": "3GBX2",
+        "Description": "GEAR BOX",
+        "Model": "W125",
+        "Price": 130,
+        "Code": "170000000185"
+    },
+    {
+        "Part Number": "3GBX3",
+        "Description": "GEAR BOX",
+        "Model": "MIO/WIND125",
+        "Price": 120,
+        "Code": "170000000244"
+    },
+    {
+        "Part Number": "3GBX4",
+        "Description": "GEAR BOX",
+        "Model": "RAIDER J110",
+        "Price": 150,
+        "Code": "170000000257"
+    },
+    {
+        "Part Number": "3GBX5",
+        "Description": "GEAR BOX",
+        "Model": "FURY",
+        "Price": 117,
+        "Code": "170000000256"
+    },
+    {
+        "Part Number": "3GBX6",
+        "Description": "GEAR BOX",
+        "Model": "XRM125",
+        "Price": 149.6,
+        "Code": "170000000183"
+    },
+    {
+        "Part Number": "3GBX7",
+        "Description": "GEAR BOX",
+        "Model": "SMASH",
+        "Price": 138,
+        "Code": "170000000186"
+    },
+    {
+        "Part Number": "3GBX8",
+        "Description": "GEAR BOX",
+        "Model": "CRYPTON",
+        "Price": 130,
+        "Code": "170000000259"
+    },
+    {
+        "Part Number": "3GBX9",
+        "Description": "GEAR BOX",
+        "Model": "XR200",
+        "Price": 186,
+        "Code": "170000000184"
+    },
+    {
+        "Part Number": "3GBX10",
+        "Description": "GEAR BOX",
+        "Model": "SNIPER 135",
+        "Price": 140,
+        "Code": "170000000260"
+    },
+    {
+        "Part Number": "3GBX11",
+        "Description": "GEAR BOX",
+        "Model": "BEAT",
+        "Price": 162.8,
+        "Code": "180000002556"
+    },
+    {
+        "Part Number": "3GBX12",
+        "Description": "GEAR BOX",
+        "Model": "WIND125/MIO",
+        "Price": 120,
+        "Code": "170000000258"
+    },
+    {
+        "Part Number": "3GBX13",
+        "Description": "GEAR BOX",
+        "Model": "CT100",
+        "Price": 130,
+        "Code": "190000004006"
+    },
+    {
+        "Part Number": "3GBX14",
+        "Description": "GEAR BOX",
+        "Model": "WAVE/ALPHA",
+        "Price": 150,
+        "Code": "20000005656"
+    },
+    {
+        "Part Number": "3GBX15",
+        "Description": "GEAR BOX",
+        "Model": "SKYDRIVE/SMASH NEW",
+        "Price": 200,
+        "Code": "200000005952"
+    },
+    {
+        "Part Number": "4EV1",
+        "Description": "ENGINE VALVE",
+        "Model": "XRM",
+        "Price": 100,
+        "Code": "170000000105"
+    },
+    {
+        "Part Number": "4EV2",
+        "Description": "ENGINE VALVE",
+        "Model": "TMX ALL CDI ELECTRIC",
+        "Price": 100,
+        "Code": "170000000255"
+    },
+    {
+        "Part Number": "4EV3",
+        "Description": "ENGINE VALVE",
+        "Model": "W125",
+        "Price": 100,
+        "Code": "170000000540"
+    },
+    {
+        "Part Number": "4EV4",
+        "Description": "ENGINE VALVE",
+        "Model": "MIO",
+        "Price": 100,
+        "Code": "170000001010"
+    },
+    {
+        "Part Number": "4EV5",
+        "Description": "ENGINE VALVE",
+        "Model": "CT100",
+        "Price": 105.6,
+        "Code": "170000000104"
+    },
+    {
+        "Part Number": "4EV6",
+        "Description": "ENGINE VALVE",
+        "Model": "BARAKO",
+        "Price": 110,
+        "Code": "170000000542"
+    },
+    {
+        "Part Number": "4EV7",
+        "Description": "ENGINE VALVE",
+        "Model": "R150",
+        "Price": 105,
+        "Code": "170000000543"
+    },
+    {
+        "Part Number": "4EV8",
+        "Description": "ENGINE VALVE",
+        "Model": "GY6 150",
+        "Price": 144,
+        "Code": "180000001883"
+    },
+    {
+        "Part Number": "4EV9",
+        "Description": "ENGINE VALVE",
+        "Model": "GY6125",
+        "Price": 110,
+        "Code": "170000000362"
+    },
+    {
+        "Part Number": "4EV10",
+        "Description": "ENGINE VALVE",
+        "Model": "ROUSER 135",
+        "Price": 187,
+        "Code": "170000000544"
+    },
+    {
+        "Part Number": "4EV11",
+        "Description": "ENGINE VALVE",
+        "Model": "FURY",
+        "Price": 105.6,
+        "Code": "170000000545"
+    },
+    {
+        "Part Number": "4EV12",
+        "Description": "ENGINE VALVE",
+        "Model": "BEAT",
+        "Price": 121,
+        "Code": "170000001012"
+    },
+    {
+        "Part Number": "4EV13",
+        "Description": "ENGINE VALVE",
+        "Model": "CB110",
+        "Price": 121,
+        "Code": "170000001011"
+    },
+    {
+        "Part Number": "4EV14",
+        "Description": "ENGINE VALVE",
+        "Model": "CB125",
+        "Price": 121,
+        "Code": "170000001012"
+    },
+    {
+        "Part Number": "4EV15",
+        "Description": "ENGINE VALVE",
+        "Model": "SNIPER 135",
+        "Price": 110,
+        "Code": "170000000546"
+    },
+    {
+        "Part Number": "4EV16",
+        "Description": "ENGINE VALVE",
+        "Model": "SMASH",
+        "Price": 105,
+        "Code": "170000000547"
+    },
+    {
+        "Part Number": "4EV17",
+        "Description": "ENGINE VALVE",
+        "Model": "SHOGUN",
+        "Price": 105.6,
+        "Code": "170000000548"
+    },
+    {
+        "Part Number": "4EV18",
+        "Description": "ENGINE VALVE",
+        "Model": "CRYPTON",
+        "Price": 110,
+        "Code": "170000000549"
+    },
+    {
+        "Part Number": "4EV19",
+        "Description": "ENGINE VALVE",
+        "Model": "XR200",
+        "Price": 120,
+        "Code": "170000000550"
+    },
+    {
+        "Part Number": "4EV21",
+        "Description": "ENGINE VALVE",
+        "Model": "C100",
+        "Price": 99,
+        "Code": "170000001013"
+    },
+    {
+        "Part Number": "4EV22",
+        "Description": "ENGINE VALVE",
+        "Model": "TMX ALL KICK LONG",
+        "Price": 120,
+        "Code": "170000001205"
+    },
+    {
+        "Part Number": "4EV23",
+        "Description": "ENGINE VALVE",
+        "Model": "STX",
+        "Price": 120,
+        "Code": "180000002170"
+    },
+    {
+        "Part Number": "5T1",
+        "Description": "TORQUE WASHER",
+        "Model": "MIO",
+        "Price": 50,
+        "Code": "170000000860"
+    },
+    {
+        "Part Number": "6CHC1",
+        "Description": "CYLINDER HEAD COVER",
+        "Model": "XRM",
+        "Price": 84,
+        "Code": "170000000688"
+    },
+    {
+        "Part Number": "6CHC2",
+        "Description": "CYLINDER HEAD COVER",
+        "Model": "XRM RIGHT",
+        "Price": 130,
+        "Code": "170000001158"
+    },
+    {
+        "Part Number": "6CHC3",
+        "Description": "CYLINDER HEAD COVER",
+        "Model": "C100",
+        "Price": 130,
+        "Code": "180000002034"
+    },
+    {
+        "Part Number": "7IG1",
+        "Description": "IDLE GEAR",
+        "Model": "MIO",
+        "Price": 200,
+        "Code": "170000000279"
+    },
+    {
+        "Part Number": "7IG2",
+        "Description": "IDLE GEAR",
+        "Model": "TMX/RUSI125",
+        "Price": 200,
+        "Code": "180000001373"
+    },
+    {
+        "Part Number": "7IG3",
+        "Description": "IDLE GEAR",
+        "Model": "NOUVO",
+        "Price": 220,
+        "Code": "180000003048"
+    },
+    {
+        "Part Number": "8KPG1",
+        "Description": "KICK PIMION GEAR",
+        "Model": "MIO",
+        "Price": 180,
+        "Code": "170000000134"
+    },
+    {
+        "Part Number": "8KPG2",
+        "Description": "KICK PIMION GEAR",
+        "Model": "GY6",
+        "Price": 476,
+        "Code": "180000001629"
+    },
+    {
+        "Part Number": "9CAM1",
+        "Description": "CAMS",
+        "Model": "TMX/RUSI125",
+        "Price": 420,
+        "Code": "170000000108"
+    },
+    {
+        "Part Number": "9CAM2",
+        "Description": "CAMS",
+        "Model": "LF150/LF200",
+        "Price": 900,
+        "Code": "170000000296"
+    },
+    {
+        "Part Number": "10TCP1",
+        "Description": "TIMING CHAIN PULLER",
+        "Model": "XRM",
+        "Price": 66,
+        "Code": "170000000861"
+    },
+    {
+        "Part Number": "11MG1",
+        "Description": "METER GEAR",
+        "Model": "MIO",
+        "Price": 49,
+        "Code": "170000000879"
+    },
+    {
+        "Part Number": "11MG2",
+        "Description": "METER GEAR",
+        "Model": "XRM",
+        "Price": 49,
+        "Code": "180000002456"
+    },
+    {
+        "Part Number": "11MG3",
+        "Description": "METER GEAR",
+        "Model": "SHOGUN",
+        "Price": 80,
+        "Code": "981100006296"
+    },
+    {
+        "Part Number": "11MG4",
+        "Description": "METER GEAR",
+        "Model": "RUSI125",
+        "Price": 80,
+        "Code": "180000003418"
+    },
+    {
+        "Part Number": "12TC1",
+        "Description": "TAPPET CAP",
+        "Model": "XRM",
+        "Price": 50,
+        "Code": "170000000686"
+    },
+    {
+        "Part Number": "12TC2",
+        "Description": "TAPPET CAP",
+        "Model": "TMX",
+        "Price": 50,
+        "Code": "170000000371"
+    },
+    {
+        "Part Number": "12TC3",
+        "Description": "TAPPET CAP",
+        "Model": "W125",
+        "Price": 60,
+        "Code": "170000000276"
+    },
+    {
+        "Part Number": "12TC4",
+        "Description": "TAPPET CAP",
+        "Model": "MIO",
+        "Price": 64,
+        "Code": "170000000372"
+    },
+    {
+        "Part Number": "12TC5",
+        "Description": "TAPPET CAP",
+        "Model": "YAMAHA",
+        "Price": 80,
+        "Code": "170000000275"
+    },
+    {
+        "Part Number": "12TC6",
+        "Description": "TAPPET CAP",
+        "Model": "BARAKO",
+        "Price": 117.6,
+        "Code": "980000000055"
+    },
+    {
+        "Part Number": "13CRK1",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "XRM",
+        "Price": 84,
+        "Code": "180000003464"
+    },
+    {
+        "Part Number": "13CRK2",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "TMX",
+        "Price": 84,
+        "Code": "180000003160"
+    },
+    {
+        "Part Number": "13CRK3",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "W125",
+        "Price": 84,
+        "Code": "18000003154"
+    },
+    {
+        "Part Number": "13CRK4",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "MIO",
+        "Price": 84,
+        "Code": "180000003162"
+    },
+    {
+        "Part Number": "13CRK5",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "CT100",
+        "Price": 72,
+        "Code": "180000003161"
+    },
+    {
+        "Part Number": "13CRK6",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "BARAKO",
+        "Price": 84,
+        "Code": "180000003166"
+    },
+    {
+        "Part Number": "13CRK7",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "R150",
+        "Price": 84,
+        "Code": "180000003170"
+    },
+    {
+        "Part Number": "13CRK8",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "CG125",
+        "Price": 84,
+        "Code": "190000003969"
+    },
+    {
+        "Part Number": "13CRK9",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "CG150",
+        "Price": 84,
+        "Code": "190000003965"
+    },
+    {
+        "Part Number": "13CRK10",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "DREAM",
+        "Price": 92,
+        "Code": "180000003173"
+    },
+    {
+        "Part Number": "13CRK11",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "W110",
+        "Price": 92,
+        "Code": "180000003153"
+    },
+    {
+        "Part Number": "13CRK12",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "STX125",
+        "Price": 88,
+        "Code": "180000003159"
+    },
+    {
+        "Part Number": "13CRK13",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "RS100",
+        "Price": 84,
+        "Code": "180000003165"
+    },
+    {
+        "Part Number": "13CRK14",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "SMASH",
+        "Price": 72,
+        "Code": "180000003169"
+    },
+    {
+        "Part Number": "13CRK15",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "CRYPTON",
+        "Price": 84,
+        "Code": "190000003969"
+    },
+    {
+        "Part Number": "13CRK16",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "HD3",
+        "Price": 84,
+        "Code": "180000003167"
+    },
+    {
+        "Part Number": "13CRK17",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "FURY",
+        "Price": 72,
+        "Code": "180000003163"
+    },
+    {
+        "Part Number": "13CRK18",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "W100",
+        "Price": 84,
+        "Code": "180000003152"
+    },
+    {
+        "Part Number": "13CRK19",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "RUSI125",
+        "Price": 84,
+        "Code": "180000003156"
+    },
+    {
+        "Part Number": "13CRK20",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "RUSI150",
+        "Price": 84,
+        "Code": "180000003157"
+    },
+    {
+        "Part Number": "13CRK21",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "DASH",
+        "Price": 84,
+        "Code": "180000003168"
+    },
+    {
+        "Part Number": "13CRK22",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "BEAT",
+        "Price": 84,
+        "Code": "180000003171"
+    },
+    {
+        "Part Number": "13CRK23",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "SHOGUN",
+        "Price": 84,
+        "Code": "180000003172"
+    },
+    {
+        "Part Number": "13CRK24",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "NSR",
+        "Price": 84,
+        "Code": "180000003164"
+    },
+    {
+        "Part Number": "13CRK25",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "CB110",
+        "Price": 84,
+        "Code": "180000003157"
+    },
+    {
+        "Part Number": "13CRK26",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "CB125",
+        "Price": 84,
+        "Code": "180000003158"
+    },
+    {
+        "Part Number": "13CRK27",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "GY6125",
+        "Price": 88,
+        "Code": "180000003465"
+    },
+    {
+        "Part Number": "13CRK28",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "GY6150",
+        "Price": 84,
+        "Code": "190000004393"
+    },
+    {
+        "Part Number": "13CRK29",
+        "Description": "CARBURATOR REPAIR KIT",
+        "Model": "XRM125",
+        "Price": 92,
+        "Code": "200000005842"
+    },
+    {
+        "Part Number": "14CSC1",
+        "Description": "CYLINDER SIDE COVER",
+        "Model": "XRM",
+        "Price": 88,
+        "Code": "170000000895"
+    },
+    {
+        "Part Number": "15CH1",
+        "Description": "CLUTCH HOLDER",
+        "Model": "XRM 26mm",
+        "Price": 66,
+        "Code": "170000000863"
+    },
+    {
+        "Part Number": "15CH2",
+        "Description": "CLUTCH HOLDER",
+        "Model": "W125",
+        "Price": 77,
+        "Code": "170000000398"
+    },
+    {
+        "Part Number": "15CH3",
+        "Description": "CLUTCH HOLDER",
+        "Model": "CT100",
+        "Price": 60,
+        "Code": "180000002226"
+    },
+    {
+        "Part Number": "15CH4",
+        "Description": "CLUTCH HOLDER",
+        "Model": "CG125 TMX-4 28mm",
+        "Price": 77,
+        "Code": "170000000115"
+    },
+    {
+        "Part Number": "15CH5",
+        "Description": "CLUTCH HOLDER",
+        "Model": "CG200 TMX-6",
+        "Price": 90,
+        "Code": "170000000273"
+    },
+    {
+        "Part Number": "15CH6",
+        "Description": "CLUTCH HOLDER",
+        "Model": "CG150 TMX-5",
+        "Price": 90,
+        "Code": "170000000271"
+    },
+    {
+        "Part Number": "15CH7",
+        "Description": "CLUTCH HOLDER",
+        "Model": "RUSI125-6HOLE",
+        "Price": 80,
+        "Code": "180000003473"
+    },
+    {
+        "Part Number": "16CL1",
+        "Description": "CLUTCH LIFTER",
+        "Model": "XRM",
+        "Price": 106,
+        "Code": "170000000262"
+    },
+    {
+        "Part Number": "16CL2",
+        "Description": "CLUTCH LIFTER",
+        "Model": "W125",
+        "Price": 76,
+        "Code": "170000000261"
+    },
+    {
+        "Part Number": "16CL3",
+        "Description": "CLUTCH LIFTER",
+        "Model": "W125 B",
+        "Price": 160,
+        "Code": "170000000887"
+    },
+    {
+        "Part Number": "17TG1",
+        "Description": "TRANSMISSION GEAR",
+        "Model": "TMX 20-28",
+        "Price": 390,
+        "Code": "170000000155"
+    },
+    {
+        "Part Number": "17TG2",
+        "Description": "TRANSMISSION GEAR",
+        "Model": "TMX 22-28",
+        "Price": 400,
+        "Code": "170000000154"
+    },
+    {
+        "Part Number": "18CRK1",
+        "Description": "CONNECTING ROD KIT",
+        "Model": "XRM",
+        "Price": 352,
+        "Code": "170000000152"
+    },
+    {
+        "Part Number": "18CRK2",
+        "Description": "CONNECTING ROD KIT",
+        "Model": "TMX",
+        "Price": 418,
+        "Code": "180000002308"
+    },
+    {
+        "Part Number": "18CRK3",
+        "Description": "CONNECTING ROD KIT",
+        "Model": "W125",
+        "Price": 352,
+        "Code": "170000000229"
+    },
+    {
+        "Part Number": "18CRK4",
+        "Description": "CONNECTING ROD KIT",
+        "Model": "MIO",
+        "Price": 374,
+        "Code": "170000000150"
+    },
+    {
+        "Part Number": "18CRK5",
+        "Description": "CONNECTING ROD KIT",
+        "Model": "BARAKO",
+        "Price": 418,
+        "Code": "180000002557"
+    },
+    {
+        "Part Number": "18CRK6",
+        "Description": "CONNECTING ROD KIT",
+        "Model": "C100",
+        "Price": 352,
+        "Code": "170000000149"
+    },
+    {
+        "Part Number": "18CRK7",
+        "Description": "CONNECTING ROD KIT",
+        "Model": "CT100",
+        "Price": 352,
+        "Code": "170000000148"
+    },
+    {
+        "Part Number": "18CRK8",
+        "Description": "CONNECTING ROD KIT",
+        "Model": "W100",
+        "Price": 352,
+        "Code": "170000000151"
+    },
+    {
+        "Part Number": "18CRK9",
+        "Description": "CONNECTING ROD KIT",
+        "Model": "W110",
+        "Price": 352,
+        "Code": "170000001009"
+    },
+    {
+        "Part Number": "18CRK10",
+        "Description": "CONNECTING ROD KIT",
+        "Model": "LF125",
+        "Price": 446,
+        "Code": "170000000955"
+    },
+    {
+        "Part Number": "18CRK11",
+        "Description": "CONNECTING ROD KIT",
+        "Model": "CG125",
+        "Price": 446,
+        "Code": "170000000373"
+    },
+    {
+        "Part Number": "18CRK12",
+        "Description": "CONNECTING ROD KIT",
+        "Model": "BEAT",
+        "Price": 460,
+        "Code": "170000000792"
+    },
+    {
+        "Part Number": "19SS1",
+        "Description": "SPROCKET STARTER",
+        "Model": "XRM NEW",
+        "Price": 66,
+        "Code": "170000000109"
+    },
+    {
+        "Part Number": "19SS2",
+        "Description": "SPROCKET STARTER",
+        "Model": "XRM OLD",
+        "Price": 66,
+        "Code": "170000000888"
+    },
+    {
+        "Part Number": "19SS3",
+        "Description": "SPROCKET STARTER",
+        "Model": "DREAM",
+        "Price": 60,
+        "Code": "170000000736"
+    },
+    {
+        "Part Number": "19SS5",
+        "Description": "SPROCKET STARTER",
+        "Model": "MIO",
+        "Price": 92,
+        "Code": "190000004394"
+    },
+    {
+        "Part Number": "19SS5",
+        "Description": "SPROCKET STARTER",
+        "Model": "RUSI125",
+        "Price": 66,
+        "Code": "190000005303"
+    },
+    {
+        "Part Number": "20FTC1",
+        "Description": "FUEL TANK COVER",
+        "Model": "XRM",
+        "Price": 80,
+        "Code": "170000000574"
+    },
+    {
+        "Part Number": "20FTC2",
+        "Description": "FUEL TANK COVER SLVR",
+        "Model": "TMX",
+        "Price": 138.4,
+        "Code": "170000000579"
+    },
+    {
+        "Part Number": "20FTC3",
+        "Description": "FUEL TANK COVER BLACK",
+        "Model": "TMX",
+        "Price": 138.4,
+        "Code": "170000000692"
+    },
+    {
+        "Part Number": "20FTC4",
+        "Description": "FUEL TANK COVER",
+        "Model": "HD3/BARAKO",
+        "Price": 250,
+        "Code": "180000001453"
+    },
+    {
+        "Part Number": "20FTC5",
+        "Description": "FUEL TANK COVER",
+        "Model": "CT100",
+        "Price": 320,
+        "Code": "180000003797"
+    },
+    {
+        "Part Number": "21B1",
+        "Description": "BEARING",
+        "Model": "628",
+        "Price": 57.2,
+        "Code": "170000000734"
+    },
+    {
+        "Part Number": "21B2",
+        "Description": "BEARING",
+        "Model": "6904",
+        "Price": 66,
+        "Code": "170000000767"
+    },
+    {
+        "Part Number": "21B3",
+        "Description": "BEARING",
+        "Model": "6905",
+        "Price": 77,
+        "Code": "170000000266"
+    },
+    {
+        "Part Number": "21B4",
+        "Description": "BEARING",
+        "Model": "638",
+        "Price": 64,
+        "Code": "170000000265"
+    },
+    {
+        "Part Number": "21B5",
+        "Description": "BEARING",
+        "Model": "1349",
+        "Price": 336,
+        "Code": "180000002140"
+    },
+    {
+        "Part Number": "21B6",
+        "Description": "BEARING",
+        "Model": "6200",
+        "Price": 39,
+        "Code": "180000002141"
+    },
+    {
+        "Part Number": "21B7",
+        "Description": "BEARING",
+        "Model": "6201",
+        "Price": 43,
+        "Code": "180000002142"
+    },
+    {
+        "Part Number": "21B8",
+        "Description": "BEARING",
+        "Model": "6202",
+        "Price": 44,
+        "Code": "180000002143"
+    },
+    {
+        "Part Number": "21B9",
+        "Description": "BEARING",
+        "Model": "6203",
+        "Price": 50,
+        "Code": "170000000483"
+    },
+    {
+        "Part Number": "21B10",
+        "Description": "BEARING",
+        "Model": "6204",
+        "Price": 64,
+        "Code": "180000002144"
+    },
+    {
+        "Part Number": "21B11",
+        "Description": "BEARING",
+        "Model": "6205",
+        "Price": 62,
+        "Code": "180000002145"
+    },
+    {
+        "Part Number": "21B12",
+        "Description": "BEARING",
+        "Model": "6300",
+        "Price": 48,
+        "Code": "180000002146"
+    },
+    {
+        "Part Number": "21B13",
+        "Description": "BEARING",
+        "Model": "6301",
+        "Price": 50,
+        "Code": "180000002147"
+    },
+    {
+        "Part Number": "21B14",
+        "Description": "BEARING",
+        "Model": "6302",
+        "Price": 60,
+        "Code": "180000002148"
+    },
+    {
+        "Part Number": "21B15",
+        "Description": "BEARING",
+        "Model": "6004",
+        "Price": 51,
+        "Code": "180000002149"
+    },
+    {
+        "Part Number": "21B16",
+        "Description": "BEARING",
+        "Model": "45449",
+        "Price": 190,
+        "Code": "180000002150"
+    },
+    {
+        "Part Number": "21B17",
+        "Description": "BEARING",
+        "Model": "44649",
+        "Price": 190,
+        "Code": "180000002151"
+    },
+    {
+        "Part Number": "21B18",
+        "Description": "BEARING",
+        "Model": "11949",
+        "Price": 176,
+        "Code": "180000002152"
+    },
+    {
+        "Part Number": "21B19",
+        "Description": "BEARING",
+        "Model": "11749",
+        "Price": 190,
+        "Code": "180000002153"
+    },
+    {
+        "Part Number": "21B20",
+        "Description": "BEARING",
+        "Model": "12749",
+        "Price": 190,
+        "Code": "180000002154"
+    },
+    {
+        "Part Number": "21B21",
+        "Description": "BEARING",
+        "Model": "67048",
+        "Price": 224,
+        "Code": "180000002155"
+    },
+    {
+        "Part Number": "21B22",
+        "Description": "BEARING",
+        "Model": "6304",
+        "Price": 76,
+        "Code": "170000000890"
+    },
+    {
+        "Part Number": "21B23",
+        "Description": "BEARING",
+        "Model": "6001",
+        "Price": 30,
+        "Code": "180000003419"
+    },
+    {
+        "Part Number": "21B24",
+        "Description": "BEARING",
+        "Model": "6003",
+        "Price": 46,
+        "Code": "180000003596"
+    },
+    {
+        "Part Number": "21B25",
+        "Description": "BEARING",
+        "Model": "62/22",
+        "Price": 80,
+        "Code": "190000005292"
+    },
+    {
+        "Part Number": "22OP1",
+        "Description": "OIL PUMP",
+        "Model": "XRM",
+        "Price": 121,
+        "Code": "170000000369"
+    },
+    {
+        "Part Number": "22OP2",
+        "Description": "OIL PUMP",
+        "Model": "TMX",
+        "Price": 290,
+        "Code": "170000000370"
+    },
+    {
+        "Part Number": "22OP3",
+        "Description": "OIL PUMP",
+        "Model": "W125",
+        "Price": 210,
+        "Code": "170000000368"
+    },
+    {
+        "Part Number": "22OP4",
+        "Description": "OIL PUMP",
+        "Model": "CT100",
+        "Price": 276,
+        "Code": "180000002759"
+    },
+    {
+        "Part Number": "22OP5",
+        "Description": "OIL PUMP",
+        "Model": "MIO",
+        "Price": 360,
+        "Code": "180000002758"
+    },
+    {
+        "Part Number": "22OP6",
+        "Description": "OIL PUMP",
+        "Model": "RUSI 125",
+        "Price": 240,
+        "Code": "180000003495"
+    },
+    {
+        "Part Number": "23SB1",
+        "Description": "SHOCK BUSHING",
+        "Model": "UNIVERSAL",
+        "Price": 60,
+        "Code": "170000000364"
+    },
+    {
+        "Part Number": "23SB2",
+        "Description": "SHOCK BUSHING",
+        "Model": "TMX",
+        "Price": 96,
+        "Code": "190000005513"
+    },
+    {
+        "Part Number": "23SB3",
+        "Description": "SHOCK BUSHING",
+        "Model": "CG125/RUSI",
+        "Price": 96,
+        "Code": "190000005486"
+    },
+    {
+        "Part Number": "24IC1",
+        "Description": "IGNITION COIL",
+        "Model": "XRM",
+        "Price": 143,
+        "Code": "170000000865"
+    },
+    {
+        "Part Number": "24IC2",
+        "Description": "IGNITION COIL",
+        "Model": "XRM W/CAP",
+        "Price": 156,
+        "Code": "180000002558"
+    },
+    {
+        "Part Number": "24IC3",
+        "Description": "IGNITION COIL",
+        "Model": "TMX",
+        "Price": 143,
+        "Code": "170000000231"
+    },
+    {
+        "Part Number": "24IC4",
+        "Description": "IGNITION COIL",
+        "Model": "TMX CDI",
+        "Price": 143,
+        "Code": "180000001352"
+    },
+    {
+        "Part Number": "24IC5",
+        "Description": "IGNITION COIL",
+        "Model": "W125 ORANGE/BLK",
+        "Price": 143,
+        "Code": "170000000141"
+    },
+    {
+        "Part Number": "24IC6",
+        "Description": "IGNITION COIL",
+        "Model": "MIO",
+        "Price": 154,
+        "Code": "170000000138"
+    },
+    {
+        "Part Number": "24IC7",
+        "Description": "IGNITION COIL",
+        "Model": "CT100",
+        "Price": 154,
+        "Code": "170000000136"
+    },
+    {
+        "Part Number": "24IC8",
+        "Description": "IGNITION COIL",
+        "Model": "R150 BLUE&BLK",
+        "Price": 165,
+        "Code": "170000000139"
+    },
+    {
+        "Part Number": "24IC9",
+        "Description": "IGNITION COIL",
+        "Model": "GY6",
+        "Price": 176,
+        "Code": "170000000137"
+    },
+    {
+        "Part Number": "24IC10",
+        "Description": "IGNITION COIL",
+        "Model": "UNIVERSAL",
+        "Price": 190,
+        "Code": "170000000140"
+    },
+    {
+        "Part Number": "24IC11",
+        "Description": "IGNITION COIL",
+        "Model": "BARAKO",
+        "Price": 150,
+        "Code": "170000001004"
+    },
+    {
+        "Part Number": "24IC12",
+        "Description": "IGNITION COIL",
+        "Model": "MIO BIG",
+        "Price": 150,
+        "Code": "980000001878"
+    },
+    {
+        "Part Number": "25KS1",
+        "Description": "KICK SHAFT",
+        "Model": "MIO",
+        "Price": 240,
+        "Code": "170000000872"
+    },
+    {
+        "Part Number": "25KS2",
+        "Description": "KICK SHAFT",
+        "Model": "GY6 LONG",
+        "Price": 540,
+        "Code": "170000000551"
+    },
+    {
+        "Part Number": "25KS3",
+        "Description": "KICK SHAFT",
+        "Model": "NOUVO",
+        "Price": 240,
+        "Code": "170000000874"
+    },
+    {
+        "Part Number": "25KS4",
+        "Description": "KICK SHAFT",
+        "Model": "RUSI 125",
+        "Price": 480,
+        "Code": "180000003461"
+    },
+    {
+        "Part Number": "25KS5",
+        "Description": "KICK SHAFT",
+        "Model": "GY6 LONG",
+        "Price": 300,
+        "Code": "190000003993"
+    },
+    {
+        "Part Number": "25KS6",
+        "Description": "KICK SHAFT",
+        "Model": "MIOi",
+        "Price": 125,
+        "Code": "190000005446"
+    },
+    {
+        "Part Number": "26BL1",
+        "Description": "BRAKE LEVER",
+        "Model": "XRM/WAVE",
+        "Price": 78,
+        "Code": "170000000789"
+    },
+    {
+        "Part Number": "26BL2",
+        "Description": "BRAKE LEVER",
+        "Model": "SET TMX155",
+        "Price": 110,
+        "Code": "170000000292"
+    },
+    {
+        "Part Number": "26BL3",
+        "Description": "BRAKE LEVER",
+        "Model": "MIO",
+        "Price": 127.6,
+        "Code": "170000000787"
+    },
+    {
+        "Part Number": "26BL4",
+        "Description": "BRAKE LEVER",
+        "Model": "SET CT100",
+        "Price": 110,
+        "Code": "170000000235"
+    },
+    {
+        "Part Number": "26BL5",
+        "Description": "BRAKE LEVER",
+        "Model": "BARAKO",
+        "Price": 165,
+        "Code": "170000000284"
+    },
+    {
+        "Part Number": "26BL6",
+        "Description": "BRAKE LEVER",
+        "Model": "R150",
+        "Price": 127.6,
+        "Code": "170000000234"
+    },
+    {
+        "Part Number": "26BL7",
+        "Description": "BRAKE LEVER",
+        "Model": "DREAM",
+        "Price": 74,
+        "Code": "170000000232"
+    },
+    {
+        "Part Number": "26BL8",
+        "Description": "BRAKE LEVER",
+        "Model": "SET HD3",
+        "Price": 125.6,
+        "Code": "170000000790"
+    },
+    {
+        "Part Number": "26BL9",
+        "Description": "BRAKE LEVER",
+        "Model": "RS100",
+        "Price": 136.4,
+        "Code": "170000000788"
+    },
+    {
+        "Part Number": "26BL10",
+        "Description": "BRAKE LEVER",
+        "Model": "TMX SUPREMO",
+        "Price": 200,
+        "Code": "180000002559"
+    },
+    {
+        "Part Number": "26BL11",
+        "Description": "BRAKE LEVER",
+        "Model": "RUSI 150",
+        "Price": 108,
+        "Code": "180000002560"
+    },
+    {
+        "Part Number": "26BL12",
+        "Description": "BRAKE LEVER",
+        "Model": "RUSI 125",
+        "Price": 120,
+        "Code": "180000002982"
+    },
+    {
+        "Part Number": "26BL13",
+        "Description": "BRAKE LEVER",
+        "Model": "STX",
+        "Price": 156,
+        "Code": "980000002930"
+    },
+    {
+        "Part Number": "26BL14",
+        "Description": "BRAKE LEVER",
+        "Model": "CB125",
+        "Price": 120,
+        "Code": "980000003171"
+    },
+    {
+        "Part Number": "26BL15",
+        "Description": "BRAKE LEVER",
+        "Model": "GD110/XL125",
+        "Price": 136,
+        "Code": "980000003170"
+    },
+    {
+        "Part Number": "26BL16",
+        "Description": "BRAKE LEVER",
+        "Model": "SMASH R/H",
+        "Price": 110,
+        "Code": "980000003172"
+    },
+    {
+        "Part Number": "27SP1",
+        "Description": "SPARKPLUG",
+        "Model": "XRM/A7TC",
+        "Price": 38,
+        "Code": "170000000502"
+    },
+    {
+        "Part Number": "27SP2",
+        "Description": "SPARKPLUG",
+        "Model": "XRM/D6HA",
+        "Price": 42,
+        "Code": "180000002561"
+    },
+    {
+        "Part Number": "27SP3",
+        "Description": "SPARKPLUG",
+        "Model": "TMX/D8TC",
+        "Price": 38,
+        "Code": "170000000834"
+    },
+    {
+        "Part Number": "27SP4",
+        "Description": "SPARKPLUG",
+        "Model": "W125/CR8E",
+        "Price": 38,
+        "Code": "180000001889"
+    },
+    {
+        "Part Number": "27SP5",
+        "Description": "SPARKPLUG",
+        "Model": "F6TC",
+        "Price": 42,
+        "Code": "170000000834"
+    },
+    {
+        "Part Number": "27SP6",
+        "Description": "SPARKPLUG",
+        "Model": "E6TC",
+        "Price": 42,
+        "Code": "170000000835"
+    },
+    {
+        "Part Number": "28GOC1",
+        "Description": "GLAND OIL CUP",
+        "Model": "TMX/RUSI125",
+        "Price": 164,
+        "Code": "170000000427"
+    },
+    {
+        "Part Number": "28GOC2",
+        "Description": "GLAND OIL CUP",
+        "Model": "CG200",
+        "Price": 164,
+        "Code": "180000002315"
+    },
+    {
+        "Part Number": "29SMC1",
+        "Description": "S/M CLAMP",
+        "Model": "XRM R/H",
+        "Price": 88,
+        "Code": "170000000948"
+    },
+    {
+        "Part Number": "29SMC2",
+        "Description": "S/M CLAMP",
+        "Model": "MIO L/H BIG",
+        "Price": 110,
+        "Code": "170000000428"
+    },
+    {
+        "Part Number": "29SMC3",
+        "Description": "S/M CLAMP",
+        "Model": "MIO SMALL SILVER",
+        "Price": 50,
+        "Code": "170000000946"
+    },
+    {
+        "Part Number": "29SMC4",
+        "Description": "S/M CLAMP",
+        "Model": "MIO SMALL BLACK",
+        "Price": 50,
+        "Code": "170000000947"
+    },
+    {
+        "Part Number": "29SMC5",
+        "Description": "S/M CLAMP",
+        "Model": "R150 L/H",
+        "Price": 132,
+        "Code": "170000000429"
+    },
+    {
+        "Part Number": "29SMC6",
+        "Description": "S/M CLAMP",
+        "Model": "RUSI150 LEFT",
+        "Price": 92,
+        "Code": "180000002562"
+    },
+    {
+        "Part Number": "29SMC7",
+        "Description": "S/M CLAMP",
+        "Model": "RUSI150 RIGHT",
+        "Price": 92,
+        "Code": "180000002563"
+    },
+    {
+        "Part Number": "29SMC8",
+        "Description": "S/M CLAMP",
+        "Model": "UNIVERSAL 8MM",
+        "Price": 64,
+        "Code": "180000002563"
+    },
+    {
+        "Part Number": "29SMC9",
+        "Description": "S/M CLAMP",
+        "Model": "UNIVERSAL 10MM",
+        "Price": 64,
+        "Code": "180000003130"
+    },
+    {
+        "Part Number": "29SMC10",
+        "Description": "S/M CLAMP",
+        "Model": "SKYDRIVE",
+        "Price": 80,
+        "Code": "980000002600"
+    },
+    {
+        "Part Number": "30RA1",
+        "Description": "ROCKER ARM",
+        "Model": "XRM",
+        "Price": 154,
+        "Code": "170000000237"
+    },
+    {
+        "Part Number": "30RA2",
+        "Description": "ROCKER ARM DOWN",
+        "Model": "TMX/RUSI125",
+        "Price": 220,
+        "Code": "170000000457"
+    },
+    {
+        "Part Number": "30RA3",
+        "Description": "ROCKER ARM UP",
+        "Model": "TMX ASSY",
+        "Price": 240,
+        "Code": "170000000458"
+    },
+    {
+        "Part Number": "30RA4",
+        "Description": "ROCKER ARM",
+        "Model": "W125",
+        "Price": 370,
+        "Code": "170000000454"
+    },
+    {
+        "Part Number": "30RA5",
+        "Description": "ROCKER ARM",
+        "Model": "MIO/CRYPTON/STX",
+        "Price": 176,
+        "Code": "170000000869"
+    },
+    {
+        "Part Number": "30RA6",
+        "Description": "ROCKER ARM",
+        "Model": "BAJAJ",
+        "Price": 370,
+        "Code": "170000000446"
+    },
+    {
+        "Part Number": "30RA7",
+        "Description": "ROCKER ARM",
+        "Model": "BARAKO",
+        "Price": 310,
+        "Code": "170000000446"
+    },
+    {
+        "Part Number": "30RA8",
+        "Description": "ROCKER ARM",
+        "Model": "R150",
+        "Price": 200,
+        "Code": "170000000554"
+    },
+    {
+        "Part Number": "30RA9",
+        "Description": "ROCKER ARM",
+        "Model": "GY6",
+        "Price": 210,
+        "Code": "170000000448"
+    },
+    {
+        "Part Number": "30RA10",
+        "Description": "ROCKER ARM",
+        "Model": "XR200/XL125",
+        "Price": 360,
+        "Code": "170000000443"
+    },
+    {
+        "Part Number": "30RA11",
+        "Description": "ROCKER ARM",
+        "Model": "W100",
+        "Price": 171.6,
+        "Code": "170000000239"
+    },
+    {
+        "Part Number": "30RA12",
+        "Description": "ROCKER ARM",
+        "Model": "W110",
+        "Price": 370,
+        "Code": "170000000240"
+    },
+    {
+        "Part Number": "30RA13",
+        "Description": "ROCKER ARM",
+        "Model": "SNIPER",
+        "Price": 620,
+        "Code": "170000000442"
+    },
+    {
+        "Part Number": "30RA14",
+        "Description": "ROCKER ARM",
+        "Model": "CRYPTON/STX/MIO",
+        "Price": 370,
+        "Code": "170000000869"
+    },
+    {
+        "Part Number": "30RA15",
+        "Description": "ROCKER ARM",
+        "Model": "STX/MIO/CRYPTON",
+        "Price": 370,
+        "Code": "176"
+    },
+    {
+        "Part Number": "30RA16",
+        "Description": "ROCKER ARM",
+        "Model": "FURY",
+        "Price": 176,
+        "Code": "170000000451"
+    },
+    {
+        "Part Number": "30RA17",
+        "Description": "ROCKER ARM",
+        "Model": "SMASH",
+        "Price": 187,
+        "Code": "170000000868"
+    },
+    {
+        "Part Number": "30RA18",
+        "Description": "ROCKER ARM",
+        "Model": "SHOGUN",
+        "Price": 176,
+        "Code": "170000000456"
+    },
+    {
+        "Part Number": "30RA19",
+        "Description": "ROCKER ARM",
+        "Model": "RUSI 150",
+        "Price": 200,
+        "Code": "170000000886"
+    },
+    {
+        "Part Number": "30RA20",
+        "Description": "ROCKER ARM",
+        "Model": "TMX SUPREMO",
+        "Price": 398,
+        "Code": "180000001882"
+    },
+    {
+        "Part Number": "30RA21",
+        "Description": "ROCKER ARM",
+        "Model": "RUSI150 ASSY",
+        "Price": 410,
+        "Code": "180000001647"
+    },
+    {
+        "Part Number": "30RA22",
+        "Description": "ROCKER ARM",
+        "Model": "BEAT",
+        "Price": 360,
+        "Code": "180000002564"
+    },
+    {
+        "Part Number": "30RA23",
+        "Description": "ROCKER ARM",
+        "Model": "DASH",
+        "Price": 360,
+        "Code": "180000002565"
+    },
+    {
+        "Part Number": "30RA24",
+        "Description": "ROCKER ARM",
+        "Model": "CB110",
+        "Price": 360,
+        "Code": "170000000864"
+    },
+    {
+        "Part Number": "30RA25",
+        "Description": "ROCKER ARM",
+        "Model": "CB125",
+        "Price": 360,
+        "Code": "170000000443"
+    },
+    {
+        "Part Number": "30RA26",
+        "Description": "ROCKER ARM",
+        "Model": "W110 W/o BEARING",
+        "Price": 170,
+        "Code": "180000002713"
+    },
+    {
+        "Part Number": "30RA27",
+        "Description": "ROCKER ARM",
+        "Model": "CT100 W/BEARING",
+        "Price": 370,
+        "Code": "190000004891"
+    },
+    {
+        "Part Number": "31LP1",
+        "Description": "LINING PLATE",
+        "Model": "TMX",
+        "Price": 84,
+        "Code": "170000000878"
+    },
+    {
+        "Part Number": "31LP2",
+        "Description": "LINING PLATE",
+        "Model": "W125",
+        "Price": 84,
+        "Code": "170000000106"
+    },
+    {
+        "Part Number": "31LP3",
+        "Description": "LINING PLATE",
+        "Model": "BAJAJ",
+        "Price": 76,
+        "Code": "170000000877"
+    },
+    {
+        "Part Number": "32FC1",
+        "Description": "FUEL COCK",
+        "Model": "XRM",
+        "Price": 110,
+        "Code": "170000000876"
+    },
+    {
+        "Part Number": "32FC2",
+        "Description": "FUEL COCK",
+        "Model": "TMX155/RUSI125",
+        "Price": 130,
+        "Code": "170000000559"
+    },
+    {
+        "Part Number": "32FC3",
+        "Description": "FUEL COCK",
+        "Model": "W125",
+        "Price": 120,
+        "Code": "170000000434"
+    },
+    {
+        "Part Number": "32FC4",
+        "Description": "FUEL COCK",
+        "Model": "MIO/CRYPTON",
+        "Price": 170,
+        "Code": "170000000555"
+    },
+    {
+        "Part Number": "32FC5",
+        "Description": "FUEL COCK",
+        "Model": "CT100",
+        "Price": 165,
+        "Code": "170000000188"
+    },
+    {
+        "Part Number": "32FC6",
+        "Description": "FUEL COCK",
+        "Model": "BARAKO",
+        "Price": 170,
+        "Code": "170000000435"
+    },
+    {
+        "Part Number": "32FC7",
+        "Description": "FUEL COCK",
+        "Model": "R150",
+        "Price": 120,
+        "Code": "170000000432"
+    },
+    {
+        "Part Number": "32FC8",
+        "Description": "FUEL COCK",
+        "Model": "GY6",
+        "Price": 117,
+        "Code": "170000000433"
+    },
+    {
+        "Part Number": "32FC9",
+        "Description": "FUEL COCK",
+        "Model": "CG125",
+        "Price": 77,
+        "Code": "170000000556"
+    },
+    {
+        "Part Number": "32FC10",
+        "Description": "FUEL COCK",
+        "Model": "DREAM",
+        "Price": 100,
+        "Code": "170000000962"
+    },
+    {
+        "Part Number": "32FC11",
+        "Description": "FUEL COCK",
+        "Model": "RUSI 125",
+        "Price": 96,
+        "Code": "170000000449"
+    },
+    {
+        "Part Number": "32FC12",
+        "Description": "FUEL COCK",
+        "Model": "UNIVERSAL",
+        "Price": 90,
+        "Code": "190000005301"
+    },
+    {
+        "Part Number": "33PC1",
+        "Description": "PRIMARY COIL",
+        "Model": "TMX",
+        "Price": 161.2,
+        "Code": "170000000289"
+    },
+    {
+        "Part Number": "33PC2",
+        "Description": "PRIMARY COIL",
+        "Model": "CT100",
+        "Price": 130,
+        "Code": "170000000439"
+    },
+    {
+        "Part Number": "33PC3",
+        "Description": "PRIMARY COIL",
+        "Model": "CT100 W/WIRE",
+        "Price": 130,
+        "Code": "170000000093"
+    },
+    {
+        "Part Number": "33PC4",
+        "Description": "PRIMARY COIL",
+        "Model": "C100",
+        "Price": 120,
+        "Code": "180000002466"
+    },
+    {
+        "Part Number": "33PC5",
+        "Description": "LIGHT COIL V.1",
+        "Model": "C100",
+        "Price": 140,
+        "Code": "170000000187"
+    },
+    {
+        "Part Number": "33PC6",
+        "Description": "LIGHT COIL V.2",
+        "Model": "C100",
+        "Price": 180,
+        "Code": "180000002466"
+    },
+    {
+        "Part Number": "34BS1",
+        "Description": "BOLT SET",
+        "Model": "TMX BIG",
+        "Price": 166,
+        "Code": "170000000110"
+    },
+    {
+        "Part Number": "34BS2",
+        "Description": "BOLT SET",
+        "Model": "TMX SMALL",
+        "Price": 140,
+        "Code": "170000000739"
+    },
+    {
+        "Part Number": "34BS3",
+        "Description": "BOLT SET",
+        "Model": "W125",
+        "Price": 240,
+        "Code": "180000001599"
+    },
+    {
+        "Part Number": "34BS4",
+        "Description": "BOLT SET",
+        "Model": "R150",
+        "Price": 244,
+        "Code": "180000001598"
+    },
+    {
+        "Part Number": "34BS5",
+        "Description": "BOLT SET",
+        "Model": "MIO",
+        "Price": 160,
+        "Code": "180000002567"
+    },
+    {
+        "Part Number": "34BS6",
+        "Description": "BOLT SET",
+        "Model": "SNIPER135",
+        "Price": 330,
+        "Code": "180000002568"
+    },
+    {
+        "Part Number": "34BS7",
+        "Description": "BOLT SET",
+        "Model": "SNIPER 150",
+        "Price": 274,
+        "Code": "180000001952"
+    },
+    {
+        "Part Number": "34BS8",
+        "Description": "BOLT SET",
+        "Model": "W110",
+        "Price": 240,
+        "Code": "190000004631"
+    },
+    {
+        "Part Number": "35PR1",
+        "Description": "PUSH ROD",
+        "Model": "TMX 155",
+        "Price": 114,
+        "Code": "170000000875"
+    },
+    {
+        "Part Number": "35PR2",
+        "Description": "PUSH ROD",
+        "Model": "CG125/RUSI125",
+        "Price": 94,
+        "Code": "170000000957"
+    },
+    {
+        "Part Number": "36AS1",
+        "Description": "AXEL SLEEVE",
+        "Model": "XRM",
+        "Price": 55,
+        "Code": "170000000794"
+    },
+    {
+        "Part Number": "36AS2",
+        "Description": "AXEL SLEEVE",
+        "Model": "CT100",
+        "Price": 78,
+        "Code": "180000001324"
+    },
+    {
+        "Part Number": "36AS3",
+        "Description": "AXEL SLEEVE",
+        "Model": "DREAM THIN 55x12",
+        "Price": 55,
+        "Code": "170000000453"
+    },
+    {
+        "Part Number": "36AS4",
+        "Description": "AXEL SLEEVE",
+        "Model": "DREAM THICK",
+        "Price": 58,
+        "Code": "170000000397"
+    },
+    {
+        "Part Number": "36AS5",
+        "Description": "AXEL SLEEVE",
+        "Model": "RS100",
+        "Price": 76,
+        "Code": "170000000107"
+    },
+    {
+        "Part Number": "36AS6",
+        "Description": "AXEL SLEEVE",
+        "Model": "XRM 62x12",
+        "Price": 58,
+        "Code": "180000003086"
+    },
+    {
+        "Part Number": "36AS7",
+        "Description": "AXEL SLEEVE",
+        "Model": "XRM125/W110",
+        "Price": 60,
+        "Code": "190000004635"
+    },
+    {
+        "Part Number": "36AS8",
+        "Description": "AXEL SLEEVE",
+        "Model": "ROUSER135",
+        "Price": 100,
+        "Code": "190000004637"
+    },
+    {
+        "Part Number": "36AS9",
+        "Description": "AXEL SLEEVE",
+        "Model": "BARAKO",
+        "Price": 70,
+        "Code": "190000004634"
+    },
+    {
+        "Part Number": "36AS10",
+        "Description": "AXEL SLEEVE",
+        "Model": "HD3/CT100",
+        "Price": 78,
+        "Code": "190000004636"
+    },
+    {
+        "Part Number": "37DC1",
+        "Description": "DUO CAP",
+        "Model": "XRM",
+        "Price": 60,
+        "Code": "170000000685"
+    },
+    {
+        "Part Number": "37DC2",
+        "Description": "DUO CAP",
+        "Model": "FZ16",
+        "Price": 90,
+        "Code": "170000000873"
+    },
+    {
+        "Part Number": "37DC3",
+        "Description": "DUO CAP",
+        "Model": "CG125",
+        "Price": 80,
+        "Code": "180000002569"
+    },
+    {
+        "Part Number": "38CD1",
+        "Description": "CLUTCH DUMPER",
+        "Model": "XRM",
+        "Price": 58.8,
+        "Code": "170000000402"
+    },
+    {
+        "Part Number": "38CD2",
+        "Description": "CLUTCH DUMPER",
+        "Model": "TMX",
+        "Price": 58.8,
+        "Code": "170000000392"
+    },
+    {
+        "Part Number": "38CD3",
+        "Description": "CLUTCH DUMPER",
+        "Model": "CG200",
+        "Price": 58.8,
+        "Code": "170000000394"
+    },
+    {
+        "Part Number": "38CD4",
+        "Description": "CLUTCH DUMPER",
+        "Model": "CG125",
+        "Price": 58.8,
+        "Code": "170000000393"
+    },
+    {
+        "Part Number": "38CD5",
+        "Description": "CLUTCH DUMPER",
+        "Model": "GP125",
+        "Price": 58.8,
+        "Code": "170000000390"
+    },
+    {
+        "Part Number": "38CD6",
+        "Description": "CLUTCH DUMPER",
+        "Model": "RS100",
+        "Price": 58.8,
+        "Code": "170000000389"
+    },
+    {
+        "Part Number": "38CD7",
+        "Description": "CLUTCH DUMPER",
+        "Model": "HD3",
+        "Price": 58.8,
+        "Code": "170000000391"
+    },
+    {
+        "Part Number": "39SC1",
+        "Description": "STATOR COIL",
+        "Model": "XRM",
+        "Price": 326,
+        "Code": "170000000201"
+    },
+    {
+        "Part Number": "39SC2",
+        "Description": "STATOR COIL",
+        "Model": "XRM110 DENSO/W100",
+        "Price": 440,
+        "Code": "170000000131"
+    },
+    {
+        "Part Number": "39SC3",
+        "Description": "STATOR COIL",
+        "Model": "XRM125",
+        "Price": 528,
+        "Code": "170000000128"
+    },
+    {
+        "Part Number": "39SC4",
+        "Description": "STATOR COIL",
+        "Model": "TMX155 3PIN 4WIRE",
+        "Price": 530,
+        "Code": "170000000201"
+    },
+    {
+        "Part Number": "39SC5",
+        "Description": "STATOR COIL",
+        "Model": "W125",
+        "Price": 530,
+        "Code": "170000000130"
+    },
+    {
+        "Part Number": "39SC6",
+        "Description": "STATOR COIL",
+        "Model": "MIO",
+        "Price": 806,
+        "Code": "170000000124"
+    },
+    {
+        "Part Number": "39SC7",
+        "Description": "STATOR COIL",
+        "Model": "BAJAJ",
+        "Price": 826,
+        "Code": "170000000730"
+    },
+    {
+        "Part Number": "39SC8",
+        "Description": "STATOR COIL",
+        "Model": "BARAKO",
+        "Price": 462,
+        "Code": "170000000116"
+    },
+    {
+        "Part Number": "39SC9",
+        "Description": "STATOR COIL",
+        "Model": "MOTORSTAR125-1Y",
+        "Price": 474,
+        "Code": "170000000532"
+    },
+    {
+        "Part Number": "39SC10",
+        "Description": "STATOR COIL",
+        "Model": "MOTORSTAR125-2Y",
+        "Price": 474,
+        "Code": "170000000285"
+    },
+    {
+        "Part Number": "39SC11",
+        "Description": "STATOR COIL",
+        "Model": "MOTORSTAR150-1Y",
+        "Price": 474,
+        "Code": "170000000121"
+    },
+    {
+        "Part Number": "39SC12",
+        "Description": "STATOR COIL",
+        "Model": "MOTORSTAR150-2Y",
+        "Price": 474,
+        "Code": "170000000120"
+    },
+    {
+        "Part Number": "39SC13",
+        "Description": "STATOR COIL",
+        "Model": "CG150-8",
+        "Price": 484,
+        "Code": "170000000117"
+    },
+    {
+        "Part Number": "39SC14",
+        "Description": "STATOR COIL",
+        "Model": "CG125-8 /CG150-8",
+        "Price": 474,
+        "Code": "170000000333"
+    },
+    {
+        "Part Number": "39SC15",
+        "Description": "STATOR COIL",
+        "Model": "RACAL150",
+        "Price": 484,
+        "Code": "170000000117"
+    },
+    {
+        "Part Number": "39SC16",
+        "Description": "STATOR COIL",
+        "Model": "LF125",
+        "Price": 484,
+        "Code": "170000000123"
+    },
+    {
+        "Part Number": "39SC17",
+        "Description": "STATOR COIL",
+        "Model": "LF110",
+        "Price": 520,
+        "Code": "170000000122"
+    },
+    {
+        "Part Number": "39SC18",
+        "Description": "STATOR COIL",
+        "Model": "SHOGUN",
+        "Price": 766,
+        "Code": "170000000126"
+    },
+    {
+        "Part Number": "39SC19",
+        "Description": "STATOR COIL",
+        "Model": "SMASH",
+        "Price": 550,
+        "Code": "170000000127"
+    },
+    {
+        "Part Number": "39SC20",
+        "Description": "STATOR COIL",
+        "Model": "FURY 125",
+        "Price": 568,
+        "Code": "170000000119"
+    },
+    {
+        "Part Number": "39SC21",
+        "Description": "STATOR COIL",
+        "Model": "RUSI 150",
+        "Price": 616,
+        "Code": "170000000125"
+    },
+    {
+        "Part Number": "39SC22",
+        "Description": "STATOR COIL",
+        "Model": "W100/XRM 110 DENSO",
+        "Price": 110,
+        "Code": "170000000201"
+    },
+    {
+        "Part Number": "39SC23",
+        "Description": "STATOR COIL",
+        "Model": "DREAM",
+        "Price": 440,
+        "Code": "170000000731"
+    },
+    {
+        "Part Number": "39SC24",
+        "Description": "STATOR COIL",
+        "Model": "EURO 100",
+        "Price": 616,
+        "Code": "170000000827"
+    },
+    {
+        "Part Number": "39SC25",
+        "Description": "STATOR COIL",
+        "Model": "R110/R150",
+        "Price": 570,
+        "Code": "170000000278"
+    },
+    {
+        "Part Number": "39SC26",
+        "Description": "STATOR COIL",
+        "Model": "R150/R110",
+        "Price": 570,
+        "Code": "170000000278"
+    },
+    {
+        "Part Number": "39SC27",
+        "Description": "STATOR COIL",
+        "Model": "TMX155 W/PLATE",
+        "Price": 700,
+        "Code": "180000002570"
+    },
+    {
+        "Part Number": "39SC28",
+        "Description": "STATOR COIL",
+        "Model": "TMX SUPREMO",
+        "Price": 1272,
+        "Code": "980000000065"
+    },
+    {
+        "Part Number": "39SC29",
+        "Description": "STATOR COIL",
+        "Model": "RUSI125",
+        "Price": 640,
+        "Code": "180000003554"
+    },
+    {
+        "Part Number": "39SC30",
+        "Description": "STATOR COIL",
+        "Model": "CB125",
+        "Price": 580,
+        "Code": "980000001201"
+    },
+    {
+        "Part Number": "39SC31",
+        "Description": "STATOR COIL",
+        "Model": "MIO 125",
+        "Price": 700,
+        "Code": "190000005160"
+    },
+    {
+        "Part Number": "39SC32",
+        "Description": "STATOR COIL",
+        "Model": "DASH",
+        "Price": 900,
+        "Code": "190000005347"
+    },
+    {
+        "Part Number": "39SC33",
+        "Description": "STATOR COIL",
+        "Model": "CRYPTON",
+        "Price": 760,
+        "Code": "190000005348"
+    },
+    {
+        "Part Number": "40VRK1",
+        "Description": "VINDEX REPAIR KIT",
+        "Model": "XRM",
+        "Price": 55,
+        "Code": "170000000087"
+    },
+    {
+        "Part Number": "40VRK2",
+        "Description": "VINDEX REPAIR KIT",
+        "Model": "TMX",
+        "Price": 55,
+        "Code": "170000000246"
+    },
+    {
+        "Part Number": "40VRK3",
+        "Description": "VINDEX REPAIR KIT",
+        "Model": "W125",
+        "Price": 60,
+        "Code": "170000000247"
+    },
+    {
+        "Part Number": "40VRK4",
+        "Description": "VINDEX REPAIR KIT",
+        "Model": "MIO",
+        "Price": 55,
+        "Code": "170000000248"
+    },
+    {
+        "Part Number": "40VRK5",
+        "Description": "VINDEX REPAIR KIT",
+        "Model": "C100",
+        "Price": 50,
+        "Code": "170000000245"
+    },
+    {
+        "Part Number": "40VRK6",
+        "Description": "VINDEX REPAIR KIT",
+        "Model": "GY6125",
+        "Price": 55,
+        "Code": "180000002571"
+    },
+    {
+        "Part Number": "40VRK7",
+        "Description": "VINDEX REPAIR KIT",
+        "Model": "CG125",
+        "Price": 55,
+        "Code": "180000002572"
+    },
+    {
+        "Part Number": "40VRK8",
+        "Description": "VINDEX REPAIR KIT",
+        "Model": "LF150",
+        "Price": 55,
+        "Code": "980000002035"
+    },
+    {
+        "Part Number": "41MF1",
+        "Description": "MANIFOLD",
+        "Model": "XRM",
+        "Price": 170,
+        "Code": "170000000708"
+    },
+    {
+        "Part Number": "41MF2",
+        "Description": "MANIFOLD",
+        "Model": "XRM W/RUBBER 24MM",
+        "Price": 190,
+        "Code": "170000000250"
+    },
+    {
+        "Part Number": "41MF3",
+        "Description": "MANIFOLD",
+        "Model": "XRM W/RUBBER 28MM",
+        "Price": 190,
+        "Code": "170000000283"
+    },
+    {
+        "Part Number": "41MF4",
+        "Description": "MANIFOLD",
+        "Model": "TMX ALLOY",
+        "Price": 100,
+        "Code": "170000000377"
+    },
+    {
+        "Part Number": "41MF5",
+        "Description": "MANIFOLD",
+        "Model": "TMX W/RUBBER",
+        "Price": 90,
+        "Code": "170000000732"
+    },
+    {
+        "Part Number": "41MF6",
+        "Description": "MANIFOLD",
+        "Model": "W125",
+        "Price": 165,
+        "Code": "170000000596"
+    },
+    {
+        "Part Number": "41MF7",
+        "Description": "MANIFOLD",
+        "Model": "MIO",
+        "Price": 216,
+        "Code": "170000000436"
+    },
+    {
+        "Part Number": "41MF8",
+        "Description": "MANIFOLD",
+        "Model": "MIO W/ROTATOR",
+        "Price": 560,
+        "Code": "170000000378"
+    },
+    {
+        "Part Number": "41MF9",
+        "Description": "MANIFOLD",
+        "Model": "CT100",
+        "Price": 140,
+        "Code": "170000000712"
+    },
+    {
+        "Part Number": "41MF10",
+        "Description": "MANIFOLD",
+        "Model": "BARAKO",
+        "Price": 64,
+        "Code": "170000000376"
+    },
+    {
+        "Part Number": "41MF11",
+        "Description": "MANIFOLD",
+        "Model": "R150",
+        "Price": 130,
+        "Code": "170000000713"
+    },
+    {
+        "Part Number": "41MF12",
+        "Description": "MANIFOLD",
+        "Model": "GY6 150",
+        "Price": 156,
+        "Code": "170000000375"
+    },
+    {
+        "Part Number": "41MF13",
+        "Description": "MANIFOLD",
+        "Model": "24MM",
+        "Price": 90,
+        "Code": "170000000379"
+    },
+    {
+        "Part Number": "41MF14",
+        "Description": "MANIFOLD",
+        "Model": "28MM",
+        "Price": 90,
+        "Code": "170000001153"
+    },
+    {
+        "Part Number": "41MF15",
+        "Description": "MANIFOLD",
+        "Model": "24MM W/COLOR",
+        "Price": 100,
+        "Code": "170000000826"
+    },
+    {
+        "Part Number": "41MF16",
+        "Description": "MANIFOLD",
+        "Model": "28MM W/COLOR",
+        "Price": 100,
+        "Code": "180000002573"
+    },
+    {
+        "Part Number": "41MF17",
+        "Description": "MANIFOLD",
+        "Model": "LF110",
+        "Price": 160,
+        "Code": "170000000709"
+    },
+    {
+        "Part Number": "41MF18",
+        "Description": "MANIFOLD",
+        "Model": "LF110 W/ ROTATOR",
+        "Price": 310,
+        "Code": "170000000710"
+    },
+    {
+        "Part Number": "41MF19",
+        "Description": "MANIFOLD",
+        "Model": "ROUSER 135",
+        "Price": 200,
+        "Code": "170000000711"
+    },
+    {
+        "Part Number": "41MF20",
+        "Description": "MANIFOLD",
+        "Model": "UNIVERSAL",
+        "Price": 210,
+        "Code": "170000000374"
+    },
+    {
+        "Part Number": "41MF21",
+        "Description": "MANIFOLD",
+        "Model": "XRM W/RUBBER 30MM",
+        "Price": 190,
+        "Code": "180000001351"
+    },
+    {
+        "Part Number": "41MF22",
+        "Description": "MANIFOLD",
+        "Model": "SNIPER 135",
+        "Price": 254,
+        "Code": "180000002169"
+    },
+    {
+        "Part Number": "41MF23",
+        "Description": "MANIFOLD",
+        "Model": "RUSI125",
+        "Price": 110,
+        "Code": "1800000003432"
+    },
+    {
+        "Part Number": "41MF24",
+        "Description": "MANIFOLD",
+        "Model": "TMX/CG125",
+        "Price": 100,
+        "Code": "190000005046"
+    },
+    {
+        "Part Number": "42SR1",
+        "Description": "STARTER RELAY",
+        "Model": "XRM",
+        "Price": 170,
+        "Code": "170000000867"
+    },
+    {
+        "Part Number": "42SR2",
+        "Description": "STARTER RELAY",
+        "Model": "MIO",
+        "Price": 210,
+        "Code": "170000000241"
+    },
+    {
+        "Part Number": "42SR3",
+        "Description": "STARTER RELAY",
+        "Model": "R150",
+        "Price": 231,
+        "Code": "170000000242"
+    },
+    {
+        "Part Number": "42SR4",
+        "Description": "STARTER RELAY",
+        "Model": "GY6",
+        "Price": 170,
+        "Code": "170000000293"
+    },
+    {
+        "Part Number": "42SR5",
+        "Description": "STARTER RELAY",
+        "Model": "RUSI 150",
+        "Price": 170,
+        "Code": "180000003087"
+    },
+    {
+        "Part Number": "42SR6",
+        "Description": "STARTER RELAY",
+        "Model": "NOUVO",
+        "Price": 230,
+        "Code": "190000004025"
+    },
+    {
+        "Part Number": "42SR7",
+        "Description": "STARTER RELAY",
+        "Model": "TMX",
+        "Price": 170,
+        "Code": "190000005427"
+    },
+    {
+        "Part Number": "42SR8",
+        "Description": "STARTER RELAY",
+        "Model": "MIOi125/M3",
+        "Price": 256,
+        "Code": "190000005427"
+    },
+    {
+        "Part Number": "43SBS1",
+        "Description": "SPROCKET BOLT SET",
+        "Model": "XRM",
+        "Price": 52,
+        "Code": "170000000252"
+    },
+    {
+        "Part Number": "43SBS2",
+        "Description": "SPROCKET BOLT SET",
+        "Model": "TMX",
+        "Price": 53,
+        "Code": "170000000112"
+    },
+    {
+        "Part Number": "43SBS3",
+        "Description": "SPROCKET BOLT SET",
+        "Model": "BAJAJ",
+        "Price": 70,
+        "Code": "170000000455"
+    },
+    {
+        "Part Number": "43SBS4",
+        "Description": "SPROCKET BOLT SET",
+        "Model": "BARAKO",
+        "Price": 72,
+        "Code": "170000000110"
+    },
+    {
+        "Part Number": "43SBS5",
+        "Description": "SPROCKET BOLT SET",
+        "Model": "DREAM",
+        "Price": 52,
+        "Code": "170000000438"
+    },
+    {
+        "Part Number": "43SBS6",
+        "Description": "SPROCKET BOLT SET",
+        "Model": "HD3",
+        "Price": 62,
+        "Code": "170000000437"
+    },
+    {
+        "Part Number": "43SBS7",
+        "Description": "SPROCKET BOLT SET",
+        "Model": "ROUSER135",
+        "Price": 80,
+        "Code": "180000002177"
+    },
+    {
+        "Part Number": "43SBS8",
+        "Description": "SPROCKET BOLT SET",
+        "Model": "RS100",
+        "Price": 59,
+        "Code": "180000002574"
+    },
+    {
+        "Part Number": "43SBS9",
+        "Description": "SPROCKET BOLT SET",
+        "Model": "RUSI125 AAA",
+        "Price": 66,
+        "Code": "170000000438"
+    },
+    {
+        "Part Number": "43SBS10",
+        "Description": "SPROCKET BOLT SET",
+        "Model": "ROUSER",
+        "Price": 92,
+        "Code": "190000004129"
+    },
+    {
+        "Part Number": "43SBS11",
+        "Description": "SPROCKET BOLT SET",
+        "Model": "CB110",
+        "Price": 74,
+        "Code": "190000004130"
+    },
+    {
+        "Part Number": "43SBS12",
+        "Description": "SPROCKET BOLT SET",
+        "Model": "CB125",
+        "Price": 80,
+        "Code": "190000004085"
+    },
+    {
+        "Part Number": "43SBS13",
+        "Description": "SPROCKET BOLT SET",
+        "Model": "FZ16",
+        "Price": 86,
+        "Code": "190000004131"
+    },
+    {
+        "Part Number": "43SBS14",
+        "Description": "SPROCKET BOLT SET",
+        "Model": "SNIPER135",
+        "Price": 74,
+        "Code": "190000004132"
+    },
+    {
+        "Part Number": "43SBS15",
+        "Description": "SPROCKET BOLT SET",
+        "Model": "W110/W125",
+        "Price": 76,
+        "Code": "190000004133"
+    },
+    {
+        "Part Number": "43SBS16",
+        "Description": "SPROCKET BOLT SET",
+        "Model": "DASH",
+        "Price": 80,
+        "Code": "190000004134"
+    },
+    {
+        "Part Number": "44CR1",
+        "Description": "CLUTCH RELEASE SML",
+        "Model": "XRM",
+        "Price": 80,
+        "Code": "170000001057"
+    },
+    {
+        "Part Number": "44CR2",
+        "Description": "CLUTCH RELEASE BIG",
+        "Model": "XRM",
+        "Price": 80,
+        "Code": "170000000156"
+    },
+    {
+        "Part Number": "44CR3",
+        "Description": "CLUTCH RELEASE",
+        "Model": "TMX/CG125",
+        "Price": 158,
+        "Code": "170000000274"
+    },
+    {
+        "Part Number": "44CR4",
+        "Description": "CLUTCH RELEASE",
+        "Model": "TMX/CG150/RUSI125",
+        "Price": 170,
+        "Code": "180000001596"
+    },
+    {
+        "Part Number": "44CR5",
+        "Description": "CLUTCH RELEASE",
+        "Model": "C100 SHORT",
+        "Price": 170,
+        "Code": "170000001248"
+    },
+    {
+        "Part Number": "44CR6",
+        "Description": "CLUTCH RELEASE",
+        "Model": "C100 LONG",
+        "Price": 190,
+        "Code": "180000001387"
+    },
+    {
+        "Part Number": "45CC1",
+        "Description": "CABLE CLAMP",
+        "Model": "UNIVERSAL",
+        "Price": 40,
+        "Code": "170000000699"
+    },
+    {
+        "Part Number": "46CRK1",
+        "Description": "CALIPER REPAIR KIT",
+        "Model": "SMASH/FURY/XRM/W125",
+        "Price": 92.4,
+        "Code": "170000000282"
+    },
+    {
+        "Part Number": "46CRK2",
+        "Description": "CALIPER REPAIR KIT",
+        "Model": "MIO",
+        "Price": 92.4,
+        "Code": "170000000113"
+    },
+    {
+        "Part Number": "46CRK3",
+        "Description": "CALIPER REPAIR KIT",
+        "Model": "RAIDER 150",
+        "Price": 92.4,
+        "Code": "170000000281"
+    },
+    {
+        "Part Number": "46CRK4",
+        "Description": "CALIPER REPAIR KIT SET",
+        "Model": "W110",
+        "Price": 92.4,
+        "Code": "180000002373"
+    },
+    {
+        "Part Number": "46CRK5",
+        "Description": "CALIPER REPAIR KIT",
+        "Model": "XRM TRINITY",
+        "Price": 92.4,
+        "Code": "180000001628"
+    },
+    {
+        "Part Number": "46CRK6",
+        "Description": "CALIPER REPAIR KIT",
+        "Model": "W110 SET",
+        "Price": 92.4,
+        "Code": "180000002373"
+    },
+    {
+        "Part Number": "47IR1",
+        "Description": "INSULATOR RACING",
+        "Model": "UNIVERSAL",
+        "Price": 110,
+        "Code": "170000000381"
+    },
+    {
+        "Part Number": "48DRK1",
+        "Description": "DIAPHRAGM REP. KIT",
+        "Model": "MIO",
+        "Price": 190,
+        "Code": "180000003289"
+    },
+    {
+        "Part Number": "48DRK2",
+        "Description": "DIAPHRAGM REP. KIT",
+        "Model": "GY6",
+        "Price": 170,
+        "Code": "180000003452"
+    },
+    {
+        "Part Number": "48DRK3",
+        "Description": "DIAPHRAGM REP. KIT",
+        "Model": "BEAT",
+        "Price": 180,
+        "Code": "180000003288"
+    },
+    {
+        "Part Number": "49OPG1",
+        "Description": "OIL PUMP GEAR",
+        "Model": "W125",
+        "Price": 66,
+        "Code": "170000000334"
+    },
+    {
+        "Part Number": "49OPG2",
+        "Description": "OIL PUMP GEAR",
+        "Model": "DREAM",
+        "Price": 110,
+        "Code": "170000000270"
+    },
+    {
+        "Part Number": "49OPG3",
+        "Description": "OIL PUMP GEAR",
+        "Model": "TMX/RUSI125",
+        "Price": 150,
+        "Code": "180000002036"
+    },
+    {
+        "Part Number": "49OPG4",
+        "Description": "OIL PUMP GEAR",
+        "Model": "MIO",
+        "Price": 98,
+        "Code": "190000004512"
+    },
+    {
+        "Part Number": "49OPG5",
+        "Description": "OIL PUMP GEAR",
+        "Model": "CB125",
+        "Price": 170,
+        "Code": "200000005975"
+    },
+    {
+        "Part Number": "50TS1",
+        "Description": "TAPPET SCREW",
+        "Model": "XRM",
+        "Price": 44,
+        "Code": "170000000866"
+    },
+    {
+        "Part Number": "50TS2",
+        "Description": "TAPPET SCREW",
+        "Model": "TMX",
+        "Price": 44,
+        "Code": "170000000862"
+    },
+    {
+        "Part Number": "51SG1",
+        "Description": "STARTER GEAR",
+        "Model": "XRM",
+        "Price": 60,
+        "Code": ""
+    },
+    {
+        "Part Number": "52CP1",
+        "Description": "CONTACT POINT",
+        "Model": "TMX",
+        "Price": 100,
+        "Code": ""
+    },
+    {
+        "Part Number": "53VC1",
+        "Description": "VELOCITY CAP",
+        "Model": "24MM",
+        "Price": 54,
+        "Code": ""
+    },
+    {
+        "Part Number": "53VC2",
+        "Description": "VELOCITY CAP",
+        "Model": "28MM",
+        "Price": 54,
+        "Code": ""
+    },
+    {
+        "Part Number": "53VC3",
+        "Description": "VELOCITY CAP",
+        "Model": "30MM",
+        "Price": 54,
+        "Code": ""
+    },
+    {
+        "Part Number": "53VC4",
+        "Description": "VELOCITY CAP",
+        "Model": "26MM",
+        "Price": 54,
+        "Code": ""
+    },
+    {
+        "Part Number": "54VG1",
+        "Description": "VALVE GUIDE",
+        "Model": "XRM",
+        "Price": 130,
+        "Code": "180000001385"
+    },
+    {
+        "Part Number": "54VG2",
+        "Description": "VALVE GUIDE",
+        "Model": "TMX",
+        "Price": 130,
+        "Code": "170000000132"
+    },
+    {
+        "Part Number": "54VG3",
+        "Description": "VALVE GUIDE",
+        "Model": "W125",
+        "Price": 130,
+        "Code": "180000002575"
+    },
+    {
+        "Part Number": "54VG4",
+        "Description": "VALVE GUIDE",
+        "Model": "MIO",
+        "Price": 130,
+        "Code": "180000002508"
+    },
+    {
+        "Part Number": "54VG5",
+        "Description": "VALVE GUIDE",
+        "Model": "CT100",
+        "Price": 130,
+        "Code": "170000000133"
+    },
+    {
+        "Part Number": "54VG6",
+        "Description": "VALVE GUIDE",
+        "Model": "R150",
+        "Price": 130,
+        "Code": "170000000885"
+    },
+    {
+        "Part Number": "54VG7",
+        "Description": "VALVE GUIDE",
+        "Model": "SMASH",
+        "Price": 130,
+        "Code": "180000001885"
+    },
+    {
+        "Part Number": "54VG8",
+        "Description": "VALVE GUIDE",
+        "Model": "SHOGUN",
+        "Price": 130,
+        "Code": "180000002576"
+    },
+    {
+        "Part Number": "55HWL1",
+        "Description": "HANDLE W/LEVER",
+        "Model": "UNIVERSAL R",
+        "Price": 164,
+        "Code": "170000000254"
+    },
+    {
+        "Part Number": "55HWL2",
+        "Description": "HANDLE W/LEVER",
+        "Model": "UNIVERSAL L",
+        "Price": 164,
+        "Code": "170000000949"
+    },
+    {
+        "Part Number": "56EVL1",
+        "Description": "ENGINE VALVE LOCK",
+        "Model": "XRM",
+        "Price": 50,
+        "Code": "190000004366"
+    },
+    {
+        "Part Number": "56EVL2",
+        "Description": "ENGINE VALVE LOCK",
+        "Model": "TMX",
+        "Price": 50,
+        "Code": "190000004365"
+    },
+    {
+        "Part Number": "57CS1",
+        "Description": "CLUTCH SHOE",
+        "Model": "XRM",
+        "Price": 530,
+        "Code": "170000000825"
+    },
+    {
+        "Part Number": "57CS2",
+        "Description": "CLUTCH SHOE",
+        "Model": "W125",
+        "Price": 596,
+        "Code": "170000000939"
+    },
+    {
+        "Part Number": "57CS3",
+        "Description": "CLUTCH SHOE",
+        "Model": "MIO",
+        "Price": 530,
+        "Code": "170000000205"
+    },
+    {
+        "Part Number": "57CS4",
+        "Description": "CLUTCH SHOE",
+        "Model": "GY6",
+        "Price": 760,
+        "Code": "170000000204"
+    },
+    {
+        "Part Number": "57CS5",
+        "Description": "CLUTCH SHOE",
+        "Model": "BEAT",
+        "Price": 700,
+        "Code": "170000000824"
+    },
+    {
+        "Part Number": "57CS6",
+        "Description": "CLUTCH SHOE",
+        "Model": "SKYDRIVE",
+        "Price": 920,
+        "Code": "170000000822"
+    },
+    {
+        "Part Number": "57CS7",
+        "Description": "CLUTCH SHOE",
+        "Model": "NMAX",
+        "Price": 1000,
+        "Code": "200000006049"
+    },
+    {
+        "Part Number": "57CS8",
+        "Description": "CLUTCH SHOE",
+        "Model": "CLICK",
+        "Price": 1000,
+        "Code": "200000006050"
+    },
+    {
+        "Part Number": "58KPGC",
+        "Description": "KICK PINION GEAR CAP",
+        "Model": "MIO",
+        "Price": 100,
+        "Code": "170000000135"
+    },
+    {
+        "Part Number": "59VD1",
+        "Description": "VINDEX DRIVE",
+        "Model": "XRM",
+        "Price": 360,
+        "Code": "170000000441"
+    },
+    {
+        "Part Number": "59VD2",
+        "Description": "VINDEX DRIVE",
+        "Model": "W125",
+        "Price": 320,
+        "Code": "170000000143"
+    },
+    {
+        "Part Number": "59VD3",
+        "Description": "VINDEX DRIVE",
+        "Model": "MIO",
+        "Price": 460,
+        "Code": "170000000142"
+    },
+    {
+        "Part Number": "59VD4",
+        "Description": "VINDEX DRIVE",
+        "Model": "TMX",
+        "Price": 350,
+        "Code": "180000001378"
+    },
+    {
+        "Part Number": "59VD5",
+        "Description": "VINDEX DRIVE",
+        "Model": "RUSI 125",
+        "Price": 230,
+        "Code": "180000003433"
+    },
+    {
+        "Part Number": "59VD6",
+        "Description": "VINDEX DRIVE",
+        "Model": "R150",
+        "Price": 500,
+        "Code": "190000005098"
+    },
+    {
+        "Part Number": "59VD7",
+        "Description": "VINDEX DRIVE",
+        "Model": "FURY",
+        "Price": 460,
+        "Code": "190000005097"
+    },
+    {
+        "Part Number": "60CD1",
+        "Description": "CLUTCH DISC",
+        "Model": "XRM",
+        "Price": 270,
+        "Code": "170000000224"
+    },
+    {
+        "Part Number": "60CD2",
+        "Description": "CLUTCH DISC",
+        "Model": "TMX155",
+        "Price": 292,
+        "Code": "170000001073"
+    },
+    {
+        "Part Number": "60CD3",
+        "Description": "CLUTCH DISC",
+        "Model": "W125",
+        "Price": 350,
+        "Code": "170000000223"
+    },
+    {
+        "Part Number": "60CD4",
+        "Description": "CLUTCH DISC",
+        "Model": "CT100",
+        "Price": 270,
+        "Code": "170000000179"
+    },
+    {
+        "Part Number": "60CD5",
+        "Description": "CLUTCH DISC",
+        "Model": "BARAKO",
+        "Price": 490,
+        "Code": "170000000177"
+    },
+    {
+        "Part Number": "60CD6",
+        "Description": "CLUTCH DISC",
+        "Model": "TMX/CG125",
+        "Price": 292,
+        "Code": "170000000291"
+    },
+    {
+        "Part Number": "60CD7",
+        "Description": "CLUTCH DISC",
+        "Model": "TMX/CG150",
+        "Price": 292,
+        "Code": "170000000182"
+    },
+    {
+        "Part Number": "60CD8",
+        "Description": "CLUTCH DISC",
+        "Model": "TMX/CG200",
+        "Price": 292,
+        "Code": "170000000290"
+    },
+    {
+        "Part Number": "60CD9",
+        "Description": "CLUTCH DISC",
+        "Model": "TMX SUPREMO",
+        "Price": 360,
+        "Code": "170000000823"
+    },
+    {
+        "Part Number": "60CD10",
+        "Description": "CLUTCH DISC",
+        "Model": "W100",
+        "Price": 280,
+        "Code": "170000000225"
+    },
+    {
+        "Part Number": "60CD11",
+        "Description": "CLUTCH DISC",
+        "Model": "STX",
+        "Price": 460,
+        "Code": "170000000181"
+    },
+    {
+        "Part Number": "60CD12",
+        "Description": "CLUTCH DISC",
+        "Model": "SMASH",
+        "Price": 350,
+        "Code": "170000000180"
+    },
+    {
+        "Part Number": "60CD13",
+        "Description": "CLUTCH DISC",
+        "Model": "BOXER 150",
+        "Price": 350,
+        "Code": "170000000178"
+    },
+    {
+        "Part Number": "60CD14",
+        "Description": "CLUTCH DISC",
+        "Model": "CB125",
+        "Price": 410,
+        "Code": "980000000052"
+    },
+    {
+        "Part Number": "60CD15",
+        "Description": "CLUTCH DISC",
+        "Model": "GD110",
+        "Price": 410,
+        "Code": "980000000051"
+    },
+    {
+        "Part Number": "60CD16",
+        "Description": "CLUTCH DISC",
+        "Model": "R150",
+        "Price": 410,
+        "Code": "980000000053"
+    },
+    {
+        "Part Number": "60CD17",
+        "Description": "CLUTCH DISC",
+        "Model": "VEGA FORCE",
+        "Price": 460,
+        "Code": "980000000054"
+    },
+    {
+        "Part Number": "60CD18",
+        "Description": "CLUTCH DISC SET",
+        "Model": "TMX/RUSI",
+        "Price": 1000,
+        "Code": "180000003445"
+    },
+    {
+        "Part Number": "61PS1",
+        "Description": "PEDAL SHIFTER",
+        "Model": "W125",
+        "Price": 90,
+        "Code": "170000000742"
+    },
+    {
+        "Part Number": "61PS2",
+        "Description": "PEDAL SHIFTER",
+        "Model": "W100",
+        "Price": 90,
+        "Code": "170000000858"
+    },
+    {
+        "Part Number": "61PS3",
+        "Description": "PEDAL SHIFTER",
+        "Model": "SUZUKI",
+        "Price": 145,
+        "Code": "980000003399"
+    },
+    {
+        "Part Number": "62SB1",
+        "Description": "SPACER BELL",
+        "Model": "MIO",
+        "Price": 63,
+        "Code": ""
+    },
+    {
+        "Part Number": "63ML",
+        "Description": "MOTOR LOCK",
+        "Model": "TMX",
+        "Price": 100,
+        "Code": "170000000153"
+    },
+    {
+        "Part Number": "64ISC1",
+        "Description": "IGNITION SWITCH COVER",
+        "Model": "MIO",
+        "Price": 196,
+        "Code": "170000000738"
+    },
+    {
+        "Part Number": "65CDI1",
+        "Description": "CDI",
+        "Model": "W110/XRM",
+        "Price": 166,
+        "Code": "170000000077"
+    },
+    {
+        "Part Number": "65CDI2",
+        "Description": "CDI",
+        "Model": "XRM125",
+        "Price": 442,
+        "Code": "170000000078"
+    },
+    {
+        "Part Number": "65CDI3",
+        "Description": "CDI",
+        "Model": "TMX",
+        "Price": 158,
+        "Code": "170000000070"
+    },
+    {
+        "Part Number": "65CDI4",
+        "Description": "CDI",
+        "Model": "W125S",
+        "Price": 500,
+        "Code": "170000000073"
+    },
+    {
+        "Part Number": "65CDI5",
+        "Description": "CDI",
+        "Model": "W125i",
+        "Price": 442,
+        "Code": "170000000074"
+    },
+    {
+        "Part Number": "65CDI6",
+        "Description": "CDI",
+        "Model": "W125X",
+        "Price": 442,
+        "Code": "180000001365"
+    },
+    {
+        "Part Number": "65CDI7",
+        "Description": "CDI",
+        "Model": "MIO AMORE/MIO SOUL",
+        "Price": 462,
+        "Code": "170000000055"
+    },
+    {
+        "Part Number": "65CDI8",
+        "Description": "CDI",
+        "Model": "MIO SPORTY",
+        "Price": 500,
+        "Code": "170000000057"
+    },
+    {
+        "Part Number": "65CDI9",
+        "Description": "CDI",
+        "Model": "MIO SOUL/MIO AMORE",
+        "Price": 442,
+        "Code": "170000000058"
+    },
+    {
+        "Part Number": "65CDI10",
+        "Description": "CDI",
+        "Model": "CT100",
+        "Price": 186,
+        "Code": "442"
+    },
+    {
+        "Part Number": "65CDI11",
+        "Description": "CDI",
+        "Model": "BARAKO",
+        "Price": 442,
+        "Code": "170000000050"
+    },
+    {
+        "Part Number": "65CDI12",
+        "Description": "CDI",
+        "Model": "R150 OLD",
+        "Price": 500,
+        "Code": "170000000060"
+    },
+    {
+        "Part Number": "65CDI13",
+        "Description": "CDI",
+        "Model": "TMX SUPREMO",
+        "Price": 504,
+        "Code": "170000000071"
+    },
+    {
+        "Part Number": "65CDI14",
+        "Description": "CDI",
+        "Model": "FURY 125",
+        "Price": 442,
+        "Code": "180000002577"
+    },
+    {
+        "Part Number": "65CDI15",
+        "Description": "CDI",
+        "Model": "SMASH",
+        "Price": 462,
+        "Code": "170000000065"
+    },
+    {
+        "Part Number": "65CDI16",
+        "Description": "CDI",
+        "Model": "CRYPTON",
+        "Price": 368,
+        "Code": "170000000956"
+    },
+    {
+        "Part Number": "65CDI17",
+        "Description": "CDI",
+        "Model": "HD3",
+        "Price": 126,
+        "Code": "170000000054"
+    },
+    {
+        "Part Number": "65CDI18",
+        "Description": "CDI",
+        "Model": "WIND125",
+        "Price": 462,
+        "Code": "170000000075"
+    },
+    {
+        "Part Number": "65CDI19",
+        "Description": "CDI",
+        "Model": "SNIPER 135",
+        "Price": 824,
+        "Code": "170000000067"
+    },
+    {
+        "Part Number": "65CDI20",
+        "Description": "CDI",
+        "Model": "FZ16",
+        "Price": 856,
+        "Code": "170000000053"
+    },
+    {
+        "Part Number": "65CDI21",
+        "Description": "CDI",
+        "Model": "STX OLD",
+        "Price": 368,
+        "Code": "170000000068"
+    },
+    {
+        "Part Number": "65CDI22",
+        "Description": "CDI",
+        "Model": "VEGA FORCE",
+        "Price": 500,
+        "Code": "170000000072"
+    },
+    {
+        "Part Number": "65CDI23",
+        "Description": "CDI",
+        "Model": "THUNDER",
+        "Price": 652,
+        "Code": "170000000069"
+    },
+    {
+        "Part Number": "65CDI24",
+        "Description": "CDI",
+        "Model": "DREAM",
+        "Price": 166,
+        "Code": "170000000052"
+    },
+    {
+        "Part Number": "65CDI25",
+        "Description": "CDI",
+        "Model": "ROUSER 135",
+        "Price": 856,
+        "Code": "170000000061"
+    },
+    {
+        "Part Number": "65CDI26",
+        "Description": "CDI",
+        "Model": "CB110",
+        "Price": 510,
+        "Code": "170000000046"
+    },
+    {
+        "Part Number": "65CDI27",
+        "Description": "CDI",
+        "Model": "MOTORSTAR150",
+        "Price": 190,
+        "Code": "170000000059"
+    },
+    {
+        "Part Number": "65CDI28",
+        "Description": "CDI",
+        "Model": "XR200",
+        "Price": 630,
+        "Code": "170000000076"
+    },
+    {
+        "Part Number": "65CDI29",
+        "Description": "CDI",
+        "Model": "SKYDRIVE",
+        "Price": 538,
+        "Code": "170000000064"
+    },
+    {
+        "Part Number": "65CDI30",
+        "Description": "CDI",
+        "Model": "RS100",
+        "Price": 132,
+        "Code": "170000000063"
+    },
+    {
+        "Part Number": "65CDI31",
+        "Description": "CDI",
+        "Model": "LF110",
+        "Price": 270,
+        "Code": "180000002578"
+    },
+    {
+        "Part Number": "65CDI32",
+        "Description": "CDI",
+        "Model": "CB125",
+        "Price": 556,
+        "Code": "180000002579"
+    },
+    {
+        "Part Number": "65CDI33",
+        "Description": "CDI",
+        "Model": "ROUSER220",
+        "Price": 860,
+        "Code": "170000000062"
+    },
+    {
+        "Part Number": "65CDI34",
+        "Description": "CDI",
+        "Model": "STX NEW",
+        "Price": 540,
+        "Code": "170000001077"
+    },
+    {
+        "Part Number": "65CDI35",
+        "Description": "CDI",
+        "Model": "ROUSER200 NS",
+        "Price": 860,
+        "Code": "180000001755"
+    },
+    {
+        "Part Number": "65CDI36",
+        "Description": "CDI",
+        "Model": "RUSI 110",
+        "Price": 360,
+        "Code": "180000001754"
+    },
+    {
+        "Part Number": "65CDI37",
+        "Description": "CDI",
+        "Model": "TC125",
+        "Price": 380,
+        "Code": "180000001756"
+    },
+    {
+        "Part Number": "65CDI38",
+        "Description": "CDI",
+        "Model": "R150 NEW",
+        "Price": 538,
+        "Code": "180000003518"
+    },
+    {
+        "Part Number": "65CDI39",
+        "Description": "CDI",
+        "Model": "BOXER150",
+        "Price": 490,
+        "Code": "180000003519"
+    },
+    {
+        "Part Number": "65CDI40",
+        "Description": "CDI",
+        "Model": "R150 REBORN",
+        "Price": 580,
+        "Code": "190000003939"
+    },
+    {
+        "Part Number": "65CDI41",
+        "Description": "CDI",
+        "Model": "BEAT",
+        "Price": 780,
+        "Code": "190000003940"
+    },
+    {
+        "Part Number": "66REG1",
+        "Description": "REGULATOR",
+        "Model": "XRM",
+        "Price": 148,
+        "Code": "170000000169"
+    },
+    {
+        "Part Number": "66REG2",
+        "Description": "REGULATOR",
+        "Model": "XRM125",
+        "Price": 378,
+        "Code": "170000000170"
+    },
+    {
+        "Part Number": "66REG3",
+        "Description": "REGULATOR",
+        "Model": "TMX",
+        "Price": 148,
+        "Code": "170000000203"
+    },
+    {
+        "Part Number": "66REG4",
+        "Description": "REGULATOR",
+        "Model": "W125",
+        "Price": 378,
+        "Code": "170000000166"
+    },
+    {
+        "Part Number": "66REG5",
+        "Description": "REGULATOR",
+        "Model": "W125S",
+        "Price": 388,
+        "Code": "170000000167"
+    },
+    {
+        "Part Number": "66REG6",
+        "Description": "REGULATOR",
+        "Model": "MIO",
+        "Price": 148,
+        "Code": "170000000190"
+    },
+    {
+        "Part Number": "66REG7",
+        "Description": "REGULATOR",
+        "Model": "CT100",
+        "Price": 336,
+        "Code": "170000000158"
+    },
+    {
+        "Part Number": "66REG8",
+        "Description": "REGULATOR",
+        "Model": "BARAKO",
+        "Price": 148,
+        "Code": "170000000191"
+    },
+    {
+        "Part Number": "66REG9",
+        "Description": "REGULATOR",
+        "Model": "GY6 4WIRE",
+        "Price": 226,
+        "Code": "180000002271"
+    },
+    {
+        "Part Number": "66REG10",
+        "Description": "REGULATOR",
+        "Model": "GY6 5WIRE",
+        "Price": 226,
+        "Code": "170000001108"
+    },
+    {
+        "Part Number": "66REG11",
+        "Description": "REGULATOR",
+        "Model": "GY6 6WIRE",
+        "Price": 306,
+        "Code": "170000000161"
+    },
+    {
+        "Part Number": "66REG12",
+        "Description": "REGULATOR",
+        "Model": "TMX SUPREMO",
+        "Price": 462,
+        "Code": "170000000165"
+    },
+    {
+        "Part Number": "66REG13",
+        "Description": "REGULATOR",
+        "Model": "HD3",
+        "Price": 94,
+        "Code": "170000001202"
+    },
+    {
+        "Part Number": "66REG14",
+        "Description": "REGULATOR",
+        "Model": "ALX/SKYGO",
+        "Price": 158,
+        "Code": "170000000954"
+    },
+    {
+        "Part Number": "66REG15",
+        "Description": "REGULATOR",
+        "Model": "C100",
+        "Price": 148,
+        "Code": "170000000159"
+    },
+    {
+        "Part Number": "66REG16",
+        "Description": "REGULATOR",
+        "Model": "RS100",
+        "Price": 94,
+        "Code": "170000001203"
+    },
+    {
+        "Part Number": "66REG17",
+        "Description": "REGULATOR",
+        "Model": "CB125",
+        "Price": 462,
+        "Code": "170000001109"
+    },
+    {
+        "Part Number": "66REG18",
+        "Description": "REGULATOR",
+        "Model": "FURY",
+        "Price": 148,
+        "Code": "170000000160"
+    },
+    {
+        "Part Number": "66REG19",
+        "Description": "REGULATOR",
+        "Model": "SUZUKI MOLA",
+        "Price": 454,
+        "Code": "170000000164"
+    },
+    {
+        "Part Number": "66REG20",
+        "Description": "REGULATOR",
+        "Model": "XR200",
+        "Price": 430,
+        "Code": "170000000168"
+    },
+    {
+        "Part Number": "66REG21",
+        "Description": "REGULATOR",
+        "Model": "SMASH 110",
+        "Price": 148,
+        "Code": "170000000192"
+    },
+    {
+        "Part Number": "66REG22",
+        "Description": "REGULATOR",
+        "Model": "SNIPER 135",
+        "Price": 148,
+        "Code": "170000000193"
+    },
+    {
+        "Part Number": "66REG23",
+        "Description": "REGULATOR",
+        "Model": "SHOGUN",
+        "Price": 148,
+        "Code": "170000000287"
+    },
+    {
+        "Part Number": "66REG24",
+        "Description": "REGULATOR",
+        "Model": "RACAL",
+        "Price": 252,
+        "Code": "170000000163"
+    },
+    {
+        "Part Number": "66REG25",
+        "Description": "REGULATOR",
+        "Model": "MOTORSTAR 150",
+        "Price": 326,
+        "Code": "170000000162"
+    },
+    {
+        "Part Number": "66REG26",
+        "Description": "REGULATOR",
+        "Model": "W125X",
+        "Price": 388,
+        "Code": "170000000953"
+    },
+    {
+        "Part Number": "66REG27",
+        "Description": "REGULATOR",
+        "Model": "TC125",
+        "Price": 316,
+        "Code": "180000001757"
+    },
+    {
+        "Part Number": "66REG28",
+        "Description": "REGULATOR",
+        "Model": "RUSI125",
+        "Price": 316,
+        "Code": "180000001758"
+    },
+    {
+        "Part Number": "66REG29",
+        "Description": "REGULATOR",
+        "Model": "R150 OLD",
+        "Price": 148,
+        "Code": "180000003516"
+    },
+    {
+        "Part Number": "66REG30",
+        "Description": "REGULATOR",
+        "Model": "FZ16",
+        "Price": 350,
+        "Code": "180000003517"
+    },
+    {
+        "Part Number": "66REG31",
+        "Description": "REGULATOR",
+        "Model": "SNIPER150",
+        "Price": 600,
+        "Code": "190000003932"
+    },
+    {
+        "Part Number": "66REG32",
+        "Description": "REGULATOR",
+        "Model": "CB110/CB100",
+        "Price": 410,
+        "Code": "190000003931"
+    },
+    {
+        "Part Number": "66REG33",
+        "Description": "REGULATOR 3IN1(3PCS)",
+        "Model": "R150 NEW",
+        "Price": 170,
+        "Code": "190000003922"
+    },
+    {
+        "Part Number": "66REG34",
+        "Description": "REGULATOR 3IN1(3PCS)",
+        "Model": "BEAT",
+        "Price": 156,
+        "Code": "190000003923"
+    },
+    {
+        "Part Number": "66REG35",
+        "Description": "REGULATOR 3IN1(3PCS)",
+        "Model": "STX NEW",
+        "Price": 170,
+        "Code": "190000003924"
+    },
+    {
+        "Part Number": "66REG36",
+        "Description": "REGULATOR 3IN1(3PCS)",
+        "Model": "R150 REBORN",
+        "Price": 170,
+        "Code": "190000003926"
+    },
+    {
+        "Part Number": "66REG77",
+        "Description": "REGULATOR",
+        "Model": "KLX",
+        "Price": 180,
+        "Code": "190000003926"
+    },
+    {
+        "Part Number": "66REG38",
+        "Description": "REGULATOR",
+        "Model": "SMASH 115",
+        "Price": 170,
+        "Code": "190000003928"
+    },
+    {
+        "Part Number": "66REG49",
+        "Description": "REGULATOR",
+        "Model": "NMAX",
+        "Price": 390,
+        "Code": "190000003927"
+    },
+    {
+        "Part Number": "66REG40",
+        "Description": "REGULATOR",
+        "Model": "HONDA CLICK",
+        "Price": 180,
+        "Code": "190000003929"
+    },
+    {
+        "Part Number": "66REG41",
+        "Description": "REGULATOR",
+        "Model": "CRYPTON",
+        "Price": 156,
+        "Code": "190000003931"
+    },
+    {
+        "Part Number": "66REG42",
+        "Description": "REGULATOR",
+        "Model": "CT150/BOXER",
+        "Price": 378,
+        "Code": "190000004329"
+    },
+    {
+        "Part Number": "66REG43",
+        "Description": "REGULATOR",
+        "Model": "BEAT Fi",
+        "Price": 550,
+        "Code": "190000005129"
+    },
+    {
+        "Part Number": "66REG44",
+        "Description": "REGULATOR",
+        "Model": "R150 Fi",
+        "Price": 570,
+        "Code": "190000005130"
+    },
+    {
+        "Part Number": "66REG45",
+        "Description": "REGULATOR",
+        "Model": "ZOOMER X",
+        "Price": 550,
+        "Code": "190000005131"
+    },
+    {
+        "Part Number": "66REG46",
+        "Description": "REGULATOR",
+        "Model": "MIO125 33PIN",
+        "Price": 500,
+        "Code": "190000005132"
+    },
+    {
+        "Part Number": "66REG47",
+        "Description": "REGULATOR",
+        "Model": "MIO SOULi 115",
+        "Price": 500,
+        "Code": "190000005133"
+    },
+    {
+        "Part Number": "66REG48",
+        "Description": "REGULATOR",
+        "Model": "THUNDER",
+        "Price": 520,
+        "Code": "190000005134"
+    },
+    {
+        "Part Number": "67CL1",
+        "Description": "CLUTCH LINING",
+        "Model": "XRM",
+        "Price": 116,
+        "Code": "170000000553"
+    },
+    {
+        "Part Number": "67CL2",
+        "Description": "CLUTCH LINING",
+        "Model": "TMX",
+        "Price": 126,
+        "Code": "170000000769"
+    },
+    {
+        "Part Number": "67CL3",
+        "Description": "CLUTCH LINING",
+        "Model": "W125",
+        "Price": 150,
+        "Code": "170000000092"
+    },
+    {
+        "Part Number": "67CL4",
+        "Description": "CLUTCH LINING",
+        "Model": "CT100",
+        "Price": 140,
+        "Code": "170000000090"
+    },
+    {
+        "Part Number": "67CL5",
+        "Description": "CLUTCH LINING",
+        "Model": "BARAKO",
+        "Price": 196,
+        "Code": "170000000269"
+    },
+    {
+        "Part Number": "67CL6",
+        "Description": "CLUTCH LINING",
+        "Model": "R150",
+        "Price": 154,
+        "Code": "170000000683"
+    },
+    {
+        "Part Number": "67CL7",
+        "Description": "CLUTCH LINING",
+        "Model": "R110/SHOGUN125/SMASH115/GD110/XR110",
+        "Price": 150,
+        "Code": "170000000682"
+    },
+    {
+        "Part Number": "67CL8",
+        "Description": "CLUTCH LINING",
+        "Model": "CB110",
+        "Price": 150,
+        "Code": "170000000335"
+    },
+    {
+        "Part Number": "67CL9",
+        "Description": "CLUTCH LINING",
+        "Model": "SHOGUN",
+        "Price": 132,
+        "Code": "170000000684"
+    },
+    {
+        "Part Number": "67CL10",
+        "Description": "CLUTCH LINING",
+        "Model": "STX",
+        "Price": 134,
+        "Code": "170000000355"
+    },
+    {
+        "Part Number": "67CL11",
+        "Description": "CLUTCH LINING",
+        "Model": "FURY",
+        "Price": 134,
+        "Code": "170000000091"
+    },
+    {
+        "Part Number": "67CL12",
+        "Description": "CLUTCH LINING",
+        "Model": "ROUSER 135",
+        "Price": 156,
+        "Code": "170000000857"
+    },
+    {
+        "Part Number": "67CL13",
+        "Description": "CLUTCH LINING 3IN1(3PCS)",
+        "Model": "C100 NEW",
+        "Price": 102.8,
+        "Code": "170000000088"
+    },
+    {
+        "Part Number": "67CL14",
+        "Description": "CLUTCH LINING 2IN1 (2PCS)",
+        "Model": "C100 OLD",
+        "Price": 84,
+        "Code": "180000002580"
+    },
+    {
+        "Part Number": "67CL15",
+        "Description": "CLUTCH LINING",
+        "Model": "CRYPTON",
+        "Price": 144,
+        "Code": "170000000089"
+    },
+    {
+        "Part Number": "67CL16",
+        "Description": "CLUTCH LINING",
+        "Model": "RS100",
+        "Price": 190,
+        "Code": "170000000354"
+    },
+    {
+        "Part Number": "67CL17",
+        "Description": "CLUTCH LINING",
+        "Model": "SMASH",
+        "Price": 132,
+        "Code": "170000000552"
+    },
+    {
+        "Part Number": "68CS1",
+        "Description": "CAM SHAFT",
+        "Model": "XRM",
+        "Price": 516,
+        "Code": "170000000227"
+    },
+    {
+        "Part Number": "68CS2",
+        "Description": "CAM SHAFT",
+        "Model": "XRM125 NO.3",
+        "Price": 580,
+        "Code": "180000001877"
+    },
+    {
+        "Part Number": "68CS3",
+        "Description": "CAM SHAFT",
+        "Model": "TMX",
+        "Price": 348,
+        "Code": "170000000880"
+    },
+    {
+        "Part Number": "68CS4",
+        "Description": "CAM SHAFT",
+        "Model": "W125",
+        "Price": 660,
+        "Code": "170000000410"
+    },
+    {
+        "Part Number": "68CS5",
+        "Description": "CAM SHAFT",
+        "Model": "MIO",
+        "Price": 588,
+        "Code": "170000000404"
+    },
+    {
+        "Part Number": "68CS6",
+        "Description": "CAM SHAFT",
+        "Model": "CT100",
+        "Price": 564,
+        "Code": "170000000157"
+    },
+    {
+        "Part Number": "68CS7",
+        "Description": "CAM SHAFT",
+        "Model": "BARAKO",
+        "Price": 840,
+        "Code": "170000000408"
+    },
+    {
+        "Part Number": "68CS8",
+        "Description": "CAM SHAFT",
+        "Model": "R150/in",
+        "Price": 1240,
+        "Code": "170000000406"
+    },
+    {
+        "Part Number": "68CS9",
+        "Description": "CAM SHAFT",
+        "Model": "R150/EX",
+        "Price": 1240,
+        "Code": "170000000601"
+    },
+    {
+        "Part Number": "68CS10",
+        "Description": "CAM SHAFT",
+        "Model": "FURY",
+        "Price": 648,
+        "Code": "170000000407"
+    },
+    {
+        "Part Number": "68CS11",
+        "Description": "CAM SHAFT",
+        "Model": "W100",
+        "Price": 460,
+        "Code": "170000000226"
+    },
+    {
+        "Part Number": "68CS12",
+        "Description": "CAM SHAFT",
+        "Model": "W110",
+        "Price": 660,
+        "Code": "180000002581"
+    },
+    {
+        "Part Number": "68CS13",
+        "Description": "CAM SHAFT",
+        "Model": "SHOGUN125",
+        "Price": 648,
+        "Code": "170000000405"
+    },
+    {
+        "Part Number": "68CS14",
+        "Description": "CAM SHAFT",
+        "Model": "C100",
+        "Price": 588,
+        "Code": "170000000670"
+    },
+    {
+        "Part Number": "68CS15",
+        "Description": "CAM SHAFT",
+        "Model": "XR200/XLR",
+        "Price": 770,
+        "Code": "170000000411"
+    },
+    {
+        "Part Number": "68CS16",
+        "Description": "CAM SHAFT",
+        "Model": "SMASH",
+        "Price": 452,
+        "Code": "170000000409"
+    },
+    {
+        "Part Number": "68CS17",
+        "Description": "CAM SHAFT",
+        "Model": "CRYPTON",
+        "Price": 612,
+        "Code": "180000002582"
+    },
+    {
+        "Part Number": "68CS18",
+        "Description": "CAM SHAFT",
+        "Model": "SNIPER135 V.1",
+        "Price": 580,
+        "Code": "180000001876"
+    },
+    {
+        "Part Number": "68CS19",
+        "Description": "CAM SHAFT",
+        "Model": "BEAT 280",
+        "Price": 594,
+        "Code": "180000001875"
+    },
+    {
+        "Part Number": "68CS20",
+        "Description": "CAM SHAFT",
+        "Model": "SKYDRIVE NO.2",
+        "Price": 594,
+        "Code": "180000001873"
+    },
+    {
+        "Part Number": "68CS21",
+        "Description": "CAM SHAFT",
+        "Model": "XRM110#3",
+        "Price": 580,
+        "Code": "180000002583"
+    },
+    {
+        "Part Number": "68CS22",
+        "Description": "CAM SHAFT",
+        "Model": "MIO#3",
+        "Price": 650,
+        "Code": "180000001878"
+    },
+    {
+        "Part Number": "68CS23",
+        "Description": "CAM SHAFT",
+        "Model": "GY6",
+        "Price": 674,
+        "Code": "180000002584"
+    },
+    {
+        "Part Number": "68CS24",
+        "Description": "CAM SHAFT",
+        "Model": "MIO NO.2",
+        "Price": 580,
+        "Code": "190000004123"
+    },
+    {
+        "Part Number": "68CS25",
+        "Description": "CAM SHAFT",
+        "Model": "SHOGUN110",
+        "Price": 648,
+        "Code": "190000004229"
+    },
+    {
+        "Part Number": "68CS26",
+        "Description": "CAM SHAFT",
+        "Model": "LC 150 6.4 LIFT",
+        "Price": "",
+        "Code": "980000001867"
+    },
+    {
+        "Part Number": "68CS27",
+        "Description": "CAM SHAFT",
+        "Model": "SNIPER135",
+        "Price": 492,
+        "Code": "190000004910"
+    },
+    {
+        "Part Number": "69BMRK1",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "XRM",
+        "Price": 40,
+        "Code": "190000004248"
+    },
+    {
+        "Part Number": "69BMRK2",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "MIO",
+        "Price": 40,
+        "Code": "190000004246"
+    },
+    {
+        "Part Number": "69BMRK3",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "RUSI 125",
+        "Price": 40,
+        "Code": "190000004241"
+    },
+    {
+        "Part Number": "69BMRK4",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "FURY REAR",
+        "Price": 40,
+        "Code": "190000004242"
+    },
+    {
+        "Part Number": "69BMRK5",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "FURY FRONT",
+        "Price": 40,
+        "Code": "190000004258"
+    },
+    {
+        "Part Number": "69BMRK6",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "XRM REAR",
+        "Price": 40,
+        "Code": "190000004244"
+    },
+    {
+        "Part Number": "69BMRK7",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "RUSI 150",
+        "Price": 40,
+        "Code": "190000004249"
+    },
+    {
+        "Part Number": "69BMRK8",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "SHOGUN",
+        "Price": 40,
+        "Code": "190000004264"
+    },
+    {
+        "Part Number": "69BMRK9",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "SONIC",
+        "Price": 40,
+        "Code": "190000004257"
+    },
+    {
+        "Part Number": "69BMRK10",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "CRYPTON",
+        "Price": 40,
+        "Code": "190000004251"
+    },
+    {
+        "Part Number": "69BMRK11",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "DASH110",
+        "Price": 40,
+        "Code": "190000004262"
+    },
+    {
+        "Part Number": "69BMRK12",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "FZ16",
+        "Price": 40,
+        "Code": "190000004256"
+    },
+    {
+        "Part Number": "69BMRK13",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "VEGA FORCE",
+        "Price": 40,
+        "Code": "190000004259"
+    },
+    {
+        "Part Number": "69BMRK14",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "SMASH",
+        "Price": 40,
+        "Code": "190000004250"
+    },
+    {
+        "Part Number": "69BMRK15",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "XRM TRINITY-F",
+        "Price": 40,
+        "Code": "190000004252"
+    },
+    {
+        "Part Number": "69BMRK16",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "R150-R",
+        "Price": 40,
+        "Code": "190000004261"
+    },
+    {
+        "Part Number": "69BMRK17",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "ROUSER 135",
+        "Price": 40,
+        "Code": "190000004245"
+    },
+    {
+        "Part Number": "69BMRK18",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "SKYDRIVE",
+        "Price": 40,
+        "Code": "190000004254"
+    },
+    {
+        "Part Number": "69BMRK19",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "W125",
+        "Price": 40,
+        "Code": "190000004255"
+    },
+    {
+        "Part Number": "69BMRK20",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "CT100",
+        "Price": 40,
+        "Code": "190000004247"
+    },
+    {
+        "Part Number": "69BMRK21",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "CB110",
+        "Price": 40,
+        "Code": "190000004260"
+    },
+    {
+        "Part Number": "69BMRK22",
+        "Description": "BRAKE MASTER REP.KIT",
+        "Model": "BEAT",
+        "Price": 40,
+        "Code": "190000004263"
+    },
+    {
+        "Part Number": "70CH1",
+        "Description": "CLUTCH HOUSING",
+        "Model": "TMX 155",
+        "Price": 700,
+        "Code": "170000000996"
+    },
+    {
+        "Part Number": "70CH2",
+        "Description": "CLUTCH HOUSING",
+        "Model": "TMX/CG125",
+        "Price": 700,
+        "Code": "170000000414"
+    },
+    {
+        "Part Number": "70CH3",
+        "Description": "CLUTCH HOUSING",
+        "Model": "CT100",
+        "Price": 840,
+        "Code": "170000000413"
+    },
+    {
+        "Part Number": "71CHA1",
+        "Description": "CLUTCH HOUSING ASSY",
+        "Model": "XRM",
+        "Price": 1508,
+        "Code": "180000002264"
+    },
+    {
+        "Part Number": "71CHA2",
+        "Description": "CLUTCH HOUSING ASSY",
+        "Model": "TMX/RUSI125",
+        "Price": 1170,
+        "Code": "180000001880"
+    },
+    {
+        "Part Number": "71CHA3",
+        "Description": "CLUTCH HOUSING ASSY",
+        "Model": "W125",
+        "Price": 1690,
+        "Code": "180000001881"
+    },
+    {
+        "Part Number": "71CHA4",
+        "Description": "CLUTCH HOUSING ASSY",
+        "Model": "CT100",
+        "Price": 1690,
+        "Code": "180000002168"
+    },
+    {
+        "Part Number": "71CHA5",
+        "Description": "CLUTCH HOUSING ASSY",
+        "Model": "W100",
+        "Price": 1508,
+        "Code": "180000002262"
+    },
+    {
+        "Part Number": "71CHA6",
+        "Description": "CLUTCH HOUSING ASSY",
+        "Model": "SMASH",
+        "Price": 1960,
+        "Code": "180000002263"
+    },
+    {
+        "Part Number": "71CHA7",
+        "Description": "CLUTCH HOUSING ASSY",
+        "Model": "TMX/RUSI 73T 6HOLE",
+        "Price": 1700,
+        "Code": "180000003444"
+    },
+    {
+        "Part Number": "72PA1",
+        "Description": "PULLY ASSY",
+        "Model": "GY6 125",
+        "Price": 710,
+        "Code": "170000000396"
+    },
+    {
+        "Part Number": "72PA2",
+        "Description": "PULLY ASSY",
+        "Model": "SUZUKI",
+        "Price": 840,
+        "Code": "170000000147"
+    },
+    {
+        "Part Number": "72PA3",
+        "Description": "PULLY ASSY",
+        "Model": "MIO",
+        "Price": 580,
+        "Code": "170000000395"
+    },
+    {
+        "Part Number": "72PA4",
+        "Description": "PULLY ASSY",
+        "Model": "SKYDRIVE",
+        "Price": 740,
+        "Code": "180000002950"
+    },
+    {
+        "Part Number": "73DP1",
+        "Description": "DRAIN PLUG",
+        "Model": "MIO",
+        "Price": 77,
+        "Code": "170000000430"
+    },
+    {
+        "Part Number": "73DP2",
+        "Description": "DRAIN PLUG",
+        "Model": "W125",
+        "Price": 30,
+        "Code": "180000003177"
+    },
+    {
+        "Part Number": "74FOSS1",
+        "Description": "FORK OIL SEAL SET",
+        "Model": "XRM 26x37x10.5",
+        "Price": 22,
+        "Code": "180000002374"
+    },
+    {
+        "Part Number": "74FOSS2",
+        "Description": "FORK OIL SEAL SET",
+        "Model": "TMX 31x41x10",
+        "Price": 50,
+        "Code": "180000002376"
+    },
+    {
+        "Part Number": "74FOSS3",
+        "Description": "FORK OIL SEAL SET",
+        "Model": "CT100 30x42x10.5",
+        "Price": 50,
+        "Code": "180000002375"
+    },
+    {
+        "Part Number": "74FOSS4",
+        "Description": "FORK OIL SEAL SET",
+        "Model": "BARAKO 30x40.5x10.5",
+        "Price": 52,
+        "Code": "180000002377"
+    },
+    {
+        "Part Number": "75PB1",
+        "Description": "PIVOT BUSHING",
+        "Model": "XRM",
+        "Price": 40,
+        "Code": "170000000997"
+    },
+    {
+        "Part Number": "75PB2",
+        "Description": "PIVOT BUSHING",
+        "Model": "TMX",
+        "Price": 40,
+        "Code": "180000001356"
+    },
+    {
+        "Part Number": "75PB3",
+        "Description": "PIVOT BUSHING",
+        "Model": "C100",
+        "Price": 40,
+        "Code": "180000002585"
+    },
+    {
+        "Part Number": "75PB4",
+        "Description": "PIVOT BUSHING",
+        "Model": "SMASH",
+        "Price": 40,
+        "Code": "180000002586"
+    },
+    {
+        "Part Number": "75PB5",
+        "Description": "PIVOT BUSHING",
+        "Model": "X4/GP125",
+        "Price": 44,
+        "Code": "190000004781"
+    },
+    {
+        "Part Number": "75PB6",
+        "Description": "PIVOT BUSHING",
+        "Model": "CT100",
+        "Price": 40,
+        "Code": "190000004782"
+    },
+    {
+        "Part Number": "75PB7",
+        "Description": "PIVOT BUSHING",
+        "Model": "BARAKO",
+        "Price": 50,
+        "Code": "190000004783"
+    },
+    {
+        "Part Number": "75PB8",
+        "Description": "PIVOT BUSHING",
+        "Model": "HD3",
+        "Price": 50,
+        "Code": "190000004784"
+    },
+    {
+        "Part Number": "75PB9",
+        "Description": "PIVOT BUSHING",
+        "Model": "SHOGUN/R150",
+        "Price": 50,
+        "Code": "190000004785"
+    },
+    {
+        "Part Number": "75PB10",
+        "Description": "PIVOT BUSHING",
+        "Model": "STX",
+        "Price": 50,
+        "Code": "190000004786"
+    },
+    {
+        "Part Number": "76MK1",
+        "Description": "MAGNETO KIT",
+        "Model": "XRM",
+        "Price": 28,
+        "Code": "170000000832"
+    },
+    {
+        "Part Number": "76MK2",
+        "Description": "MAGNETO KIT",
+        "Model": "TMX",
+        "Price": 28,
+        "Code": "180000001779"
+    },
+    {
+        "Part Number": "77OSS1",
+        "Description": "OIL SEAL SET",
+        "Model": "TMX",
+        "Price": 50,
+        "Code": "180000003781"
+    },
+    {
+        "Part Number": "77OSS2",
+        "Description": "OIL SEAL SET",
+        "Model": "W125",
+        "Price": 36,
+        "Code": "180000003783"
+    },
+    {
+        "Part Number": "77OSS3",
+        "Description": "OIL SEAL SET",
+        "Model": "BAJAJ",
+        "Price": 50,
+        "Code": "180000003784"
+    },
+    {
+        "Part Number": "77OSS4",
+        "Description": "OIL SEAL SET",
+        "Model": "MIO",
+        "Price": 70,
+        "Code": "180000003782"
+    },
+    {
+        "Part Number": "77OSS5",
+        "Description": "OIL SEAL SET",
+        "Model": "FURY",
+        "Price": 50,
+        "Code": "180000003785"
+    },
+    {
+        "Part Number": "77OSS6",
+        "Description": "OIL SEAL SET",
+        "Model": "RS100",
+        "Price": 50,
+        "Code": "180000003786"
+    },
+    {
+        "Part Number": "77OSS7",
+        "Description": "OIL SEAL SET",
+        "Model": "C100",
+        "Price": 50,
+        "Code": "180000003789"
+    },
+    {
+        "Part Number": "77OSS8",
+        "Description": "OIL SEAL SET",
+        "Model": "SMASH",
+        "Price": 40,
+        "Code": "180000003787"
+    },
+    {
+        "Part Number": "77OSS9",
+        "Description": "OIL SEAL SET",
+        "Model": "STX",
+        "Price": 50,
+        "Code": "180000003788"
+    },
+    {
+        "Part Number": "78NLS1",
+        "Description": "NEUTRAL LIGHT SWITCH",
+        "Model": "XRM110",
+        "Price": 160,
+        "Code": "170000000759"
+    },
+    {
+        "Part Number": "78NLS2",
+        "Description": "NEUTRAL LIGHT SWITCH",
+        "Model": "W125/XRM125",
+        "Price": 160,
+        "Code": "170000000756"
+    },
+    {
+        "Part Number": "78NLS3",
+        "Description": "NEUTRAL LIGHT SWITCH",
+        "Model": "W110",
+        "Price": 160,
+        "Code": "170000000755"
+    },
+    {
+        "Part Number": "78NLS4",
+        "Description": "NEUTRAL LIGHT SWITCH",
+        "Model": "R150",
+        "Price": 170,
+        "Code": "170000000757"
+    },
+    {
+        "Part Number": "78NLS5",
+        "Description": "NEUTRAL LIGHT SWITCH",
+        "Model": "CRYPTON",
+        "Price": 170,
+        "Code": "170000000758"
+    },
+    {
+        "Part Number": "78NLS6",
+        "Description": "NEUTRAL LIGHT SWITCH",
+        "Model": "BAJAJ",
+        "Price": 100,
+        "Code": "180000001766"
+    },
+    {
+        "Part Number": "78NLS7",
+        "Description": "NEUTRAL LIGHT SWITCH",
+        "Model": "BARAKO",
+        "Price": 100,
+        "Code": "180000001767"
+    },
+    {
+        "Part Number": "78NLS8",
+        "Description": "NEUTRAL LIGHT SWITCH",
+        "Model": "STX",
+        "Price": 100,
+        "Code": "180000002587"
+    },
+    {
+        "Part Number": "78NLS9",
+        "Description": "NEUTRAL LIGHT SWITCH",
+        "Model": "W100",
+        "Price": 160,
+        "Code": "170000001005"
+    },
+    {
+        "Part Number": "78NLS10",
+        "Description": "NEUTRAL LIGHT SWITCH",
+        "Model": "RUSI125",
+        "Price": 136,
+        "Code": "180000003417"
+    },
+    {
+        "Part Number": "79VDA1",
+        "Description": "VINDEX DRIVE ASSY",
+        "Model": "MIO",
+        "Price": 960,
+        "Code": "170000000144"
+    },
+    {
+        "Part Number": "79VDA2",
+        "Description": "VINDEX DRIVE ASSY",
+        "Model": "R150",
+        "Price": 1264,
+        "Code": "190000005567"
+    },
+    {
+        "Part Number": "79VDA3",
+        "Description": "VINDEX DRIVE ASSY",
+        "Model": "RUSI125",
+        "Price": 720,
+        "Code": "180000003750"
+    },
+    {
+        "Part Number": "80S1",
+        "Description": "SPROCKET",
+        "Model": "XRM 34T",
+        "Price": 250,
+        "Code": "170000000175"
+    },
+    {
+        "Part Number": "80S2",
+        "Description": "SPROCKET",
+        "Model": "XRM 36T",
+        "Price": 250,
+        "Code": "170000000176"
+    },
+    {
+        "Part Number": "80S3",
+        "Description": "SPROCKET",
+        "Model": "W125 34T",
+        "Price": 250,
+        "Code": "170000000173"
+    },
+    {
+        "Part Number": "80S4",
+        "Description": "SPROCKET",
+        "Model": "W125 36T",
+        "Price": 250,
+        "Code": "170000000174"
+    },
+    {
+        "Part Number": "80S5",
+        "Description": "SPROCKET",
+        "Model": "C100 34T",
+        "Price": 250,
+        "Code": "170000000171"
+    },
+    {
+        "Part Number": "80S6",
+        "Description": "SPROCKET",
+        "Model": "C100 36T",
+        "Price": 250,
+        "Code": "170000000172"
+    },
+    {
+        "Part Number": "81ES1",
+        "Description": "ENGINE SPROCKET",
+        "Model": "XRM 14T",
+        "Price": 70,
+        "Code": "170000000499"
+    },
+    {
+        "Part Number": "81ES2",
+        "Description": "ENGINE SPROCKET",
+        "Model": "W125 14T",
+        "Price": 70,
+        "Code": "170000000498"
+    },
+    {
+        "Part Number": "81ES3",
+        "Description": "ENGINE SPROCKET",
+        "Model": "C100 14T",
+        "Price": 70,
+        "Code": "170000000497"
+    },
+    {
+        "Part Number": "82CGS1",
+        "Description": "COMPLETE GEAR SET",
+        "Model": "TMX155",
+        "Price": 1080,
+        "Code": "170000000349"
+    },
+    {
+        "Part Number": "82CGS2",
+        "Description": "COMPLETE GEAR SET",
+        "Model": "CG125",
+        "Price": 1120,
+        "Code": "170000000350"
+    },
+    {
+        "Part Number": "82CGS3",
+        "Description": "COMPLETE GEAR SET",
+        "Model": "CG200",
+        "Price": 1260,
+        "Code": "170000000347"
+    },
+    {
+        "Part Number": "82CGS4",
+        "Description": "COMPLETE GEAR SET",
+        "Model": "CG150",
+        "Price": 1120,
+        "Code": "170000000346"
+    },
+    {
+        "Part Number": "82CGS5",
+        "Description": "COMPLETE GEAR SET",
+        "Model": "RUSI125",
+        "Price": 1240,
+        "Code": "180000003460"
+    },
+    {
+        "Part Number": "83PCCC1",
+        "Description": "PLATE COMP/CLUTCH CAM",
+        "Model": "W125",
+        "Price": 240,
+        "Code": "170000000883"
+    },
+    {
+        "Part Number": "84P1",
+        "Description": "PULLY",
+        "Model": "GY6",
+        "Price": 420,
+        "Code": "170000000145"
+    },
+    {
+        "Part Number": "84P2",
+        "Description": "PULLY",
+        "Model": "BEAT",
+        "Price": 460,
+        "Code": "170000000146"
+    },
+    {
+        "Part Number": "84P3",
+        "Description": "PULLY",
+        "Model": "MIO",
+        "Price": 450,
+        "Code": "190000004023"
+    },
+    {
+        "Part Number": "85CA1",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "RS100 B/S HOLE",
+        "Price": 66,
+        "Code": "180000001532"
+    },
+    {
+        "Part Number": "85CA2",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "W125",
+        "Price": 104,
+        "Code": "180000001531"
+    },
+    {
+        "Part Number": "85CA3",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "XRM B/S HOLE",
+        "Price": 30,
+        "Code": "180000002232"
+    },
+    {
+        "Part Number": "85CA4",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "FZ16",
+        "Price": 124,
+        "Code": "180000002265"
+    },
+    {
+        "Part Number": "85CA5",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "WAVE/DASH",
+        "Price": 41,
+        "Code": "180000002266"
+    },
+    {
+        "Part Number": "85CA6",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "CB100",
+        "Price": 104,
+        "Code": "180000002267"
+    },
+    {
+        "Part Number": "85CA7",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "RUSI125/TMX",
+        "Price": 41,
+        "Code": "180000002268"
+    },
+    {
+        "Part Number": "85CA8",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "HD3 RH",
+        "Price": 41,
+        "Code": "180000002270"
+    },
+    {
+        "Part Number": "85CA9",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "FURY NEW",
+        "Price": 41,
+        "Code": "180000002270"
+    },
+    {
+        "Part Number": "85CA10",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "ROUSER135",
+        "Price": 62,
+        "Code": "180000002461"
+    },
+    {
+        "Part Number": "85CA11",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "SHOGUN",
+        "Price": 100,
+        "Code": "180000002460"
+    },
+    {
+        "Part Number": "85CA12",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "SNIPER135",
+        "Price": 112,
+        "Code": "180000002459"
+    },
+    {
+        "Part Number": "85CA13",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "R150",
+        "Price": 126,
+        "Code": "180000002462"
+    },
+    {
+        "Part Number": "85CA14",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "RAIDER J110",
+        "Price": 41,
+        "Code": "180000002457"
+    },
+    {
+        "Part Number": "85CA15",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "GD110",
+        "Price": 74,
+        "Code": "180000002458"
+    },
+    {
+        "Part Number": "85CA16",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "LF125",
+        "Price": 41,
+        "Code": "190000004455"
+    },
+    {
+        "Part Number": "85CA17",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "CB125",
+        "Price": 150,
+        "Code": "190000004869"
+    },
+    {
+        "Part Number": "85CA18",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "ROUSER 200",
+        "Price": 110,
+        "Code": "190000004870"
+    },
+    {
+        "Part Number": "85CA19",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "XR150",
+        "Price": 150,
+        "Code": "190000004871"
+    },
+    {
+        "Part Number": "85CA20",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "SNIPER 150",
+        "Price": 170,
+        "Code": "190000004872"
+    },
+    {
+        "Part Number": "85CA21",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "W110",
+        "Price": 40,
+        "Code": "190000004879"
+    },
+    {
+        "Part Number": "85CA22",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "XR200",
+        "Price": 90,
+        "Code": "190000004873"
+    },
+    {
+        "Part Number": "85CA23",
+        "Description": "CHAIN ADJUSTER",
+        "Model": "C100",
+        "Price": 30,
+        "Code": "200000005937"
+    },
+    {
+        "Part Number": "86DB1",
+        "Description": "DRIVE BELT-Y/GRN/R/GRY",
+        "Model": "MIO 5VV",
+        "Price": 350,
+        "Code": "170000000615"
+    },
+    {
+        "Part Number": "86DB2",
+        "Description": "DRIVE BELT-Y/GRN/R/GRY",
+        "Model": "MIO 5LW",
+        "Price": 350,
+        "Code": "170000000617"
+    },
+    {
+        "Part Number": "86DB3",
+        "Description": "DRIVE BELT-Y/GRN/R/GRY",
+        "Model": "GY6150",
+        "Price": 350,
+        "Code": "170000000603"
+    },
+    {
+        "Part Number": "86DB4",
+        "Description": "DRIVE BELT-Y/GRN/R/GRY",
+        "Model": "BEAT",
+        "Price": 350,
+        "Code": "170000000597"
+    },
+    {
+        "Part Number": "86DB5",
+        "Description": "DRIVE BELT-Y/GRN/R/GRY",
+        "Model": "SKYDRIVE",
+        "Price": 350,
+        "Code": "170000000608"
+    },
+    {
+        "Part Number": "86DB6",
+        "Description": "DRIVE BELT-Y/GRN/R/GRY",
+        "Model": "MIO 5TL",
+        "Price": 350,
+        "Code": "180000002658"
+    },
+    {
+        "Part Number": "86DB7",
+        "Description": "DRIVE BELT-Y/GRN/R/GRY",
+        "Model": "MIO125 2PH",
+        "Price": 390,
+        "Code": "180000002662"
+    },
+    {
+        "Part Number": "86DB8",
+        "Description": "DRIVE BELT BLACK",
+        "Model": "MIO 5LW",
+        "Price": 290,
+        "Code": "190000004909"
+    },
+    {
+        "Part Number": "86DB9",
+        "Description": "DRIVE BELT BLACK",
+        "Model": "MIO MXi",
+        "Price": 310,
+        "Code": "190000004905"
+    },
+    {
+        "Part Number": "86DB10",
+        "Description": "DRIVE BELT BLACK",
+        "Model": "GY6 125",
+        "Price": 290,
+        "Code": "190000004892"
+    },
+    {
+        "Part Number": "86DB11",
+        "Description": "DRIVE BELT BLACK",
+        "Model": "GY6 150",
+        "Price": 290,
+        "Code": "190000004906"
+    },
+    {
+        "Part Number": "86DB12",
+        "Description": "DRIVE BELT BLACK",
+        "Model": "BEAT",
+        "Price": 290,
+        "Code": "190000004907"
+    },
+    {
+        "Part Number": "86DB13",
+        "Description": "DRIVE BELT BLACK",
+        "Model": "SKYDRIVE",
+        "Price": 290,
+        "Code": "190000004908"
+    },
+    {
+        "Part Number": "87FH1",
+        "Description": "FRONT HUB",
+        "Model": "XRM",
+        "Price": 472,
+        "Code": "170000000635"
+    },
+    {
+        "Part Number": "87FH2",
+        "Description": "FRONT HUB",
+        "Model": "TMX",
+        "Price": 946,
+        "Code": "170000000630"
+    },
+    {
+        "Part Number": "87FH3",
+        "Description": "FRONT HUB",
+        "Model": "R150",
+        "Price": 510,
+        "Code": "180000002245"
+    },
+    {
+        "Part Number": "87FH4",
+        "Description": "FRONT HUB",
+        "Model": "MIO",
+        "Price": 560,
+        "Code": "170000000631"
+    },
+    {
+        "Part Number": "87FH5",
+        "Description": "FRONT HUB",
+        "Model": "BEAT",
+        "Price": 510,
+        "Code": "170000000632"
+    },
+    {
+        "Part Number": "87FH6",
+        "Description": "FRONT HUB",
+        "Model": "SKYDRIVE",
+        "Price": 560,
+        "Code": "170000000633"
+    },
+    {
+        "Part Number": "87FH7",
+        "Description": "FRONT HUB",
+        "Model": "SMASH",
+        "Price": 630,
+        "Code": "170000000634"
+    },
+    {
+        "Part Number": "87FH8",
+        "Description": "FRONT HUB",
+        "Model": "HD3",
+        "Price": 1080,
+        "Code": "180000002244"
+    },
+    {
+        "Part Number": "87FH9",
+        "Description": "FRONT HUB",
+        "Model": "LC 150",
+        "Price": 860,
+        "Code": "190000004240"
+    },
+    {
+        "Part Number": "87FH10",
+        "Description": "FRONT HUB",
+        "Model": "NMAX",
+        "Price": 1000,
+        "Code": "190000004239"
+    },
+    {
+        "Part Number": "87FH11",
+        "Description": "FRONT HUB",
+        "Model": "MIO 125",
+        "Price": 600,
+        "Code": "190000004332"
+    },
+    {
+        "Part Number": "87FH12",
+        "Description": "FRONT HUB",
+        "Model": "CG125",
+        "Price": 680,
+        "Code": "190000005007"
+    },
+    {
+        "Part Number": "88RH1",
+        "Description": "REAR HUB",
+        "Model": "XRM",
+        "Price": 590,
+        "Code": "170000000629"
+    },
+    {
+        "Part Number": "88RH2",
+        "Description": "REAR HUB",
+        "Model": "TMX",
+        "Price": 1020,
+        "Code": "170000000624"
+    },
+    {
+        "Part Number": "88RH3",
+        "Description": "REAR HUB",
+        "Model": "R150",
+        "Price": 714,
+        "Code": "180000002247"
+    },
+    {
+        "Part Number": "88RH4",
+        "Description": "REAR HUB",
+        "Model": "MIO",
+        "Price": 950,
+        "Code": "170000000625"
+    },
+    {
+        "Part Number": "88RH5",
+        "Description": "REAR HUB",
+        "Model": "BEAT",
+        "Price": 820,
+        "Code": "170000000626"
+    },
+    {
+        "Part Number": "88RH6",
+        "Description": "REAR HUB",
+        "Model": "SKYDRIVE",
+        "Price": 900,
+        "Code": "170000000627"
+    },
+    {
+        "Part Number": "88RH7",
+        "Description": "REAR HUB",
+        "Model": "SMASH",
+        "Price": 570,
+        "Code": "170000000628"
+    },
+    {
+        "Part Number": "88RH8",
+        "Description": "REAR HUB",
+        "Model": "DREAM",
+        "Price": 590,
+        "Code": "180000002246"
+    },
+    {
+        "Part Number": "88RH9",
+        "Description": "REAR HUB",
+        "Model": "LC150",
+        "Price": 1000,
+        "Code": "190000004236"
+    },
+    {
+        "Part Number": "88RH10",
+        "Description": "REAR HUB",
+        "Model": "CT100",
+        "Price": 1120,
+        "Code": "190000004237"
+    },
+    {
+        "Part Number": "88RH11",
+        "Description": "REAR HUB",
+        "Model": "NMAX",
+        "Price": 1300,
+        "Code": "190000004238"
+    },
+    {
+        "Part Number": "88RH12",
+        "Description": "REAR HUB",
+        "Model": "MIO125",
+        "Price": 900,
+        "Code": "190000004331"
+    },
+    {
+        "Part Number": "89ISS1",
+        "Description": "IGNITION SWITCH SET",
+        "Model": "TMX",
+        "Price": 280,
+        "Code": "170000000643"
+    },
+    {
+        "Part Number": "89ISS2",
+        "Description": "IGNITION SWITCH SET",
+        "Model": "RUSI",
+        "Price": 380,
+        "Code": "170000000651"
+    },
+    {
+        "Part Number": "89ISS3",
+        "Description": "IGNITION SWITCH SET",
+        "Model": "W110",
+        "Price": 272,
+        "Code": "180000001450"
+    },
+    {
+        "Part Number": "89ISS4",
+        "Description": "IGNITION SWITCH SET",
+        "Model": "W100-4",
+        "Price": 272,
+        "Code": "180000001448"
+    },
+    {
+        "Part Number": "89ISS5",
+        "Description": "IGNITION SWITCH SET",
+        "Model": "W100-6",
+        "Price": 276,
+        "Code": "180000001449"
+    },
+    {
+        "Part Number": "89ISS6",
+        "Description": "IGNITION SWITCH SET",
+        "Model": "W125",
+        "Price": 276,
+        "Code": "180000001451"
+    },
+    {
+        "Part Number": "89ISS7",
+        "Description": "IGNITION SWITCH SET",
+        "Model": "MIO",
+        "Price": 454,
+        "Code": "180000001452"
+    },
+    {
+        "Part Number": "89ISS8",
+        "Description": "IGNITION SWITCH SET",
+        "Model": "XRM110",
+        "Price": 530,
+        "Code": "180000001648"
+    },
+    {
+        "Part Number": "89ISS9",
+        "Description": "IGNITION SWITCH SET",
+        "Model": "XRM125",
+        "Price": 550,
+        "Code": "180000001649"
+    },
+    {
+        "Part Number": "89ISS10",
+        "Description": "IGNITION SWITCH SET",
+        "Model": "CT100",
+        "Price": 704,
+        "Code": "190000004456"
+    },
+    {
+        "Part Number": "90IS1",
+        "Description": "IGNITION SWITCH",
+        "Model": "RUSI 125",
+        "Price": 220,
+        "Code": "170000000650"
+    },
+    {
+        "Part Number": "90IS2",
+        "Description": "IGNITION SWITCH",
+        "Model": "W110",
+        "Price": 212,
+        "Code": "180000001445"
+    },
+    {
+        "Part Number": "90IS3",
+        "Description": "IGNITION SWITCH",
+        "Model": "W100-4",
+        "Price": 212,
+        "Code": "180000001443"
+    },
+    {
+        "Part Number": "90IS4",
+        "Description": "IGNITION SWITCH",
+        "Model": "W100-6",
+        "Price": 216,
+        "Code": "180000001444"
+    },
+    {
+        "Part Number": "90IS5",
+        "Description": "IGNITION SWITCH",
+        "Model": "W125",
+        "Price": 216,
+        "Code": "180000001451"
+    },
+    {
+        "Part Number": "90IS6",
+        "Description": "IGNITION SWITCH",
+        "Model": "MIO",
+        "Price": 350,
+        "Code": "180000001447"
+    },
+    {
+        "Part Number": "90IS7",
+        "Description": "IGNITION SWITCH",
+        "Model": "XRM110",
+        "Price": 270,
+        "Code": "180000001651"
+    },
+    {
+        "Part Number": "90IS8",
+        "Description": "IGNITION SWITCH",
+        "Model": "XRM125",
+        "Price": 290,
+        "Code": "180000001652"
+    },
+    {
+        "Part Number": "90IS9",
+        "Description": "IGNITION SWITCH",
+        "Model": "CT100",
+        "Price": 460,
+        "Code": "18000003798"
+    },
+    {
+        "Part Number": "90IS10",
+        "Description": "IGNITION SWITCH",
+        "Model": "RUSI 110",
+        "Price": 320,
+        "Code": "200000005902"
+    },
+    {
+        "Part Number": "91CL1",
+        "Description": "CLUTCH LEVER LEFT",
+        "Model": "UNIVERSAL",
+        "Price": 170,
+        "Code": "170000000331"
+    },
+    {
+        "Part Number": "91CL2",
+        "Description": "CLUTCH LEVER RIGHT",
+        "Model": "UNIVERSAL",
+        "Price": 170,
+        "Code": "170000000336"
+    },
+    {
+        "Part Number": "92TD1",
+        "Description": "TORQUE DRIVE",
+        "Model": "MIO",
+        "Price": 700,
+        "Code": "170000001247"
+    },
+    {
+        "Part Number": "93FNE1",
+        "Description": "BEEP FLASHER",
+        "Model": "WITHOUT SOUND",
+        "Price": 70,
+        "Code": "170000000687"
+    },
+    {
+        "Part Number": "94KSS1",
+        "Description": "KICK SHAFT SET",
+        "Model": "GY6 SHORT",
+        "Price": 670,
+        "Code": "180000002588"
+    },
+    {
+        "Part Number": "95RHB1",
+        "Description": "REAR HUB BUSHING",
+        "Model": "UNIVERSAL",
+        "Price": 70,
+        "Code": "170000000889"
+    },
+    {
+        "Part Number": "96PK1",
+        "Description": "PISTON KIT",
+        "Model": "XRM110 50MM +25",
+        "Price": 240,
+        "Code": "170000000937"
+    },
+    {
+        "Part Number": "96PK2",
+        "Description": "PISTON KIT",
+        "Model": "CT100 +50",
+        "Price": 290,
+        "Code": "180000002509"
+    },
+    {
+        "Part Number": "96PK3",
+        "Description": "PISTON KIT",
+        "Model": "MIO 59MM STD",
+        "Price": 330,
+        "Code": "170000000966"
+    },
+    {
+        "Part Number": "96PK4",
+        "Description": "PISTON KIT",
+        "Model": "W125 52.4MM +25",
+        "Price": 290,
+        "Code": "170000000965"
+    },
+    {
+        "Part Number": "96PK5",
+        "Description": "PISTON KIT",
+        "Model": "XRM 50MM STD",
+        "Price": 240,
+        "Code": "170000001038"
+    },
+    {
+        "Part Number": "96PK6",
+        "Description": "PISTON KIT",
+        "Model": "XRM 50MM +50",
+        "Price": 240,
+        "Code": "170000001040"
+    },
+    {
+        "Part Number": "96PK7",
+        "Description": "PISTON KIT",
+        "Model": "WAVE 52.4MM +50",
+        "Price": 290,
+        "Code": "170000001041"
+    },
+    {
+        "Part Number": "96PK8",
+        "Description": "PISTON KIT",
+        "Model": "W125 52.4MM STD",
+        "Price": 290,
+        "Code": "170000001074"
+    },
+    {
+        "Part Number": "96PK9",
+        "Description": "PISTON KIT",
+        "Model": "CG125 STD/RUSI125 STD",
+        "Price": 290,
+        "Code": "170000001044"
+    },
+    {
+        "Part Number": "96PK10",
+        "Description": "PISTON KIT",
+        "Model": "TMX 0.50",
+        "Price": 290,
+        "Code": "180000001475"
+    },
+    {
+        "Part Number": "96PK11",
+        "Description": "PISTON KIT",
+        "Model": "W125 57MM STD",
+        "Price": 310,
+        "Code": "180000001670"
+    },
+    {
+        "Part Number": "96PK12",
+        "Description": "PISTON KIT",
+        "Model": "STX 0.25",
+        "Price": 290,
+        "Code": "180000001672"
+    },
+    {
+        "Part Number": "96PK13",
+        "Description": "PISTON KIT",
+        "Model": "STX 0.50",
+        "Price": 290,
+        "Code": "180000001672"
+    },
+    {
+        "Part Number": "96PK14",
+        "Description": "PISTON KIT",
+        "Model": "STX STD",
+        "Price": 290,
+        "Code": "180000002115"
+    },
+    {
+        "Part Number": "96PK15",
+        "Description": "PISTON KIT",
+        "Model": "TMX STD",
+        "Price": 290,
+        "Code": "180000002115"
+    },
+    {
+        "Part Number": "96PK16",
+        "Description": "PISTON KIT",
+        "Model": "TMX 0.25",
+        "Price": 290,
+        "Code": "180000002116"
+    },
+    {
+        "Part Number": "96PK17",
+        "Description": "PISTON KIT",
+        "Model": "CG125 0.50/RUSI125 0.50",
+        "Price": 290,
+        "Code": "180000002223"
+    },
+    {
+        "Part Number": "96PK18",
+        "Description": "PISTON KIT",
+        "Model": "CG125 0.25/RUSI125 0.25",
+        "Price": 290,
+        "Code": "180000002228"
+    },
+    {
+        "Part Number": "96PK19",
+        "Description": "PISTON KIT",
+        "Model": "CT100 0.25",
+        "Price": 290,
+        "Code": "180000002898"
+    },
+    {
+        "Part Number": "96PK20",
+        "Description": "PISTON KIT",
+        "Model": "CT100 STD",
+        "Price": 290,
+        "Code": "180000002897"
+    },
+    {
+        "Part Number": "96PK21",
+        "Description": "PISTON KIT",
+        "Model": "BARAKO 0.25",
+        "Price": 390,
+        "Code": "180000002898"
+    },
+    {
+        "Part Number": "96PK22",
+        "Description": "PISTON KIT",
+        "Model": "BARAKO 0.50",
+        "Price": 290,
+        "Code": "180000002509"
+    },
+    {
+        "Part Number": "96PK23",
+        "Description": "PISTON KIT",
+        "Model": "BARAKO STD",
+        "Price": 290,
+        "Code": "180000002897"
+    },
+    {
+        "Part Number": "96PK24",
+        "Description": "PISTON KIT",
+        "Model": "RUSI STD",
+        "Price": 290,
+        "Code": "180000003800"
+    },
+    {
+        "Part Number": "96PK25",
+        "Description": "PISTON KIT",
+        "Model": "XRM 54MM STD",
+        "Price": 310,
+        "Code": "180000002694"
+    },
+    {
+        "Part Number": "97NB1",
+        "Description": "NEEDLE BEARING",
+        "Model": "BAJAJ",
+        "Price": 110,
+        "Code": "170000001030"
+    },
+    {
+        "Part Number": "97NB2",
+        "Description": "NEEDLE BEARING",
+        "Model": "TMX",
+        "Price": 100,
+        "Code": "180000001379"
+    },
+    {
+        "Part Number": "97NB3",
+        "Description": "NEEDLE BEARING",
+        "Model": "MIO",
+        "Price": 120,
+        "Code": "180000002946"
+    },
+    {
+        "Part Number": "98CGS1",
+        "Description": "CHAIN GUIDE SET",
+        "Model": "DREAM",
+        "Price": 220,
+        "Code": "170000000689"
+    },
+    {
+        "Part Number": "98CGS2",
+        "Description": "CHAIN GUIDE SET",
+        "Model": "XRM",
+        "Price": 230,
+        "Code": "180000002589"
+    },
+    {
+        "Part Number": "98CGS3",
+        "Description": "CHAIN GUIDE SET",
+        "Model": "XRM",
+        "Price": 160,
+        "Code": "180000003358"
+    },
+    {
+        "Part Number": "98CGS4",
+        "Description": "CHAIN GUIDE SET",
+        "Model": "W125",
+        "Price": 150,
+        "Code": "180000003359"
+    },
+    {
+        "Part Number": "99CA1",
+        "Description": "CARBURATOR ASSY",
+        "Model": "XRM",
+        "Price": 550,
+        "Code": "170000000214"
+    },
+    {
+        "Part Number": "99CA2",
+        "Description": "CARBURATOR ASSY",
+        "Model": "XRM CHROME",
+        "Price": 760,
+        "Code": "170000001076"
+    },
+    {
+        "Part Number": "99CA3",
+        "Description": "CARBURATOR ASSY",
+        "Model": "BARAKO",
+        "Price": 920,
+        "Code": "170000000217"
+    },
+    {
+        "Part Number": "99CA4",
+        "Description": "CARBURATOR ASSY",
+        "Model": "GY6",
+        "Price": 1080,
+        "Code": "170000000218"
+    },
+    {
+        "Part Number": "99CA5",
+        "Description": "CARBURATOR ASSY",
+        "Model": "W125/XRM125",
+        "Price": 740,
+        "Code": "170000000213"
+    },
+    {
+        "Part Number": "99CA6",
+        "Description": "CARBURATOR ASSY",
+        "Model": "W125 CHROME",
+        "Price": 760,
+        "Code": "170000000891"
+    },
+    {
+        "Part Number": "99CA7",
+        "Description": "CARBURATOR ASSY",
+        "Model": "TMX",
+        "Price": 520,
+        "Code": "170000000220"
+    },
+    {
+        "Part Number": "99CA8",
+        "Description": "CARBURATOR ASSY",
+        "Model": "28MM",
+        "Price": 660,
+        "Code": "170000000216"
+    },
+    {
+        "Part Number": "99CA9",
+        "Description": "CARBURATOR ASSY",
+        "Model": "30MM",
+        "Price": 740,
+        "Code": "170000000211"
+    },
+    {
+        "Part Number": "99CA10",
+        "Description": "CARBURATOR ASSY",
+        "Model": "24MM",
+        "Price": 640,
+        "Code": "170000000215"
+    },
+    {
+        "Part Number": "99CA11",
+        "Description": "CARBURATOR ASSY",
+        "Model": "26MM",
+        "Price": 700,
+        "Code": "170000000221"
+    },
+    {
+        "Part Number": "99CA12",
+        "Description": "CARBURATOR ASSY",
+        "Model": "TMX CP",
+        "Price": 560,
+        "Code": "170000000523"
+    },
+    {
+        "Part Number": "99CA13",
+        "Description": "CARBURATOR ASSY",
+        "Model": "R150",
+        "Price": 1900,
+        "Code": "180000002944"
+    },
+    {
+        "Part Number": "99CA14",
+        "Description": "CARBURATOR ASSY",
+        "Model": "MIO",
+        "Price": 1100,
+        "Code": "180000003010"
+    },
+    {
+        "Part Number": "99CA15",
+        "Description": "CARBURATOR ASSY",
+        "Model": "SHOGUN125",
+        "Price": 860,
+        "Code": "180000003052"
+    },
+    {
+        "Part Number": "99CA16",
+        "Description": "CARBURATOR ASSY",
+        "Model": "RUSI125",
+        "Price": 800,
+        "Code": "180000003420"
+    },
+    {
+        "Part Number": "100BSS1",
+        "Description": "BRAKE SHOE STANDARD",
+        "Model": "XRM",
+        "Price": 66,
+        "Code": "190000004184"
+    },
+    {
+        "Part Number": "100BSS2",
+        "Description": "BRAKE SHOE STANDARD",
+        "Model": "TMX-R",
+        "Price": 94,
+        "Code": "190000004178"
+    },
+    {
+        "Part Number": "100BSS3",
+        "Description": "BRAKE SHOE STANDARD",
+        "Model": "TMX F",
+        "Price": 98,
+        "Code": "190000004181"
+    },
+    {
+        "Part Number": "100BSS4",
+        "Description": "BRAKE SHOE STANDARD",
+        "Model": "MIO",
+        "Price": 116,
+        "Code": "190000004183"
+    },
+    {
+        "Part Number": "100BSS5",
+        "Description": "BRAKE SHOE STANDARD",
+        "Model": "BARAKO",
+        "Price": 110,
+        "Code": "190000004179"
+    },
+    {
+        "Part Number": "100BSS6",
+        "Description": "BRAKE SHOE STANDARD",
+        "Model": "CT100",
+        "Price": 70,
+        "Code": "190000004185"
+    },
+    {
+        "Part Number": "100BSS7",
+        "Description": "BRAKE SHOE STANDARD",
+        "Model": "SKYDRIVE",
+        "Price": 110,
+        "Code": "190000004182"
+    },
+    {
+        "Part Number": "100BSS8",
+        "Description": "BRAKE SHOE STANDARD",
+        "Model": "RS100",
+        "Price": 94,
+        "Code": "190000004180"
+    },
+    {
+        "Part Number": "100BSS9",
+        "Description": "BRAKE SHOE STANDARD",
+        "Model": "HONDA BEAT",
+        "Price": 104,
+        "Code": "190000004187"
+    },
+    {
+        "Part Number": "101S1",
+        "Description": "SPINDLE",
+        "Model": "XRM",
+        "Price": 100,
+        "Code": "180000001375"
+    }
+]
