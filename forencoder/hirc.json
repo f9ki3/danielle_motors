@@ -1,0 +1,1786 @@
+[
+    {
+        "partcode": "HCS-402-10",
+        "item_description": "CVT PULLEY SET\r\nASSEMBLY",
+        "item_brand": "HIRC",
+        "models": "VESPA 125",
+        "item_wholesale": "16,000",
+        "item_srp": "20,000"
+    },
+    {
+        "partcode": "HCS-402-8",
+        "item_description": "CVT PULLEY SET",
+        "item_brand": "HIRC",
+        "models": "VESPA150",
+        "item_wholesale": "7,115",
+        "item_srp": "9,000"
+    },
+    {
+        "partcode": "HCS-402-9",
+        "item_description": "CVT PULLEY SET",
+        "item_brand": "HIRC",
+        "models": "VESPA300",
+        "item_wholesale": "8,430",
+        "item_srp": "10,550"
+    },
+    {
+        "partcode": "HCS-402-11",
+        "item_description": "CVT PULLEY SET",
+        "item_brand": "HIRC",
+        "models": "KRV180",
+        "item_wholesale": "5,725",
+        "item_srp": "7,250"
+    },
+    {
+        "partcode": "HPS-803",
+        "item_description": "PULLEY SET",
+        "item_brand": "HIRC",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "1,580",
+        "item_srp": "2,500"
+    },
+    {
+        "partcode": "HPS-803",
+        "item_description": "PULLEY SET",
+        "item_brand": "HIRC",
+        "models": "CLICK 125",
+        "item_wholesale": "1,290",
+        "item_srp": "2,000"
+    },
+    {
+        "partcode": "HPS-803",
+        "item_description": "PULLEY SET",
+        "item_brand": "HIRC",
+        "models": "PCX150",
+        "item_wholesale": "1,645",
+        "item_srp": "2,500"
+    },
+    {
+        "partcode": "HPS-803",
+        "item_description": "PULLEY SET",
+        "item_brand": "HIRC",
+        "models": "PCX160",
+        "item_wholesale": "1,645",
+        "item_srp": "2,500"
+    },
+    {
+        "partcode": "HPS-803",
+        "item_description": "PULLEY SET",
+        "item_brand": "HIRC",
+        "models": "BEAT CARB",
+        "item_wholesale": "920",
+        "item_srp": "1,500"
+    },
+    {
+        "partcode": "HPS-803",
+        "item_description": "PULLEY SET",
+        "item_brand": "HIRC",
+        "models": "BEAT FI",
+        "item_wholesale": "1,125",
+        "item_srp": "1,850"
+    },
+    {
+        "partcode": "HPS-803",
+        "item_description": "PULLEY SET",
+        "item_brand": "HIRC",
+        "models": "MIO 110",
+        "item_wholesale": "955",
+        "item_srp": "1,500"
+    },
+    {
+        "partcode": "HPS-803",
+        "item_description": "PULLEY SET",
+        "item_brand": "HIRC",
+        "models": "MIO 125",
+        "item_wholesale": "1,145",
+        "item_srp": "1,900"
+    },
+    {
+        "partcode": "HPS-803",
+        "item_description": "PULLEY SET",
+        "item_brand": "HIRC",
+        "models": "MIO FAZZIO 125",
+        "item_wholesale": "1,145",
+        "item_srp": "1,850"
+    },
+    {
+        "partcode": "HPS-803",
+        "item_description": "PULLEY SET",
+        "item_brand": "HIRC",
+        "models": "CLICK 160",
+        "item_wholesale": "1,645",
+        "item_srp": "2,500"
+    },
+    {
+        "partcode": "HPS-803",
+        "item_description": "PULLEY SET",
+        "item_brand": "HIRC",
+        "models": "CLICK 150",
+        "item_wholesale": "1,645",
+        "item_srp": "2,500"
+    },
+    {
+        "partcode": "HPS-803",
+        "item_description": "PULLEY SET",
+        "item_brand": "HIRC",
+        "models": "ADV 150",
+        "item_wholesale": "1,645",
+        "item_srp": "2,500"
+    },
+    {
+        "partcode": "HPS-803",
+        "item_description": "PULLEY SET",
+        "item_brand": "HIRC",
+        "models": "KYMCO LIKE G5",
+        "item_wholesale": "1,360",
+        "item_srp": "2,000"
+    },
+    {
+        "partcode": "HBP-161-1",
+        "item_description": "BACK PLATE",
+        "item_brand": "HIRC",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "136",
+        "item_srp": "220"
+    },
+    {
+        "partcode": "HBP-161-2",
+        "item_description": "BACK PLATE",
+        "item_brand": "HIRC",
+        "models": "MIO 125",
+        "item_wholesale": "136",
+        "item_srp": "220"
+    },
+    {
+        "partcode": "HBP-161-3",
+        "item_description": "BACK PLATE",
+        "item_brand": "HIRC",
+        "models": "PCX160",
+        "item_wholesale": "136",
+        "item_srp": "220"
+    },
+    {
+        "partcode": "HBP-161-4",
+        "item_description": "BACK PLATE",
+        "item_brand": "HIRC",
+        "models": "PCX150",
+        "item_wholesale": "136",
+        "item_srp": "220"
+    },
+    {
+        "partcode": "HBP-161-5",
+        "item_description": "BACK PLATE",
+        "item_brand": "HIRC",
+        "models": "CLICK125\/150",
+        "item_wholesale": "136",
+        "item_srp": "220"
+    },
+    {
+        "partcode": "HBP-161-6",
+        "item_description": "BACK PLATE",
+        "item_brand": "HIRC",
+        "models": "MIO",
+        "item_wholesale": "136",
+        "item_srp": "220"
+    },
+    {
+        "partcode": "HBP-161-7",
+        "item_description": "BACK PLATE",
+        "item_brand": "HIRC",
+        "models": "BEAT",
+        "item_wholesale": "136",
+        "item_srp": "220"
+    },
+    {
+        "partcode": "HTD-501-5",
+        "item_description": "CNC TORQUE DRIVE",
+        "item_brand": "HIRC",
+        "models": "MIO 125",
+        "item_wholesale": "5,260",
+        "item_srp": "7,200"
+    },
+    {
+        "partcode": "HTD-501-2",
+        "item_description": "CNC TORQUE DRIVE",
+        "item_brand": "HIRC",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "5,390",
+        "item_srp": "7,200"
+    },
+    {
+        "partcode": "HTD-501-4",
+        "item_description": "CNC TORQUE DRIVE",
+        "item_brand": "HIRC",
+        "models": "CLICK 160",
+        "item_wholesale": "5,795",
+        "item_srp": "7,500"
+    },
+    {
+        "partcode": "HTD-501-3",
+        "item_description": "CNC TORQUE DRIVE",
+        "item_brand": "HIRC",
+        "models": "PCX 160",
+        "item_wholesale": "5,795",
+        "item_srp": "7,500"
+    },
+    {
+        "partcode": "HTD-501-1",
+        "item_description": "CNC TORQUE DRIVE",
+        "item_brand": "HIRC",
+        "models": "CLICK 125\/150",
+        "item_wholesale": "5,390",
+        "item_srp": "7,200"
+    },
+    {
+        "partcode": "FTD=505-1",
+        "item_description": "FORGE TORQUE DRIVE",
+        "item_brand": "HIRC",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "2,585",
+        "item_srp": "3,350"
+    },
+    {
+        "partcode": "HFT-505",
+        "item_description": "HALF TORQUE DRIVE",
+        "item_brand": "HIRC",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "1,545",
+        "item_srp": "2,000"
+    },
+    {
+        "partcode": "HCA-401-11",
+        "item_description": "CLUTCH ASSEMBLY",
+        "item_brand": "HIRC",
+        "models": "KRV180",
+        "item_wholesale": "7,365",
+        "item_srp": "9,210"
+    },
+    {
+        "partcode": "HCA-401-8",
+        "item_description": "CLUTCH ASSEMBLY",
+        "item_brand": "HIRC",
+        "models": "VESPA150",
+        "item_wholesale": "9,680",
+        "item_srp": "12,100"
+    },
+    {
+        "partcode": "HCA-401-9",
+        "item_description": "CLUTCH ASSEMBLY",
+        "item_brand": "HIRC",
+        "models": "VESPA300",
+        "item_wholesale": "17,020",
+        "item_srp": "21,275"
+    },
+    {
+        "partcode": "HCC-167-1",
+        "item_description": "CLUTCH BELL\/COVER",
+        "item_brand": "HIRC",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "1,270",
+        "item_srp": "1,850"
+    },
+    {
+        "partcode": "HCC-167-7",
+        "item_description": "CLUTCH BELL\/COVER",
+        "item_brand": "HIRC",
+        "models": "CLICK 125\/150",
+        "item_wholesale": "1,270",
+        "item_srp": "1,850"
+    },
+    {
+        "partcode": "HCC-167-3",
+        "item_description": "CLUTCH BELL\/COVER",
+        "item_brand": "HIRC",
+        "models": "PCX150",
+        "item_wholesale": "1,270",
+        "item_srp": "1,850"
+    },
+    {
+        "partcode": "HCC-167-2",
+        "item_description": "CLUTCH BELL\/COVER",
+        "item_brand": "HIRC",
+        "models": "PCX 160",
+        "item_wholesale": "1,270",
+        "item_srp": "1,850"
+    },
+    {
+        "partcode": "HCC-167-4",
+        "item_description": "CLUTCH BELL\/COVER",
+        "item_brand": "HIRC",
+        "models": "BEAT FI",
+        "item_wholesale": "1,270",
+        "item_srp": "1,850"
+    },
+    {
+        "partcode": "HCC-167-7",
+        "item_description": "CLUTCH BELL\/COVER",
+        "item_brand": "HIRC",
+        "models": "MIO125\/M3",
+        "item_wholesale": "1,270",
+        "item_srp": "1,850"
+    },
+    {
+        "partcode": "HCC-167-6",
+        "item_description": "CLUTCH BELL\/COVER",
+        "item_brand": "HIRC",
+        "models": "MIO 110",
+        "item_wholesale": "835",
+        "item_srp": "1,350"
+    },
+    {
+        "partcode": "HCS-166-1",
+        "item_description": "CLUTCH SHOE ASSEMBLY",
+        "item_brand": "HIRC",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "1,255",
+        "item_srp": "1,900"
+    },
+    {
+        "partcode": "HCS-166-",
+        "item_description": "CLUTCH SHOE ASSEMBLY",
+        "item_brand": "HIRC",
+        "models": "ADV 150",
+        "item_wholesale": "1,255",
+        "item_srp": "1,900"
+    },
+    {
+        "partcode": "HCS-166-",
+        "item_description": "CLUTCH SHOE ASSEMBLY",
+        "item_brand": "HIRC",
+        "models": "CLICK 160",
+        "item_wholesale": "1,255",
+        "item_srp": "1,900"
+    },
+    {
+        "partcode": "HCS-166-7",
+        "item_description": "CLUTCH SHOE ASSEMBLY",
+        "item_brand": "HIRC",
+        "models": "CLICK 125\/150",
+        "item_wholesale": "1,255",
+        "item_srp": "1,900"
+    },
+    {
+        "partcode": "HCS-166-4",
+        "item_description": "CLUTCH SHOE ASSEMBLY",
+        "item_brand": "HIRC",
+        "models": "BEAT FI",
+        "item_wholesale": "1,255",
+        "item_srp": "1,900"
+    },
+    {
+        "partcode": "HCS-166-3",
+        "item_description": "CLUTCH SHOE ASSEMBLY",
+        "item_brand": "HIRC",
+        "models": "PCX150",
+        "item_wholesale": "1,255",
+        "item_srp": "1,900"
+    },
+    {
+        "partcode": "HCS-166-2",
+        "item_description": "CLUTCH SHOE ASSEMBLY",
+        "item_brand": "HIRC",
+        "models": "PCX 160",
+        "item_wholesale": "1,255",
+        "item_srp": "1,900"
+    },
+    {
+        "partcode": "HCS-166-5",
+        "item_description": "CLUTCH SHOE ASSEMBLY",
+        "item_brand": "HIRC",
+        "models": "MIO 125\/M3",
+        "item_wholesale": "1,255",
+        "item_srp": "1,900"
+    },
+    {
+        "partcode": "HCS-166-6",
+        "item_description": "CLUTCH SHOE ASSEMBLY",
+        "item_brand": "HIRC",
+        "models": "MIO 110",
+        "item_wholesale": "1,070",
+        "item_srp": "1,600"
+    },
+    {
+        "partcode": "HCS-662",
+        "item_description": "CLUTCH SHOE",
+        "item_brand": "HIRC",
+        "models": "MIO 125",
+        "item_wholesale": "850",
+        "item_srp": "1,350"
+    },
+    {
+        "partcode": "HCS-662",
+        "item_description": "CLUTCH SHOE",
+        "item_brand": "HIRC",
+        "models": "MIO 110",
+        "item_wholesale": "700",
+        "item_srp": "1,250"
+    },
+    {
+        "partcode": "HCS-662",
+        "item_description": "CLUTCH SHOE",
+        "item_brand": "HIRC",
+        "models": "PCX 150\/160",
+        "item_wholesale": "850",
+        "item_srp": "1,250"
+    },
+    {
+        "partcode": "HCS-662",
+        "item_description": "CLUTCH SHOE",
+        "item_brand": "HIRC",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "850",
+        "item_srp": "1,350"
+    },
+    {
+        "partcode": "HCS-662",
+        "item_description": "CLUTCH SHOE",
+        "item_brand": "HIRC",
+        "models": "CLICK",
+        "item_wholesale": "850",
+        "item_srp": "1,350"
+    },
+    {
+        "partcode": "HCS-165",
+        "item_description": "CENTER SPRING",
+        "item_brand": "HIRC",
+        "models": "NMAX\/AEROX 1000RPM\r\n1100RPM\r\n1200RPM\r\n1250RPM\r\n1350RPM\r\n1500RPM",
+        "item_wholesale": "245",
+        "item_srp": "350"
+    },
+    {
+        "partcode": "HCS-216",
+        "item_description": "CENTER SPRING",
+        "item_brand": "HIRC",
+        "models": "CLICK125\/150 1000RPM\r\n1100RPM\r\n1200RPM\r\n1250RPM 1350RPM\r\n1500RPM",
+        "item_wholesale": "245",
+        "item_srp": "350"
+    },
+    {
+        "partcode": "HCS-195",
+        "item_description": "CENTER SPRING",
+        "item_brand": "HIRC",
+        "models": "PCX150 1000RPM\r\n1100RPM\r\n1200RPM\r\n1250RPM\r\n1350RPM\r\n1500RPM",
+        "item_wholesale": "245",
+        "item_srp": "350"
+    },
+    {
+        "partcode": "HCS-175",
+        "item_description": "CENTER SPRING",
+        "item_brand": "HIRC",
+        "models": "PCX 160 1000RPM\r\n1100RPM\r\n1200RPM\r\n1250RPM\r\n1350RPM\r\n1500RPM",
+        "item_wholesale": "245",
+        "item_srp": "350"
+    },
+    {
+        "partcode": "HCS-205",
+        "item_description": "CENTER SPRING",
+        "item_brand": "HIRC",
+        "models": "HONDA BEAT 1000RPM\r\n1100RPM\r\n1200RPM\r\n1250RPM\r\n1350RPM\r\n1500RPM",
+        "item_wholesale": "245",
+        "item_srp": "350"
+    },
+    {
+        "partcode": "HCS-185",
+        "item_description": "CENTER SPRING",
+        "item_brand": "HIRC",
+        "models": "MIO 1000RPM\r\n1100RPM\r\n1200RPM\r\n1250RPM\r\n1500RPM",
+        "item_wholesale": "195",
+        "item_srp": "250"
+    },
+    {
+        "partcode": "HCS-215",
+        "item_description": "CENTER SPRING",
+        "item_brand": "HIRC",
+        "models": "MIO 125\/M3 1000RPM\r\n1100RPM\r\n1200RPM\r\n1250RPM\r\n1350RPM\r\n1500RPM",
+        "item_wholesale": "245",
+        "item_srp": "350"
+    },
+    {
+        "partcode": "HCS-227",
+        "item_description": "CENTER SPRING",
+        "item_brand": "HIRC",
+        "models": "VESPA 125 1000RPM\r\n1100RPM\r\n1200RPM\r\n1250RPM\r\n1500RPM",
+        "item_wholesale": "270",
+        "item_srp": "350"
+    },
+    {
+        "partcode": "HCS-228",
+        "item_description": "CENTER SPRING",
+        "item_brand": "HIRC",
+        "models": "VESPA 150 1000RPM\r\n1100RPM\r\n1200RPM\r\n1250RPM\r\n1500RPM",
+        "item_wholesale": "270",
+        "item_srp": "350"
+    },
+    {
+        "partcode": "HCS-164",
+        "item_description": "CLUTCH SPRING",
+        "item_brand": "HIRC",
+        "models": "NMAX\/AEROX 1000RPM\r\n1200RPM\r\n1500RPM\r\n1800RPM",
+        "item_wholesale": "135",
+        "item_srp": "200"
+    },
+    {
+        "partcode": "HCS-217",
+        "item_description": "CLUTCH SPRING",
+        "item_brand": "HIRC",
+        "models": "CLICK125\/150 1000RPM\r\n1200RPM\r\n1500RPM 1800RPM",
+        "item_wholesale": "135",
+        "item_srp": "200"
+    },
+    {
+        "partcode": "HCS-194",
+        "item_description": "CLUTCH SPRING",
+        "item_brand": "HIRC",
+        "models": "PCX 150 1000RPM\r\n1200RPM\r\n1500RPM\r\n1800RPM",
+        "item_wholesale": "135",
+        "item_srp": "200"
+    },
+    {
+        "partcode": "HCS-174",
+        "item_description": "CLUTCH SPRING",
+        "item_brand": "HIRC",
+        "models": "PCX 160 1000RPM\r\n1200RPM\r\n1500RPM\r\n1800RPM",
+        "item_wholesale": "135",
+        "item_srp": "200"
+    },
+    {
+        "partcode": "HCS-184",
+        "item_description": "CLUTCH SPRING",
+        "item_brand": "HIRC",
+        "models": "MIO 1000RPM\r\n1200RPM\r\n1500RPM",
+        "item_wholesale": "135",
+        "item_srp": "200"
+    },
+    {
+        "partcode": "HCS-214",
+        "item_description": "CLUTCH SPRING",
+        "item_brand": "HIRC",
+        "models": "MIO 125\/M3 1000RPM\r\n1200RPM\r\n1500RPM\r\n1800RPM",
+        "item_wholesale": "135",
+        "item_srp": "200"
+    },
+    {
+        "partcode": "HCS-204",
+        "item_description": "CLUTCH SPRING",
+        "item_brand": "HIRC",
+        "models": "HONDA BEAT 1000RPM\r\n1200RPM\r\n1500RPM\r\n1800RPM",
+        "item_wholesale": "135",
+        "item_srp": "200"
+    },
+    {
+        "partcode": "HCS-225",
+        "item_description": "CLUTCH SPRING",
+        "item_brand": "HIRC",
+        "models": "VESPA 125 1000RPM\r\n1200RPM\r\n1500RPM\r\n1800RPM",
+        "item_wholesale": "150",
+        "item_srp": "225"
+    },
+    {
+        "partcode": "HCS-226",
+        "item_description": "CLUTCH SPRING",
+        "item_brand": "HIRC",
+        "models": "VESPA 150 1000RPM\r\n1200RPM\r\n1500RPM\r\n1800RPM",
+        "item_wholesale": "150",
+        "item_srp": "22"
+    },
+    {
+        "partcode": "HCS-229",
+        "item_description": "CLUTCH SPRING",
+        "item_brand": "HIRC",
+        "models": "VESPA300 1800RPM",
+        "item_wholesale": "150",
+        "item_srp": "225"
+    },
+    {
+        "partcode": "HPB-169",
+        "item_description": "PULLEY BALL 6 PCS",
+        "item_brand": "HIRC",
+        "models": "NMAX\/AEROX 8 GRAMS\r\n9 GRAMS\r\n10 GRAMS\r\n11 GRAMS\r\n12 GRAMS\r\n13 GRAMS\r\n14 GRAMS\r\n15 GRAMS\r\n16 GRAMS\r\n17 GRAMS\r\n18 GRAMS",
+        "item_wholesale": "260",
+        "item_srp": "350"
+    },
+    {
+        "partcode": "HPB-189",
+        "item_description": "PULLEY BALL 6 PCS",
+        "item_brand": "HIRC",
+        "models": "CLICK125\/150 11 GRAMS\r\n12 GRAMS\r\n13 GRAMS\r\n14 GRAMS\r\n15 GRAMS",
+        "item_wholesale": "285",
+        "item_srp": "350"
+    },
+    {
+        "partcode": "HPB-169",
+        "item_description": "PULLEY  BALL 3 PCS",
+        "item_brand": "HIRC",
+        "models": "NMAX\/AEROX 8 GRAMS\r\n9 GRAMS\r\n10 GRAMS\r\n11 GRAMS\r\n12 GRAMS\r\n13 GRAMS\r\n14 GRAMS\r\n15 GRAMS\r\n16 GRAMS\r\n17 GRAMS\r\n18 GRAMS",
+        "item_wholesale": "150",
+        "item_srp": "200"
+    },
+    {
+        "partcode": "HPB-179",
+        "item_description": "PULLEY  BALL 3 PCS",
+        "item_brand": "HIRC",
+        "models": "MIO 7 GRAMS\r\n8 GRAMS\r\n9 GRAMS\r\n10 GRAMS",
+        "item_wholesale": "145",
+        "item_srp": "200"
+    },
+    {
+        "partcode": "HBP-158",
+        "item_description": "PULLEY BALL V2 6 PCS",
+        "item_brand": "HIRC",
+        "models": "BEAT 8 GRAMS\r\n9 GRAMS\r\n10 GRAMS\r\n11 GRAMS\r\n12 GRAMS",
+        "item_wholesale": "150",
+        "item_srp": "225"
+    },
+    {
+        "partcode": "HBP-156",
+        "item_description": "PULLEY BALL V2 6 PCS",
+        "item_brand": "HIRC",
+        "models": "MIO 7 GRAMS\r\n8 GRAMS\r\n9 GRAMS\r\n10 GRAMS\r\n11 GRAMS\r\n12 GRAMS",
+        "item_wholesale": "150",
+        "item_srp": "225"
+    },
+    {
+        "partcode": "HBP-159",
+        "item_description": "PULLEY BALL V2 6 PCS",
+        "item_brand": "HIRC",
+        "models": "GY6\/BEAT FI 8 GRAMS\r\n9 GRAMS\r\n10 GRAMS\r\n11 GRAMS\r\n12 GRAMS\r\n13 GRAMS",
+        "item_wholesale": "150",
+        "item_srp": "225"
+    },
+    {
+        "partcode": "HBP-157",
+        "item_description": "PULLEY BALL V2 6 PCS",
+        "item_brand": "HIRC",
+        "models": "NMAX\/MIO 125 8 GRAMS\r\n9 GRAMS\r\n10 GRAMS\r\n11 GRAMS\r\n12 GRAMS\r\n13 GRAMS",
+        "item_wholesale": "150",
+        "item_srp": "225"
+    },
+    {
+        "partcode": "HBP-155",
+        "item_description": "PULLEY BALL V2 6 PCS",
+        "item_brand": "HIRC",
+        "models": "CLICK 125\/150 8 GRAMS\r\n9 GRAMS\r\n10 GRAMS\r\n11 GRAMS\r\n12 GRAMS\r\n13 GRAMS",
+        "item_wholesale": "150",
+        "item_srp": "180"
+    },
+    {
+        "partcode": "HBP-160",
+        "item_description": "PULLEY BALL V2 6 PCS",
+        "item_brand": "HIRC",
+        "models": "SKYDRIVE 8 GRAMS\r\n9 GRAMS\r\n10 GRAMS\r\n11 GRAMS\r\n12 GRAMS",
+        "item_wholesale": "150",
+        "item_srp": "180"
+    },
+    {
+        "partcode": "HSP-110",
+        "item_description": "SLIDER PIECE",
+        "item_brand": "HIRC",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "45",
+        "item_srp": "75"
+    },
+    {
+        "partcode": "HSP-110",
+        "item_description": "SLIDER PIECE",
+        "item_brand": "HIRC",
+        "models": "CLICK 125\/150",
+        "item_wholesale": "45",
+        "item_srp": "75"
+    },
+    {
+        "partcode": "HSP-110",
+        "item_description": "SLIDER PIECE",
+        "item_brand": "HIRC",
+        "models": "PCX150",
+        "item_wholesale": "45",
+        "item_srp": "75"
+    },
+    {
+        "partcode": "HSP-110",
+        "item_description": "SLIDER PIECE",
+        "item_brand": "HIRC",
+        "models": "PCX 160",
+        "item_wholesale": "45",
+        "item_srp": "75"
+    },
+    {
+        "partcode": "HSP-110",
+        "item_description": "SLIDER PIECE",
+        "item_brand": "HIRC",
+        "models": "BEAT\/FI",
+        "item_wholesale": "45",
+        "item_srp": "75"
+    },
+    {
+        "partcode": "HSP-110",
+        "item_description": "SLIDER PIECE",
+        "item_brand": "HIRC",
+        "models": "MIO",
+        "item_wholesale": "45",
+        "item_srp": "75"
+    },
+    {
+        "partcode": "HSP-110",
+        "item_description": "SLIDER PIECE",
+        "item_brand": "HIRC",
+        "models": "MIO 125\/M3",
+        "item_wholesale": "45",
+        "item_srp": "75"
+    },
+    {
+        "partcode": "HW-160-1",
+        "item_description": "WASHER",
+        "item_brand": "HIRC",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "30",
+        "item_srp": "60"
+    },
+    {
+        "partcode": "HW-160-7",
+        "item_description": "WASHER",
+        "item_brand": "HIRC",
+        "models": "BEAT",
+        "item_wholesale": "30",
+        "item_srp": "60"
+    },
+    {
+        "partcode": "HW-160-3",
+        "item_description": "WASHER",
+        "item_brand": "HIRC",
+        "models": "MIO",
+        "item_wholesale": "30",
+        "item_srp": "60"
+    },
+    {
+        "partcode": "HW-160-2",
+        "item_description": "WASHER",
+        "item_brand": "HIRC",
+        "models": "HONDA",
+        "item_wholesale": "30",
+        "item_srp": "60"
+    },
+    {
+        "partcode": "HW-160-4",
+        "item_description": "WASHER",
+        "item_brand": "HIRC",
+        "models": "VESPA125",
+        "item_wholesale": "35",
+        "item_srp": "70"
+    },
+    {
+        "partcode": "HW-160-5",
+        "item_description": "WASHER",
+        "item_brand": "HIRC",
+        "models": "VESPA150",
+        "item_wholesale": "35",
+        "item_srp": "70"
+    },
+    {
+        "partcode": "HW-160-6",
+        "item_description": "WASHER",
+        "item_brand": "HIRC",
+        "models": "VESPA300",
+        "item_wholesale": "35",
+        "item_srp": "70"
+    },
+    {
+        "partcode": "HPB-160-1",
+        "item_description": "PULLEY BUSHING",
+        "item_brand": "HIRC",
+        "models": "MIO 125\/M3",
+        "item_wholesale": "170",
+        "item_srp": "220"
+    },
+    {
+        "partcode": "HCC-3810",
+        "item_description": "CLUTCH SHOE CIRCLIP",
+        "item_brand": "HIRC",
+        "models": "UNIVERSAL",
+        "item_wholesale": "25",
+        "item_srp": "60"
+    },
+    {
+        "partcode": "CB-991",
+        "item_description": "CLUTCH BELL NUT",
+        "item_brand": "HIRC",
+        "models": "MIO 110",
+        "item_wholesale": "35",
+        "item_srp": "70"
+    },
+    {
+        "partcode": "HC-315",
+        "item_description": "ENGINE OIL",
+        "item_brand": "HIRC",
+        "models": "SCOOTER 10W-40\r\n1 LITER (12PCS)",
+        "item_wholesale": "300",
+        "item_srp": "350"
+    },
+    {
+        "partcode": "HC-316",
+        "item_description": "ENGINE OIL",
+        "item_brand": "HIRC",
+        "models": "20W-50W\r\n1 LITER (12PCS)",
+        "item_wholesale": "170",
+        "item_srp": "220"
+    },
+    {
+        "partcode": "HC-316",
+        "item_description": "ENGINE OIL",
+        "item_brand": "HIRC",
+        "models": "SCOOTER 20W- 50W 800ML\r\n(12PCS)",
+        "item_wholesale": "165",
+        "item_srp": "200"
+    },
+    {
+        "partcode": "TS=501",
+        "item_description": "TIRE SEALANT",
+        "item_brand": "HIRC",
+        "models": "500ML\r\n(24pcs)",
+        "item_wholesale": "30",
+        "item_srp": "50"
+    },
+    {
+        "partcode": "JCC-403-1",
+        "item_description": "CVT CLEANER",
+        "item_brand": "HIRC",
+        "models": "450ML (24PCS)",
+        "item_wholesale": "75",
+        "item_srp": "100"
+    },
+    {
+        "partcode": "IS-509-1",
+        "item_description": "FUEL INJECTOR",
+        "item_brand": "HIRC",
+        "models": "AEROX",
+        "item_wholesale": "388",
+        "item_srp": "485"
+    },
+    {
+        "partcode": "IS-509-2",
+        "item_description": "FUEL INJECTOR",
+        "item_brand": "HIRC",
+        "models": "NMAX",
+        "item_wholesale": "388",
+        "item_srp": "485"
+    },
+    {
+        "partcode": "IS-509=3",
+        "item_description": "FUEL INJECTOR",
+        "item_brand": "HIRC",
+        "models": "MIO 215",
+        "item_wholesale": "388",
+        "item_srp": "485"
+    },
+    {
+        "partcode": "IS-09=4",
+        "item_description": "FUEL INJECTOR",
+        "item_brand": "HIRC",
+        "models": "CLICK 150",
+        "item_wholesale": "388",
+        "item_srp": "485"
+    },
+    {
+        "partcode": "IS-509=5",
+        "item_description": "FUEL INJECTOR",
+        "item_brand": "HIRC",
+        "models": "BEAT FI",
+        "item_wholesale": "388",
+        "item_srp": "485"
+    },
+    {
+        "partcode": "IS-509=6",
+        "item_description": "FUEL INJECTOR",
+        "item_brand": "HIRC",
+        "models": "CLICK 125",
+        "item_wholesale": "388",
+        "item_srp": "485"
+    },
+    {
+        "partcode": "H-6004",
+        "item_description": "BEARING",
+        "item_brand": "HIRC",
+        "models": "6004",
+        "item_wholesale": "21",
+        "item_srp": "25"
+    },
+    {
+        "partcode": "H-6201",
+        "item_description": "BEARING",
+        "item_brand": "HIRC",
+        "models": "6201",
+        "item_wholesale": "15",
+        "item_srp": "18"
+    },
+    {
+        "partcode": "H-2022",
+        "item_description": "BEARING",
+        "item_brand": "HIRC",
+        "models": "6202",
+        "item_wholesale": "17",
+        "item_srp": "20"
+    },
+    {
+        "partcode": "H-6203",
+        "item_description": "BEARING",
+        "item_brand": "HIRC",
+        "models": "6203",
+        "item_wholesale": "21",
+        "item_srp": "25"
+    },
+    {
+        "partcode": "H-6205",
+        "item_description": "BEARING",
+        "item_brand": "HIRC",
+        "models": "6205",
+        "item_wholesale": "31",
+        "item_srp": "35"
+    },
+    {
+        "partcode": "H-6300",
+        "item_description": "BEARING",
+        "item_brand": "HIRC",
+        "models": "6300",
+        "item_wholesale": "20",
+        "item_srp": "18"
+    },
+    {
+        "partcode": "H-6301",
+        "item_description": "BEARING",
+        "item_brand": "HIRC",
+        "models": "6301",
+        "item_wholesale": "19",
+        "item_srp": "23"
+    },
+    {
+        "partcode": "H-6302",
+        "item_description": "BEARING",
+        "item_brand": "HIRC",
+        "models": "6302",
+        "item_wholesale": "22",
+        "item_srp": "25"
+    },
+    {
+        "partcode": "H-6304",
+        "item_description": "BEARING",
+        "item_brand": "HIRC",
+        "models": "6304",
+        "item_wholesale": "35",
+        "item_srp": "40"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "AEROX",
+        "item_wholesale": "250",
+        "item_srp": "310"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "BEAT CARB",
+        "item_wholesale": "235",
+        "item_srp": "295"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "BEAT FI",
+        "item_wholesale": "190",
+        "item_srp": "235"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "DASH 110",
+        "item_wholesale": "255",
+        "item_srp": "320"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "CLICK 125",
+        "item_wholesale": "250",
+        "item_srp": "310"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "CLICK 150",
+        "item_wholesale": "250",
+        "item_srp": "310"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "MIO 110",
+        "item_wholesale": "217",
+        "item_srp": "275"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "MIO SOUL",
+        "item_wholesale": "217",
+        "item_srp": "275"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "MIO FAZZIO",
+        "item_wholesale": "210",
+        "item_srp": "265"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "MIO 125\/M3",
+        "item_wholesale": "225",
+        "item_srp": "280"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "MIO GRAVIS",
+        "item_wholesale": "195",
+        "item_srp": "245"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "NMAX V1",
+        "item_wholesale": "264",
+        "item_srp": "330"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "NMAX V2",
+        "item_wholesale": "305",
+        "item_srp": "382"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "PCX 150",
+        "item_wholesale": "320",
+        "item_srp": "400"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "PCX 160",
+        "item_wholesale": "320",
+        "item_srp": "400"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "RAIDER FI",
+        "item_wholesale": "280",
+        "item_srp": "345"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "RS 150",
+        "item_wholesale": "205",
+        "item_srp": "260"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "SNIPER 135",
+        "item_wholesale": "215",
+        "item_srp": "265"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "SNIPER 150",
+        "item_wholesale": "215",
+        "item_srp": "265"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "WAVE 125",
+        "item_wholesale": "245",
+        "item_srp": "305"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "XMAX SMALL",
+        "item_wholesale": "200",
+        "item_srp": "250"
+    },
+    {
+        "partcode": "HW-2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "XMAX 300",
+        "item_wholesale": "300",
+        "item_srp": "370"
+    },
+    {
+        "partcode": "DCF-0118-5",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "AEROX V1",
+        "item_wholesale": "1,025",
+        "item_srp": "1,300"
+    },
+    {
+        "partcode": "DCF-0118-7",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "AEROX V2",
+        "item_wholesale": "1,120",
+        "item_srp": "1,450"
+    },
+    {
+        "partcode": "DCF-0118-6",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "MIO SOULTY",
+        "item_wholesale": "775",
+        "item_srp": "1,000"
+    },
+    {
+        "partcode": "DCF-0118-2",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "MIO I 125",
+        "item_wholesale": "875",
+        "item_srp": "1,100"
+    },
+    {
+        "partcode": "DCF-0118-1",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "NMAX V1",
+        "item_wholesale": "965",
+        "item_srp": "1,250"
+    },
+    {
+        "partcode": "DCF-0118-3",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "RAIDER 150",
+        "item_wholesale": "700",
+        "item_srp": "900"
+    },
+    {
+        "partcode": "DCF-0118-4",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "SNIPER 150",
+        "item_wholesale": "680",
+        "item_srp": "900"
+    },
+    {
+        "partcode": "DCF-0118-8",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "SNIPER 155",
+        "item_wholesale": "785",
+        "item_srp": "950"
+    },
+    {
+        "partcode": "2242-7",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "ADV 150",
+        "item_wholesale": "1,150",
+        "item_srp": "1,650"
+    },
+    {
+        "partcode": "2242-1",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "AEROX V1",
+        "item_wholesale": "1,070",
+        "item_srp": "1,500"
+    },
+    {
+        "partcode": "2242-10",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "AEROX V2",
+        "item_wholesale": "825",
+        "item_srp": "1,300"
+    },
+    {
+        "partcode": "2242-12",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "CLICK 125\/150",
+        "item_wholesale": "900",
+        "item_srp": "1,350"
+    },
+    {
+        "partcode": "2242-4",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "MIO SOULTY",
+        "item_wholesale": "815",
+        "item_srp": "1,100"
+    },
+    {
+        "partcode": "2242-11",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "MIO 110",
+        "item_wholesale": "800",
+        "item_srp": "1,100"
+    },
+    {
+        "partcode": "2242-",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "MIO SOUL I 125",
+        "item_wholesale": "695",
+        "item_srp": "1,250"
+    },
+    {
+        "partcode": "2242-3",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "MIO I 125\/M3",
+        "item_wholesale": "885",
+        "item_srp": "1,200"
+    },
+    {
+        "partcode": "2242-9",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "NMAX V1",
+        "item_wholesale": "1,025",
+        "item_srp": "1,450"
+    },
+    {
+        "partcode": "2242-8",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "NMAX V2",
+        "item_wholesale": "1,150",
+        "item_srp": "1,650"
+    },
+    {
+        "partcode": "2242",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "RAIDER FI",
+        "item_wholesale": "745",
+        "item_srp": "1,450"
+    },
+    {
+        "partcode": "2242-2",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "RAIDER 150",
+        "item_wholesale": "735",
+        "item_srp": "1,100"
+    },
+    {
+        "partcode": "2242-6",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "SNIPER 135",
+        "item_wholesale": "760",
+        "item_srp": "1,100"
+    },
+    {
+        "partcode": "2242-5",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "SNIPER 150",
+        "item_wholesale": "705",
+        "item_srp": "1,100"
+    },
+    {
+        "partcode": "2242-",
+        "item_description": "WASHABLE AIR FILTER",
+        "item_brand": "HIRC",
+        "models": "SNIPER 155",
+        "item_wholesale": "785",
+        "item_srp": "1,100"
+    },
+    {
+        "partcode": "HP-631",
+        "item_description": "MUFFLER POWER PIPE",
+        "item_brand": "HIRC",
+        "models": "NMAX V2",
+        "item_wholesale": "3,525",
+        "item_srp": "4,500"
+    },
+    {
+        "partcode": "HM-407-7",
+        "item_description": "MUFFLER PIPE",
+        "item_brand": "HIRC",
+        "models": "AEROX",
+        "item_wholesale": "1,520",
+        "item_srp": "2,000"
+    },
+    {
+        "partcode": "HM-407-9",
+        "item_description": "MUFFLER PIPE",
+        "item_brand": "HIRC",
+        "models": "CLICK 150",
+        "item_wholesale": "1,340",
+        "item_srp": "1,950"
+    },
+    {
+        "partcode": "HM-407-11",
+        "item_description": "MUFFLER PIPE",
+        "item_brand": "HIRC",
+        "models": "MIO",
+        "item_wholesale": "1,180",
+        "item_srp": "1,650"
+    },
+    {
+        "partcode": "HM-407-3",
+        "item_description": "MUFFLER PIPE",
+        "item_brand": "HIRC",
+        "models": "MIO 125",
+        "item_wholesale": "1,180",
+        "item_srp": "1,650"
+    },
+    {
+        "partcode": "HM-407-6",
+        "item_description": "MUFFLER PIPE",
+        "item_brand": "HIRC",
+        "models": "NMAX V1",
+        "item_wholesale": "1,520",
+        "item_srp": "1,900"
+    },
+    {
+        "partcode": "HM-407-12",
+        "item_description": "MUFFLER PIPE",
+        "item_brand": "HIRC",
+        "models": "RAIDER 150",
+        "item_wholesale": "1,920",
+        "item_srp": "2,500"
+    },
+    {
+        "partcode": "HM-407-1",
+        "item_description": "MUFFLER PIPE",
+        "item_brand": "HIRC",
+        "models": "WAVE 100",
+        "item_wholesale": "1,180",
+        "item_srp": "1,750"
+    },
+    {
+        "partcode": "HM-407-8",
+        "item_description": "MUFFLER PIPE",
+        "item_brand": "HIRC",
+        "models": "WAVE 110",
+        "item_wholesale": "1,180",
+        "item_srp": "1,750"
+    },
+    {
+        "partcode": "HM-407-2",
+        "item_description": "MUFFLER PIPE",
+        "item_brand": "HIRC",
+        "models": "WAVE 125",
+        "item_wholesale": "1,180",
+        "item_srp": "1,750"
+    },
+    {
+        "partcode": "HM-407-4",
+        "item_description": "MUFFLER PIPE",
+        "item_brand": "HIRC",
+        "models": "XRM 110",
+        "item_wholesale": "1,590",
+        "item_srp": "2,000"
+    },
+    {
+        "partcode": "HM-407-5",
+        "item_description": "MUFFLER PIPE",
+        "item_brand": "HIRC",
+        "models": "XRM 125",
+        "item_wholesale": "1,590",
+        "item_srp": "2,000"
+    },
+    {
+        "partcode": "HIRC-010",
+        "item_description": "FULL GLOVES",
+        "item_brand": "HIRC",
+        "models": "MEDIUM",
+        "item_wholesale": "230",
+        "item_srp": "265"
+    },
+    {
+        "partcode": "HIRC-010",
+        "item_description": "FULL GLOVES",
+        "item_brand": "HIRC",
+        "models": "LARGE",
+        "item_wholesale": "230",
+        "item_srp": "265"
+    },
+    {
+        "partcode": "HIRC-010",
+        "item_description": "FULL GLOVES",
+        "item_brand": "HIRC",
+        "models": "XL",
+        "item_wholesale": "230",
+        "item_srp": "265"
+    },
+    {
+        "partcode": "HIRC-010",
+        "item_description": "FULL GLOVES",
+        "item_brand": "HIRC",
+        "models": "XXL",
+        "item_wholesale": "230",
+        "item_srp": "265"
+    },
+    {
+        "partcode": "HIRC-020",
+        "item_description": "FULL GLOVES",
+        "item_brand": "HIRC",
+        "models": "MEDIUM",
+        "item_wholesale": "230",
+        "item_srp": "265"
+    },
+    {
+        "partcode": "HIRC-020",
+        "item_description": "FULL GLOVES",
+        "item_brand": "HIRC",
+        "models": "LARGE",
+        "item_wholesale": "230",
+        "item_srp": "265"
+    },
+    {
+        "partcode": "HIRC-020",
+        "item_description": "FULL GLOVES",
+        "item_brand": "HIRC",
+        "models": "XL",
+        "item_wholesale": "230",
+        "item_srp": "265"
+    },
+    {
+        "partcode": "HIRC-020",
+        "item_description": "FULL GLOVES",
+        "item_brand": "HIRC",
+        "models": "XXL",
+        "item_wholesale": "230",
+        "item_srp": "265"
+    },
+    {
+        "partcode": "HIRC-0077",
+        "item_description": "BACK PACK LUGGAGE",
+        "item_brand": "HIRC",
+        "models": "MEDIUM",
+        "item_wholesale": "1,690",
+        "item_srp": "2,060"
+    },
+    {
+        "partcode": "HIRC-0077",
+        "item_description": "BACK PACK LUGGAGE",
+        "item_brand": "HIRC",
+        "models": "XL",
+        "item_wholesale": "1,845",
+        "item_srp": "2,250"
+    },
+    {
+        "partcode": "HIRC-0078",
+        "item_description": "BACKPACK BAG",
+        "item_brand": "HIRC",
+        "models": "XL",
+        "item_wholesale": "950",
+        "item_srp": "1,150"
+    },
+    {
+        "partcode": "HIRC-0105",
+        "item_description": "LEG BAG",
+        "item_brand": "HIRC",
+        "models": "",
+        "item_wholesale": "580",
+        "item_srp": "735"
+    },
+    {
+        "partcode": "HIRC-0116",
+        "item_description": "WAIST BAG",
+        "item_brand": "HIRC",
+        "models": "",
+        "item_wholesale": "550",
+        "item_srp": "670"
+    },
+    {
+        "partcode": "HG-1221",
+        "item_description": "GEARING",
+        "item_brand": "HIRC",
+        "models": "MIO 14T-41T",
+        "item_wholesale": "440",
+        "item_srp": "550"
+    },
+    {
+        "partcode": "FPI-2242",
+        "item_description": "FUEL PUMP IC",
+        "item_brand": "HIRC",
+        "models": "YAMAHA",
+        "item_wholesale": "280",
+        "item_srp": "350"
+    },
+    {
+        "partcode": "HT-2X3-102L",
+        "item_description": "TIMING CHAIN",
+        "item_brand": "HIRC",
+        "models": "2*3-102L",
+        "item_wholesale": "98",
+        "item_srp": "150"
+    },
+    {
+        "partcode": "HT-2X3-124L",
+        "item_description": "TIMING CHAIN",
+        "item_brand": "HIRC",
+        "models": "2*3-124L",
+        "item_wholesale": "118",
+        "item_srp": "190"
+    },
+    {
+        "partcode": "HT-2X3-88L",
+        "item_description": "TIMING CHAIN",
+        "item_brand": "HIRC",
+        "models": "2*3-88L",
+        "item_wholesale": "87",
+        "item_srp": "135"
+    },
+    {
+        "partcode": "HT-2X3-90L",
+        "item_description": "TIMING CHAIN",
+        "item_brand": "HIRC",
+        "models": "2*3-90L",
+        "item_wholesale": "88",
+        "item_srp": "140"
+    },
+    {
+        "partcode": "HT-2X3-92L",
+        "item_description": "TIMING CHAIN",
+        "item_brand": "HIRC",
+        "models": "2*3-92L",
+        "item_wholesale": "90",
+        "item_srp": "140"
+    },
+    {
+        "partcode": "HT-2X3-94L",
+        "item_description": "TIMING CHAIN",
+        "item_brand": "HIRC",
+        "models": "2*3-94L",
+        "item_wholesale": "91",
+        "item_srp": "145"
+    },
+    {
+        "partcode": "HT-2X3-98L",
+        "item_description": "TIMING CHAIN",
+        "item_brand": "HIRC",
+        "models": "2*3-98L",
+        "item_wholesale": "93",
+        "item_srp": "80"
+    },
+    {
+        "partcode": "HT-25H-62L",
+        "item_description": "TIMING CHAIN",
+        "item_brand": "HIRC",
+        "models": "25H-62L",
+        "item_wholesale": "50",
+        "item_srp": "95"
+    },
+    {
+        "partcode": "HT-25H-82L",
+        "item_description": "TIMING CHAIN",
+        "item_brand": "HIRC",
+        "models": "25H-82L",
+        "item_wholesale": "59",
+        "item_srp": "91"
+    },
+    {
+        "partcode": "HT-25H-84L",
+        "item_description": "TIMING CHAIN",
+        "item_brand": "HIRC",
+        "models": "25H-84L",
+        "item_wholesale": "59",
+        "item_srp": "95"
+    },
+    {
+        "partcode": "HT-25H-88L",
+        "item_description": "TIMING CHAIN",
+        "item_brand": "HIRC",
+        "models": "25H-88L",
+        "item_wholesale": "60",
+        "item_srp": "95"
+    },
+    {
+        "partcode": "HT-25H-90L",
+        "item_description": "TIMING CHAIN",
+        "item_brand": "HIRC",
+        "models": "25H-90L",
+        "item_wholesale": "60",
+        "item_srp": "95"
+    },
+    {
+        "partcode": "HT-25H-92L",
+        "item_description": "TIMING CHAIN",
+        "item_brand": "HIRC",
+        "models": "25H-92L",
+        "item_wholesale": "61",
+        "item_srp": "95"
+    },
+    {
+        "partcode": "HT-25H-94L",
+        "item_description": "TIMING CHAIN",
+        "item_brand": "HIRC",
+        "models": "25H-94L",
+        "item_wholesale": "61",
+        "item_srp": "95"
+    },
+    {
+        "partcode": "HT-3X4-102L",
+        "item_description": "TIMING CHAIN",
+        "item_brand": "HIRC",
+        "models": "3*4-102L",
+        "item_wholesale": "159",
+        "item_srp": "245"
+    },
+    {
+        "partcode": "HT-3X4-94L",
+        "item_description": "TIMING CHAIN",
+        "item_brand": "HIRC",
+        "models": "3*4-94L",
+        "item_wholesale": "124",
+        "item_srp": "190"
+    },
+    {
+        "partcode": "M-1",
+        "item_description": "CELLPHONE HOLDER",
+        "item_brand": "HIRC",
+        "models": "CLAMP TYPE",
+        "item_wholesale": "110",
+        "item_srp": "125"
+    },
+    {
+        "partcode": "M2",
+        "item_description": "CELLPHONE HOLDER",
+        "item_brand": "HIRC",
+        "models": "MIRROR TYPE",
+        "item_wholesale": "110",
+        "item_srp": "125"
+    },
+    {
+        "partcode": "M-3",
+        "item_description": "CELLPHONE HOLDER",
+        "item_brand": "HIRC",
+        "models": "MIRROR TYPE W\/ USB",
+        "item_wholesale": "130",
+        "item_srp": "150"
+    },
+    {
+        "partcode": "3758-3",
+        "item_description": "MINI DRIVING LIGHT",
+        "item_brand": "HIRC",
+        "models": "V2",
+        "item_wholesale": "505",
+        "item_srp": "610"
+    },
+    {
+        "partcode": "3758-4",
+        "item_description": "MINI DRIVING LIGHT",
+        "item_brand": "HIRC",
+        "models": "V3",
+        "item_wholesale": "550",
+        "item_srp": "650"
+    },
+    {
+        "partcode": "3757-3",
+        "item_description": "MINI DRIVING LIGHT",
+        "item_brand": "HIRC",
+        "models": "V5",
+        "item_wholesale": "740",
+        "item_srp": "855"
+    },
+    {
+        "partcode": "3757-4",
+        "item_description": "MINI DRIVING LIGHT",
+        "item_brand": "HIRC",
+        "models": "V6",
+        "item_wholesale": "740",
+        "item_srp": "875"
+    },
+    {
+        "partcode": "MDL-V07",
+        "item_description": "MINI DRIVING LIGHT",
+        "item_brand": "HIRC",
+        "models": "V7",
+        "item_wholesale": "700",
+        "item_srp": "840"
+    },
+    {
+        "partcode": "MDL-V09",
+        "item_description": "MINI DRIVING LIGHT",
+        "item_brand": "HIRC",
+        "models": "V9",
+        "item_wholesale": "680",
+        "item_srp": "850"
+    },
+    {
+        "partcode": "V=18",
+        "item_description": "MINI DRIVING LIGHT",
+        "item_brand": "HIRC",
+        "models": "V=18",
+        "item_wholesale": "700",
+        "item_srp": "840"
+    },
+    {
+        "partcode": "S-18",
+        "item_description": "MINI DRIVING LIGHT",
+        "item_brand": "HIRC",
+        "models": "S-18",
+        "item_wholesale": "1,530",
+        "item_srp": "2,170"
+    },
+    {
+        "partcode": "HDC-3634",
+        "item_description": "DOUBLE CONTACT",
+        "item_brand": "HIRC",
+        "models": "RED-YELLOW",
+        "item_wholesale": "220",
+        "item_srp": "250"
+    },
+    {
+        "partcode": "HDC-3634",
+        "item_description": "DOUBLE CONTACT",
+        "item_brand": "HIRC",
+        "models": "BLUE-YELLOW",
+        "item_wholesale": "220",
+        "item_srp": "250"
+    },
+    {
+        "partcode": "HDC-3634",
+        "item_description": "DOUBLE CONTACT",
+        "item_brand": "HIRC",
+        "models": "WHITE-YELLOW",
+        "item_wholesale": "220",
+        "item_srp": "250"
+    }
+]
