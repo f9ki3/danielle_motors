@@ -84,7 +84,7 @@
                       <th class="sort align-middle text-end ps-4" scope="col" data-sort="price" style="width:150px;">SRP</th>
                       <th class="sort align-middle ps-4" scope="col" data-sort="category" style="width:150px;">BRAND</th>
                       <!-- <th class="sort align-middle ps-3" scope="col" data-sort="tags" style="width:250px;">CATEGORY</th> -->
-                      <!-- <th class="sort align-middle fs-0 text-center ps-4" scope="col" style="width:125px;">UNIT</th> -->
+                      <th class="sort align-middle fs-0 text-center ps-4" scope="col" style="width:125px;">UNIT</th>
                       <th class="sort align-middle ps-4" scope="col" data-sort="vendor" style="width:200px;">MODELS</th>
                       <th class="sort align-middle ps-4" scope="col" data-sort="time" style="width:50px;">PUBLISHED BY</th>
                       <th class="sort text-end align-middle pe-0 ps-4" scope="col"></th>
