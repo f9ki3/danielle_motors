@@ -14,6 +14,7 @@ if(!isset($_GET['search'])){
         while ($row = $result->fetch_assoc()) {
             $product_id = $row['id'];
             $product_name = $row['name'];
+            $product_code = $row['code'];
             $product_name_2 = strtoupper(preg_replace('/[^A-Z]/', '',$product_name));
             $product_models = $row['models'];
             $models = strtoupper(preg_replace('/[^A-Z]/', '', $product_models));
@@ -58,10 +59,11 @@ if(!isset($_GET['search'])){
                 $publisher_name = "System";
             }
 
-            $price_sql = "SELECT wholesale, srp from price_list WHERE product_id = '$product_id' LIMIT 1";
+            $price_sql = "SELECT dealer, wholesale, srp from price_list WHERE product_id = '$product_id' LIMIT 1";
             $price_res = $conn-> query($price_sql);
             if($price_res->num_rows> 0){
                 $row = $price_res -> fetch_assoc();
+                $dealer = number_format($row['dealer'], 2, '.', ',');
                 $wholesale = number_format($row['wholesale'], 2, '.', ',');
                 $srp = number_format($row['srp'], 2, '.', ',');
             } else {
@@ -81,10 +83,12 @@ if(!isset($_GET['search'])){
                     <td class="product align-middle ps-4 white-space-nowrap">
                         ' . $product_name . '
                     </td>
+                    <td>' . $product_code . '</td>
+                    <td>' . $dealer . '</td>
                     <td class="price align-middle white-space-nowrap text-end fw-bold text-700 ps-4">' . $wholesale . '</td>
                     <td class="price align-middle white-space-nowrap text-end fw-bold text-700 ps-4">' . $srp . '</td>
                     <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold">' . $brand_name . '</td>
-                    <td class="tags align-middle review pb-2 ps-3" style="min-width:225px;">' . $category_name . '</td>
+                    <!--<td class="tags align-middle review pb-2 ps-3" style="min-width:225px;">' . $category_name . '</td>-->
                     <td class="align-middle review fs-0 text-center ps-4"> piece </td>
                     <td class="vendor align-middle text-start fw-semi-bold ps-4">' . $product_models . '</td>
                     <td class="time align-middle white-space-nowrap text-600 ps-4">' . $publisher_name . '</td>
@@ -175,6 +179,7 @@ if(!isset($_GET['search'])){
         while ($row = $result->fetch_assoc()) {
             $product_id = $row['id'];
             $product_name = $row['name'];
+            $product_code = $row['code'];
             $product_name_2 = strtoupper(preg_replace('/[^A-Z]/', '',$product_name));
             $product_models = $row['models'];
             $models = strtoupper(preg_replace('/[^A-Z]/', '', $product_models));
@@ -219,10 +224,11 @@ if(!isset($_GET['search'])){
                 $publisher_name = "System";
             }
 
-            $price_sql = "SELECT wholesale, srp from price_list WHERE product_id = '$product_id' LIMIT 1";
+            $price_sql = "SELECT dealer, wholesale, srp from price_list WHERE product_id = '$product_id' LIMIT 1";
             $price_res = $conn-> query($price_sql);
             if($price_res->num_rows> 0){
                 $row = $price_res -> fetch_assoc();
+                $dealer = number_format($row['dealer'], 2, '.', ',');
                 $wholesale = number_format($row['wholesale'], 2, '.', ',');
                 $srp = number_format($row['srp'], 2, '.', ',');
             } else {
@@ -242,10 +248,12 @@ if(!isset($_GET['search'])){
                         <td class="product align-middle ps-4 white-space-nowrap">
                             ' . $product_name . '
                         </td>
+                        <td>' . $product_code . '</td>
+                        <td>' . $dealer . '</td>
                         <td class="price align-middle white-space-nowrap text-end fw-bold text-700 ps-4">' . $wholesale . '</td>
                         <td class="price align-middle white-space-nowrap text-end fw-bold text-700 ps-4">' . $srp . '</td>
                         <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold">' . $brand_name . '</td>
-                        <td class="tags align-middle review pb-2 ps-3" style="min-width:225px;">' . $category_name . '</td>
+                        <!--<td class="tags align-middle review pb-2 ps-3" style="min-width:225px;">' . $category_name . '</td>-->
                         <td class="align-middle review fs-0 text-center ps-4"> piece </td>
                         <td class="vendor align-middle text-start fw-semi-bold ps-4">' . $product_models . '</td>
                         <td class="time align-middle white-space-nowrap text-600 ps-4">' . $publisher_name . '</td>
