@@ -28,7 +28,7 @@ foreach ($dataArray as $item) {
 
     // Get brand_id
     $brand_id = 0; // Default value if no match
-    $brandQuery = "SELECT id FROM BRAND WHERE UPPER(brand_name) = '$itemBrand'";
+    $brandQuery = "SELECT id FROM brand WHERE UPPER(brand_name) = '$itemBrand'";
     $brandResult = $conn->query($brandQuery);
     if ($brandResult && $brandResult->num_rows > 0) {
         $brandRow = $brandResult->fetch_assoc();
