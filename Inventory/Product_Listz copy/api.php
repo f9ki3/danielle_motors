@@ -17,7 +17,11 @@ if(!isset($_GET['search'])){
             $product_code = $row['code'];
             $product_name_2 = strtoupper(preg_replace('/[^A-Z]/', '',$product_name));
             $product_models = $row['models'];
-            $models = strtoupper(preg_replace('/[^A-Z]/', '', $product_models));
+            if(!empty($product_models)){
+                $models = strtoupper(preg_replace('/[^A-Z]/', '', $product_models));
+            } else {
+                $models = 'Included on the item name/item code';
+            }
             $product_brand_id = $row['brand_id'];
             $product_category_id = $row['category_id'];
             $product_publisher_id = $row['publish_by'];
@@ -34,8 +38,8 @@ if(!isset($_GET['search'])){
                 $brand_name = $row['brand_name'];
                 $brand_name_2 = strtoupper(preg_replace('/[^A-Z]/', '', $brand_name));
             } else {
-                $brand_name = "UNSET";
-                $brand_name_2 = "UNSET";
+                $brand_name = "Included on the item name/item code";
+                $brand_name_2 = "Included on the item name/item code";
             }
 
             $category_sql = "SELECT category_name FROM category WHERE id = '$product_category_id' LIMIT 1";
@@ -45,8 +49,8 @@ if(!isset($_GET['search'])){
                 $category_name = $row['category_name'];
                 $category_name_2 = strtoupper(preg_replace('/[^A-Z]/', '', $category_name));
             } else {
-                $category_name = "UNSET";
-                $category_name_2 = "UNSET";
+                $category_name = "Included on the item name/item code";
+                $category_name_2 = "Included on the item name/item code";
             }
 
             $publisher_sql = "SELECT user_lname, user_fname FROM user WHERE id = '$product_publisher_id' LIMIT 1";
@@ -90,7 +94,7 @@ if(!isset($_GET['search'])){
                     <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold">' . $brand_name . '</td>
                     <!--<td class="tags align-middle review pb-2 ps-3" style="min-width:225px;">' . $category_name . '</td>-->
                     <td class="align-middle review fs-0 text-center ps-4"> piece </td>
-                    <td class="vendor align-middle text-start fw-semi-bold ps-4">' . $product_models . '</td>
+                    <td class="vendor align-middle text-start fw-semi-bold ps-4">' . $models . '</td>
                     <td class="time align-middle white-space-nowrap text-600 ps-4">' . $publisher_name . '</td>
                     <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
                         <div class="font-sans-serif btn-reveal-trigger position-static">
@@ -182,7 +186,11 @@ if(!isset($_GET['search'])){
             $product_code = $row['code'];
             $product_name_2 = strtoupper(preg_replace('/[^A-Z]/', '',$product_name));
             $product_models = $row['models'];
-            $models = strtoupper(preg_replace('/[^A-Z]/', '', $product_models));
+            if(!empty($product_models)){
+                $models = strtoupper(preg_replace('/[^A-Z]/', '', $product_models));
+            } else {
+                $models = "Included on the item name/item code";
+            }
             $product_brand_id = $row['brand_id'];
             $product_category_id = $row['category_id'];
             $product_publisher_id = $row['publish_by'];
@@ -199,8 +207,8 @@ if(!isset($_GET['search'])){
                 $brand_name = $row['brand_name'];
                 $brand_name_2 = strtoupper(preg_replace('/[^A-Z]/', '', $brand_name));
             } else {
-                $brand_name = "UNSET";
-                $brand_name_2 = "UNSET";
+                $brand_name = "Included on the item name/item code";
+                $brand_name_2 = "Included on the item name/item code";
             }
 
             $category_sql = "SELECT category_name FROM category WHERE id = '$product_category_id' LIMIT 1";
@@ -210,8 +218,8 @@ if(!isset($_GET['search'])){
                 $category_name = $row['category_name'];
                 $category_name_2 = strtoupper(preg_replace('/[^A-Z]/', '', $category_name));
             } else {
-                $category_name = "UNSET";
-                $category_name_2 = "UNSET";
+                $category_name = "Included on the item name/item code";
+                $category_name_2 = "Included on the item name/item code";
             }
 
             $publisher_sql = "SELECT user_lname, user_fname FROM user WHERE id = '$product_publisher_id' LIMIT 1";
@@ -255,7 +263,7 @@ if(!isset($_GET['search'])){
                         <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold">' . $brand_name . '</td>
                         <!--<td class="tags align-middle review pb-2 ps-3" style="min-width:225px;">' . $category_name . '</td>-->
                         <td class="align-middle review fs-0 text-center ps-4"> piece </td>
-                        <td class="vendor align-middle text-start fw-semi-bold ps-4">' . $product_models . '</td>
+                        <td class="vendor align-middle text-start fw-semi-bold ps-4">' . $models . '</td>
                         <td class="time align-middle white-space-nowrap text-600 ps-4">' . $publisher_name . '</td>
                         <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
                             <div class="font-sans-serif btn-reveal-trigger position-static">
