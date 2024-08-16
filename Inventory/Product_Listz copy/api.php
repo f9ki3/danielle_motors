@@ -88,7 +88,7 @@ if(!isset($_GET['search'])){
                         ' . $product_name . '
                     </td>
                     <td>' . $product_code . '</td>
-                    <td>' . $dealer . '</td>
+                    <td class="text-end">' . $dealer . '</td>
                     <td class="price align-middle white-space-nowrap text-end fw-bold text-700 ps-4">' . $wholesale . '</td>
                     <td class="price align-middle white-space-nowrap text-end fw-bold text-700 ps-4">' . $srp . '</td>
                     <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold">' . $brand_name . '</td>
@@ -257,7 +257,7 @@ if(!isset($_GET['search'])){
                             ' . $product_name . '
                         </td>
                         <td>' . $product_code . '</td>
-                        <td>' . $dealer . '</td>
+                        <td class="text-end">' . $dealer . '</td>
                         <td class="price align-middle white-space-nowrap text-end fw-bold text-700 ps-4">' . $wholesale . '</td>
                         <td class="price align-middle white-space-nowrap text-end fw-bold text-700 ps-4">' . $srp . '</td>
                         <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold">' . $brand_name . '</td>
