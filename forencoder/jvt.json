@@ -1,0 +1,4802 @@
+[
+    {
+        "partcode": "",
+        "item_description": "3M CLEANER FLUID",
+        "item_brand": "JVT",
+        "models": "GENERAL",
+        "item_wholesale": "213.00",
+        "item_srp": "250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "GEAR OIL (JVT RACE SPEC)",
+        "item_brand": "JVT",
+        "models": "GENERAL",
+        "item_wholesale": "45.00",
+        "item_srp": "60.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "GEAR OIL (JVT RACING 100% FULLY SENTHETIC)",
+        "item_brand": "JVT",
+        "models": "GENERAL",
+        "item_wholesale": "60.00",
+        "item_srp": "80.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Motul Scooter Power LE 4t 5w40 (1L)",
+        "item_brand": "JVT",
+        "models": "GENERAL",
+        "item_wholesale": "465.00",
+        "item_srp": "650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Motul Scooter EXPERT LE 10W30 MB",
+        "item_brand": "JVT",
+        "models": "GENERAL",
+        "item_wholesale": "405.00",
+        "item_srp": "590.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Motul scooter 4t 10w40 800ml",
+        "item_brand": "JVT",
+        "models": "GENERAL",
+        "item_wholesale": "280.00",
+        "item_srp": "310.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Motul scooter 4t 10w40 {1L}",
+        "item_brand": "JVT",
+        "models": "GENERAL",
+        "item_wholesale": "295.00",
+        "item_srp": "330.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Motul Gp Power 4t10w40 (MA) {1L}",
+        "item_brand": "JVT",
+        "models": "GENERAL",
+        "item_wholesale": "325.00",
+        "item_srp": "360.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Motul Gp Matic 4t10w40 (MB) {1L}",
+        "item_brand": "JVT",
+        "models": "GENERAL",
+        "item_wholesale": "325.00",
+        "item_srp": "360.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Motul 300V 15w50 Road Racing (1L)",
+        "item_brand": "JVT",
+        "models": "GENERAL",
+        "item_wholesale": "1,260.00",
+        "item_srp": "1,470.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Motul 300V 10w40 Road Racing (1L)",
+        "item_brand": "JVT",
+        "models": "GENERAL",
+        "item_wholesale": "1,260.00",
+        "item_srp": "1,470.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Motul 3000 Plus 4t 20w50 800ml",
+        "item_brand": "JVT",
+        "models": "GENERAL",
+        "item_wholesale": "260.00",
+        "item_srp": "300.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Motul 3000 plus 4t 10w40 {1L}",
+        "item_brand": "JVT",
+        "models": "GENERAL",
+        "item_wholesale": "275.00",
+        "item_srp": "320.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Aluminum Base Gasket (6mm) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "640.00",
+        "item_srp": "800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Aluminum Base Gasket (12mm) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,180.00",
+        "item_srp": "1,475.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ADJUSTABLE CAM GEAR SPROCKET",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,008.00",
+        "item_srp": "1,260.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Base & Head Gasket (59mm) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "240.00",
+        "item_srp": "300.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Base & Head Gasket (61mm) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "240.00",
+        "item_srp": "300.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Base & Head Gasket (63mm) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "240.00",
+        "item_srp": "300.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Base & Head Gasket (66mm) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "240.00",
+        "item_srp": "300.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Brake lever",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "920.00",
+        "item_srp": "1,150.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Brake Pads (NEB) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "280.00",
+        "item_srp": "350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Brake Pads - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "416.00",
+        "item_srp": "520.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Brake Shoe - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "400.00",
+        "item_srp": "500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "BELL NUT",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "160.00",
+        "item_srp": "200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamBreather (ASS. COLOR) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "800.00",
+        "item_srp": "1,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamLock (4V) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "160.00",
+        "item_srp": "200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamShaft (4V, 5.7 lift) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,600.00",
+        "item_srp": "2,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamShaft (Blank) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,080.00",
+        "item_srp": "1,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamShaft (J-0) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,020.00",
+        "item_srp": "1,275.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamShaft (J-10, 5.8 lift) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,020.00",
+        "item_srp": "1,275.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamShaft (J-15, 5.9 lift) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,080.00",
+        "item_srp": "1,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamShaft (J-20, 6.4 lift) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,200.00",
+        "item_srp": "1,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamShaft (J-25, 6.8 lift) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,280.00",
+        "item_srp": "1,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamShaft (J-30, 7.3 lift) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,280.00",
+        "item_srp": "1,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamShaft (J-5, 5.7 lift) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,020.00",
+        "item_srp": "1,275.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CDI - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,080.00",
+        "item_srp": "2,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Bell v1 Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,560.00",
+        "item_srp": "1,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchLining 1000 - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,520.00",
+        "item_srp": "1,900.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Shoe - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "840.00",
+        "item_srp": "1,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CLUTCH SPRING 1000\/1200\/1500 RPM MIO",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "260.00",
+        "item_srp": "325.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CenterSpring 1000\/1200\/1500\/2000 RPM",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "360.00",
+        "item_srp": "450.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chrome Bore 54mm - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "3,080.00",
+        "item_srp": "3,850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 59mm - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "3,240.00",
+        "item_srp": "4,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 61mm - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "3,840.00",
+        "item_srp": "4,800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 63mm (w\/Casting) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "3,880.00",
+        "item_srp": "4,850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 61mm (w\/FP) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "5,920.00",
+        "item_srp": "7,400.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 63mm (w\/FP 2v) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "6,000.00",
+        "item_srp": "7,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 59mm (w\/FP) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "4,400.00",
+        "item_srp": "5,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 63mm (2V-LC w\/FP) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "6,800.00",
+        "item_srp": "8,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 66mm (4V-LC w\/FP) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "7,600.00",
+        "item_srp": "9,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 63mm (4V-LC w\/FP) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "6,800.00",
+        "item_srp": "8,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 66mm (w\/FP)  with cooling pin - N-Max \/ Aerox",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "5,600.00",
+        "item_srp": "7,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 66mm (4V-AC w\/FP) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "7,200.00",
+        "item_srp": "9,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "hromebore 66mm (4V-AC w\/FP, Long) - Mi",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "8,400.00",
+        "item_srp": "10,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 69mm (4V AC) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "8,400.00",
+        "item_srp": "10,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CNC Titanium Clutch Bell MIO SPORTY",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Connecting Rod (15\/97mm) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,320.00",
+        "item_srp": "1,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Connecting Rod (15\/98mm) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,520.00",
+        "item_srp": "1,900.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Connecting Rod (100mm) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,680.00",
+        "item_srp": "2,100.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Connecting Rod Set  (103mm) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,280.00",
+        "item_srp": "2,850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Connecting Rod Set  (103mm) SET- Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,000.00",
+        "item_srp": "2,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Connecting Rod (Pin Bearing Cut\/Whole ) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "360.00",
+        "item_srp": "450.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CONTINENTAL BELT MIO",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "544.00",
+        "item_srp": "680.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Crank +4mm - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "6,400.00",
+        "item_srp": "8,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Crank +6mm (103rod) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "8,400.00",
+        "item_srp": "10,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Cylinder Head (23x26mm w\/ internal - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "13,200.00",
+        "item_srp": "16,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CylinderHead (30mmx26mm) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "5,320.00",
+        "item_srp": "6,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CylinderHead (28mmx24mm) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "5,240.00",
+        "item_srp": "6,550.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CylinderHead (4V 25mmx22mm) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "11,600.00",
+        "item_srp": "14,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Cyl Head Cover Plastic (Pair) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "640.00",
+        "item_srp": "800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CVT SET TITANIUM MIO SPORTY",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "5,240.00",
+        "item_srp": "6,550.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "DRIVE FACE CNC FORGED BLUE\/ORANGE\/T-BLACK\/RED",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "600.00",
+        "item_srp": "750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "DriveFace Only - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "440.00",
+        "item_srp": "550.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Dowell (Short)",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "40.00",
+        "item_srp": "50.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Dowell (Long)",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "40.00",
+        "item_srp": "50.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Engine Swing Arm - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "EXHAUST PIPE GASKET",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "128.00",
+        "item_srp": "160.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Fan Red",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "240.00",
+        "item_srp": "300.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FlyBall  5g-11g  (6 in 1) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "260.00",
+        "item_srp": "325.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Clutch Lining Assy MIO SPORTY",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,520.00",
+        "item_srp": "1,900.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Front Big Disk 260mm Silver w\/ Bracket",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,880.00",
+        "item_srp": "3,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Front Big Disk Red\/Violet\/Blue\/T-black\/Gold",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,880.00",
+        "item_srp": "3,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FORGED DRIVE FACE (ASS. COLOR) - MIO",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "600.00",
+        "item_srp": "750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Front Big Disk Black - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,880.00",
+        "item_srp": "3,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Gearing (15Tx39T) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "960.00",
+        "item_srp": "1,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Gearing (16Tx39T) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "960.00",
+        "item_srp": "1,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Gearing (14Tx40T) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "960.00",
+        "item_srp": "1,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Gearing (14Tx41T) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "960.00",
+        "item_srp": "1,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Gearing (14Tx42T) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "960.00",
+        "item_srp": "1,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "HIGH NUT - MIO",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "400.00",
+        "item_srp": "500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Idle Gear - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "520.00",
+        "item_srp": "650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Ignition Coil (Banjing) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "600.00",
+        "item_srp": "750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Lightened Pin",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "840.00",
+        "item_srp": "1,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Manifold (2V) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "720.00",
+        "item_srp": "900.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Manifold (4V) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,000.00",
+        "item_srp": "1,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Manifold Rubber (28\/30mm)",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "256.00",
+        "item_srp": "320.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Manifold Rubber (32\/34mm)",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "280.00",
+        "item_srp": "350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Magnetic Drain Plug (NEW)",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "264.00",
+        "item_srp": "330.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Magnetic Drain Plug",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "200.00",
+        "item_srp": "250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "NEB Calliper (w\/ Bracket) - Mio\/Sniper",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "3,600.00",
+        "item_srp": "4,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Oil Cooled Pump Cover - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,240.00",
+        "item_srp": "2,800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Oil Pump Gear - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "480.00",
+        "item_srp": "600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston 63mm (2v Cast, Semidome) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "960.00",
+        "item_srp": "1,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston 59mm (2vForged, CNC Cut) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,880.00",
+        "item_srp": "2,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston 59mm 2v (Cast) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "880.00",
+        "item_srp": "1,100.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston 61mm (Cast) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "960.00",
+        "item_srp": "1,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston 58.5mm (Forged) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,800.00",
+        "item_srp": "2,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston 59mm (Forged, Dome) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,080.00",
+        "item_srp": "2,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston 61mm (Forged) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,080.00",
+        "item_srp": "2,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston 66mm (4V Forged) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "3,360.00",
+        "item_srp": "4,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston 66mm (Forged, Flat) 4V - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "3,680.00",
+        "item_srp": "4,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston 66mm (Forged, Flat) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "3,400.00",
+        "item_srp": "4,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston 63mm (Cast, Flat) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "960.00",
+        "item_srp": "1,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston 63mm (Forged, dome) 2v - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,240.00",
+        "item_srp": "2,800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston 63mm (Forged, Flat) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,560.00",
+        "item_srp": "3,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston 59mm (Forged, Flat) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,120.00",
+        "item_srp": "2,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston Ring 59mm 0.8mm - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "480.00",
+        "item_srp": "600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PISTON 59 (BLANK) MIO",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,280.00",
+        "item_srp": "2,850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Primary Gear 16 x 46 - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,320.00",
+        "item_srp": "1,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Pulley Slider (3pcs) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "76.00",
+        "item_srp": "95.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Pulley (BIG w\/ Bushing) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,480.00",
+        "item_srp": "1,850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Pulley Set (13.5 degree) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,520.00",
+        "item_srp": "1,900.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Pulley Only - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "680.00",
+        "item_srp": "850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Pulley Nut",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "152.00",
+        "item_srp": "190.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Quick Throttle (ASS. COLOR) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "960.00",
+        "item_srp": "1,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Rear Brake Cable - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "320.00",
+        "item_srp": "400.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Rear Shock (w\/ Cannister, 300mm)",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "4,000.00",
+        "item_srp": "5,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Rocker Arm (Orig 1P3) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,000.00",
+        "item_srp": "2,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Rocker Arm (4V 25mmx22mm) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "3,080.00",
+        "item_srp": "3,850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "SMRT CylinderHead (28mmx24mm)",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "21,200.00",
+        "item_srp": "26,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "SMRT CylinderHead (26mmx23mm)",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "18,000.00",
+        "item_srp": "22,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Smart Rectifier - Mio\/Sniper",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "920.00",
+        "item_srp": "1,150.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "STARTER MOTOR 66MM",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "3,360.00",
+        "item_srp": "4,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Steelbore 59mm - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,000.00",
+        "item_srp": "2,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Steelbore 63mm - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,000.00",
+        "item_srp": "2,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Steelbore 65mm (2V) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,360.00",
+        "item_srp": "2,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "STAINLES PIPE V 2.1 MIO SPORTY",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "6,800.00",
+        "item_srp": "8,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Stud Bolt 5ml short - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "80.00",
+        "item_srp": "100.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Studbolt 4v long - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "640.00",
+        "item_srp": "800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "TAPPET COVER 2V (ASS. COLOR) - MIO",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "880.00",
+        "item_srp": "1,100.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Tappet\/Cam Breather Set (New)",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,120.00",
+        "item_srp": "2,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Tappet & Cam Breather Titanium Cover 4V Set (T.Black)",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "3,504.00",
+        "item_srp": "4,380.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Tappet Cover CNC 4V (ASS. COLOR) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,120.00",
+        "item_srp": "1,400.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Tensioner Mio - Sniper 135",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "320.00",
+        "item_srp": "400.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Throttle Cable - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "320.00",
+        "item_srp": "400.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "TORQUE DRIVE NUT",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "200.00",
+        "item_srp": "250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "TorqueDrive Half - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,000.00",
+        "item_srp": "1,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Torque Drive Assembly - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,080.00",
+        "item_srp": "2,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Torsion Controller (CNC) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "400.00",
+        "item_srp": "500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valve Spring (5L) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "360.00",
+        "item_srp": "450.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valve Spring (6L) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "360.00",
+        "item_srp": "450.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Vendix Drive (Lightened) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "1,560.00",
+        "item_srp": "1,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valve Retainer (ASS. COLOR) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "160.00",
+        "item_srp": "200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valve 30x26mm",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "960.00",
+        "item_srp": "1,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valves (25mmx22mm,4V) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "2,240.00",
+        "item_srp": "2,800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valves Spring (4v) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "640.00",
+        "item_srp": "800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valves (28.2mmx24.1mm, Set) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "840.00",
+        "item_srp": "1,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valves 20x23.1mm (STOCKHEAD)",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "760.00",
+        "item_srp": "950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Brake Lever  - MioMx",
+        "item_brand": "JVT",
+        "models": "MIO MX 125",
+        "item_wholesale": "880.00",
+        "item_srp": "1,100.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamShaft (J-5, 5.0 lift) - MioMx",
+        "item_brand": "JVT",
+        "models": "MIO MX 125",
+        "item_wholesale": "1,020.00",
+        "item_srp": "1,275.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamShaft (J-10, 5.5 lift) - MioMx",
+        "item_brand": "JVT",
+        "models": "MIO MX 125",
+        "item_wholesale": "1,020.00",
+        "item_srp": "1,275.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CenterSpring 1000\/1200\/1500RPM - MioMx",
+        "item_brand": "JVT",
+        "models": "MIO MX 125",
+        "item_wholesale": "380.00",
+        "item_srp": "475.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchBell V1 - MioMx",
+        "item_brand": "JVT",
+        "models": "MIO MX 125",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchBell V2 - MioMx",
+        "item_brand": "JVT",
+        "models": "MIO MX 125",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchLining - MioMx",
+        "item_brand": "JVT",
+        "models": "MIO MX 125",
+        "item_wholesale": "1,560.00",
+        "item_srp": "1,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 59mm - MioMx",
+        "item_brand": "JVT",
+        "models": "MIO MX 125",
+        "item_wholesale": "3,960.00",
+        "item_srp": "4,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FlyBall  7-14G  (6 in 1) - MioMx",
+        "item_brand": "JVT",
+        "models": "MIO MX 125",
+        "item_wholesale": "300.00",
+        "item_srp": "375.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Piston 59mm dome type Pin 14 - Mio MX",
+        "item_brand": "JVT",
+        "models": "MIO MX 125",
+        "item_wholesale": "1,800.00",
+        "item_srp": "2,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "GEARING 13X43\/14X42\/14X43MM",
+        "item_brand": "JVT",
+        "models": "MIO MX 125",
+        "item_wholesale": "1,088.00",
+        "item_srp": "1,360.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.3 (Carb Type) - MioMx",
+        "item_brand": "JVT",
+        "models": "MIO MX 125",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.3 - MioMx 125 i",
+        "item_brand": "JVT",
+        "models": "MIO MX 125",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Pulley Set  - MioMx",
+        "item_brand": "JVT",
+        "models": "MIO MX 125",
+        "item_wholesale": "1,760.00",
+        "item_srp": "2,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Stainless Pipe Mio Mxi - v3",
+        "item_brand": "JVT",
+        "models": "MIO MX 125",
+        "item_wholesale": "7,948.00",
+        "item_srp": "9,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valve Spring - MioMx",
+        "item_brand": "JVT",
+        "models": "MIO MX 125",
+        "item_wholesale": "280.00",
+        "item_srp": "350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Brake Pads - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "496.00",
+        "item_srp": "620.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamGear Sprocket - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "1,008.00",
+        "item_srp": "1,260.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Camshaft J1 5.2 lift - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "1,105.00",
+        "item_srp": "1,380.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Center Spring 1000\/1200\/1500RPM - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "380.00",
+        "item_srp": "475.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 59mm  (w\/Casting)  - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "3,825.00",
+        "item_srp": "4,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 59mm w\/ Forged Piston- M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "4,400.00",
+        "item_srp": "5,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchBell - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchLining - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "1,560.00",
+        "item_srp": "1,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CNC Titanium Clutch Bell MIO M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "1,680.00",
+        "item_srp": "2,100.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CONTINENTAL BELT M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "510.00",
+        "item_srp": "680.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CVT SET TITANIUM MIO M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "5,660.00",
+        "item_srp": "7,075.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "DRIVE FACEONLY M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "680.00",
+        "item_srp": "850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FLYBALL 7-14G (6 in 1) - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "300.00",
+        "item_srp": "375.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Clutch Lining Assy  MIO M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "1,560.00",
+        "item_srp": "1,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Piston 59mm M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "2,080.00",
+        "item_srp": "2,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Piston Flat 2v M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "2,080.00",
+        "item_srp": "2,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "GEARING 13\/38mm - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "1,080.00",
+        "item_srp": "1,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "GEARING 13\/39mm - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "1,080.00",
+        "item_srp": "1,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "GEARING 14\/37mm - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "1,080.00",
+        "item_srp": "1,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "GEARING 14\/38mm - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "1,080.00",
+        "item_srp": "1,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Idle Gear Mio M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "600.00",
+        "item_srp": "750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston 59mm 2v (Cast) - Mio M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "1,000.00",
+        "item_srp": "1,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Power Pipe Ver. 2 - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.3 - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston Ring 59mm - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "480.00",
+        "item_srp": "600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Primary Gear M3 15T",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "1,000.00",
+        "item_srp": "1,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Pulley Set - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "1,960.00",
+        "item_srp": "2,450.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PULLEY SLIDER - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "76.00",
+        "item_srp": "95.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Steelbore 59 mm - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "2,000.00",
+        "item_srp": "2,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Stainless Pipe Mio-M3 v3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "7,948.00",
+        "item_srp": "9,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Torque Drive Assembly - M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "2,600.00",
+        "item_srp": "3,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "VALVE SPRING M3",
+        "item_brand": "JVT",
+        "models": "MIOI 125\/M3",
+        "item_wholesale": "360.00",
+        "item_srp": "450.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Camshaft - Honda Beat",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT",
+        "item_wholesale": "1,000.00",
+        "item_srp": "1,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Center Spring 1000-1500RPM",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT",
+        "item_wholesale": "380.00",
+        "item_srp": "475.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chomebore 57mm W\/FP - Beat",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT",
+        "item_wholesale": "3,600.00",
+        "item_srp": "4,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 55mm - Beat",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT",
+        "item_wholesale": "3,600.00",
+        "item_srp": "4,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Bell Honda Beat",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CLUTCH LINING BEAT",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT",
+        "item_wholesale": "1,560.00",
+        "item_srp": "1,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Shoe - Honda Beat EFI",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT",
+        "item_wholesale": "840.00",
+        "item_srp": "1,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FLYBALL 8G-14G",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT",
+        "item_wholesale": "300.00",
+        "item_srp": "375.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Piston  57mm - Beat",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Piston 55mm - Beat",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Powerpipe V2 - Honda Beat",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "POWER PIPE V2 HONDA BEAT EFI",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT EFI",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "POWER PIPE V3 HONDA BEAT EFI",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Pulley Set Honda Beat EFI",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT EFI",
+        "item_wholesale": "1,760.00",
+        "item_srp": "2,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Pulley Slider (3pcs)  Honda Beat Efi",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT",
+        "item_wholesale": "76.00",
+        "item_srp": "95.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Steelbore 55mm - Beat",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valve Spring - Beat",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT",
+        "item_wholesale": "200.00",
+        "item_srp": "250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Base & Head Gasket (61mm) - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "240.00",
+        "item_srp": "300.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Brake Lever (ASS. COLOR) - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "640.00",
+        "item_srp": "800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Brake Shoe - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "400.00",
+        "item_srp": "500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamShaft (J-10, 6.0lift) - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "1,200.00",
+        "item_srp": "1,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CenterSpring 1000\/1200\/1500rpm - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "380.00",
+        "item_srp": "475.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 61mm - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "3,160.00",
+        "item_srp": "3,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 63mm - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "3,160.00",
+        "item_srp": "3,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 63mm (w\/FP) - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "6,400.00",
+        "item_srp": "8,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Bell V1 - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchBell V2 - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchLining - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "1,560.00",
+        "item_srp": "1,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchSpring 1000\/1200\/1500\/2000rpm",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "260.00",
+        "item_srp": "325.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CylinderHead (27.5mmx23.5mm) - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "4,800.00",
+        "item_srp": "6,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Flat Piston 61mm Pin 14 - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "2,240.00",
+        "item_srp": "2,800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FLYBALL 8-16G (6 IN 1) - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "300.00",
+        "item_srp": "375.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Piston 59mm dome Pin 14 - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "1,800.00",
+        "item_srp": "2,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Piston 61mm Pin 14 - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "2,240.00",
+        "item_srp": "2,800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Front Big Disk Red w\/ Bracket - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "1,600.00",
+        "item_srp": "2,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Gearing (14Tx43T) - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "640.00",
+        "item_srp": "800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Gearing (14Tx44T) - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "640.00",
+        "item_srp": "800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Gearing (14Tx45T) - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "640.00",
+        "item_srp": "800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "HEAD & BASE GASKET 61MM",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "240.00",
+        "item_srp": "300.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston Ring  61.8 mm - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "480.00",
+        "item_srp": "600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.2 - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.3 - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.4 - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Pulley Set V2 - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "1,760.00",
+        "item_srp": "2,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "TorqueDrive Assembly - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "2,080.00",
+        "item_srp": "2,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "TorqueDrive Half - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "1,056.00",
+        "item_srp": "1,320.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Torsion Controller (CNC) - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "400.00",
+        "item_srp": "500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valve Spring - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI  STEP S\/D\nHAYATE",
+        "item_wholesale": "256.00",
+        "item_srp": "320.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Aluminum Base Gasket (6mm)",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "600.00",
+        "item_srp": "750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Aluminum Base Gasket (8mm)",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "680.00",
+        "item_srp": "850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Base & Head Gasket (57mm)",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "240.00",
+        "item_srp": "300.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Base & Head Gasket (59mm)",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "240.00",
+        "item_srp": "300.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Base & Head Gasket (62mm)",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "240.00",
+        "item_srp": "300.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamBreather (ASS. COLOR)",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "440.00",
+        "item_srp": "550.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamGear Sprocket (38T Adjustable)",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "1,008.00",
+        "item_srp": "1,260.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamShaft (J-10) - Sniper135",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "1,400.00",
+        "item_srp": "1,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamShaft (J-5) - Sniper135",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "1,020.00",
+        "item_srp": "1,275.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CDI - Sniper135",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "2,240.00",
+        "item_srp": "2,800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 57mm (w\/FP) - Sniper135\/150",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135\/150",
+        "item_wholesale": "3,960.00",
+        "item_srp": "4,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 58mm (w\/FP) - Sniper135\/150",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135\/150",
+        "item_wholesale": "4,400.00",
+        "item_srp": "5,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 59mm (w\/FP) - Sniper135\/150",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135\/150",
+        "item_wholesale": "4,400.00",
+        "item_srp": "5,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 62mm (w\/FP) - Sniper135\/150",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135\/150",
+        "item_wholesale": "4,960.00",
+        "item_srp": "6,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 63mm (w\/FP) - Sniper135\/150",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135\/150",
+        "item_wholesale": "4,960.00",
+        "item_srp": "6,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 65mm (w\/FP) - Sniper135\/150",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135\/150",
+        "item_wholesale": "5,440.00",
+        "item_srp": "6,800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Plate - Sniper LC 150",
+        "item_brand": "JVT",
+        "models": "SNIPER LC150",
+        "item_wholesale": "760.00",
+        "item_srp": "950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchHousing - Sniper150FI",
+        "item_brand": "JVT",
+        "models": "SNIPER LC150",
+        "item_wholesale": "1,480.00",
+        "item_srp": "1,850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchHousing (4 Speed) - CLASSIC",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "1,320.00",
+        "item_srp": "1,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchHousing (5 Speed) - Sniper135 MX",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "1,320.00",
+        "item_srp": "1,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchLining - Sniper150FI",
+        "item_brand": "JVT",
+        "models": "SNIPER LC150",
+        "item_wholesale": "760.00",
+        "item_srp": "950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchLining (4 Speed) - Classic",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "384.00",
+        "item_srp": "480.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchLining (5 Speed) - Sniper135 Mx",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "464.00",
+        "item_srp": "580.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchSpring (4 in 1) - Sniper135",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "640.00",
+        "item_srp": "800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchSpring (4 in 1) - Sniper150FI",
+        "item_brand": "JVT",
+        "models": "SNIPER LC150",
+        "item_wholesale": "640.00",
+        "item_srp": "800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchSpring (5 in 1) - Sniper135",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "640.00",
+        "item_srp": "800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchSpring (5 in 1) - Sniper150FI",
+        "item_brand": "JVT",
+        "models": "SNIPER LC150",
+        "item_wholesale": "640.00",
+        "item_srp": "800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Connecting Rod (100mm) - Sniper135",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "1,600.00",
+        "item_srp": "2,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Connecting Rod (102 mm) - Sniper135",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "1,800.00",
+        "item_srp": "2,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Crank +9mm - Sniper135",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "8,720.00",
+        "item_srp": "10,900.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Connecting Rod Set (100 mm)",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135\/150",
+        "item_wholesale": "2,280.00",
+        "item_srp": "2,850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Piston 57mm - Sniper",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "2,120.00",
+        "item_srp": "2,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Piston 62mm Pin14",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "2,400.00",
+        "item_srp": "3,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUSPENSION SILVER WITH  T-POST",
+        "item_brand": "JVT",
+        "models": "SNIPER LC150",
+        "item_wholesale": "10,200.00",
+        "item_srp": "12,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "GearSet  - Sniper135",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "6,400.00",
+        "item_srp": "8,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "GEARING 20T\/21T",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "1,104.00",
+        "item_srp": "1,380.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "JVT Crank Sniper 150 PLUS 3MM",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "8,400.00",
+        "item_srp": "10,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "JVT CylinderHead (22mmx25mm)",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "9,440.00",
+        "item_srp": "11,800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "JVT CylinderHead (23mmx20mm)",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "9,440.00",
+        "item_srp": "11,800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "JVT FRONT SUSPENSION GOLD WITH T- POST",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "10,000.00",
+        "item_srp": "12,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "JVT FRONT SUSPENSION TITANIUM W\/ T- POST",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "10,400.00",
+        "item_srp": "13,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "JVT Transmission Gear Set 6 Speed",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "7,600.00",
+        "item_srp": "9,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Magnetic Drain Plug - Sniper",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "264.00",
+        "item_srp": "330.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Manifold - Sniper135",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "1,000.00",
+        "item_srp": "1,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "NEB Calliper (w\/ Bracket) - Mio\/Sniper",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "3,600.00",
+        "item_srp": "4,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Oil Pump Gear - Sniper135",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "440.00",
+        "item_srp": "550.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Oil Pump Gear - Sniper150",
+        "item_brand": "JVT",
+        "models": "SNIPER LC150",
+        "item_wholesale": "440.00",
+        "item_srp": "550.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston 59mm ( Forged ,Flat ) Sniper",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "2,400.00",
+        "item_srp": "3,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston Ring (57mm) - Sniper135",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "480.00",
+        "item_srp": "600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston Ring (59mm) - Sniper135",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "480.00",
+        "item_srp": "600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Power Pipe Sniper 150 - V3",
+        "item_brand": "JVT",
+        "models": "SNIPER LC150",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,760.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Smart Rectifier - Mio\/Sniper",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "920.00",
+        "item_srp": "1,150.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Sniper 135 T- Post 4Speed",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "2,500.00",
+        "item_srp": "3,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Sniper 135 T- Post 5Speed",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "2,500.00",
+        "item_srp": "3,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Sniper Mags",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "3,500.00",
+        "item_srp": "3,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Stainless Pipe  Sniper 150 - v3",
+        "item_brand": "JVT",
+        "models": "SNIPER LC150",
+        "item_wholesale": "8,075.00",
+        "item_srp": "9,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Tappet Cover CNC (ASS. COLOR)",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "1,560.00",
+        "item_srp": "1,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Tensioner Mio - Sniper 135",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "320.00",
+        "item_srp": "400.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valve Spring - Sniper135",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "640.00",
+        "item_srp": "800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valve Spring - Sniper150FI",
+        "item_brand": "JVT",
+        "models": "SNIPER LC150",
+        "item_wholesale": "640.00",
+        "item_srp": "800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valves (19mmx22mm) - Sniper135",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "2,120.00",
+        "item_srp": "2,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valves (23mmx20mm) - Sniper135",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "2,120.00",
+        "item_srp": "2,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valves (25mmx22mm) - Sniper135",
+        "item_brand": "JVT",
+        "models": "SNIPER LC135",
+        "item_wholesale": "2,120.00",
+        "item_srp": "2,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Brake Pads",
+        "item_brand": "JVT",
+        "models": "KYMCO\/SUPER-\n8\/GY6",
+        "item_wholesale": "272.00",
+        "item_srp": "340.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Brake Shoe",
+        "item_brand": "JVT",
+        "models": "KYMCO\/SUPER-\n8\/GY6",
+        "item_wholesale": "400.00",
+        "item_srp": "500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Center Spring 1000\/1200\/1500RPM",
+        "item_brand": "JVT",
+        "models": "KYMCO\/SUPER-\n8\/GY6",
+        "item_wholesale": "380.00",
+        "item_srp": "475.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 58.5mm",
+        "item_brand": "JVT",
+        "models": "KYMCO\/SUPER-\n8\/GY6",
+        "item_wholesale": "2,600.00",
+        "item_srp": "3,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 61mm",
+        "item_brand": "JVT",
+        "models": "KYMCO\/SUPER-\n8\/GY6",
+        "item_wholesale": "2,600.00",
+        "item_srp": "3,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Bell",
+        "item_brand": "JVT",
+        "models": "KYMCO\/SUPER-\n8\/GY6",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchLining",
+        "item_brand": "JVT",
+        "models": "KYMCO\/SUPER-\n8\/GY6",
+        "item_wholesale": "1,560.00",
+        "item_srp": "1,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchSpring 1000-1500rpm",
+        "item_brand": "JVT",
+        "models": "KYMCO\/SUPER-\n8\/GY6",
+        "item_wholesale": "260.00",
+        "item_srp": "325.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FLYBALL 7-16G (6 IN 1)",
+        "item_brand": "JVT",
+        "models": "KYMCO\/SUPER-\n8\/GY6",
+        "item_wholesale": "300.00",
+        "item_srp": "375.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.3",
+        "item_brand": "JVT",
+        "models": "KYMCO\/SUPER-\n8\/GY6",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Pulley Set",
+        "item_brand": "JVT",
+        "models": "KYMCO\/SUPER-\n8\/GY6",
+        "item_wholesale": "1,760.00",
+        "item_srp": "2,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Steelbore 63mm",
+        "item_brand": "JVT",
+        "models": "KYMCO\/SUPER-\n8\/GY6",
+        "item_wholesale": "2,000.00",
+        "item_srp": "2,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "TorqueDrive Assembly",
+        "item_brand": "JVT",
+        "models": "KYMCO\/SUPER-\n8\/GY6",
+        "item_wholesale": "2,080.00",
+        "item_srp": "2,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "TorqueDrive Half",
+        "item_brand": "JVT",
+        "models": "KYMCO\/SUPER-\n8\/GY6",
+        "item_wholesale": "864.00",
+        "item_srp": "1,080.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Torsion Controller",
+        "item_brand": "JVT",
+        "models": "KYMCO\/SUPER-\n8\/GY6",
+        "item_wholesale": "600.00",
+        "item_srp": "750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ADJUSTABLE CAM GEAR SET",
+        "item_brand": "JVT",
+        "models": "HONDA\/RS150",
+        "item_wholesale": "1,008.00",
+        "item_srp": "1,260.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CamShaft - Honda RS 150",
+        "item_brand": "JVT",
+        "models": "HONDA\/RS150",
+        "item_wholesale": "1,720.00",
+        "item_srp": "2,150.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Plate Honda RS 150",
+        "item_brand": "JVT",
+        "models": "HONDA\/RS150",
+        "item_wholesale": "760.00",
+        "item_srp": "950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CLUTCH HOUSING W\/SPRING",
+        "item_brand": "JVT",
+        "models": "HONDA\/RS150",
+        "item_wholesale": "1,480.00",
+        "item_srp": "1,850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchLining - Honda RS \/ Winner 150",
+        "item_brand": "JVT",
+        "models": "HONDA\/RS150",
+        "item_wholesale": "760.00",
+        "item_srp": "950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CHROMEBORE 57.3 W\/FP",
+        "item_brand": "JVT",
+        "models": "HONDA\/RS150",
+        "item_wholesale": "3,960.00",
+        "item_srp": "4,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CHROMEBORE 62 W\/FP",
+        "item_brand": "JVT",
+        "models": "HONDA\/RS150",
+        "item_wholesale": "4,960.00",
+        "item_srp": "6,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CHROMEBORE 63 W\/FP",
+        "item_brand": "JVT",
+        "models": "HONDA\/RS150",
+        "item_wholesale": "4,960.00",
+        "item_srp": "6,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CON ROD SET",
+        "item_brand": "JVT",
+        "models": "HONDA\/RS150",
+        "item_wholesale": "2,000.00",
+        "item_srp": "2,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Fuel Injector 170cc - Honda RS 150",
+        "item_brand": "JVT",
+        "models": "HONDA\/RS150",
+        "item_wholesale": "960.00",
+        "item_srp": "1,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Fuel Injector 190cc - Honda RS 150",
+        "item_brand": "JVT",
+        "models": "HONDA\/RS150",
+        "item_wholesale": "960.00",
+        "item_srp": "1,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Fuel Injector 200cc - Honda RS 150",
+        "item_brand": "JVT",
+        "models": "HONDA\/RS150",
+        "item_wholesale": "960.00",
+        "item_srp": "1,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Fuel Injector 230cc - Honda RS 150",
+        "item_brand": "JVT",
+        "models": "HONDA\/RS150",
+        "item_wholesale": "960.00",
+        "item_srp": "1,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Transmisson Gear RS 150",
+        "item_brand": "JVT",
+        "models": "HONDA\/RS150",
+        "item_wholesale": "5,600.00",
+        "item_srp": "7,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valve Spring - RS 150",
+        "item_brand": "JVT",
+        "models": "HONDA\/RS150",
+        "item_wholesale": "640.00",
+        "item_srp": "800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valve spring 19 \/ 22 RS 150",
+        "item_brand": "JVT",
+        "models": "HONDA\/RS150",
+        "item_wholesale": "2,120.00",
+        "item_srp": "2,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valve Spring 20\/23 RS 150",
+        "item_brand": "JVT",
+        "models": "HONDA\/RS150",
+        "item_wholesale": "2,120.00",
+        "item_srp": "2,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CHROMEBORE 62MM W\/FP",
+        "item_brand": "JVT",
+        "models": "SUZUKI RAIDER",
+        "item_wholesale": "4,480.00",
+        "item_srp": "5,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CHROMEBORE 66MM W\/FP",
+        "item_brand": "JVT",
+        "models": "SUZUKI RAIDER",
+        "item_wholesale": "5,280.00",
+        "item_srp": "6,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CLUTCH LINING",
+        "item_brand": "JVT",
+        "models": "SUZUKI RAIDER",
+        "item_wholesale": "760.00",
+        "item_srp": "950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CLUTCH SPRING",
+        "item_brand": "JVT",
+        "models": "SUZUKI RAIDER",
+        "item_wholesale": "640.00",
+        "item_srp": "800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Piston kit 62mm",
+        "item_brand": "JVT",
+        "models": "SUZUKI RAIDER",
+        "item_wholesale": "2,400.00",
+        "item_srp": "3,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston 66mm (4V Forged)",
+        "item_brand": "JVT",
+        "models": "SUZUKI RAIDER",
+        "item_wholesale": "2,560.00",
+        "item_srp": "3,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "VALVE SPRING",
+        "item_brand": "JVT",
+        "models": "SUZUKI RAIDER",
+        "item_wholesale": "640.00",
+        "item_srp": "800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "AEROX STAINLES PIPE V 2.1",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "7,225.00",
+        "item_srp": "8,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Air Filter N-Max v2",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX V2",
+        "item_wholesale": "840.00",
+        "item_srp": "1,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CAM SHAFT + VALVE SPRING",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "1,800.00",
+        "item_srp": "2,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CAM SHAFT WITH CAM GEAR",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "2,280.00",
+        "item_srp": "2,850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CAM SHAFT J3",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "1,264.00",
+        "item_srp": "1,580.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Center Spring 1000\/1200\/1500Rpm",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "380.00",
+        "item_srp": "475.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 59mm (w\/FP)  with cooling pin",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "4,800.00",
+        "item_srp": "6,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 62mm (w\/FP)  with cooling pin",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "5,200.00",
+        "item_srp": "6,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 63mm (w\/FP)  with cooling pin",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "6,000.00",
+        "item_srp": "7,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chromebore 66mm (w\/FP)  with cooling pin",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "6,800.00",
+        "item_srp": "8,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Bell",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Bell Nut",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "160.00",
+        "item_srp": "200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Shoe",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "920.00",
+        "item_srp": "1,150.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Spring 1000\/1200\/1500RPM",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "260.00",
+        "item_srp": "325.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchLining Assy.",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "1,560.00",
+        "item_srp": "1,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CNC CYLINDER HEAD 21\/ 24MM",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "14,400.00",
+        "item_srp": "18,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CNC CYLINDER HEAD 21\/ 24MM (PACKAGE)",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "34,000.00",
+        "item_srp": "42,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CNC CYLINDER HEAD 23\/ 26MM",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "14,800.00",
+        "item_srp": "18,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CNC CYLINDER HEAD 23\/ 26MM (PACKAGE)",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "34,000.00",
+        "item_srp": "42,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CNC HEAD 20 X 23 Aerox V1 & V2",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "10,800.00",
+        "item_srp": "13,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CNC Titanium Clutch Bell",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "1,680.00",
+        "item_srp": "2,100.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Con Rod Forged Complete Set ( 97\/99\/102mm )",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "2,280.00",
+        "item_srp": "2,850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CRANK SHAFT AEROX +3MM",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "8,400.00",
+        "item_srp": "10,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CRANK SHAFT AEROX +6MM",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "8,400.00",
+        "item_srp": "10,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CONTINENTAL BELT",
+        "item_brand": "JVT",
+        "models": "AEROX",
+        "item_wholesale": "675.00",
+        "item_srp": "900.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CVT SET TITANIUM",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "5,880.00",
+        "item_srp": "7,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "DRIVE FACE CNC FORGED",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "960.00",
+        "item_srp": "1,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Drive Face ONLY",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "920.00",
+        "item_srp": "1,150.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ENGINE RUBBER BUSHING YELLOW (RACE USE)",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "440.00",
+        "item_srp": "550.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ENGINE RUBBER BUSHING RED (DAILY USE)",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "440.00",
+        "item_srp": "550.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FLYBALL 7-15G",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "300.00",
+        "item_srp": "375.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Clutch Lining Assy",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "1,560.00",
+        "item_srp": "1,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Clutch Shoe",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "920.00",
+        "item_srp": "1,150.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Piston 58mm Kit",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "2,400.00",
+        "item_srp": "3,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Piston 62mm Kit",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "2,400.00",
+        "item_srp": "3,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Piston 63mm Kit",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "2,400.00",
+        "item_srp": "3,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Piston 66mm Kit",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "3,360.00",
+        "item_srp": "4,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Front T-Post Aerox 31mm",
+        "item_brand": "JVT",
+        "models": "AEROX",
+        "item_wholesale": "3,275.00",
+        "item_srp": "3,850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUSPENSION GOLD WITH T- POST",
+        "item_brand": "JVT",
+        "models": "AEROX",
+        "item_wholesale": "10,200.00",
+        "item_srp": "12,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUSPENSION ONLY GOLD",
+        "item_brand": "JVT",
+        "models": "AEROX",
+        "item_wholesale": "7,225.00",
+        "item_srp": "8,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUSPENSION SILVER",
+        "item_brand": "JVT",
+        "models": "AEROX",
+        "item_wholesale": "9,775.00",
+        "item_srp": "11,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUSPENSION TITANIUM ONLY",
+        "item_brand": "JVT",
+        "models": "AEROX",
+        "item_wholesale": "6,800.00",
+        "item_srp": "8,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUSPENSION TITANIUM WITH T- POST",
+        "item_brand": "JVT",
+        "models": "AEROX",
+        "item_wholesale": "10,625.00",
+        "item_srp": "12,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUSPENSION ONLY SLIVER",
+        "item_brand": "JVT",
+        "models": "AEROX",
+        "item_wholesale": "6,800.00",
+        "item_srp": "8,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Fuel Injector 115-225cc",
+        "item_brand": "JVT",
+        "models": "AEROX",
+        "item_wholesale": "960.00",
+        "item_srp": "1,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Gearing 12x33\/13x32\/13X33\/13X34\/13X35",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "1,320.00",
+        "item_srp": "1,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Gearing 14x32\/14X33\/14\/40",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "1,320.00",
+        "item_srp": "1,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "HEAD  BASE GASKET 63MM",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "240.00",
+        "item_srp": "300.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "OIL SEAL 27\/31\/33MMM",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "440.00",
+        "item_srp": "550.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Piston Ring 62.08 mm",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "480.00",
+        "item_srp": "600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "POWER PIPE AEROX 4V FOR STOCK HEAD",
+        "item_brand": "JVT",
+        "models": "AEROX",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Power Pipe Aerox v1 (4v)",
+        "item_brand": "JVT",
+        "models": "AEROX",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "POWER PIPE V4 NMAX - 2020",
+        "item_brand": "JVT",
+        "models": "NMAX",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "POWER PIPE (V2) 2021",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Power Pipe (V3)  2021",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.2 Aerox",
+        "item_brand": "JVT",
+        "models": "AEROX",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.3 Aerox",
+        "item_brand": "JVT",
+        "models": "AEROX",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PRIMARY GEAR 15T\/17T",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "1,320.00",
+        "item_srp": "1,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PULLEY BACKPLATE",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "350.00",
+        "item_srp": "350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PULLEY BUSHING",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "280.00",
+        "item_srp": "350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Pulley Nut",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "152.00",
+        "item_srp": "190.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Pulley Set (Racing)",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "2,200.00",
+        "item_srp": "2,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PULLEY SLIDER",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "76.00",
+        "item_srp": "95.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Stainless Pipe Aerox - v3",
+        "item_brand": "JVT",
+        "models": "AEROX",
+        "item_wholesale": "7,948.00",
+        "item_srp": "9,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "STARTER MOTOR",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "2,800.00",
+        "item_srp": "3,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Tensioner N-Max Aerox",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "320.00",
+        "item_srp": "400.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Torque Drive Assembly",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "3,080.00",
+        "item_srp": "3,850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Torsion Controller (CNC)",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "600.00",
+        "item_srp": "750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Throttle Body W\/hose 34\/36\/38\/40mm (Set)",
+        "item_brand": "JVT",
+        "models": "AEROX V1\/V2",
+        "item_wholesale": "3,825.00",
+        "item_srp": "4,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Throttle Body W\/hose 34\/36\/38\/40mm (Set)",
+        "item_brand": "JVT",
+        "models": "NMAX V1",
+        "item_wholesale": "3,825.00",
+        "item_srp": "4,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "T-POST ONLY 31MM",
+        "item_brand": "JVT",
+        "models": "AEROX",
+        "item_wholesale": "3,273.00",
+        "item_srp": "3,850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Vendix Drive",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "1,560.00",
+        "item_srp": "1,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "VALVE SPRING",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "640.00",
+        "item_srp": "800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "VALVES ( 17mm X 20.5mm )",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "2,280.00",
+        "item_srp": "2,850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valves (23mmx26mm)",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "2,400.00",
+        "item_srp": "3,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Washer Back Plate",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "96.00",
+        "item_srp": "120.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "VALVES 20mmX23mm HEAD)",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "2,600.00",
+        "item_srp": "3,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "VALVES 21mmX24mm",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "2,600.00",
+        "item_srp": "3,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "VALVES 26mmX23mm",
+        "item_brand": "JVT",
+        "models": "NMAX\/AEROX",
+        "item_wholesale": "2,600.00",
+        "item_srp": "3,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "TIRE (UC) (120x70 13\") - NMAX",
+        "item_brand": "JVT",
+        "models": "NMAX",
+        "item_wholesale": "2,210.00",
+        "item_srp": "2,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "TIRE (UC) (130x70 13\") - NMAX",
+        "item_brand": "JVT",
+        "models": "NMAX",
+        "item_wholesale": "2,380.00",
+        "item_srp": "2,800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Brake Shoe",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150\/ADV\/P\nCX",
+        "item_wholesale": "400.00",
+        "item_srp": "500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Center Spring 1000-1500 RPM",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150\/ADV\/P\nCX",
+        "item_wholesale": "380.00",
+        "item_srp": "475.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chrome Bore 59mm",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150",
+        "item_wholesale": "3,600.00",
+        "item_srp": "4,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Bell",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150\/ADV\/P\nCX",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Bell Nut",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150\/ADV\/P\nCX",
+        "item_wholesale": "192.00",
+        "item_srp": "240.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Shoe",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150\/ADV\/P\nCX",
+        "item_wholesale": "840.00",
+        "item_srp": "1,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Spring 1000-1500RPM",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150\/ADV\/P\nCX",
+        "item_wholesale": "260.00",
+        "item_srp": "325.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ClutchLining",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150\/ADV\/P\nCX",
+        "item_wholesale": "1,560.00",
+        "item_srp": "1,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CNC Titanium Clutch Bell",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150\/ADV\/P\nCX",
+        "item_wholesale": "1,680.00",
+        "item_srp": "2,100.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CHROMEBORE 62MM",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150\/ADV\/P\nCX",
+        "item_wholesale": "4,960.00",
+        "item_srp": "6,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CVT SET TITANIUM CLICK",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150",
+        "item_wholesale": "5,340.00",
+        "item_srp": "6,775.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CVT SET TITANIUM PCX\/ADV",
+        "item_brand": "JVT",
+        "models": "PCX\/ADV",
+        "item_wholesale": "5,720.00",
+        "item_srp": "7,150.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FLYBALL 7-16G (6 IN 1)",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150\/ADV\/P\nCX",
+        "item_wholesale": "300.00",
+        "item_srp": "375.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Clutch Lining Assy",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150\/ADV\/P\nCX",
+        "item_wholesale": "1,560.00",
+        "item_srp": "1,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Clutch Shoe",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150\/ADV\/P\nCX",
+        "item_wholesale": "920.00",
+        "item_srp": "1,150.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUSPENSION ONLY GOLD",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150",
+        "item_wholesale": "6,800.00",
+        "item_srp": "8,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUSPENSION ONLY SLIVER",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150",
+        "item_wholesale": "6,375.00",
+        "item_srp": "7,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUSPENSION ONLY TITANIUM",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150",
+        "item_wholesale": "7,225.00",
+        "item_srp": "8,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "GEARING 14X42MM\/14X43MM",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150",
+        "item_wholesale": "960.00",
+        "item_srp": "1,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Gearing 15\/42MM",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150",
+        "item_wholesale": "1,024.00",
+        "item_srp": "1,280.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "POWER PIPE V3",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150\/ADV\/P\nCX",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "POWER PIPE V2",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150\/ADV\/P\nCX",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "POWER PIPE V3 - PCX160",
+        "item_brand": "JVT",
+        "models": "PCX160",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PULLEY NUT",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150\/ADV\/P\nCX",
+        "item_wholesale": "176.00",
+        "item_srp": "220.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PULLEY SET",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150\/ADV\/P\nCX",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PULLEY SLIDER",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150\/ADV\/P\nCX",
+        "item_wholesale": "76.00",
+        "item_srp": "95.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PULLEY SET PCX 160",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150\/ADV\/P\nCX",
+        "item_wholesale": "2,200.00",
+        "item_srp": "2,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Stainless Pipe Click v3",
+        "item_brand": "JVT",
+        "models": "CLICK125\/150",
+        "item_wholesale": "7,948.00",
+        "item_srp": "9,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Center Spring 1000 Rpm",
+        "item_brand": "JVT",
+        "models": "XMAX",
+        "item_wholesale": "680.00",
+        "item_srp": "850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CHROME BORE 76MM",
+        "item_brand": "JVT",
+        "models": "XMAX",
+        "item_wholesale": "10,000.00",
+        "item_srp": "12,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Bell  V1",
+        "item_brand": "JVT",
+        "models": "XMAX",
+        "item_wholesale": "2,400.00",
+        "item_srp": "3,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Lining Assy",
+        "item_brand": "JVT",
+        "models": "XMAX",
+        "item_wholesale": "2,240.00",
+        "item_srp": "2,800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Pulley set W\/Flyball",
+        "item_brand": "JVT",
+        "models": "XMAX",
+        "item_wholesale": "4,400.00",
+        "item_srp": "5,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "X MAX CVT PACKAGE",
+        "item_brand": "JVT",
+        "models": "XMAX",
+        "item_wholesale": "9,440.00",
+        "item_srp": "11,800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Camshaft - Honda Beat",
+        "item_brand": "JVT",
+        "models": "BEAT CARB\/EFI",
+        "item_wholesale": "1,000.00",
+        "item_srp": "1,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Chomebore 57MM \/ 55MM",
+        "item_brand": "JVT",
+        "models": "BEAT CARB",
+        "item_wholesale": "3,600.00",
+        "item_srp": "4,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Bell",
+        "item_brand": "JVT",
+        "models": "BEAT CARB\/EFI",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Lining Assy",
+        "item_brand": "JVT",
+        "models": "BEAT CARB\/EFI",
+        "item_wholesale": "1,560.00",
+        "item_srp": "1,950.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Clutch Shoe",
+        "item_brand": "JVT",
+        "models": "BEAT CARB\/EFI",
+        "item_wholesale": "840.00",
+        "item_srp": "1,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FlyBall  7g-16g  (6 in 1)",
+        "item_brand": "JVT",
+        "models": "BEAT CARB\/EFI",
+        "item_wholesale": "300.00",
+        "item_srp": "375.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Forged Piston  57MM\/55MM",
+        "item_brand": "JVT",
+        "models": "BEAT CARB\/EFI",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "POWER PIPE V2",
+        "item_brand": "JVT",
+        "models": "BEAT CARB\/EFI",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "POWER PIPE V3",
+        "item_brand": "JVT",
+        "models": "BEAT EFI",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PULLEY SET W\/FORGED DRIVE FACE",
+        "item_brand": "JVT",
+        "models": "BEAT CARB",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Pulley Set",
+        "item_brand": "JVT",
+        "models": "BEAT CARB\/EFI",
+        "item_wholesale": "1,760.00",
+        "item_srp": "2,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Pulley Slider (3pcs)",
+        "item_brand": "JVT",
+        "models": "BEAT CARB\/EFI",
+        "item_wholesale": "76.00",
+        "item_srp": "95.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Steelbore 55mm",
+        "item_brand": "JVT",
+        "models": "BEAT CARB",
+        "item_wholesale": "1,640.00",
+        "item_srp": "2,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Valve Spring",
+        "item_brand": "JVT",
+        "models": "BEAT CARB\/EFI",
+        "item_wholesale": "200.00",
+        "item_srp": "250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CNC HEATGUARD (ASS. COLOR)",
+        "item_brand": "JVT",
+        "models": "UNIVERSAL",
+        "item_wholesale": "840.00",
+        "item_srp": "1,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "HANDLE GRIP TILIER (ASS.COLOR)",
+        "item_brand": "JVT",
+        "models": "UNIVERSAL",
+        "item_wholesale": "960.00",
+        "item_srp": "1,200.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "BUNG SENSOR",
+        "item_brand": "JVT",
+        "models": "UNIVERSAL",
+        "item_wholesale": "224.00",
+        "item_srp": "280.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "YCS AIR FILTER 34MM(BIG CARB)",
+        "item_brand": "JVT",
+        "models": "UNIVERSAL",
+        "item_wholesale": "544.00",
+        "item_srp": "680.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "JVT AIR FILTER (28-32MM)",
+        "item_brand": "JVT",
+        "models": "UNIVERSAL",
+        "item_wholesale": "544.00",
+        "item_srp": "680.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "MAGNETIC DRAIN PLUG",
+        "item_brand": "JVT",
+        "models": "UNIVERSAL",
+        "item_wholesale": "200.00",
+        "item_srp": "250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PILOT JET (4PCS.)",
+        "item_brand": "JVT",
+        "models": "UNIVERSAL",
+        "item_wholesale": "306.00",
+        "item_srp": "360.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "MAIN JET (10 PCS.)",
+        "item_brand": "JVT",
+        "models": "UNIVERSAL",
+        "item_wholesale": "638.00",
+        "item_srp": "750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "SLOW JET (10PCS.)",
+        "item_brand": "JVT",
+        "models": "UNIVERSAL",
+        "item_wholesale": "638.00",
+        "item_srp": "750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "BEARING 6904ZZCM",
+        "item_brand": "JVT",
+        "models": "UNIVERSAL",
+        "item_wholesale": "100.00",
+        "item_srp": "125.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "BEARING 6002ZZCM",
+        "item_brand": "JVT",
+        "models": "UNIVERSAL",
+        "item_wholesale": "80.00",
+        "item_srp": "100.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CRANK CASE BEARING 638ZZ",
+        "item_brand": "JVT",
+        "models": "UNIVERSAL",
+        "item_wholesale": "240.00",
+        "item_srp": "300.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "CARBURATOR 28MM-32MM",
+        "item_brand": "JVT",
+        "models": "BANJING",
+        "item_wholesale": "2,120.00",
+        "item_srp": "2,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "YUASA BATTERY YTX4",
+        "item_brand": "JVT",
+        "models": "UNIVERSAL",
+        "item_wholesale": "893.00",
+        "item_srp": "1,050.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "YUASA BATTERY YTX5",
+        "item_brand": "JVT",
+        "models": "UNIVERSAL",
+        "item_wholesale": "978.00",
+        "item_srp": "1,150.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "YUASA BATTERY YTX7",
+        "item_brand": "JVT",
+        "models": "UNIVERSAL",
+        "item_wholesale": "1,258.00",
+        "item_srp": "1,480.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "YUASA BATTERY YTX9",
+        "item_brand": "JVT",
+        "models": "UNIVERSAL",
+        "item_wholesale": "2,975.00",
+        "item_srp": "3,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "RACE PRO 90X80X14 - RACE USE",
+        "item_brand": "JVT",
+        "models": "JVT TIRE",
+        "item_wholesale": "1,683.00",
+        "item_srp": "1,980.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "RACE 90X80X14 - RACE USE",
+        "item_brand": "JVT",
+        "models": "JVT TIRE",
+        "item_wholesale": "1,360.00",
+        "item_srp": "1,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ROAD MASTER 90X80X14",
+        "item_brand": "JVT",
+        "models": "JVT TIRE",
+        "item_wholesale": "1,530.00",
+        "item_srp": "1,800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ROAD PRO 90X80X14",
+        "item_brand": "JVT",
+        "models": "JVT TIRE",
+        "item_wholesale": "1,173.00",
+        "item_srp": "1,380.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ROAD MASTER 80X80X14",
+        "item_brand": "JVT",
+        "models": "JVT TIRE",
+        "item_wholesale": "1,063.00",
+        "item_srp": "1,250.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "DUAL COMP. UC 130x70x13 NMAX",
+        "item_brand": "JVT",
+        "models": "JVT TIRE",
+        "item_wholesale": "2,380.00",
+        "item_srp": "2,800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "DUAL COMP. UC 120x70x13 NMAX",
+        "item_brand": "JVT",
+        "models": "JVT TIRE",
+        "item_wholesale": "2,210.00",
+        "item_srp": "2,600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "U.C TIRE 110X70X12",
+        "item_brand": "JVT",
+        "models": "JVT TIRE",
+        "item_wholesale": "2,125.00",
+        "item_srp": "2,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "U.C TIRE 120X70X12",
+        "item_brand": "JVT",
+        "models": "JVT TIRE",
+        "item_wholesale": "2,125.00",
+        "item_srp": "2,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "U.C TIRE 130X70X12",
+        "item_brand": "JVT",
+        "models": "JVT TIRE",
+        "item_wholesale": "2,125.00",
+        "item_srp": "2,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ROAD PRO 90X80X14 - J888",
+        "item_brand": "JVT",
+        "models": "JVT TIRE",
+        "item_wholesale": "1,403.00",
+        "item_srp": "1,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "U.C TIRE 90X80X14 (TU35)",
+        "item_brand": "JVT",
+        "models": "JVT TIRE",
+        "item_wholesale": "1,317.00",
+        "item_srp": "1,550.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "ROAD PRO 80X80X17",
+        "item_brand": "JVT",
+        "models": "JVT TIRE",
+        "item_wholesale": "1,232.00",
+        "item_srp": "1,450.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "U.C TIRE 80X90X17 (TU35)",
+        "item_brand": "JVT",
+        "models": "JVT TIRE",
+        "item_wholesale": "1,232.00",
+        "item_srp": "1,450.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUS (SILVER) ONLY - AEROX",
+        "item_brand": "JVT",
+        "models": "YAMAHA AEROX\nV1\/V2",
+        "item_wholesale": "6,800.00",
+        "item_srp": "8,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUS (GOLD) ONLY - AEROX",
+        "item_brand": "JVT",
+        "models": "YAMAHA AEROX\nV1\/V2",
+        "item_wholesale": "7,225.00",
+        "item_srp": "8,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUS (TITANIUM) ONLY - AEROX",
+        "item_brand": "JVT",
+        "models": "YAMAHA AEROX\nV1\/V2",
+        "item_wholesale": "7,650.00",
+        "item_srp": "9,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUS (SILVER) ONLY - NMAX",
+        "item_brand": "JVT",
+        "models": "YAMAHA AEROX\nV1\/V2",
+        "item_wholesale": "7,225.00",
+        "item_srp": "8,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUS (GOLD) ONLY - NMAX",
+        "item_brand": "JVT",
+        "models": "YAMAHA AEROX\nV1\/V2",
+        "item_wholesale": "7,650.00",
+        "item_srp": "9,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUS (TITANIUM) ONLY - NMAX",
+        "item_brand": "JVT",
+        "models": "YAMAHA AEROX\nV1\/V2",
+        "item_wholesale": "7,480.00",
+        "item_srp": "8,800.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUS (SILVER) W\/TPOST - AEROX",
+        "item_brand": "JVT",
+        "models": "YAMAHA AEROX\nV1\/V2",
+        "item_wholesale": "8,075.00",
+        "item_srp": "9,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUS (GOLD) W\/TPOST - AEROX",
+        "item_brand": "JVT",
+        "models": "YAMAHA AEROX\nV1\/V2",
+        "item_wholesale": "10,200.00",
+        "item_srp": "12,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUS (TITANIUM) W\/TPOST - AEROX",
+        "item_brand": "JVT",
+        "models": "YAMAHA AEROX\nV1\/V2",
+        "item_wholesale": "10,625.00",
+        "item_srp": "12,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUS (SILVER)W\/TPOST - NMAX",
+        "item_brand": "JVT",
+        "models": "YAMAHA AEROX\nV1\/V2",
+        "item_wholesale": "10,200.00",
+        "item_srp": "12,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUS (GOLD) W\/TPOST- NMAX",
+        "item_brand": "JVT",
+        "models": "YAMAHA AEROX\nV1\/V2",
+        "item_wholesale": "10,625.00",
+        "item_srp": "12,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUS (TITANIUM) W\/TPOST - NMAX",
+        "item_brand": "JVT",
+        "models": "YAMAHA AEROX\nV1\/V2",
+        "item_wholesale": "11,050.00",
+        "item_srp": "13,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUS (SILVER) ONLY - CLICK",
+        "item_brand": "JVT",
+        "models": "HONDA CLICK\/PCX",
+        "item_wholesale": "6,375.00",
+        "item_srp": "7,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUS (GOLD) ONLY - CLICK",
+        "item_brand": "JVT",
+        "models": "HONDA CLICK\/PCX",
+        "item_wholesale": "6,800.00",
+        "item_srp": "8,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUS (TITANIUM) ONLY - CLICK",
+        "item_brand": "JVT",
+        "models": "HONDA CLICK\/PCX",
+        "item_wholesale": "7,225.00",
+        "item_srp": "8,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUS (SILVER)W\/TPOST -SNIPER",
+        "item_brand": "JVT",
+        "models": "SNIPER FI-LC150",
+        "item_wholesale": "10,200.00",
+        "item_srp": "12,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUS (GOLD)W\/TPOST -SNIPER",
+        "item_brand": "JVT",
+        "models": "SNIPER FI-LC150",
+        "item_wholesale": "10,625.00",
+        "item_srp": "12,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "FRONT SUS (TITANIUM)W\/TPOST -SNIPER",
+        "item_brand": "JVT",
+        "models": "SNIPER FI-LC150",
+        "item_wholesale": "11,050.00",
+        "item_srp": "13,000.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.2 (NewGen) - MIO",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.2 (4V) - MIO",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.2 - AEROX",
+        "item_brand": "JVT",
+        "models": "YAMAHA AEROX - V1",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.2 - AEROX\/AEROX (2021)",
+        "item_brand": "JVT",
+        "models": "YAMAHA\nNMAX\/AEROX - V2",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.2 - SD",
+        "item_brand": "JVT",
+        "models": "SKYDRIVE",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.2 - Nouvo",
+        "item_brand": "JVT",
+        "models": "NOUVO",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.2 - N-max",
+        "item_brand": "JVT",
+        "models": "YAMAHA NMAX - V1",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Powerpipe V2 - Honda Beat",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT CARB",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Power Pipe Ver. 2 - M3",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIOI125 \/\nM3",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "POWER PIPE V2 PCX 150CC",
+        "item_brand": "JVT",
+        "models": "HONDA PCX150",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "POWER PIPE V2 HONDA BEAT EFI",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT EFI",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "POWER PIPE V2 CLICK 125CC",
+        "item_brand": "JVT",
+        "models": "HONDA CLICK 125",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Power Pipe Stainless  2V - fino",
+        "item_brand": "JVT",
+        "models": "YAMAHA FINO",
+        "item_wholesale": "7,225.00",
+        "item_srp": "8,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Power Pipe Click V3 125\/150",
+        "item_brand": "JVT",
+        "models": "HONDA CLICK\n125\/150",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Power Pipe Honda  ADV v3",
+        "item_brand": "JVT",
+        "models": "HONDA ADV",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Power Pipe Sniper 150 - V3",
+        "item_brand": "JVT",
+        "models": "YAMAHA SNIPER 150",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Power Pipe v3 Hond Pcx 160cc",
+        "item_brand": "JVT",
+        "models": "HONDA PCX 160",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "POWER PIPE V3 HONDA BEAT EFI",
+        "item_brand": "JVT",
+        "models": "HONDA BEAT EFI",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Power pipe v3 Mio Soulty",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO\nSOULTY",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Power Pipe v3 N-Max Aerox  2021",
+        "item_brand": "JVT",
+        "models": "YAMAHA\nNMAX\/AEROX - V2",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "POWER PIPE V3 PCX 150CC",
+        "item_brand": "JVT",
+        "models": "HONDA PCX 150",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe V3 4V- Mio (JVT Swing Arm)",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.3 - Fino",
+        "item_brand": "JVT",
+        "models": "YAMAHA FINO",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.3 - M3",
+        "item_brand": "JVT",
+        "models": "YAMAHA M3",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.3 - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.3 - MioMx 125 i",
+        "item_brand": "JVT",
+        "models": "YAMAHA MX FI 125",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.3 - N-max",
+        "item_brand": "JVT",
+        "models": "YAMAHA NMAX V1",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.3 - Nouvo",
+        "item_brand": "JVT",
+        "models": "YAMAHA NOUVO 115",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.3 - S8\/GY6",
+        "item_brand": "JVT",
+        "models": "KYMCO SUPER-8",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.3 - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI SKYDRIVE",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.3 (Carb Type) - MioMx",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO MX",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.3 4V- Mio(Stock)",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.3 Aerox",
+        "item_brand": "JVT",
+        "models": "YAMAHA AEROX V1",
+        "item_wholesale": "4,890.00",
+        "item_srp": "5,750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "POWER PIPE AEROX 4V FOR STOCK HEAD",
+        "item_brand": "JVT",
+        "models": "YAMAHA AEROX",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Power Pipe V4 - Aerox v1",
+        "item_brand": "JVT",
+        "models": "YAMAHA AEROX V1",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "Power Pipe V4 - NMAX v1",
+        "item_brand": "JVT",
+        "models": "YAMAHA NMAX V1",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "POWER PIPE V4 NMAX\/AEROX V2 - 2020",
+        "item_brand": "JVT",
+        "models": "YAMAHA\nNMAX\/AEROX V2",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe V4 2V Teardrop - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.4 - Nouvo",
+        "item_brand": "JVT",
+        "models": "YAMAHA NOUVO 115",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.4 - SD",
+        "item_brand": "JVT",
+        "models": "SUZUKI SKYDRIVE",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.4 (4V) - Fino",
+        "item_brand": "JVT",
+        "models": "YAMAHA FINO",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.4 (4V) - Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "PowerPipe Ver.4 2v  Straight- Mio",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "4,803.00",
+        "item_srp": "5,650.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "STAINLESS POWER PIPE V2",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "7,225.00",
+        "item_srp": "8,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "STAINLESS POWER PIPE V2",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO M3",
+        "item_wholesale": "7,225.00",
+        "item_srp": "8,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "STAINLESS POWER PIPE V2",
+        "item_brand": "JVT",
+        "models": "YAMAHA AEROX",
+        "item_wholesale": "7,225.00",
+        "item_srp": "8,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "STAINLESS POWER PIPE V2",
+        "item_brand": "JVT",
+        "models": "YAMAHA NMAX",
+        "item_wholesale": "7,225.00",
+        "item_srp": "8,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "STAINLESS POWER PIPE V2 - V2",
+        "item_brand": "JVT",
+        "models": "YAMAHA\nNMAX\/AEROX V2",
+        "item_wholesale": "7,225.00",
+        "item_srp": "8,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "STAINLESS POWER PIPE V3",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "7,948.00",
+        "item_srp": "9,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "STAINLESS POWER PIPE V3",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO M3",
+        "item_wholesale": "7,948.00",
+        "item_srp": "9,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "STAINLESS POWER PIPE V3",
+        "item_brand": "JVT",
+        "models": "YAMAHA AEROX",
+        "item_wholesale": "7,948.00",
+        "item_srp": "9,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "STAINLESS POWER PIPE V3",
+        "item_brand": "JVT",
+        "models": "YAMAHA NMAX",
+        "item_wholesale": "7,948.00",
+        "item_srp": "9,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "STAINLESS POWER PIPE V3",
+        "item_brand": "JVT",
+        "models": "YAMAHA SNIPER150",
+        "item_wholesale": "8,075.00",
+        "item_srp": "9,500.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "STAINLESS POWER PIPE V3",
+        "item_brand": "JVT",
+        "models": "HONDA CLICK\n125\/150",
+        "item_wholesale": "7,948.00",
+        "item_srp": "9,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "STAINLESS POWER PIPE V3 4V W\/O HEATGUARD",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO",
+        "item_wholesale": "7,948.00",
+        "item_srp": "9,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "STAINLESS POWER PIPE V3 - V2",
+        "item_brand": "JVT",
+        "models": "YAMAHA\nNMAX\/AEROX V2",
+        "item_wholesale": "7,948.00",
+        "item_srp": "9,350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "JVT SUBLIMATION T-SHIRT",
+        "item_brand": "JVT",
+        "models": "JVT",
+        "item_wholesale": "350.00",
+        "item_srp": "350.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "JVT SUBLIMATION LONG-SLEEVE",
+        "item_brand": "JVT",
+        "models": "JVT",
+        "item_wholesale": "500.00",
+        "item_srp": "600.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "JVT BELT J-FORCE",
+        "item_brand": "JVT",
+        "models": "NMAX V2 2020",
+        "item_wholesale": "720.00",
+        "item_srp": "900.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "JVT BELT J-FORCE",
+        "item_brand": "JVT",
+        "models": "NMAX V1",
+        "item_wholesale": "680.00",
+        "item_srp": "850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "JVT BELT J-FORCE",
+        "item_brand": "JVT",
+        "models": "AEROX V2 2020",
+        "item_wholesale": "720.00",
+        "item_srp": "900.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "JVT BELT J-FORCE",
+        "item_brand": "JVT",
+        "models": "AEROX V1",
+        "item_wholesale": "680.00",
+        "item_srp": "850.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "JVT BELT J-FORCE",
+        "item_brand": "JVT",
+        "models": "HONDA CLICK125",
+        "item_wholesale": "600.00",
+        "item_srp": "750.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "JVT BELT J-FORCE",
+        "item_brand": "JVT",
+        "models": "MIO SPORTY",
+        "item_wholesale": "440.00",
+        "item_srp": "550.00"
+    },
+    {
+        "partcode": "",
+        "item_description": "JVT BELT J-FORCE",
+        "item_brand": "JVT",
+        "models": "YAMAHA MIO M3",
+        "item_wholesale": "440.00",
+        "item_srp": "550.00"
+    }
+]
