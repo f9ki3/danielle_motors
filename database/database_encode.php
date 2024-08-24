@@ -10,7 +10,7 @@
 $servername = "localhost";       // Localhost kasi dun na tayo sa files sa hostinger mag eedit
 $username = "root";    // Bale live development na kasi alam ko hindi pwede ma access outside
 $password = "";     // Yung DB ng hostinger
-$dbname = "eastway";   // We will be using FTP and GitAccess
+$dbname = "tobeencoded";   // We will be using FTP and GitAccess
 
 // $servername = "localhost";       // Localhost kasi dun na tayo sa files sa hostinger mag eedit
 // $username = "root";    // Bale live development na kasi alam ko hindi pwede ma access outside
