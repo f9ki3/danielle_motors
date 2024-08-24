@@ -1,0 +1,762 @@
+[
+    {
+        "partcode": "33BS0480",
+        "item_description": "PROLINER BRAKE HOSE SILVER 480mm",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "400.00",
+        "item_srp": "500.00"
+    },
+    {
+        "partcode": "33BS0550",
+        "item_description": "PROLINER BRAKE HOSE SILVER 550mm",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "400.00",
+        "item_srp": "500.00"
+    },
+    {
+        "partcode": "33BS0850",
+        "item_description": "PROLINER BRAKE HOSE SILVER 850mm",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "500.00",
+        "item_srp": "600.00"
+    },
+    {
+        "partcode": "33BS0100",
+        "item_description": "PROLINER BRAKE HOSE SILVER 1000mm",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "500.00",
+        "item_srp": "600.00"
+    },
+    {
+        "partcode": "33BS0210",
+        "item_description": "PROLINER BRAKE HOSE SILVER 2100mm",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "900.00",
+        "item_srp": "1100.00"
+    },
+    {
+        "partcode": "33PMPSA6",
+        "item_description": "PROLINER EXHAUST PIPE MAX-PRO SS (STAINLESS) ADV160",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "6200.00",
+        "item_srp": "6900.00"
+    },
+    {
+        "partcode": "33PMPSA2",
+        "item_description": "PROLINER EXHAUST PIPE MAX-PRO SS (STAINLESS) AEROX V2",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "6200.00",
+        "item_srp": "6900.00"
+    },
+    {
+        "partcode": "33PMPSC5",
+        "item_description": "PROLINER EXHAUST PIPE MAX-PRO SS (STAINLESS) CLICK 150",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "6200.00",
+        "item_srp": "6900.00"
+    },
+    {
+        "partcode": "33PMPSC6",
+        "item_description": "PROLINER EXHAUST PIPE MAX-PRO SS (STAINLESS) CLICK 160",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "6200.00",
+        "item_srp": "6900.00"
+    },
+    {
+        "partcode": "33PMPSFA",
+        "item_description": "PROLINER EXHAUST PIPE MAX-PRO SS (STAINLESS) FAZZIO",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "6200.00",
+        "item_srp": "6900.00"
+    },
+    {
+        "partcode": "33PMPSN2",
+        "item_description": "PROLINER EXHAUST PIPE MAX-PRO SS (STAINLESS) NMAX V2",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "6200.00",
+        "item_srp": "6900.00"
+    },
+    {
+        "partcode": "33PMPSP6",
+        "item_description": "PROLINER EXHAUST PIPE MAX-PRO SS (STAINLESS) PCX160",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "6200.00",
+        "item_srp": "6900.00"
+    },
+    {
+        "partcode": "33PSR2A6",
+        "item_description": "PROLINER EXHAUST PIPE NEO SR-2 SILVER ADV160",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5600.00",
+        "item_srp": "6500.00"
+    },
+    {
+        "partcode": "33PSR2A2",
+        "item_description": "PROLINER EXHAUST PIPE NEO SR-2 SILVER AEROX V2",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5600.00",
+        "item_srp": "6500.00"
+    },
+    {
+        "partcode": "33PSR2C5",
+        "item_description": "PROLINER EXHAUST PIPE NEO SR-2 SILVER CLICK 150",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5600.00",
+        "item_srp": "6500.00"
+    },
+    {
+        "partcode": "33PSR2C6",
+        "item_description": "PROLINER EXHAUST PIPE NEO SR-2 SILVER CLICK 160",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5600.00",
+        "item_srp": "6500.00"
+    },
+    {
+        "partcode": "33PSR2FA",
+        "item_description": "PROLINER EXHAUST PIPE NEO SR-2 SILVER FAZZIO",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5600.00",
+        "item_srp": "6500.00"
+    },
+    {
+        "partcode": "33PSR2N2",
+        "item_description": "PROLINER EXHAUST PIPE NEO SR-2 SILVER NMAX V2",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5600.00",
+        "item_srp": "6500.00"
+    },
+    {
+        "partcode": "33PSR2P6",
+        "item_description": "PROLINER EXHAUST PIPE NEO SR-2 SILVER PCX160",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5600.00",
+        "item_srp": "6500.00"
+    },
+    {
+        "partcode": "33PSR3A6",
+        "item_description": "PROLINER EXHAUST PIPE NEO SR-3 SS (STAINLESS) ADV160",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5300.00",
+        "item_srp": "6200.00"
+    },
+    {
+        "partcode": "33PSR3A2",
+        "item_description": "PROLINER EXHAUST PIPE NEO SR-3 SS (STAINLESS) AEROX V2",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5300.00",
+        "item_srp": "6200.00"
+    },
+    {
+        "partcode": "33PSR3C5",
+        "item_description": "PROLINER EXHAUST PIPE NEO SR-3 SS (STAINLESS) CLICK 150",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5300.00",
+        "item_srp": "6200.00"
+    },
+    {
+        "partcode": "33PSR3C6",
+        "item_description": "PROLINER EXHAUST PIPE NEO SR-3 SS (STAINLESS) CLICK 160",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5300.00",
+        "item_srp": "6200.00"
+    },
+    {
+        "partcode": "33PSR3FA",
+        "item_description": "PROLINER EXHAUST PIPE NEO SR-3 SS (STAINLESS) FAZZIO",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5300.00",
+        "item_srp": "6200.00"
+    },
+    {
+        "partcode": "33PSR3N2",
+        "item_description": "PROLINER EXHAUST PIPE NEO SR-3 SS (STAINLESS) NMAX V2",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5300.00",
+        "item_srp": "6200.00"
+    },
+    {
+        "partcode": "33PSR3P6",
+        "item_description": "PROLINER EXHAUST PIPE NEO SR-3 SS (STAINLESS) PCX160",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5300.00",
+        "item_srp": "6200.00"
+    },
+    {
+        "partcode": "33PNSRA2",
+        "item_description": "PROLINER EXHAUST PIPE NEO STANDARD RACING BLACK AEROX V2",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3000.00",
+        "item_srp": "3900.00"
+    },
+    {
+        "partcode": "33PNSRN2",
+        "item_description": "PROLINER EXHAUST PIPE NEO STANDARD RACING BLACK NMAX V2",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3000.00",
+        "item_srp": "3900.00"
+    },
+    {
+        "partcode": "33PM3RA6",
+        "item_description": "PROLINER EXHAUST PIPE PL MAX-3 R BLACK ADV160",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "9500.00",
+        "item_srp": "10500.00"
+    },
+    {
+        "partcode": "33PM3RA2",
+        "item_description": "PROLINER EXHAUST PIPE PL MAX-3 R BLACK AEROX V2",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "9500.00",
+        "item_srp": "10500.00"
+    },
+    {
+        "partcode": "33PM3RC6",
+        "item_description": "PROLINER EXHAUST PIPE PL MAX-3 R BLACK CLICK 160",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "9500.00",
+        "item_srp": "10500.00"
+    },
+    {
+        "partcode": "33PM3RFA",
+        "item_description": "PROLINER EXHAUST PIPE PL MAX-3 R BLACK FAZZIO",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "9500.00",
+        "item_srp": "10500.00"
+    },
+    {
+        "partcode": "33PM3RN2",
+        "item_description": "PROLINER EXHAUST PIPE PL MAX-3 R BLACK NMAX V2",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "9500.00",
+        "item_srp": "10500.00"
+    },
+    {
+        "partcode": "33PM3RP6",
+        "item_description": "PROLINER EXHAUST PIPE PL MAX-3 R BLACK PCX160",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "9500.00",
+        "item_srp": "10500.00"
+    },
+    {
+        "partcode": "33PM4SA6",
+        "item_description": "PROLINER EXHAUST PIPE PL MAX-4 SS (STAINLESS) ADV160",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5600.00",
+        "item_srp": "6500.00"
+    },
+    {
+        "partcode": "33PM4SA2",
+        "item_description": "PROLINER EXHAUST PIPE PL MAX-4 SS (STAINLESS) AEROX V2",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5600.00",
+        "item_srp": "6500.00"
+    },
+    {
+        "partcode": "33PM4SC5",
+        "item_description": "PROLINER EXHAUST PIPE PL MAX-4 SS (STAINLESS) CLICK 150",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5600.00",
+        "item_srp": "6500.00"
+    },
+    {
+        "partcode": "33PM4SC6",
+        "item_description": "PROLINER EXHAUST PIPE PL MAX-4 SS (STAINLESS) CLICK 160",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5600.00",
+        "item_srp": "6500.00"
+    },
+    {
+        "partcode": "33PM4SFA",
+        "item_description": "PROLINER EXHAUST PIPE PL MAX-4 SS (STAINLESS) FAZZIO",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5600.00",
+        "item_srp": "6500.00"
+    },
+    {
+        "partcode": "33PM4SN2",
+        "item_description": "PROLINER EXHAUST PIPE PL MAX-4 SS (STAINLESS) NMAX V2",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5600.00",
+        "item_srp": "6500.00"
+    },
+    {
+        "partcode": "33PM4SP6",
+        "item_description": "PROLINER EXHAUST PIPE PL MAX-4 SS (STAINLESS) PCX160",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5600.00",
+        "item_srp": "6500.00"
+    },
+    {
+        "partcode": "33PLG1A6",
+        "item_description": "PROLINER EXHAUST PIPE PL-G1 BLACK ADV160",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3300.00",
+        "item_srp": "4000.00"
+    },
+    {
+        "partcode": "33PLG1A2",
+        "item_description": "PROLINER EXHAUST PIPE PL-G1 BLACK AEROX V2",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3300.00",
+        "item_srp": "4000.00"
+    },
+    {
+        "partcode": "33PLG1C5",
+        "item_description": "PROLINER EXHAUST PIPE PL-G1 BLACK CLICK 150",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3300.00",
+        "item_srp": "4000.00"
+    },
+    {
+        "partcode": "33PLG1C6",
+        "item_description": "PROLINER EXHAUST PIPE PL-G1 BLACK CLICK 160",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3300.00",
+        "item_srp": "4000.00"
+    },
+    {
+        "partcode": "33PLG1FA",
+        "item_description": "PROLINER EXHAUST PIPE PL-G1 BLACK FAZZIO",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3300.00",
+        "item_srp": "4000.00"
+    },
+    {
+        "partcode": "33PLG1N2",
+        "item_description": "PROLINER EXHAUST PIPE PL-G1 BLACK NMAX V2",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3300.00",
+        "item_srp": "4000.00"
+    },
+    {
+        "partcode": "33PLG1P6",
+        "item_description": "PROLINER EXHAUST PIPE PL-G1 BLACK PCX160",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3300.00",
+        "item_srp": "4000.00"
+    },
+    {
+        "partcode": "PROLINER (REGULAR DISCOUNT)",
+        "item_description": "",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3300.00",
+        "item_srp": "4000.00"
+    },
+    {
+        "partcode": "P25203SN",
+        "item_description": "PROLINER EXHAUST PIPE BORE-UP - YAMAHA MIO 125 MXi",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "2600.00",
+        "item_srp": "3300.00"
+    },
+    {
+        "partcode": "33P0129Z",
+        "item_description": "PROLINER EXHAUST PIPE NEO-R (COVER SIDE) AEROX\/NVX 155",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "2600.00",
+        "item_srp": "3400.00"
+    },
+    {
+        "partcode": "33P0128Z",
+        "item_description": "PROLINER EXHAUST PIPE NEO-R (COVER SIDE) NMAX 150\/155",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "2600.00",
+        "item_srp": "3400.00"
+    },
+    {
+        "partcode": "33P0150B",
+        "item_description": "PROLINER EXHAUST PIPE PL DSR BLACK Y15ZR",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5700.00",
+        "item_srp": "6900.00"
+    },
+    {
+        "partcode": "33P0150G",
+        "item_description": "PROLINER EXHAUST PIPE PL DSR GOLD Y15ZR",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5700.00",
+        "item_srp": "6900.00"
+    },
+    {
+        "partcode": "33P0150S",
+        "item_description": "PROLINER EXHAUST PIPE PL DSR SILVER Y15ZR",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5700.00",
+        "item_srp": "6900.00"
+    },
+    {
+        "partcode": "33P0149Z",
+        "item_description": "PROLINER EXHAUST PIPE PL DSR RAINBOW Y15ZR",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "6100.00",
+        "item_srp": "7300.00"
+    },
+    {
+        "partcode": "33P0043R",
+        "item_description": "PROLINER EXHAUST PIPE RACE SPEC - YAMAHA MIO AEROX 155",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3850.00",
+        "item_srp": "4600.00"
+    },
+    {
+        "partcode": "33P0041R",
+        "item_description": "PROLINER EXHAUST PIPE RACE SPEC - YAMAHA R15",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3850.00",
+        "item_srp": "4600.00"
+    },
+    {
+        "partcode": "33P0148Z",
+        "item_description": "PROLINER EXHAUST PIPE TR-1R COMP PRO Y15ZR (RACE)",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "9300.00",
+        "item_srp": "10300.00"
+    },
+    {
+        "partcode": "33P0068Z",
+        "item_description": "PROLINER EXHAUST PIPE TR-1R (TB) CARBON BELANG",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "7300.00",
+        "item_srp": "7800.00"
+    },
+    {
+        "partcode": "33P0069Z",
+        "item_description": "PROLINER EXHAUST PIPE TR-1R (TB) CARBON BELANG fi",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "7300.00",
+        "item_srp": "7800.00"
+    },
+    {
+        "partcode": "33P0070Z",
+        "item_description": "PROLINER EXHAUST PIPE TR-1R (TB) CARBON Y15ZR",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "7300.00",
+        "item_srp": "7800.00"
+    },
+    {
+        "partcode": "33P0071Z",
+        "item_description": "PROLINER EXHAUST PIPE TR-1R (TB) CARBON Y15ZR BORE-UP",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "8300.00",
+        "item_srp": "8800.00"
+    },
+    {
+        "partcode": "33P0109Z",
+        "item_description": "PROLINER EXHAUST PIPE TR-1R (TB) CARBON Y15ZR BORE-UP PRO",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "7300.00",
+        "item_srp": "7800.00"
+    },
+    {
+        "partcode": "33P0102Z",
+        "item_description": "PROLINER EXHAUST PIPE TR-1R (TB) GREY BELANG",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "4600.00",
+        "item_srp": "5200.00"
+    },
+    {
+        "partcode": "33P0103Z",
+        "item_description": "PROLINER EXHAUST PIPE TR-1R (TB) GREY Y15ZR",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "4600.00",
+        "item_srp": "5200.00"
+    },
+    {
+        "partcode": "33P0107Z",
+        "item_description": "PROLINER EXHAUST PIPE TR-1R (TB) GREY Y15ZR BORE-UP PRO",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5400.00",
+        "item_srp": "6200.00"
+    },
+    {
+        "partcode": "33P0104Z",
+        "item_description": "PROLINER EXHAUST PIPE TR-1R (TK) CARBON BELANG",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5750.00",
+        "item_srp": "6300.00"
+    },
+    {
+        "partcode": "33P0105Z",
+        "item_description": "PROLINER EXHAUST PIPE TR-1R (TK) CARBON Y15ZR",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "6000.00",
+        "item_srp": "6600.00"
+    },
+    {
+        "partcode": "33P0108Z",
+        "item_description": "PROLINER EXHAUST PIPE TR-1R (TK) CARBON Y15ZR BORE-UP PRO",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "6500.00",
+        "item_srp": "7200.00"
+    },
+    {
+        "partcode": "33P0100Z",
+        "item_description": "PROLINER EXHAUST PIPE TR-1R (TK) GREY BELANG",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3900.00",
+        "item_srp": "4500.00"
+    },
+    {
+        "partcode": "33P0101Z",
+        "item_description": "PROLINER EXHAUST PIPE TR-1R (TK) GREY Y15ZR",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3950.00",
+        "item_srp": "4650.00"
+    },
+    {
+        "partcode": "33P0106Z",
+        "item_description": "PROLINER EXHAUST PIPE TR-1R (TK) GREY Y15ZR BORE-UP",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "4950.00",
+        "item_srp": "5550.00"
+    },
+    {
+        "partcode": "33P0127Z",
+        "item_description": "PROLINER EXHAUST PIPE TR-1R (TK) R15 2018 UP",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3950.00",
+        "item_srp": "4650.00"
+    },
+    {
+        "partcode": "33P0125Z",
+        "item_description": "PROLINER EXHAUST PIPE TR-1R (TK) R25 (SLIP-ON)",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "4950.00",
+        "item_srp": "5550.00"
+    },
+    {
+        "partcode": "33P0132Z",
+        "item_description": "PROLINER EXHAUST PIPE TR-1R (TK) RS150R",
+        "item_brand": "PROLINER",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3950.00",
+        "item_srp": "4650.00"
+    }
+]
