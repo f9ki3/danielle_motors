@@ -185,12 +185,8 @@ if(!isset($_GET['search'])){
             $product_name = $row['name'];
             $product_code = $row['code'];
             $product_name_2 = strtoupper(preg_replace('/[^A-Z]/', '',$product_name));
-            $product_models = $row['models'];
-            if(!empty($product_models)){
-                $models = strtoupper(preg_replace('/[^A-Z]/', '', $product_models));
-            } else {
-                $models = "Included on the item name/item code";
-            }
+            $models = $row['models'];
+            
             $product_brand_id = $row['brand_id'];
             $product_category_id = $row['category_id'];
             $product_publisher_id = $row['publish_by'];

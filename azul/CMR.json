@@ -1,0 +1,442 @@
+[
+    {
+        "partcode": "VE1000-NMAX",
+        "item_description": "CMR AUTO CLUTCH SPRING 1000 RPM",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "190.00",
+        "item_srp": "280.00"
+    },
+    {
+        "partcode": "VE1200-NMAX",
+        "item_description": "CMR AUTO CLUTCH SPRING 1200 RPM",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "190.00",
+        "item_srp": "280.00"
+    },
+    {
+        "partcode": "VE1500-NMAX",
+        "item_description": "CMR AUTO CLUTCH SPRING 1500 RPM",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "190.00",
+        "item_srp": "280.00"
+    },
+    {
+        "partcode": "2E1000-KRV",
+        "item_description": "CMR CENTER SPRING KRV180 1000 RPM",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "380.00",
+        "item_srp": "450.00"
+    },
+    {
+        "partcode": "2E1000-NMAX",
+        "item_description": "CMR CENTER SPRING NMAX 155 1000 RPM 15%",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "320.00",
+        "item_srp": "390.00"
+    },
+    {
+        "partcode": "2E1200-NMAX",
+        "item_description": "CMR CENTER SPRING NMAX 155 1200 RPM 17%",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "320.00",
+        "item_srp": "390.00"
+    },
+    {
+        "partcode": "2E1500-NMAX",
+        "item_description": "CMR CENTER SPRING NMAX 155 1500 RPM",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "320.00",
+        "item_srp": "390.00"
+    },
+    {
+        "partcode": "FEY65WC-KRV",
+        "item_description": "CMR CERAMIC CYLINDER BLOCK KRV180 65mm",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "9300.00",
+        "item_srp": "11200.00"
+    },
+    {
+        "partcode": "T2YEC-XCITING",
+        "item_description": "CMR CLUTCH KIT XCITING 400",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "15000.00",
+        "item_srp": "18000.00"
+    },
+    {
+        "partcode": "CNCJE-LFB55",
+        "item_description": "CMR CLUTCH OUTER KRV180 CHROME",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "1800.00",
+        "item_srp": "2100.00"
+    },
+    {
+        "partcode": "QGJE-LFB55",
+        "item_description": "CMR CLUTCH OUTER KRV180 SANDBLASTED",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "2000.00",
+        "item_srp": "2500.00"
+    },
+    {
+        "partcode": "CNCJE-MIO125",
+        "item_description": "CMR CLUTCH OUTER MIO SOUL 125 CHROME",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "1500.00",
+        "item_srp": "1950.00"
+    },
+    {
+        "partcode": "QGJE-MIO125",
+        "item_description": "CMR CLUTCH OUTER MIO SOUL 125 SANDBLASTED",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "1600.00",
+        "item_srp": "2100.00"
+    },
+    {
+        "partcode": "CNCJE-MIO115",
+        "item_description": "CMR CLUTCH OUTER MIO SPORTY 115 CHROME",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "1500.00",
+        "item_srp": "1950.00"
+    },
+    {
+        "partcode": "CNCJE-NMAX",
+        "item_description": "CMR CLUTCH OUTER NMAX 155 CHROME",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "1600.00",
+        "item_srp": "1900.00"
+    },
+    {
+        "partcode": "QGJE-NMAX",
+        "item_description": "CMR CLUTCH OUTER NMAX 155 SANDBLASTED",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "1600.00",
+        "item_srp": "1900.00"
+    },
+    {
+        "partcode": "QXQ5-AEROX",
+        "item_description": "CMR CLUTCH SET AEROX 155",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "1700.00",
+        "item_srp": "2000.00"
+    },
+    {
+        "partcode": "QXQ5-KRV",
+        "item_description": "CMR CLUTCH SET KRV180",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "1800.00",
+        "item_srp": "2200.00"
+    },
+    {
+        "partcode": "QXQ3F-MIO115",
+        "item_description": "CMR CLUTCH SET MIO SPORTY 115 (LIGHT)",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "1500.00",
+        "item_srp": "2100.00"
+    },
+    {
+        "partcode": "TYEF-XMAX300",
+        "item_description": "CMR CVT SET XMAX 300",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "18000.00",
+        "item_srp": "20000.00"
+    },
+    {
+        "partcode": "FEY62WC-NMAX",
+        "item_description": "CMR CYLINDER BLOCK KIT 62mm NMAX 155\/AEROX 155",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "8250.00",
+        "item_srp": "10000.00"
+    },
+    {
+        "partcode": "FEY63WC-NMAX",
+        "item_description": "CMR CYLINDER BLOCK KIT 63mm NMAX 155\/AEROX 155",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "8250.00",
+        "item_srp": "10000.00"
+    },
+    {
+        "partcode": "2YQ1-NMAX",
+        "item_description": "CMR DRIVEN FACE SPRING BEARING SEAT NMAX 155",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "980.00",
+        "item_srp": "1200.00"
+    },
+    {
+        "partcode": "CNY63C-NMAX",
+        "item_description": "CMR FORGED PISTON KIT NMAX 63mm",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "2400.00",
+        "item_srp": "2900.00"
+    },
+    {
+        "partcode": "TX13-32-NMAX",
+        "item_description": "CMR GEAR SET 13*32 NMAX 155",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "1950.00",
+        "item_srp": "2300.00"
+    },
+    {
+        "partcode": "TX14-31-NMAX",
+        "item_description": "CMR GEAR SET 14*31 NMAX 155\/AEROX 155",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "1950.00",
+        "item_srp": "2300.00"
+    },
+    {
+        "partcode": "RNEFE-KRV-L",
+        "item_description": "CMR MUFFLER FRONT SECTION KRV180 BLUE",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5200.00",
+        "item_srp": "6200.00"
+    },
+    {
+        "partcode": "RNEJF-AEROX-CMR",
+        "item_description": "CMR MUFFLER SILENT AEROX 155",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5900.00",
+        "item_srp": "6500.00"
+    },
+    {
+        "partcode": "RNEJF-MIO125-CMR",
+        "item_description": "CMR MUFFLER SILENT MIO SOUL 125",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "4950.00",
+        "item_srp": "5500.00"
+    },
+    {
+        "partcode": "RNEJF-MIO115-CMR",
+        "item_description": "CMR MUFFLER SILENT MIO SPORTY 115",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "4950.00",
+        "item_srp": "5500.00"
+    },
+    {
+        "partcode": "RNEJF-NMAX-CMR",
+        "item_description": "CMR MUFFLER SILENT NMAX 155 V1",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5900.00",
+        "item_srp": "6500.00"
+    },
+    {
+        "partcode": "RNEJF-NMAXV2-CMR",
+        "item_description": "CMR MUFFLER SILENT NMAX 155 V2",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "5900.00",
+        "item_srp": "6500.00"
+    },
+    {
+        "partcode": "RNEJF-XCITING",
+        "item_description": "CMR MUFFLER SILENT XCITING 400",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "14000.00",
+        "item_srp": "16800.00"
+    },
+    {
+        "partcode": "QXQEF-KRV",
+        "item_description": "CMR PULLEY SET KRV180",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "2500.00",
+        "item_srp": "2800.00"
+    },
+    {
+        "partcode": "QXQEF-MIO125",
+        "item_description": "CMR PULLEY SET MIO SOUL 125",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "2200.00",
+        "item_srp": "2700.00"
+    },
+    {
+        "partcode": "QXQEF-MIO115",
+        "item_description": "CMR PULLEY SET MIO SPORTY 115",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "1900.00",
+        "item_srp": "2300.00"
+    },
+    {
+        "partcode": "QXQJ-MIO115",
+        "item_description": "CMR PULLEY SET MIO SPORTY 115 (BIG)",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "1900.00",
+        "item_srp": "2300.00"
+    },
+    {
+        "partcode": "QXQEF-NMAX",
+        "item_description": "CMR PULLEY SET NMAX 155\/AEROX",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "2300.00",
+        "item_srp": "2800.00"
+    },
+    {
+        "partcode": "T2YEF-XCITING",
+        "item_description": "CMR PULLEY SET XCITING 400",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "15500.00",
+        "item_srp": "18000.00"
+    },
+    {
+        "partcode": "EW-KRV",
+        "item_description": "CMR RACING CAMSHAFT KRV180",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3600.00",
+        "item_srp": "4400.00"
+    },
+    {
+        "partcode": "FEER2V-4C66",
+        "item_description": "CMR RACING CYLINDER HEAD NMAX 155 V2 19\/22",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "12000.00",
+        "item_srp": "14400.00"
+    },
+    {
+        "partcode": "RFWRY36-AEROX",
+        "item_description": "CMR THROTTLE BODY AEROX 155 36mm",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3900.00",
+        "item_srp": "4300.00"
+    },
+    {
+        "partcode": "D1QF-MIO115",
+        "item_description": "CMR TORQUE DRIVE ASSY MIO SOUL 115",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "2800.00",
+        "item_srp": "3400.00"
+    },
+    {
+        "partcode": "D1QF-NMAX",
+        "item_description": "CMR TORQUE DRIVE ASSY NMAX 155",
+        "item_brand": "CMR",
+        "models": "already in the item name\/ if not then universal",
+        "unit": "piece",
+        "dealer": 0,
+        "item_wholesale": "3400.00",
+        "item_srp": "3900.00"
+    }
+]
