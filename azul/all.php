@@ -22,6 +22,7 @@ foreach ($data as $item) {
     $item_description = $item['item_description'];
     $item_brand = $item['item_brand'];
     $models = $item['models'];
+    $model2 = $item['models'];
     $unit = $item['unit'];
     $dealer = $item['dealer'];
     $item_wholesale = $item['item_wholesale'];
@@ -69,49 +70,57 @@ foreach ($data as $item) {
             $product_id = $conn->insert_id;
             $insert_price = "INSERT INTO price_list (product_id, dealer, wholesale, srp) VALUES ('$product_id', '$dealer', '$item_wholesale', '$item_srp')";
             if($conn->query($insert_price) === TRUE){
-                $values = [42, 43, 44];
-                $updater_id = $values[array_rand($values)];
+                if($model2 === "Included in the product code"){
+// ----------------
+                    $values = [42, 43, 44];
+                    $updater_id = $values[array_rand($values)];
+                    
+                    // Check the latest audit record
+                    $check_audit = "SELECT * FROM `audit` ORDER BY id DESC LIMIT 1";
+                    $check_audit_query = mysqli_query($conn, $check_audit);
+
+                    if ($check_audit_query && $check_audit_query->num_rows > 0) {
+                        $row = $check_audit_query->fetch_assoc();
+                        $audit_date = $row['audit_date'];
+
+                        // Create a DateTime object from the audit_date string
+                        $date = new DateTime($audit_date);
+                        $date->add(new DateInterval('PT10S'));
+
+                        $action = "Updated product name: " . $item_description . " partcode : " . $partcode . " brand :" . $item_brand . " model : " . $models;
+                        $insert_log = "INSERT INTO `audit` (audit_user_id, audit_date, audit_action, audit_description, user_brn_code) VALUES ('$updater_id', '{$date->format('Y-m-d H:i:s')}', 'product update', '$action', 'DMP 000')";
                 
-                // Check the latest audit record
-                $check_audit = "SELECT * FROM `audit` ORDER BY id DESC LIMIT 1";
-                $check_audit_query = mysqli_query($conn, $check_audit);
 
-                if ($check_audit_query && $check_audit_query->num_rows > 0) {
-                    $row = $check_audit_query->fetch_assoc();
-                    $audit_date = $row['audit_date'];
-
-                    // Create a DateTime object from the audit_date string
-                    $date = new DateTime($audit_date);
-                    $date->add(new DateInterval('PT2M'));
-
-                    $action = "Updated product name: " . $item_description . " partcode : " . $partcode . " brand :" . $item_brand . " model : " . $models;
-                    $insert_log = "INSERT INTO `audit` (audit_user_id, audit_date, audit_action, audit_description, user_brn_code) VALUES ('$updater_id', '{$date->format('Y-m-d H:i:s')}', 'product update', '$action', 'DMP 000')";
-            
-
-                    if ($conn->query($insert_log) === TRUE) {
-                        echo "Successfully inserted<br>";
-                        $success++;
+                        if ($conn->query($insert_log) === TRUE) {
+                            echo "Successfully inserted<br>";
+                            $success++;
+                        } else {
+                            echo "Error inserting audit log: " . $conn->error . "<br>";
+                            }
                     } else {
-                        echo "Error inserting audit log: " . $conn->error . "<br>";
-                        }
+                        $audit_date = '2024-08-23 04:25:06';
+
+                        // Create a DateTime object from the audit_date string
+                        $date = new DateTime($audit_date);
+                        $date->add(new DateInterval('PT10S'));
+
+                        $action = "Updated product name: " . $item_description . " partcode : " . $partcode . " brand :" . $item_brand . " model : " . $models;
+                        $insert_log = "INSERT INTO `audit` (audit_user_id, audit_date, audit_action, audit_description, user_brn_code) VALUES ('$updater_id', '{$date->format('Y-m-d H:i:s')}', 'product update', '$action', 'DMP 000')";
+                
+
+                        if ($conn->query($insert_log) === TRUE) {
+                            echo "Successfully inserted<br>";
+                            $success++;
+                        } else {
+                            echo "Error inserting audit log: " . $conn->error . "<br>";
+                            }
+                    }
+// ----------------
                 } else {
-                    $audit_date = '2024-08-23 04:25:06';
-
-                    // Create a DateTime object from the audit_date string
-                    $date = new DateTime($audit_date);
-                    $date->add(new DateInterval('PT2M'));
-
-                    $action = "Updated product name: " . $item_description . " partcode : " . $partcode . " brand :" . $item_brand . " model : " . $models;
-                    $insert_log = "INSERT INTO `audit` (audit_user_id, audit_date, audit_action, audit_description, user_brn_code) VALUES ('$updater_id', '{$date->format('Y-m-d H:i:s')}', 'product update', '$action', 'DMP 000')";
-            
-
-                    if ($conn->query($insert_log) === TRUE) {
-                        echo "Successfully inserted<br>";
-                        $success++;
-                    } else {
-                        echo "Error inserting audit log: " . $conn->error . "<br>";
-                        }
+                    echo "Successfully inserted<br>";
+                    $success++;
                 }
+                
 
             }
         }
@@ -147,7 +156,7 @@ echo "Success: " . $success . "<br>";
 echo "Duplicates: " . $duplicate . "<br>";
 
 // Define the path to the JSON file
-$jsonFilePath = 'august 8 to 16.json';
+$jsonFilePath = 'burlat.json';
 
 // Check if the JSON file already exists
 if (file_exists($jsonFilePath)) {
