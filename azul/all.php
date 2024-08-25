@@ -32,6 +32,17 @@ foreach ($data as $item) {
         $models = "included in the produce code";
     }
 
+    // Check if product name contains "TGO"
+    if (strpos($item_description, " 3NITY") !== false || strpos($item_description, "3NITY ") !== false) {
+        $item_brand = "3NITY - EASTWAY";
+    }
+
+    // Check if product name contains "TGO"
+    if (strpos($item_description, " TGO") !== false || strpos($item_description, "TGO ") !== false) {
+        $item_brand = "TAKASAGO - EASTWAY";
+    }
+
+
     // Check if the brand exists and insert if not
     $check_brand = "SELECT * FROM brand WHERE brand_name = '$item_brand'";
     $check_brand_query = mysqli_query($conn, $check_brand);
