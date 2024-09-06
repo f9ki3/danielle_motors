@@ -2,7 +2,7 @@
 include "../database/database.php";
 
 // Read the JSON file
-$json = file_get_contents('../allcombined.json');
+$json = file_get_contents('allcombined.json');
 
 // Decode the JSON data into a PHP array
 $data = json_decode($json, true);
@@ -79,20 +79,7 @@ foreach ($data as $item) {
     echo "Item Wholesale: " . $item_wholesale . "<br>";
     echo "Item SRP: " . $item_srp . "<br><br>";
 
-    // Prepare the array to be encoded into JSON
-    $item = [
-        "partcode" => $partcode,
-        "item_description" => $item_description,
-        "item_brand" => $item_brand,
-        "models" => $models,
-        "unit" => $unit,
-        "dealer" => $dealer,
-        "item_wholesale" => $item_wholesale,
-        "item_srp" => $item_srp
-    ];
-
-    // Append the item to the dataArray
-    $dataArray[] = $item;
+    
 }
 
 
