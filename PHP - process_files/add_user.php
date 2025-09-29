@@ -81,7 +81,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mail->Host = 'smtp.hostinger.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'no_reply@dmp-motors.com'; // Update with your email address
-        $mail->Password = '4koSiDMP123*';
+        // $mail->Password = '4koSiDMP123*'; //old password
+        $mail->Password = 'Dmpmotors2025!'; // Update with your email password
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
         $mail->setFrom('no_reply@dmp-motors.com', 'Danielle Motors'); // Update with your name and email address

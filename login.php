@@ -108,7 +108,7 @@
                         <div class="col-auto">
                           <div class="form-check mb-0"><input class="form-check-input" id="basic-checkbox" type="checkbox" checked="checked" /><label class="form-check-label mb-0" for="basic-checkbox">Remember me</label></div>
                         </div>
-                        <!-- <div class="col-auto"><a class="fs--1 fw-semi-bold" href="forgot-password.html">Forgot Password?</a></div> -->
+                        <div class="col-auto"><a class="fs--1 fw-semi-bold" href="forgot-password.html">Forgot Password?</a></div>
                       </div>
                       <div style="height: 50px;">
                             <button type="submit" class="btn w-100 btn-primary btn" id="login_btn">Login</button>
